@@ -3,4 +3,4 @@
 set -e
 
 gem install crystal-dash-docset-generator
-# crystal-dash-docset-generator
+crystal-dash-docset-generator
