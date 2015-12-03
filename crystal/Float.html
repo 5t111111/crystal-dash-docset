@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>Float</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">abstract struct</span> Float
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="Float.html">Float</a></li>
+<li class="superclass"><a href="Number.html">Number</a></li>
+<li class="superclass"><a href="Value.html">Value</a></li>
+<li class="superclass"><a href="Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Float is the base type of all floating point numbers.</p>
+
+<p>There are two floating point types, <code><a href="Float32.html">Float32</a></code> and <code><a href="Float64.html">Float64</a></code>,
+which correspond to the <a href="http://en.wikipedia.org/wiki/Single_precision_floating-point_format" target="_blank">binary32</a>
+and <a href="http://en.wikipedia.org/wiki/Double_precision_floating-point_format" target="_blank">binary64</a>
+types defined by IEEE.</p>
+
+<p>A floating point literal is an optional <code>+</code> or <code>-</code> sign, followed by
+a sequence of numbers or underscores, followed by a dot,
+followed by numbers or underscores, followed by an optional exponent suffix,
+followed by an optional type suffix. If no suffix is present, the literal's type is <code><a href="Float64.html">Float64</a></code>.</p>
+
+<pre><code><span class="n">1.0</span>      <span class="c"># Float64</span>
+<span class="n">1.0_f32</span>  <span class="c"># Float32</span>
+<span class="n">1_f32</span>    <span class="c"># Float32</span>
+
+<span class="n">1e10</span>     <span class="c"># Float64</span>
+<span class="n">1.5e10</span>   <span class="c"># Float64</span>
+<span class="n">1.5e-7</span>   <span class="c"># Float64</span>
+
+<span class="n">+1.3</span>     <span class="c"># Float64</span>
+<span class="n">-0.5</span>     <span class="c"># Float64</span></code></pre>
+
+<p>The underscore <code>_</code> before the suffix is optional.</p>
+
+<p>Underscores can be used to make some numbers more readable:</p>
+
+<pre><code><span class="n">1_000_000.111_111</span> <span class="c"># better than 1000000.111111</span></code></pre>
+
+
+
+
+
+
+
+
+
+  <h2>Direct Known Subclasses</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Float32.html">Float32</a></li>
+  
+    <li class="other-type"><a href="Float64.html">Float64</a></li>
+  
+  </ul>
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr" target="_blank">float.cr</a>
+    
+    <br>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/time/span.cr" target="_blank">time/span.cr</a>
+    
+    <br>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/big_int/big_int.cr" target="_blank">big_int/big_int.cr</a>
+    
+    <br>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/json/to_json.cr" target="_blank">json/to_json.cr</a>
+    
+    <br>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_io%28io%3AIO%2Cformat%3AIO%3A%3AByteFormat%29-class-method" class="signature"><strong>.from_io</strong>(io : IO, format : IO::ByteFormat)</a>
+        
+          <div class="summary"><p>Reads a float from the given <em>io</em> in the given <em>format</em>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%25%28other%29-instance-method" class="signature"><strong>#%</strong>(other)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#days-instance-method" class="signature"><strong>#days</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fdiv%28other%29-instance-method" class="signature"><strong>#fdiv</strong>(other)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#finite%3F-instance-method" class="signature"><strong>#finite?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hours-instance-method" class="signature"><strong>#hours</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#infinite%3F-instance-method" class="signature"><strong>#infinite?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#milliseconds-instance-method" class="signature"><strong>#milliseconds</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#minutes-instance-method" class="signature"><strong>#minutes</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#modulo%28other%29-instance-method" class="signature"><strong>#modulo</strong>(other)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nan%3F-instance-method" class="signature"><strong>#nan?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remainder%28other%29-instance-method" class="signature"><strong>#remainder</strong>(other)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#seconds-instance-method" class="signature"><strong>#seconds</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_big_i-instance-method" class="signature"><strong>#to_big_i</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_io%28io%3AIO%2Cformat%3AIO%3A%3AByteFormat%29-instance-method" class="signature"><strong>#to_io</strong>(io : IO, format : IO::ByteFormat)</a>
+        
+          <div class="summary"><p>Writes this float to the given <em>io</em> in the given <em>format</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json%28io%29-instance-method" class="signature"><strong>#to_json</strong>(io)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="Number.html">Number</a></code>
+</h3>
+  
+    <a href="Number.html#%2A%28other%3AComplex%29-instance-method" class="tooltip">
+      <span>*(other : Complex)</span>
+    *</a>, 
+  
+    <a href="Number.html#%2B-instance-method" class="tooltip">
+      <span>+<br>+(other : Complex)</span>
+    +</a>, 
+  
+    <a href="Number.html#-%28other%3AComplex%29-instance-method" class="tooltip">
+      <span>-(other : Complex)</span>
+    -</a>, 
+  
+    <a href="Number.html#%2F%28other%3AComplex%29-instance-method" class="tooltip">
+      <span>/(other : Complex)</span>
+    /</a>, 
+  
+    <a href="Number.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="Number.html#%3D%3D%28other%3AComplex%29-instance-method" class="tooltip">
+      <span>==(other : Complex)</span>
+    ==</a>, 
+  
+    <a href="Number.html#abs-instance-method" class="tooltip">
+      <span>abs</span>
+    abs</a>, 
+  
+    <a href="Number.html#abs2-instance-method" class="tooltip">
+      <span>abs2</span>
+    abs2</a>, 
+  
+    <a href="Number.html#cis-instance-method" class="tooltip">
+      <span>cis</span>
+    cis</a>, 
+  
+    <a href="Number.html#clamp%28min%2Cmax%29-instance-method" class="tooltip">
+      <span>clamp(min, max)<br>clamp(range : Range)</span>
+    clamp</a>, 
+  
+    <a href="Number.html#divmod%28number%29-instance-method" class="tooltip">
+      <span>divmod(number)</span>
+    divmod</a>, 
+  
+    <a href="Number.html#i-instance-method" class="tooltip">
+      <span>i</span>
+    i</a>, 
+  
+    <a href="Number.html#round%28digits%2Cbase%3D%3Cspanclass%3D%22n%22%3E10%3C%2Fspan%3E%29-instance-method" class="tooltip">
+      <span>round(digits, base = <span class="n">10</span>)</span>
+    round</a>, 
+  
+    <a href="Number.html#sign-instance-method" class="tooltip">
+      <span>sign</span>
+    sign</a>, 
+  
+    <a href="Number.html#significant%28digits%2Cbase%3D%3Cspanclass%3D%22n%22%3E10%3C%2Fspan%3E%29-instance-method" class="tooltip">
+      <span>significant(digits, base = <span class="n">10</span>)</span>
+    significant</a>, 
+  
+    <a href="Number.html#step%28limit%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cby%3D%3Cspanclass%3D%22n%22%3E1%3C%2Fspan%3E%2C%26block%29-instance-method" class="tooltip">
+      <span>step(limit = <span class="n">nil</span>, by = <span class="n">1</span>, &amp;block)<br>step(limit = <span class="n">nil</span>, by = <span class="n">1</span>)</span>
+    step</a>, 
+  
+    <a href="Number.html#to_c-instance-method" class="tooltip">
+      <span>to_c</span>
+    to_c</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from struct <code><a href="Number.html">Number</a></code>
+</h3>
+  
+    <a href="Number.html#%5B%5D%28%2Anums%29-class-method" class="tooltip">
+      <span>[](*nums)</span>
+    []</a>, 
+  
+    <a href="Number.html#zero-class-method" class="tooltip">
+      <span>zero</span>
+    zero</a>
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Comparable.html">Comparable(T)</a></code>
+</h3>
+  
+    <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
+      <span>
+    , 
+  
+    <a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>
+    , 
+  
+    <a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>==(other : T)</span>
+    ==</a>, 
+  
+    <a href="Comparable.html#%3E%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;(other : T)</span>
+    &gt;</a>, 
+  
+    <a href="Comparable.html#%3E%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;=(other : T)</span>
+    &gt;=</a>, 
+  
+    <a href="Comparable.html#between%3F%28min%2Cmax%29-instance-method" class="tooltip">
+      <span>between?(min, max)</span>
+    between?</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="Value.html">Value</a></code>
+</h3>
+  
+    <a href="Value.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Value.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</span></a></span></a>
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="from_io(io:IO,format:IO::ByteFormat)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from_io</strong>(io : <a href="IO.html">IO</a>, format : <a href="IO/ByteFormat.html">IO::ByteFormat</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Reads a float from the given <em>io</em> in the given <em>format</em>.
+See <code><a href="IO.html#read_bytes%28type%2Cformat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%3AIO%3A%3AByteFormat%29-instance-method">IO#read_bytes</a></code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L89" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="%(other)-instance-method">
+      <div class="signature">
+        
+        def <strong>%</strong>(other)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="days-instance-method">
+      <div class="signature">
+        
+        def <strong>days</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/time/span.cr#L334" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fdiv(other)-instance-method">
+      <div class="signature">
+        
+        def <strong>fdiv</strong>(other)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="finite?-instance-method">
+      <div class="signature">
+        
+        def <strong>finite?</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hours-instance-method">
+      <div class="signature">
+        
+        def <strong>hours</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/time/span.cr#L338" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="infinite?-instance-method">
+      <div class="signature">
+        
+        def <strong>infinite?</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="milliseconds-instance-method">
+      <div class="signature">
+        
+        def <strong>milliseconds</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/time/span.cr#L350" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="minutes-instance-method">
+      <div class="signature">
+        
+        def <strong>minutes</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/time/span.cr#L342" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="modulo(other)-instance-method">
+      <div class="signature">
+        
+        def <strong>modulo</strong>(other)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nan?-instance-method">
+      <div class="signature">
+        
+        def <strong>nan?</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remainder(other)-instance-method">
+      <div class="signature">
+        
+        def <strong>remainder</strong>(other)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="seconds-instance-method">
+      <div class="signature">
+        
+        def <strong>seconds</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/time/span.cr#L346" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_big_i-instance-method">
+      <div class="signature">
+        
+        def <strong>to_big_i</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/big_int/big_int.cr#L314" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_io(io:IO,format:IO::ByteFormat)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_io</strong>(io : <a href="IO.html">IO</a>, format : <a href="IO/ByteFormat.html">IO::ByteFormat</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes this float to the given <em>io</em> in the given <em>format</em>.
+See <code><a href="IO.html#write_bytes%28object%2Cformat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%3AIO%3A%3AByteFormat%29-instance-method">IO#write_bytes</a></code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/float.cr#L83" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json(io)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_json</strong>(io)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/json/to_json.cr#L166" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

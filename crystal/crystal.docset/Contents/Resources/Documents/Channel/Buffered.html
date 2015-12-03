@@ -1,0 +1,421 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/manastech/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-352"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Channel%3A%3ABuffered%28T%29"></a><title>Channel::Buffered(T)</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Channel::Buffered(T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../Channel/Buffered.html">Channel::Buffered(T)</a></li>
+<li class="superclass"><a href="../Channel.html">Channel(T)</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/channel.cr" target="_blank">concurrent/channel.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28capacity%3D%3Cspanclass%3D%22n%22%3E32%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(capacity = <span class="n">32</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#full%3F-instance-method" class="signature"><strong>#full?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send%28value%3AT%29-instance-method" class="signature"><strong>#send</strong>(value : T)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Channel.html">Channel(T)</a></code>
+</h3>
+  
+    <a href="../Channel.html#close-instance-method" class="tooltip">
+      <span>close</span>
+    close</a>, 
+  
+    <a href="../Channel.html#closed%3F-instance-method" class="tooltip">
+      <span>closed?</span>
+    closed?</a>, 
+  
+    <a href="../Channel.html#inspect%28io%29-instance-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Channel.html#receive-instance-method" class="tooltip">
+      <span>receive</span>
+    receive</a>, 
+  
+    <a href="../Channel.html#receive%3F-instance-method" class="tooltip">
+      <span>receive?</span>
+    receive?</a>, 
+  
+    <a href="../Channel.html#receive_op-instance-method" class="tooltip">
+      <span>receive_op</span>
+    receive_op</a>, 
+  
+    <a href="../Channel.html#send_op%28value%3AT%29-instance-method" class="tooltip">
+      <span>send_op(value : T)</span>
+    send_op</a>, 
+  
+    <a href="../Channel.html#unwait_for_receive-instance-method" class="tooltip">
+      <span>unwait_for_receive</span>
+    unwait_for_receive</a>, 
+  
+    <a href="../Channel.html#unwait_for_send-instance-method" class="tooltip">
+      <span>unwait_for_send</span>
+    unwait_for_send</a>, 
+  
+    <a href="../Channel.html#wait_for_receive-instance-method" class="tooltip">
+      <span>wait_for_receive</span>
+    wait_for_receive</a>, 
+  
+    <a href="../Channel.html#wait_for_send-instance-method" class="tooltip">
+      <span>wait_for_send</span>
+    wait_for_send</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Channel.html">Channel(T)</a></code>
+</h3>
+  
+    <a href="../Channel.html#new-class-method" class="tooltip">
+      <span>new<br/>new(capacity)<br/>new</span>
+    new</a>, 
+  
+    <a href="../Channel.html#receive_first%28%2Achannels%29-class-method" class="tooltip">
+      <span>receive_first(*channels)<br/>receive_first(channels : Tuple | Array)</span>
+    receive_first</a>, 
+  
+    <a href="../Channel.html#select%28ops%3ATuple%7CArray%29-class-method" class="tooltip">
+      <span>select(ops : Tuple | Array)<br/>select(*ops : SendOp | ReceiveOp)</span>
+    select</a>, 
+  
+    <a href="../Channel.html#send_first%28value%2Cchannels%3ATuple%7CArray%29-class-method" class="tooltip">
+      <span>send_first(value, channels : Tuple | Array)<br/>send_first(value, *channels)</span>
+    send_first</a>
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="../Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br/>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="../Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="../Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br/>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br/>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(capacity=&lt;spanclass=&#34;n&#34;&gt;32&lt;/span&gt;)-class-method">
+      <a class="dashingAutolink" name="autolink-353"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28capacity%20%3D%2032%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(capacity = <span class="n">32</span>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/channel.cr#L156" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="empty?-instance-method">
+      <a class="dashingAutolink" name="autolink-354"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
+        
+        def <strong>empty?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/channel.cr#L194" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="full?-instance-method">
+      <a class="dashingAutolink" name="autolink-355"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20full%3F"></a><div class="signature">
+        
+        def <strong>full?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/channel.cr#L190" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send(value:T)-instance-method">
+      <a class="dashingAutolink" name="autolink-356"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28value%20%3A%20T%29"></a><div class="signature">
+        
+        def <strong>send</strong>(value : T)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/channel.cr#L161" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>Colorize::Object(T)</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> Colorize::Object(T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../Colorize/Object.html">Colorize::Object(T)</a></li>
+<li class="superclass"><a href="../Struct.html">Struct</a></li>
+<li class="superclass"><a href="../Value.html">Value</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr" target="_blank">colorize.cr</a>
+    
+    <br>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>BACK_BLACK</strong> = <code><span class="s">"40"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_BLUE</strong> = <code><span class="s">"44"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_CYAN</strong> = <code><span class="s">"46"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_DARK_GRAY</strong> = <code><span class="s">"100"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_DEFAULT</strong> = <code><span class="s">"49"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_GREEN</strong> = <code><span class="s">"42"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_LIGHT_BLUE</strong> = <code><span class="s">"104"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_LIGHT_CYAN</strong> = <code><span class="s">"106"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_LIGHT_GRAY</strong> = <code><span class="s">"47"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_LIGHT_GREEN</strong> = <code><span class="s">"102"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_LIGHT_MAGENTA</strong> = <code><span class="s">"105"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_LIGHT_RED</strong> = <code><span class="s">"101"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_LIGHT_YELLOW</strong> = <code><span class="s">"103"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_MAGENTA</strong> = <code><span class="s">"45"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_RED</strong> = <code><span class="s">"41"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_WHITE</strong> = <code><span class="s">"107"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>BACK_YELLOW</strong> = <code><span class="s">"43"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>COLORS</strong> = <code>[<span class="s">"black"</span>, <span class="s">"red"</span>, <span class="s">"green"</span>, <span class="s">"yellow"</span>, <span class="s">"blue"</span>, <span class="s">"magenta"</span>, <span class="s">"cyan"</span>, <span class="s">"light_gray"</span>, <span class="s">"dark_gray"</span>, <span class="s">"light_red"</span>, <span class="s">"light_green"</span>, <span class="s">"light_yellow"</span>, <span class="s">"light_blue"</span>, <span class="s">"light_magenta"</span>, <span class="s">"light_cyan"</span>, <span class="s">"white"</span>] <span class="k">of</span> <span class="t">::</span><span class="t">String</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_BLACK</strong> = <code><span class="s">"30"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_BLUE</strong> = <code><span class="s">"34"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_CYAN</strong> = <code><span class="s">"36"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_DARK_GRAY</strong> = <code><span class="s">"90"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_DEFAULT</strong> = <code><span class="s">"39"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_GREEN</strong> = <code><span class="s">"32"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_LIGHT_BLUE</strong> = <code><span class="s">"94"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_LIGHT_CYAN</strong> = <code><span class="s">"96"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_LIGHT_GRAY</strong> = <code><span class="s">"37"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_LIGHT_GREEN</strong> = <code><span class="s">"92"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_LIGHT_MAGENTA</strong> = <code><span class="s">"95"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_LIGHT_RED</strong> = <code><span class="s">"91"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_LIGHT_YELLOW</strong> = <code><span class="s">"93"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_MAGENTA</strong> = <code><span class="s">"35"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_RED</strong> = <code><span class="s">"31"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_WHITE</strong> = <code><span class="s">"97"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>FORE_YELLOW</strong> = <code><span class="s">"33"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_BLINK</strong> = <code><span class="s">"5"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_BLINK_FLAG</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_BOLD</strong> = <code><span class="s">"1"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_BOLD_FLAG</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_BRIGHT</strong> = <code><span class="s">"1"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_BRIGHT_FLAG</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_DEFAULT</strong> = <code><span class="s">"0"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_DIM</strong> = <code><span class="s">"2"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_DIM_FLAG</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_HIDDEN</strong> = <code><span class="s">"8"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_HIDDEN_FLAG</strong> = <code><span class="n">32</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_REVERSE</strong> = <code><span class="s">"7"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_REVERSE_FLAG</strong> = <code><span class="n">16</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_UNDERLINE</strong> = <code><span class="s">"4"</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODE_UNDERLINE_FLAG</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>MODES</strong> = <code>[<span class="s">"bold"</span>, <span class="s">"bright"</span>, <span class="s">"dim"</span>, <span class="s">"underline"</span>, <span class="s">"blink"</span>, <span class="s">"reverse"</span>, <span class="s">"hidden"</span>] <span class="k">of</span> <span class="t">::</span><span class="t">String</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>STACK</strong> = <code><span class="o">[]</span> <span class="k">of</span> <span class="t">Colorize</span><span class="t">::</span><span class="t">Object</span>(<span class="t">String</span>)</code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28object%3AT%29-class-method" class="signature"><strong>.new</strong>(object : T)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#back%28color%3ASymbol%29-instance-method" class="signature"><strong>#back</strong>(color : Symbol)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#black-instance-method" class="signature"><strong>#black</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#blink-instance-method" class="signature"><strong>#blink</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#blue-instance-method" class="signature"><strong>#blue</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#bold-instance-method" class="signature"><strong>#bold</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#bright-instance-method" class="signature"><strong>#bright</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cyan-instance-method" class="signature"><strong>#cyan</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dark_gray-instance-method" class="signature"><strong>#dark_gray</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dim-instance-method" class="signature"><strong>#dim</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fore%28color%3ASymbol%29-instance-method" class="signature"><strong>#fore</strong>(color : Symbol)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#green-instance-method" class="signature"><strong>#green</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hidden-instance-method" class="signature"><strong>#hidden</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect%28io%29-instance-method" class="signature"><strong>#inspect</strong>(io)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#light_blue-instance-method" class="signature"><strong>#light_blue</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#light_cyan-instance-method" class="signature"><strong>#light_cyan</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#light_gray-instance-method" class="signature"><strong>#light_gray</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#light_green-instance-method" class="signature"><strong>#light_green</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#light_magenta-instance-method" class="signature"><strong>#light_magenta</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#light_red-instance-method" class="signature"><strong>#light_red</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#light_yellow-instance-method" class="signature"><strong>#light_yellow</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#magenta-instance-method" class="signature"><strong>#magenta</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mode%28mode%3ASymbol%29-instance-method" class="signature"><strong>#mode</strong>(mode : Symbol)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on%28color%3ASymbol%29-instance-method" class="signature"><strong>#on</strong>(color : Symbol)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_black-instance-method" class="signature"><strong>#on_black</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_blue-instance-method" class="signature"><strong>#on_blue</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_cyan-instance-method" class="signature"><strong>#on_cyan</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_dark_gray-instance-method" class="signature"><strong>#on_dark_gray</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_green-instance-method" class="signature"><strong>#on_green</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_light_blue-instance-method" class="signature"><strong>#on_light_blue</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_light_cyan-instance-method" class="signature"><strong>#on_light_cyan</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_light_gray-instance-method" class="signature"><strong>#on_light_gray</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_light_green-instance-method" class="signature"><strong>#on_light_green</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_light_magenta-instance-method" class="signature"><strong>#on_light_magenta</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_light_red-instance-method" class="signature"><strong>#on_light_red</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_light_yellow-instance-method" class="signature"><strong>#on_light_yellow</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_magenta-instance-method" class="signature"><strong>#on_magenta</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_red-instance-method" class="signature"><strong>#on_red</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_white-instance-method" class="signature"><strong>#on_white</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_yellow-instance-method" class="signature"><strong>#on_yellow</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#push%28io%3D%3Cspanclass%3D%22t%22%3ESTDOUT%3C%2Fspan%3E%2C%26block%29-instance-method" class="signature"><strong>#push</strong>(io = <span class="t">STDOUT</span>, &amp;block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#red-instance-method" class="signature"><strong>#red</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reverse-instance-method" class="signature"><strong>#reverse</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#surround%28io%3D%3Cspanclass%3D%22t%22%3ESTDOUT%3C%2Fspan%3E%2C%26block%29-instance-method" class="signature"><strong>#surround</strong>(io = <span class="t">STDOUT</span>, &amp;block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%29-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#toggle%28on%29-instance-method" class="signature"><strong>#toggle</strong>(on)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#underline-instance-method" class="signature"><strong>#underline</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#white-instance-method" class="signature"><strong>#white</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#yellow-instance-method" class="signature"><strong>#yellow</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Struct.html">Struct</a></code>
+</h3>
+  
+    <a href="../Struct.html#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="tooltip">
+      <span>==(other : self) : Bool</span>
+    ==</a>, 
+  
+    <a href="../Struct.html#hash%3AInt32-instance-method" class="tooltip">
+      <span>hash : Int32</span>
+    hash</a>, 
+  
+    <a href="../Struct.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../Struct.html#to_s%28io%29-instance-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Value.html">Value</a></code>
+</h3>
+  
+    <a href="../Value.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Value.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(object:T)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(object : T)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L161" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="back(color:Symbol)-instance-method">
+      <div class="signature">
+        
+        def <strong>back</strong>(color : <a href="../Symbol.html">Symbol</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L198" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="black-instance-method">
+      <div class="signature">
+        
+        def <strong>black</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="blink-instance-method">
+      <div class="signature">
+        
+        def <strong>blink</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="blue-instance-method">
+      <div class="signature">
+        
+        def <strong>blue</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bold-instance-method">
+      <div class="signature">
+        
+        def <strong>bold</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bright-instance-method">
+      <div class="signature">
+        
+        def <strong>bright</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cyan-instance-method">
+      <div class="signature">
+        
+        def <strong>cyan</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dark_gray-instance-method">
+      <div class="signature">
+        
+        def <strong>dark_gray</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dim-instance-method">
+      <div class="signature">
+        
+        def <strong>dim</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fore(color:Symbol)-instance-method">
+      <div class="signature">
+        
+        def <strong>fore</strong>(color : <a href="../Symbol.html">Symbol</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L187" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="green-instance-method">
+      <div class="signature">
+        
+        def <strong>green</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hidden-instance-method">
+      <div class="signature">
+        
+        def <strong>hidden</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect(io)-instance-method">
+      <div class="signature">
+        
+        def <strong>inspect</strong>(io)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L234" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="light_blue-instance-method">
+      <div class="signature">
+        
+        def <strong>light_blue</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="light_cyan-instance-method">
+      <div class="signature">
+        
+        def <strong>light_cyan</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="light_gray-instance-method">
+      <div class="signature">
+        
+        def <strong>light_gray</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="light_green-instance-method">
+      <div class="signature">
+        
+        def <strong>light_green</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="light_magenta-instance-method">
+      <div class="signature">
+        
+        def <strong>light_magenta</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="light_red-instance-method">
+      <div class="signature">
+        
+        def <strong>light_red</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="light_yellow-instance-method">
+      <div class="signature">
+        
+        def <strong>light_yellow</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="magenta-instance-method">
+      <div class="signature">
+        
+        def <strong>magenta</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mode(mode:Symbol)-instance-method">
+      <div class="signature">
+        
+        def <strong>mode</strong>(mode : <a href="../Symbol.html">Symbol</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L209" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on(color:Symbol)-instance-method">
+      <div class="signature">
+        
+        def <strong>on</strong>(color : <a href="../Symbol.html">Symbol</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L220" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_black-instance-method">
+      <div class="signature">
+        
+        def <strong>on_black</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_blue-instance-method">
+      <div class="signature">
+        
+        def <strong>on_blue</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_cyan-instance-method">
+      <div class="signature">
+        
+        def <strong>on_cyan</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_dark_gray-instance-method">
+      <div class="signature">
+        
+        def <strong>on_dark_gray</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_green-instance-method">
+      <div class="signature">
+        
+        def <strong>on_green</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_light_blue-instance-method">
+      <div class="signature">
+        
+        def <strong>on_light_blue</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_light_cyan-instance-method">
+      <div class="signature">
+        
+        def <strong>on_light_cyan</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_light_gray-instance-method">
+      <div class="signature">
+        
+        def <strong>on_light_gray</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_light_green-instance-method">
+      <div class="signature">
+        
+        def <strong>on_light_green</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_light_magenta-instance-method">
+      <div class="signature">
+        
+        def <strong>on_light_magenta</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_light_red-instance-method">
+      <div class="signature">
+        
+        def <strong>on_light_red</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_light_yellow-instance-method">
+      <div class="signature">
+        
+        def <strong>on_light_yellow</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_magenta-instance-method">
+      <div class="signature">
+        
+        def <strong>on_magenta</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_red-instance-method">
+      <div class="signature">
+        
+        def <strong>on_red</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_white-instance-method">
+      <div class="signature">
+        
+        def <strong>on_white</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_yellow-instance-method">
+      <div class="signature">
+        
+        def <strong>on_yellow</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='push(io=&lt;spanclass="t"&gt;STDOUT&lt;/span&gt;,&amp;block)-instance-method'>
+      <div class="signature">
+        
+        def <strong>push</strong>(io = <span class="t">STDOUT</span>, &amp;block)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L248" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="red-instance-method">
+      <div class="signature">
+        
+        def <strong>red</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reverse-instance-method">
+      <div class="signature">
+        
+        def <strong>reverse</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='surround(io=&lt;spanclass="t"&gt;STDOUT&lt;/span&gt;,&amp;block)-instance-method'>
+      <div class="signature">
+        
+        def <strong>surround</strong>(io = <span class="t">STDOUT</span>, &amp;block)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L240" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_s</strong>(io)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L228" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="toggle(on)-instance-method">
+      <div class="signature">
+        
+        def <strong>toggle</strong>(on)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L224" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="underline-instance-method">
+      <div class="signature">
+        
+        def <strong>underline</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="white-instance-method">
+      <div class="signature">
+        
+        def <strong>white</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="yellow-instance-method">
+      <div class="signature">
+        
+        def <strong>yellow</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L168" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

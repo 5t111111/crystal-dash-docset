@@ -1,0 +1,819 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/manastech/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-865"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/File%3A%3AStat"></a><title>File::Stat</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> File::Stat
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../File/Stat.html">File::Stat</a></li>
+<li class="superclass"><a href="../Struct.html">Struct</a></li>
+<li class="superclass"><a href="../Value.html">Value</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr" target="_blank">file/stat.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28filename%3AString%29-class-method" class="signature"><strong>.new</strong>(filename : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28stat%3ALibC%3A%3AStat%29-class-method" class="signature"><strong>.new</strong>(stat : LibC::Stat)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#atime-instance-method" class="signature"><strong>#atime</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#blksize-instance-method" class="signature"><strong>#blksize</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#blockdev%3F-instance-method" class="signature"><strong>#blockdev?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#blocks-instance-method" class="signature"><strong>#blocks</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chardev%3F-instance-method" class="signature"><strong>#chardev?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ctime-instance-method" class="signature"><strong>#ctime</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dev-instance-method" class="signature"><strong>#dev</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#directory%3F-instance-method" class="signature"><strong>#directory?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#file%3F-instance-method" class="signature"><strong>#file?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gid-instance-method" class="signature"><strong>#gid</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ino-instance-method" class="signature"><strong>#ino</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect%28io%29-instance-method" class="signature"><strong>#inspect</strong>(io)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mode-instance-method" class="signature"><strong>#mode</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mtime-instance-method" class="signature"><strong>#mtime</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nlink-instance-method" class="signature"><strong>#nlink</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#perm-instance-method" class="signature"><strong>#perm</strong></a>
+        
+          <div class="summary"><p>permission bits of mode</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rdev-instance-method" class="signature"><strong>#rdev</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#setgid%3F-instance-method" class="signature"><strong>#setgid?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#setuid%3F-instance-method" class="signature"><strong>#setuid?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#socket%3F-instance-method" class="signature"><strong>#socket?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sticky%3F-instance-method" class="signature"><strong>#sticky?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#symlink%3F-instance-method" class="signature"><strong>#symlink?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#uid-instance-method" class="signature"><strong>#uid</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Struct.html">Struct</a></code>
+</h3>
+  
+    <a href="../Struct.html#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="tooltip">
+      <span>==(other : self) : Bool</span>
+    ==</a>, 
+  
+    <a href="../Struct.html#hash%3AInt32-instance-method" class="tooltip">
+      <span>hash : Int32</span>
+    hash</a>, 
+  
+    <a href="../Struct.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../Struct.html#to_s%28io%29-instance-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Value.html">Value</a></code>
+</h3>
+  
+    <a href="../Value.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Value.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br/>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(filename:String)-class-method">
+      <a class="dashingAutolink" name="autolink-839"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28filename%20%3A%20String%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(filename : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(stat:LibC::Stat)-class-method">
+      <a class="dashingAutolink" name="autolink-840"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28stat%20%3A%20LibC%3A%3AStat%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(stat : LibC::Stat)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L92" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="atime-instance-method">
+      <a class="dashingAutolink" name="autolink-841"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20atime"></a><div class="signature">
+        
+        def <strong>atime</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L95" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="blksize-instance-method">
+      <a class="dashingAutolink" name="autolink-842"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20blksize"></a><div class="signature">
+        
+        def <strong>blksize</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L99" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="blockdev?-instance-method">
+      <a class="dashingAutolink" name="autolink-843"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20blockdev%3F"></a><div class="signature">
+        
+        def <strong>blockdev?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L173" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="blocks-instance-method">
+      <a class="dashingAutolink" name="autolink-844"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20blocks"></a><div class="signature">
+        
+        def <strong>blocks</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L103" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chardev?-instance-method">
+      <a class="dashingAutolink" name="autolink-845"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chardev%3F"></a><div class="signature">
+        
+        def <strong>chardev?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L177" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ctime-instance-method">
+      <a class="dashingAutolink" name="autolink-846"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ctime"></a><div class="signature">
+        
+        def <strong>ctime</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L107" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dev-instance-method">
+      <a class="dashingAutolink" name="autolink-847"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dev"></a><div class="signature">
+        
+        def <strong>dev</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="directory?-instance-method">
+      <a class="dashingAutolink" name="autolink-848"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20directory%3F"></a><div class="signature">
+        
+        def <strong>directory?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L181" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="file?-instance-method">
+      <a class="dashingAutolink" name="autolink-849"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20file%3F"></a><div class="signature">
+        
+        def <strong>file?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L185" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gid-instance-method">
+      <a class="dashingAutolink" name="autolink-850"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20gid"></a><div class="signature">
+        
+        def <strong>gid</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L115" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ino-instance-method">
+      <a class="dashingAutolink" name="autolink-851"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ino"></a><div class="signature">
+        
+        def <strong>ino</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L119" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect(io)-instance-method">
+      <a class="dashingAutolink" name="autolink-852"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
+        
+        def <strong>inspect</strong>(io)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L152" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mode-instance-method">
+      <a class="dashingAutolink" name="autolink-853"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mode"></a><div class="signature">
+        
+        def <strong>mode</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L123" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mtime-instance-method">
+      <a class="dashingAutolink" name="autolink-854"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mtime"></a><div class="signature">
+        
+        def <strong>mtime</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L132" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nlink-instance-method">
+      <a class="dashingAutolink" name="autolink-855"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20nlink"></a><div class="signature">
+        
+        def <strong>nlink</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L136" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="perm-instance-method">
+      <a class="dashingAutolink" name="autolink-856"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20perm"></a><div class="signature">
+        
+        def <strong>perm</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>permission bits of mode</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L128" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rdev-instance-method">
+      <a class="dashingAutolink" name="autolink-857"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rdev"></a><div class="signature">
+        
+        def <strong>rdev</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L140" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="setgid?-instance-method">
+      <a class="dashingAutolink" name="autolink-858"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20setgid%3F"></a><div class="signature">
+        
+        def <strong>setgid?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L193" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="setuid?-instance-method">
+      <a class="dashingAutolink" name="autolink-859"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20setuid%3F"></a><div class="signature">
+        
+        def <strong>setuid?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L189" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size-instance-method">
+      <a class="dashingAutolink" name="autolink-860"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
+        
+        def <strong>size</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L144" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="socket?-instance-method">
+      <a class="dashingAutolink" name="autolink-861"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20socket%3F"></a><div class="signature">
+        
+        def <strong>socket?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L201" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sticky?-instance-method">
+      <a class="dashingAutolink" name="autolink-862"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sticky%3F"></a><div class="signature">
+        
+        def <strong>sticky?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L205" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="symlink?-instance-method">
+      <a class="dashingAutolink" name="autolink-863"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20symlink%3F"></a><div class="signature">
+        
+        def <strong>symlink?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L197" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="uid-instance-method">
+      <a class="dashingAutolink" name="autolink-864"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20uid"></a><div class="signature">
+        
+        def <strong>uid</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/file/stat.cr#L148" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

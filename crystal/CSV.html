@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>CSV</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> CSV
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="CSV.html">CSV</a></li>
+<li class="superclass"><a href="Reference.html">Reference</a></li>
+<li class="superclass"><a href="Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Provides methods and classes for parsing and generating CSV
+(comma-separated values) strings.</p>
+
+<p>This module conforms to <a href="https://tools.ietf.org/html/rfc4180" target="_blank">RFC 4180</a>.</p>
+
+<h3>Parsing</h3>
+
+<p>Several ways of parsing CSV are provided. The most straight-forward, but
+slow or inneficient for some scenarios, is <code><a href="CSV.html#parse%28string_or_io%3AString%7CIO%29%3AArray%28Array%28String%29%29-class-method">CSV#parse</a></code>, which returns
+an array of arrays of all data.</p>
+
+<p>Rows can be traversed in a linear fashion with <code><a href="CSV.html#each_row%28string_or_io%3AString%7CIO%2C%26block%29-class-method">CSV#each_row</a></code>, or
+using an <code><a href="Iterator.html">Iterator</a></code>.</p>
+
+<p>To parse a CSV in an efficient way, optionally being able to access
+row values from header names, create an instance of a <code><a href="CSV.html">CSV</a></code>.</p>
+
+<h3>Parsing with <code><a href="CSV.html#new%28string_or_io%3AString%7CIO%2Cheaders%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2Cstrip%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2C%26block%29-class-method">CSV#new</a></code>
+</h3>
+
+<p>A CSV instance holds a cursor to the current row in the CSV. The cursor
+is advanced by invoking <code><a href="CSV.html#next-instance-method">#next</a></code>, which returns <code>true</code> if a next row was found,
+and <code>false</code> otherwise. A first call to <code><a href="CSV.html#next-instance-method">#next</a></code> is required to position the
+csv parser in the first row.</p>
+
+<p>Once positioned in a row, values can be obtained with the several <code><a href="CSV.html#%5B%5D%28header%3AString%29%3AString-instance-method">#[]</a></code> methods,
+which can accept a header name, column position, or header name pattern as a <code><a href="Regex.html">Regex</a></code>.</p>
+
+<p>Additionally, a <code><a href="CSV/Row.html">Row</a></code> object can be obtained with the <code><a href="CSV.html#row%3ARow-instance-method">#row</a></code> method which
+provides similar methods and can be converted to an <code><a href="Array.html">Array</a></code> or <code><a href="Hash.html">Hash</a></code>.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="k">require</span> <span class="s">"csv"</span>
+
+csv <span class="o">=</span> <span class="t">CSV</span>.<span class="k">new</span>(<span class="s">"Name, Age\nJohn, 20\nPeter, 30"</span>, headers: <span class="n">true</span>)
+csv.<span class="k">next</span> <span class="c">#=&gt; true</span>
+
+csv[<span class="s">"Name"</span>] <span class="c">#=&gt;  "John"</span>
+csv[<span class="n">0</span>]      <span class="c">#=&gt;  "John"</span>
+csv[<span class="n">-2</span>]     <span class="c">#=&gt;  "John"</span>
+csv[<span class="s">/name/</span>i] <span class="c">#=&gt; "John"</span>
+
+csv[<span class="s">"Age"</span>] <span class="c">#=&gt; " 20"</span>
+
+csv.row.to_a <span class="c">#=&gt; ["John", " 20"]</span>
+csv.row.to_h <span class="c">#=&gt; {"Name" =&gt; "John", "Age" =&gt; " 20"}</span>
+
+csv.<span class="k">next</span> <span class="c">#=&gt; true</span>
+csv[<span class="s">"Name"</span>] <span class="c">#=&gt; "Peter"</span>
+
+csv.<span class="k">next</span> <span class="c">#=&gt; false</span></code></pre>
+
+<h3>Building</h3>
+
+<p>To create CSV data, check <code><a href="CSV.html#build%28%26block%29%3AString-class-method">CSV#build</a></code> and the <code><a href="CSV/Builder.html">CSV::Builder</a></code> class.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr" target="_blank">csv/csv.cr</a>
+    
+    <br>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/error.cr" target="_blank">csv/error.cr</a>
+    
+    <br>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr" target="_blank">csv/csv.cr</a>
+    
+    <br>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#build%28io%3AIO%2C%26block%29-class-method" class="signature"><strong>.build</strong>(io : IO, &amp;block)</a>
+        
+          <div class="summary"><p>Appends CSV data to the given IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#build%28%26block%29%3AString-class-method" class="signature"><strong>.build</strong>(&amp;block) : String</a>
+        
+          <div class="summary"><p>Builds a CSV.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_row%28string_or_io%3AString%7CIO%2C%26block%29-class-method" class="signature"><strong>.each_row</strong>(string_or_io : String | IO, &amp;block)</a>
+        
+          <div class="summary"><p>Yields each of a CSV's rows as an <code><a href="Array.html">Array</a>(<a href="String.html">String</a>)</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_row%28string_or_io%3AString%7CIO%29-class-method" class="signature"><strong>.each_row</strong>(string_or_io : String | IO)</a>
+        
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> of <code><a href="Array.html">Array</a>(<a href="String.html">String</a>)</code> over a CSV's rows.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28string_or_io%3AString%7CIO%2Cheaders%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2Cstrip%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2C%26block%29-class-method" class="signature"><strong>.new</strong>(string_or_io : String | IO, headers = <span class="n">false</span>, strip = <span class="n">false</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Creates a new instance from the given <code><a href="String.html">String</a></code> or <code><a href="IO.html">IO</a></code>, and yields it to the given block once for each row in the CSV.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%28string_or_io%3AString%7CIO%29%3AArray%28Array%28String%29%29-class-method" class="signature"><strong>.parse</strong>(string_or_io : String | IO) : Array(Array(String))</a>
+        
+          <div class="summary"><p>Parses a CSV or IO into an array.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28string_or_io%3AString%7CIO%2Cheaders%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2Cstrip%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(string_or_io : String | IO, headers = <span class="n">false</span>, strip = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Creates a new instance from the given <code><a href="String.html">String</a></code> or <code><a href="IO.html">IO</a></code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28header%3AString%29%3AString-instance-method" class="signature"><strong>#[]</strong>(header : String) : String</a>
+        
+          <div class="summary"><p>Returns the current row's value corresponding to the given <em>header</em> name.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28column%3AInt%29%3AString-instance-method" class="signature"><strong>#[]</strong>(column : Int) : String</a>
+        
+          <div class="summary"><p>Returns the current row's value at the given column index.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28header_pattern%3ARegex%29%3AString-instance-method" class="signature"><strong>#[]</strong>(header_pattern : Regex) : String</a>
+        
+          <div class="summary"><p>Returns the current row's value corresponding to the given <em>header_pattern</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28header%3AString%29%3AString%7CNil-instance-method" class="signature"><strong>#[]?</strong>(header : String) : String | Nil</a>
+        
+          <div class="summary"><p>Returns the current row's value corresponding to the given <em>header</em> name.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28column%3AInt%29%3AString%7CNil-instance-method" class="signature"><strong>#[]?</strong>(column : Int) : String | Nil</a>
+        
+          <div class="summary"><p>Returns the current row's value at the given column index.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28header_pattern%3ARegex%29%3AString%7CNil-instance-method" class="signature"><strong>#[]?</strong>(header_pattern : Regex) : String | Nil</a>
+        
+          <div class="summary"><p>Returns the current row's value corresponding to the given <em>header_pattern</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each%28%26block%29-instance-method" class="signature"><strong>#each</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Invokes the block once for each row in this CSV, yielding <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#headers%3AArray%28String%29-instance-method" class="signature"><strong>#headers</strong> : Array(String)</a>
+        
+          <div class="summary"><p>Returns this CSV headers.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#next-instance-method" class="signature"><strong>#next</strong></a>
+        
+          <div class="summary"><p>Advanced the cursor to the next row.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row%3ARow-instance-method" class="signature"><strong>#row</strong> : Row</a>
+        
+          <div class="summary"><p>Returns the current row as a <code><a href="CSV/Row.html">Row</a></code> instance.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="build(io:IO,&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>build</strong>(io : <a href="IO.html">IO</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Appends CSV data to the given IO. This yields a <code><a href="CSV/Builder.html">CSV::Builder</a></code>
+that writes to the given IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.puts <span class="s">"HEADER"</span>
+<span class="t">CSV</span>.build(io) <span class="k">do</span> <span class="o">|</span>csv<span class="o">|</span>
+  csv.row <span class="s">"one"</span>, <span class="s">"two"</span>
+  csv.row <span class="s">"three"</span>
+<span class="k">end</span>
+io.to_s <span class="c">#=&gt; "HEADER\none,two\nthree"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L130" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="build(&amp;block):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>build</strong>(&amp;block) : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Builds a CSV. This yields a <code><a href="CSV/Builder.html">CSV::Builder</a></code> to the given block.</p>
+
+<pre><code><span class="t">CSV</span>.build <span class="k">do</span> <span class="o">|</span>csv<span class="o">|</span>
+  csv.row <span class="s">"one"</span>, <span class="s">"two"</span>
+  csv.row <span class="s">"three"</span>
+<span class="k">end</span>
+result <span class="c">#=&gt; "one,two\nthree"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L112" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_row(string_or_io:String|IO,&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>each_row</strong>(string_or_io : <a href="String.html">String</a> | <a href="IO.html">IO</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Yields each of a CSV's rows as an <code><a href="Array.html">Array</a>(<a href="String.html">String</a>)</code>.</p>
+
+<pre><code><span class="t">CSV</span>.each_row(<span class="s">"one,two\nthree"</span>) <span class="k">do</span> <span class="o">|</span>row<span class="o">|</span>
+  puts row
+<span class="k">end</span></code></pre>
+
+<p>Output:</p>
+
+<pre><code>[<span class="s">"one"</span>, <span class="s">"two"</span>]
+[<span class="s">"three"</span>]</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_row(string_or_io:String|IO)-class-method">
+      <div class="signature">
+        
+        def self.<strong>each_row</strong>(string_or_io : <a href="String.html">String</a> | <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an <code><a href="Iterator.html">Iterator</a></code> of <code><a href="Array.html">Array</a>(<a href="String.html">String</a>)</code> over a CSV's rows.</p>
+
+<pre><code>rows <span class="o">=</span> <span class="t">CSV</span>.each_row(<span class="s">"one,two\nthree"</span>)
+rows.<span class="k">next</span> <span class="c">#=&gt; ["one", "two"]</span>
+rows.<span class="k">next</span> <span class="c">#=&gt; ["three"]</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L99" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='new(string_or_io:String|IO,headers=&lt;spanclass="n"&gt;false&lt;/span&gt;,strip=&lt;spanclass="n"&gt;false&lt;/span&gt;,&amp;block)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>new</strong>(string_or_io : <a href="String.html">String</a> | <a href="IO.html">IO</a>, headers = <span class="n">false</span>, strip = <span class="n">false</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new instance from the given <code><a href="String.html">String</a></code> or <code><a href="IO.html">IO</a></code>, and yields it to
+the given block once for each row in the CSV.</p>
+
+<p>If <em>strip</em> is true, row values are stripped with <code><a href="String.html#strip-instance-method">String#strip</a></code> before being
+returned from methods.</p>
+
+<p>If <em>headers</em> is true, row values can be accesed with header names or patterns.
+Headers are always stripped.</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L163" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse(string_or_io:String|IO):Array(Array(String))-class-method">
+      <div class="signature">
+        
+        def self.<strong>parse</strong>(string_or_io : <a href="String.html">String</a> | <a href="IO.html">IO</a>) : <a href="Array.html">Array</a>(<a href="Array.html">Array</a>(<a href="String.html">String</a>))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Parses a CSV or IO into an array.</p>
+
+<pre><code><span class="t">CSV</span>.parse(<span class="s">"one,two\nthree"</span>) <span class="c">#=&gt; [["one", "two"], ["three"]]</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='new(string_or_io:String|IO,headers=&lt;spanclass="n"&gt;false&lt;/span&gt;,strip=&lt;spanclass="n"&gt;false&lt;/span&gt;)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>new</strong>(string_or_io : <a href="String.html">String</a> | <a href="IO.html">IO</a>, headers = <span class="n">false</span>, strip = <span class="n">false</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new instance from the given <code><a href="String.html">String</a></code> or <code><a href="IO.html">IO</a></code>.</p>
+
+<p>If <em>strip</em> is true, row values are stripped with <code><a href="String.html#strip-instance-method">String#strip</a></code> before being
+returned from methods.</p>
+
+<p>If <em>headers</em> is true, row values can be accesed with header names or patterns.
+Headers are always stripped.</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L142" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="[](header:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(header : <a href="String.html">String</a>) : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current row's value corresponding to the given <em>header</em> name.
+Raises <code><a href="KeyError.html">KeyError</a></code> if no such header exists.
+Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L204" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](column:Int):String-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(column : <a href="Int.html">Int</a>) : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current row's value at the given column index.
+A negative index counts from the end.
+Raises <code><a href="IndexError.html">IndexError</a></code> if no such column exists.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L218" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](header_pattern:Regex):String-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(header_pattern : <a href="Regex.html">Regex</a>) : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current row's value corresponding to the given <em>header_pattern</em>.
+Raises <code><a href="KeyError.html">KeyError</a></code> if no such header exists.
+Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L232" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(header:String):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(header : <a href="String.html">String</a>) : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current row's value corresponding to the given <em>header</em> name.
+Returns nil if no such header exists.
+Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L211" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(column:Int):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(column : <a href="Int.html">Int</a>) : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current row's value at the given column index.
+A negative index counts from the end.
+Returns nil if no such column exists.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L225" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(header_pattern:Regex):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(header_pattern : <a href="Regex.html">Regex</a>) : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current row's value corresponding to the given <em>header_pattern</em>.
+Returns nil if no such header exists.
+Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L239" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Invokes the block once for each row in this CSV, yielding <code>self</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="headers:Array(String)-instance-method">
+      <div class="signature">
+        
+        def <strong>headers</strong> : <a href="Array.html">Array</a>(<a href="String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns this CSV headers. Their values are always stripped.
+Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L173" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="next-instance-method">
+      <div class="signature">
+        
+        def <strong>next</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Advanced the cursor to the next row. Must be called once to position
+the cursor in the first row. Returns <code>true</code> if a next row was found,
+<code>false</code> otherwise.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L187" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row:Row-instance-method">
+      <div class="signature">
+        
+        def <strong>row</strong> : <a href="CSV/Row.html">Row</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current row as a <code><a href="CSV/Row.html">Row</a></code> instance.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L244" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

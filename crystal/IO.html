@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>IO</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> IO
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>The IO module is the basis for all input and output in Crystal.</p>
+
+<p>This module is included by types like <code><a href="File.html">File</a></code>, <code><a href="Socket.html">Socket</a></code> and <code><a href="MemoryIO.html">MemoryIO</a></code> and
+provide many useful methods for reading to and writing from an IO, like <code><a href="IO.html#print%28%2Aobjects%3A_%29%3ANil-instance-method">#print</a></code>, <code><a href="IO.html#puts%3ANil-instance-method">#puts</a></code>,
+<code><a href="IO.html#gets%3AString%7CNil-instance-method">#gets</a></code> and <code><a href="IO.html#printf%28format_string%2Cargs%3AArray%7CTuple%29%3ANil-instance-method">#printf</a></code>.</p>
+
+<p>The only requirement for a type including the IO module is to define
+these two methods:</p>
+
+<ul>
+<li>
+<code><a href="IO.html#read%28slice%3ASlice%28UInt8%29%29-instance-method">#read(slice : Slice(UInt8))</a></code>: read at most <em>slice.size</em> bytes into <em>slice</em> and return the number of bytes read</li>
+<li>
+<code><a href="IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method">#write(slice : Slice(UInt8))</a></code>: write at most <em>slice.size</em> bytes from <em>slice</em> and return the number of bytes written</li>
+</ul>
+
+<p>For example, this is a simple IO on top of a <code><a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>)</code>:</p>
+
+<pre><code><span class="k">class</span> <span class="t">SimpleSliceIO</span>
+  <span class="k">include</span> <span class="t">IO</span>
+
+  <span class="k">def</span> <span class="m">initialize</span>(@slice : <span class="t">Slice</span>(<span class="t">UInt8</span>))
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="m">read</span>(slice : <span class="t">Slice</span>(<span class="t">UInt8</span>))
+    slice.size.times { <span class="o">|</span>i<span class="o">|</span> slice[i] <span class="o">=</span> @slice[i] }
+    @slice += slice.size
+    count
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="m">write</span>(slice : <span class="t">Slice</span>(<span class="t">UInt8</span>))
+    slice.size.times { <span class="o">|</span>i<span class="o">|</span> @slice[i] <span class="o">=</span> slice[i] }
+    @slice += slice.size
+    <span class="n">nil</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+slice <span class="o">=</span> <span class="t">Slice</span>.<span class="k">new</span>(<span class="n">9</span>) { <span class="o">|</span>i<span class="o">|</span> (<span class="s">'a'</span>.ord <span class="o">+</span> i).to_u8 }
+<span class="t">String</span>.<span class="k">new</span>(slice) <span class="c">#=&gt; "abcdefghi"</span>
+
+io <span class="o">=</span> <span class="t">SimpleSliceIO</span>.<span class="k">new</span>(slice)
+io.gets(<span class="n">3</span>) <span class="c">#=&gt; "abc"</span>
+io.print <span class="s">"xyz"</span>
+<span class="t">String</span>.<span class="k">new</span>(slice) <span class="c">#=&gt; "abcxyzghi"</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="JSON/Builder.html">JSON::Builder</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+  <h2>Direct including types</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="HTTP/WebSocket/StreamIO.html">HTTP::WebSocket::StreamIO</a></li>
+  
+    <li class="other-type"><a href="IO/Buffered.html">IO::Buffered</a></li>
+  
+    <li class="other-type"><a href="JSON/PrettyWriter.html">JSON::PrettyWriter</a></li>
+  
+    <li class="other-type"><a href="MemoryIO.html">MemoryIO</a></li>
+  
+    <li class="other-type"><a href="OpenSSL/SSL/Socket.html">OpenSSL::SSL::Socket</a></li>
+  
+    <li class="other-type"><a href="PointerIO.html">PointerIO</a></li>
+  
+    <li class="other-type"><a href="String/Builder.html">String::Builder</a></li>
+  
+    <li class="other-type"><a href="Zlib/Deflate.html">Zlib::Deflate</a></li>
+  
+    <li class="other-type"><a href="Zlib/Inflate.html">Zlib::Inflate</a></li>
+  
+  </ul>
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr" target="_blank">io.cr</a>
+    
+    <br>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/console.cr" target="_blank">io/console.cr</a>
+    
+    <br>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/error.cr" target="_blank">io/error.cr</a>
+    
+    <br>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/json/to_json.cr" target="_blank">json/to_json.cr</a>
+    
+    <br>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#copy%28src%2Cdst%29-class-method" class="signature"><strong>.copy</strong>(src, dst)</a>
+        
+          <div class="summary"><p>Copy all contents from <em>src</em> to <em>dst</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pipe%28read_blocking%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2Cwrite_blocking%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2C%26block%29-class-method" class="signature"><strong>.pipe</strong>(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Creates a pair of pipe endpoints (connected to each other) and passes them to the given block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pipe%28read_blocking%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2Cwrite_blocking%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-class-method" class="signature"><strong>.pipe</strong>(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Creates a pair of pipe endpoints (connected to each other) and returns them as a two-element tuple.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select%28read_ios%2Cwrite_ios%2Cerror_ios%2Ctimeout_sec%3ALibC%3A%3ATimeT%7CInt%7CFloat%7CNil%29-class-method" class="signature"><strong>.select</strong>(read_ios, write_ios, error_ios, timeout_sec : LibC::TimeT | Int | Float | Nil)</a>
+        
+          <div class="summary"><p>Returns an array of all given IOs that are * ready to read if they appeared in read_ios * ready to write if they appeared in write_ios * have an error condition if they appeared in error_ios</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select%28read_ios%2Cwrite_ios%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cerror_ios%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-class-method" class="signature"><strong>.select</strong>(read_ios, write_ios = <span class="n">nil</span>, error_ios = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28obj%29%3Aself-instance-method" class="signature"><strong>#(obj) : self</strong></a>
+        
+          <div class="summary"><p>Writes the given object into this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cooked%28%26block%29-instance-method" class="signature"><strong>#cooked</strong>(&amp;block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cooked%21-instance-method" class="signature"><strong>#cooked!</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_byte%28%26block%29-instance-method" class="signature"><strong>#each_byte</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Inovkes the given block with each byte (<code><a href="UInt8.html">UInt8</a></code>) in this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_byte-instance-method" class="signature"><strong>#each_byte</strong></a>
+        
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for the bytes in this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_char%28%26block%29-instance-method" class="signature"><strong>#each_char</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Inovkes the given block with each <code><a href="Char.html">Char</a></code> in this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_char-instance-method" class="signature"><strong>#each_char</strong></a>
+        
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for the chars in this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_line%28%2Aargs%2C%26block%29-instance-method" class="signature"><strong>#each_line</strong>(*args, &amp;block)</a>
+        
+          <div class="summary"><p>Invokes the given block with each <em>line</em> in this IO, where a line is defined by the arguments passed to this method, which can be the same ones as in the <code><a href="IO.html#gets%3AString%7CNil-instance-method">#gets</a></code> methods.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_line%28%2Aargs%29-instance-method" class="signature"><strong>#each_line</strong>(*args)</a>
+        
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for the <em>lines</em> in this IO, where a line is defined by the arguments passed to this method, which can be the same ones as in the <code><a href="IO.html#gets%3AString%7CNil-instance-method">#gets</a></code> methods.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#flush-instance-method" class="signature"><strong>#flush</strong></a>
+        
+          <div class="summary"><p>Flushes buffered data, if any.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gets%28limit%3AInt%29%3AString%7CNil-instance-method" class="signature"><strong>#gets</strong>(limit : Int) : String | Nil</a>
+        
+          <div class="summary"><p>Reads a line of at most <code>limit</code> bytes from this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gets%28delimiter%3AChar%2Climit%3AInt%29%3AString%7CNil-instance-method" class="signature"><strong>#gets</strong>(delimiter : Char, limit : Int) : String | Nil</a>
+        
+          <div class="summary"><p>Reads until <em>delimiter</em> is found, <code>limit</code> bytes are read, or the end of the IO is reached.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gets%28delimiter%3AChar%29%3AString%7CNil-instance-method" class="signature"><strong>#gets</strong>(delimiter : Char) : String | Nil</a>
+        
+          <div class="summary"><p>Reads until <em>delimiter</em> is found, or the end of the IO is reached.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gets%3AString%7CNil-instance-method" class="signature"><strong>#gets</strong> : String | Nil</a>
+        
+          <div class="summary"><p>Reads a line from this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gets%28delimiter%3AString%29%3AString%7CNil-instance-method" class="signature"><strong>#gets</strong>(delimiter : String) : String | Nil</a>
+        
+          <div class="summary"><p>Reads until <em>delimiter</em> is found or the end of the IO is reached.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gets_to_end%3AString-instance-method" class="signature"><strong>#gets_to_end</strong> : String</a>
+        
+          <div class="summary"><p>Reads the rest of this IO data as a <code><a href="String.html">String</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#print%28%2Aobjects%3A_%29%3ANil-instance-method" class="signature"><strong>#print</strong>(*objects : _) : Nil</a>
+        
+          <div class="summary"><p>Writes the given objects into this IO by invoking <code>to_s(io)</code> on each of the objects.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#print%28obj%29%3ANil-instance-method" class="signature"><strong>#print</strong>(obj) : Nil</a>
+        
+          <div class="summary"><p>Same as <code><a href="IO.html#%3C%3C%28obj%29%3Aself-instance-method">#</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#printf%28format_string%2Cargs%3AArray%7CTuple%29%3ANil-instance-method" class="signature"><strong>#printf</strong>(format_string, args : Array | Tuple) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#printf%28format_string%2C%2Aargs%29%3ANil-instance-method" class="signature"><strong>#printf</strong>(format_string, *args) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#puts%3ANil-instance-method" class="signature"><strong>#puts</strong> : Nil</a>
+        
+          <div class="summary"><p>Writes a newline character.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#puts%28%2Aobjects%3A_%29%3ANil-instance-method" class="signature"><strong>#puts</strong>(*objects : _) : Nil</a>
+        
+          <div class="summary"><p>Writes the given objects, each followed by a newline character.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#puts%28string%3AString%29%3ANil-instance-method" class="signature"><strong>#puts</strong>(string : String) : Nil</a>
+        
+          <div class="summary"><p>Writes the given string to this IO followed by a newline character unless the string already ends with one.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#puts%28obj%29%3ANil-instance-method" class="signature"><strong>#puts</strong>(obj) : Nil</a>
+        
+          <div class="summary"><p>Writes the given object to this IO followed by a newline character.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raw%28%26block%29-instance-method" class="signature"><strong>#raw</strong>(&amp;block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raw%21-instance-method" class="signature"><strong>#raw!</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#read</strong>(slice : Slice(UInt8))</a>
+        
+          <div class="summary"><p>Reads at most <em>slice.size</em> bytes from this IO into <em>slice</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_byte%3AUInt8%7CNil-instance-method" class="signature"><strong>#read_byte</strong> : UInt8 | Nil</a>
+        
+          <div class="summary"><p>Reads a single byte from this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_bytes%28type%2Cformat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%3AIO%3A%3AByteFormat%29-instance-method" class="signature"><strong>#read_bytes</strong>(type, format = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span> : IO::ByteFormat)</a>
+        
+          <div class="summary"><p>Reads an instance of the given <em>type</em> from this IO using the specified <em>format</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_char%3AChar%7CNil-instance-method" class="signature"><strong>#read_char</strong> : Char | Nil</a>
+        
+          <div class="summary"><p>Reads a single <code><a href="Char.html">Char</a></code> from this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_fully%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#read_fully</strong>(slice : Slice(UInt8))</a>
+        
+          <div class="summary"><p>Tries to read exactly <code>slice.size</code> bytes from this IO into <code>slice</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_line%28%2Aargs%29%3AString%7CNil-instance-method" class="signature"><strong>#read_line</strong>(*args) : String | Nil</a>
+        
+          <div class="summary"><p>Same as <code><a href="IO.html#gets%3AString%7CNil-instance-method">#gets</a></code>, but raises <code><a href="IO/EOFError.html">EOFError</a></code> if called at the end of this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_nonblock%28size%29-instance-method" class="signature"><strong>#read_nonblock</strong>(size)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#skip%28bytes_count%3AInt%29%3ANil-instance-method" class="signature"><strong>#skip</strong>(bytes_count : Int) : Nil</a>
+        
+          <div class="summary"><p>Reads and discards <em>bytes_count</em> bytes.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tty%3F%3ABool-instance-method" class="signature"><strong>#tty?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if this IO is associated with a terminal device (tty), <code>false</code> otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method" class="signature"><strong>#write</strong>(slice : Slice(UInt8)) : Nil</a>
+        
+          <div class="summary"><p>Writes the contents of <em>slice</em> into this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#write_byte%28byte%3AUInt8%29-instance-method" class="signature"><strong>#write_byte</strong>(byte : UInt8)</a>
+        
+          <div class="summary"><p>Writes a single byte into this IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#write_bytes%28object%2Cformat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%3AIO%3A%3AByteFormat%29-instance-method" class="signature"><strong>#write_bytes</strong>(object, format = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span> : IO::ByteFormat)</a>
+        
+          <div class="summary"><p>Writes the given object to this IO using the specified <em>format</em>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Macro Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#cooked_from_tc_mode%21-macro" class="signature"><strong>cooked_from_tc_mode!</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raw_from_tc_mode%21-macro" class="signature"><strong>raw_from_tc_mode!</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="JSON/Builder.html">JSON::Builder</a></code>
+</h3>
+  
+    <a href="JSON/Builder.html#json_array%28%26block%29-instance-method" class="tooltip">
+      <span>json_array(&amp;block)</span>
+    json_array</a>, 
+  
+    <a href="JSON/Builder.html#json_object%28%26block%29-instance-method" class="tooltip">
+      <span>json_object(&amp;block)</span>
+    json_object</a>
+  
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="copy(src,dst)-class-method">
+      <div class="signature">
+        
+        def self.<strong>copy</strong>(src, dst)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Copy all contents from <em>src</em> to <em>dst</em>.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello"</span>
+io2 <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+
+<span class="t">IO</span>.copy io, io2
+
+io2.to_s <span class="c">#=&gt; "hello"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L784" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='pipe(read_blocking=&lt;spanclass="n"&gt;false&lt;/span&gt;,write_blocking=&lt;spanclass="n"&gt;false&lt;/span&gt;,&amp;block)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>pipe</strong>(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a pair of pipe endpoints (connected to each other) and passes them
+to the given block. Both endpoints are closed after the block.</p>
+
+<pre><code><span class="t">IO</span>.pipe <span class="k">do</span> <span class="o">|</span>reader, writer<span class="o">|</span>
+  writer.puts <span class="s">"hello"</span>
+  writer.puts <span class="s">"world"</span>
+  reader.gets <span class="c">#=&gt; "hello"</span>
+  reader.gets <span class="c">#=&gt; "world"</span>
+<span class="k">end</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L262" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='pipe(read_blocking=&lt;spanclass="n"&gt;false&lt;/span&gt;,write_blocking=&lt;spanclass="n"&gt;false&lt;/span&gt;)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>pipe</strong>(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a pair of pipe endpoints (connected to each other) and returns them as a
+two-element tuple.</p>
+
+<pre><code>reader, writer <span class="o">=</span> <span class="t">IO</span>.pipe
+writer.puts <span class="s">"hello"</span>
+writer.puts <span class="s">"world"</span>
+reader.gets <span class="c">#=&gt; "hello"</span>
+reader.gets <span class="c">#=&gt; "world"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L237" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select(read_ios,write_ios,error_ios,timeout_sec:LibC::TimeT|Int|Float|Nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>select</strong>(read_ios, write_ios, error_ios, timeout_sec : <a href="LibC/TimeT.html">LibC::TimeT</a> | <a href="Int.html">Int</a> | <a href="Float.html">Float</a> | <a href="Nil.html">Nil</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an array of all given IOs that are</p>
+
+<ul>
+<li>ready to read if they appeared in read_ios</li>
+<li>ready to write if they appeared in write_ios</li>
+<li>have an error condition if they appeared in error_ios</li>
+</ul>
+
+<p>If the optional timeout_sec is given, nil is returned if no
+IO was ready after the specified amount of seconds passed. Fractions
+are supported.</p>
+
+<p>If timeout_sec is nil, this method blocks until an IO is ready.</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L145" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='select(read_ios,write_ios=&lt;spanclass="n"&gt;nil&lt;/span&gt;,error_ios=&lt;spanclass="n"&gt;nil&lt;/span&gt;)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>select</strong>(read_ios, write_ios = <span class="n">nil</span>, error_ios = <span class="n">nil</span>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L131" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="&lt;&lt;(obj):self-instance-method">
+      <div class="signature">
+        
+        def <strong>(obj) : self
+
+        
+      </strong>
+</div>
+      
+        <div class="doc">
+<p>Writes the given object into this IO.
+This ends up calling <code>to_s(io)</code> on the object.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io <span class="o"> <span class="n">1</span>
+io <span class="o"> <span class="s">'-'</span>
+io <span class="o"> <span class="s">"Crystal"</span>
+io.to_s <span class="c">#=&gt; "1-Crystal"</span></span></span></span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L283" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cooked(&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>cooked</strong>(&amp;block)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/console.cr#L175" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cooked!-instance-method">
+      <div class="signature">
+        
+        def <strong>cooked!</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/console.cr#L182" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_byte(&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>each_byte</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Inovkes the given block with each byte (<code><a href="UInt8.html">UInt8</a></code>) in this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>(<span class="s">"aあ"</span>)
+io.each_byte <span class="k">do</span> <span class="o">|</span>byte<span class="o">|</span>
+  puts byte
+<span class="k">end</span></code></pre>
+
+<p>Output:</p>
+
+<pre><code>97
+227
+129
+130</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L754" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_byte-instance-method">
+      <div class="signature">
+        
+        def <strong>each_byte</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an <code><a href="Iterator.html">Iterator</a></code> for the bytes in this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>(<span class="s">"aあ"</span>)
+iter <span class="o">=</span> io.each_byte
+iter.<span class="k">next</span> <span class="c">#=&gt; 97</span>
+iter.<span class="k">next</span> <span class="c">#=&gt; 227</span>
+iter.<span class="k">next</span> <span class="c">#=&gt; 129</span>
+iter.<span class="k">next</span> <span class="c">#=&gt; 130</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L770" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_char(&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>each_char</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Inovkes the given block with each <code><a href="Char.html">Char</a></code> in this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>(<span class="s">"あめ"</span>)
+io.each_char <span class="k">do</span> <span class="o">|</span>char<span class="o">|</span>
+  puts char
+<span class="k">end</span></code></pre>
+
+<p>Output:</p>
+
+<pre><code>あ
+め</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L719" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_char-instance-method">
+      <div class="signature">
+        
+        def <strong>each_char</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an <code><a href="Iterator.html">Iterator</a></code> for the chars in this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>(<span class="s">"あめ"</span>)
+iter <span class="o">=</span> io.each_char
+iter.<span class="k">next</span> <span class="c">#=&gt; 'あ'</span>
+iter.<span class="k">next</span> <span class="c">#=&gt; 'め'</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L733" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_line(*args,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>each_line</strong>(*args, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Invokes the given block with each <em>line</em> in this IO, where a line
+is defined by the arguments passed to this method, which can be the same
+ones as in the <code><a href="IO.html#gets%3AString%7CNil-instance-method">#gets</a></code> methods.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>(<span class="s">"hello\nworld"</span>)
+io.each_line <span class="k">do</span> <span class="o">|</span>line<span class="o">|</span>
+  puts line.chomp.reverse
+<span class="k">end</span></code></pre>
+
+<p>Output:</p>
+
+<pre><code>olleh
+dlrow</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L684" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_line(*args)-instance-method">
+      <div class="signature">
+        
+        def <strong>each_line</strong>(*args)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an <code><a href="Iterator.html">Iterator</a></code> for the <em>lines</em> in this IO, where a line
+is defined by the arguments passed to this method, which can be the same
+ones as in the <code><a href="IO.html#gets%3AString%7CNil-instance-method">#gets</a></code> methods.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>(<span class="s">"hello\nworld"</span>)
+iter <span class="o">=</span> io.each_line
+iter.<span class="k">next</span> <span class="c">#=&gt; "hello\n"</span>
+iter.<span class="k">next</span> <span class="c">#=&gt; "world"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L700" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="flush-instance-method">
+      <div class="signature">
+        
+        def <strong>flush</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Flushes buffered data, if any.</p>
+
+<p>IO defines this is a no-op method, but including types may override.</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L224" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gets(limit:Int):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>gets</strong>(limit : <a href="Int.html">Int</a>) : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads a line of at most <code>limit</code> bytes from this IO. A line is terminated by the <code>\n</code> character.
+Returns <code>nil</code> if called at the end of this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello\nworld"</span>
+io.gets(<span class="n">3</span>) <span class="c">#=&gt; "hel"</span>
+io.gets(<span class="n">3</span>) <span class="c">#=&gt; "lo\n"</span>
+io.gets(<span class="n">3</span>) <span class="c">#=&gt; "wor"</span>
+io.gets(<span class="n">3</span>) <span class="c">#=&gt; "ld"</span>
+io.gets(<span class="n">3</span>) <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L495" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gets(delimiter:Char,limit:Int):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>gets</strong>(delimiter : <a href="Char.html">Char</a>, limit : <a href="Int.html">Int</a>) : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads until <em>delimiter</em> is found, <code>limit</code> bytes are read, or the end of the IO is reached.
+Returns <code>nil</code> if called at the end of this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello\nworld"</span>
+io.gets(<span class="s">'o'</span>, <span class="n">3</span>) <span class="c">#=&gt; "hel"</span>
+io.gets(<span class="s">'r'</span>, <span class="n">10</span>) <span class="c">#=&gt; "lo\nwor"</span>
+io.gets(<span class="s">'z'</span>, <span class="n">10</span>) <span class="c">#=&gt; "ld"</span>
+io.gets(<span class="s">'w'</span>, <span class="n">10</span>) <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L523" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gets(delimiter:Char):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>gets</strong>(delimiter : <a href="Char.html">Char</a>) : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads until <em>delimiter</em> is found, or the end of the IO is reached.
+Returns <code>nil</code> if called at the end of this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello\nworld"</span>
+io.gets(<span class="s">'o'</span>) <span class="c">#=&gt; "hello"</span>
+io.gets(<span class="s">'r'</span>) <span class="c">#=&gt; "\nwor"</span>
+io.gets(<span class="s">'z'</span>) <span class="c">#=&gt; "ld"</span>
+io.gets(<span class="s">'w'</span>) <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L509" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gets:String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>gets</strong> : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads a line from this IO. A line is terminated by the <code>\n</code> character.
+Returns <code>nil</code> if called at the end of this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello\nworld"</span>
+io.gets <span class="c">#=&gt; "hello\n"</span>
+io.gets <span class="c">#=&gt; "world"</span>
+io.gets <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L480" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gets(delimiter:String):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>gets</strong>(delimiter : <a href="String.html">String</a>) : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads until <em>delimiter</em> is found or the end of the IO is reached.
+Returns <code>nil</code> if called at the end of this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello\nworld"</span>
+io.gets(<span class="s">"wo"</span>) <span class="c">#=&gt; "hello\nwo"</span>
+io.gets(<span class="s">"wo"</span>) <span class="c">#=&gt; "rld"</span>
+io.gets(<span class="s">"wo"</span>) <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L554" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gets_to_end:String-instance-method">
+      <div class="signature">
+        
+        def <strong>gets_to_end</strong> : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads the rest of this IO data as a <code><a href="String.html">String</a></code>.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello world"</span>
+io.read <span class="c">#=&gt; "hello world"</span>
+io.read <span class="c">#=&gt; ""</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L462" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="print(*objects:_):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>print</strong>(*objects : _) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes the given objects into this IO by invoking <code>to_s(io)</code>
+on each of the objects.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.print <span class="n">1</span>, <span class="s">'-'</span>, <span class="s">"Crystal"</span>
+io.to_s <span class="c">#=&gt; "1-Crystal"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L310" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="print(obj):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>print</strong>(obj) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Same as <code><a href="IO.html#%3C%3C%28obj%29%3Aself-instance-method">#</a></code></p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.print <span class="n">1</span>
+io.print <span class="s">'-'</span>
+io.print <span class="s">"Crystal"</span>
+io.to_s <span class="c">#=&gt; "1-Crystal"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L297" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="printf(format_string,args:Array|Tuple):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>printf</strong>(format_string, args : <a href="Array.html">Array</a> | <a href="Tuple.html">Tuple</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L376" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="printf(format_string,*args):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>printf</strong>(format_string, *args) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L371" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="puts:Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>puts</strong> : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes a newline character.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.puts
+io.to_s <span class="c">#=&gt; "\n"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L352" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="puts(*objects:_):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>puts</strong>(*objects : _) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes the given objects, each followed by a newline character.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.puts <span class="n">1</span>, <span class="s">'-'</span>, <span class="s">"Crystal"</span>
+io.to_s <span class="c">#=&gt; "1\n-\nCrystal\n"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L364" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="puts(string:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>puts</strong>(string : <a href="String.html">String</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes the given string to this IO followed by a newline character
+unless the string already ends with one.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.puts <span class="s">"hello\n"</span>
+io.puts <span class="s">"world"</span>
+io.to_s <span class="c">#=&gt; "hello\nworld\n"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L326" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="puts(obj):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>puts</strong>(obj) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes the given object to this IO followed by a newline character.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.puts <span class="n">1</span>
+io.puts <span class="s">"Crystal"</span>
+io.to_s <span class="c">#=&gt; "1\nCrystal\n"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L340" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raw(&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>raw</strong>(&amp;block)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/console.cr#L205" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raw!-instance-method">
+      <div class="signature">
+        
+        def <strong>raw!</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/console.cr#L212" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read(slice:Slice(UInt8))-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>read</strong>(slice : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads at most <em>slice.size</em> bytes from this IO into <em>slice</em>. Returns the number of bytes read.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello"</span>
+slice <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">4</span>)
+io.read(slice) <span class="c">#=&gt; 4</span>
+slice <span class="c">#=&gt; [104, 101, 108, 108]</span>
+io.read(slice) <span class="c">#=&gt; 1</span>
+slice <span class="c">#=&gt; [111, 101, 108, 108]</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L210" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_byte:UInt8|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>read_byte</strong> : <a href="UInt8.html">UInt8</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads a single byte from this IO. Returns <code>nil</code> if there is no more
+data to read.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"a"</span>
+io.read_byte <span class="c">#=&gt; 97</span>
+io.read_byte <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L389" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='read_bytes(type,format=&lt;spanclass="t"&gt;IO&lt;/span&gt;&lt;spanclass="t"&gt;::&lt;/span&gt;&lt;spanclass="t"&gt;ByteFormat&lt;/span&gt;&lt;spanclass="t"&gt;::&lt;/span&gt;&lt;spanclass="t"&gt;SystemEndian&lt;/span&gt;:IO::ByteFormat)-instance-method'>
+      <div class="signature">
+        
+        def <strong>read_bytes</strong>(type, format = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span> : <a href="IO/ByteFormat.html">IO::ByteFormat</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads an instance of the given <em>type</em> from this IO using the specified <em>format</em>.
+This ends up invoking <code>type.to_io(self, forma)</code>, so any type defining a <code>to_io</code>
+method can be read in this way.</p>
+
+<p>See <code><a href="Int.html#from_io%28io%3AIO%2Cformat%3AIO%3A%3AByteFormat%29-class-method">Int#from_io</a></code> and <code><a href="Float.html#from_io%28io%3AIO%2Cformat%3AIO%3A%3AByteFormat%29-class-method">Float#from_io</a></code>.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.puts <span class="s">"\u{4}\u{3}\u{2}\u{1}"</span>
+io.rewind
+io.read_bytes(<span class="t">Int32</span>, <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">LittleEndian</span>) <span class="c"># =&gt; 0x01020304</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L651" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_char:Char|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>read_char</strong> : <a href="Char.html">Char</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads a single <code><a href="Char.html">Char</a></code> from this IO. Returns <code>nil</code> if there is no
+more data to read.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"あ"</span>
+io.read_char <span class="c">#=&gt; 'あ'</span>
+io.read_char <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L406" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_fully(slice:Slice(UInt8))-instance-method">
+      <div class="signature">
+        
+        def <strong>read_fully</strong>(slice : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Tries to read exactly <code>slice.size</code> bytes from this IO into <code>slice</code>.
+Raises <code><a href="IO/EOFError.html">EOFError</a></code> if there aren't <code>slice.size</code> bytes of data.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"123451234"</span>
+slice <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">5</span>)
+io.read_fully(slice)
+slice <span class="c">#=&gt; [49, 50, 51, 52, 53]</span>
+io.read_fully <span class="c">#=&gt; EOFError</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L445" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_line(*args):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>read_line</strong>(*args) : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Same as <code><a href="IO.html#gets%3AString%7CNil-instance-method">#gets</a></code>, but raises <code><a href="IO/EOFError.html">EOFError</a></code> if called at the end of this IO.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L591" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_nonblock(size)-instance-method">
+      <div class="signature">
+        
+        def <strong>read_nonblock</strong>(size)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/console.cr#L237" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="skip(bytes_count:Int):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>skip</strong>(bytes_count : <a href="Int.html">Int</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Reads and discards <em>bytes_count</em> bytes.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">"hello world"</span>
+io.skip(<span class="n">6</span>)
+io.gets <span class="c">#=&gt; "world"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L602" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tty?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>tty?</strong> : <a href="Bool.html">Bool</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if this IO is associated with a terminal device (tty), <code>false</code> otherwise.</p>
+
+<p>IO returns <code>false</code>, but including types may override.</p>
+
+<pre><code><span class="t">STDIN</span>.tty?        <span class="c">#=&gt; true</span>
+<span class="t">MemoryIO</span>.<span class="k">new</span>.tty? <span class="c">#=&gt; false</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L663" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="write(slice:Slice(UInt8)):Nil-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>write</strong>(slice : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>)) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes the contents of <em>slice</em> into this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+slice <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">4</span>) { <span class="o">|</span>i<span class="o">|</span> (<span class="s">'a'</span>.ord <span class="o">+</span> i).to_u8 }
+io.write(slice)
+io.to_s <span class="c">#=&gt; "abcd"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L219" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="write_byte(byte:UInt8)-instance-method">
+      <div class="signature">
+        
+        def <strong>write_byte</strong>(byte : <a href="UInt8.html">UInt8</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes a single byte into this IO.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.write_byte <span class="n">97_u8</span>
+io.to_s <span class="c">#=&gt; "a"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L618" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='write_bytes(object,format=&lt;spanclass="t"&gt;IO&lt;/span&gt;&lt;spanclass="t"&gt;::&lt;/span&gt;&lt;spanclass="t"&gt;ByteFormat&lt;/span&gt;&lt;spanclass="t"&gt;::&lt;/span&gt;&lt;spanclass="t"&gt;SystemEndian&lt;/span&gt;:IO::ByteFormat)-instance-method'>
+      <div class="signature">
+        
+        def <strong>write_bytes</strong>(object, format = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span> : <a href="IO/ByteFormat.html">IO::ByteFormat</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes the given object to this IO using the specified <em>format</em>.
+This ends up invoking <code>object.to_io(self, format)</code>, so any object defining
+a <code>to_io</code> method can be written in this way.</p>
+
+<p>See <code><a href="Int.html#to_io%28io%3AIO%2Cformat%3AIO%3A%3AByteFormat%29-instance-method">Int#to_io</a></code> and <code><a href="Float.html#to_io%28io%3AIO%2Cformat%3AIO%3A%3AByteFormat%29-instance-method">Float#to_io</a></code>.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span>
+io.write_bytes(<span class="n">0x01020304</span>, <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">LittleEndian</span>)
+io.rewind
+io.gets(<span class="n">4</span>) <span class="c"># =&gt; "\u{4}\u{3}\u{2}\u{1}"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io.cr#L635" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Macro Detail</h2>
+  
+    <div class="entry-detail" id="cooked_from_tc_mode!-macro">
+      <div class="signature">
+        
+        macro <strong>cooked_from_tc_mode!</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/console.cr#L189" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raw_from_tc_mode!-macro">
+      <div class="signature">
+        
+        macro <strong>raw_from_tc_mode!</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/io/console.cr#L220" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>

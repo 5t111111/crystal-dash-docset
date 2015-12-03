@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>Top Level Namespace</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  Top Level Namespace
+
+</h1>
+
+
+
+
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Spec/DSL.html">Spec::DSL</a></li>
+  
+    <li class="other-type"><a href="Spec/Expectations.html">Spec::Expectations</a></li>
+  
+  </ul>
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Spec/DSL.html">Spec::DSL</a></li>
+  
+    <li class="other-type"><a href="Spec/Expectations.html">Spec::Expectations</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>ARGF</strong> = <code><span class="t">IO</span><span class="t">::</span><span class="t">ARGF</span>.<span class="k">new</span>(<span class="t">ARGV</span>, <span class="t">STDIN</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>ARGV</strong> = <code>((<span class="t">ARGV_UNSAFE</span> <span class="o">+</span> <span class="n">1</span>).to_slice(<span class="t">ARGC_UNSAFE</span> <span class="o">-</span> <span class="n">1</span>)).map <span class="k">do</span> <span class="o">|</span>c_str<span class="o">|</span>
+  <span class="t">String</span>.<span class="k">new</span>(c_str)
+<span class="k">end</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>PROGRAM_NAME</strong> = <code><span class="t">String</span>.<span class="k">new</span>(<span class="t">ARGV_UNSAFE</span>.value)</code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>STDERR</strong> = <code><span class="t">IO</span><span class="t">::</span><span class="t">FileDescriptor</span>.<span class="k">new</span>(<span class="n">2</span>, (<span class="t">LibC</span>.isatty(<span class="n">2</span>)) <span class="o">==</span> <span class="n">0</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>STDIN</strong> = <code><span class="t">IO</span><span class="t">::</span><span class="t">FileDescriptor</span>.<span class="k">new</span>(<span class="n">0</span>, blocking: (<span class="t">LibC</span>.isatty(<span class="n">0</span>)) <span class="o">==</span> <span class="n">0</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>STDOUT</strong> = <code>(<span class="t">IO</span><span class="t">::</span><span class="t">FileDescriptor</span>.<span class="k">new</span>(<span class="n">1</span>, (<span class="t">LibC</span>.isatty(<span class="n">1</span>)) <span class="o">==</span> <span class="n">0</span>)).tap(<span class="o">&amp;</span>.flush_on_newline <span class="o">=</span> <span class="n">true</span>)</code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%60%28command%29%3AString-class-method" class="signature"><strong>.`</strong>(command) : String</a>
+        
+          <div class="summary"><p>Returns the standard output of executing <em>command</em> in a subshell.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#abort%28message%2Cstatus%3D%3Cspanclass%3D%22n%22%3E1%3C%2Fspan%3E%29-class-method" class="signature"><strong>.abort</strong>(message, status = <span class="n">1</span>)</a>
+        
+          <div class="summary"><p>Terminates execution immediately, printing <em>message</em> to STDERR and then calling <code><a href="toplevel.html#exit%28status%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method">.exit(status)</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#at_exit%28%26handler%29-class-method" class="signature"><strong>.at_exit</strong>(&amp;handler)</a>
+        
+          <div class="summary"><p>Registers the given <code><a href="Proc.html">Proc</a></code> for execution when the program exits.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#caller-class-method" class="signature"><strong>.caller</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delay%28delay%2C%26block%3A-%3ER%29-class-method" class="signature"><strong>.delay</strong>(delay, &amp;block :  -&gt; R)</a>
+        
+          <div class="summary"><p>Spawns a <code><a href="Fiber.html">Fiber</a></code> to compute <em>&amp;block</em> in the background after <em>delay</em> has elapsed.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#exit%28status%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method" class="signature"><strong>.exit</strong>(status = <span class="n">0</span>)</a>
+        
+          <div class="summary"><p>Terminates execution immediately, returning the given status code to the invoking environment.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fork-class-method" class="signature"><strong>.fork</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fork%28%26block%29-class-method" class="signature"><strong>.fork</strong>(&amp;block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#future%28%26exp%3A-%3ER%29-class-method" class="signature"><strong>.future</strong>(&amp;exp :  -&gt; R)</a>
+        
+          <div class="summary"><p>Spawns a <code><a href="Fiber.html">Fiber</a></code> to compute <em>&amp;block</em> in the background.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_stack_top-class-method" class="signature"><strong>.get_stack_top</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gets%28%2Aargs%29-class-method" class="signature"><strong>.gets</strong>(*args)</a>
+        
+          <div class="summary"><p>Reads a line from STDIN.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#lazy%28%26block%3A-%3ER%29-class-method" class="signature"><strong>.lazy</strong>(&amp;block :  -&gt; R)</a>
+        
+          <div class="summary"><p>Conditionally spawns a <code><a href="Fiber.html">Fiber</a></code> to run <em>&amp;block</em> in the background.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#loop%28%26block%29-class-method" class="signature"><strong>.loop</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Repeatedly executes the block, passing an incremental <code><a href="Int32.html">Int32</a></code> that starts with 0.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#main%28argc%3AInt32%2Cargv%3APointer%28Pointer%28UInt8%29%29%29-class-method" class="signature"><strong>.main</strong>(argc : Int32, argv : Pointer(Pointer(UInt8)))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#p%28obj%29-class-method" class="signature"><strong>.p</strong>(obj)</a>
+        
+          <div class="summary"><p>Prints <em>obj</em> to STDOUT by invoking <code>inspect(io)</code> on it, and followed by a newline.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#print%28%2Aobjects%3A_%29-class-method" class="signature"><strong>.print</strong>(*objects : _)</a>
+        
+          <div class="summary"><p>Prints objects to STDOUT and then invokes <code><a href="STDOUT.html">STDOUT</a>.flush</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#printf%28format_string%2Cargs%3AArray%7CTuple%29-class-method" class="signature"><strong>.printf</strong>(format_string, args : Array | Tuple)</a>
+        
+          <div class="summary"><p>Prints a formatted string to STDOUT.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#printf%28format_string%2C%2Aargs%29-class-method" class="signature"><strong>.printf</strong>(format_string, *args)</a>
+        
+          <div class="summary"><p>Prints a formatted string to STDOUT.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#puts%28%2Aobjects%29-class-method" class="signature"><strong>.puts</strong>(*objects)</a>
+        
+          <div class="summary"><p>Prints objects to STDOUT, each followed by a newline.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raise%28message%3AString%29-class-method" class="signature"><strong>.raise</strong>(message : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raise%28ex%3AException%29-class-method" class="signature"><strong>.raise</strong>(ex : Exception)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rand%28x%29-class-method" class="signature"><strong>.rand</strong>(x)</a>
+        
+          <div class="summary"><p>see <code>Random#rand(x)</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rand-class-method" class="signature"><strong>.rand</strong></a>
+        
+          <div class="summary"><p>see <code>Random#rand</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_line%28%2Aargs%29-class-method" class="signature"><strong>.read_line</strong>(*args)</a>
+        
+          <div class="summary"><p>Reads a line from STDIN.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sleep%28seconds%3ANumber%29-class-method" class="signature"><strong>.sleep</strong>(seconds : Number)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sleep-class-method" class="signature"><strong>.sleep</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sleep%28time%3ATime%3A%3ASpan%29-class-method" class="signature"><strong>.sleep</strong>(time : Time::Span)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sprintf%28format_string%2Cargs%3AArray%7CTuple%29%3AString-class-method" class="signature"><strong>.sprintf</strong>(format_string, args : Array | Tuple) : String</a>
+        
+          <div class="summary"><p>Returns a formatted string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sprintf%28format_string%2C%2Aargs%29%3AString-class-method" class="signature"><strong>.sprintf</strong>(format_string, *args) : String</a>
+        
+          <div class="summary"><p>Returns a formatted string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#system%28command%3AString%2Cargs%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29%3ABool-class-method" class="signature"><strong>.system</strong>(command : String, args = <span class="n">nil</span>) : Bool</a>
+        
+          <div class="summary"><p>Executes the given command in a subshell.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#with_color-class-method" class="signature"><strong>.with_color</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#with_color%28color%3ASymbol%29-class-method" class="signature"><strong>.with_color</strong>(color : Symbol)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Macro Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#assert_responds_to%28var%2Cmethod%29-macro" class="signature"><strong>assert_responds_to</strong>(var, method)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#debugger-macro" class="signature"><strong>debugger</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parallel%28%2Ajobs%29-macro" class="signature"><strong>parallel</strong>(*jobs)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pp%28%2Aexps%29-macro" class="signature"><strong>pp</strong>(*exps)</a>
+        
+          <div class="summary"><p>Prints a series of expressions together with their values.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#record%28name%2C%2Aproperties%29-macro" class="signature"><strong>record</strong>(name, *properties)</a>
+        
+          <div class="summary"><p>Defines a <strong>struct</strong> with the given name and properties.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#redefine_main%28name%3Dmain%29-macro" class="signature"><strong>redefine_main</strong>(name = main)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#spawn-macro" class="signature"><strong>spawn</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#spawn%28exp%29-macro" class="signature"><strong>spawn</strong>(exp)</a>
+        
+          <div class="summary"><p>TODO: this doesn't work if a Call has a block or named arguments...</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Spec/Expectations.html">Spec::Expectations</a></code>
+</h3>
+  
+    <a href="Spec/Expectations.html#be-instance-method" class="tooltip">
+      <span>be<br>be(value)</span>
+    be</a>, 
+  
+    <a href="Spec/Expectations.html#be_close%28expected%2Cdelta%29-instance-method" class="tooltip">
+      <span>be_close(expected, delta)</span>
+    be_close</a>, 
+  
+    <a href="Spec/Expectations.html#be_false-instance-method" class="tooltip">
+      <span>be_false</span>
+    be_false</a>, 
+  
+    <a href="Spec/Expectations.html#be_falsey-instance-method" class="tooltip">
+      <span>be_falsey</span>
+    be_falsey</a>, 
+  
+    <a href="Spec/Expectations.html#be_nil-instance-method" class="tooltip">
+      <span>be_nil</span>
+    be_nil</a>, 
+  
+    <a href="Spec/Expectations.html#be_true-instance-method" class="tooltip">
+      <span>be_true</span>
+    be_true</a>, 
+  
+    <a href="Spec/Expectations.html#be_truthy-instance-method" class="tooltip">
+      <span>be_truthy</span>
+    be_truthy</a>, 
+  
+    <a href="Spec/Expectations.html#contain%28expected%29-instance-method" class="tooltip">
+      <span>contain(expected)</span>
+    contain</a>, 
+  
+    <a href="Spec/Expectations.html#eq%28value%29-instance-method" class="tooltip">
+      <span>eq(value)</span>
+    eq</a>, 
+  
+    <a href="Spec/Expectations.html#match%28value%29-instance-method" class="tooltip">
+      <span>match(value)</span>
+    match</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Spec/DSL.html">Spec::DSL</a></code>
+</h3>
+  
+    <a href="Spec/DSL.html#assert%28file%3D__FILE__%2Cline%3D__LINE__%2C%26block%29-instance-method" class="tooltip">
+      <span>assert(file = __FILE__, line = __LINE__, &amp;block)</span>
+    assert</a>, 
+  
+    <a href="Spec/DSL.html#context%28description%2Cfile%3D__FILE__%2Cline%3D__LINE__%2C%26block%29-instance-method" class="tooltip">
+      <span>context(description, file = __FILE__, line = __LINE__, &amp;block)</span>
+    context</a>, 
+  
+    <a href="Spec/DSL.html#describe%28description%2Cfile%3D__FILE__%2Cline%3D__LINE__%2C%26block%29-instance-method" class="tooltip">
+      <span>describe(description, file = __FILE__, line = __LINE__, &amp;block)</span>
+    describe</a>, 
+  
+    <a href="Spec/DSL.html#fail%28msg%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-instance-method" class="tooltip">
+      <span>fail(msg, file = __FILE__, line = __LINE__)</span>
+    fail</a>, 
+  
+    <a href="Spec/DSL.html#it%28description%2Cfile%3D__FILE__%2Cline%3D__LINE__%2C%26block%29-instance-method" class="tooltip">
+      <span>it(description, file = __FILE__, line = __LINE__, &amp;block)</span>
+    it</a>, 
+  
+    <a href="Spec/DSL.html#pending%28description%2Cfile%3D__FILE__%2Cline%3D__LINE__%2C%26block%29-instance-method" class="tooltip">
+      <span>pending(description, file = __FILE__, line = __LINE__, &amp;block)</span>
+    pending</a>
+  
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Method Detail</h2>
+  
+    <div class="entry-detail" id="`(command):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>`</strong>(command) : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the standard output of executing <em>command</em> in a subshell.
+Standard input, and error are inherited.
+The special <code>$?</code> variable is set to a <code><a href="Process/Status.html">Process::Status</a></code> associated with this execution.</p>
+
+<p>Example:</p>
+
+<pre><code><span class="s">`echo *`</span> <span class="c">#=&gt; "LICENSE shard.yml Readme.md spec src\n"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/process/run.cr#L273" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='abort(message,status=&lt;spanclass="n"&gt;1&lt;/span&gt;)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>abort</strong>(message, status = <span class="n">1</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Terminates execution immediately, printing <em>message</em> to STDERR and
+then calling <code><a href="toplevel.html#exit%28status%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method">.exit(status)</a></code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L136" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="at_exit(&amp;handler)-class-method">
+      <div class="signature">
+        
+        def self.<strong>at_exit</strong>(&amp;handler)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Registers the given <code><a href="Proc.html">Proc</a></code> for execution when the program exits.
+If multiple handlers are registered, they are executed in reverse order of registration.</p>
+
+<pre><code><span class="k">def</span> <span class="m">do_at_exit</span>(str1)
+  at_exit { print str1 }
+<span class="k">end</span>
+
+at_exit { puts <span class="s">"cruel world"</span> }
+do_at_exit(<span class="s">"goodbye "</span>)
+exit</code></pre>
+
+<p>Produces:</p>
+
+<pre><code>goodbye cruel world</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L119" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="caller-class-method">
+      <div class="signature">
+        
+        def self.<strong>caller</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/exception.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delay(delay,&amp;block:-&gt;R)-class-method">
+      <div class="signature">
+        
+        def self.<strong>delay</strong>(delay, &amp;block :  -&gt; R)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Spawns a <code><a href="Fiber.html">Fiber</a></code> to compute <em>&amp;block</em> in the background after <em>delay</em> has elapsed.
+Access to get is synchronized between fibers.  <em>&amp;block</em> is only called once.
+May be canceled before <em>&amp;block</em> is called by calling <code>cancel</code>.</p>
+
+<pre><code>d <span class="o">=</span> delay(<span class="n">1</span>) { <span class="t">Process</span>.kill(<span class="t">Process</span>.pid) }
+long_operation
+d.cancel</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/future.cr#L124" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='exit(status=&lt;spanclass="n"&gt;0&lt;/span&gt;)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>exit</strong>(status = <span class="n">0</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Terminates execution immediately, returning the given status code
+to the invoking environment.</p>
+
+<p>Registered <code><a href="toplevel.html#at_exit%28%26handler%29-class-method">.at_exit</a></code> procs are executed.</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L127" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fork-class-method">
+      <div class="signature">
+        
+        def self.<strong>fork</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/process/process.cr#L121" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fork(&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>fork</strong>(&amp;block)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/process/process.cr#L117" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="future(&amp;exp:-&gt;R)-class-method">
+      <div class="signature">
+        
+        def self.<strong>future</strong>(&amp;exp :  -&gt; R)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Spawns a <code><a href="Fiber.html">Fiber</a></code> to compute <em>&amp;block</em> in the background.
+Access to get is synchronized between fibers.  <em>&amp;block</em> is only called once.</p>
+
+<pre><code>f <span class="o">=</span> future { http_request }
+... other actions ...
+f.get <span class="c">#=&gt; String</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/future.cr#L136" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_stack_top-class-method">
+      <div class="signature">
+        
+        def self.<strong>get_stack_top</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/fiber/fiber.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gets(*args)-class-method">
+      <div class="signature">
+        
+        def self.<strong>gets</strong>(*args)
+
+        
+      </div>
+      
+        <div class="doc"><p>Reads a line from STDIN. See <code>IO#gets</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="lazy(&amp;block:-&gt;R)-class-method">
+      <div class="signature">
+        
+        def self.<strong>lazy</strong>(&amp;block :  -&gt; R)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Conditionally spawns a <code><a href="Fiber.html">Fiber</a></code> to run <em>&amp;block</em> in the background.
+Access to get is synchronized between fibers.  <em>&amp;block</em> is only called once.
+<em>&amp;block</em> doesn't run by default, only when <code>get</code> is called.</p>
+
+<pre><code>l <span class="o">=</span> lazy { expensive_computation }
+spawn { maybe_use_computation(l) }
+spawn { maybe_use_computation(l) }</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/future.cr#L149" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="loop(&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>loop</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Repeatedly executes the block, passing an incremental <code><a href="Int32.html">Int32</a></code>
+that starts with 0.</p>
+
+<pre><code>loop <span class="k">do</span> <span class="o">|</span>i<span class="o">|</span>
+  print <span class="s">"</span><span class="i">#{</span>i<span class="s"><span class="i">}</span>) "</span>
+  line <span class="o">=</span> gets
+  <span class="k">break</span> <span class="k">unless</span> line
+  <span class="c"># ...</span>
+<span class="k">end</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="main(argc:Int32,argv:Pointer(Pointer(UInt8)))-class-method">
+      <div class="signature">
+        
+        def self.<strong>main</strong>(argc : <a href="Int32.html">Int32</a>, argv : <a href="Pointer.html">Pointer</a>(<a href="Pointer.html">Pointer</a>(<a href="UInt8.html">UInt8</a>)))
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/main.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="p(obj)-class-method">
+      <div class="signature">
+        
+        def self.<strong>p</strong>(obj)
+
+        
+      </div>
+      
+        <div class="doc"><p>Prints <em>obj</em> to STDOUT by invoking <code>inspect(io)</code> on it, and followed
+by a newline.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="print(*objects:_)-class-method">
+      <div class="signature">
+        
+        def self.<strong>print</strong>(*objects : _)
+
+        
+      </div>
+      
+        <div class="doc"><p>Prints objects to STDOUT and then invokes <code><a href="STDOUT.html">STDOUT</a>.flush</code>. See <code>IO#print</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="printf(format_string,args:Array|Tuple)-class-method">
+      <div class="signature">
+        
+        def self.<strong>printf</strong>(format_string, args : <a href="Array.html">Array</a> | <a href="Tuple.html">Tuple</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Prints a formatted string to STDOUT. See <code>IO#printf</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="printf(format_string,*args)-class-method">
+      <div class="signature">
+        
+        def self.<strong>printf</strong>(format_string, *args)
+
+        
+      </div>
+      
+        <div class="doc"><p>Prints a formatted string to STDOUT. See <code>IO#printf</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L46" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="puts(*objects)-class-method">
+      <div class="signature">
+        
+        def self.<strong>puts</strong>(*objects)
+
+        
+      </div>
+      
+        <div class="doc"><p>Prints objects to STDOUT, each followed by a newline. See <code>IO#puts</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raise(message:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>raise</strong>(message : <a href="String.html">String</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/raise.cr#L106" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raise(ex:Exception)-class-method">
+      <div class="signature">
+        
+        def self.<strong>raise</strong>(ex : <a href="Exception.html">Exception</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/raise.cr#L97" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rand(x)-class-method">
+      <div class="signature">
+        
+        def self.<strong>rand</strong>(x)
+
+        
+      </div>
+      
+        <div class="doc"><p>see <code>Random#rand(x)</code></p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/random.cr#L125" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rand-class-method">
+      <div class="signature">
+        
+        def self.<strong>rand</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>see <code>Random#rand</code></p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/random.cr#L120" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_line(*args)-class-method">
+      <div class="signature">
+        
+        def self.<strong>read_line</strong>(*args)
+
+        
+      </div>
+      
+        <div class="doc"><p>Reads a line from STDIN. See <code>IO#read_line</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sleep(seconds:Number)-class-method">
+      <div class="signature">
+        
+        def self.<strong>sleep</strong>(seconds : <a href="Number.html">Number</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/concurrent.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sleep-class-method">
+      <div class="signature">
+        
+        def self.<strong>sleep</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/concurrent.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sleep(time:Time::Span)-class-method">
+      <div class="signature">
+        
+        def self.<strong>sleep</strong>(time : <a href="Time/Span.html">Time::Span</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/concurrent.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sprintf(format_string,args:Array|Tuple):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>sprintf</strong>(format_string, args : <a href="Array.html">Array</a> | <a href="Tuple.html">Tuple</a>) : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns a formatted string. See <code>IO#printf</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L61" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sprintf(format_string,*args):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>sprintf</strong>(format_string, *args) : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns a formatted string. See <code>IO#printf</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/kernel.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='system(command:String,args=&lt;spanclass="n"&gt;nil&lt;/span&gt;):Bool-class-method'>
+      <div class="signature">
+        
+        def self.<strong>system</strong>(command : <a href="String.html">String</a>, args = <span class="n">nil</span>) : <a href="Bool.html">Bool</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Executes the given command in a subshell.
+Standard input, output and error are inherited.
+Returns <code>true</code> if the command gives zero exit code, <code>false</code> otherwise.
+The special <code>$?</code> variable is set to a <code><a href="Process/Status.html">Process::Status</a></code> associated with this execution.</p>
+
+<p>If <em>command</em> contains no spaces and <em>args</em> is given, it will become
+its argument list.</p>
+
+<p>If <em>command</em> contains spaces and <em>args</em> is given, <em>command</em> must include
+<code>"${@}"</code> (including the quotes) to receive the argument list.</p>
+
+<p>No shell interpretation is done in <em>args</em>.</p>
+
+<p>Example:</p>
+
+<pre><code>system(<span class="s">"echo *"</span>)</code></pre>
+
+<p>Produces:</p>
+
+<pre><code>LICENSE shard.yml Readme.md spec src</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/process/run.cr#L258" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="with_color-class-method">
+      <div class="signature">
+        
+        def self.<strong>with_color</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L82" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="with_color(color:Symbol)-class-method">
+      <div class="signature">
+        
+        def self.<strong>with_color</strong>(color : <a href="Symbol.html">Symbol</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/colorize.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Macro Detail</h2>
+  
+    <div class="entry-detail" id="assert_responds_to(var,method)-macro">
+      <div class="signature">
+        
+        macro <strong>assert_responds_to</strong>(var, method)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/macros.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debugger-macro">
+      <div class="signature">
+        
+        macro <strong>debugger</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/intrinsics.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parallel(*jobs)-macro">
+      <div class="signature">
+        
+        macro <strong>parallel</strong>(*jobs)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/concurrent.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pp(*exps)-macro">
+      <div class="signature">
+        
+        macro <strong>pp</strong>(*exps)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Prints a series of expressions together with their values. Useful for print style debugging.</p>
+
+<pre><code>a <span class="o">=</span> <span class="n">1</span>
+pp a <span class="c"># prints "a = 1"</span>
+
+pp [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].map(<span class="o">&amp;</span>.to_s) <span class="c"># prints "[1, 2, 3].map(&amp;.to_s) = ["1", "2", "3"]</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/macros.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="record(name,*properties)-macro">
+      <div class="signature">
+        
+        macro <strong>record</strong>(name, *properties)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Defines a <strong>struct</strong> with the given name and properties.</p>
+
+<p>The generated struct has a constructor with the given properties
+in the same order as declared. The struct only provides getters,
+not setters, making it immutable by default.</p>
+
+<p>You can pass a block to this macro, that will be inserted inside
+the struct definition.</p>
+
+<pre><code>record <span class="t">Point</span>, x, y
+
+point <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="n">1</span>, <span class="n">2</span>
+point.to_s <span class="c">#=&gt; "Point(@x=1, @y=2)"</span></code></pre>
+
+<p>An example with the block version:</p>
+
+<pre><code>record <span class="t">Person</span>, first_name, last_name <span class="k">do</span>
+  <span class="k">def</span> <span class="m">full_name</span>
+    <span class="s">"</span><span class="i">#{</span>first_name<span class="s"><span class="i">}</span> </span><span class="i">#{</span>last_name<span class="s"><span class="i">}</span>"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+person <span class="o">=</span> <span class="t">Person</span>.<span class="k">new</span> <span class="s">"John"</span>, <span class="s">"Doe"</span>
+person.full_name <span class="c">#=&gt; "John Doe"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/macros.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="redefine_main(name=main)-macro">
+      <div class="signature">
+        
+        macro <strong>redefine_main</strong>(name = main)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/main.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="spawn-macro">
+      <div class="signature">
+        
+        macro <strong>spawn</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/concurrent.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="spawn(exp)-macro">
+      <div class="signature">
+        
+        macro <strong>spawn</strong>(exp)
+
+        
+      </div>
+      
+        <div class="doc"><p>TODO: this doesn't work if a Call has a block or named arguments... yet</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/concurrent/concurrent.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>HTTP::Cookie</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> HTTP::Cookie
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../HTTP/Cookie.html">HTTP::Cookie</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Represents a cookie with all its attributes. Provides convenient
+access and modification of them.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr" target="_blank">http/cookie.cr</a>
+    
+    <br>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#parse%28str%3AString%29%3ACookie-class-method" class="signature"><strong>.parse</strong>(str : String) : Cookie</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28name%3AString%2Cvalue%3AString%2Cpath%3D%3Cspanclass%3D%22s%22%3E%26quot%3B%2F%26quot%3B%3C%2Fspan%3E%3AString%2Cexpires%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3ATime%7CNil%2Cdomain%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2Csecure%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%3ABool%2Chttp_only%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%3ABool%29-class-method" class="signature"><strong>.new</strong>(name : String, value : String, path = <span class="s">"/"</span> : String, expires = <span class="n">nil</span> : Time | Nil, domain = <span class="n">nil</span> : String | Nil, secure = <span class="n">false</span> : Bool, http_only = <span class="n">false</span> : Bool)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28other%3Aself%29-instance-method" class="signature"><strong>#==</strong>(other : self)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#domain-instance-method" class="signature"><strong>#domain</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#domain%3D%28domain%29-instance-method" class="signature"><strong>#domain=</strong>(domain)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#expires-instance-method" class="signature"><strong>#expires</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#expires%3D%28expires%29-instance-method" class="signature"><strong>#expires=</strong>(expires)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hash-instance-method" class="signature"><strong>#hash</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#http_only-instance-method" class="signature"><strong>#http_only</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#http_only%3D%28http_only%29-instance-method" class="signature"><strong>#http_only=</strong>(http_only)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name-instance-method" class="signature"><strong>#name</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name%3D%28name%29-instance-method" class="signature"><strong>#name=</strong>(name)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#path-instance-method" class="signature"><strong>#path</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#path%3D%28path%29-instance-method" class="signature"><strong>#path=</strong>(path)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#secure-instance-method" class="signature"><strong>#secure</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#secure%3D%28secure%29-instance-method" class="signature"><strong>#secure=</strong>(secure)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_header-instance-method" class="signature"><strong>#to_header</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value-instance-method" class="signature"><strong>#value</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%3D%28value%29-instance-method" class="signature"><strong>#value=</strong>(value)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="../Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="../Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="../Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="parse(str:String):Cookie-class-method">
+      <div class="signature">
+        
+        def self.<strong>parse</strong>(str : <a href="../String.html">String</a>) : <a href="../HTTP/Cookie.html">Cookie</a>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='new(name:String,value:String,path=&lt;spanclass="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;:String,expires=&lt;spanclass="n"&gt;nil&lt;/span&gt;:Time|Nil,domain=&lt;spanclass="n"&gt;nil&lt;/span&gt;:String|Nil,secure=&lt;spanclass="n"&gt;false&lt;/span&gt;:Bool,http_only=&lt;spanclass="n"&gt;false&lt;/span&gt;:Bool)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>new</strong>(name : <a href="../String.html">String</a>, value : <a href="../String.html">String</a>, path = <span class="s">"/"</span> : <a href="../String.html">String</a>, expires = <span class="n">nil</span> : <a href="../Time.html">Time</a> | <a href="../Nil.html">Nil</a>, domain = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, secure = <span class="n">false</span> : <a href="../Bool.html">Bool</a>, http_only = <span class="n">false</span> : <a href="../Bool.html">Bool</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="==(other:self)-instance-method">
+      <div class="signature">
+        
+        def <strong>==</strong>(other : self)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="domain-instance-method">
+      <div class="signature">
+        
+        def <strong>domain</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="domain=(domain)-instance-method">
+      <div class="signature">
+        
+        def <strong>domain=</strong>(domain)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="expires-instance-method">
+      <div class="signature">
+        
+        def <strong>expires</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="expires=(expires)-instance-method">
+      <div class="signature">
+        
+        def <strong>expires=</strong>(expires)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hash-instance-method">
+      <div class="signature">
+        
+        def <strong>hash</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="http_only-instance-method">
+      <div class="signature">
+        
+        def <strong>http_only</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="http_only=(http_only)-instance-method">
+      <div class="signature">
+        
+        def <strong>http_only=</strong>(http_only)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name-instance-method">
+      <div class="signature">
+        
+        def <strong>name</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name=(name)-instance-method">
+      <div class="signature">
+        
+        def <strong>name=</strong>(name)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="path-instance-method">
+      <div class="signature">
+        
+        def <strong>path</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="path=(path)-instance-method">
+      <div class="signature">
+        
+        def <strong>path=</strong>(path)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="secure-instance-method">
+      <div class="signature">
+        
+        def <strong>secure</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="secure=(secure)-instance-method">
+      <div class="signature">
+        
+        def <strong>secure=</strong>(secure)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_header-instance-method">
+      <div class="signature">
+        
+        def <strong>to_header</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value-instance-method">
+      <div class="signature">
+        
+        def <strong>value</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value=(value)-instance-method">
+      <div class="signature">
+        
+        def <strong>value=</strong>(value)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

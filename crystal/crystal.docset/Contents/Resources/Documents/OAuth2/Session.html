@@ -1,0 +1,394 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/manastech/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-3647"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OAuth2%3A%3ASession"></a><title>OAuth2::Session</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> OAuth2::Session
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../OAuth2/Session.html">OAuth2::Session</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>An OAuth2 session makes it easy to implement APIs that need to refresh
+an access token once its expired before executing an HTTP request.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/session.cr" target="_blank">oauth2/session.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28oauth2_client%2Caccess_token%2Cexpires_at%3D%3Cspanclass%3D%22t%22%3ETime%3C%2Fspan%3E.utc_now%2C%26callback%3AOAuth2%3A%3ASession-%3E%29-class-method" class="signature"><strong>.new</strong>(oauth2_client, access_token, expires_at = <span class="t">Time</span>.utc_now, &amp;callback : OAuth2::Session -&gt; )</a>
+        
+          <div class="summary"><p>Creates an OAuth2::Session.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#access_token-instance-method" class="signature"><strong>#access_token</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#authenticate%28http_client%29-instance-method" class="signature"><strong>#authenticate</strong>(http_client)</a>
+        
+          <div class="summary"><p>Authenticates an HTTP::Client, refreshing the access token if it is expired.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#expires_at-instance-method" class="signature"><strong>#expires_at</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#oauth2_client-instance-method" class="signature"><strong>#oauth2_client</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="../Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br/>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="../Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="../Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br/>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br/>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(oauth2_client,access_token,expires_at=&lt;spanclass=&#34;t&#34;&gt;Time&lt;/span&gt;.utc_now,&amp;callback:OAuth2::Session-&gt;)-class-method">
+      <a class="dashingAutolink" name="autolink-3642"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28oauth2_client%2C%20access_token%2C%20expires_at%20%3D%20Time.utc_now%2C%20%26callback%20%3A%20OAuth2%3A%3ASession%20-%3E%20%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(oauth2_client, access_token, expires_at = <span class="t">Time</span>.utc_now, &amp;callback : <a href="../OAuth2/Session.html">OAuth2::Session</a> -&gt; )
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates an OAuth2::Session.</p>
+
+<p>Params:</p>
+
+<ul>
+<li>oauth2_client: the OAuth2::Client used to refresh an access token.</li>
+<li>access_token: the OAuth2::AccessToken to make requests.</li>
+<li>expires_at: the Time when the access token expires.</li>
+<li>callback: invoked when an access token is refreshed, giving you a chance to persist it.</li>
+</ul>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/session.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="access_token-instance-method">
+      <a class="dashingAutolink" name="autolink-3643"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20access_token"></a><div class="signature">
+        
+        def <strong>access_token</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/session.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="authenticate(http_client)-instance-method">
+      <a class="dashingAutolink" name="autolink-3644"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20authenticate%28http_client%29"></a><div class="signature">
+        
+        def <strong>authenticate</strong>(http_client)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Authenticates an HTTP::Client, refreshing the access token if it is expired.</p>
+
+<p>Invoke this method on an HTTP::Client before executing an HTTP request.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/session.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="expires_at-instance-method">
+      <a class="dashingAutolink" name="autolink-3645"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20expires_at"></a><div class="signature">
+        
+        def <strong>expires_at</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/session.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="oauth2_client-instance-method">
+      <a class="dashingAutolink" name="autolink-3646"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20oauth2_client"></a><div class="signature">
+        
+        def <strong>oauth2_client</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/session.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

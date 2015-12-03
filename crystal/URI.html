@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>URI</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> URI
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="URI.html">URI</a></li>
+<li class="superclass"><a href="Reference.html">Reference</a></li>
+<li class="superclass"><a href="Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>This class represents a URI reference as defined by [RFC 3986: Uniform Resource Identifier
+(URI): Generic Syntax](https://www.ietf.org/rfc/rfc3986.txt).</p>
+
+<p>This class provides constructors for creating URI instances from
+their components or by parsing their string forms and methods for accessing the various
+components of an instance.</p>
+
+<p>Basic example:</p>
+
+<pre><code><span class="k">require</span> <span class="s">"uri"</span>
+
+uri <span class="o">=</span> <span class="t">URI</span>.parse <span class="s">"http://foo.com/posts?id=30&amp;limit=5#time=1305298413"</span>
+<span class="c"># =&gt; #&amp;lt;URI:0x1003f1e40 @scheme="http", @host="foo.com", @port=nil, @path="/posts", @query="id=30&amp;limit=5", ... &gt;</span>
+uri.scheme
+<span class="c"># =&gt; "http"</span>
+uri.host
+<span class="c"># =&gt; "foo.com"</span>
+uri.query
+<span class="c"># =&gt; "id=30&amp;limit=5"</span>
+uri.to_s
+<span class="c"># =&gt; "http://foo.com/posts?id=30&amp;limit=5#time=1305298413"</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr" target="_blank">uri.cr</a>
+    
+    <br>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>RFC3986_relative_ref</strong> = <code><span class="s">/\A(?&lt;relative_ref&gt;(?&lt;relative_part&gt;\/\/(?&lt;authority&gt;(?:(?&lt;userinfo&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-;=A-Z_a-z~])*)@)?(?&lt;host&gt;(?&lt;IP_literal&gt;\[(?&lt;IPv6address&gt;(?:[0-9a-fA-F]{1,4}:){6}(?&lt;ls32&gt;[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}|(?&lt;IPv4address&gt;(?&lt;dec_octet&gt;[1-9]\d|1\d{2}|2[0-4]\d|25[0-5]|\d)\.\g&lt;dec_octet&gt;\.\g&lt;dec_octet&gt;\.\g&lt;dec_octet&gt;))|::(?:[0-9a-fA-F]{1,4}:){5}\g&lt;ls32&gt;|[0-9a-fA-F]{1,4}?::(?:[0-9a-fA-F]{1,4}:){4}\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,1}[0-9a-fA-F]{1,4})?::(?:[0-9a-fA-F]{1,4}:){3}\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,2}[0-9a-fA-F]{1,4})?::(?:[0-9a-fA-F]{1,4}:){2}\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,3}[0-9a-fA-F]{1,4})?::[0-9a-fA-F]{1,4}:\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,4}[0-9a-fA-F]{1,4})?::\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,5}[0-9a-fA-F]{1,4})?::[0-9a-fA-F]{1,4}|(?:(?:[0-9a-fA-F]{1,4}:){,6}[0-9a-fA-F]{1,4})?::)|(?&lt;IPvFuture&gt;v[0-9a-fA-F]+\.[!$&amp;-.0-;=A-Z_a-z~]+)\])|\g&lt;IPv4address&gt;|(?&lt;reg_name&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-9;=A-Z_a-z~])+))?(?::(?&lt;port&gt;\d*))?)(?&lt;path_abempty&gt;(?:\/(?&lt;segment&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-;=@-Z_a-z~])*))*)|(?&lt;path_absolute&gt;\/(?:(?&lt;segment_nz&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-;=@-Z_a-z~])+)(?:\/\g&lt;segment&gt;)*)?)|(?&lt;path_noscheme&gt;(?&lt;segment_nz_nc&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-9;=@-Z_a-z~])+)(?:\/\g&lt;segment&gt;)*)|(?&lt;path_empty&gt;))(?:\?(?&lt;query&gt;[^#]*))?(?:\#(?&lt;fragment&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-;=@-Z_a-z~\/?])*))?)\z/</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>RFC3986_URI</strong> = <code><span class="s">/\A(?&lt;URI&gt;(?&lt;scheme&gt;[A-Za-z][+\-.0-9A-Za-z]*):(?&lt;hier_part&gt;\/\/(?&lt;authority&gt;(?:(?&lt;userinfo&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-;=A-Z_a-z~])*)@)?(?&lt;host&gt;(?&lt;IP_literal&gt;\[(?:(?&lt;IPv6address&gt;(?:[0-9a-fA-F]{1,4}:){6}(?&lt;ls32&gt;[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}|(?&lt;IPv4address&gt;(?&lt;dec_octet&gt;[1-9]\d|1\d{2}|2[0-4]\d|25[0-5]|\d)\.\g&lt;dec_octet&gt;\.\g&lt;dec_octet&gt;\.\g&lt;dec_octet&gt;))|::(?:[0-9a-fA-F]{1,4}:){5}\g&lt;ls32&gt;|[0-9a-fA-F]{1,4}?::(?:[0-9a-fA-F]{1,4}:){4}\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:)?[0-9a-fA-F]{1,4})?::(?:[0-9a-fA-F]{1,4}:){3}\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,2}[0-9a-fA-F]{1,4})?::(?:[0-9a-fA-F]{1,4}:){2}\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,3}[0-9a-fA-F]{1,4})?::[0-9a-fA-F]{1,4}:\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,4}[0-9a-fA-F]{1,4})?::\g&lt;ls32&gt;|(?:(?:[0-9a-fA-F]{1,4}:){,5}[0-9a-fA-F]{1,4})?::[0-9a-fA-F]{1,4}|(?:(?:[0-9a-fA-F]{1,4}:){,6}[0-9a-fA-F]{1,4})?::)|(?&lt;IPvFuture&gt;v[0-9a-fA-F]+\.[!$&amp;-.0-;=A-Z_a-z~]+))\])|\g&lt;IPv4address&gt;|(?&lt;reg_name&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-9;=A-Z_a-z~])+))?(?::(?&lt;port&gt;\d*))?)(?&lt;path_abempty&gt;(?:\/(?&lt;segment&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-;=@-Z_a-z~])*))*)|(?&lt;path_absolute&gt;\/(?:(?&lt;segment_nz&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-;=@-Z_a-z~])+)(?:\/\g&lt;segment&gt;)*)?)|(?&lt;path_rootless&gt;\g&lt;segment_nz&gt;(?:\/\g&lt;segment&gt;)*)|(?&lt;path_empty&gt;))(?:\?(?&lt;query&gt;[^#]*))?(?:\#(?&lt;fragment&gt;(?:%[0-9a-fA-F][0-9a-fA-F]|[!$&amp;-.0-;=@-Z_a-z~\/?])*))?)\z/</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>URI defined in RFC3986</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#escape%28string%3AString%2Cio%3AIO%29-class-method" class="signature"><strong>.escape</strong>(string : String, io : IO)</a>
+        
+          <div class="summary"><p>URL-encode a string and write the result to an <code><a href="IO.html">IO</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#escape%28string%3AString%29-class-method" class="signature"><strong>.escape</strong>(string : String)</a>
+        
+          <div class="summary"><p>URL-encode a string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%28raw_url%3AString%29-class-method" class="signature"><strong>.parse</strong>(raw_url : String)</a>
+        
+          <div class="summary"><p>Parses <code>raw_url</code> into an URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unescape%28string%3AString%29-class-method" class="signature"><strong>.unescape</strong>(string : String)</a>
+        
+          <div class="summary"><p>URL-decode a string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unescape%28string%3AString%2Cio%3AIO%29-class-method" class="signature"><strong>.unescape</strong>(string : String, io : IO)</a>
+        
+          <div class="summary"><p>URL-decode a string and write the result to an <code><a href="IO.html">IO</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unescape_one%28string%2Cbytesize%2Ci%2Cbyte%2Cchar%2Cio%29-class-method" class="signature"><strong>.unescape_one</strong>(string, bytesize, i, byte, char, io)</a>
+        
+          <div class="summary"><p>:nodoc: Unescapes one character.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28scheme%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Chost%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cport%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cpath%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cquery%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cuser%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cfragment%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Copaque%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(scheme = <span class="n">nil</span>, host = <span class="n">nil</span>, port = <span class="n">nil</span>, path = <span class="n">nil</span>, query = <span class="n">nil</span>, user = <span class="n">nil</span>, password = <span class="n">nil</span>, fragment = <span class="n">nil</span>, opaque = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#fragment-instance-method" class="signature"><strong>#fragment</strong></a>
+        
+          <div class="summary"><p>Returns the fragment component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fragment%3D%28fragment%29-instance-method" class="signature"><strong>#fragment=</strong>(fragment)</a>
+        
+          <div class="summary"><p>Sets the fragment component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#full_path-instance-method" class="signature"><strong>#full_path</strong></a>
+        
+          <div class="summary"><p>Returns the full path of this URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#host-instance-method" class="signature"><strong>#host</strong></a>
+        
+          <div class="summary"><p>Returns the host component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#host%3D%28host%29-instance-method" class="signature"><strong>#host=</strong>(host)</a>
+        
+          <div class="summary"><p>Sets the host component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#opaque-instance-method" class="signature"><strong>#opaque</strong></a>
+        
+          <div class="summary"><p>Returns the opaque component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#opaque%3D%28opaque%29-instance-method" class="signature"><strong>#opaque=</strong>(opaque)</a>
+        
+          <div class="summary"><p>Sets the opaque component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#password-instance-method" class="signature"><strong>#password</strong></a>
+        
+          <div class="summary"><p>Returns the password component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#password%3D%28password%29-instance-method" class="signature"><strong>#password=</strong>(password)</a>
+        
+          <div class="summary"><p>Sets the password component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#path-instance-method" class="signature"><strong>#path</strong></a>
+        
+          <div class="summary"><p>Returns the path component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#path%3D%28path%29-instance-method" class="signature"><strong>#path=</strong>(path)</a>
+        
+          <div class="summary"><p>Sets the path component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#port-instance-method" class="signature"><strong>#port</strong></a>
+        
+          <div class="summary"><p>Returns the port component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#port%3D%28port%29-instance-method" class="signature"><strong>#port=</strong>(port)</a>
+        
+          <div class="summary"><p>Sets the port component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#query-instance-method" class="signature"><strong>#query</strong></a>
+        
+          <div class="summary"><p>Returns the query component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#query%3D%28query%29-instance-method" class="signature"><strong>#query=</strong>(query)</a>
+        
+          <div class="summary"><p>Sets the query component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scheme-instance-method" class="signature"><strong>#scheme</strong></a>
+        
+          <div class="summary"><p>Returns the scheme component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scheme%3D%28scheme%29-instance-method" class="signature"><strong>#scheme=</strong>(scheme)</a>
+        
+          <div class="summary"><p>Sets the scheme component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%3AIO%29-instance-method" class="signature"><strong>#to_s</strong>(io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user-instance-method" class="signature"><strong>#user</strong></a>
+        
+          <div class="summary"><p>Returns the user component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user%3D%28user%29-instance-method" class="signature"><strong>#user=</strong>(user)</a>
+        
+          <div class="summary"><p>Sets the user component of the URI.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#userinfo-instance-method" class="signature"><strong>#userinfo</strong></a>
+        
+          <div class="summary"><p>Returns the user-information component containing the provided username and password.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="escape(string:String,io:IO)-class-method">
+      <div class="signature">
+        
+        def self.<strong>escape</strong>(string : <a href="String.html">String</a>, io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>URL-encode a string and write the result to an <code><a href="IO.html">IO</a></code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L245" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="escape(string:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>escape</strong>(string : <a href="String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>URL-encode a string.</p>
+
+<pre><code><span class="t">URI</span>.escape(<span class="s">"'Stop!' said Fred"</span>) <span class="c">#=&gt; "%27Stop%21%27+said+Fred"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L240" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse(raw_url:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>parse</strong>(raw_url : <a href="String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Parses <code>raw_url</code> into an URI. The <code>raw_url</code> may be relative or absolute.</p>
+
+<pre><code><span class="k">require</span> </code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L182" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unescape(string:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>unescape</strong>(string : <a href="String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>URL-decode a string.</p>
+
+<pre><code><span class="t">URI</span>.unescape(<span class="s">"%27Stop%21%27+said+Fred"</span>) <span class="c">#=&gt; "'Stop!' said Fred"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L221" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unescape(string:String,io:IO)-class-method">
+      <div class="signature">
+        
+        def self.<strong>unescape</strong>(string : <a href="String.html">String</a>, io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>URL-decode a string and write the result to an <code><a href="IO.html">IO</a></code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L226" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unescape_one(string,bytesize,i,byte,char,io)-class-method">
+      <div class="signature">
+        
+        def self.<strong>unescape_one</strong>(string, bytesize, i, byte, char, io)
+
+        
+      </div>
+      
+        <div class="doc"><p>:nodoc:
+Unescapes one character. Private API</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L274" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='new(scheme=&lt;spanclass="n"&gt;nil&lt;/span&gt;,host=&lt;spanclass="n"&gt;nil&lt;/span&gt;,port=&lt;spanclass="n"&gt;nil&lt;/span&gt;,path=&lt;spanclass="n"&gt;nil&lt;/span&gt;,query=&lt;spanclass="n"&gt;nil&lt;/span&gt;,user=&lt;spanclass="n"&gt;nil&lt;/span&gt;,password=&lt;spanclass="n"&gt;nil&lt;/span&gt;,fragment=&lt;spanclass="n"&gt;nil&lt;/span&gt;,opaque=&lt;spanclass="n"&gt;nil&lt;/span&gt;)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>new</strong>(scheme = <span class="n">nil</span>, host = <span class="n">nil</span>, port = <span class="n">nil</span>, path = <span class="n">nil</span>, query = <span class="n">nil</span>, user = <span class="n">nil</span>, password = <span class="n">nil</span>, fragment = <span class="n">nil</span>, opaque = <span class="n">nil</span>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L120" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="fragment-instance-method">
+      <div class="signature">
+        
+        def <strong>fragment</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the fragment component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"http://foo.com/bar#section1"</span>).fragment <span class="c"># =&gt; "section1"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L105" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fragment=(fragment)-instance-method">
+      <div class="signature">
+        
+        def <strong>fragment=</strong>(fragment)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the fragment component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L108" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="full_path-instance-method">
+      <div class="signature">
+        
+        def <strong>full_path</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the full path of this URI.</p>
+
+<pre><code>uri <span class="o">=</span> <span class="t">URI</span>.parse <span class="s">"http://foo.com/posts?id=30&amp;limit=5#time=1305298413"</span>
+uri.full_path <span class="c"># =&gt; "/posts?id=30&amp;limit=5"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L129" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="host-instance-method">
+      <div class="signature">
+        
+        def <strong>host</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the host component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"http://foo.com"</span>).host <span class="c"># =&gt; "foo.com"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L45" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="host=(host)-instance-method">
+      <div class="signature">
+        
+        def <strong>host=</strong>(host)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the host component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="opaque-instance-method">
+      <div class="signature">
+        
+        def <strong>opaque</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the opaque component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"mailto:alice@example.com"</span>).opaque <span class="c"># =&gt; "alice@example.com"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L115" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="opaque=(opaque)-instance-method">
+      <div class="signature">
+        
+        def <strong>opaque=</strong>(opaque)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the opaque component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L118" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="password-instance-method">
+      <div class="signature">
+        
+        def <strong>password</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the password component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"http://admin:password@foo.com"</span>).password <span class="c"># =&gt; "password"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L95" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="password=(password)-instance-method">
+      <div class="signature">
+        
+        def <strong>password=</strong>(password)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the password component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L98" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="path-instance-method">
+      <div class="signature">
+        
+        def <strong>path</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the path component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"http://foo.com/bar"</span>).path <span class="c"># =&gt; "/bar"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="path=(path)-instance-method">
+      <div class="signature">
+        
+        def <strong>path=</strong>(path)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the path component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="port-instance-method">
+      <div class="signature">
+        
+        def <strong>port</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the port component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"http://foo.com:5432"</span>).port <span class="c"># =&gt; 5432</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="port=(port)-instance-method">
+      <div class="signature">
+        
+        def <strong>port=</strong>(port)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the port component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="query-instance-method">
+      <div class="signature">
+        
+        def <strong>query</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the query component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"http://foo.com/bar?q=1"</span>).query <span class="c"># =&gt; "q=1"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L75" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="query=(query)-instance-method">
+      <div class="signature">
+        
+        def <strong>query=</strong>(query)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the query component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scheme-instance-method">
+      <div class="signature">
+        
+        def <strong>scheme</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the scheme component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"http://foo.com"</span>).scheme <span class="c"># =&gt; "http"</span>
+<span class="t">URI</span>.parse(<span class="s">"mailto:alice@example.com"</span>).scheme <span class="c"># =&gt; "mailto"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scheme=(scheme)-instance-method">
+      <div class="signature">
+        
+        def <strong>scheme=</strong>(scheme)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the scheme component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io:IO)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L136" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user-instance-method">
+      <div class="signature">
+        
+        def <strong>user</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the user component of the URI.</p>
+
+<pre><code><span class="t">URI</span>.parse(<span class="s">"http://admin:password@foo.com"</span>).user <span class="c"># =&gt; "admin"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user=(user)-instance-method">
+      <div class="signature">
+        
+        def <strong>user=</strong>(user)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the user component of the URI.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L88" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="userinfo-instance-method">
+      <div class="signature">
+        
+        def <strong>userinfo</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the user-information component containing the provided username and password.</p>
+
+<pre><code>uri <span class="o">=</span> <span class="t">URI</span>.parse <span class="s">"http://admin:password@foo.com"</span>
+uri.userinfo <span class="c"># =&gt; "admin:password"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/uri.cr#L266" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

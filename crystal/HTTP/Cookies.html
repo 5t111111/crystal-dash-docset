@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>HTTP::Cookies</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> HTTP::Cookies
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../HTTP/Cookies.html">HTTP::Cookies</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Represents a collection of cookies as it can be present inside
+a HTTP request or response.</p>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../Enumerable.html">Enumerable(Cookie)</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr" target="_blank">http/cookie.cr</a>
+    
+    <br>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_headers%28headers%29-class-method" class="signature"><strong>.from_headers</strong>(headers)</a>
+        
+          <div class="summary"><p>Create a new instance by parsing the <code><a href="../HTTP/Cookie.html">Cookie</a></code> and <code><a href="../Set.html">Set</a>-<a href="../HTTP/Cookie.html">Cookie</a></code> headers in the given <code><a href="../HTTP/Headers.html">HTTP::Headers</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+          <div class="summary"><p>Create a new empty instance</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28cookie%3ACookie%29-instance-method" class="signature"><strong>#(cookie : Cookie)</strong></a>
+        
+          <div class="summary"><p>Add the given <em>cookie</em> to this collection, overrides an existing cookie with the same name if present.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28key%29-instance-method" class="signature"><strong>#[]</strong>(key)</a>
+        
+          <div class="summary"><p>Get the current <code><a href="../HTTP/Cookie.html">HTTP::Cookie</a></code> for the given <em>key</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3D%28key%2Cvalue%3AString%29-instance-method" class="signature"><strong>#[]=</strong>(key, value : String)</a>
+        
+          <div class="summary"><p>Set a new cookie in the collection with a string value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3D%28key%2Cvalue%3ACookie%29-instance-method" class="signature"><strong>#[]=</strong>(key, value : Cookie)</a>
+        
+          <div class="summary"><p>Set a new cookie in the collection to the given <code><a href="../HTTP/Cookie.html">HTTP::Cookie</a></code> instance.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%29-instance-method" class="signature"><strong>#[]?</strong>(key)</a>
+        
+          <div class="summary"><p>Get the current <code><a href="../HTTP/Cookie.html">HTTP::Cookie</a></code> for the given <em>key</em> or <code>nil</code> if none is set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add_request_headers%28headers%29-instance-method" class="signature"><strong>#add_request_headers</strong>(headers)</a>
+        
+          <div class="summary"><p>Adds <code><a href="../HTTP/Cookie.html">Cookie</a></code> headers for the cookies in this collection to the given <code>HTTP::Header</code> instance and returns it.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add_response_headers%28headers%29-instance-method" class="signature"><strong>#add_response_headers</strong>(headers)</a>
+        
+          <div class="summary"><p>Adds <code><a href="../Set.html">Set</a>-<a href="../HTTP/Cookie.html">Cookie</a></code> headers for the cookies in this collection to the given <code>HTTP::Header</code> instance and returns it.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each-instance-method" class="signature"><strong>#each</strong></a>
+        
+          <div class="summary"><p>Returns an iterator over the cookies of this collection.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each%28%26block%3AT-%3E_%29-instance-method" class="signature"><strong>#each</strong>(&amp;block : T -&gt; _)</a>
+        
+          <div class="summary"><p>Yields each <code><a href="../HTTP/Cookie.html">HTTP::Cookie</a></code> in the collection.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_key%3F%28key%29-instance-method" class="signature"><strong>#has_key?</strong>(key)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if a cookie with the given <em>key</em> exists.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../Enumerable.html">Enumerable(T)</a></code>
+</h3>
+  
+    <a href="../Enumerable.html#all%3F-instance-method" class="tooltip">
+      <span>all?<br>all?(&amp;block)</span>
+    all?</a>, 
+  
+    <a href="../Enumerable.html#any%3F-instance-method" class="tooltip">
+      <span>any?<br>any?(&amp;block)</span>
+    any?</a>, 
+  
+    <a href="../Enumerable.html#compact_map%28%26block%29-instance-method" class="tooltip">
+      <span>compact_map(&amp;block)</span>
+    compact_map</a>, 
+  
+    <a href="../Enumerable.html#count%28item%29-instance-method" class="tooltip">
+      <span>count(item)<br>count(&amp;block)</span>
+    count</a>, 
+  
+    <a href="../Enumerable.html#cycle%28%26block%29-instance-method" class="tooltip">
+      <span>cycle(&amp;block)<br>cycle(n, &amp;block)</span>
+    cycle</a>, 
+  
+    <a href="../Enumerable.html#each%28%26block%3AT-%3E_%29-instance-method" class="tooltip">
+      <span>each(&amp;block : T -&gt; _)</span>
+    each</a>, 
+  
+    <a href="../Enumerable.html#each_cons%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int, &amp;block)</span>
+    each_cons</a>, 
+  
+    <a href="../Enumerable.html#each_slice%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int, &amp;block)</span>
+    each_slice</a>, 
+  
+    <a href="../Enumerable.html#each_with_index%28offset%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-instance-method" class="tooltip">
+      <span>each_with_index(offset = <span class="n">0</span>, &amp;block)</span>
+    each_with_index</a>, 
+  
+    <a href="../Enumerable.html#each_with_object%28obj%2C%26block%29-instance-method" class="tooltip">
+      <span>each_with_object(obj, &amp;block)</span>
+    each_with_object</a>, 
+  
+    <a href="../Enumerable.html#find%28if_none%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method" class="tooltip">
+      <span>find(if_none = <span class="n">nil</span>, &amp;block)</span>
+    find</a>, 
+  
+    <a href="../Enumerable.html#first-instance-method" class="tooltip">
+      <span>first</span>
+    first</a>, 
+  
+    <a href="../Enumerable.html#first%3F-instance-method" class="tooltip">
+      <span>first?</span>
+    first?</a>, 
+  
+    <a href="../Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%29-instance-method" class="tooltip">
+      <span>flat_map(&amp;block : T -&gt; Array(U))</span>
+    flat_map</a>, 
+  
+    <a href="../Enumerable.html#grep%28pattern%29-instance-method" class="tooltip">
+      <span>grep(pattern)</span>
+    grep</a>, 
+  
+    <a href="../Enumerable.html#group_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>group_by(&amp;block : T -&gt; U)</span>
+    group_by</a>, 
+  
+    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method" class="tooltip">
+      <span>in_groups_of(size : Int, filled_up_with = <span class="n">nil</span>, &amp;block)<br>in_groups_of(size : Int, filled_up_with = <span class="n">nil</span>)</span>
+    in_groups_of</a>, 
+  
+    <a href="../Enumerable.html#includes%3F%28obj%29-instance-method" class="tooltip">
+      <span>includes?(obj)</span>
+    includes?</a>, 
+  
+    <a href="../Enumerable.html#index%28obj%29-instance-method" class="tooltip">
+      <span>index(obj)<br>index(&amp;block)</span>
+    index</a>, 
+  
+    <a href="../Enumerable.html#index_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>index_by(&amp;block : T -&gt; U)</span>
+    index_by</a>, 
+  
+    <a href="../Enumerable.html#inject%28%26block%29-instance-method" class="tooltip">
+      <span>inject(&amp;block)<br>inject(memo, &amp;block)</span>
+    inject</a>, 
+  
+    <a href="../Enumerable.html#join%28separator%2Cio%2C%26block%29-instance-method" class="tooltip">
+      <span>join(separator, io, &amp;block)<br>join(separator = <span class="s">""</span>, &amp;block)<br>join(separator, io)<br>join(separator = <span class="s">""</span>)</span>
+    join</a>, 
+  
+    <a href="../Enumerable.html#map%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>map(&amp;block : T -&gt; U)</span>
+    map</a>, 
+  
+    <a href="../Enumerable.html#map_with_index%28%26block%3AT%2CInt32-%3EU%29-instance-method" class="tooltip">
+      <span>map_with_index(&amp;block : T, Int32 -&gt; U)</span>
+    map_with_index</a>, 
+  
+    <a href="../Enumerable.html#max-instance-method" class="tooltip">
+      <span>max</span>
+    max</a>, 
+  
+    <a href="../Enumerable.html#max%3F-instance-method" class="tooltip">
+      <span>max?</span>
+    max?</a>, 
+  
+    <a href="../Enumerable.html#max_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>max_by(&amp;block : T -&gt; U)</span>
+    max_by</a>, 
+  
+    <a href="../Enumerable.html#max_by%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>max_by?(&amp;block : T -&gt; U)</span>
+    max_by?</a>, 
+  
+    <a href="../Enumerable.html#max_of%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>max_of(&amp;block : T -&gt; U)</span>
+    max_of</a>, 
+  
+    <a href="../Enumerable.html#max_of%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>max_of?(&amp;block : T -&gt; U)</span>
+    max_of?</a>, 
+  
+    <a href="../Enumerable.html#min-instance-method" class="tooltip">
+      <span>min</span>
+    min</a>, 
+  
+    <a href="../Enumerable.html#min%3F-instance-method" class="tooltip">
+      <span>min?</span>
+    min?</a>, 
+  
+    <a href="../Enumerable.html#min_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>min_by(&amp;block : T -&gt; U)</span>
+    min_by</a>, 
+  
+    <a href="../Enumerable.html#min_by%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>min_by?(&amp;block : T -&gt; U)</span>
+    min_by?</a>, 
+  
+    <a href="../Enumerable.html#min_of%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>min_of(&amp;block : T -&gt; U)</span>
+    min_of</a>, 
+  
+    <a href="../Enumerable.html#min_of%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>min_of?(&amp;block : T -&gt; U)</span>
+    min_of?</a>, 
+  
+    <a href="../Enumerable.html#minmax-instance-method" class="tooltip">
+      <span>minmax</span>
+    minmax</a>, 
+  
+    <a href="../Enumerable.html#minmax%3F-instance-method" class="tooltip">
+      <span>minmax?</span>
+    minmax?</a>, 
+  
+    <a href="../Enumerable.html#minmax_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>minmax_by(&amp;block : T -&gt; U)</span>
+    minmax_by</a>, 
+  
+    <a href="../Enumerable.html#minmax_by%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>minmax_by?(&amp;block : T -&gt; U)</span>
+    minmax_by?</a>, 
+  
+    <a href="../Enumerable.html#minmax_of%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>minmax_of(&amp;block : T -&gt; U)</span>
+    minmax_of</a>, 
+  
+    <a href="../Enumerable.html#minmax_of%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>minmax_of?(&amp;block : T -&gt; U)</span>
+    minmax_of?</a>, 
+  
+    <a href="../Enumerable.html#none%3F-instance-method" class="tooltip">
+      <span>none?<br>none?(&amp;block)</span>
+    none?</a>, 
+  
+    <a href="../Enumerable.html#one%3F%28%26block%29-instance-method" class="tooltip">
+      <span>one?(&amp;block)</span>
+    one?</a>, 
+  
+    <a href="../Enumerable.html#partition%28%26block%29-instance-method" class="tooltip">
+      <span>partition(&amp;block)</span>
+    partition</a>, 
+  
+    <a href="../Enumerable.html#reject%28%26block%3AT-%3E%29-instance-method" class="tooltip">
+      <span>reject(&amp;block : T -&gt; )</span>
+    reject</a>, 
+  
+    <a href="../Enumerable.html#select%28%26block%3AT-%3E%29-instance-method" class="tooltip">
+      <span>select(&amp;block : T -&gt; )</span>
+    select</a>, 
+  
+    <a href="../Enumerable.html#size-instance-method" class="tooltip">
+      <span>size</span>
+    size</a>, 
+  
+    <a href="../Enumerable.html#skip%28count%3AInt%29-instance-method" class="tooltip">
+      <span>skip(count : Int)</span>
+    skip</a>, 
+  
+    <a href="../Enumerable.html#skip_while%28%26block%29-instance-method" class="tooltip">
+      <span>skip_while(&amp;block)</span>
+    skip_while</a>, 
+  
+    <a href="../Enumerable.html#sum%28initial%2C%26block%29-instance-method" class="tooltip">
+      <span>sum(initial, &amp;block)<br>sum(&amp;block)<br>sum(initial)<br>sum</span>
+    sum</a>, 
+  
+    <a href="../Enumerable.html#take%28count%3AInt%29-instance-method" class="tooltip">
+      <span>take(count : Int)</span>
+    take</a>, 
+  
+    <a href="../Enumerable.html#take_while%28%26block%29-instance-method" class="tooltip">
+      <span>take_while(&amp;block)</span>
+    take_while</a>, 
+  
+    <a href="../Enumerable.html#to_a-instance-method" class="tooltip">
+      <span>to_a</span>
+    to_a</a>, 
+  
+    <a href="../Enumerable.html#to_h-instance-method" class="tooltip">
+      <span>to_h</span>
+    to_h</a>, 
+  
+    <a href="../Enumerable.html#to_set-instance-method" class="tooltip">
+      <span>to_set</span>
+    to_set</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="../Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="../Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="../Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="from_headers(headers)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from_headers</strong>(headers)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Create a new instance by parsing the <code><a href="../HTTP/Cookie.html">Cookie</a></code> and <code><a href="../Set.html">Set</a>-<a href="../HTTP/Cookie.html">Cookie</a></code>
+headers in the given <code><a href="../HTTP/Headers.html">HTTP::Headers</a></code>.</p>
+
+<p>See <code><a href="../HTTP/Request.html#cookies-instance-method">HTTP::Request#cookies</a></code> and <code><a href="../HTTP/Response.html#cookies-instance-method">HTTP::Response#cookies</a></code>.</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L72" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Create a new empty instance</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="&lt;&lt;(cookie:Cookie)-instance-method">
+      <div class="signature">
+        
+        def <strong>(cookie : <a href="../HTTP/Cookie.html">Cookie</a>)
+
+        
+      </strong>
+</div>
+      
+        <div class="doc">
+<p>Add the given <em>cookie</em> to this collection, overrides an existing cookie
+with the same name if present.</p>
+
+<pre><code>response.cookies <span class="o"> <span class="t">Cookie</span>.<span class="k">new</span>(<span class="s">"foo"</span>, <span class="s">"bar"</span>, http_only: <span class="n">true</span>)</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L150" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](key)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(key)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Get the current <code><a href="../HTTP/Cookie.html">HTTP::Cookie</a></code> for the given <em>key</em>.</p>
+
+<pre><code>request.cookies[<span class="s">"foo"</span>].value <span class="c">#=&gt; "bar"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L121" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]=(key,value:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]=</strong>(key, value : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Set a new cookie in the collection with a string value.
+This creates a never expiring, insecure, not HTTP only cookie with
+no explicit domain restriction and the path <code>/</code>.</p>
+
+<pre><code>request.cookies[<span class="s">"foo"</span>] <span class="o">=</span> <span class="s">"bar"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L97" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]=(key,value:Cookie)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]=</strong>(key, value : <a href="../HTTP/Cookie.html">Cookie</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Set a new cookie in the collection to the given <code><a href="../HTTP/Cookie.html">HTTP::Cookie</a></code>
+instance. The name attribute must match the given <em>key</em>, else
+<code><a href="../ArgumentError.html">ArgumentError</a></code> is raised.</p>
+
+<pre><code>response.cookies[<span class="s">"foo"</span>] <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Cookie</span>.<span class="k">new</span>(<span class="s">"foo"</span>, <span class="s">"bar"</span>, <span class="s">"/admin"</span>, <span class="t">Time</span>.now <span class="o">+</span> <span class="n">12</span>.hours, secure: <span class="n">true</span>)</code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L108" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]?</strong>(key)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Get the current <code><a href="../HTTP/Cookie.html">HTTP::Cookie</a></code> for the given <em>key</em> or <code>nil</code> if none is set.</p>
+
+<pre><code>request.cookies[<span class="s">"foo"</span>]? <span class="c">#=&gt; nil</span>
+request.cookies[<span class="s">"foo"</span>] <span class="o">=</span> <span class="s">"bar"</span>
+request.cookies[<span class="s">"foo"</span>]?.try <span class="o">&amp;</span>.value <span class="c">#&gt; "bar"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L132" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add_request_headers(headers)-instance-method">
+      <div class="signature">
+        
+        def <strong>add_request_headers</strong>(headers)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds <code><a href="../HTTP/Cookie.html">Cookie</a></code> headers for the cookies in this collection to the
+given <code>HTTP::Header</code> instance and returns it. Removes any existing
+<code><a href="../HTTP/Cookie.html">Cookie</a></code> headers in it.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L169" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add_response_headers(headers)-instance-method">
+      <div class="signature">
+        
+        def <strong>add_response_headers</strong>(headers)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds <code><a href="../Set.html">Set</a>-<a href="../HTTP/Cookie.html">Cookie</a></code> headers for the cookies in this collection to the
+given <code>HTTP::Header</code> instance and returns it. Removes any existing
+<code><a href="../Set.html">Set</a>-<a href="../HTTP/Cookie.html">Cookie</a></code> headers in it.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L176" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns an iterator over the cookies of this collection.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L162" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(&amp;block:T-&gt;_)-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>(&amp;block : <a href="../HTTP/Cookie.html">T</a> -&gt; _)
+
+        
+      </div>
+      
+        <div class="doc"><p>Yields each <code><a href="../HTTP/Cookie.html">HTTP::Cookie</a></code> in the collection.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_key?(key)-instance-method">
+      <div class="signature">
+        
+        def <strong>has_key?</strong>(key)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if a cookie with the given <em>key</em> exists.</p>
+
+<pre><code>request.cookies.has_key?(<span class="s">"foo"</span>) <span class="c">#=&gt; true</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/http/cookie.cr#L140" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

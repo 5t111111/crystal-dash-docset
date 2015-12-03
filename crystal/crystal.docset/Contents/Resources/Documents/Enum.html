@@ -1,0 +1,1238 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/manastech/crystal"/>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-710"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Enum"></a><title>Enum</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">abstract struct</span> Enum
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="Enum.html">Enum</a></li>
+<li class="superclass"><a href="Value.html">Value</a></li>
+<li class="superclass"><a href="Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Enum is the base type of all enums.</p>
+
+<p>An enum is a set of integer values, where each value has an associated name. For example:</p>
+
+<pre><code><span class="k">enum</span> <span class="t">Color</span>
+  <span class="t">Red</span>    <span class="c"># 0</span>
+  <span class="t">Green</span>  <span class="c"># 1</span>
+  <span class="t">Blue</span>   <span class="c"># 2</span>
+<span class="k">end</span></code></pre>
+
+<p>Values start with the value 0 and are incremented by one, but can be overwritten.</p>
+
+<p>To get the underlying value you invoke value on it:</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Green</span>.value <span class="c">#=&gt; 1</span></code></pre>
+
+<p>Each constant (member) in the enum has the type of the enum:</p>
+
+<pre><code><span class="k">typeof</span>(<span class="t">Color</span><span class="t">::</span><span class="t">Red</span>) <span class="c">#=&gt; Color</span></code></pre>
+
+<h3>Flags enum</h3>
+
+<p>An enum can be marked with the @[Flags] attribute. This changes the default values:</p>
+
+<pre><code>@[<span class="t">Flags</span>]
+<span class="k">enum</span> <span class="t">IOMode</span>
+  <span class="t">Read</span>   <span class="c"># 1</span>
+  <span class="t">Write</span>  <span class="c"># 2</span>
+  <span class="t">Async</span>  <span class="c"># 4</span>
+<span class="k">end</span></code></pre>
+
+<p>Additionally, some methods change their behaviour.</p>
+
+<h3>Enums from integers</h3>
+
+<p>An enum can be created from an integer:</p>
+
+<pre><code>puts <span class="t">Color</span>.<span class="k">new</span>(<span class="n">1</span>) <span class="c">#=&gt; prints &#34;Green&#34;</span></code></pre>
+
+<p>Values that don&#39;t correspond to an enum&#39;s constants are allowed: the value will still be of type Color,
+but when printed you will get the underlying value:</p>
+
+<pre><code>puts <span class="t">Color</span>.<span class="k">new</span>(<span class="n">10</span>) <span class="c">#=&gt; prints &#34;10&#34;</span></code></pre>
+
+<p>This method is mainly intended to convert integers from C to enums in Crystal.</p>
+
+<h3>Question methods</h3>
+
+<p>An enum automatically defines question methods for each member, using <code><a href="String.html#underscore-instance-method">String#underscore</a></code> for the
+method name. If the case of regular enums, this compares by equality (<code><a href="Enum.html#%3D%3D%28other%3Aself%29-instance-method">#==</a></code>). In the case of flags enums,
+this invokes <code><a href="Enum.html#includes%3F%28other%3Aself%29-instance-method">#includes?</a></code>. For example:</p>
+
+<pre><code>color <span class="o">=</span> <span class="t">Color</span><span class="t">::</span><span class="t">Blue</span>
+color.red?  <span class="c">#=&gt; false</span>
+color.blue? <span class="c">#=&gt; true</span>
+
+mode <span class="o">=</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="o">|</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Async</span>
+mode.read?  <span class="c">#=&gt; true</span>
+mode.write? <span class="c">#=&gt; false</span>
+mode.async? <span class="c">#=&gt; true</span></code></pre>
+
+<p>This is very convenient in <code>case</code> expressions:</p>
+
+<pre><code><span class="k">case</span> color
+<span class="k">when</span> .red?
+  puts <span class="s">&#34;Got red&#34;</span>
+<span class="k">when</span> .blue?
+  puts <span class="s">&#34;Got blue&#34;</span>
+<span class="k">end</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Comparable.html">Comparable(self)</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr" target="_blank">enum.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_value%28value%29%3Aself-class-method" class="signature"><strong>.from_value</strong>(value) : self</a>
+        
+          <div class="summary"><p>Returns the enum member that has the given value, or raises if no such member exists.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from_value%3F%28value%29%3Aself%7CNil-class-method" class="signature"><strong>.from_value?</strong>(value) : self | Nil</a>
+        
+          <div class="summary"><p>Returns the enum member that has the given value, or <code>nil</code> if no such member exists.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#names%3AArray%28String%29-class-method" class="signature"><strong>.names</strong> : Array(String)</a>
+        
+          <div class="summary"><p>Returns all enum members as an <code><a href="Array.html">Array</a>(<a href="String.html">String</a>)</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%28string%29-class-method" class="signature"><strong>.parse</strong>(string)</a>
+        
+          <div class="summary"><p>Returns the enum member that has the given name, or raises if no such member exists.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%3F%28string%29%3Aself%7CNil-class-method" class="signature"><strong>.parse?</strong>(string) : self | Nil</a>
+        
+          <div class="summary"><p>Returns the enum member that has the given name, or <code>nil</code> if no such member exists.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#values%3AArray%28self%29-class-method" class="signature"><strong>.values</strong> : Array(self)</a>
+        
+          <div class="summary"><p>Returns all enum members as an <code><a href="Array.html">Array</a>(self)</code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%26%28other%3Aself%29-instance-method" class="signature"><strong>#&amp;</strong>(other : self)</a>
+        
+          <div class="summary"><p>Returns the enum member that results from applying a logical &#34;and&#34; operation between this enum member&#39;s value and <em>other</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2B%28other%3AInt%29-instance-method" class="signature"><strong>#+</strong>(other : Int)</a>
+        
+          <div class="summary"><p>Returns the enum member that results from adding <em>other</em> to this enum member&#39;s value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28other%3AInt%29-instance-method" class="signature"><strong>#-</strong>(other : Int)</a>
+        
+          <div class="summary"><p>Returns the enum member that results from subtracting <em>other</em> to this enum member&#39;s value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3D%3E%28other%3Aself%29-instance-method" class="signature"><strong>#</strong>(other : self)</a>
+        
+          <div class="summary"><p>Compares this enum member against another, according to their underlying value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28other%3Aself%29-instance-method" class="signature"><strong>#==</strong>(other : self)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if this enum member and <em>other</em> have the same underlying value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5E%28other%3Aself%29-instance-method" class="signature"><strong>#^</strong>(other : self)</a>
+        
+          <div class="summary"><p>Returns the enum member that results from applying a logical &#34;xor&#34; operation between this enum member&#39;s value and <em>other</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hash-instance-method" class="signature"><strong>#hash</strong></a>
+        
+          <div class="summary"><p>Returns a hash value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#includes%3F%28other%3Aself%29-instance-method" class="signature"><strong>#includes?</strong>(other : self)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if this enum member&#39;s value includes <em>other</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_f32%3AFloat32-instance-method" class="signature"><strong>#to_f32</strong> : Float32</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="Float32.html">Float32</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_f64%3AFloat64-instance-method" class="signature"><strong>#to_f64</strong> : Float64</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="Float64.html">Float64</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_i%3AInt32-instance-method" class="signature"><strong>#to_i</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as an <code><a href="Int32.html">Int32</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_i16%3AInt16-instance-method" class="signature"><strong>#to_i16</strong> : Int16</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="Int16.html">Int16</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_i32%3AInt32-instance-method" class="signature"><strong>#to_i32</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="Int32.html">Int32</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_i64%3AInt64-instance-method" class="signature"><strong>#to_i64</strong> : Int64</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="Int64.html">Int64</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_i8%3AInt8-instance-method" class="signature"><strong>#to_i8</strong> : Int8</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="Int8.html">Int8</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#to_s</strong>(io : IO) : Nil</a>
+        
+          <div class="summary"><p>Appends a String representation of this enum member to the given IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%3AString-instance-method" class="signature"><strong>#to_s</strong> : String</a>
+        
+          <div class="summary"><p>Returns a String representation of this enum member.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_u16%3AUInt16-instance-method" class="signature"><strong>#to_u16</strong> : UInt16</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="UInt16.html">UInt16</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_u32%3AUInt32-instance-method" class="signature"><strong>#to_u32</strong> : UInt32</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="UInt32.html">UInt32</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_u64%3AUInt64-instance-method" class="signature"><strong>#to_u64</strong> : UInt64</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="UInt64.html">UInt64</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_u8%3AUInt8-instance-method" class="signature"><strong>#to_u8</strong> : UInt8</a>
+        
+          <div class="summary"><p>Returns the value of this enum member as a <code><a href="UInt8.html">UInt8</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%7C%28other%3Aself%29-instance-method" class="signature"><strong>#|</strong>(other : self)</a>
+        
+          <div class="summary"><p>Returns the enum member that results from applying a logical &#34;or&#34; operation between this enum member&#39;s value and <em>other</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%7E-instance-method" class="signature"><strong>#~</strong></a>
+        
+          <div class="summary"><p>Returns the enum member that results from applying a logical &#34;not&#34; operation of this enum member&#39;s value.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Macro Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#flags%28%2Avalues%29-macro" class="signature"><strong>flags</strong>(*values)</a>
+        
+          <div class="summary"><p>Convenience macro to create an <em>or</em>ed enum from the given members.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Comparable.html">Comparable(T)</a></code>
+</h3>
+  
+    <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
+      <span>
+    , 
+  
+    </span></a><a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>
+    , 
+  
+    </span></a><a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>==(other : T)</span>
+    ==</a>, 
+  
+    <a href="Comparable.html#%3E%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;(other : T)</span>
+    &gt;</a>, 
+  
+    <a href="Comparable.html#%3E%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;=(other : T)</span>
+    &gt;=</a>, 
+  
+    <a href="Comparable.html#between%3F%28min%2Cmax%29-instance-method" class="tooltip">
+      <span>between?(min, max)</span>
+    between?</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="Value.html">Value</a></code>
+</h3>
+  
+    <a href="Value.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Value.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br/>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="from_value(value):self-class-method">
+      <a class="dashingAutolink" name="autolink-711"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_value%28value%29%20%3A%20self"></a><div class="signature">
+        
+        def self.<strong>from_value</strong>(value) : self
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the enum member that has the given value, or raises
+if no such member exists.</p>
+
+<pre><code><span class="t">Color</span>.from_value?(<span class="n">0</span>) <span class="c">#=&gt; Color::Red</span>
+<span class="t">Color</span>.from_value?(<span class="n">1</span>) <span class="c">#=&gt; Color::Green</span>
+<span class="t">Color</span>.from_value?(<span class="n">2</span>) <span class="c">#=&gt; Color::Blue</span>
+<span class="t">Color</span>.from_value?(<span class="n">3</span>) <span class="c">#=&gt; Exception</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L329" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from_value?(value):self|Nil-class-method">
+      <a class="dashingAutolink" name="autolink-712"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_value%3F%28value%29%20%3A%20self%20%7C%20Nil"></a><div class="signature">
+        
+        def self.<strong>from_value?</strong>(value) : self | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the enum member that has the given value, or <code>nil</code> if
+no such member exists.</p>
+
+<pre><code><span class="t">Color</span>.from_value?(<span class="n">0</span>) <span class="c">#=&gt; Color::Red</span>
+<span class="t">Color</span>.from_value?(<span class="n">1</span>) <span class="c">#=&gt; Color::Green</span>
+<span class="t">Color</span>.from_value?(<span class="n">2</span>) <span class="c">#=&gt; Color::Blue</span>
+<span class="t">Color</span>.from_value?(<span class="n">3</span>) <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L313" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="names:Array(String)-class-method">
+      <a class="dashingAutolink" name="autolink-713"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.names%20%3A%20Array%28String%29"></a><div class="signature">
+        
+        def self.<strong>names</strong> : <a href="Array.html">Array</a>(<a href="String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns all enum members as an <code><a href="Array.html">Array</a>(<a href="String.html">String</a>)</code>.</p>
+
+<pre><code><span class="t">Color</span>.names <span class="c">#=&gt; [&#34;Red&#34;, &#34;Green&#34;, &#34;Blue&#34;]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L283" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse(string)-class-method">
+      <a class="dashingAutolink" name="autolink-714"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28string%29"></a><div class="signature">
+        
+        def self.<strong>parse</strong>(string)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the enum member that has the given name, or
+raises if no such member exists. The comparison is made by using
+<code><a href="String.html#camelcase-instance-method">String#camelcase</a></code> between <em>string</em> and the enum members names.</p>
+
+<pre><code><span class="t">Color</span>.parse(<span class="s">&#34;Red&#34;</span>)    <span class="c">#=&gt; Color::Red</span>
+<span class="t">Color</span>.parse(<span class="s">&#34;BLUE&#34;</span>)   <span class="c">#=&gt; Color::Blue</span>
+<span class="t">Color</span>.parse(<span class="s">&#34;Yellow&#34;</span>) <span class="c">#=&gt; Exception</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L350" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse?(string):self|Nil-class-method">
+      <a class="dashingAutolink" name="autolink-715"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%3F%28string%29%20%3A%20self%20%7C%20Nil"></a><div class="signature">
+        
+        def self.<strong>parse?</strong>(string) : self | <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the enum member that has the given name, or
+<code>nil</code> if no such member exists. The comparison is made by using
+<code><a href="String.html#camelcase-instance-method">String#camelcase</a></code> between <em>string</em> and the enum members names.</p>
+
+<pre><code><span class="t">Color</span>.parse?(<span class="s">&#34;Red&#34;</span>)    <span class="c">#=&gt; Color::Red</span>
+<span class="t">Color</span>.parse?(<span class="s">&#34;BLUE&#34;</span>)   <span class="c">#=&gt; Color::Blue</span>
+<span class="t">Color</span>.parse?(<span class="s">&#34;Yellow&#34;</span>) <span class="c">#=&gt; nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L363" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="values:Array(self)-class-method">
+      <a class="dashingAutolink" name="autolink-716"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.values%20%3A%20Array%28self%29"></a><div class="signature">
+        
+        def self.<strong>values</strong> : <a href="Array.html">Array</a>(self)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns all enum members as an <code><a href="Array.html">Array</a>(self)</code>.</p>
+
+<pre><code><span class="t">Color</span>.values <span class="c">#=&gt; [Color::Red, Color::Green, Color::Blue]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L296" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="&amp;(other:self)-instance-method">
+      <a class="dashingAutolink" name="autolink-717"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%26%28other%20%3A%20self%29"></a><div class="signature">
+        
+        def <strong>&amp;</strong>(other : self)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the enum member that results from applying a logical
+&#34;and&#34; operation between this enum member&#39;s value and <em>other</em>.
+This is mostly useful with flag enums.</p>
+
+<pre><code>(<span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="o">|</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Async</span>) <span class="o">&amp;</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="c">#=&gt; IOMode::Read</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L207" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(other:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-718"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>+</strong>(other : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the enum member that results from adding <em>other</em>
+to this enum member&#39;s value.</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Red</span> <span class="o">+</span> <span class="n">1</span> <span class="c">#=&gt; Color::Blue</span>
+<span class="t">Color</span><span class="t">::</span><span class="t">Red</span> <span class="o">+</span> <span class="n">2</span> <span class="c">#=&gt; Color::Green</span>
+<span class="t">Color</span><span class="t">::</span><span class="t">Red</span> <span class="o">+</span> <span class="n">3</span> <span class="c">#=&gt; 3</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L173" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(other:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-719"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>-</strong>(other : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the enum member that results from subtracting <em>other</em>
+to this enum member&#39;s value.</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Blue</span> <span class="o">-</span> <span class="n">1</span> <span class="c">#=&gt; Color::Green</span>
+<span class="t">Color</span><span class="t">::</span><span class="t">Blue</span> <span class="o">-</span> <span class="n">2</span> <span class="c">#=&gt; Color::Red</span>
+<span class="t">Color</span><span class="t">::</span><span class="t">Blue</span> <span class="o">-</span> <span class="n">3</span> <span class="c">#=&gt; -1</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L185" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;=&gt;(other:self)-instance-method">
+      <a class="dashingAutolink" name="autolink-720"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%28other%20%3A%20self%29"></a><div class="signature">
+        
+        def <strong></strong>(other : self)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Compares this enum member against another, according to their underlying
+value.</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Red</span> <span class="o"></span> <span class="t">Color</span><span class="t">::</span><span class="t">Blue</span>  <span class="c">#=&gt; -1</span>
+<span class="t">Color</span><span class="t">::</span><span class="t">Blue</span> <span class="o"></span> <span class="t">Color</span><span class="t">::</span><span class="t">Red</span>  <span class="c">#=&gt; 1</span>
+<span class="t">Color</span><span class="t">::</span><span class="t">Blue</span> <span class="o"></span> <span class="t">Color</span><span class="t">::</span><span class="t">Blue</span> <span class="c">#=&gt; 0</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L232" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="==(other:self)-instance-method">
+      <a class="dashingAutolink" name="autolink-721"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+        
+        def <strong>==</strong>(other : self)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if this enum member and <em>other</em> have the same underlying value.</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Red</span> <span class="o">==</span> <span class="t">Color</span><span class="t">::</span><span class="t">Red</span>  <span class="c">#=&gt; true</span>
+<span class="t">Color</span><span class="t">::</span><span class="t">Red</span> <span class="o">==</span> <span class="t">Color</span><span class="t">::</span><span class="t">Blue</span> <span class="c">#=&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L269" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="^(other:self)-instance-method">
+      <a class="dashingAutolink" name="autolink-722"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5E%28other%20%3A%20self%29"></a><div class="signature">
+        
+        def <strong>^</strong>(other : self)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the enum member that results from applying a logical
+&#34;xor&#34; operation between this enum member&#39;s value and <em>other</em>.
+This is mostly useful with flag enums.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L214" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hash-instance-method">
+      <a class="dashingAutolink" name="autolink-723"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+        
+        def <strong>hash</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns a hash value. This is the hash of the underlying value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L274" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="includes?(other:self)-instance-method">
+      <a class="dashingAutolink" name="autolink-724"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20includes%3F%28other%20%3A%20self%29"></a><div class="signature">
+        
+        def <strong>includes?</strong>(other : self)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if this enum member&#39;s value includes <em>other</em>. This
+performs a logical &#34;and&#34; between this enum member&#39;s value and <em>other</em>&#39;s,
+so instead of writing:</p>
+
+<pre><code>(member <span class="o">&amp;</span> value) <span class="o">!=</span> <span class="n">0</span></code></pre>
+
+<p>you can write:</p>
+
+<pre><code>member.includes?(value)</code></pre>
+
+<p>The above is mostly useful with flag enums.</p>
+
+<p>For example:</p>
+
+<pre><code>mode <span class="o">=</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="o">|</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Write</span>
+mode.includes?(<span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span>)  <span class="c">#=&gt; true</span>
+mode.includes?(<span class="t">IOMode</span><span class="t">::</span><span class="t">Async</span>) <span class="c">#=&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L259" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_f32:Float32-instance-method">
+      <a class="dashingAutolink" name="autolink-725"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f32%20%3A%20Float32"></a><div class="signature">
+        
+        def <strong>to_f32</strong> : <a href="Float32.html">Float32</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="Float32.html">Float32</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_f64:Float64-instance-method">
+      <a class="dashingAutolink" name="autolink-726"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f64%20%3A%20Float64"></a><div class="signature">
+        
+        def <strong>to_f64</strong> : <a href="Float64.html">Float64</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="Float64.html">Float64</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i:Int32-instance-method">
+      <a class="dashingAutolink" name="autolink-727"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i%20%3A%20Int32"></a><div class="signature">
+        
+        def <strong>to_i</strong> : <a href="Int32.html">Int32</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the value of this enum member as an <code><a href="Int32.html">Int32</a></code>.</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Blue</span>.to_i <span class="c">#=&gt; 2</span>
+(<span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="o">|</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Write</span>).to_i <span class="c">#=&gt; 3</span>
+
+<span class="t">Color</span>.<span class="k">new</span>(<span class="n">10</span>).to_i <span class="c">#=&gt; 10</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L151" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i16:Int16-instance-method">
+      <a class="dashingAutolink" name="autolink-728"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i16%20%3A%20Int16"></a><div class="signature">
+        
+        def <strong>to_i16</strong> : <a href="Int16.html">Int16</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="Int16.html">Int16</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i32:Int32-instance-method">
+      <a class="dashingAutolink" name="autolink-729"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i32%20%3A%20Int32"></a><div class="signature">
+        
+        def <strong>to_i32</strong> : <a href="Int32.html">Int32</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="Int32.html">Int32</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i64:Int64-instance-method">
+      <a class="dashingAutolink" name="autolink-730"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i64%20%3A%20Int64"></a><div class="signature">
+        
+        def <strong>to_i64</strong> : <a href="Int64.html">Int64</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="Int64.html">Int64</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i8:Int8-instance-method">
+      <a class="dashingAutolink" name="autolink-731"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i8%20%3A%20Int8"></a><div class="signature">
+        
+        def <strong>to_i8</strong> : <a href="Int8.html">Int8</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="Int8.html">Int8</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io:IO):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-732"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>to_s</strong>(io : <a href="IO.html">IO</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Appends a String representation of this enum member to the given IO. See <code><a href="Enum.html#to_s%3AString-instance-method">#to_s</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s:String-instance-method">
+      <a class="dashingAutolink" name="autolink-733"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%20%3A%20String"></a><div class="signature">
+        
+        def <strong>to_s</strong> : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a String representation of this enum member.
+In the case of regular enums, this is just the name of the member.
+In the case of flag enums, it&#39;s the names joined by commas, or &#34;None&#34;,
+if the value is zero.</p>
+
+<p>If an enum&#39;s value doesn&#39;t match a member&#39;s value, the raw value
+is returned as a string.</p>
+
+<pre><code><span class="t">Color</span><span class="t">::</span><span class="t">Red</span>.to_s   <span class="c">#=&gt; &#34;Red&#34;</span>
+<span class="t">IOMode</span><span class="t">::</span><span class="t">None</span>.to_s <span class="c">#=&gt; &#34;None&#34;</span>
+(<span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="o">|</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Write</span>).to_s <span class="c">#=&gt; &#34;Read, Write&#34;</span>
+
+<span class="t">Color</span>.<span class="k">new</span>(<span class="n">10</span>).to_s <span class="c">#=&gt; &#34;10&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L128" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_u16:UInt16-instance-method">
+      <a class="dashingAutolink" name="autolink-734"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u16%20%3A%20UInt16"></a><div class="signature">
+        
+        def <strong>to_u16</strong> : <a href="UInt16.html">UInt16</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="UInt16.html">UInt16</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_u32:UInt32-instance-method">
+      <a class="dashingAutolink" name="autolink-735"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u32%20%3A%20UInt32"></a><div class="signature">
+        
+        def <strong>to_u32</strong> : <a href="UInt32.html">UInt32</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="UInt32.html">UInt32</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_u64:UInt64-instance-method">
+      <a class="dashingAutolink" name="autolink-736"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u64%20%3A%20UInt64"></a><div class="signature">
+        
+        def <strong>to_u64</strong> : <a href="UInt64.html">UInt64</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="UInt64.html">UInt64</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_u8:UInt8-instance-method">
+      <a class="dashingAutolink" name="autolink-737"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u8%20%3A%20UInt8"></a><div class="signature">
+        
+        def <strong>to_u8</strong> : <a href="UInt8.html">UInt8</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the value of this enum member as a <code><a href="UInt8.html">UInt8</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="|(other:self)-instance-method">
+      <a class="dashingAutolink" name="autolink-738"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%7C%28other%20%3A%20self%29"></a><div class="signature">
+        
+        def <strong>|</strong>(other : self)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the enum member that results from applying a logical
+&#34;or&#34; operation between this enum member&#39;s value and <em>other</em>.
+This is mostly useful with flag enums.</p>
+
+<pre><code>(<span class="t">IOMode</span><span class="t">::</span><span class="t">Read</span> <span class="o">|</span> <span class="t">IOMode</span><span class="t">::</span><span class="t">Async</span>) <span class="c">#=&gt; IOMode::Read | IOMode::Async</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L196" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="~-instance-method">
+      <a class="dashingAutolink" name="autolink-739"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20~"></a><div class="signature">
+        
+        def <strong>~</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the enum member that results from applying a logical
+&#34;not&#34; operation of this enum member&#39;s value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L220" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Macro Detail</h2>
+  
+    <div class="entry-detail" id="flags(*values)-macro">
+      <a class="dashingAutolink" name="autolink-740"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20flags%28%2Avalues%29"></a><div class="signature">
+        
+        macro <strong>flags</strong>(*values)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Convenience macro to create an <em>or</em>ed enum from the given members.</p>
+
+<pre><code><span class="t">IOMode</span>.flags(<span class="t">Read</span>, <span class="t">Write</span>) <span class="c">#=&gt; IOMode::Read | IOMode::Write</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/enum.cr#L379" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+
+
+</body></html>

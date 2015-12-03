@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>OAuth2::AccessToken</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">abstract class</span> OAuth2::AccessToken
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../OAuth2/AccessToken.html">OAuth2::AccessToken</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Direct Known Subclasses</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../OAuth2/AccessToken/Bearer.html">OAuth2::AccessToken::Bearer</a></li>
+  
+    <li class="other-type"><a href="../OAuth2/AccessToken/Mac.html">OAuth2::AccessToken::Mac</a></li>
+  
+  </ul>
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/access_token/access_token.cr" target="_blank">oauth2/access_token/access_token.cr</a>
+    
+    <br>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28access_token%2Cexpires_in%2Crefresh_token%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cscope%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(access_token, expires_in, refresh_token = <span class="n">nil</span>, scope = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#access_token-instance-method" class="signature"><strong>#access_token</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#access_token%3D%28access_token%29-instance-method" class="signature"><strong>#access_token=</strong>(access_token)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#authenticate%28request%3AHTTP%3A%3ARequest%2Cssl%29-instance-method" class="signature"><strong>#authenticate</strong>(request : HTTP::Request, ssl)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#authenticate%28client%3AHTTP%3A%3AClient%29-instance-method" class="signature"><strong>#authenticate</strong>(client : HTTP::Client)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#expires_in-instance-method" class="signature"><strong>#expires_in</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#expires_in%3D%28expires_in%29-instance-method" class="signature"><strong>#expires_in=</strong>(expires_in)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#refresh_token-instance-method" class="signature"><strong>#refresh_token</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#refresh_token%3D%28refresh_token%29-instance-method" class="signature"><strong>#refresh_token=</strong>(refresh_token)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scope-instance-method" class="signature"><strong>#scope</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scope%3D%28scope%29-instance-method" class="signature"><strong>#scope=</strong>(scope)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="../Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="../Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="../Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(pull : <a href="../JSON/PullParser.html">JSON::PullParser</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/access_token/access_token.cr#L2" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='new(access_token,expires_in,refresh_token=&lt;spanclass="n"&gt;nil&lt;/span&gt;,scope=&lt;spanclass="n"&gt;nil&lt;/span&gt;)-class-method'>
+      <div class="signature">
+        
+        def self.<strong>new</strong>(access_token, expires_in, refresh_token = <span class="n">nil</span>, scope = <span class="n">nil</span>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/access_token/access_token.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="access_token-instance-method">
+      <div class="signature">
+        
+        def <strong>access_token</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="access_token=(access_token)-instance-method">
+      <div class="signature">
+        
+        def <strong>access_token=</strong>(access_token)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="authenticate(request:HTTP::Request,ssl)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>authenticate</strong>(request : <a href="../HTTP/Request.html">HTTP::Request</a>, ssl)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/access_token/access_token.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="authenticate(client:HTTP::Client)-instance-method">
+      <div class="signature">
+        
+        def <strong>authenticate</strong>(client : <a href="../HTTP/Client.html">HTTP::Client</a>)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/oauth2/access_token/access_token.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="expires_in-instance-method">
+      <div class="signature">
+        
+        def <strong>expires_in</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="expires_in=(expires_in)-instance-method">
+      <div class="signature">
+        
+        def <strong>expires_in=</strong>(expires_in)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="refresh_token-instance-method">
+      <div class="signature">
+        
+        def <strong>refresh_token</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="refresh_token=(refresh_token)-instance-method">
+      <div class="signature">
+        
+        def <strong>refresh_token=</strong>(refresh_token)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scope-instance-method">
+      <div class="signature">
+        
+        def <strong>scope</strong>
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scope=(scope)-instance-method">
+      <div class="signature">
+        
+        def <strong>scope=</strong>(scope)
+
+        
+      </div>
+      
+      <br>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,892 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/manastech/crystal"/>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-4410"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/StringScanner"></a><title>StringScanner</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> StringScanner
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="StringScanner.html">StringScanner</a></li>
+<li class="superclass"><a href="Reference.html">Reference</a></li>
+<li class="superclass"><a href="Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p><code><a href="StringScanner.html">StringScanner</a></code> provides for lexical scanning operations on a String.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;string_scanner&#34;</span>
+s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;This is an example string&#34;</span>)
+s.eos?         <span class="c"># =&gt; false</span>
+
+s.scan(<span class="s">/\w+/</span>)  <span class="c"># =&gt; &#34;This&#34;</span>
+s.scan(<span class="s">/\w+/</span>)  <span class="c"># =&gt; nil</span>
+s.scan(<span class="s">/\s+/</span>)  <span class="c"># =&gt; &#34; &#34;</span>
+s.scan(<span class="s">/\s+/</span>)  <span class="c"># =&gt; nil</span>
+s.scan(<span class="s">/\w+/</span>)  <span class="c"># =&gt; &#34;is&#34;</span>
+s.eos?         <span class="c"># =&gt; false</span>
+
+s.scan(<span class="s">/\s+/</span>)  <span class="c"># =&gt; &#34; &#34;</span>
+s.scan(<span class="s">/\w+/</span>)  <span class="c"># =&gt; &#34;an&#34;</span>
+s.scan(<span class="s">/\s+/</span>)  <span class="c"># =&gt; &#34; &#34;</span>
+s.scan(<span class="s">/\w+/</span>)  <span class="c"># =&gt; &#34;example&#34;</span>
+s.scan(<span class="s">/\s+/</span>)  <span class="c"># =&gt; &#34; &#34;</span>
+s.scan(<span class="s">/\w+/</span>)  <span class="c"># =&gt; &#34;string&#34;</span>
+s.eos?         <span class="c"># =&gt; true</span>
+
+s.scan(<span class="s">/\s+/</span>)  <span class="c"># =&gt; nil</span>
+s.scan(<span class="s">/\w+/</span>)  <span class="c"># =&gt; nil</span></code></pre>
+
+<p>Scanning a string means remembering the position of a <em>scan offset</em>, which is
+just an index. Scanning moves the offset forward, and matches are sought
+after the offset; usually immediately after it.</p>
+
+<h3>Method Categories</h3>
+
+<p>Methods that advance the scan offset:</p>
+
+<ul>
+<li><code><a href="StringScanner.html#scan%28pattern%29-instance-method">#scan</a></code></li>
+<li><code><a href="StringScanner.html#scan_until%28pattern%29-instance-method">#scan_until</a></code></li>
+<li><code><a href="StringScanner.html#skip%28pattern%29-instance-method">#skip</a></code></li>
+<li><code><a href="StringScanner.html#skip_until%28pattern%29-instance-method">#skip_until</a></code></li>
+</ul>
+
+<p>Methods that look ahead:</p>
+
+<ul>
+<li>`#peek&#39;</li>
+<li>`#check&#39;</li>
+<li>`#check_until&#39;</li>
+</ul>
+
+<p>Methods that deal with the position of the offset:</p>
+
+<ul>
+<li><code><a href="StringScanner.html#offset-instance-method">#offset</a></code></li>
+<li><code><a href="StringScanner.html#offset%3D%28position%3AInt%29-instance-method">#offset=</a></code></li>
+<li><code><a href="StringScanner.html#eos%3F-instance-method">#eos?</a></code></li>
+<li><code><a href="StringScanner.html#reset-instance-method">#reset</a></code></li>
+<li><code><a href="StringScanner.html#terminate-instance-method">#terminate</a></code></li>
+</ul>
+
+<p>Methods that deal with the last match:</p>
+
+<ul>
+<li><code><a href="StringScanner.html#%5B%5D%28n%29-instance-method">#[]</a></code></li>
+<li><code><a href="StringScanner.html#%5B%5D%3F%28n%29-instance-method">#[]?</a></code></li>
+</ul>
+
+<p>Miscellaneous methods:</p>
+
+<ul>
+<li><code><a href="StringScanner.html#inspect%28io%3AIO%29-instance-method">#inspect</a></code></li>
+<li><code><a href="StringScanner.html#string-instance-method">#string</a></code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr" target="_blank">string_scanner.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28str%29-class-method" class="signature"><strong>.new</strong>(str)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28n%29-instance-method" class="signature"><strong>#[]</strong>(n)</a>
+        
+          <div class="summary"><p>Returns the <code>n</code>-th subgroup in the most recent match.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28n%29-instance-method" class="signature"><strong>#[]?</strong>(n)</a>
+        
+          <div class="summary"><p>Returns the nilable <code>n</code>-th subgroup in the most recent match.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#check%28pattern%29-instance-method" class="signature"><strong>#check</strong>(pattern)</a>
+        
+          <div class="summary"><p>Returns the value that <code><a href="StringScanner.html#scan%28pattern%29-instance-method">#scan</a></code> would return, without advancing the scan offset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#check_until%28pattern%29-instance-method" class="signature"><strong>#check_until</strong>(pattern)</a>
+        
+          <div class="summary"><p>Returns the value that <code><a href="StringScanner.html#scan_until%28pattern%29-instance-method">#scan_until</a></code> would return, without advancing the scan offset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#eos%3F-instance-method" class="signature"><strong>#eos?</strong></a>
+        
+          <div class="summary"><p>Returns true if the scan offset is at the end of the string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect%28io%3AIO%29-instance-method" class="signature"><strong>#inspect</strong>(io : IO)</a>
+        
+          <div class="summary"><p>Writes a representation of the scanner.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#offset-instance-method" class="signature"><strong>#offset</strong></a>
+        
+          <div class="summary"><p>Returns the current position of the scan offset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#offset%3D%28position%3AInt%29-instance-method" class="signature"><strong>#offset=</strong>(position : Int)</a>
+        
+          <div class="summary"><p>Sets the position of the scan offset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#peek%28len%29-instance-method" class="signature"><strong>#peek</strong>(len)</a>
+        
+          <div class="summary"><p>Extracts a string corresponding to string[offset,<code>len</code>], without advancing the scan offset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reset-instance-method" class="signature"><strong>#reset</strong></a>
+        
+          <div class="summary"><p>Resets the scan offset to the beginning and clears the last match.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rest-instance-method" class="signature"><strong>#rest</strong></a>
+        
+          <div class="summary"><p>Returns the remainder of the string after the scan offset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scan%28pattern%29-instance-method" class="signature"><strong>#scan</strong>(pattern)</a>
+        
+          <div class="summary"><p>Tries to match with <code>pattern</code> at the current position.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scan_until%28pattern%29-instance-method" class="signature"><strong>#scan_until</strong>(pattern)</a>
+        
+          <div class="summary"><p>Scans the string <em>until</em> the <code>pattern</code> is matched.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#skip%28pattern%29-instance-method" class="signature"><strong>#skip</strong>(pattern)</a>
+        
+          <div class="summary"><p>Attempts to skip over the given <code>pattern</code> beginning with the scan offset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#skip_until%28pattern%29-instance-method" class="signature"><strong>#skip_until</strong>(pattern)</a>
+        
+          <div class="summary"><p>Attempts to skip <em>until</em> the given <code>pattern</code> is found after the scan offset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#string-instance-method" class="signature"><strong>#string</strong></a>
+        
+          <div class="summary"><p>Returns the string being scanned.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#terminate-instance-method" class="signature"><strong>#terminate</strong></a>
+        
+          <div class="summary"><p>Moves the scan offset to the end of the string and clears the last match.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br/>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br/>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br/>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(str)-class-method">
+      <a class="dashingAutolink" name="autolink-4411"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28str%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(str)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="[](n)-instance-method">
+      <a class="dashingAutolink" name="autolink-4412"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28n%29"></a><div class="signature">
+        
+        def <strong>[]</strong>(n)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the <code>n</code>-th subgroup in the most recent match.</p>
+
+<p>Raises an exception if there was no last match or if there is no subgroup.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;Fri Dec 12 1975 14:39&#34;</span>)
+regex <span class="o">=</span> <span class="s">/(?&lt;wday&gt;\w+) (?&lt;month&gt;\w+) (?&lt;day&gt;\d+)/</span>
+s.scan(regex)  <span class="c"># =&gt; &#34;Fri Dec 12&#34;</span>
+s[<span class="n">0</span>]           <span class="c"># =&gt; &#34;Fri Dec 12&#34;</span>
+s[<span class="n">1</span>]           <span class="c"># =&gt; &#34;Fri&#34;</span>
+s[<span class="n">2</span>]           <span class="c"># =&gt; &#34;Dec&#34;</span>
+s[<span class="n">3</span>]           <span class="c"># =&gt; &#34;12&#34;</span>
+s[<span class="s">&#34;wday&#34;</span>]      <span class="c"># =&gt; &#34;Fri&#34;</span>
+s[<span class="s">&#34;month&#34;</span>]     <span class="c"># =&gt; &#34;Dec&#34;</span>
+s[<span class="s">&#34;day&#34;</span>]       <span class="c"># =&gt; &#34;12&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(n)-instance-method">
+      <a class="dashingAutolink" name="autolink-4413"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28n%29"></a><div class="signature">
+        
+        def <strong>[]?</strong>(n)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the nilable <code>n</code>-th subgroup in the most recent match.</p>
+
+<p>Returns <code>nil</code> if there was no last match or if there is no subgroup.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;Fri Dec 12 1975 14:39&#34;</span>)
+regex <span class="o">=</span> <span class="s">/(?&lt;wday&gt;\w+) (?&lt;month&gt;\w+) (?&lt;day&gt;\d+)/</span>
+s.scan(regex)  <span class="c"># =&gt; &#34;Fri Dec 12&#34;</span>
+s[<span class="n">0</span>]?           <span class="c"># =&gt; &#34;Fri Dec 12&#34;</span>
+s[<span class="n">1</span>]?           <span class="c"># =&gt; &#34;Fri&#34;</span>
+s[<span class="n">2</span>]?           <span class="c"># =&gt; &#34;Dec&#34;</span>
+s[<span class="n">3</span>]?           <span class="c"># =&gt; &#34;12&#34;</span>
+s[<span class="n">4</span>]?           <span class="c"># =&gt; nil</span>
+s[<span class="s">&#34;wday&#34;</span>]?      <span class="c"># =&gt; &#34;Fri&#34;</span>
+s[<span class="s">&#34;month&#34;</span>]?     <span class="c"># =&gt; &#34;Dec&#34;</span>
+s[<span class="s">&#34;day&#34;</span>]?       <span class="c"># =&gt; &#34;12&#34;</span>
+s[<span class="s">&#34;year&#34;</span>]?      <span class="c"># =&gt; nil</span>
+s.scan(<span class="s">/more/</span>)  <span class="c"># =&gt; nil</span>
+s[<span class="n">0</span>]?           <span class="c"># =&gt; nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L200" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="check(pattern)-instance-method">
+      <a class="dashingAutolink" name="autolink-4414"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20check%28pattern%29"></a><div class="signature">
+        
+        def <strong>check</strong>(pattern)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the value that <code><a href="StringScanner.html#scan%28pattern%29-instance-method">#scan</a></code> would return, without advancing the scan
+offset. The last match is still saved, however.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;this is a string&#34;</span>)
+s.offset <span class="o">=</span> <span class="n">5</span>
+s.check(<span class="s">/\w+/</span>)  <span class="c"># =&gt; &#34;is&#34;</span>
+s.check(<span class="s">/\w+/</span>)  <span class="c"># =&gt; &#34;is&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L150" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="check_until(pattern)-instance-method">
+      <a class="dashingAutolink" name="autolink-4415"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20check_until%28pattern%29"></a><div class="signature">
+        
+        def <strong>check_until</strong>(pattern)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the value that <code><a href="StringScanner.html#scan_until%28pattern%29-instance-method">#scan_until</a></code> would return, without advancing the
+scan offset. The last match is still saved, however.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;test string&#34;</span>)
+s.check_until(<span class="s">/tr/</span>) <span class="c"># =&gt; &#34;test str&#34;</span>
+s.check_until(<span class="s">/g/</span>)  <span class="c"># =&gt; &#34;test string&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L160" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="eos?-instance-method">
+      <a class="dashingAutolink" name="autolink-4416"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20eos%3F"></a><div class="signature">
+        
+        def <strong>eos?</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns true if the scan offset is at the end of the string.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;this is a string&#34;</span>)
+s.eos?                 <span class="c"># =&gt; false</span>
+s.scan(<span class="s">/(\w+\s?){4}/</span>)  <span class="c"># =&gt; &#34;this is a string&#34;</span>
+s.eos?                 <span class="c"># =&gt; true</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L211" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect(io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-4417"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>inspect</strong>(io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes a representation of the scanner.</p>
+
+<p>Includes the current position of the offset, the total size of the string,
+and five characters near the current position.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L251" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="offset-instance-method">
+      <a class="dashingAutolink" name="autolink-4418"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20offset"></a><div class="signature">
+        
+        def <strong>offset</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current position of the scan offset.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="offset=(position:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-4419"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20offset%3D%28position%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>offset=</strong>(position : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the position of the scan offset.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="peek(len)-instance-method">
+      <a class="dashingAutolink" name="autolink-4420"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20peek%28len%29"></a><div class="signature">
+        
+        def <strong>peek</strong>(len)
+
+        
+      </div>
+      
+        <div class="doc"><p>Extracts a string corresponding to string[offset,<code>len</code>], without advancing
+the scan offset.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L234" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reset-instance-method">
+      <a class="dashingAutolink" name="autolink-4421"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reset"></a><div class="signature">
+        
+        def <strong>reset</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Resets the scan offset to the beginning and clears the last match.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L216" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rest-instance-method">
+      <a class="dashingAutolink" name="autolink-4422"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rest"></a><div class="signature">
+        
+        def <strong>rest</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the remainder of the string after the scan offset.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;this is a string&#34;</span>)
+s.scan(<span class="s">/(\w+\s?){2}/</span>)  <span class="c"># =&gt; &#34;this is &#34;</span>
+s.rest                 <span class="c"># =&gt; &#34;a string&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L243" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scan(pattern)-instance-method">
+      <a class="dashingAutolink" name="autolink-4423"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scan%28pattern%29"></a><div class="signature">
+        
+        def <strong>scan</strong>(pattern)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Tries to match with <code>pattern</code> at the current position. If there&#39;s a match,
+the scanner advances the scan offset, the last match is saved, and it
+returns the matched string.  Otherwise, the scanner returns nil.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;test string&#34;</span>)
+s.scan(<span class="s">/\w+/</span>)   <span class="c"># =&gt; &#34;test&#34;</span>
+s.scan(<span class="s">/\w+/</span>)   <span class="c"># =&gt; nil</span>
+s.scan(<span class="s">/\s\w+/</span>) <span class="c"># =&gt; &#34; string&#34;</span>
+s.scan(<span class="s">/.*/</span>)    <span class="c"># =&gt; nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L82" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scan_until(pattern)-instance-method">
+      <a class="dashingAutolink" name="autolink-4424"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scan_until%28pattern%29"></a><div class="signature">
+        
+        def <strong>scan_until</strong>(pattern)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Scans the string <em>until</em> the <code>pattern</code> is matched. Returns the substring up
+to and including the end of the match, the last match is saved, and
+advances the scan offset.  Returns <code>nil</code> if no match.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">StringScanner</span>.<span class="k">new</span>(<span class="s">&#34;test string&#34;</span>)
+s.scan_until(<span class="s">/tr/</span>)   <span class="c"># =&gt; &#34;test str&#34;</span>
+s.scan_until(<span class="s">/tr/</span>)   <span class="c"># =&gt; nil</span>
+s.scan_until(<span class="s">/g/</span>)    <span class="c"># =&gt; &#34;ing&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L94" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="skip(pattern)-instance-method">
+      <a class="dashingAutolink" name="autolink-4425"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip%28pattern%29"></a><div class="signature">
+        
+        def <strong>skip</strong>(pattern)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Attempts to skip over the given <code>pattern</code> beginning with the scan offset.
+In other words, the pattern is not anchored to the current scan offset.</p>
+
+<p>If there&#39;s a match, the scanner advances the scan offset, the last match is
+saved, and it returns the size of the skipped match. Otherwise it returns
+<code>nil</code> and does not
+advance the offset.</p>
+
+<p>This method is the same as <code><a href="StringScanner.html#scan%28pattern%29-instance-method">#scan</a></code>, but without returning the matched
+string.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L122" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="skip_until(pattern)-instance-method">
+      <a class="dashingAutolink" name="autolink-4426"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip_until%28pattern%29"></a><div class="signature">
+        
+        def <strong>skip_until</strong>(pattern)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Attempts to skip <em>until</em> the given <code>pattern</code> is found after the scan
+offset. In other words, the pattern is not anchored to the current scan
+offset.</p>
+
+<p>If there&#39;s a match, the scanner advances the scan offset, the last match is
+saved, and it returns the size of the skip. Otherwise it returns <code>nil</code>
+and does not advance the
+offset.</p>
+
+<p>This method is the same as <code><a href="StringScanner.html#scan_until%28pattern%29-instance-method">#scan_until</a></code>, but without returning the matched
+string.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L138" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="string-instance-method">
+      <a class="dashingAutolink" name="autolink-4427"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20string"></a><div class="signature">
+        
+        def <strong>string</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the string being scanned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L228" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="terminate-instance-method">
+      <a class="dashingAutolink" name="autolink-4428"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20terminate"></a><div class="signature">
+        
+        def <strong>terminate</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Moves the scan offset to the end of the string and clears the last match.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/string_scanner.cr#L222" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

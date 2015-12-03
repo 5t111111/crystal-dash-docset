@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta id="repository-name" content="github.com/manastech/crystal">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  
+  <title>OptionParser</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> OptionParser
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="OptionParser.html">OptionParser</a></li>
+<li class="superclass"><a href="Reference.html">Reference</a></li>
+<li class="superclass"><a href="Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p><code><a href="OptionParser.html">OptionParser</a></code> is a class for command-line options processing. It supports:</p>
+
+<ul>
+<li>Short and long modifier style options (example: <code>-h</code>, <code>--help</code>)</li>
+<li>Passing arguments to the flags (example: <code>-f filename.txt</code>)</li>
+<li>Automatic help message generation</li>
+</ul>
+
+<p>Run <code>crystal</code> for an example of a CLI built with <code><a href="OptionParser.html">OptionParser</a></code>.</p>
+
+<p>Short example:</p>
+
+<pre><code><span class="k">require</span> <span class="s">"option_parser"</span>
+
+upcase <span class="o">=</span> <span class="n">false</span>
+destination <span class="o">=</span> <span class="s">"World"</span>
+
+<span class="t">OptionParser</span>.parse! <span class="k">do</span> <span class="o">|</span>parser<span class="o">|</span>
+  parser.banner <span class="o">=</span> <span class="s">"Usage: salute [arguments]"</span>
+  parser.on(<span class="s">"-u"</span>, <span class="s">"--upcase"</span>, <span class="s">"Upcases the sallute"</span>) { upcase <span class="o">=</span> <span class="n">true</span> }
+  parser.on(<span class="s">"-t NAME"</span>, <span class="s">"--to=NAME"</span>, <span class="s">"Specifies the name to salute"</span>) { <span class="o">|</span>name<span class="o">|</span> destination <span class="o">=</span> name }
+  parser.on(<span class="s">"-h"</span>, <span class="s">"--help"</span>, <span class="s">"Show this help"</span>) { puts parser }
+<span class="k">end</span>
+
+destination <span class="o">=</span> destination.upcase <span class="k">if</span> upcase
+puts <span class="s">"Hello </span><span class="i">#{</span>destination<span class="s"><span class="i">}</span>!"</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr" target="_blank">option_parser.cr</a>
+    
+    <br>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28%26block%29-class-method" class="signature"><strong>.new</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Creates a new parser, with its configuration specified in the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%28args%2C%26block%29-class-method" class="signature"><strong>.parse</strong>(args, &amp;block)</a>
+        
+          <div class="summary"><p>Creates a new parser, with its configuration specified in the block, and uses it to parse the passed <code>args</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%21%28%26block%29-class-method" class="signature"><strong>.parse!</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Creates a new parser, with its configuration specified in the block, and uses it to parse the arguments passed to the program.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+          <div class="summary"><p>Creates a new parser.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#banner%3D%28banner%29-instance-method" class="signature"><strong>#banner=</strong>(banner)</a>
+        
+          <div class="summary"><p>Establishes the initial message for the help printout.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on%28flag%2Cdescription%2C%26block%3AString-%3E%29-instance-method" class="signature"><strong>#on</strong>(flag, description, &amp;block : String -&gt; )</a>
+        
+          <div class="summary"><p>Establishes a handler for a flag.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on%28short_flag%2Clong_flag%2Cdescription%2C%26block%3AString-%3E%29-instance-method" class="signature"><strong>#on</strong>(short_flag, long_flag, description, &amp;block : String -&gt; )</a>
+        
+          <div class="summary"><p>Establishes a handler for a pair of short and long flags.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%28args%29-instance-method" class="signature"><strong>#parse</strong>(args)</a>
+        
+          <div class="summary"><p>Parses the passed <em>args</em>, running the handlers associated to each option.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%21-instance-method" class="signature"><strong>#parse!</strong></a>
+        
+          <div class="summary"><p>Parses the passed the arguments passed to the program, running the handlers associated to each option.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#separator%28message%3D%3Cspanclass%3D%22s%22%3E%26quot%3B%26quot%3B%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#separator</strong>(message = <span class="s">""</span>)</a>
+        
+          <div class="summary"><p>Adds a separator, with an optional header message, that will be used to print the help.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%3AIO%29-instance-method" class="signature"><strong>#to_s</strong>(io : IO)</a>
+        
+          <div class="summary"><p>Returns all the setup options, formatted in a help message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unknown_args%28%26unknown_args%3AArray%28String%29%2CArray%28String%29-%3E%29-instance-method" class="signature"><strong>#unknown_args</strong>(&amp;unknown_args : Array(String), Array(String) -&gt; )</a>
+        
+          <div class="summary"><p>Sets a handler for arguments that didn't match any of the setup options.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="Reference.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="Reference.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>, 
+  
+    <a href="Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new parser, with its configuration specified in the block.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse(args,&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>parse</strong>(args, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new parser, with its configuration specified in the block, and uses it to parse the passed <code>args</code>.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L45" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse!(&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>parse!</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new parser, with its configuration specified in the block, and uses it to parse the arguments passed to the program.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new parser.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="banner=(banner)-instance-method">
+      <div class="signature">
+        
+        def <strong>banner=</strong>(banner)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Establishes the initial message for the help printout. Typically, you want to write here the name of your program,
+and a one-line template of its invocation.</p>
+
+<p>Example:</p>
+
+<pre><code>parser.banner <span class="o">=</span> <span class="s">"Usage: crystal [command] [switches] [program file] [--] [arguments]"</span></code></pre>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L75" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on(flag,description,&amp;block:String-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on</strong>(flag, description, &amp;block : <a href="String.html">String</a> -&gt; )
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Establishes a handler for a flag.</p>
+
+<p>Flags can (but don't have to) start with a dash. They can also have an optional argument, which will get passed to
+the block. Each flag has a description, which will be used for the help message.</p>
+
+<p>Examples of valid flags:</p>
+
+<ul>
+<li>
+<code>-a</code>, <code>-B</code>
+</li>
+<li><code>--something-longer</code></li>
+<li>
+<code>-f FILE</code>, <code>--file FILE</code>, <code>--file=FILE</code>  (these will yield the passed value to the block as a string)</li>
+</ul>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L87" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on(short_flag,long_flag,description,&amp;block:String-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on</strong>(short_flag, long_flag, description, &amp;block : <a href="String.html">String</a> -&gt; )
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Establishes a handler for a pair of short and long flags.</p>
+
+<p>See the other definition of <code><a href="OptionParser.html#on%28flag%2Cdescription%2C%26block%3AString-%3E%29-instance-method">#on</a></code> for examples.</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L95" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse(args)-instance-method">
+      <div class="signature">
+        
+        def <strong>parse</strong>(args)
+
+        
+      </div>
+      
+        <div class="doc"><p>Parses the passed <em>args</em>, running the handlers associated to each option.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L135" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse!-instance-method">
+      <div class="signature">
+        
+        def <strong>parse!</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Parses the passed the arguments passed to the program, running the handlers associated to each option.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L140" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id='separator(message=&lt;spanclass="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;)-instance-method'>
+      <div class="signature">
+        
+        def <strong>separator</strong>(message = <span class="s">""</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Adds a separator, with an optional header message, that will be used to print the help.</p>
+
+<p>This way, you can group the different options in an easier to read way.</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L104" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io:IO)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns all the setup options, formatted in a help message.</p></div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L115" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unknown_args(&amp;unknown_args:Array(String),Array(String)-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>unknown_args</strong>(&amp;unknown_args : <a href="Array.html">Array</a>(<a href="String.html">String</a>), <a href="Array.html">Array</a>(<a href="String.html">String</a>) -&gt; )
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Sets a handler for arguments that didn't match any of the setup options.</p>
+
+<p>You typically use this to get the main arguments (not modifiers) that your program expects (for example, filenames)</p>
+</div>
+      
+      <br>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/option_parser.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
