@@ -5,9 +5,10 @@ set -e
 export PATH=${GOPATH}/bin:$PATH
 
 crystal-dash-docset-generator
-pushd crystal
+mv crystal/crystal.docset ./
 ls -l
-popd
+rm -rf crystal/
+ls -l
 
 git config --global user.email "baenej@gmail.com"
 git config --global user.name "Hirofumi Wakasugi"
