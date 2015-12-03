@@ -1,0 +1,1468 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/manastech/crystal"/>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-3999"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Set%28T%29"></a><title>Set(T)</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> Set(T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="Set.html">Set(T)</a></li>
+<li class="superclass"><a href="Struct.html">Struct</a></li>
+<li class="superclass"><a href="Value.html">Value</a></li>
+<li class="superclass"><a href="Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Set implements a collection of unordered values with no duplicates.</p>
+
+<p>An <code><a href="Enumerable.html">Enumerable</a></code> object can be converted to <code><a href="Set.html">Set</a></code> using the <code>#to_set</code> method.</p>
+
+<p>Set uses <code><a href="Hash.html">Hash</a></code> as storage, so you must note the following points:</p>
+
+<ul><li>Equality of elements is determined according to <code><a href="Object.html#%3D%3D%28other%29-instance-method">Object#==</a></code> and</li></ul>
+
+<p><code><a href="Object.html#hash-instance-method">Object#hash</a></code>.</p>
+
+<ul><li>Set assumes that the identity of each element does not change while it is</li></ul>
+
+<p>stored. Modifying an element of a set will render the set to an unreliable
+state.</p>
+
+<h3>Example</h3>
+
+<pre><code>s1 <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>}
+s2 <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>].to_set
+s3 <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>, <span class="n">2</span>]
+s1 <span class="o">==</span> s2         <span class="c"># =&gt; true</span>
+s1 <span class="o">==</span> s3         <span class="c"># =&gt; true</span>
+s1.add(<span class="n">2</span>)
+s1.merge([<span class="n">6</span>,<span class="n">8</span>])
+s1.subset? s2    <span class="c"># =&gt; false</span>
+s2.subset? s1    <span class="c"># =&gt; true</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Enumerable.html">Enumerable(T)</a></li>
+  
+    <li class="other-type"><a href="Iterable.html">Iterable</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr" target="_blank">set.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28enumerable%3AEnumerable%28T%29%29-class-method" class="signature"><strong>.new</strong>(enumerable : Enumerable(T))</a>
+        
+          <div class="summary"><p>Creates a new set from the elements in <code>enumerable</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28initial_capacity%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(initial_capacity = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Creates a new, empty <code><a href="Set.html">Set</a></code></p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%26%28other%3ASet%29-instance-method" class="signature"><strong>#&amp;</strong>(other : Set)</a>
+        
+          <div class="summary"><p>Intersection: returns a new set containing elements common to both sets.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28other%3ASet%29-instance-method" class="signature"><strong>#-</strong>(other : Set)</a>
+        
+          <div class="summary"><p>Difference: returns a new set containing elements in this set that are not present in the other.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28other%3AEnumerable%29-instance-method" class="signature"><strong>#-</strong>(other : Enumerable)</a>
+        
+          <div class="summary"><p>Difference: returns a new set containing elements in this set that are not present in the other enumerable.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28object%3AT%29-instance-method" class="signature"><strong>#(object : T)</strong></a>
+        
+          <div class="summary"><p>Alias for <code><a href="Set.html#add%28object%3AT%29-instance-method">#add</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28other%3ASet%29-instance-method" class="signature"><strong>#==</strong>(other : Set)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if both sets have the same elements</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5E%28other%3AEnumerable%28U%29%29-instance-method" class="signature"><strong>#^</strong>(other : Enumerable(U))</a>
+        
+          <div class="summary"><p>Symmetric Difference: returns a new set <code>(self - other) | (other - self)</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5E%28other%3ASet%28U%29%29-instance-method" class="signature"><strong>#^</strong>(other : Set(U))</a>
+        
+          <div class="summary"><p>Symmetric Difference: returns a new set <code>(self - other) | (other - self)</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add%28object%3AT%29-instance-method" class="signature"><strong>#add</strong>(object : T)</a>
+        
+          <div class="summary"><p>Adds <code>object</code> to the set and returns <code>self</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clear-instance-method" class="signature"><strong>#clear</strong></a>
+        
+          <div class="summary"><p>Removes all elements in the set, and returns <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete%28object%29-instance-method" class="signature"><strong>#delete</strong>(object)</a>
+        
+          <div class="summary"><p>Removes the <em>object</em> from the set and returns <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dup-instance-method" class="signature"><strong>#dup</strong></a>
+        
+          <div class="summary"><p>Returns a new set with all of the same elements</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each-instance-method" class="signature"><strong>#each</strong></a>
+        
+          <div class="summary"><p>Returns an iterator for each element of the set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each%28%26block%29-instance-method" class="signature"><strong>#each</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Yeilds each element of the set, and returns <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
+        
+          <div class="summary"><p>Returns <code>true</code> if the set is empty.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hash-instance-method" class="signature"><strong>#hash</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#includes%3F%28object%29-instance-method" class="signature"><strong>#includes?</strong>(object)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if <em>object</em> exists in the set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect%28io%29-instance-method" class="signature"><strong>#inspect</strong>(io)</a>
+        
+          <div class="summary"><p>Alias of <code><a href="Set.html#to_s%28io%29-instance-method">#to_s</a></code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#intersects%3F%28other%3ASet%29-instance-method" class="signature"><strong>#intersects?</strong>(other : Set)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if the set and the given set have at least one element in common.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#merge%28elems%29-instance-method" class="signature"><strong>#merge</strong>(elems)</a>
+        
+          <div class="summary"><p>Adds <code><a href="Set.html#each-instance-method">#each</a></code> element of <em>elems</em> to the set and returns <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#proper_subset%3F%28other%3ASet%29-instance-method" class="signature"><strong>#proper_subset?</strong>(other : Set)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if the set is a proper subset of the <code>other</code> set</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#proper_superset%3F%28other%3ASet%29-instance-method" class="signature"><strong>#proper_superset?</strong>(other : Set)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if the set is a superset of the <code>other</code> set</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
+        
+          <div class="summary"><p>Returns the number of elements in the set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#subset%3F%28other%3ASet%29-instance-method" class="signature"><strong>#subset?</strong>(other : Set)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if the set is a subset of the <code>other</code> set</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#subtract%28other%3AEnumerable%29-instance-method" class="signature"><strong>#subtract</strong>(other : Enumerable)</a>
+        
+          <div class="summary"><p>Returns <code>self</code> after removing from it those elements that are present in the given enumerable.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#superset%3F%28other%3ASet%29-instance-method" class="signature"><strong>#superset?</strong>(other : Set)</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if the set is a superset of the <code>other</code> set</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_a-instance-method" class="signature"><strong>#to_a</strong></a>
+        
+          <div class="summary"><p>Returns the elements as an array</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%29-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
+        
+          <div class="summary"><p>Writes a string representation of the set to <code>io</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%7C%28other%3ASet%28U%29%29-instance-method" class="signature"><strong>#|</strong>(other : Set(U))</a>
+        
+          <div class="summary"><p>Union: returns a new set containing all unique elements from both sets.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Iterable.html">Iterable</a></code>
+</h3>
+  
+    <a href="Iterable.html#cycle-instance-method" class="tooltip">
+      <span>cycle<br/>cycle(n)</span>
+    cycle</a>, 
+  
+    <a href="Iterable.html#each-instance-method" class="tooltip">
+      <span>each</span>
+    each</a>, 
+  
+    <a href="Iterable.html#each_cons%28count%3AInt%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int)</span>
+    each_cons</a>, 
+  
+    <a href="Iterable.html#each_slice%28count%3AInt%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int)</span>
+    each_slice</a>, 
+  
+    <a href="Iterable.html#each_with_index%28offset%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="tooltip">
+      <span>each_with_index(offset = <span class="n">0</span>)</span>
+    each_with_index</a>, 
+  
+    <a href="Iterable.html#each_with_object%28obj%29-instance-method" class="tooltip">
+      <span>each_with_object(obj)</span>
+    each_with_object</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Enumerable.html">Enumerable(T)</a></code>
+</h3>
+  
+    <a href="Enumerable.html#all%3F-instance-method" class="tooltip">
+      <span>all?<br/>all?(&amp;block)</span>
+    all?</a>, 
+  
+    <a href="Enumerable.html#any%3F-instance-method" class="tooltip">
+      <span>any?<br/>any?(&amp;block)</span>
+    any?</a>, 
+  
+    <a href="Enumerable.html#compact_map%28%26block%29-instance-method" class="tooltip">
+      <span>compact_map(&amp;block)</span>
+    compact_map</a>, 
+  
+    <a href="Enumerable.html#count%28item%29-instance-method" class="tooltip">
+      <span>count(item)<br/>count(&amp;block)</span>
+    count</a>, 
+  
+    <a href="Enumerable.html#cycle%28%26block%29-instance-method" class="tooltip">
+      <span>cycle(&amp;block)<br/>cycle(n, &amp;block)</span>
+    cycle</a>, 
+  
+    <a href="Enumerable.html#each%28%26block%3AT-%3E_%29-instance-method" class="tooltip">
+      <span>each(&amp;block : T -&gt; _)</span>
+    each</a>, 
+  
+    <a href="Enumerable.html#each_cons%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int, &amp;block)</span>
+    each_cons</a>, 
+  
+    <a href="Enumerable.html#each_slice%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int, &amp;block)</span>
+    each_slice</a>, 
+  
+    <a href="Enumerable.html#each_with_index%28offset%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-instance-method" class="tooltip">
+      <span>each_with_index(offset = <span class="n">0</span>, &amp;block)</span>
+    each_with_index</a>, 
+  
+    <a href="Enumerable.html#each_with_object%28obj%2C%26block%29-instance-method" class="tooltip">
+      <span>each_with_object(obj, &amp;block)</span>
+    each_with_object</a>, 
+  
+    <a href="Enumerable.html#find%28if_none%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method" class="tooltip">
+      <span>find(if_none = <span class="n">nil</span>, &amp;block)</span>
+    find</a>, 
+  
+    <a href="Enumerable.html#first-instance-method" class="tooltip">
+      <span>first</span>
+    first</a>, 
+  
+    <a href="Enumerable.html#first%3F-instance-method" class="tooltip">
+      <span>first?</span>
+    first?</a>, 
+  
+    <a href="Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%29-instance-method" class="tooltip">
+      <span>flat_map(&amp;block : T -&gt; Array(U))</span>
+    flat_map</a>, 
+  
+    <a href="Enumerable.html#grep%28pattern%29-instance-method" class="tooltip">
+      <span>grep(pattern)</span>
+    grep</a>, 
+  
+    <a href="Enumerable.html#group_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>group_by(&amp;block : T -&gt; U)</span>
+    group_by</a>, 
+  
+    <a href="Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method" class="tooltip">
+      <span>in_groups_of(size : Int, filled_up_with = <span class="n">nil</span>, &amp;block)<br/>in_groups_of(size : Int, filled_up_with = <span class="n">nil</span>)</span>
+    in_groups_of</a>, 
+  
+    <a href="Enumerable.html#includes%3F%28obj%29-instance-method" class="tooltip">
+      <span>includes?(obj)</span>
+    includes?</a>, 
+  
+    <a href="Enumerable.html#index%28obj%29-instance-method" class="tooltip">
+      <span>index(obj)<br/>index(&amp;block)</span>
+    index</a>, 
+  
+    <a href="Enumerable.html#index_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>index_by(&amp;block : T -&gt; U)</span>
+    index_by</a>, 
+  
+    <a href="Enumerable.html#inject%28%26block%29-instance-method" class="tooltip">
+      <span>inject(&amp;block)<br/>inject(memo, &amp;block)</span>
+    inject</a>, 
+  
+    <a href="Enumerable.html#join%28separator%2Cio%2C%26block%29-instance-method" class="tooltip">
+      <span>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)<br/>join(separator, io)<br/>join(separator = <span class="s">&#34;&#34;</span>)</span>
+    join</a>, 
+  
+    <a href="Enumerable.html#map%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>map(&amp;block : T -&gt; U)</span>
+    map</a>, 
+  
+    <a href="Enumerable.html#map_with_index%28%26block%3AT%2CInt32-%3EU%29-instance-method" class="tooltip">
+      <span>map_with_index(&amp;block : T, Int32 -&gt; U)</span>
+    map_with_index</a>, 
+  
+    <a href="Enumerable.html#max-instance-method" class="tooltip">
+      <span>max</span>
+    max</a>, 
+  
+    <a href="Enumerable.html#max%3F-instance-method" class="tooltip">
+      <span>max?</span>
+    max?</a>, 
+  
+    <a href="Enumerable.html#max_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>max_by(&amp;block : T -&gt; U)</span>
+    max_by</a>, 
+  
+    <a href="Enumerable.html#max_by%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>max_by?(&amp;block : T -&gt; U)</span>
+    max_by?</a>, 
+  
+    <a href="Enumerable.html#max_of%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>max_of(&amp;block : T -&gt; U)</span>
+    max_of</a>, 
+  
+    <a href="Enumerable.html#max_of%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>max_of?(&amp;block : T -&gt; U)</span>
+    max_of?</a>, 
+  
+    <a href="Enumerable.html#min-instance-method" class="tooltip">
+      <span>min</span>
+    min</a>, 
+  
+    <a href="Enumerable.html#min%3F-instance-method" class="tooltip">
+      <span>min?</span>
+    min?</a>, 
+  
+    <a href="Enumerable.html#min_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>min_by(&amp;block : T -&gt; U)</span>
+    min_by</a>, 
+  
+    <a href="Enumerable.html#min_by%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>min_by?(&amp;block : T -&gt; U)</span>
+    min_by?</a>, 
+  
+    <a href="Enumerable.html#min_of%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>min_of(&amp;block : T -&gt; U)</span>
+    min_of</a>, 
+  
+    <a href="Enumerable.html#min_of%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>min_of?(&amp;block : T -&gt; U)</span>
+    min_of?</a>, 
+  
+    <a href="Enumerable.html#minmax-instance-method" class="tooltip">
+      <span>minmax</span>
+    minmax</a>, 
+  
+    <a href="Enumerable.html#minmax%3F-instance-method" class="tooltip">
+      <span>minmax?</span>
+    minmax?</a>, 
+  
+    <a href="Enumerable.html#minmax_by%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>minmax_by(&amp;block : T -&gt; U)</span>
+    minmax_by</a>, 
+  
+    <a href="Enumerable.html#minmax_by%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>minmax_by?(&amp;block : T -&gt; U)</span>
+    minmax_by?</a>, 
+  
+    <a href="Enumerable.html#minmax_of%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>minmax_of(&amp;block : T -&gt; U)</span>
+    minmax_of</a>, 
+  
+    <a href="Enumerable.html#minmax_of%3F%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>minmax_of?(&amp;block : T -&gt; U)</span>
+    minmax_of?</a>, 
+  
+    <a href="Enumerable.html#none%3F-instance-method" class="tooltip">
+      <span>none?<br/>none?(&amp;block)</span>
+    none?</a>, 
+  
+    <a href="Enumerable.html#one%3F%28%26block%29-instance-method" class="tooltip">
+      <span>one?(&amp;block)</span>
+    one?</a>, 
+  
+    <a href="Enumerable.html#partition%28%26block%29-instance-method" class="tooltip">
+      <span>partition(&amp;block)</span>
+    partition</a>, 
+  
+    <a href="Enumerable.html#reject%28%26block%3AT-%3E%29-instance-method" class="tooltip">
+      <span>reject(&amp;block : T -&gt; )</span>
+    reject</a>, 
+  
+    <a href="Enumerable.html#select%28%26block%3AT-%3E%29-instance-method" class="tooltip">
+      <span>select(&amp;block : T -&gt; )</span>
+    select</a>, 
+  
+    <a href="Enumerable.html#size-instance-method" class="tooltip">
+      <span>size</span>
+    size</a>, 
+  
+    <a href="Enumerable.html#skip%28count%3AInt%29-instance-method" class="tooltip">
+      <span>skip(count : Int)</span>
+    skip</a>, 
+  
+    <a href="Enumerable.html#skip_while%28%26block%29-instance-method" class="tooltip">
+      <span>skip_while(&amp;block)</span>
+    skip_while</a>, 
+  
+    <a href="Enumerable.html#sum%28initial%2C%26block%29-instance-method" class="tooltip">
+      <span>sum(initial, &amp;block)<br/>sum(&amp;block)<br/>sum(initial)<br/>sum</span>
+    sum</a>, 
+  
+    <a href="Enumerable.html#take%28count%3AInt%29-instance-method" class="tooltip">
+      <span>take(count : Int)</span>
+    take</a>, 
+  
+    <a href="Enumerable.html#take_while%28%26block%29-instance-method" class="tooltip">
+      <span>take_while(&amp;block)</span>
+    take_while</a>, 
+  
+    <a href="Enumerable.html#to_a-instance-method" class="tooltip">
+      <span>to_a</span>
+    to_a</a>, 
+  
+    <a href="Enumerable.html#to_h-instance-method" class="tooltip">
+      <span>to_h</span>
+    to_h</a>, 
+  
+    <a href="Enumerable.html#to_set-instance-method" class="tooltip">
+      <span>to_set</span>
+    to_set</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="Struct.html">Struct</a></code>
+</h3>
+  
+    <a href="Struct.html#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="tooltip">
+      <span>==(other : self) : Bool</span>
+    ==</a>, 
+  
+    <a href="Struct.html#hash%3AInt32-instance-method" class="tooltip">
+      <span>hash : Int32</span>
+    hash</a>, 
+  
+    <a href="Struct.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="Struct.html#to_s%28io%29-instance-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="Value.html">Value</a></code>
+</h3>
+  
+    <a href="Value.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Value.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br/>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+    <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(enumerable:Enumerable(T))-class-method">
+      <a class="dashingAutolink" name="autolink-4000"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28enumerable%20%3A%20Enumerable%28T%29%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(enumerable : <a href="Enumerable.html">Enumerable</a>(T))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new set from the elements in <code>enumerable</code></p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]
+s.empty? =&gt; <span class="n">false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(initial_capacity=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;)-class-method">
+      <a class="dashingAutolink" name="autolink-4001"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28initial_capacity%20%3D%20nil%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(initial_capacity = <span class="n">nil</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new, empty <code><a href="Set.html">Set</a></code></p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>(<span class="t">Int32</span>).<span class="k">new</span>
+set.empty? <span class="c"># =&gt; true</span></code></pre>
+
+<p>An initial capacity can be specified, and it will be set as the initial capacity
+of the internal Hash.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="&amp;(other:Set)-instance-method">
+      <a class="dashingAutolink" name="autolink-4002"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%26%28other%20%3A%20Set%29"></a><div class="signature">
+        
+        def <strong>&amp;</strong>(other : <a href="Set.html">Set</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Intersection: returns a new set containing elements common to both sets.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]) <span class="o">&amp;</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>])               <span class="c">#=&gt; Set{1, 3}</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;z&#39;</span>]) <span class="o">&amp;</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;c&#39;</span>]) <span class="c">#=&gt; Set{&#39;a&#39;, &#39;b&#39;}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L139" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(other:Set)-instance-method">
+      <a class="dashingAutolink" name="autolink-4003"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Set%29"></a><div class="signature">
+        
+        def <strong>-</strong>(other : <a href="Set.html">Set</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Difference: returns a new set containing elements in this set that are not
+present in the other.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>,<span class="n">4</span>,<span class="n">5</span>]) <span class="o">-</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="n">2</span>,<span class="n">4</span>])               <span class="c">#=&gt; Set{1, 3, 5}</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;z&#39;</span>]) <span class="o">-</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;c&#39;</span>]) <span class="c">#=&gt; Set{&#39;z&#39;}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L163" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(other:Enumerable)-instance-method">
+      <a class="dashingAutolink" name="autolink-4004"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Enumerable%29"></a><div class="signature">
+        
+        def <strong>-</strong>(other : <a href="Enumerable.html">Enumerable</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Difference: returns a new set containing elements in this set that are not
+present in the other enumerable.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>,<span class="n">4</span>,<span class="n">5</span>]) <span class="o">-</span> [<span class="n">2</span>,<span class="n">4</span>]               <span class="c">#=&gt; Set{1, 3, 5}</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;z&#39;</span>]) <span class="o">-</span> [<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;c&#39;</span>] <span class="c">#=&gt; Set{&#39;z&#39;}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L176" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(object:T)-instance-method">
+      <a class="dashingAutolink" name="autolink-4005"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%28object%20%3A%20T%29"></a><div class="signature">
+        
+        def <strong>(object : T)
+
+        
+      </strong>
+</div>
+      
+        <div class="doc"><p>Alias for <code><a href="Set.html#add%28object%3AT%29-instance-method">#add</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="==(other:Set)-instance-method">
+      <a class="dashingAutolink" name="autolink-4006"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Set%29"></a><div class="signature">
+        
+        def <strong>==</strong>(other : <a href="Set.html">Set</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if both sets have the same elements</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">5</span>]) <span class="o">==</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">5</span>]) <span class="c"># =&gt; true</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L228" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="^(other:Enumerable(U))-instance-method">
+      <a class="dashingAutolink" name="autolink-4007"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5E%28other%20%3A%20Enumerable%28U%29%29"></a><div class="signature">
+        
+        def <strong>^</strong>(other : <a href="Enumerable.html">Enumerable</a>(U))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Symmetric Difference: returns a new set <code>(self - other) | (other - self)</code>.
+Equivalently, returns <code>(self | other) - (self &amp; other)</code>.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>,<span class="n">4</span>,<span class="n">5</span>]) <span class="o">^</span> [<span class="n">2</span>,<span class="n">4</span>,<span class="n">6</span>]             <span class="c">#=&gt; Set{1, 3, 5, 6}</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;z&#39;</span>]) <span class="o">^</span> [<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;c&#39;</span>] <span class="c">#=&gt; Set{&#39;z&#39;, &#39;c&#39;}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L201" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="^(other:Set(U))-instance-method">
+      <a class="dashingAutolink" name="autolink-4008"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5E%28other%20%3A%20Set%28U%29%29"></a><div class="signature">
+        
+        def <strong>^</strong>(other : <a href="Set.html">Set</a>(U))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Symmetric Difference: returns a new set <code>(self - other) | (other - self)</code>.
+Equivalently, returns <code>(self | other) - (self &amp; other)</code>.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>,<span class="n">4</span>,<span class="n">5</span>]) <span class="o">^</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="n">2</span>,<span class="n">4</span>,<span class="n">6</span>])             <span class="c">#=&gt; Set{1, 3, 5, 6}</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;z&#39;</span>]) <span class="o">^</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;c&#39;</span>]) <span class="c">#=&gt; Set{&#39;z&#39;, &#39;c&#39;}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L185" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(object:T)-instance-method">
+      <a class="dashingAutolink" name="autolink-4009"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28object%20%3A%20T%29"></a><div class="signature">
+        
+        def <strong>add</strong>(object : T)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Adds <code>object</code> to the set and returns <code>self</code></p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>,<span class="n">5</span>]
+s.includes? <span class="n">8</span>     <span class="c"># =&gt; false</span>
+s <span class="o"> <span class="n">8</span>
+s.includes? <span class="n">8</span>     <span class="c"># =&gt; true</span></span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clear-instance-method">
+      <a class="dashingAutolink" name="autolink-4010"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clear"></a><div class="signature">
+        
+        def <strong>clear</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Removes all elements in the set, and returns <code>self</code>.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>,<span class="n">5</span>]
+s.size  <span class="c"># =&gt; 2</span>
+s.clear
+s.size  <span class="c"># =&gt; 0</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L107" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(object)-instance-method">
+      <a class="dashingAutolink" name="autolink-4011"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28object%29"></a><div class="signature">
+        
+        def <strong>delete</strong>(object)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Removes the <em>object</em> from the set and returns <code>self</code>.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>,<span class="n">5</span>]
+s.includes? <span class="n">5</span>  <span class="c"># =&gt; true</span>
+s.delete <span class="n">5</span>
+s.includes? <span class="n">5</span>  <span class="c"># =&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L88" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dup-instance-method">
+      <a class="dashingAutolink" name="autolink-4012"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
+        
+        def <strong>dup</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns a new set with all of the same elements</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L233" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each-instance-method">
+      <a class="dashingAutolink" name="autolink-4013"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each"></a><div class="signature">
+        
+        def <strong>each</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns an iterator for each element of the set.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L131" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-4014"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+        
+        def <strong>each</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Yeilds each element of the set, and returns <code>self</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L123" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="empty?-instance-method">
+      <a class="dashingAutolink" name="autolink-4015"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
+        
+        def <strong>empty?</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if the set is empty.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>(<span class="t">Int32</span>).<span class="k">new</span>
+s.empty? <span class="c"># =&gt; true</span>
+s <span class="o"> <span class="n">3</span>
+s.empty? <span class="c"># =&gt; false</span></span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L118" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hash-instance-method">
+      <a class="dashingAutolink" name="autolink-4016"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+        
+        def <strong>hash</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L249" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="includes?(object)-instance-method">
+      <a class="dashingAutolink" name="autolink-4017"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20includes%3F%28object%29"></a><div class="signature">
+        
+        def <strong>includes?</strong>(object)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if <em>object</em> exists in the set.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>,<span class="n">5</span>]
+s.includes? <span class="n">5</span>  <span class="c"># =&gt; true</span>
+s.includes? <span class="n">9</span>  <span class="c"># =&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect(io)-instance-method">
+      <a class="dashingAutolink" name="autolink-4018"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
+        
+        def <strong>inspect</strong>(io)
+
+        
+      </div>
+      
+        <div class="doc"><p>Alias of <code><a href="Set.html#to_s%28io%29-instance-method">#to_s</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L245" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="intersects?(other:Set)-instance-method">
+      <a class="dashingAutolink" name="autolink-4019"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20intersects%3F%28other%20%3A%20Set%29"></a><div class="signature">
+        
+        def <strong>intersects?</strong>(other : <a href="Set.html">Set</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if the set and the given set have at least one element in
+common.</p>
+
+<pre><code><span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>}.intersects? <span class="t">Set</span>{<span class="n">4</span>, <span class="n">5</span>} <span class="c"># =&gt; false</span>
+<span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>}.intersects? <span class="t">Set</span>{<span class="n">3</span>, <span class="n">4</span>} <span class="c"># =&gt; true</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L260" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="merge(elems)-instance-method">
+      <a class="dashingAutolink" name="autolink-4020"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20merge%28elems%29"></a><div class="signature">
+        
+        def <strong>merge</strong>(elems)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Adds <code><a href="Set.html#each-instance-method">#each</a></code> element of <em>elems</em> to the set and returns <code>self</code>.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>,<span class="n">5</span>]
+s.merge [<span class="n">5</span>,<span class="n">5</span>,<span class="n">8</span>,<span class="n">9</span>]
+s.size            <span class="c"># =&gt; 4</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="proper_subset?(other:Set)-instance-method">
+      <a class="dashingAutolink" name="autolink-4021"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20proper_subset%3F%28other%20%3A%20Set%29"></a><div class="signature">
+        
+        def <strong>proper_subset?</strong>(other : <a href="Set.html">Set</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if the set is a proper subset of the <code>other</code> set</p>
+
+<p>This set must have fewer elements than the <code>other</code> set, and all
+of elements in this set must be present in the <code>other</code> set.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">5</span>]).subset? <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>])   <span class="c"># =&gt; true</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]).subset? <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]) <span class="c"># =&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L294" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="proper_superset?(other:Set)-instance-method">
+      <a class="dashingAutolink" name="autolink-4022"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20proper_superset%3F%28other%20%3A%20Set%29"></a><div class="signature">
+        
+        def <strong>proper_superset?</strong>(other : <a href="Set.html">Set</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if the set is a superset of the <code>other</code> set</p>
+
+<p>The <code>other</code> must have the same or fewer elements than this set, and all of
+elements in the <code>other</code> set must be present in this set.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]).superset? <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">5</span>])   <span class="c"># =&gt; true</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]).superset? <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]) <span class="c"># =&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L317" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size-instance-method">
+      <a class="dashingAutolink" name="autolink-4023"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
+        
+        def <strong>size</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the number of elements in the set.</p>
+
+<pre><code>s <span class="o">=</span> <span class="t">Set</span>.<span class="k">new</span> [<span class="n">1</span>,<span class="n">5</span>]
+s.size  <span class="c"># =&gt; 2</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L97" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="subset?(other:Set)-instance-method">
+      <a class="dashingAutolink" name="autolink-4024"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20subset%3F%28other%20%3A%20Set%29"></a><div class="signature">
+        
+        def <strong>subset?</strong>(other : <a href="Set.html">Set</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if the set is a subset of the <code>other</code> set</p>
+
+<p>This set must have the same or fewer elements than the <code>other</code> set, and all
+of elements in this set must be present in the <code>other</code> set.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">5</span>]).subset? <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>])   <span class="c"># =&gt; true</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]).subset? <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]) <span class="c"># =&gt; true</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L282" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="subtract(other:Enumerable)-instance-method">
+      <a class="dashingAutolink" name="autolink-4025"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20subtract%28other%20%3A%20Enumerable%29"></a><div class="signature">
+        
+        def <strong>subtract</strong>(other : <a href="Enumerable.html">Enumerable</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>self</code> after removing from it those elements that are present in
+the given enumerable.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;z&#39;</span>]).subtract <span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;c&#39;</span>]) <span class="c">#=&gt; Set{&#39;z&#39;}</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>,<span class="n">4</span>,<span class="n">5</span>]).subtract [<span class="n">2</span>,<span class="n">4</span>,<span class="n">6</span>] <span class="c">#=&gt; Set{1, 3, 5}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L218" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="superset?(other:Set)-instance-method">
+      <a class="dashingAutolink" name="autolink-4026"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20superset%3F%28other%20%3A%20Set%29"></a><div class="signature">
+        
+        def <strong>superset?</strong>(other : <a href="Set.html">Set</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if the set is a superset of the <code>other</code> set</p>
+
+<p>The <code>other</code> must have the same or fewer elements than this set, and all of
+elements in the <code>other</code> set must be present in this set.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]).superset? <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">5</span>])   <span class="c"># =&gt; true</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]).superset? <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]) <span class="c"># =&gt; true</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L306" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_a-instance-method">
+      <a class="dashingAutolink" name="autolink-4027"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
+        
+        def <strong>to_a</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the elements as an array</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">5</span>]).to_a  <span class="c"># =&gt; [1,5]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L240" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io)-instance-method">
+      <a class="dashingAutolink" name="autolink-4028"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+        
+        def <strong>to_s</strong>(io)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes a string representation of the set to <code>io</code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L269" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="|(other:Set(U))-instance-method">
+      <a class="dashingAutolink" name="autolink-4029"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%7C%28other%20%3A%20Set%28U%29%29"></a><div class="signature">
+        
+        def <strong>|</strong>(other : <a href="Set.html">Set</a>(U))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Union: returns a new set containing all unique elements from both sets.</p>
+
+<pre><code><span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">1</span>,<span class="n">3</span>,<span class="n">5</span>]) <span class="o">|</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>])               <span class="c">#=&gt; Set{1, 3, 5, 2}</span>
+<span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;z&#39;</span>]) <span class="o">|</span> <span class="t">Set</span>.<span class="k">new</span>([<span class="s">&#39;a&#39;</span>,<span class="s">&#39;b&#39;</span>,<span class="s">&#39;c&#39;</span>]) <span class="c">#=&gt; Set{&#39;a&#39;, &#39;b&#39;, &#39;z&#39;, &#39;c&#39;}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/set.cr#L151" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

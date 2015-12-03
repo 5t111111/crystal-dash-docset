@@ -1,0 +1,296 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/manastech/crystal"/>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-3918"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Readline"></a><title>Readline</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Readline
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Readline.html">Readline</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr" target="_blank">readline.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>KeyBindingHandler</strong> = <code>-&gt;(count : <span class="t">LibReadline</span><span class="t">::</span><span class="t">Int</span>, key : <span class="t">LibReadline</span><span class="t">::</span><span class="t">Int</span>) <span class="k">do</span>
+  <span class="k">if</span> (handlers <span class="o">=</span> @@key_bind_handlers) &amp;&amp; handlers[key.to_i32]?
+    res <span class="o">=</span> (handlers[key]).call(count.to_i32, key.to_i32)
+    <span class="t">LibReadline</span><span class="t">::</span><span class="t">Int</span>.<span class="k">new</span>(res)
+  <span class="k">else</span>
+    <span class="t">LibReadline</span><span class="t">::</span><span class="t">Int</span>.<span class="k">new</span>(<span class="n">1</span>)
+  <span class="k">end</span>
+<span class="k">end</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#autocomplete%28%26completion_proc%3ACompletionProc%29-instance-method" class="signature"><strong>#autocomplete</strong>(&amp;completion_proc : CompletionProc)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#bind_key%28c%3AChar%2C%26f%3AKeyBindingProc%29-instance-method" class="signature"><strong>#bind_key</strong>(c : Char, &amp;f : KeyBindingProc)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#common_prefix_bytesize%28strings%3AArray%29-instance-method" class="signature"><strong>#common_prefix_bytesize</strong>(strings : Array)</a>
+        
+          <div class="summary"><p>:nodoc :</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#done-instance-method" class="signature"><strong>#done</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#done%3D%28val%3ABool%29-instance-method" class="signature"><strong>#done=</strong>(val : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#line_buffer-instance-method" class="signature"><strong>#line_buffer</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#point-instance-method" class="signature"><strong>#point</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#readline%28prompt%3D%3Cspanclass%3D%22s%22%3E%26quot%3B%26quot%3B%3C%2Fspan%3E%2Cadd_history%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#readline</strong>(prompt = <span class="s">&#34;&#34;</span>, add_history = <span class="n">false</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unbind_key%28c%3AChar%29-instance-method" class="signature"><strong>#unbind_key</strong>(c : Char)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="autocomplete(&amp;completion_proc:CompletionProc)-instance-method">
+      <a class="dashingAutolink" name="autolink-3919"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20autocomplete%28%26completion_proc%20%3A%20CompletionProc%29"></a><div class="signature">
+        
+        def <strong>autocomplete</strong>(&amp;completion_proc : <a href="Readline/CompletionProc.html">CompletionProc</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bind_key(c:Char,&amp;f:KeyBindingProc)-instance-method">
+      <a class="dashingAutolink" name="autolink-3920"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bind_key%28c%20%3A%20Char%2C%20%26f%20%3A%20KeyBindingProc%29"></a><div class="signature">
+        
+        def <strong>bind_key</strong>(c : <a href="Char.html">Char</a>, &amp;f : <a href="Readline/KeyBindingProc.html">KeyBindingProc</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="common_prefix_bytesize(strings:Array)-instance-method">
+      <a class="dashingAutolink" name="autolink-3921"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20common_prefix_bytesize%28strings%20%3A%20Array%29"></a><div class="signature">
+        
+        def <strong>common_prefix_bytesize</strong>(strings : <a href="Array.html">Array</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>:nodoc :</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L109" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="done-instance-method">
+      <a class="dashingAutolink" name="autolink-3922"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20done"></a><div class="signature">
+        
+        def <strong>done</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="done=(val:Bool)-instance-method">
+      <a class="dashingAutolink" name="autolink-3923"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20done%3D%28val%20%3A%20Bool%29"></a><div class="signature">
+        
+        def <strong>done=</strong>(val : <a href="Bool.html">Bool</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L89" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="line_buffer-instance-method">
+      <a class="dashingAutolink" name="autolink-3924"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20line_buffer"></a><div class="signature">
+        
+        def <strong>line_buffer</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="point-instance-method">
+      <a class="dashingAutolink" name="autolink-3925"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20point"></a><div class="signature">
+        
+        def <strong>point</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="readline(prompt=&lt;spanclass=&#34;s&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;,add_history=&lt;spanclass=&#34;n&#34;&gt;false&lt;/span&gt;)-instance-method">
+      <a class="dashingAutolink" name="autolink-3926"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20readline%28prompt%20%3D%20%22%22%2C%20add_history%20%3D%20false%29"></a><div class="signature">
+        
+        def <strong>readline</strong>(prompt = <span class="s">&#34;&#34;</span>, add_history = <span class="n">false</span>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unbind_key(c:Char)-instance-method">
+      <a class="dashingAutolink" name="autolink-3927"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unbind_key%28c%20%3A%20Char%29"></a><div class="signature">
+        
+        def <strong>unbind_key</strong>(c : <a href="Char.html">Char</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/readline.cr#L75" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

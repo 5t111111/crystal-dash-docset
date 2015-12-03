@@ -1,0 +1,503 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/manastech/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-314"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/CSV%3A%3ARow"></a><title>CSV::Row</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> CSV::Row
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../CSV/Row.html">CSV::Row</a></li>
+<li class="superclass"><a href="../Struct.html">Struct</a></li>
+<li class="superclass"><a href="../Value.html">Value</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>A Row of a <code>CSV::WithHeaders</code> instance.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr" target="_blank">csv/csv.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28header_pattern%3ARegex%29%3AString-instance-method" class="signature"><strong>#[]</strong>(header_pattern : Regex) : String</a>
+        
+          <div class="summary"><p>Returns this row&#39;s value corresponding to the given <em>header_pattern</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28column%3AInt%29%3AString-instance-method" class="signature"><strong>#[]</strong>(column : Int) : String</a>
+        
+          <div class="summary"><p>Returns this row&#39;s value at the given column index.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28header%3AString%29%3AString-instance-method" class="signature"><strong>#[]</strong>(header : String) : String</a>
+        
+          <div class="summary"><p>Returns the current row&#39;s value corresponding to the given <em>header</em> name.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28header_pattern%3ARegex%29%3AString%7CNil-instance-method" class="signature"><strong>#[]?</strong>(header_pattern : Regex) : String | Nil</a>
+        
+          <div class="summary"><p>Returns this row&#39;s value corresponding to the given <em>header_pattern</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28column%3AInt%29%3AString%7CNil-instance-method" class="signature"><strong>#[]?</strong>(column : Int) : String | Nil</a>
+        
+          <div class="summary"><p>Returns this row&#39;s value at the given column index.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28header%3AString%29%3AString%7CNil-instance-method" class="signature"><strong>#[]?</strong>(header : String) : String | Nil</a>
+        
+          <div class="summary"><p>Returns this row&#39;s value corresponding to the given <em>header</em> name.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
+        
+          <div class="summary"><p>Returns the number of columns in this row, regardless of the number of headers (if requested).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_a%3AArray%28String%29-instance-method" class="signature"><strong>#to_a</strong> : Array(String)</a>
+        
+          <div class="summary"><p>Converts this row to an <code><a href="../Array.html">Array</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_h%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#to_h</strong> : Hash(String, String)</a>
+        
+          <div class="summary"><p>Converts this row to a <code><a href="../Hash.html">Hash</a></code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Struct.html">Struct</a></code>
+</h3>
+  
+    <a href="../Struct.html#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="tooltip">
+      <span>==(other : self) : Bool</span>
+    ==</a>, 
+  
+    <a href="../Struct.html#hash%3AInt32-instance-method" class="tooltip">
+      <span>hash : Int32</span>
+    hash</a>, 
+  
+    <a href="../Struct.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../Struct.html#to_s%28io%29-instance-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Value.html">Value</a></code>
+</h3>
+  
+    <a href="../Value.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Value.html#nil%3F-instance-method" class="tooltip">
+      <span>nil?</span>
+    nil?</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%21-instance-method" class="tooltip">
+      <span>!</span>
+    !</a>, 
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
+      <span>(other)</span>
+    </a>, 
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#%3D%7E%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br/>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
+      <span>from_json(string_or_io)</span>
+    from_json</a>, 
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
+      <span>from_yaml(string : String)</span>
+    from_yaml</a>, 
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+  
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="[](header_pattern:Regex):String-instance-method">
+      <a class="dashingAutolink" name="autolink-315"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28header_pattern%20%3A%20Regex%29%20%3A%20String"></a><div class="signature">
+        
+        def <strong>[]</strong>(header_pattern : <a href="../Regex.html">Regex</a>) : <a href="../String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns this row&#39;s value corresponding to the given <em>header_pattern</em>.
+Raises <code><a href="../KeyError.html">KeyError</a></code> if no such header exists.
+Raises <code><a href="../CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L330" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](column:Int):String-instance-method">
+      <a class="dashingAutolink" name="autolink-316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28column%20%3A%20Int%29%20%3A%20String"></a><div class="signature">
+        
+        def <strong>[]</strong>(column : <a href="../Int.html">Int</a>) : <a href="../String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns this row&#39;s value at the given column index.
+A negative index counts from the end.
+Raises <code><a href="../IndexError.html">IndexError</a></code> if no such column exists.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L308" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](header:String):String-instance-method">
+      <a class="dashingAutolink" name="autolink-317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28header%20%3A%20String%29%20%3A%20String"></a><div class="signature">
+        
+        def <strong>[]</strong>(header : <a href="../String.html">String</a>) : <a href="../String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the current row&#39;s value corresponding to the given <em>header</em> name.
+Raises <code><a href="../KeyError.html">KeyError</a></code> if no such header exists.
+Raises <code><a href="../CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L287" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(header_pattern:Regex):String|Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-318"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28header_pattern%20%3A%20Regex%29%20%3A%20String%20%7C%20Nil"></a><div class="signature">
+        
+        def <strong>[]?</strong>(header_pattern : <a href="../Regex.html">Regex</a>) : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns this row&#39;s value corresponding to the given <em>header_pattern</em>.
+Returns nil if no such header exists.
+Raises <code><a href="../CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L339" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(column:Int):String|Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28column%20%3A%20Int%29%20%3A%20String%20%7C%20Nil"></a><div class="signature">
+        
+        def <strong>[]?</strong>(column : <a href="../Int.html">Int</a>) : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns this row&#39;s value at the given column index.
+A negative index counts from the end.
+Returns nil if no such column exists.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L317" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(header:String):String|Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28header%20%3A%20String%29%20%3A%20String%20%7C%20Nil"></a><div class="signature">
+        
+        def <strong>[]?</strong>(header : <a href="../String.html">String</a>) : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns this row&#39;s value corresponding to the given <em>header</em> name.
+Returns nil if no such header exists.
+Raises <code><a href="../CSV/Error.html">CSV::Error</a></code> if headers were not requested.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L296" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size-instance-method">
+      <a class="dashingAutolink" name="autolink-321"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
+        
+        def <strong>size</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the number of columns in this row, regardless of the number
+of headers (if requested).</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L350" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_a:Array(String)-instance-method">
+      <a class="dashingAutolink" name="autolink-322"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a%20%3A%20Array%28String%29"></a><div class="signature">
+        
+        def <strong>to_a</strong> : <a href="../Array.html">Array</a>(<a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Converts this row to an <code><a href="../Array.html">Array</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L355" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_h:Hash(String,String)-instance-method">
+      <a class="dashingAutolink" name="autolink-323"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_h%20%3A%20Hash%28String%2C%20String%29"></a><div class="signature">
+        
+        def <strong>to_h</strong> : <a href="../Hash.html">Hash</a>(<a href="../String.html">String</a>, <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Converts this row to a <code><a href="../Hash.html">Hash</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/csv/csv.cr#L361" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>
