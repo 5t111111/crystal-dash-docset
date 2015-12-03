@@ -5,10 +5,13 @@ set -e
 export PATH=${GOPATH}/bin:$PATH
 
 crystal-dash-docset-generator
-mv crystal/crystal.docset ./
-ls -l
-rm -rf crystal/
-ls -l
+
+docset_dir=crystal.docset
+
+if [ -e ${docset_dir} ]; then
+  rm -rf ${docset_dir}
+fi
+mv crystal/${docset_dir} ./
 
 git config --global user.email "baenej@gmail.com"
 git config --global user.name "Hirofumi Wakasugi"
