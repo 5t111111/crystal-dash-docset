@@ -1,5 +1,7 @@
 # crystal-dash-docset
 
+[![Build Status](https://travis-ci.org/5t111111/crystal-dash-docset.svg)](https://travis-ci.org/5t111111/crystal-dash-docset)  
+
 Dash Docset for [Crystal](http://crystal-lang.org).
 
 ## Installation
