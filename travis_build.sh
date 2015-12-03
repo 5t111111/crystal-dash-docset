@@ -12,7 +12,7 @@ popd
 git config --global user.email "baenej@gmail.com"
 git config --global user.name "Hirofumi Wakasugi"
 
-git remote add upstream "https://$GH_TOKEN@github.com/5t111111/crystal-dash-docset"
+git remote add upstream "https://${GITHUB_ACCESS_TOKEN}@github.com/5t111111/crystal-dash-docset"
 git fetch upstream
 git reset upstream/master
 
