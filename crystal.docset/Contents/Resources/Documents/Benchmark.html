@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-197"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Benchmark"></a><title>Benchmark</title>
+  <a class="dashingAutolink" name="autolink-200"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Benchmark"></a><title>Benchmark</title>
 </head>
 <body>
 
@@ -30,14 +30,14 @@ detailed reports on the time taken for each task.</p>
 
 <pre><code><span class="k">require</span> <span class="s">&#34;benchmark&#34;</span>
 <span class="t">Benchmark</span>.ips <span class="k">do</span> <span class="o">|</span>x<span class="o">|</span>
-  x.report(<span class="s">&#34;short sleep&#34;</span>)   { sleep <span class="n">0.01</span>  }
+  x.report(<span class="s">&#34;short sleep&#34;</span>) { sleep <span class="n">0.01</span> }
   x.report(<span class="s">&#34;shorter sleep&#34;</span>) { sleep <span class="n">0.001</span> }
 <span class="k">end</span></code></pre>
 
 <p>This generates the following output showing the mean iterations per second,
 the standard deviation relative to the mean, and a comparison:</p>
 
-<pre><code>  short sleep    91.82 (± 2.51%)  8.72× slower
+<pre><code class="language-text">  short sleep    91.82 (± 2.51%)  8.72× slower
 shorter sleep   800.98 (± 1.10%)       fastest</code></pre>
 
 <p><code><a href="Benchmark/IPS.html">Benchmark::IPS</a></code> defaults to 2 seconds of warmup time and 5 seconds of
@@ -58,7 +58,7 @@ puts <span class="t">Benchmark</span>.measure { <span class="s">&#34;a&#34;</spa
 
 <p>This generates the following output:</p>
 
-<pre><code> 0.190000   0.220000   0.410000 (  0.420185)</code></pre>
+<pre><code class="language-text"> 0.190000   0.220000   0.410000 (  0.420185)</code></pre>
 
 <p>This report shows the user CPU time, system CPU time, the sum of
 the user and system CPU times, and the elapsed real time. The unit
@@ -70,13 +70,17 @@ of time is seconds.</p>
 
 n <span class="o">=</span> <span class="n">5000000</span>
 <span class="t">Benchmark</span>.bm <span class="k">do</span> <span class="o">|</span>x<span class="o">|</span>
- x.report(<span class="s">&#34;times:&#34;</span>) { n.times <span class="k">do</span> ; a <span class="o">=</span> <span class="s">&#34;1&#34;</span>; <span class="k">end</span> }
- x.report(<span class="s">&#34;upto:&#34;</span>) { <span class="n">1</span>.upto(n) <span class="k">do</span> ; a <span class="o">=</span> <span class="s">&#34;1&#34;</span>; <span class="k">end</span> }
+  x.report(<span class="s">&#34;times:&#34;</span>) { n.times <span class="k">do</span>
+    a <span class="o">=</span> <span class="s">&#34;1&#34;</span>
+  <span class="k">end</span> }
+  x.report(<span class="s">&#34;upto:&#34;</span>) { <span class="n">1</span>.upto(n) <span class="k">do</span>
+    a <span class="o">=</span> <span class="s">&#34;1&#34;</span>
+  <span class="k">end</span> }
 <span class="k">end</span></code></pre>
 
 <p>The result:</p>
 
-<pre><code>           user     system      total        real
+<pre><code class="language-text">           user     system      total        real
 times:   0.010000   0.000000   0.010000 (  0.008976)
 upto:    0.010000   0.000000   0.010000 (  0.010466)</code></pre>
 
@@ -105,17 +109,17 @@ upto:    0.010000   0.000000   0.010000 (  0.010466)</code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/benchmark/bm.cr" target="_blank">benchmark/bm.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/benchmark/bm.cr" target="_blank">benchmark/bm.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/benchmark/ips.cr" target="_blank">benchmark/ips.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/benchmark/ips.cr" target="_blank">benchmark/ips.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/benchmark/benchmark.cr" target="_blank">benchmark/benchmark.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/benchmark/benchmark.cr" target="_blank">benchmark/benchmark.cr</a>
     
     <br/>
   
@@ -173,7 +177,7 @@ upto:    0.010000   0.000000   0.010000 (  0.010466)</code></pre>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="bm(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-198"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bm%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-201"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bm%28%26block%29"></a><div class="signature">
         
         def <strong>bm</strong>(&amp;block)
 
@@ -186,13 +190,13 @@ one can report the benchmarks. See the module&#39;s description.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/benchmark/benchmark.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/benchmark/benchmark.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ips(calculation=&lt;spanclass=&#34;n&#34;&gt;5&lt;/span&gt;,warmup=&lt;spanclass=&#34;n&#34;&gt;2&lt;/span&gt;,interactive=&lt;spanclass=&#34;t&#34;&gt;STDOUT&lt;/span&gt;.tty?,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-199"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ips%28calculation%20%3D%205%2C%20warmup%20%3D%202%2C%20interactive%20%3D%20STDOUT.tty%3F%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-202"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ips%28calculation%20%3D%205%2C%20warmup%20%3D%202%2C%20interactive%20%3D%20STDOUT.tty%3F%2C%20%26block%29"></a><div class="signature">
         
         def <strong>ips</strong>(calculation = <span class="n">5</span>, warmup = <span class="n">2</span>, interactive = <span class="t">STDOUT</span>.tty?, &amp;block)
 
@@ -212,13 +216,13 @@ displayed and updated as they are calculated, otherwise all at once.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/benchmark/benchmark.cr#L96" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/benchmark/benchmark.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="measure(label=&lt;spanclass=&#34;s&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;,&amp;block):BM::Tms-instance-method">
-      <a class="dashingAutolink" name="autolink-200"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20measure%28label%20%3D%20%22%22%2C%20%26block%29%20%3A%20BM%3A%3ATms"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-203"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20measure%28label%20%3D%20%22%22%2C%20%26block%29%20%3A%20BM%3A%3ATms"></a><div class="signature">
         
         def <strong>measure</strong>(label = <span class="s">&#34;&#34;</span>, &amp;block) : <a href="Benchmark/BM/Tms.html">BM::Tms</a>
 
@@ -230,13 +234,13 @@ displayed and updated as they are calculated, otherwise all at once.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/benchmark/benchmark.cr#L109" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/benchmark/benchmark.cr#L114" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="realtime(&amp;block):Time::Span-instance-method">
-      <a class="dashingAutolink" name="autolink-201"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20realtime%28%26block%29%20%3A%20Time%3A%3ASpan"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-204"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20realtime%28%26block%29%20%3A%20Time%3A%3ASpan"></a><div class="signature">
         
         def <strong>realtime</strong>(&amp;block) : <a href="Time/Span.html">Time::Span</a>
 
@@ -246,13 +250,13 @@ displayed and updated as they are calculated, otherwise all at once.</p>
         <div class="doc">
 <p>Returns the elapsed real time used to execute the given block.</p>
 
-<pre><code><span class="t">Benchmark</span>.realtime { <span class="s">&#34;a&#34;</span> <span class="o">*</span> <span class="n">100_000</span> } <span class="c">#=&gt; 00:00:00.0005840</span></code></pre>
+<pre><code><span class="t">Benchmark</span>.realtime { <span class="s">&#34;a&#34;</span> <span class="o">*</span> <span class="n">100_000</span> } <span class="c"># =&gt; 00:00:00.0005840</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/benchmark/benchmark.cr#L126" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/benchmark/benchmark.cr#L131" target="_blank">View source</a>]
         
       </div>
     </div>

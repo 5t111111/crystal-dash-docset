@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-2426"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/JSON"></a><title>JSON</title>
+  <a class="dashingAutolink" name="autolink-2417"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/JSON"></a><title>JSON</title>
 </head>
 <body>
 
@@ -32,26 +32,31 @@
 the recommended easy, type-safe and efficient option for parsing and generating
 JSON. Refer to that module&#39;s documentation to learn about it.</p>
 
-<h3>Parsing with <code><a href="JSON.html#parse%28input%3AString%7CIO%29%3AType-class-method">JSON#parse</a></code>
+<h3>Parsing with <code><a href="JSON.html#parse%28input%3AString%7CIO%29%3AAny-class-method">JSON#parse</a></code>
 </h3>
 
-<p><code><a href="JSON.html#parse%28input%3AString%7CIO%29%3AType-class-method">JSON#parse</a></code> will return a <code><a href="JSON/Type.html">Type</a></code>, which is a union of all possible JSON types,
-making it mandatory to use casts or type checks to deal with parsed values:</p>
+<p><code><a href="JSON.html#parse%28input%3AString%7CIO%29%3AAny-class-method">JSON#parse</a></code> will return an <code><a href="JSON/Any.html">Any</a></code>, which is a convenient wrapper around all possible JSON types,
+making it easy to traverse a complex JSON structure but requires some casts from time time,
+mostly via some method invocations.</p>
 
 <pre><code><span class="k">require</span> <span class="s">&#34;json&#34;</span>
 
-value <span class="o">=</span> <span class="t">JSON</span>.parse(<span class="s">&#34;[1, 2, 3]&#34;</span>) <span class="c">#:: JSON::Type</span>
-<span class="c"># value[0] # compile-error, compiler can&#39;t know that value is indeed an Array</span>
-array <span class="o">=</span> value <span class="k">as</span> <span class="t">Array</span>
-array[<span class="n">0</span>] <span class="c">#:: JSON::Type</span>
-(array[<span class="n">0</span>] <span class="k">as</span> <span class="t">Int</span>) <span class="o">+</span> <span class="n">10</span> <span class="c">#=&gt; 11</span></code></pre>
+value <span class="o">=</span> <span class="t">JSON</span>.parse(<span class="s">&#34;[1, 2, 3]&#34;</span>) <span class="c"># :: JSON::Any</span>
 
-<p>The above becomes tedious quickly, but can be useful for handling dynamic JSON content.</p>
+value[<span class="n">0</span>]              <span class="c"># =&gt; 1</span>
+<span class="k">typeof</span>(value[<span class="n">0</span>])      <span class="c"># =&gt; JSON::Any</span>
+value[<span class="n">0</span>].as_i         <span class="c"># =&gt; 1</span>
+<span class="k">typeof</span>(value[<span class="n">0</span>].as_i) <span class="c"># =&gt; Int32</span>
+
+value[<span class="n">0</span>] <span class="o">+</span> <span class="n">1</span>       <span class="c"># Error, because value[0] is JSON::Any</span>
+value[<span class="n">0</span>].as_i <span class="o">+</span> <span class="n">10</span> <span class="c"># =&gt; 11</span></code></pre>
+
+<p>The above is useful for dealing with a dynamic JSON structure but is slower than using <code><a href="JSON.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">JSON#mapping</a></code>.</p>
 
 <h3>Generating with <code><a href="JSON/Builder.html">JSON::Builder</a></code>
 </h3>
 
-<p>Use <code>JSON::Buidler</code> to generate JSON on the fly by directly emitting data
+<p>Use <code><a href="JSON/Builder.html">JSON::Builder</a></code> to generate JSON on the fly by directly emitting data
 to an <code><a href="IO.html">IO</a></code>.</p>
 
 <h3>Generating with <code>to_json</code>
@@ -77,17 +82,17 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/json/any.cr" target="_blank">json/any.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/json/any.cr" target="_blank">json/any.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/json/json.cr" target="_blank">json/json.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/json/json.cr" target="_blank">json/json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/json/mapping.cr" target="_blank">json/mapping.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/json/mapping.cr" target="_blank">json/mapping.cr</a>
     
     <br/>
   
@@ -100,7 +105,7 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#parse%28input%3AString%7CIO%29%3AType-class-method" class="signature"><strong>.parse</strong>(input : String | IO) : Type</a>
+        <a href="#parse%28input%3AString%7CIO%29%3AAny-class-method" class="signature"><strong>.parse</strong>(input : String | IO) : Any</a>
         
           <div class="summary"><p>Parses a JSON document.</p></div>
         
@@ -133,10 +138,10 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="parse(input:String|IO):Type-class-method">
-      <a class="dashingAutolink" name="autolink-2427"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28input%20%3A%20String%20%7C%20IO%29%20%3A%20Type"></a><div class="signature">
+    <div class="entry-detail" id="parse(input:String|IO):Any-class-method">
+      <a class="dashingAutolink" name="autolink-2418"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28input%20%3A%20String%20%7C%20IO%29%20%3A%20Any"></a><div class="signature">
         
-        def self.<strong>parse</strong>(input : <a href="String.html">String</a> | <a href="IO.html">IO</a>) : <a href="JSON/Type.html">Type</a>
+        def self.<strong>parse</strong>(input : <a href="String.html">String</a> | <a href="IO.html">IO</a>) : <a href="JSON/Any.html">Any</a>
 
         
       </div>
@@ -146,7 +151,7 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/json/json.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/json/json.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -159,7 +164,7 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="mapping(properties,strict=false)-macro">
-      <a class="dashingAutolink" name="autolink-2428"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping%28properties%2C%20strict%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2419"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping%28properties%2C%20strict%20%3D%20false%29"></a><div class="signature">
         
         macro <strong>mapping</strong>(properties, strict = false)
 
@@ -182,15 +187,15 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
 
 <span class="k">class</span> <span class="t">House</span>
   <span class="t">JSON</span>.mapping({
-    address: <span class="t">String</span>,
+    address:  <span class="t">String</span>,
     location: {<span class="k">type</span>: <span class="t">Location</span>, nilable: <span class="n">true</span>},
   })
 <span class="k">end</span>
 
 house <span class="o">=</span> <span class="t">House</span>.from_json(<span class="s">%({&#34;address&#34;: &#34;Crystal Road 1234&#34;, &#34;location&#34;: {&#34;lat&#34;: 12.3, &#34;lng&#34;: 34.5}})</span>)
-house.address  <span class="c">#=&gt; &#34;Crystal Road 1234&#34;</span>
-house.location <span class="c">#=&gt; #&amp;lt;Location:0x10cd93d80 @lat=12.3, @lng=34.5&gt;</span>
-house.to_json  <span class="c">#=&gt; %({&#34;address&#34;:&#34;Crystal Road 1234&#34;,&#34;location&#34;:{&#34;lat&#34;:12.3,&#34;lng&#34;:34.5}})</span></code></pre>
+house.address  <span class="c"># =&gt; &#34;Crystal Road 1234&#34;</span>
+house.location <span class="c"># =&gt; #&amp;lt;Location:0x10cd93d80 @lat=12.3, @lng=34.5&gt;</span>
+house.to_json  <span class="c"># =&gt; %({&#34;address&#34;:&#34;Crystal Road 1234&#34;,&#34;location&#34;:{&#34;lat&#34;:12.3,&#34;lng&#34;:34.5}})</span></code></pre>
 
 <h3>Usage</h3>
 
@@ -203,7 +208,7 @@ that accepts a <code><a href="JSON/PullParser.html">JSON::PullParser</a></code> 
 <p>The value can also be another hash literal with the following options:</p>
 
 <ul>
-<li>type: (required) the single type described above</li>
+<li>type: (required) the single type described above (you can use <code><a href="JSON/Any.html">JSON::Any</a></code> too)</li>
 <li>key: the property name in the JSON document (as opposed to the property name in the Crystal code)</li>
 <li>nilable: if true, the property can be <code><a href="Nil.html">Nil</a></code>
 </li>
@@ -228,7 +233,7 @@ are silently ignored.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/json/mapping.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/json/mapping.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>

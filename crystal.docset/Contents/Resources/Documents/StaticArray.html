@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4205"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/StaticArray%28T%2C%20N%29"></a><title>StaticArray(T, N)</title>
+  <a class="dashingAutolink" name="autolink-4208"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/StaticArray%28T%2C%20N%29"></a><title>StaticArray(T, N)</title>
 </head>
 <body>
 
@@ -54,7 +54,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr" target="_blank">static_array.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr" target="_blank">static_array.cr</a>
     
     <br/>
   
@@ -113,11 +113,6 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#buffer-instance-method" class="signature"><strong>#buffer</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#each%28%26block%29-instance-method" class="signature"><strong>#each</strong>(&amp;block)</a>
         
       </li>
@@ -153,7 +148,9 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#to_unsafe-instance-method" class="signature"><strong>#to_unsafe</strong></a>
+        <a href="#to_unsafe%3APointer%28T%29-instance-method" class="signature"><strong>#to_unsafe</strong> : Pointer(T)</a>
+        
+          <div class="summary"><p>Returns a pointer to this static array&#39;s data.</p></div>
         
       </li>
     
@@ -448,6 +445,10 @@
       <span>!=(other)</span>
     !=</a>, 
   
+    <a href="Object.html#%21%7E%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+  
     <a href="Object.html#%3C%3D%3E%28other%29-instance-method" class="tooltip">
       <span>(other)</span>
     </a>, 
@@ -512,6 +513,10 @@
       <span>to_s<br/>to_s(io : IO)</span>
     to_s</a>, 
   
+    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+  
     <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
       <span>try(&amp;block)</span>
     try</a>
@@ -568,7 +573,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(value:T)-class-method">
-      <a class="dashingAutolink" name="autolink-4206"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4209"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28value%20%3A%20T%29"></a><div class="signature">
         
         def self.<strong>new</strong>(value : T)
 
@@ -578,19 +583,19 @@
         <div class="doc">
 <p>Creates a new static array filled with the given value.</p>
 
-<pre><code><span class="t">StaticArray</span>(<span class="t">Int32</span>, <span class="n">3</span>).<span class="k">new</span>(<span class="n">42</span>) <span class="c">#=&gt; [42, 42, 42]</span></code></pre>
+<pre><code><span class="t">StaticArray</span>(<span class="t">Int32</span>, <span class="n">3</span>).<span class="k">new</span>(<span class="n">42</span>) <span class="c"># =&gt; [42, 42, 42]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L25" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(&amp;block:Int32-&gt;T)-class-method">
-      <a class="dashingAutolink" name="autolink-4207"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28%26block%20%3A%20Int32%20-%3E%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4210"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28%26block%20%3A%20Int32%20-%3E%20T%29"></a><div class="signature">
         
         def self.<strong>new</strong>(&amp;block : <a href="Int32.html">Int32</a> -&gt; T)
 
@@ -602,13 +607,13 @@
 block once for each index of the array, assigning the
 block&#39;s value in that index.</p>
 
-<pre><code><span class="t">StaticArray</span>(<span class="t">Int32</span>, <span class="n">3</span>).<span class="k">new</span> { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> <span class="n">2</span> } <span class="c">#=&gt; [0, 2, 4]</span></code></pre>
+<pre><code><span class="t">StaticArray</span>(<span class="t">Int32</span>, <span class="n">3</span>).<span class="k">new</span> { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> <span class="n">2</span> } <span class="c"># =&gt; [0, 2, 4]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -619,7 +624,7 @@ block&#39;s value in that index.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-4208"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4211"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%29"></a><div class="signature">
         
         def <strong>==</strong>(other)
 
@@ -629,13 +634,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other:StaticArray)-instance-method">
-      <a class="dashingAutolink" name="autolink-4209"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20StaticArray%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4212"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20StaticArray%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="StaticArray.html">StaticArray</a>)
 
@@ -645,13 +650,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L29" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[](index:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-4210"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28index%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4213"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28index%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>[]</strong>(index : <a href="Int.html">Int</a>)
 
@@ -661,13 +666,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]=(value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-4211"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4214"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>[]=</strong>(value : T)
 
@@ -677,13 +682,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]=(index:Int,value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-4212"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28index%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4215"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28index%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>[]=</strong>(index : <a href="Int.html">Int</a>, value : T)
 
@@ -693,29 +698,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L54" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="buffer-instance-method">
-      <a class="dashingAutolink" name="autolink-4213"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20buffer"></a><div class="signature">
-        
-        def <strong>buffer</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L106" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4214"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4216"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block)
 
@@ -725,13 +714,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L41" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="map!(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4215"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%21%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4217"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%21%28%26block%29"></a><div class="signature">
         
         def <strong>map!</strong>(&amp;block)
 
@@ -741,13 +730,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L90" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reverse!-instance-method">
-      <a class="dashingAutolink" name="autolink-4216"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse%21"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4218"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse%21"></a><div class="signature">
         
         def <strong>reverse!</strong>
 
@@ -757,13 +746,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="shuffle!-instance-method">
-      <a class="dashingAutolink" name="autolink-4217"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shuffle%21"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4219"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shuffle%21"></a><div class="signature">
         
         def <strong>shuffle!</strong>
 
@@ -773,13 +762,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size-instance-method">
-      <a class="dashingAutolink" name="autolink-4218"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4220"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
         
         def <strong>size</strong>
 
@@ -789,13 +778,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L75" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-4219"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4221"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
 
@@ -805,13 +794,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L118" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L120" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_slice-instance-method">
-      <a class="dashingAutolink" name="autolink-4220"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_slice"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4222"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_slice"></a><div class="signature">
         
         def <strong>to_slice</strong>
 
@@ -821,29 +810,36 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L106" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="to_unsafe-instance-method">
-      <a class="dashingAutolink" name="autolink-4221"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe"></a><div class="signature">
+    <div class="entry-detail" id="to_unsafe:Pointer(T)-instance-method">
+      <a class="dashingAutolink" name="autolink-4223"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20Pointer%28T%29"></a><div class="signature">
         
-        def <strong>to_unsafe</strong>
+        def <strong>to_unsafe</strong> : <a href="Pointer.html">Pointer</a>(T)
 
         
       </div>
       
+        <div class="doc">
+<p>Returns a pointer to this static array&#39;s data.</p>
+
+<pre><code>ary <span class="o">=</span> <span class="t">StaticArray</span>(<span class="t">Int32</span>, <span class="n">3</span>).<span class="k">new</span>(<span class="n">42</span>)
+ary.to_unsafe[<span class="n">0</span>] <span class="c"># =&gt; 42</span></code></pre>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L114" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="update(index:Int,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4222"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20update%28index%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4224"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20update%28index%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
         
         def <strong>update</strong>(index : <a href="Int.html">Int</a>, &amp;block)
 
@@ -853,13 +849,13 @@ block&#39;s value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="values_at(*indexes:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-4223"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20values_at%28%2Aindexes%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4225"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20values_at%28%2Aindexes%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>values_at</strong>(*indexes : <a href="Int.html">Int</a>)
 
@@ -871,13 +867,13 @@ block&#39;s value in that index.</p>
 Raises if any index is invalid.</p>
 
 <pre><code>a <span class="o">=</span> <span class="t">StaticArray</span>(<span class="t">Int32</span>, <span class="n">4</span>).<span class="k">new</span> { <span class="o">|</span>i<span class="o">|</span> i <span class="o">+</span> <span class="n">1</span> }
-a.values_at(<span class="n">0</span>, <span class="n">2</span>) <span class="c">#=&gt; {1, 3}</span></code></pre>
+a.values_at(<span class="n">0</span>, <span class="n">2</span>) <span class="c"># =&gt; {1, 3}</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/b3b1223108806f31fdb29cca6110a5d11d82f504/src/static_array.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/9d59a3455de7efd01ffe5a3669b16bf729e7882d/src/static_array.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
