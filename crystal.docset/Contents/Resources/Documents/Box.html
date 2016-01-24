@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-282"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Box%28T%29"></a><title>Box(T)</title>
+  <a class="dashingAutolink" name="autolink-286"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Box%28T%29"></a><title>Box(T)</title>
 </head>
 <body>
 
@@ -27,6 +27,15 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>A Box allows turning any object to a <code>Void*</code> and back.</p>
+
+<p>A Box&#39;s purpose is passing data to C as a <code>Void*</code> and then converting that
+back to the original data type.</p>
+
+<p>For an example usage, see <code><a href="Proc.html">Proc</a></code>&#39;s explanation about sending Procs to C.</p>
+
 
 
 
@@ -43,7 +52,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/box.cr" target="_blank">box.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/box.cr" target="_blank">box.cr</a>
     
     <br/>
   
@@ -58,15 +67,21 @@
       <li class="entry-summary">
         <a href="#box%28object%29-class-method" class="signature"><strong>.box</strong>(object)</a>
         
+          <div class="summary"><p>Creates a Box for an object and returns it as a Void*.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#unbox%28pointer%3APointer%28Void%29%29-class-method" class="signature"><strong>.unbox</strong>(pointer : Pointer(Void))</a>
         
+          <div class="summary"><p>Unboxes a Void* into an object of type T.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#new%28object%3AT%29-class-method" class="signature"><strong>.new</strong>(object : T)</a>
+        
+          <div class="summary"><p>Creates a Box with the given object.</p></div>
         
       </li>
     
@@ -79,6 +94,8 @@
     
       <li class="entry-summary">
         <a href="#object-instance-method" class="signature"><strong>#object</strong></a>
+        
+          <div class="summary"><p>Returns the original object</p></div>
         
       </li>
     
@@ -270,49 +287,60 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="box(object)-class-method">
-      <a class="dashingAutolink" name="autolink-283"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.box%28object%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-282"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.box%28object%29"></a><div class="signature">
         
         def self.<strong>box</strong>(object)
 
         
       </div>
       
+        <div class="doc"><p>Creates a Box for an object and returns it as a Void*.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/box.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/box.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unbox(pointer:Pointer(Void))-class-method">
-      <a class="dashingAutolink" name="autolink-284"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.unbox%28pointer%20%3A%20Pointer%28Void%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-283"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.unbox%28pointer%20%3A%20Pointer%28Void%29%29"></a><div class="signature">
         
         def self.<strong>unbox</strong>(pointer : <a href="Pointer.html">Pointer</a>(Void))
 
         
       </div>
       
+        <div class="doc"><p>Unboxes a Void* into an object of type T. Note that for this you must
+specify T: <code><a href="Box.html">Box</a>(T).unbox(data)</code>.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/box.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/box.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(object:T)-class-method">
-      <a class="dashingAutolink" name="autolink-285"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28object%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-284"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28object%20%3A%20T%29"></a><div class="signature">
         
         def self.<strong>new</strong>(object : T)
 
         
       </div>
       
+        <div class="doc">
+<p>Creates a Box with the given object.</p>
+
+<p>This method isn&#39;t usually used directly. Instead, <code><a href="Box.html">Box</a>.box</code> is used.</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/box.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/box.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -323,17 +351,19 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="object-instance-method">
-      <a class="dashingAutolink" name="autolink-286"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20object"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-285"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20object"></a><div class="signature">
         
         def <strong>object</strong>
 
         
       </div>
       
+        <div class="doc"><p>Returns the original object</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/box.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/box.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>

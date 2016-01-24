@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1216"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AClient"></a><title>HTTP::Client</title>
+  <a class="dashingAutolink" name="autolink-1274"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AClient"></a><title>HTTP::Client</title>
 </head>
 <body>
 
@@ -33,8 +33,8 @@
 
 <h3>One-shot usage</h3>
 
-<p>Without a block, an <code><a href="../HTTP/Response.html">HTTP::Response</a></code> is returned and the response&#39;s body
-is available as a <code><a href="../String.html">String</a></code> by invoking <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+<p>Without a block, an <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html">Response</a></code> is returned and the response&#39;s body
+is available as a <code><a href="../String.html">String</a></code> by invoking <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code><span class="k">require</span> <span class="s">&#34;http/client&#34;</span>
 
@@ -42,8 +42,8 @@ response <span class="o">=</span> <span class="t">HTTP</span><span class="t">::<
 response.status_code      <span class="c"># =&gt; 200</span>
 response.body.lines.first <span class="c"># =&gt; &#34;&lt;!doctype html&gt;&#34;</span></code></pre>
 
-<p>With a block, an <code><a href="../HTTP/Response.html">HTTP::Response</a></code> body is returned and the response&#39;s body
-is available as an <code><a href="../IO.html">IO</a></code> by invoking <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+<p>With a block, an <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html">Response</a></code> body is returned and the response&#39;s body
+is available as an <code><a href="../IO.html">IO</a></code> by invoking <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code><span class="k">require</span> <span class="s">&#34;http/client&#34;</span>
 
@@ -64,6 +64,12 @@ response.status_code      <span class="c"># =&gt; 200</span>
 response.body.lines.first <span class="c"># =&gt; &#34;&lt;!doctype html&gt;&#34;</span>
 client.close</code></pre>
 
+<h3>Compression</h3>
+
+<p>If <code>compress</code> isn&#39;t set to false, and no <code>Accept-Encoding</code> header is explicitly specified,
+an HTTP::Client will add an <code>&#34;Accept-Encoding&#34;: &#34;gzip, deflate&#34;</code> header, and automatically decompress
+the response body/body_io.</p>
+
 
 
 
@@ -80,7 +86,7 @@ client.close</code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr" target="_blank">http/client/client.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr" target="_blank">http/client/client.cr</a>
     
     <br/>
   
@@ -100,14 +106,14 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#delete%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-class-method" class="signature"><strong>.delete</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#delete%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-class-method" class="signature"><strong>.delete</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a DELETE request.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exec%28method%2Curl%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-class-method" class="signature"><strong>.exec</strong>(method, url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#exec%28method%2Curl%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-class-method" class="signature"><strong>.exec</strong>(method, url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a request.</p></div>
         
@@ -128,7 +134,7 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#get%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-class-method" class="signature"><strong>.get</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#get%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-class-method" class="signature"><strong>.get</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a GET request.</p></div>
         
@@ -142,7 +148,7 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#head%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-class-method" class="signature"><strong>.head</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#head%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-class-method" class="signature"><strong>.head</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a HEAD request.</p></div>
         
@@ -156,7 +162,7 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#patch%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-class-method" class="signature"><strong>.patch</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#patch%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-class-method" class="signature"><strong>.patch</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a PATCH request.</p></div>
         
@@ -170,7 +176,7 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#post%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-class-method" class="signature"><strong>.post</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#post%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-class-method" class="signature"><strong>.post</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a POST request.</p></div>
         
@@ -184,7 +190,7 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#post_form%28url%2Cform%3AString%7CHash%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%29%3AHTTP%3A%3AResponse-class-method" class="signature"><strong>.post_form</strong>(url, form : String | Hash, headers = <span class="n">nil</span> : HTTP::Headers | Nil) : HTTP::Response</a>
+        <a href="#post_form%28url%2Cform%3AString%7CHash%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-class-method" class="signature"><strong>.post_form</strong>(url, form : String | Hash, headers = <span class="n">nil</span> : HTTP::Headers | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a POST with form data.</p></div>
         
@@ -198,7 +204,7 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#put%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-class-method" class="signature"><strong>.put</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#put%28url%3AString%7CURI%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-class-method" class="signature"><strong>.put</strong>(url : String | URI, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a PUT request.</p></div>
         
@@ -240,9 +246,12 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#connect_timeout%3D%28connect_timeout%3ATime%3A%3ASpan%29-instance-method" class="signature"><strong>#connect_timeout=</strong>(connect_timeout : Time::Span)</a>
+        <a href="#compress%3D%28compress%3ABool%29-instance-method" class="signature"><strong>#compress=</strong>(compress : Bool)</a>
         
-          <div class="summary"><p>Set the open timeout with a <code><a href="../Time/Span.html">Time::Span</a></code> to wait when connecting, before raising an <code><a href="../IO/Timeout.html">IO::Timeout</a></code>.</p></div>
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#compress%3F-instance-method" class="signature"><strong>#compress?</strong></a>
         
       </li>
     
@@ -254,6 +263,20 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
+        <a href="#connect_timeout%3D%28connect_timeout%3ATime%3A%3ASpan%29-instance-method" class="signature"><strong>#connect_timeout=</strong>(connect_timeout : Time::Span)</a>
+        
+          <div class="summary"><p>Set the open timeout with a <code><a href="../Time/Span.html">Time::Span</a></code> to wait when connecting, before raising an <code><a href="../IO/Timeout.html">IO::Timeout</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#delete</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
+        
+          <div class="summary"><p>Executes a DELETE request.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#delete%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method" class="signature"><strong>#delete</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil, &amp;block)</a>
         
           <div class="summary"><p>Executes a DELETE request and yields the response to the block.</p></div>
@@ -261,21 +284,14 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#delete%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#delete</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
-        
-          <div class="summary"><p>Executes a DELETE request.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#exec%28request%3AHTTP%3A%3ARequest%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#exec</strong>(request : HTTP::Request) : HTTP::Response</a>
+        <a href="#exec%28request%3AHTTP%3A%3ARequest%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#exec</strong>(request : HTTP::Request) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a request.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#exec%28method%3AString%2Cpath%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#exec</strong>(method : String, path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#exec%28method%3AString%2Cpath%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#exec</strong>(method : String, path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a request.</p></div>
         
@@ -284,7 +300,7 @@ client.close</code></pre>
       <li class="entry-summary">
         <a href="#exec%28request%3AHTTP%3A%3ARequest%2C%26block%29-instance-method" class="signature"><strong>#exec</strong>(request : HTTP::Request, &amp;block)</a>
         
-          <div class="summary"><p>Executes a request request and yields an <code><a href="../HTTP/Response.html">HTTP::Response</a></code> to the block.</p></div>
+          <div class="summary"><p>Executes a request request and yields an <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html">Response</a></code> to the block.</p></div>
         
       </li>
     
@@ -303,9 +319,16 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#get%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#get</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#get%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#get</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a GET request.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#head%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#head</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
+        
+          <div class="summary"><p>Executes a HEAD request.</p></div>
         
       </li>
     
@@ -317,16 +340,16 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#head%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#head</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#host-instance-method" class="signature"><strong>#host</strong></a>
         
-          <div class="summary"><p>Executes a HEAD request.</p></div>
+          <div class="summary"><p>Returns the target host.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#host-instance-method" class="signature"><strong>#host</strong></a>
+        <a href="#patch%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#patch</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
-          <div class="summary"><p>Returns the target host.</p></div>
+          <div class="summary"><p>Executes a PATCH request.</p></div>
         
       </li>
     
@@ -338,13 +361,6 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#patch%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#patch</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
-        
-          <div class="summary"><p>Executes a PATCH request.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#port-instance-method" class="signature"><strong>#port</strong></a>
         
           <div class="summary"><p>Returns the target port.</p></div>
@@ -352,7 +368,7 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#post%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#post</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#post%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#post</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a POST request.</p></div>
         
@@ -366,21 +382,21 @@ client.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#post_form%28path%2Cform%3AHash%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#post_form</strong>(path, form : Hash, headers = <span class="n">nil</span> : HTTP::Headers | Nil) : HTTP::Response</a>
+        <a href="#post_form%28path%2Cform%3AHash%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#post_form</strong>(path, form : Hash, headers = <span class="n">nil</span> : HTTP::Headers | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a POST with form data.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#post_form%28path%2Cform%3AString%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#post_form</strong>(path, form : String, headers = <span class="n">nil</span> : HTTP::Headers | Nil) : HTTP::Response</a>
+        <a href="#post_form%28path%2Cform%3AString%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#post_form</strong>(path, form : String, headers = <span class="n">nil</span> : HTTP::Headers | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a POST with form data.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#put%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AResponse-instance-method" class="signature"><strong>#put</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Response</a>
+        <a href="#put%28path%2Cheaders%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AHTTP%3A%3AHeaders%7CNil%2Cbody%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#put</strong>(path, headers = <span class="n">nil</span> : HTTP::Headers | Nil, body = <span class="n">nil</span> : String | Nil) : HTTP::Client::Response</a>
         
           <div class="summary"><p>Executes a PUT request.</p></div>
         
@@ -602,7 +618,7 @@ client.close</code></pre>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="delete(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1217"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.delete%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1227"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.delete%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>delete</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -611,7 +627,7 @@ client.close</code></pre>
       
         <div class="doc">
 <p>Executes a DELETE request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code><span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.delete(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
   response.body_io.gets <span class="c">#=&gt; &#34;...&#34;</span>
@@ -621,22 +637,22 @@ The response will have its body as an <code><a href="../IO.html">IO</a></code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="delete(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-class-method">
-      <a class="dashingAutolink" name="autolink-1218"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.delete%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="delete(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-class-method">
+      <a class="dashingAutolink" name="autolink-1228"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.delete%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def self.<strong>delete</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def self.<strong>delete</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a DELETE request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>response <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.delete(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
 response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
@@ -645,22 +661,22 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="exec(method,url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-class-method">
-      <a class="dashingAutolink" name="autolink-1219"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exec%28method%2C%20url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="exec(method,url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-class-method">
+      <a class="dashingAutolink" name="autolink-1229"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exec%28method%2C%20url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def self.<strong>exec</strong>(method, url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def self.<strong>exec</strong>(method, url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a request.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>response <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.exec <span class="s">&#34;GET&#34;</span>, <span class="s">&#34;http://www.example.com&#34;</span>
 response.body <span class="c"># =&gt; &#34;...&#34;</span></code></pre>
@@ -669,13 +685,13 @@ response.body <span class="c"># =&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L363" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L377" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exec(method,url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1220"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exec%28method%2C%20url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1230"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exec%28method%2C%20url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>exec</strong>(method, url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -684,7 +700,7 @@ response.body <span class="c"># =&gt; &#34;...&#34;</span></code></pre>
       
         <div class="doc">
 <p>Executes a request.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code><span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.exec(<span class="s">&#34;GET&#34;</span>, <span class="s">&#34;http://www.example.com&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
   response.body_io.gets <span class="c"># =&gt; &#34;...&#34;</span>
@@ -694,13 +710,13 @@ The response will have its body as an <code><a href="../IO.html">IO</a></code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L377" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L391" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="get(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1221"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.get%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1231"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.get%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>get</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -709,7 +725,7 @@ The response will have its body as an <code><a href="../IO.html">IO</a></code> a
       
         <div class="doc">
 <p>Executes a GET request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code><span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.get(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
   response.body_io.gets <span class="c">#=&gt; &#34;...&#34;</span>
@@ -719,22 +735,22 @@ The response will have its body as an <code><a href="../IO.html">IO</a></code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="get(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-class-method">
-      <a class="dashingAutolink" name="autolink-1222"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.get%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="get(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-class-method">
+      <a class="dashingAutolink" name="autolink-1232"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.get%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def self.<strong>get</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def self.<strong>get</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a GET request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>response <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.get(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
 response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
@@ -743,13 +759,13 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="head(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1223"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.head%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1233"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.head%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>head</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -758,7 +774,7 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       
         <div class="doc">
 <p>Executes a HEAD request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code><span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.head(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
   response.body_io.gets <span class="c">#=&gt; &#34;...&#34;</span>
@@ -768,22 +784,22 @@ The response will have its body as an <code><a href="../IO.html">IO</a></code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="head(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-class-method">
-      <a class="dashingAutolink" name="autolink-1224"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.head%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="head(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-class-method">
+      <a class="dashingAutolink" name="autolink-1234"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.head%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def self.<strong>head</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def self.<strong>head</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a HEAD request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>response <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.head(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
 response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
@@ -792,13 +808,13 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(host,port=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;,ssl=&lt;spanclass=&#34;n&#34;&gt;false&lt;/span&gt;,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1225"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%20%3D%20nil%2C%20ssl%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1235"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%20%3D%20nil%2C%20ssl%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>new</strong>(host, port = <span class="n">nil</span>, ssl = <span class="n">false</span>, &amp;block)
 
@@ -817,22 +833,22 @@ the client afterwards.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L88" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L92" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="patch(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-class-method">
-      <a class="dashingAutolink" name="autolink-1226"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.patch%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="patch(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-class-method">
+      <a class="dashingAutolink" name="autolink-1236"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.patch%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def self.<strong>patch</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def self.<strong>patch</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a PATCH request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>response <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.patch(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
 response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
@@ -841,13 +857,13 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="patch(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1227"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.patch%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1237"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.patch%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>patch</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -856,7 +872,7 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       
         <div class="doc">
 <p>Executes a PATCH request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code><span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.patch(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
   response.body_io.gets <span class="c">#=&gt; &#34;...&#34;</span>
@@ -866,22 +882,22 @@ The response will have its body as an <code><a href="../IO.html">IO</a></code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="post(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-class-method">
-      <a class="dashingAutolink" name="autolink-1228"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.post%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="post(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-class-method">
+      <a class="dashingAutolink" name="autolink-1238"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.post%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def self.<strong>post</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def self.<strong>post</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a POST request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>response <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.post(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
 response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
@@ -890,13 +906,13 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="post(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1229"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.post%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1239"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.post%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>post</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -905,7 +921,7 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       
         <div class="doc">
 <p>Executes a POST request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code><span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.post(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
   response.body_io.gets <span class="c">#=&gt; &#34;...&#34;</span>
@@ -915,15 +931,15 @@ The response will have its body as an <code><a href="../IO.html">IO</a></code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="post_form(url,form:String|Hash,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil):HTTP::Response-class-method">
-      <a class="dashingAutolink" name="autolink-1230"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.post_form%28url%2C%20form%20%3A%20String%20%7C%20Hash%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="post_form(url,form:String|Hash,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil):HTTP::Client::Response-class-method">
+      <a class="dashingAutolink" name="autolink-1240"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.post_form%28url%2C%20form%20%3A%20String%20%7C%20Hash%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def self.<strong>post_form</strong>(url, form : <a href="../String.html">String</a> | <a href="../Hash.html">Hash</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def self.<strong>post_form</strong>(url, form : <a href="../String.html">String</a> | <a href="../Hash.html">Hash</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
@@ -938,13 +954,13 @@ to &#34;application/x-www-form-urlencoded&#34;.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L273" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L277" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="put(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1231"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.put%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1241"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.put%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>put</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -953,7 +969,7 @@ to &#34;application/x-www-form-urlencoded&#34;.</p>
       
         <div class="doc">
 <p>Executes a PUT request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code><span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.put(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
   response.body_io.gets <span class="c">#=&gt; &#34;...&#34;</span>
@@ -963,22 +979,22 @@ The response will have its body as an <code><a href="../IO.html">IO</a></code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="put(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-class-method">
-      <a class="dashingAutolink" name="autolink-1232"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.put%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="put(url:String|URI,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-class-method">
+      <a class="dashingAutolink" name="autolink-1242"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.put%28url%20%3A%20String%20%7C%20URI%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def self.<strong>put</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def self.<strong>put</strong>(url : <a href="../String.html">String</a> | <a href="../URI.html">URI</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a PUT request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>response <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.put(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
 response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
@@ -987,13 +1003,13 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(host,port=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;,ssl=&lt;spanclass=&#34;n&#34;&gt;false&lt;/span&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1233"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%20%3D%20nil%2C%20ssl%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1243"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%20%3D%20nil%2C%20ssl%20%3D%20false%29"></a><div class="signature">
         
         def self.<strong>new</strong>(host, port = <span class="n">nil</span>, ssl = <span class="n">false</span>)
 
@@ -1008,7 +1024,7 @@ be used depending on the <em>ssl</em> arguments: 80 for if <em>ssl</em> is <code
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1019,7 +1035,7 @@ be used depending on the <em>ssl</em> arguments: 80 for if <em>ssl</em> is <code
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="basic_auth(username,password)-instance-method">
-      <a class="dashingAutolink" name="autolink-1234"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20basic_auth%28username%2C%20password%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1244"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20basic_auth%28username%2C%20password%29"></a><div class="signature">
         
         def <strong>basic_auth</strong>(username, password)
 
@@ -1032,13 +1048,13 @@ request.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L103" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="before_request(&amp;callback:HTTP::Request-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-1235"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20before_request%28%26callback%20%3A%20HTTP%3A%3ARequest%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1245"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20before_request%28%26callback%20%3A%20HTTP%3A%3ARequest%20-%3E%20%29"></a><div class="signature">
         
         def <strong>before_request</strong>(&amp;callback : <a href="../HTTP/Request.html">HTTP::Request</a> -&gt; )
 
@@ -1060,13 +1076,13 @@ client.get <span class="s">&#34;/&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L178" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L182" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-1236"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1246"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -1078,41 +1094,41 @@ client.get <span class="s">&#34;/&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L386" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L400" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="connect_timeout=(connect_timeout:Time::Span)-instance-method">
-      <a class="dashingAutolink" name="autolink-1237"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20connect_timeout%3D%28connect_timeout%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
+    <div class="entry-detail" id="compress=(compress:Bool)-instance-method">
+      <a class="dashingAutolink" name="autolink-1247"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20compress%3D%28compress%20%3A%20Bool%29"></a><div class="signature">
         
-        def <strong>connect_timeout=</strong>(connect_timeout : <a href="../Time/Span.html">Time::Span</a>)
+        def <strong>compress=</strong>(compress : <a href="../Bool.html">Bool</a>)
 
         
       </div>
       
-        <div class="doc">
-<p>Set the open timeout with a <code><a href="../Time/Span.html">Time::Span</a></code> to wait when connecting, before raising an <code><a href="../IO/Timeout.html">IO::Timeout</a></code>.</p>
-
-<pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;example.org&#34;</span>)
-client.connect_timeout <span class="o">=</span> <span class="n">5</span>.minutes
-<span class="k">begin</span>
-  response <span class="o">=</span> client.get(<span class="s">&#34;/&#34;</span>)
-<span class="k">rescue</span> <span class="t">IO</span><span class="t">::</span><span class="t">Timeout</span>
-  puts <span class="s">&#34;Timeout!&#34;</span>
-<span class="k">end</span></code></pre>
-</div>
-      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L162" target="_blank">View source</a>]
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="compress?-instance-method">
+      <a class="dashingAutolink" name="autolink-1248"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20compress%3F"></a><div class="signature">
+        
+        def <strong>compress?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
         
       </div>
     </div>
   
     <div class="entry-detail" id="connect_timeout=(connect_timeout:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-1238"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20connect_timeout%3D%28connect_timeout%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1249"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20connect_timeout%3D%28connect_timeout%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>connect_timeout=</strong>(connect_timeout : <a href="../Number.html">Number</a>)
 
@@ -1134,13 +1150,66 @@ client.connect_timeout <span class="o">=</span> <span class="n">1.5</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L147" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L151" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="connect_timeout=(connect_timeout:Time::Span)-instance-method">
+      <a class="dashingAutolink" name="autolink-1250"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20connect_timeout%3D%28connect_timeout%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
+        
+        def <strong>connect_timeout=</strong>(connect_timeout : <a href="../Time/Span.html">Time::Span</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Set the open timeout with a <code><a href="../Time/Span.html">Time::Span</a></code> to wait when connecting, before raising an <code><a href="../IO/Timeout.html">IO::Timeout</a></code>.</p>
+
+<pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;example.org&#34;</span>)
+client.connect_timeout <span class="o">=</span> <span class="n">5</span>.minutes
+<span class="k">begin</span>
+  response <span class="o">=</span> client.get(<span class="s">&#34;/&#34;</span>)
+<span class="k">rescue</span> <span class="t">IO</span><span class="t">::</span><span class="t">Timeout</span>
+  puts <span class="s">&#34;Timeout!&#34;</span>
+<span class="k">end</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L166" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1251"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
+        
+        def <strong>delete</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Executes a DELETE request.
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
+
+<pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
+response <span class="o">=</span> client.delete(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
+response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="delete(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1239"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1252"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>delete</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -1149,7 +1218,7 @@ client.connect_timeout <span class="o">=</span> <span class="n">1.5</span>
       
         <div class="doc">
 <p>Executes a DELETE request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 client.delete(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
@@ -1160,47 +1229,22 @@ client.delete(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP<
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="delete(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1240"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="exec(request:HTTP::Request):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1253"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exec%28request%20%3A%20HTTP%3A%3ARequest%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def <strong>delete</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Executes a DELETE request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
-
-<pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
-response <span class="o">=</span> client.delete(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
-response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="exec(request:HTTP::Request):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1241"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exec%28request%20%3A%20HTTP%3A%3ARequest%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
-        
-        def <strong>exec</strong>(request : <a href="../HTTP/Request.html">HTTP::Request</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def <strong>exec</strong>(request : <a href="../HTTP/Request.html">HTTP::Request</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span> <span class="s">&#34;www.example.com&#34;</span>
 response <span class="o">=</span> client.exec <span class="t">HTTP</span><span class="t">::</span><span class="t">Request</span>.<span class="k">new</span>(<span class="s">&#34;GET&#34;</span>, <span class="s">&#34;/&#34;</span>)
@@ -1210,22 +1254,22 @@ response.body <span class="c"># =&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L287" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L291" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="exec(method:String,path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1242"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exec%28method%20%3A%20String%2C%20path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="exec(method:String,path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1254"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exec%28method%20%3A%20String%2C%20path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def <strong>exec</strong>(method : <a href="../String.html">String</a>, path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def <strong>exec</strong>(method : <a href="../String.html">String</a>, path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span> <span class="s">&#34;www.example.com&#34;</span>
 response <span class="o">=</span> client.exec <span class="s">&#34;GET&#34;</span>, <span class="s">&#34;/&#34;</span>
@@ -1235,13 +1279,13 @@ response.body <span class="c"># =&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L337" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L351" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exec(request:HTTP::Request,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1243"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exec%28request%20%3A%20HTTP%3A%3ARequest%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1255"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exec%28request%20%3A%20HTTP%3A%3ARequest%2C%20%26block%29"></a><div class="signature">
         
         def <strong>exec</strong>(request : <a href="../HTTP/Request.html">HTTP::Request</a>, &amp;block)
 
@@ -1249,8 +1293,8 @@ response.body <span class="c"># =&gt; &#34;...&#34;</span></code></pre>
       </div>
       
         <div class="doc">
-<p>Executes a request request and yields an <code><a href="../HTTP/Response.html">HTTP::Response</a></code> to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+<p>Executes a request request and yields an <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html">Response</a></code> to the block.
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span> <span class="s">&#34;www.example.com&#34;</span>
 client.exec(<span class="t">HTTP</span><span class="t">::</span><span class="t">Request</span>.<span class="k">new</span>(<span class="s">&#34;GET&#34;</span>, <span class="s">&#34;/&#34;</span>)) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
@@ -1261,13 +1305,13 @@ client.exec(<span class="t">HTTP</span><span class="t">::</span><span class="t">
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L310" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L314" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exec(method:String,path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1244"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exec%28method%20%3A%20String%2C%20path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1256"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exec%28method%20%3A%20String%2C%20path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>exec</strong>(method : <a href="../String.html">String</a>, path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -1276,7 +1320,7 @@ client.exec(<span class="t">HTTP</span><span class="t">::</span><span class="t">
       
         <div class="doc">
 <p>Executes a request.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span> <span class="s">&#34;www.example.com&#34;</span>
 client.exec(<span class="s">&#34;GET&#34;</span>, <span class="s">&#34;/&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
@@ -1287,13 +1331,13 @@ client.exec(<span class="s">&#34;GET&#34;</span>, <span class="s">&#34;/&#34;</s
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L350" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L364" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="get(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1245"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1257"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>get</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -1302,7 +1346,7 @@ client.exec(<span class="s">&#34;GET&#34;</span>, <span class="s">&#34;/&#34;</s
       
         <div class="doc">
 <p>Executes a GET request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 client.get(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
@@ -1313,22 +1357,22 @@ client.get(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</sp
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="get(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1246"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="get(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1258"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def <strong>get</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def <strong>get</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a GET request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 response <span class="o">=</span> client.get(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
@@ -1338,13 +1382,38 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="head(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1259"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20head%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
+        
+        def <strong>head</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Executes a HEAD request.
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
+
+<pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
+response <span class="o">=</span> client.head(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
+response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="head(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1247"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20head%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1260"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20head%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>head</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -1353,7 +1422,7 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       
         <div class="doc">
 <p>Executes a HEAD request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 client.head(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
@@ -1364,38 +1433,13 @@ client.head(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</s
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="head(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1248"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20head%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
-        
-        def <strong>head</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Executes a HEAD request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
-
-<pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
-response <span class="o">=</span> client.head(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
-response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="host-instance-method">
-      <a class="dashingAutolink" name="autolink-1249"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20host"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1261"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20host"></a><div class="signature">
         
         def <strong>host</strong>
 
@@ -1412,13 +1456,38 @@ client.host <span class="c"># =&gt; &#34;www.example.com&#34;</span></code></pre
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L54" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="patch(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1262"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20patch%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
+        
+        def <strong>patch</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Executes a PATCH request.
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
+
+<pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
+response <span class="o">=</span> client.patch(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
+response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="patch(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1250"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20patch%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1263"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20patch%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>patch</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -1427,7 +1496,7 @@ client.host <span class="c"># =&gt; &#34;www.example.com&#34;</span></code></pre
       
         <div class="doc">
 <p>Executes a PATCH request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 client.patch(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
@@ -1438,38 +1507,13 @@ client.patch(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="patch(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1251"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20patch%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
-        
-        def <strong>patch</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Executes a PATCH request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
-
-<pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
-response <span class="o">=</span> client.patch(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
-response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="port-instance-method">
-      <a class="dashingAutolink" name="autolink-1252"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20port"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1264"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20port"></a><div class="signature">
         
         def <strong>port</strong>
 
@@ -1486,22 +1530,22 @@ client.port <span class="c"># =&gt; 80</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="post(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1253"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="post(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1265"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def <strong>post</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def <strong>post</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a POST request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 response <span class="o">=</span> client.post(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
@@ -1511,13 +1555,13 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="post(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1254"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1266"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>post</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -1526,7 +1570,7 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       
         <div class="doc">
 <p>Executes a POST request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 client.post(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
@@ -1537,15 +1581,15 @@ client.post(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</s
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="post_form(path,form:Hash,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1255"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post_form%28path%2C%20form%20%3A%20Hash%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="post_form(path,form:Hash,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1267"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post_form%28path%2C%20form%20%3A%20Hash%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def <strong>post_form</strong>(path, form : <a href="../Hash.html">Hash</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def <strong>post_form</strong>(path, form : <a href="../Hash.html">Hash</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
@@ -1561,15 +1605,15 @@ response <span class="o">=</span> client.post_form <span class="s">&#34;/&#34;</
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L257" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L261" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="post_form(path,form:String,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1256"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post_form%28path%2C%20form%20%3A%20String%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="post_form(path,form:String,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1268"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post_form%28path%2C%20form%20%3A%20String%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def <strong>post_form</strong>(path, form : <a href="../String.html">String</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def <strong>post_form</strong>(path, form : <a href="../String.html">String</a>, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
@@ -1585,22 +1629,22 @@ response <span class="o">=</span> client.post_form <span class="s">&#34;/&#34;</
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L244" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L248" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="put(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Response-instance-method">
-      <a class="dashingAutolink" name="autolink-1257"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20put%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AResponse"></a><div class="signature">
+    <div class="entry-detail" id="put(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil):HTTP::Client::Response-instance-method">
+      <a class="dashingAutolink" name="autolink-1269"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20put%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%29%20%3A%20HTTP%3A%3AClient%3A%3AResponse"></a><div class="signature">
         
-        def <strong>put</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Response.html">HTTP::Response</a>
+        def <strong>put</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>) : <a href="../HTTP/Client/Response.html">HTTP::Client::Response</a>
 
         
       </div>
       
         <div class="doc">
 <p>Executes a PUT request.
-The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Response.html#body-instance-method">HTTP::Response#body</a></code>.</p>
+The response will have its body as a <code><a href="../String.html">String</a></code>, accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body-instance-method">Response#body</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 response <span class="o">=</span> client.put(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>)
@@ -1610,13 +1654,13 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="put(path,headers=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:HTTP::Headers|Nil,body=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1258"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20put%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1270"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20put%28path%2C%20headers%20%3D%20nil%20%3A%20HTTP%3A%3AHeaders%20%7C%20Nil%2C%20body%20%3D%20nil%20%3A%20String%20%7C%20Nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>put</strong>(path, headers = <span class="n">nil</span> : <a href="../HTTP/Headers.html">HTTP::Headers</a> | <a href="../Nil.html">Nil</a>, body = <span class="n">nil</span> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>, &amp;block)
 
@@ -1625,7 +1669,7 @@ response.body <span class="c">#=&gt; &#34;...&#34;</span></code></pre>
       
         <div class="doc">
 <p>Executes a PUT request and yields the response to the block.
-The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Response.html#body_io-instance-method">HTTP::Response#body_io</a></code>.</p>
+The response will have its body as an <code><a href="../IO.html">IO</a></code> accessed via <code><a href="../HTTP/Client.html">HTTP::Client</a>::<a href="../HTTP/Client/Response.html#body_io-instance-method">Response#body_io</a></code>.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;www.example.com&#34;</span>)
 client.put(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;User-agent&#34;</span>: <span class="s">&#34;AwesomeApp&#34;</span>}, body: <span class="s">&#34;Hello!&#34;</span>) <span class="k">do</span> <span class="o">|</span>response<span class="o">|</span>
@@ -1636,13 +1680,13 @@ client.put(<span class="s">&#34;/&#34;</span>, headers: <span class="t">HTTP</sp
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_timeout=(read_timeout:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-1259"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1271"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>read_timeout=</strong>(read_timeout : <a href="../Number.html">Number</a>)
 
@@ -1664,13 +1708,13 @@ client.read_timeout <span class="o">=</span> <span class="n">1.5</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L117" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L121" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_timeout=(read_timeout:Time::Span)-instance-method">
-      <a class="dashingAutolink" name="autolink-1260"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1272"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
         
         def <strong>read_timeout=</strong>(read_timeout : <a href="../Time/Span.html">Time::Span</a>)
 
@@ -1692,13 +1736,13 @@ client.read_timeout <span class="o">=</span> <span class="n">5</span>.minutes
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L132" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L136" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ssl?-instance-method">
-      <a class="dashingAutolink" name="autolink-1261"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ssl%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1273"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ssl%3F"></a><div class="signature">
         
         def <strong>ssl?</strong>
 
@@ -1715,7 +1759,7 @@ client.ssl? <span class="c"># =&gt; true</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/client/client.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/client/client.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>

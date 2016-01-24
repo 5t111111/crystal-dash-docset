@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1423"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AStaticFileHandler"></a><title>HTTP::StaticFileHandler</title>
+  <a class="dashingAutolink" name="autolink-1424"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AStaticFileHandler"></a><title>HTTP::StaticFileHandler</title>
 </head>
 <body>
 
@@ -28,6 +28,10 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>A simple handler that lists directories and serves files under a given public directory.</p>
+
 
 
 
@@ -44,7 +48,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/server/handlers/static_file_handler.cr" target="_blank">http/server/handlers/static_file_handler.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/handlers/static_file_handler.cr" target="_blank">http/server/handlers/static_file_handler.cr</a>
     
     <br/>
   
@@ -57,7 +61,9 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28publicdir%29-class-method" class="signature"><strong>.new</strong>(publicdir)</a>
+        <a href="#new%28public_dir%29-class-method" class="signature"><strong>.new</strong>(public_dir)</a>
+        
+          <div class="summary"><p>Creates a handler that will serve files in the given <em>public_dir</em>, after expanding it (using <code><a href="../File.html#expand_path%28path%2Cdir%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-class-method">File#expand_path</a></code>).</p></div>
         
       </li>
     
@@ -69,7 +75,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#call%28request%29-instance-method" class="signature"><strong>#call</strong>(request)</a>
+        <a href="#call%28context%29-instance-method" class="signature"><strong>#call</strong>(context)</a>
         
       </li>
     
@@ -86,8 +92,12 @@
   <h3>Instance methods inherited from class <code><a href="../HTTP/Handler.html">HTTP::Handler</a></code>
 </h3>
   
-    <a href="../HTTP/Handler.html#call_next%28request%29-instance-method" class="tooltip">
-      <span>call_next(request)</span>
+    <a href="../HTTP/Handler.html#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="tooltip">
+      <span>call(context : HTTP::Server::Context)</span>
+    call</a>, 
+  
+    <a href="../HTTP/Handler.html#call_next%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="tooltip">
+      <span>call_next(context : HTTP::Server::Context)</span>
     call_next</a>, 
   
     <a href="../HTTP/Handler.html#next-instance-method" class="tooltip">
@@ -283,18 +293,21 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(publicdir)-class-method">
-      <a class="dashingAutolink" name="autolink-1424"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28publicdir%29"></a><div class="signature">
+    <div class="entry-detail" id="new(public_dir)-class-method">
+      <a class="dashingAutolink" name="autolink-1422"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28public_dir%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(publicdir)
+        def self.<strong>new</strong>(public_dir)
 
         
       </div>
       
+        <div class="doc"><p>Creates a handler that will serve files in the given <em>public_dir</em>, after
+expanding it (using <code><a href="../File.html#expand_path%28path%2Cdir%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-class-method">File#expand_path</a></code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/server/handlers/static_file_handler.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/handlers/static_file_handler.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -304,10 +317,10 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="call(request)-instance-method">
-      <a class="dashingAutolink" name="autolink-1425"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call%28request%29"></a><div class="signature">
+    <div class="entry-detail" id="call(context)-instance-method">
+      <a class="dashingAutolink" name="autolink-1423"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call%28context%29"></a><div class="signature">
         
-        def <strong>call</strong>(request)
+        def <strong>call</strong>(context)
 
         
       </div>
@@ -315,7 +328,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/server/handlers/static_file_handler.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/handlers/static_file_handler.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1478"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP"></a><title>HTTP</title>
+  <a class="dashingAutolink" name="autolink-1436"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP"></a><title>HTTP</title>
 </head>
 <body>
 
@@ -20,6 +20,10 @@
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>The HTTP module contains <code><a href="HTTP/Client.html">HTTP::Client</a></code>, <code><a href="HTTP/Server.html">HTTP::Server</a></code> and <code><a href="HTTP/WebSocket.html">HTTP::WebSocket</a></code> implementations.</p>
 
 
 
@@ -37,39 +41,32 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/common.cr" target="_blank">http/common.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/common.cr" target="_blank">http/common.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/params.cr" target="_blank">http/params.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/params.cr" target="_blank">http/params.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/content.cr" target="_blank">http/content.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/content.cr" target="_blank">http/content.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/cookie.cr" target="_blank">http/cookie.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/cookie.cr" target="_blank">http/cookie.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/http.cr" target="_blank">http/http.cr</a>
     
     <br/>
   
 
 
-
-  
-    <h2>Constant Summary</h2>
-  
-  <dl>
-    
-      <dt class="entry-const">
-        <strong>DATE_PATTERNS</strong> = <code>{<span class="s">&#34;%a, %d %b %Y %H:%M:%S %z&#34;</span>, <span class="s">&#34;%A, %d-%b-%y %H:%M:%S %z&#34;</span>, <span class="s">&#34;%a %b %e %H:%M:%S %Y&#34;</span>}</code>
-      </dt>
-      
-    
-  </dl>
 
 
 
@@ -77,22 +74,9 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#content_type%28message%29-class-method" class="signature"><strong>.content_type</strong>(message)</a>
+        <a href="#default_status_message_for%28status_code%3AInt%29-class-method" class="signature"><strong>.default_status_message_for</strong>(status_code : Int)</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#keep_alive%3F%28message%29-class-method" class="signature"><strong>.keep_alive?</strong>(message)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#parse_header%28line%29-class-method" class="signature"><strong>.parse_header</strong>(line)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#parse_headers_and_body%28io%2Cbody_type%3D%3Cspanclass%3D%22t%22%3EBodyType%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EOnDemand%3C%2Fspan%3E%3ABodyType%2C%26block%29-class-method" class="signature"><strong>.parse_headers_and_body</strong>(io, body_type = <span class="t">BodyType</span><span class="t">::</span><span class="t">OnDemand</span> : BodyType, &amp;block)</a>
+          <div class="summary"><p>Returns the default status message of the given HTTP status code.</p></div>
         
       </li>
     
@@ -103,11 +87,6 @@
     
       <li class="entry-summary">
         <a href="#rfc1123_date%28time%3ATime%29%3AString-class-method" class="signature"><strong>.rfc1123_date</strong>(time : Time) : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#serialize_headers_and_body%28io%2Cheaders%2Cbody%2Cversion%29-class-method" class="signature"><strong>.serialize_headers_and_body</strong>(io, headers, body, version)</a>
         
       </li>
     
@@ -126,72 +105,26 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="content_type(message)-class-method">
-      <a class="dashingAutolink" name="autolink-1471"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.content_type%28message%29"></a><div class="signature">
+    <div class="entry-detail" id="default_status_message_for(status_code:Int)-class-method">
+      <a class="dashingAutolink" name="autolink-1437"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.default_status_message_for%28status_code%20%3A%20Int%29"></a><div class="signature">
         
-        def self.<strong>content_type</strong>(message)
+        def self.<strong>default_status_message_for</strong>(status_code : <a href="Int.html">Int</a>)
 
         
       </div>
       
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/common.cr#L130" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="keep_alive?(message)-class-method">
-      <a class="dashingAutolink" name="autolink-1472"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.keep_alive%3F%28message%29"></a><div class="signature">
-        
-        def self.<strong>keep_alive?</strong>(message)
-
-        
-      </div>
+        <div class="doc"><p>Returns the default status message of the given HTTP status code.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/common.cr#L114" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="parse_header(line)-class-method">
-      <a class="dashingAutolink" name="autolink-1473"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_header%28line%29"></a><div class="signature">
-        
-        def self.<strong>parse_header</strong>(line)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/common.cr#L35" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="parse_headers_and_body(io,body_type=&lt;spanclass=&#34;t&#34;&gt;BodyType&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;::&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;OnDemand&lt;/span&gt;:BodyType,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1474"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_headers_and_body%28io%2C%20body_type%20%3D%20BodyType%3A%3AOnDemand%20%3A%20BodyType%2C%20%26block%29"></a><div class="signature">
-        
-        def self.<strong>parse_headers_and_body</strong>(io, body_type = <span class="t">BodyType</span><span class="t">::</span><span class="t">OnDemand</span> : <a href="HTTP/BodyType.html">BodyType</a>, &amp;block)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/common.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/common.cr#L170" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse_time(time_str:String)-class-method">
-      <a class="dashingAutolink" name="autolink-1475"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_time%28time_str%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1438"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_time%28time_str%20%3A%20String%29"></a><div class="signature">
         
         def self.<strong>parse_time</strong>(time_str : <a href="String.html">String</a>)
 
@@ -201,13 +134,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/common.cr#L134" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/common.cr#L153" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="rfc1123_date(time:Time):String-class-method">
-      <a class="dashingAutolink" name="autolink-1476"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.rfc1123_date%28time%20%3A%20Time%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1439"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.rfc1123_date%28time%20%3A%20Time%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>rfc1123_date</strong>(time : <a href="Time.html">Time</a>) : <a href="String.html">String</a>
 
@@ -217,23 +150,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/common.cr#L145" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="serialize_headers_and_body(io,headers,body,version)-class-method">
-      <a class="dashingAutolink" name="autolink-1477"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.serialize_headers_and_body%28io%2C%20headers%2C%20body%2C%20version%29"></a><div class="signature">
-        
-        def self.<strong>serialize_headers_and_body</strong>(io, headers, body, version)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/common.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/common.cr#L164" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1446"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AWebSocket%3A%3AStreamIO"></a><title>HTTP::WebSocket::StreamIO</title>
+  <a class="dashingAutolink" name="autolink-1400"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AServer%3A%3AResponse"></a><title>HTTP::Server::Response</title>
 </head>
 <body>
 
@@ -13,19 +13,35 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> HTTP::WebSocket::StreamIO
+  <span class="kind">class</span> HTTP::Server::Response
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
-<li class="superclass"><a href="../../HTTP/WebSocket/StreamIO.html">HTTP::WebSocket::StreamIO</a></li>
+<li class="superclass"><a href="../../HTTP/Server/Response.html">HTTP::Server::Response</a></li>
 <li class="superclass"><a href="../../Reference.html">Reference</a></li>
 <li class="superclass"><a href="../../Object.html">Object</a></li>
 </ul>
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>The response to configure and write to in an <code><a href="../../HTTP/Server.html">HTTP::Server</a></code> handler.</p>
+
+<p>The response <code><a href="../../HTTP/Server/Response.html#status_code-instance-method">#status_code</a></code> and <code><a href="../../HTTP/Server/Response.html#headers-instance-method">#headers</a></code> must be configured before writing
+the response body. Once response output is written, changing the <code>status</code>
+and <code><a href="../../HTTP/Server/Response.html#headers-instance-method">#headers</a></code> properties has no effect.</p>
+
+<p>The <code><a href="../../HTTP/Server.html">HTTP::Server</a>::<a href="../../HTTP/Server/Response.html">Response</a></code> is a write-only <code><a href="../../IO.html">IO</a></code>, so all <code><a href="../../IO.html">IO</a></code> methods are available
+in it.</p>
+
+<p>A response can be upgraded with the <code><a href="../../HTTP/Server/Response.html#upgrade%28%26block%29-instance-method">#upgrade</a></code> method. Once invoked, headers
+are written and the connection <code><a href="../../IO.html">IO</a></code> (a socket) is yielded to the given block.
+The block must invoke <code><a href="../../HTTP/Server/Response.html#close-instance-method">#close</a></code> afterwards, the server won&#39;t do it in this case.
+This is useful to implement protocol upgrades, such as websockets.</p>
 
 
 
@@ -50,7 +66,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/web_socket.cr" target="_blank">http/web_socket.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr" target="_blank">http/server/response.cr</a>
     
     <br/>
   
@@ -59,33 +75,84 @@
 
 
 
-  <h2>Class Method Summary</h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new%28websocket%2Cbinary%2Cmasked%2Cframe_size%29-class-method" class="signature"><strong>.new</strong>(websocket, binary, masked, frame_size)</a>
-        
-      </li>
-    
-  </ul>
-
 
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#flush%28final%3D%3Cspanclass%3D%22n%22%3Etrue%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#flush</strong>(final = <span class="n">true</span>)</a>
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
+        
+          <div class="summary"><p>Closes this response, writing headers and body if not done yet.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#read</strong>(slice : Slice(UInt8))</a>
+        <a href="#content_length%3D%28content_length%3AInt%29-instance-method" class="signature"><strong>#content_length=</strong>(content_length : Int)</a>
+        
+          <div class="summary"><p>Convenience method to set the <code>Content-Length</code> header.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#content_type%3D%28content_type%3AString%29-instance-method" class="signature"><strong>#content_type=</strong>(content_type : String)</a>
+        
+          <div class="summary"><p>Convenience method to set the <code>Content-Type</code> header.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#flush-instance-method" class="signature"><strong>#flush</strong></a>
+        
+          <div class="summary"><p>Flushes the output.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#headers-instance-method" class="signature"><strong>#headers</strong></a>
+        
+          <div class="summary"><p>The response headers (<code><a href="../../HTTP/Headers.html">HTTP::Headers</a></code>).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output-instance-method" class="signature"><strong>#output</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output%3D%28output%29-instance-method" class="signature"><strong>#output=</strong>(output)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#status_code-instance-method" class="signature"><strong>#status_code</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#status_code%3D%28status_code%29-instance-method" class="signature"><strong>#status_code=</strong>(status_code)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#upgrade%28%26block%29-instance-method" class="signature"><strong>#upgrade</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Upgrades this response, writing headers and yieling the connection <code><a href="../../IO.html">IO</a></code> (a socket) to the given block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#version-instance-method" class="signature"><strong>#version</strong></a>
+        
+          <div class="summary"><p>The version of the HTTP::Request that created this response.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#write%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#write</strong>(slice : Slice(UInt8))</a>
+        
+          <div class="summary"><p>See <code><a href="../../IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method">IO#write(slice)</a></code>.</p></div>
         
       </li>
     
@@ -429,49 +496,105 @@
 </div>
 
 
-  <h2>Class Method Detail</h2>
-  
-    <div class="entry-detail" id="new(websocket,binary,masked,frame_size)-class-method">
-      <a class="dashingAutolink" name="autolink-1447"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28websocket%2C%20binary%2C%20masked%2C%20frame_size%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(websocket, binary, masked, frame_size)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/web_socket.cr#L41" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="flush(final=&lt;spanclass=&#34;n&#34;&gt;true&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-1448"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush%28final%20%3D%20true%29"></a><div class="signature">
+    <div class="entry-detail" id="close-instance-method">
+      <a class="dashingAutolink" name="autolink-1388"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
-        def <strong>flush</strong>(final = <span class="n">true</span>)
+        def <strong>close</strong>
 
         
       </div>
       
+        <div class="doc"><p>Closes this response, writing headers and body if not done yet.
+This method must be implemented if wrapping the response output.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/web_socket.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="read(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-1449"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+    <div class="entry-detail" id="content_length=(content_length:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-1389"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20content_length%3D%28content_length%20%3A%20Int%29"></a><div class="signature">
         
-        def <strong>read</strong>(slice : <a href="../../Slice.html">Slice</a>(<a href="../../UInt8.html">UInt8</a>))
+        def <strong>content_length=</strong>(content_length : <a href="../../Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Convenience method to set the <code>Content-Length</code> header.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="content_type=(content_type:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-1390"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20content_type%3D%28content_type%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>content_type=</strong>(content_type : <a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Convenience method to set the <code>Content-Type</code> header.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="flush-instance-method">
+      <a class="dashingAutolink" name="autolink-1391"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
+        
+        def <strong>flush</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Flushes the output. This method must be implemented if wrapping the response output.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="headers-instance-method">
+      <a class="dashingAutolink" name="autolink-1392"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20headers"></a><div class="signature">
+        
+        def <strong>headers</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>The response headers (<code><a href="../../HTTP/Headers.html">HTTP::Headers</a></code>). These must be set before writing to the response.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output-instance-method">
+      <a class="dashingAutolink" name="autolink-1393"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20output"></a><div class="signature">
+        
+        def <strong>output</strong>
 
         
       </div>
@@ -479,23 +602,103 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/web_socket.cr#L63" target="_blank">View source</a>]
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output=(output)-instance-method">
+      <a class="dashingAutolink" name="autolink-1394"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20output%3D%28output%29"></a><div class="signature">
+        
+        def <strong>output=</strong>(output)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="status_code-instance-method">
+      <a class="dashingAutolink" name="autolink-1395"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20status_code"></a><div class="signature">
+        
+        def <strong>status_code</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="status_code=(status_code)-instance-method">
+      <a class="dashingAutolink" name="autolink-1396"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20status_code%3D%28status_code%29"></a><div class="signature">
+        
+        def <strong>status_code=</strong>(status_code)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="upgrade(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-1397"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20upgrade%28%26block%29"></a><div class="signature">
+        
+        def <strong>upgrade</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Upgrades this response, writing headers and yieling the connection <code><a href="../../IO.html">IO</a></code> (a socket) to the given block.
+The block must invoke <code><a href="../../HTTP/Server/Response.html#close-instance-method">#close</a></code> afterwards, the server won&#39;t do it in this case.
+This is useful to implement protocol upgrades, such as websockets.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr#L77" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="version-instance-method">
+      <a class="dashingAutolink" name="autolink-1398"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20version"></a><div class="signature">
+        
+        def <strong>version</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>The version of the HTTP::Request that created this response.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-1450"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1399"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
         
         def <strong>write</strong>(slice : <a href="../../Slice.html">Slice</a>(<a href="../../UInt8.html">UInt8</a>))
 
         
       </div>
       
+        <div class="doc"><p>See <code><a href="../../IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method">IO#write(slice)</a></code>.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/web_socket.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/response.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1302"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AHandler"></a><title>HTTP::Handler</title>
+  <a class="dashingAutolink" name="autolink-1318"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AHandler"></a><title>HTTP::Handler</title>
 </head>
 <body>
 
@@ -26,6 +26,21 @@
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>A handler is a class which inherits from HTTP::Handler and implements the <code><a href="../HTTP/Handler.html#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method">#call</a></code> method.
+You can use a handler to intercept any incoming request and can modify the response. These can be used for request throttling,
+ip-based whitelisting, adding custom headers e.g.</p>
+
+<h3>A custom handler</h3>
+
+<pre><code><span class="k">class</span> <span class="t">CustomHandler</span> <span class="o"> <span class="t">HTTP</span><span class="t">::</span><span class="t">Handler</span>
+  <span class="k">def</span> <span class="m">call</span>(context)
+    puts <span class="s">&#34;Doing some stuff&#34;</span>
+    call_next(context)
+  <span class="k">end</span>
+<span class="k">end</span></span></code></pre>
 
 
 
@@ -58,7 +73,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/server/server.cr" target="_blank">http/server/server.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/handler.cr" target="_blank">http/server/handler.cr</a>
     
     <br/>
   
@@ -73,7 +88,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#call_next%28request%29-instance-method" class="signature"><strong>#call_next</strong>(request)</a>
+        <a href="#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="signature"><strong>#call</strong>(context : HTTP::Server::Context)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#call_next%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="signature"><strong>#call_next</strong>(context : HTTP::Server::Context)</a>
         
       </li>
     
@@ -276,10 +296,10 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="call_next(request)-instance-method">
-      <a class="dashingAutolink" name="autolink-1303"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call_next%28request%29"></a><div class="signature">
-        
-        def <strong>call_next</strong>(request)
+    <div class="entry-detail" id="call(context:HTTP::Server::Context)-instance-method">
+      <a class="dashingAutolink" name="autolink-1314"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20call%28context%20%3A%20HTTP%3A%3AServer%3A%3AContext%29"></a><div class="signature">
+        abstract 
+        def <strong>call</strong>(context : <a href="../HTTP/Server/Context.html">HTTP::Server::Context</a>)
 
         
       </div>
@@ -287,13 +307,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/server/server.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/handler.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="call_next(context:HTTP::Server::Context)-instance-method">
+      <a class="dashingAutolink" name="autolink-1315"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call_next%28context%20%3A%20HTTP%3A%3AServer%3A%3AContext%29"></a><div class="signature">
+        
+        def <strong>call_next</strong>(context : <a href="../HTTP/Server/Context.html">HTTP::Server::Context</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/handler.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="next-instance-method">
-      <a class="dashingAutolink" name="autolink-1304"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next"></a><div class="signature">
         
         def <strong>next</strong>
 
@@ -307,7 +343,7 @@
     </div>
   
     <div class="entry-detail" id="next=(next)-instance-method">
-      <a class="dashingAutolink" name="autolink-1305"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next%3D%28next%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next%3D%28next%29"></a><div class="signature">
         
         def <strong>next=</strong>(next)
 

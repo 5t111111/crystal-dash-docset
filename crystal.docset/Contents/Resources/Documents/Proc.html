@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3856"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Proc%28T%2A%29"></a><title>Proc(T*)</title>
+  <a class="dashingAutolink" name="autolink-3832"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Proc%28T%2A%29"></a><title>Proc(T*)</title>
 </head>
 <body>
 
@@ -27,6 +27,90 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>A Proc represents a function pointer with an optional context (the closure data). It is typically created with a proc literal:</p>
+
+<pre><code><span class="c"># A proc without arguments</span>
+-&gt;{ <span class="n">1</span> } <span class="c"># Proc(Int32)</span>
+
+<span class="c"># A proc with one argument</span>
+-&gt;(x : <span class="t">Int32</span>) { x.to_s } <span class="c"># Proc(Int32, String)</span>
+
+<span class="c"># A proc with two arguments:</span>
+-&gt;(x : <span class="t">Int32</span>, y : <span class="t">Int32</span>) { x <span class="o">+</span> y } <span class="c"># Proc(Int32, Int32, Int32)</span></code></pre>
+
+<p>The types of the arguments are mandatory, except when directly sending a proc literal to a lib fun in C bindings.</p>
+
+<p>The return type is inferred from the proc&#39;s body.</p>
+
+<p>A special new method is provided too:</p>
+
+<pre><code><span class="t">Proc</span>(<span class="t">Int32</span>, <span class="t">String</span>).<span class="k">new</span> { <span class="o">|</span>x<span class="o">|</span> x.to_s } <span class="c"># Proc(Int32, String)</span></code></pre>
+
+<p>This form allows you to specify the return type and to check it against the proc&#39;s body.</p>
+
+<p>Another way to create a Proc is by capturing a block:</p>
+
+<pre><code><span class="k">def</span> <span class="m">capture</span>(<span class="o">&amp;</span>block : <span class="t">Int32</span> -&gt; <span class="t">Int32</span>)
+  <span class="c"># block argument is used, so block is turned into a Proc</span>
+  block
+<span class="k">end</span>
+
+proc <span class="o">=</span> capture { <span class="o">|</span>x<span class="o">|</span> x <span class="o">+</span> <span class="n">1</span> } <span class="c"># Proc(Int32, Int32)</span>
+proc.call(<span class="n">1</span>)                 <span class="c"># =&gt; 2</span></code></pre>
+
+<p>When capturing blocks, the type of the arguments and return type must be specified in the capturing
+method block signature.</p>
+
+<h3>Passing a Proc to a C function</h3>
+
+<p>Passing a Proc to a C function, for example as a callback, is possible as long as the Proc isn&#39;t a closure. If it is, either
+a compile-time or runtime error will happen depending on whether the compiler can check this. The reason
+is that a Proc is internally represented as two void pointers, one having the function
+pointer and another the closure data. If just the function pointer is passed, the closure data will be missing
+at invocation time.</p>
+
+<p>Most of the time a C function that allows setting a callback also provide an argument for custom data. This custom data
+is then sent as an argument to the callback. For example, suppose a C function that invokes a callback at every tick,
+passing that tick:</p>
+
+<pre><code><span class="k">lib</span> <span class="t">LibTicker</span>
+  <span class="k">fun</span> on_tick(callback : (<span class="t">Int32</span>, <span class="t">Void</span><span class="o">*</span> -&gt;), data : <span class="t">Void</span><span class="o">*</span>)
+<span class="k">end</span></code></pre>
+
+<p>To properly define a wrapper for this function we must send the Proc as the callback data, and then
+convert that callback data to the Proc and finally invoke it.</p>
+
+<pre><code><span class="k">module</span> <span class="t">Ticker</span>
+  <span class="c"># The callback for the user doesn&#39;t have a Void*</span>
+  <span class="k">def</span> <span class="m">self</span>.on_tick(<span class="o">&amp;</span>callback : <span class="t">Int32</span> -&gt;)
+    <span class="c"># We must save this in Crystal-land so the GC doesn&#39;t collect it (*)</span>
+    @@callback <span class="o">=</span> callback
+
+    <span class="c"># Since Proc is a {Void*, Void*}, we can&#39;t turn that into a Void*, so we</span>
+    <span class="c"># &#34;box&#34; it: we allocate memory and store the Proc there</span>
+    boxed_data <span class="o">=</span> <span class="t">Box</span>.box(callback)
+
+    <span class="c"># We pass a callback that doesn&#39;t form a closure, and pass the boxed_data as</span>
+    <span class="c"># the callback data</span>
+    <span class="t">LibTicker</span>.on_tick(-&gt;(tick, data) {
+      <span class="c"># Now we turn data back into the Proc, using Box.unbox</span>
+      data_as_callback <span class="o">=</span> <span class="t">Box</span>(<span class="k">typeof</span>(callback)).unbox(data)
+      <span class="c"># And finally invoke the user&#39;s callback</span>
+      data_as_callback.call(tick)
+    }, boxed_data)
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="t">Ticker</span>.on_tick <span class="k">do</span> <span class="o">|</span>tick<span class="o">|</span>
+  puts tick
+<span class="k">end</span></code></pre>
+
+<p>Note that we save the callback in <code>@@callback</code>. The reason is that if we dont&#39; do it, and our code doesn&#39;t
+reference it anymore, the GC will collect it. The C library will of course store the callabck, but Crystal&#39;s
+GC has no way of knowing that.</p>
+
 
 
 
@@ -43,7 +127,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr" target="_blank">proc.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr" target="_blank">proc.cr</a>
     
     <br/>
   
@@ -275,7 +359,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(pointer:Pointer(Void),closure_data:Pointer(Void))-class-method">
-      <a class="dashingAutolink" name="autolink-3857"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pointer%20%3A%20Pointer%28Void%29%2C%20closure_data%20%3A%20Pointer%28Void%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3823"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pointer%20%3A%20Pointer%28Void%29%2C%20closure_data%20%3A%20Pointer%28Void%29%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pointer : <a href="Pointer.html">Pointer</a>(Void), closure_data : <a href="Pointer.html">Pointer</a>(Void))
 
@@ -285,7 +369,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L92" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -296,7 +380,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-3858"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3824"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>==</strong>(other : self)
 
@@ -306,13 +390,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-3859"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3825"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>===</strong>(other : self)
 
@@ -322,13 +406,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L120" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-3860"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3826"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%29"></a><div class="signature">
         
         def <strong>===</strong>(other)
 
@@ -338,13 +422,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closure?-instance-method">
-      <a class="dashingAutolink" name="autolink-3861"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3827"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure%3F"></a><div class="signature">
         
         def <strong>closure?</strong>
 
@@ -354,13 +438,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L106" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closure_data-instance-method">
-      <a class="dashingAutolink" name="autolink-3862"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure_data"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3828"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure_data"></a><div class="signature">
         
         def <strong>closure_data</strong>
 
@@ -370,13 +454,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L102" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-3863"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3829"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
         
         def <strong>hash</strong>
 
@@ -386,13 +470,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pointer-instance-method">
-      <a class="dashingAutolink" name="autolink-3864"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pointer"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3830"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pointer"></a><div class="signature">
         
         def <strong>pointer</strong>
 
@@ -402,13 +486,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-3865"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3831"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -418,7 +502,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/proc.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/proc.cr#L132" target="_blank">View source</a>]
         
       </div>
     </div>

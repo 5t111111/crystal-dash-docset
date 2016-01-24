@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1295"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3ADeflateHandler"></a><title>HTTP::DeflateHandler</title>
+  <a class="dashingAutolink" name="autolink-1310"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3ADeflateHandler"></a><title>HTTP::DeflateHandler</title>
 </head>
 <body>
 
@@ -28,6 +28,11 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>A handler that configures an <code><a href="../HTTP/Server.html">HTTP::Server</a>::Response</code> to compress the response
+output, either using gzip or deflate, depending on the <code>Accept-Encoding</code> request header.</p>
+
 
 
 
@@ -44,36 +49,14 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/server/handlers/deflate_handler.cr" target="_blank">http/server/handlers/deflate_handler.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/handlers/deflate_handler.cr" target="_blank">http/server/handlers/deflate_handler.cr</a>
     
     <br/>
   
 
 
 
-  
-    <h2>Constant Summary</h2>
-  
-  <dl>
-    
-      <dt class="entry-const">
-        <strong>DEFAULT_DEFLATE_TYPES</strong> = <code>[<span class="s">&#34;text/html&#34;</span>, <span class="s">&#34;text/plain&#34;</span>, <span class="s">&#34;text/xml&#34;</span>, <span class="s">&#34;text/css&#34;</span>, <span class="s">&#34;text/javascript&#34;</span>, <span class="s">&#34;application/javascript&#34;</span>, <span class="s">&#34;application/json&#34;</span>] <span class="k">of</span> <span class="t">::</span><span class="t">String</span></code>
-      </dt>
-      
-    
-  </dl>
 
-
-
-  <h2>Class Method Summary</h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new%28deflate_types%3D%3Cspanclass%3D%22t%22%3EDEFAULT_DEFLATE_TYPES%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(deflate_types = <span class="t">DEFAULT_DEFLATE_TYPES</span>)</a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -81,17 +64,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#call%28request%29-instance-method" class="signature"><strong>#call</strong>(request)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#deflate_types-instance-method" class="signature"><strong>#deflate_types</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#deflate_types%3D%28deflate_types%29-instance-method" class="signature"><strong>#deflate_types=</strong>(deflate_types)</a>
+        <a href="#call%28context%29-instance-method" class="signature"><strong>#call</strong>(context)</a>
         
       </li>
     
@@ -108,8 +81,12 @@
   <h3>Instance methods inherited from class <code><a href="../HTTP/Handler.html">HTTP::Handler</a></code>
 </h3>
   
-    <a href="../HTTP/Handler.html#call_next%28request%29-instance-method" class="tooltip">
-      <span>call_next(request)</span>
+    <a href="../HTTP/Handler.html#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="tooltip">
+      <span>call(context : HTTP::Server::Context)</span>
+    call</a>, 
+  
+    <a href="../HTTP/Handler.html#call_next%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="tooltip">
+      <span>call_next(context : HTTP::Server::Context)</span>
     call_next</a>, 
   
     <a href="../HTTP/Handler.html#next-instance-method" class="tooltip">
@@ -303,33 +280,14 @@
 </div>
 
 
-  <h2>Class Method Detail</h2>
-  
-    <div class="entry-detail" id="new(deflate_types=&lt;spanclass=&#34;t&#34;&gt;DEFAULT_DEFLATE_TYPES&lt;/span&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1296"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28deflate_types%20%3D%20DEFAULT_DEFLATE_TYPES%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(deflate_types = <span class="t">DEFAULT_DEFLATE_TYPES</span>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/server/handlers/deflate_handler.cr#L8" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="call(request)-instance-method">
-      <a class="dashingAutolink" name="autolink-1297"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call%28request%29"></a><div class="signature">
+    <div class="entry-detail" id="call(context)-instance-method">
+      <a class="dashingAutolink" name="autolink-1309"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call%28context%29"></a><div class="signature">
         
-        def <strong>call</strong>(request)
+        def <strong>call</strong>(context)
 
         
       </div>
@@ -337,35 +295,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/server/handlers/deflate_handler.cr#L11" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="deflate_types-instance-method">
-      <a class="dashingAutolink" name="autolink-1298"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20deflate_types"></a><div class="signature">
-        
-        def <strong>deflate_types</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="deflate_types=(deflate_types)-instance-method">
-      <a class="dashingAutolink" name="autolink-1299"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20deflate_types%3D%28deflate_types%29"></a><div class="signature">
-        
-        def <strong>deflate_types=</strong>(deflate_types)
-
-        
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/handlers/deflate_handler.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>

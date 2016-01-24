@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1440"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AWebSocket%3A%3APacketInfo"></a><title>HTTP::WebSocket::PacketInfo</title>
+  <a class="dashingAutolink" name="autolink-1387"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AServer%3A%3AContext"></a><title>HTTP::Server::Context</title>
 </head>
 <body>
 
@@ -13,20 +13,23 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> HTTP::WebSocket::PacketInfo
+  <span class="kind">class</span> HTTP::Server::Context
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
-<li class="superclass"><a href="../../HTTP/WebSocket/PacketInfo.html">HTTP::WebSocket::PacketInfo</a></li>
-<li class="superclass"><a href="../../Struct.html">Struct</a></li>
-<li class="superclass"><a href="../../Value.html">Value</a></li>
+<li class="superclass"><a href="../../HTTP/Server/Context.html">HTTP::Server::Context</a></li>
+<li class="superclass"><a href="../../Reference.html">Reference</a></li>
 <li class="superclass"><a href="../../Object.html">Object</a></li>
 </ul>
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>Instances of this class are passed to an <code><a href="../../HTTP/Server.html">HTTP::Server</a></code> handler.</p>
 
 
 
@@ -44,7 +47,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/web_socket.cr" target="_blank">http/web_socket.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/context.cr" target="_blank">http/server/context.cr</a>
     
     <br/>
   
@@ -53,38 +56,22 @@
 
 
 
-  <h2>Class Method Summary</h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new%28opcode%2Csize%2Cfinal%29-class-method" class="signature"><strong>.new</strong>(opcode, size, final)</a>
-        
-      </li>
-    
-  </ul>
-
 
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        <a href="#request-instance-method" class="signature"><strong>#request</strong></a>
+        
+          <div class="summary"><p>The <code><a href="../../HTTP/Request.html">HTTP::Request</a></code> to process.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#final-instance-method" class="signature"><strong>#final</strong></a>
+        <a href="#response-instance-method" class="signature"><strong>#response</strong></a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#opcode-instance-method" class="signature"><strong>#opcode</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
+          <div class="summary"><p>The <code>HTTP::Response</code> to configure and write to.</p></div>
         
       </li>
     
@@ -98,47 +85,40 @@
   
     
 
-  <h3>Instance methods inherited from struct <code><a href="../../Struct.html">Struct</a></code>
+  <h3>Instance methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
 </h3>
   
-    <a href="../../Struct.html#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="tooltip">
-      <span>==(other : self) : Bool</span>
-    ==</a>, 
-  
-    <a href="../../Struct.html#hash%3AInt32-instance-method" class="tooltip">
-      <span>hash : Int32</span>
-    hash</a>, 
-  
-    <a href="../../Struct.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
-      <span>inspect(io : IO) : Nil</span>
-    inspect</a>, 
-  
-    <a href="../../Struct.html#to_s%28io%29-instance-method" class="tooltip">
-      <span>to_s(io)</span>
-    to_s</a>
-  
-
-
-    
-
-
-  
-    
-
-  <h3>Instance methods inherited from struct <code><a href="../../Value.html">Value</a></code>
-</h3>
-  
-    <a href="../../Value.html#%21-instance-method" class="tooltip">
+    <a href="../../Reference.html#%21-instance-method" class="tooltip">
       <span>!</span>
     !</a>, 
   
-    <a href="../../Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>==(other)</span>
+    <a href="../../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br/>==(other : self)</span>
     ==</a>, 
   
-    <a href="../../Value.html#nil%3F-instance-method" class="tooltip">
+    <a href="../../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../../Reference.html#nil%3F-instance-method" class="tooltip">
       <span>nil?</span>
-    nil?</a>
+    nil?</a>, 
+  
+    <a href="../../Reference.html#object_id-instance-method" class="tooltip">
+      <span>object_id</span>
+    object_id</a>, 
+  
+    <a href="../../Reference.html#same%3F%28other%3ANil%29-instance-method" class="tooltip">
+      <span>same?(other : Nil)<br/>same?(other : Reference)</span>
+    same?</a>, 
+  
+    <a href="../../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
   
 
 
@@ -280,83 +260,42 @@
 </div>
 
 
-  <h2>Class Method Detail</h2>
-  
-    <div class="entry-detail" id="new(opcode,size,final)-class-method">
-      <a class="dashingAutolink" name="autolink-1441"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28opcode%2C%20size%2C%20final%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(opcode, size, final)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/web_socket.cr#L28" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-1442"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+    <div class="entry-detail" id="request-instance-method">
+      <a class="dashingAutolink" name="autolink-1385"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20request"></a><div class="signature">
         
-        def <strong>clone</strong>
+        def <strong>request</strong>
 
         
       </div>
       
+        <div class="doc"><p>The <code><a href="../../HTTP/Request.html">HTTP::Request</a></code> to process.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/f364e3ec252a7384e401b1d3b4b04e21d469a91f/src/http/web_socket.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/context.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="final-instance-method">
-      <a class="dashingAutolink" name="autolink-1443"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20final"></a><div class="signature">
+    <div class="entry-detail" id="response-instance-method">
+      <a class="dashingAutolink" name="autolink-1386"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20response"></a><div class="signature">
         
-        def <strong>final</strong>
+        def <strong>response</strong>
 
         
       </div>
       
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="opcode-instance-method">
-      <a class="dashingAutolink" name="autolink-1444"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20opcode"></a><div class="signature">
-        
-        def <strong>opcode</strong>
-
-        
-      </div>
+        <div class="doc"><p>The <code>HTTP::Response</code> to configure and write to.</p></div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="size-instance-method">
-      <a class="dashingAutolink" name="autolink-1445"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
-        
-        def <strong>size</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/http/server/context.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
