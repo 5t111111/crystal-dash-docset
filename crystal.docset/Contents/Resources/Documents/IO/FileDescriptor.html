@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1598"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/IO%3A%3AFileDescriptor"></a><title>IO::FileDescriptor</title>
+  <a class="dashingAutolink" name="autolink-1616"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/IO%3A%3AFileDescriptor"></a><title>IO::FileDescriptor</title>
 </head>
 <body>
 
@@ -65,7 +65,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr" target="_blank">io/file_descriptor.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr" target="_blank">io/file_descriptor.cr</a>
     
     <br/>
   
@@ -348,9 +348,13 @@
       <span>each_char(&amp;block)<br/>each_char</span>
     each_char</a>, 
   
-    <a href="../IO.html#each_line%28%2Aargs%2C%26block%29-instance-method" class="tooltip">
-      <span>each_line(*args, &amp;block)<br/>each_line(*args)</span>
+    <a href="../IO.html#each_line%28%2Aargs%29-instance-method" class="tooltip">
+      <span>each_line(*args)<br/>each_line(*args, &amp;block)</span>
     each_line</a>, 
+  
+    <a href="../IO.html#encoding%3AString-instance-method" class="tooltip">
+      <span>encoding : String</span>
+    encoding</a>, 
   
     <a href="../IO.html#flush-instance-method" class="tooltip">
       <span>flush</span>
@@ -364,16 +368,16 @@
       <span>gets_to_end : String</span>
     gets_to_end</a>, 
   
-    <a href="../IO.html#print%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
-      <span>print(*objects : _) : Nil<br/>print(obj) : Nil</span>
+    <a href="../IO.html#print%28obj%29%3ANil-instance-method" class="tooltip">
+      <span>print(obj) : Nil<br/>print(*objects : _) : Nil</span>
     print</a>, 
   
-    <a href="../IO.html#printf%28format_string%2Cargs%3AArray%7CTuple%29%3ANil-instance-method" class="tooltip">
-      <span>printf(format_string, args : Array | Tuple) : Nil<br/>printf(format_string, *args) : Nil</span>
+    <a href="../IO.html#printf%28format_string%2C%2Aargs%29%3ANil-instance-method" class="tooltip">
+      <span>printf(format_string, *args) : Nil<br/>printf(format_string, args : Array | Tuple) : Nil</span>
     printf</a>, 
   
-    <a href="../IO.html#puts%3ANil-instance-method" class="tooltip">
-      <span>puts : Nil<br/>puts(*objects : _) : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil</span>
+    <a href="../IO.html#puts%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
+      <span>puts(*objects : _) : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil<br/>puts : Nil</span>
     puts</a>, 
   
     <a href="../IO.html#raw%28%26block%29-instance-method" class="tooltip">
@@ -412,6 +416,18 @@
       <span>read_nonblock(size)</span>
     read_nonblock</a>, 
   
+    <a href="../IO.html#read_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
+      <span>read_utf8(slice : Slice(UInt8))</span>
+    read_utf8</a>, 
+  
+    <a href="../IO.html#read_utf8_byte-instance-method" class="tooltip">
+      <span>read_utf8_byte</span>
+    read_utf8_byte</a>, 
+  
+    <a href="../IO.html#set_encoding%28encoding%3AString%2Cinvalid%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3ASymbol%7CNil%29-instance-method" class="tooltip">
+      <span>set_encoding(encoding : String, invalid = <span class="n">nil</span> : Symbol | Nil)</span>
+    set_encoding</a>, 
+  
     <a href="../IO.html#skip%28bytes_count%3AInt%29%3ANil-instance-method" class="tooltip">
       <span>skip(bytes_count : Int) : Nil</span>
     skip</a>, 
@@ -430,7 +446,11 @@
   
     <a href="../IO.html#write_bytes%28object%2Cformat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%3AIO%3A%3AByteFormat%29-instance-method" class="tooltip">
       <span>write_bytes(object, format = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span> : IO::ByteFormat)</span>
-    write_bytes</a>
+    write_bytes</a>, 
+  
+    <a href="../IO.html#write_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
+      <span>write_utf8(slice : Slice(UInt8))</span>
+    write_utf8</a>
   
 
 
@@ -642,7 +662,11 @@
   
     <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
-    to_s</a>
+    to_s</a>, 
+  
+    <a href="../Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
+      <span>|(other : U.class)</span>
+    |</a>
   
 
 
@@ -654,7 +678,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="fcntl(fd,cmd,arg=&lt;spanclass=&#34;n&#34;&gt;0&lt;/span&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1599"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.fcntl%28fd%2C%20cmd%2C%20arg%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1617"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.fcntl%28fd%2C%20cmd%2C%20arg%20%3D%200%29"></a><div class="signature">
         
         def self.<strong>fcntl</strong>(fd, cmd, arg = <span class="n">0</span>)
 
@@ -664,13 +688,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L90" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(fd,blocking=&lt;spanclass=&#34;n&#34;&gt;false&lt;/span&gt;,edge_triggerable=&lt;spanclass=&#34;n&#34;&gt;false&lt;/span&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1600"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28fd%2C%20blocking%20%3D%20false%2C%20edge_triggerable%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1618"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28fd%2C%20blocking%20%3D%20false%2C%20edge_triggerable%20%3D%20false%29"></a><div class="signature">
         
         def self.<strong>new</strong>(fd, blocking = <span class="n">false</span>, edge_triggerable = <span class="n">false</span>)
 
@@ -680,7 +704,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -691,7 +715,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="blocking-instance-method">
-      <a class="dashingAutolink" name="autolink-1601"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20blocking"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1619"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20blocking"></a><div class="signature">
         
         def <strong>blocking</strong>
 
@@ -701,13 +725,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="blocking=(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-1602"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20blocking%3D%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1620"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20blocking%3D%28value%29"></a><div class="signature">
         
         def <strong>blocking=</strong>(value)
 
@@ -717,13 +741,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="close_on_exec=(arg:Bool)-instance-method">
-      <a class="dashingAutolink" name="autolink-1603"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close_on_exec%3D%28arg%20%3A%20Bool%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1621"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close_on_exec%3D%28arg%20%3A%20Bool%29"></a><div class="signature">
         
         def <strong>close_on_exec=</strong>(arg : <a href="../Bool.html">Bool</a>)
 
@@ -733,13 +757,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="close_on_exec?-instance-method">
-      <a class="dashingAutolink" name="autolink-1604"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close_on_exec%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1622"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close_on_exec%3F"></a><div class="signature">
         
         def <strong>close_on_exec?</strong>
 
@@ -749,13 +773,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L80" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closed?-instance-method">
-      <a class="dashingAutolink" name="autolink-1605"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1623"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F"></a><div class="signature">
         
         def <strong>closed?</strong>
 
@@ -765,13 +789,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L190" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L190" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fcntl(cmd,arg=&lt;spanclass=&#34;n&#34;&gt;0&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-1606"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fcntl%28cmd%2C%20arg%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1624"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fcntl%28cmd%2C%20arg%20%3D%200%29"></a><div class="signature">
         
         def <strong>fcntl</strong>(cmd, arg = <span class="n">0</span>)
 
@@ -781,13 +805,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L96" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fd-instance-method">
-      <a class="dashingAutolink" name="autolink-1607"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fd"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1625"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fd"></a><div class="signature">
         
         def <strong>fd</strong>
 
@@ -797,13 +821,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L180" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L180" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="finalize-instance-method">
-      <a class="dashingAutolink" name="autolink-1608"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1626"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
         
         def <strong>finalize</strong>
 
@@ -813,13 +837,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pos-instance-method">
-      <a class="dashingAutolink" name="autolink-1609"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pos"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1627"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pos"></a><div class="signature">
         
         def <strong>pos</strong>
 
@@ -838,13 +862,13 @@ io.pos     <span class="c"># =&gt; 2</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L159" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L159" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pos=(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-1610"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pos%3D%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1628"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pos%3D%28value%29"></a><div class="signature">
         
         def <strong>pos=</strong>(value)
 
@@ -862,13 +886,13 @@ io.gets_to_end <span class="c"># =&gt; &#34;lo&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L175" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L175" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_timed_out-instance-method">
-      <a class="dashingAutolink" name="autolink-1611"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timed_out"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1629"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timed_out"></a><div class="signature">
         
         def <strong>read_timed_out</strong>
 
@@ -882,7 +906,7 @@ io.gets_to_end <span class="c"># =&gt; &#34;lo&#34;</span></code></pre>
     </div>
   
     <div class="entry-detail" id="read_timed_out=(read_timed_out)-instance-method">
-      <a class="dashingAutolink" name="autolink-1612"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timed_out%3D%28read_timed_out%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1630"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timed_out%3D%28read_timed_out%29"></a><div class="signature">
         
         def <strong>read_timed_out=</strong>(read_timed_out)
 
@@ -896,7 +920,7 @@ io.gets_to_end <span class="c"># =&gt; &#34;lo&#34;</span></code></pre>
     </div>
   
     <div class="entry-detail" id="read_timeout=(read_timeout:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-1613"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1631"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>read_timeout=</strong>(read_timeout : <a href="../Number.html">Number</a>)
 
@@ -908,13 +932,13 @@ io.gets_to_end <span class="c"># =&gt; &#34;lo&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_timeout=(read_timeout:Time::Span)-instance-method">
-      <a class="dashingAutolink" name="autolink-1614"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1632"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
         
         def <strong>read_timeout=</strong>(read_timeout : <a href="../Time/Span.html">Time::Span</a>)
 
@@ -926,13 +950,13 @@ io.gets_to_end <span class="c"># =&gt; &#34;lo&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_timeout=(read_timeout:Nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-1615"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1633"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_timeout%3D%28read_timeout%20%3A%20Nil%29"></a><div class="signature">
         
         def <strong>read_timeout=</strong>(read_timeout : <a href="../Nil.html">Nil</a>)
 
@@ -944,13 +968,13 @@ io.gets_to_end <span class="c"># =&gt; &#34;lo&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L47" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reopen(other:IO::FileDescriptor)-instance-method">
-      <a class="dashingAutolink" name="autolink-1616"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reopen%28other%20%3A%20IO%3A%3AFileDescriptor%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1634"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reopen%28other%20%3A%20IO%3A%3AFileDescriptor%29"></a><div class="signature">
         
         def <strong>reopen</strong>(other : <a href="../IO/FileDescriptor.html">IO::FileDescriptor</a>)
 
@@ -960,13 +984,13 @@ io.gets_to_end <span class="c"># =&gt; &#34;lo&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L198" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L198" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="seek(offset,whence=&lt;spanclass=&#34;t&#34;&gt;Seek&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;::&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;Set&lt;/span&gt;:Seek)-instance-method">
-      <a class="dashingAutolink" name="autolink-1617"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20seek%28offset%2C%20whence%20%3D%20Seek%3A%3ASet%20%3A%20Seek%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1635"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20seek%28offset%2C%20whence%20%3D%20Seek%3A%3ASet%20%3A%20Seek%29"></a><div class="signature">
         
         def <strong>seek</strong>(offset, whence = <span class="t">Seek</span><span class="t">::</span><span class="t">Set</span> : <a href="../IO/Seek.html">Seek</a>)
 
@@ -988,13 +1012,13 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L132" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L132" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="stat-instance-method">
-      <a class="dashingAutolink" name="autolink-1618"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stat"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1636"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stat"></a><div class="signature">
         
         def <strong>stat</strong>
 
@@ -1004,13 +1028,13 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L114" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L114" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tell-instance-method">
-      <a class="dashingAutolink" name="autolink-1619"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tell"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1637"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tell"></a><div class="signature">
         
         def <strong>tell</strong>
 
@@ -1022,13 +1046,13 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L147" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L147" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_fd_io-instance-method">
-      <a class="dashingAutolink" name="autolink-1620"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_fd_io"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1638"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_fd_io"></a><div class="signature">
         
         def <strong>to_fd_io</strong>
 
@@ -1038,13 +1062,13 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L209" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L209" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tty?-instance-method">
-      <a class="dashingAutolink" name="autolink-1621"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tty%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1639"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tty%3F"></a><div class="signature">
         
         def <strong>tty?</strong>
 
@@ -1054,13 +1078,13 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L194" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L194" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write_timed_out-instance-method">
-      <a class="dashingAutolink" name="autolink-1622"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timed_out"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1640"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timed_out"></a><div class="signature">
         
         def <strong>write_timed_out</strong>
 
@@ -1074,7 +1098,7 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
     </div>
   
     <div class="entry-detail" id="write_timed_out=(write_timed_out)-instance-method">
-      <a class="dashingAutolink" name="autolink-1623"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timed_out%3D%28write_timed_out%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1641"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timed_out%3D%28write_timed_out%29"></a><div class="signature">
         
         def <strong>write_timed_out=</strong>(write_timed_out)
 
@@ -1088,7 +1112,7 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
     </div>
   
     <div class="entry-detail" id="write_timeout=(write_timeout:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-1624"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timeout%3D%28write_timeout%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1642"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timeout%3D%28write_timeout%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>write_timeout=</strong>(write_timeout : <a href="../Number.html">Number</a>)
 
@@ -1100,13 +1124,13 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write_timeout=(write_timeout:Time::Span)-instance-method">
-      <a class="dashingAutolink" name="autolink-1625"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timeout%3D%28write_timeout%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1643"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timeout%3D%28write_timeout%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
         
         def <strong>write_timeout=</strong>(write_timeout : <a href="../Time/Span.html">Time::Span</a>)
 
@@ -1118,13 +1142,13 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L57" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write_timeout=(write_timeout:Nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-1626"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timeout%3D%28write_timeout%20%3A%20Nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1644"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_timeout%3D%28write_timeout%20%3A%20Nil%29"></a><div class="signature">
         
         def <strong>write_timeout=</strong>(write_timeout : <a href="../Nil.html">Nil</a>)
 
@@ -1136,7 +1160,7 @@ file.gets(<span class="n">1</span>) <span class="c"># =&gt; &#34;c&#34;</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/io/file_descriptor.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/io/file_descriptor.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>

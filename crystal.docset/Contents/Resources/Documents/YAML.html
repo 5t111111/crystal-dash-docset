@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/manastech/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5373"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML"></a><title>YAML</title>
+  <a class="dashingAutolink" name="autolink-5425"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML"></a><title>YAML</title>
 </head>
 <body>
 
@@ -25,17 +25,24 @@
 
   <p>The YAML module provides serialization and deserialization of YAML to/from native Crystal data structures.</p>
 
-<h3>Parsing with <code><a href="YAML.html#load%28data%3AString%29-class-method">#load</a></code> and <code><a href="YAML.html#load_all%28data%3AString%29-class-method">#load_all</a></code>
+<h3>Parsing with <code><a href="YAML.html#parse%28data%3AString%29%3AAny-class-method">#parse</a></code> and <code><a href="YAML.html#parse_all%28data%3AString%29%3AArray%28Any%29-class-method">#parse_all</a></code>
 </h3>
 
-<p>Deserializes a YAML document into a <code><a href="YAML/Type.html">Type</a></code>.
-A <code><a href="YAML/Type.html">Type</a></code> is a union of all possible YAML types, so casting to a specific type is necessary
-before the value is practically usable.</p>
+<p><code><a href="YAML.html#parse%28data%3AString%29%3AAny-class-method">YAML#parse</a></code> will return an <code><a href="YAML/Any.html">Any</a></code>, which is a convenient wrapper around all possible YAML types,
+making it easy to traverse a complex YAML structure but requires some casts from time to time,
+mostly via some method invocations.</p>
 
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&#34;yaml&#34;</span>
 
-data <span class="o">=</span> <span class="t">YAML</span>.load(<span class="s">&#34;foo: bar&#34;</span>)
-(data <span class="k">as</span> <span class="t">Hash</span>)[<span class="s">&#34;foo&#34;</span>] <span class="c"># =&gt; &#34;bar&#34;</span></code></pre>
+data <span class="o">=</span> <span class="t">YAML</span>.parse <span class="s">&lt;&lt;-END
+         ---
+         foo:
+           bar:
+             baz:
+               - qux
+               - fox
+         END</span>
+data[<span class="s">&#34;foo&#34;</span>][<span class="s">&#34;bar&#34;</span>][<span class="s">&#34;baz&#34;</span>][<span class="n">1</span>].as_s <span class="c"># =&gt; &#34;qux&#34;</span></code></pre>
 
 <h3>Parsing with <code><a href="YAML.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">YAML#mapping</a></code>
 </h3>
@@ -43,10 +50,10 @@ data <span class="o">=</span> <span class="t">YAML</span>.load(<span class="s">&
 <p><code><a href="YAML.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">YAML#mapping</a></code> defines how an object is mapped to YAML. Mapped data is accessible
 through generated properties like <em>Foo#bar</em>. It is more type-safe and efficient.</p>
 
-<h3>Dumping with <code><a href="YAML.html">YAML</a>.dump</code> or <code>#to_yaml</code>
+<h3>Dumping with <code><a href="YAML.html#dump%28object%2Cio%3AIO%29-class-method">YAML.dump</a></code> or <code>#to_yaml</code>
 </h3>
 
-<p><code><a href="YAML.html">YAML</a>.dump</code> generates the YAML representation for an object. An <code><a href="IO.html">IO</a></code> can be passed and it will be written there,
+<p><code><a href="YAML.html#dump%28object%2Cio%3AIO%29-class-method">YAML.dump</a></code> generates the YAML representation for an object. An <code><a href="IO.html">IO</a></code> can be passed and it will be written there,
 otherwise it will be returned as a string. Similarly, <code>#to_yaml</code> (with or without an <code><a href="IO.html">IO</a></code>) on any object does the same.</p>
 
 <pre><code class="language-crystal">yaml <span class="o">=</span> <span class="t">YAML</span>.dump({hello: <span class="s">&#34;world&#34;</span>})                                <span class="c"># =&gt; &#34;--- \nhello: world&#34;</span>
@@ -71,17 +78,22 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/yaml/mapping.cr" target="_blank">yaml/mapping.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/any.cr" target="_blank">yaml/any.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/yaml/to_yaml.cr" target="_blank">yaml/to_yaml.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/mapping.cr" target="_blank">yaml/mapping.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/yaml/yaml.cr" target="_blank">yaml/yaml.cr</a>
+      <a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/to_yaml.cr" target="_blank">yaml/to_yaml.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/yaml.cr" target="_blank">yaml/yaml.cr</a>
     
     <br/>
   
@@ -108,14 +120,14 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
       </li>
     
       <li class="entry-summary">
-        <a href="#load%28data%3AString%29-class-method" class="signature"><strong>.load</strong>(data : String)</a>
+        <a href="#parse%28data%3AString%29%3AAny-class-method" class="signature"><strong>.parse</strong>(data : String) : Any</a>
         
           <div class="summary"><p>Deserializes a YAML document.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#load_all%28data%3AString%29-class-method" class="signature"><strong>.load_all</strong>(data : String)</a>
+        <a href="#parse_all%28data%3AString%29%3AArray%28Any%29-class-method" class="signature"><strong>.parse_all</strong>(data : String) : Array(Any)</a>
         
           <div class="summary"><p>Deserializes multiple YAML documents.</p></div>
         
@@ -133,7 +145,7 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
       <li class="entry-summary">
         <a href="#mapping%28properties%2Cstrict%3Dfalse%29-macro" class="signature"><strong>mapping</strong>(properties, strict = false)</a>
         
-          <div class="summary"><p>The <code><a href="YAML.html">YAML</a>.mapping</code> macro defines how an object is mapped to YAML.</p></div>
+          <div class="summary"><p>The <code><a href="YAML.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">YAML.mapping</a></code> macro defines how an object is mapped to YAML.</p></div>
         
       </li>
     
@@ -149,7 +161,7 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="dump(object,io:IO)-class-method">
-      <a class="dashingAutolink" name="autolink-5374"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dump%28object%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5426"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dump%28object%2C%20io%20%3A%20IO%29"></a><div class="signature">
         
         def self.<strong>dump</strong>(object, io : <a href="IO.html">IO</a>)
 
@@ -161,13 +173,13 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/yaml/yaml.cr#L114" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/yaml.cr#L123" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dump(object)-class-method">
-      <a class="dashingAutolink" name="autolink-5375"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dump%28object%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5427"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dump%28object%29"></a><div class="signature">
         
         def self.<strong>dump</strong>(object)
 
@@ -179,15 +191,15 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/yaml/yaml.cr#L109" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/yaml.cr#L118" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="load(data:String)-class-method">
-      <a class="dashingAutolink" name="autolink-5376"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.load%28data%20%3A%20String%29"></a><div class="signature">
+    <div class="entry-detail" id="parse(data:String):Any-class-method">
+      <a class="dashingAutolink" name="autolink-5428"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28data%20%3A%20String%29%20%3A%20Any"></a><div class="signature">
         
-        def self.<strong>load</strong>(data : <a href="String.html">String</a>)
+        def self.<strong>parse</strong>(data : <a href="String.html">String</a>) : <a href="YAML/Any.html">Any</a>
 
         
       </div>
@@ -207,7 +219,8 @@ data:
     bar</code></pre>
 
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&#34;yaml&#34;</span>
-<span class="t">YAML</span>.load(<span class="t">File</span>.read(<span class="s">&#34;./foo.yml&#34;</span>))
+
+<span class="t">YAML</span>.parse(<span class="t">File</span>.read(<span class="s">&#34;./foo.yml&#34;</span>))
 <span class="c"># =&gt; {</span>
 <span class="c"># =&gt; &#34;data&#34; =&gt; {</span>
 <span class="c"># =&gt; &#34;string&#34; =&gt; &#34;foobar&#34;,</span>
@@ -220,15 +233,15 @@ data:
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/yaml/yaml.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/yaml.cr#L84" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="load_all(data:String)-class-method">
-      <a class="dashingAutolink" name="autolink-5377"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.load_all%28data%20%3A%20String%29"></a><div class="signature">
+    <div class="entry-detail" id="parse_all(data:String):Array(Any)-class-method">
+      <a class="dashingAutolink" name="autolink-5429"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_all%28data%20%3A%20String%29%20%3A%20Array%28Any%29"></a><div class="signature">
         
-        def self.<strong>load_all</strong>(data : <a href="String.html">String</a>)
+        def self.<strong>parse_all</strong>(data : <a href="String.html">String</a>) : <a href="Array.html">Array</a>(<a href="YAML/Any.html">Any</a>)
 
         
       </div>
@@ -242,14 +255,15 @@ foo: bar
 hello: world</code></pre>
 
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&#34;yaml&#34;</span>
-<span class="t">YAML</span>.load_all(<span class="t">File</span>.read(<span class="s">&#34;./foo.yml&#34;</span>))
+
+<span class="t">YAML</span>.parse_all(<span class="t">File</span>.read(<span class="s">&#34;./foo.yml&#34;</span>))
 <span class="c"># =&gt; [{&#34;foo&#34; =&gt; &#34;bar&#34;}, {&#34;hello&#34; =&gt; &#34;world&#34;}]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/yaml/yaml.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/yaml.cr#L108" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -262,7 +276,7 @@ hello: world</code></pre>
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="mapping(properties,strict=false)-macro">
-      <a class="dashingAutolink" name="autolink-5378"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping%28properties%2C%20strict%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5430"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping%28properties%2C%20strict%20%3D%20false%29"></a><div class="signature">
         
         macro <strong>mapping</strong>(properties, strict = false)
 
@@ -270,7 +284,7 @@ hello: world</code></pre>
       </div>
       
         <div class="doc">
-<p>The <code><a href="YAML.html">YAML</a>.mapping</code> macro defines how an object is mapped to YAML.</p>
+<p>The <code><a href="YAML.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">YAML.mapping</a></code> macro defines how an object is mapped to YAML.</p>
 
 <p>It takes hash literal as argument, in which attributes and types are defined.
 Once defined, <code><a href="Object.html#from_yaml%28string%3AString%29-class-method">Object#from_yaml</a></code> populates properties of the class from the
@@ -292,7 +306,7 @@ employee.name  <span class="c"># =&gt; &#34;John&#34;</span>
 employee.name <span class="o">=</span> <span class="s">&#34;Jenny&#34;</span>
 employee.name <span class="c"># =&gt; &#34;Jenny&#34;</span></code></pre>
 
-<p>Attributes not mapped with <code><a href="YAML.html">YAML</a>.mapping</code> are not defined as properties.
+<p>Attributes not mapped with <code><a href="YAML.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">YAML.mapping</a></code> are not defined as properties.
 Also, missing attributes raise a <code><a href="YAML/ParseException.html">ParseException</a></code>.</p>
 
 <pre><code class="language-crystal">employee <span class="o">=</span> <span class="t">Employee</span>.from_yaml(<span class="s">&#34;title: Manager\nname: John\nage: 30&#34;</span>)
@@ -322,16 +336,27 @@ employee <span class="o">=</span> <span class="t">Employee</span>.from_yaml(<spa
 <li>
 <em>nilable</em> defines if a property can be a <code><a href="Nil.html">Nil</a></code>.</li>
 <li>
+<strong>default</strong>: value to use if the property is missing in the YAML document, or if it&#39;s <code>null</code> and <code>nilable</code> was not set to <code>true</code>. If the default value creates a new instance of an object (for example <code>[1, 2, 3]</code> or <code>SomeObject.new</code>), a different instance will be used each time a YAML document is parsed.</li>
+<li>
 <em>key</em> defines whick key to read from a YAML document. It defaults to the name of the property.</li>
 <li>
 <em>converter</em> takes an alternate type for parsing. It requires a <code>#from_yaml</code> method in that class, and returns an instance of the given type.</li>
 </ul>
+
+<p>The mapping also automatically defines Crystal properties (getters and setters) for each
+of the keys. It doesn&#39;t define a constructor accepting those arguments, but you can provide
+an overload.</p>
+
+<p>The macro basically defines a constructor accepting a <code><a href="YAML/PullParser.html">YAML::PullParser</a></code> that reads from
+it and initializes this type&#39;s instance variables.</p>
+
+<p>This macro also declares instance variables of the types given in the mapping.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/manastech/crystal/blob/ed88d5fd842500a6c9742478c2e7fb4edde1b4f7/src/yaml/mapping.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/manastech/crystal/blob/90eaec10cef83941628409cf4e064acaba140fdb/src/yaml/mapping.cr#L68" target="_blank">View source</a>]
         
       </div>
     </div>
