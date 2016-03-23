@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4047"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AAddr%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::Addr - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4097"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AIPAddress%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::IPAddress - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,13 +13,13 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Socket::Addr
+  <span class="kind">struct</span> Socket::IPAddress
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
-<li class="superclass"><a href="../Socket/Addr.html">Socket::Addr</a></li>
+<li class="superclass"><a href="../Socket/IPAddress.html">Socket::IPAddress</a></li>
 <li class="superclass"><a href="../Struct.html">Struct</a></li>
 <li class="superclass"><a href="../Value.html">Value</a></li>
 <li class="superclass"><a href="../Object.html">Object</a></li>
@@ -44,7 +44,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/socket/socket.cr" target="_blank">socket/socket.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr" target="_blank">socket/socket.cr</a>
     
     <br/>
   
@@ -57,12 +57,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28family%2Cip_port%2Cip_address%29-class-method" class="signature"><strong>.new</strong>(family, ip_port, ip_address)</a>
+        <a href="#new%28family%3AFamily%2Caddress%3AString%2Cport%3AInt%29-class-method" class="signature"><strong>.new</strong>(family : Family, address : String, port : Int)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28family%2Cpath%29-class-method" class="signature"><strong>.new</strong>(family, path)</a>
+        <a href="#new%28sockaddr%3ALibC%3A%3ASockAddrIn6%2Caddrlen%3ALibC%3A%3ASocklenT%29-class-method" class="signature"><strong>.new</strong>(sockaddr : LibC::SockAddrIn6, addrlen : LibC::SocklenT)</a>
         
       </li>
     
@@ -74,42 +74,32 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#address-instance-method" class="signature"><strong>#address</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#addrlen-instance-method" class="signature"><strong>#addrlen</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#family-instance-method" class="signature"><strong>#family</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#family%3D%28family%29-instance-method" class="signature"><strong>#family=</strong>(family)</a>
+        <a href="#port-instance-method" class="signature"><strong>#port</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ip_address-instance-method" class="signature"><strong>#ip_address</strong></a>
+        <a href="#sockaddr-instance-method" class="signature"><strong>#sockaddr</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ip_address%3D%28ip_address%29-instance-method" class="signature"><strong>#ip_address=</strong>(ip_address)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#ip_port-instance-method" class="signature"><strong>#ip_port</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#ip_port%3D%28ip_port%29-instance-method" class="signature"><strong>#ip_port=</strong>(ip_port)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#path-instance-method" class="signature"><strong>#path</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#path%3D%28path%29-instance-method" class="signature"><strong>#path=</strong>(path)</a>
+        <a href="#to_s%28io%29-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
         
       </li>
     
@@ -311,10 +301,10 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(family,ip_port,ip_address)-class-method">
-      <a class="dashingAutolink" name="autolink-4048"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%2C%20ip_port%2C%20ip_address%29"></a><div class="signature">
+    <div class="entry-detail" id="new(family:Family,address:String,port:Int)-class-method">
+      <a class="dashingAutolink" name="autolink-4098"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Family%2C%20address%20%3A%20String%2C%20port%20%3A%20Int%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(family, ip_port, ip_address)
+        def self.<strong>new</strong>(family : <a href="../Socket/Family.html">Family</a>, address : <a href="../String.html">String</a>, port : <a href="../Int.html">Int</a>)
 
         
       </div>
@@ -322,15 +312,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/socket/socket.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(family,path)-class-method">
-      <a class="dashingAutolink" name="autolink-4049"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%2C%20path%29"></a><div class="signature">
+    <div class="entry-detail" id="new(sockaddr:LibC::SockAddrIn6,addrlen:LibC::SocklenT)-class-method">
+      <a class="dashingAutolink" name="autolink-4099"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28sockaddr%20%3A%20LibC%3A%3ASockAddrIn6%2C%20addrlen%20%3A%20LibC%3A%3ASocklenT%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(family, path)
+        def self.<strong>new</strong>(sockaddr : LibC::SockAddrIn6, addrlen : <a href="../LibC/SocklenT.html">LibC::SocklenT</a>)
 
         
       </div>
@@ -338,7 +328,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/socket/socket.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -348,8 +338,40 @@
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="address-instance-method">
+      <a class="dashingAutolink" name="autolink-4100"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20address"></a><div class="signature">
+        
+        def <strong>address</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="addrlen-instance-method">
+      <a class="dashingAutolink" name="autolink-4101"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20addrlen"></a><div class="signature">
+        
+        def <strong>addrlen</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="family-instance-method">
-      <a class="dashingAutolink" name="autolink-4050"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20family"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4102"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20family"></a><div class="signature">
         
         def <strong>family</strong>
 
@@ -359,13 +381,15 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr#L28" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="family=(family)-instance-method">
-      <a class="dashingAutolink" name="autolink-4051"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20family%3D%28family%29"></a><div class="signature">
+    <div class="entry-detail" id="port-instance-method">
+      <a class="dashingAutolink" name="autolink-4103"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20port"></a><div class="signature">
         
-        def <strong>family=</strong>(family)
+        def <strong>port</strong>
 
         
       </div>
@@ -373,13 +397,15 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr#L30" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="ip_address-instance-method">
-      <a class="dashingAutolink" name="autolink-4052"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ip_address"></a><div class="signature">
+    <div class="entry-detail" id="sockaddr-instance-method">
+      <a class="dashingAutolink" name="autolink-4104"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sockaddr"></a><div class="signature">
         
-        def <strong>ip_address</strong>
+        def <strong>sockaddr</strong>
 
         
       </div>
@@ -387,13 +413,15 @@
       <br/>
       <div>
         
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr#L59" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="ip_address=(ip_address)-instance-method">
-      <a class="dashingAutolink" name="autolink-4053"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ip_address%3D%28ip_address%29"></a><div class="signature">
+    <div class="entry-detail" id="to_s(io)-instance-method">
+      <a class="dashingAutolink" name="autolink-4105"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
-        def <strong>ip_address=</strong>(ip_address)
+        def <strong>to_s</strong>(io)
 
         
       </div>
@@ -401,61 +429,7 @@
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="ip_port-instance-method">
-      <a class="dashingAutolink" name="autolink-4054"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ip_port"></a><div class="signature">
-        
-        def <strong>ip_port</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="ip_port=(ip_port)-instance-method">
-      <a class="dashingAutolink" name="autolink-4055"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ip_port%3D%28ip_port%29"></a><div class="signature">
-        
-        def <strong>ip_port=</strong>(ip_port)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="path-instance-method">
-      <a class="dashingAutolink" name="autolink-4056"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20path"></a><div class="signature">
-        
-        def <strong>path</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="path=(path)-instance-method">
-      <a class="dashingAutolink" name="autolink-4057"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20path%3D%28path%29"></a><div class="signature">
-        
-        def <strong>path=</strong>(path)
-
-        
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/socket/socket.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>

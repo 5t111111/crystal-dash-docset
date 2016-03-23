@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4532"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Tuple%3A%3AItemIterator%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Tuple::ItemIterator(T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4577"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Tuple%3A%3AItemIterator%28I%2C%20T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Tuple::ItemIterator(I, T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,13 +13,13 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Tuple::ItemIterator(T)
+  <span class="kind">class</span> Tuple::ItemIterator(I, T)
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
-<li class="superclass"><a href="../Tuple/ItemIterator.html">Tuple::ItemIterator(T)</a></li>
+<li class="superclass"><a href="../Tuple/ItemIterator.html">Tuple::ItemIterator(I, T)</a></li>
 <li class="superclass"><a href="../Reference.html">Reference</a></li>
 <li class="superclass"><a href="../Object.html">Object</a></li>
 </ul>
@@ -50,7 +50,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/tuple.cr" target="_blank">tuple.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/tuple.cr" target="_blank">tuple.cr</a>
     
     <br/>
   
@@ -105,8 +105,8 @@
       <span>compact_map(&amp;func : T -&gt; U)</span>
     compact_map</a>, 
   
-    <a href="../Iterator.html#cons%28n%29-instance-method" class="tooltip">
-      <span>cons(n)</span>
+    <a href="../Iterator.html#cons%28n%3AInt%29-instance-method" class="tooltip">
+      <span>cons(n : Int)</span>
     cons</a>, 
   
     <a href="../Iterator.html#cycle-instance-method" class="tooltip">
@@ -120,6 +120,10 @@
     <a href="../Iterator.html#each_slice%28n%29-instance-method" class="tooltip">
       <span>each_slice(n)</span>
     each_slice</a>, 
+  
+    <a href="../Iterator.html#first%28n%3AInt%29-instance-method" class="tooltip">
+      <span>first(n : Int)</span>
+    first</a>, 
   
     <a href="../Iterator.html#flatten-instance-method" class="tooltip">
       <span>flatten</span>
@@ -149,29 +153,25 @@
       <span>select(&amp;func : T -&gt; U)</span>
     select</a>, 
   
-    <a href="../Iterator.html#skip%28n%29-instance-method" class="tooltip">
-      <span>skip(n)</span>
+    <a href="../Iterator.html#skip%28n%3AInt%29-instance-method" class="tooltip">
+      <span>skip(n : Int)</span>
     skip</a>, 
   
     <a href="../Iterator.html#skip_while%28%26func%3AT-%3EU%29-instance-method" class="tooltip">
       <span>skip_while(&amp;func : T -&gt; U)</span>
     skip_while</a>, 
   
-    <a href="../Iterator.html#slice%28n%29-instance-method" class="tooltip">
-      <span>slice(n)</span>
+    <a href="../Iterator.html#slice%28n%3AInt%29-instance-method" class="tooltip">
+      <span>slice(n : Int)</span>
     slice</a>, 
   
-    <a href="../Iterator.html#step%28n%29-instance-method" class="tooltip">
-      <span>step(n)</span>
+    <a href="../Iterator.html#step%28n%3AInt%29-instance-method" class="tooltip">
+      <span>step(n : Int)</span>
     step</a>, 
   
     <a href="../Iterator.html#stop-instance-method" class="tooltip">
       <span>stop</span>
     stop</a>, 
-  
-    <a href="../Iterator.html#take%28n%29-instance-method" class="tooltip">
-      <span>take(n)</span>
-    take</a>, 
   
     <a href="../Iterator.html#take_while%28%26func%3AT-%3EU%29-instance-method" class="tooltip">
       <span>take_while(&amp;func : T -&gt; U)</span>
@@ -185,8 +185,8 @@
       <span>uniq(&amp;func : T -&gt; U)<br/>uniq</span>
     uniq</a>, 
   
-    <a href="../Iterator.html#with_index%28offset%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="tooltip">
-      <span>with_index(offset = <span class="n">0</span>)</span>
+    <a href="../Iterator.html#with_index%28offset%3AInt%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="tooltip">
+      <span>with_index(offset : Int = <span class="n">0</span>)</span>
     with_index</a>, 
   
     <a href="../Iterator.html#with_object%28obj%29-instance-method" class="tooltip">
@@ -265,7 +265,7 @@
     find</a>, 
   
     <a href="../Enumerable.html#first-instance-method" class="tooltip">
-      <span>first</span>
+      <span>first<br/>first(count : Int)</span>
     first</a>, 
   
     <a href="../Enumerable.html#first%3F-instance-method" class="tooltip">
@@ -284,8 +284,8 @@
       <span>group_by(&amp;block : T -&gt; U)</span>
     group_by</a>, 
   
-    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AU%2C%26block%29-instance-method" class="tooltip">
-      <span>in_groups_of(size : Int, filled_up_with = <span class="n">nil</span> : U, &amp;block)<br/>in_groups_of(size : Int, filled_up_with = <span class="n">nil</span> : U)</span>
+    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method" class="tooltip">
+      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block)<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>)</span>
     in_groups_of</a>, 
   
     <a href="../Enumerable.html#includes%3F%28obj%29-instance-method" class="tooltip">
@@ -396,8 +396,8 @@
       <span>partition(&amp;block)</span>
     partition</a>, 
   
-    <a href="../Enumerable.html#reduce%28%26block%29-instance-method" class="tooltip">
-      <span>reduce(&amp;block)<br/>reduce(memo, &amp;block)</span>
+    <a href="../Enumerable.html#reduce%28memo%2C%26block%29-instance-method" class="tooltip">
+      <span>reduce(memo, &amp;block)<br/>reduce(&amp;block)</span>
     reduce</a>, 
   
     <a href="../Enumerable.html#reject%28%26block%3AT-%3E%29-instance-method" class="tooltip">
@@ -423,10 +423,6 @@
     <a href="../Enumerable.html#sum%28initial%2C%26block%29-instance-method" class="tooltip">
       <span>sum(initial, &amp;block)<br/>sum(&amp;block)<br/>sum(initial)<br/>sum</span>
     sum</a>, 
-  
-    <a href="../Enumerable.html#take%28count%3AInt%29-instance-method" class="tooltip">
-      <span>take(count : Int)</span>
-    take</a>, 
   
     <a href="../Enumerable.html#take_while%28%26block%29-instance-method" class="tooltip">
       <span>take_while(&amp;block)</span>
@@ -634,7 +630,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(tuple,index=&lt;spanclass=&#34;n&#34;&gt;0&lt;/span&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-4533"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28tuple%2C%20index%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4578"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28tuple%2C%20index%20%3D%200%29"></a><div class="signature">
         
         def self.<strong>new</strong>(tuple, index = <span class="n">0</span>)
 
@@ -644,7 +640,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/tuple.cr#L477" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/tuple.cr#L480" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -655,7 +651,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="next-instance-method">
-      <a class="dashingAutolink" name="autolink-4534"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4579"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next"></a><div class="signature">
         
         def <strong>next</strong>
 
@@ -665,13 +661,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/tuple.cr#L480" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/tuple.cr#L483" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="rewind-instance-method">
-      <a class="dashingAutolink" name="autolink-4535"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rewind"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4580"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rewind"></a><div class="signature">
         
         def <strong>rewind</strong>
 
@@ -681,7 +677,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/tuple.cr#L486" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/tuple.cr#L489" target="_blank">View source</a>]
         
       </div>
     </div>

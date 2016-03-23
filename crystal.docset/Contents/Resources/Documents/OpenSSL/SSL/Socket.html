@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3676"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%3A%3ASSL%3A%3ASocket%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL::SSL::Socket - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3725"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%3A%3ASSL%3A%3ASocket%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL::SSL::Socket - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -50,7 +50,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/openssl/ssl/socket.cr" target="_blank">openssl/ssl/socket.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr" target="_blank">openssl/ssl/socket.cr</a>
     
     <br/>
   
@@ -68,7 +68,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28io%2Cmode%3D%3Cspanclass%3D%22n%22%3E%3Aclient%3C%2Fspan%3E%2Ccontext%3D%3Cspanclass%3D%22t%22%3EContext%3C%2Fspan%3E.default%29-class-method" class="signature"><strong>.new</strong>(io, mode = <span class="n">:client</span>, context = <span class="t">Context</span>.default)</a>
+        <a href="#new%28io%2Cmode%3D%3Cspanclass%3D%22n%22%3E%3Aclient%3C%2Fspan%3E%2Ccontext%3D%3Cspanclass%3D%22t%22%3EContext%3C%2Fspan%3E.default%2Csync_close%3ABool%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(io, mode = <span class="n">:client</span>, context = <span class="t">Context</span>.default, sync_close : Bool = <span class="n">false</span>)</a>
         
       </li>
     
@@ -85,12 +85,32 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#closed%3F-instance-method" class="signature"><strong>#closed?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#flush-instance-method" class="signature"><strong>#flush</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#read</strong>(slice : Slice(UInt8))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sync_close%3D%28sync_close%3ABool%29-instance-method" class="signature"><strong>#sync_close=</strong>(sync_close : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sync_close%3F-instance-method" class="signature"><strong>#sync_close?</strong></a>
         
       </li>
     
@@ -119,6 +139,10 @@
     </span></a><a href="../../IO.html#close-instance-method" class="tooltip">
       <span>close</span>
     close</a>, 
+  
+    <a href="../../IO.html#closed%3F-instance-method" class="tooltip">
+      <span>closed?</span>
+    closed?</a>, 
   
     <a href="../../IO.html#cooked%28%26block%29-instance-method" class="tooltip">
       <span>cooked(&amp;block)</span>
@@ -164,8 +188,8 @@
       <span>printf(format_string, *args) : Nil<br/>printf(format_string, args : Array | Tuple) : Nil</span>
     printf</a>, 
   
-    <a href="../../IO.html#puts%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
-      <span>puts(*objects : _) : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil<br/>puts : Nil</span>
+    <a href="../../IO.html#puts%3ANil-instance-method" class="tooltip">
+      <span>puts : Nil<br/>puts(*objects : _) : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil</span>
     puts</a>, 
   
     <a href="../../IO.html#raw%28%26block%29-instance-method" class="tooltip">
@@ -184,8 +208,8 @@
       <span>read_byte : UInt8 | Nil</span>
     read_byte</a>, 
   
-    <a href="../../IO.html#read_bytes%28type%2Cformat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%3AIO%3A%3AByteFormat%29-instance-method" class="tooltip">
-      <span>read_bytes(type, format = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span> : IO::ByteFormat)</span>
+    <a href="../../IO.html#read_bytes%28type%2Cformat%3AIO%3A%3AByteFormat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%29-instance-method" class="tooltip">
+      <span>read_bytes(type, format : IO::ByteFormat = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span>)</span>
     read_bytes</a>, 
   
     <a href="../../IO.html#read_char%3AChar%7CNil-instance-method" class="tooltip">
@@ -212,8 +236,12 @@
       <span>read_utf8_byte</span>
     read_utf8_byte</a>, 
   
-    <a href="../../IO.html#set_encoding%28encoding%3AString%2Cinvalid%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3ASymbol%7CNil%29-instance-method" class="tooltip">
-      <span>set_encoding(encoding : String, invalid = <span class="n">nil</span> : Symbol | Nil)</span>
+    <a href="../../IO.html#rewind-instance-method" class="tooltip">
+      <span>rewind</span>
+    rewind</a>, 
+  
+    <a href="../../IO.html#set_encoding%28encoding%3AString%2Cinvalid%3ASymbol%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-instance-method" class="tooltip">
+      <span>set_encoding(encoding : String, invalid : Symbol | Nil = <span class="n">nil</span>)</span>
     set_encoding</a>, 
   
     <a href="../../IO.html#skip%28bytes_count%3AInt%29%3ANil-instance-method" class="tooltip">
@@ -232,8 +260,8 @@
       <span>write_byte(byte : UInt8)</span>
     write_byte</a>, 
   
-    <a href="../../IO.html#write_bytes%28object%2Cformat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%3AIO%3A%3AByteFormat%29-instance-method" class="tooltip">
-      <span>write_bytes(object, format = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span> : IO::ByteFormat)</span>
+    <a href="../../IO.html#write_bytes%28object%2Cformat%3AIO%3A%3AByteFormat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%29-instance-method" class="tooltip">
+      <span>write_bytes(object, format : IO::ByteFormat = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span>)</span>
     write_bytes</a>, 
   
     <a href="../../IO.html#write_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
@@ -466,7 +494,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="open_client(io,context=&lt;spanclass=&#34;t&#34;&gt;Context&lt;/span&gt;.default,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-3677"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open_client%28io%2C%20context%20%3D%20Context.default%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3715"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open_client%28io%2C%20context%20%3D%20Context.default%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>open_client</strong>(io, context = <span class="t">Context</span>.default, &amp;block)
 
@@ -476,15 +504,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/openssl/ssl/socket.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(io,mode=&lt;spanclass=&#34;n&#34;&gt;:client&lt;/span&gt;,context=&lt;spanclass=&#34;t&#34;&gt;Context&lt;/span&gt;.default)-class-method">
-      <a class="dashingAutolink" name="autolink-3678"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%2C%20mode%20%3D%20%3Aclient%2C%20context%20%3D%20Context.default%29"></a><div class="signature">
+    <div class="entry-detail" id="new(io,mode=&lt;spanclass=&#34;n&#34;&gt;:client&lt;/span&gt;,context=&lt;spanclass=&#34;t&#34;&gt;Context&lt;/span&gt;.default,sync_close:Bool=&lt;spanclass=&#34;n&#34;&gt;false&lt;/span&gt;)-class-method">
+      <a class="dashingAutolink" name="autolink-3716"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%2C%20mode%20%3D%20%3Aclient%2C%20context%20%3D%20Context.default%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(io, mode = <span class="n">:client</span>, context = <span class="t">Context</span>.default)
+        def self.<strong>new</strong>(io, mode = <span class="n">:client</span>, context = <span class="t">Context</span>.default, sync_close : <a href="../../Bool.html">Bool</a> = <span class="n">false</span>)
 
         
       </div>
@@ -492,7 +520,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/openssl/ssl/socket.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -503,7 +531,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-3679"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3717"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -513,13 +541,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/openssl/ssl/socket.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="closed?-instance-method">
+      <a class="dashingAutolink" name="autolink-3718"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F"></a><div class="signature">
+        
+        def <strong>closed?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="finalize-instance-method">
-      <a class="dashingAutolink" name="autolink-3680"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3719"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
         
         def <strong>finalize</strong>
 
@@ -529,13 +573,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/openssl/ssl/socket.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="flush-instance-method">
+      <a class="dashingAutolink" name="autolink-3720"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
+        
+        def <strong>flush</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-3681"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3721"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
         
         def <strong>read</strong>(slice : <a href="../../Slice.html">Slice</a>(<a href="../../UInt8.html">UInt8</a>))
 
@@ -545,13 +605,41 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/openssl/ssl/socket.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sync_close=(sync_close:Bool)-instance-method">
+      <a class="dashingAutolink" name="autolink-3722"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%20%3A%20Bool%29"></a><div class="signature">
+        
+        def <strong>sync_close=</strong>(sync_close : <a href="../../Bool.html">Bool</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sync_close?-instance-method">
+      <a class="dashingAutolink" name="autolink-3723"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F"></a><div class="signature">
+        
+        def <strong>sync_close?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
         
       </div>
     </div>
   
     <div class="entry-detail" id="write(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-3682"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3724"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
         
         def <strong>write</strong>(slice : <a href="../../Slice.html">Slice</a>(<a href="../../UInt8.html">UInt8</a>))
 
@@ -561,7 +649,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/60777f31ea84f8fd627bfec448ac86bd6221c161/src/openssl/ssl/socket.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/8272664e3d0c1e9fbf657a7626a874ffa19a4938/src/openssl/ssl/socket.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
