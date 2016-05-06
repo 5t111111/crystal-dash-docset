@@ -1,0 +1,145 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-4297"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/String%3A%3ARawConverter%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>String::RawConverter - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> String::RawConverter
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Converter to be used with <code><a href="../JSON.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">JSON.mapping</a></code> to read the raw
+value of a JSON object property as a String.</p>
+
+<p>It can be useful to read ints and floats without loosing precision,
+or to read an object and deserialize it later based on some
+condition.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;json&#34;</span>
+
+<span class="k">class</span> <span class="t">Raw</span>
+  <span class="t">JSON</span>.mapping({
+    value: {<span class="k">type</span>: <span class="t">String</span>, converter: <span class="t">String</span><span class="t">::</span><span class="t">RawConverter</span>},
+  })
+<span class="k">end</span>
+
+raw <span class="o">=</span> <span class="t">Raw</span>.from_json(<span class="s">%({&#34;value&#34;: 123456789876543212345678987654321})</span>)
+raw.value   <span class="c"># =&gt; &#34;123456789876543212345678987654321&#34;</span>
+raw.to_json <span class="c"># =&gt; %({&#34;value&#34;:123456789876543212345678987654321})</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/json/from_json.cr" target="_blank">json/from_json.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/json/to_json.cr" target="_blank">json/to_json.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_json%28value%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.from_json</strong>(value : JSON::PullParser)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json%28value%3AString%2Cio%3AIO%29-class-method" class="signature"><strong>.to_json</strong>(value : String, io : IO)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="from_json(value:JSON::PullParser)-class-method">
+      <a class="dashingAutolink" name="autolink-4298"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_json%28value%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
+        
+        def self.<strong>from_json</strong>(value : <a href="../JSON/PullParser.html">JSON::PullParser</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/json/from_json.cr#L154" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json(value:String,io:IO)-class-method">
+      <a class="dashingAutolink" name="autolink-4299"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_json%28value%20%3A%20String%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def self.<strong>to_json</strong>(value : <a href="../String.html">String</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/json/to_json.cr#L345" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+
+
+</body></html>

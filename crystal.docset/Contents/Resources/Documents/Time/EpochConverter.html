@@ -1,0 +1,194 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-4659"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Time%3A%3AEpochConverter%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Time::EpochConverter - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Time::EpochConverter
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Converter to be used with <code><a href="../JSON.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">JSON.mapping</a></code> and <code><a href="../YAML.html#mapping%28properties%2Cstrict%3Dfalse%29-macro">YAML.mapping</a></code>
+to serialize a <code><a href="../Time.html">Time</a></code> instance as the number of seconds
+since the unix epoch. See <code><a href="../Time.html#epoch%28seconds%3AInt%29%3Aself-class-method">Time.epoch</a></code>.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;json&#34;</span>
+
+<span class="k">class</span> <span class="t">Person</span>
+  <span class="t">JSON</span>.mapping({
+    birth_date: {<span class="k">type</span>: <span class="t">Time</span>, converter: <span class="t">Time</span><span class="t">::</span><span class="t">EpochConverter</span>},
+  })
+<span class="k">end</span>
+
+person <span class="o">=</span> <span class="t">Person</span>.from_json(<span class="s">%({&#34;birth_date&#34;: 1459859781})</span>)
+person.birth_date <span class="c"># =&gt; 2016-04-05 12:36:21 UTC</span>
+person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459859781})</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/json/from_json.cr" target="_blank">json/from_json.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/json/to_json.cr" target="_blank">json/to_json.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/yaml/from_yaml.cr" target="_blank">yaml/from_yaml.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/yaml/to_yaml.cr" target="_blank">yaml/to_yaml.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_json%28value%3AJSON%3A%3APullParser%29%3ATime-class-method" class="signature"><strong>.from_json</strong>(value : JSON::PullParser) : Time</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from_yaml%28value%3AYAML%3A%3APullParser%29%3ATime-class-method" class="signature"><strong>.from_yaml</strong>(value : YAML::PullParser) : Time</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_json%28value%3ATime%2Cio%3AIO%29-class-method" class="signature"><strong>.to_json</strong>(value : Time, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_yaml%28value%3ATime%2Cio%3AIO%29-class-method" class="signature"><strong>.to_yaml</strong>(value : Time, io : IO)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="from_json(value:JSON::PullParser):Time-class-method">
+      <a class="dashingAutolink" name="autolink-4660"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_json%28value%20%3A%20JSON%3A%3APullParser%29%20%3A%20Time"></a><div class="signature">
+        
+        def self.<strong>from_json</strong>(value : <a href="../JSON/PullParser.html">JSON::PullParser</a>) : <a href="../Time.html">Time</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/json/from_json.cr#L142" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from_yaml(value:YAML::PullParser):Time-class-method">
+      <a class="dashingAutolink" name="autolink-4661"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_yaml%28value%20%3A%20YAML%3A%3APullParser%29%20%3A%20Time"></a><div class="signature">
+        
+        def self.<strong>from_yaml</strong>(value : <a href="../YAML/PullParser.html">YAML::PullParser</a>) : <a href="../Time.html">Time</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/yaml/from_yaml.cr#L110" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_json(value:Time,io:IO)-class-method">
+      <a class="dashingAutolink" name="autolink-4662"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_json%28value%20%3A%20Time%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def self.<strong>to_json</strong>(value : <a href="../Time.html">Time</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/json/to_json.cr#L296" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_yaml(value:Time,io:IO)-class-method">
+      <a class="dashingAutolink" name="autolink-4663"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_yaml%28value%20%3A%20Time%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def self.<strong>to_yaml</strong>(value : <a href="../Time.html">Time</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/yaml/to_yaml.cr#L125" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+
+
+</body></html>

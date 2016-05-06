@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1426"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTTP::Server - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1506"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTTP::Server - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -120,17 +120,17 @@ server.listen</code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/context.cr" target="_blank">http/server/context.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/context.cr" target="_blank">http/server/context.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/response.cr" target="_blank">http/server/response.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/response.cr" target="_blank">http/server/response.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr" target="_blank">http/server/server.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr" target="_blank">http/server/server.cr</a>
     
     <br/>
   
@@ -170,22 +170,22 @@ server.listen</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28host%2Cport%2Chandlers%3AArray%28HTTP%3A%3AHandler%29%2C%26handler%3AContext-%3E%29-class-method" class="signature"><strong>.new</strong>(host, port, handlers : Array(HTTP::Handler), &amp;handler : Context -&gt; )</a>
+        <a href="#new%28host%3AString%2Cport%3AInt32%2Chandlers%3AArray%28HTTP%3A%3AHandler%29%2C%26handler%3AContext-%3E%29-class-method" class="signature"><strong>.new</strong>(host : String, port : Int32, handlers : Array(HTTP::Handler), &amp;handler : Context -&gt; )</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28host%2Cport%2C%26handler%3AContext-%3E%29-class-method" class="signature"><strong>.new</strong>(host, port, &amp;handler : Context -&gt; )</a>
+        <a href="#new%28host%3AString%2Cport%3AInt32%2C%26handler%3AContext-%3E%29-class-method" class="signature"><strong>.new</strong>(host : String, port : Int32, &amp;handler : Context -&gt; )</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28host%2Cport%2Chandlers%3AArray%28HTTP%3A%3AHandler%29%29-class-method" class="signature"><strong>.new</strong>(host, port, handlers : Array(HTTP::Handler))</a>
+        <a href="#new%28host%3AString%2Cport%3AInt32%2Chandlers%3AArray%28HTTP%3A%3AHandler%29%29-class-method" class="signature"><strong>.new</strong>(host : String, port : Int32, handlers : Array(HTTP::Handler))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28host%2Cport%2Chandler%29-class-method" class="signature"><strong>.new</strong>(host, port, handler)</a>
+        <a href="#new%28host%3AString%2Cport%3AInt32%2Chandler%3AHTTP%3A%3AHandler%7CHTTP%3A%3AHandler%3A%3AProc%29-class-method" class="signature"><strong>.new</strong>(host : String, port : Int32, handler : HTTP::Handler | HTTP::Handler::Proc)</a>
         
       </li>
     
@@ -195,6 +195,11 @@ server.listen</code></pre>
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#bind-instance-method" class="signature"><strong>#bind</strong></a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
@@ -207,7 +212,12 @@ server.listen</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#ssl-instance-method" class="signature"><strong>#ssl</strong></a>
+        <a href="#port-instance-method" class="signature"><strong>#port</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ssl%3ANil%7COpenSSL%3A%3ASSL%3A%3AContext-instance-method" class="signature"><strong>#ssl</strong> : Nil | OpenSSL::SSL::Context</a>
         
       </li>
     
@@ -371,12 +381,12 @@ server.listen</code></pre>
       <span>cast(other) : self</span>
     cast</a>, 
   
-    <a href="../Object.html#from_json%28string_or_io%29-class-method" class="tooltip">
-      <span>from_json(string_or_io)</span>
+    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self</span>
     from_json</a>, 
   
-    <a href="../Object.html#from_yaml%28string%3AString%29-class-method" class="tooltip">
-      <span>from_yaml(string : String)</span>
+    <a href="../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string : String) : self</span>
     from_yaml</a>, 
   
     <a href="../Object.html#hash-class-method" class="tooltip">
@@ -408,7 +418,7 @@ server.listen</code></pre>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="build_middleware(handlers,last_handler:Context-&gt;=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1427"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build_middleware%28handlers%2C%20last_handler%20%3A%20Context%20-%3E%20%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1507"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build_middleware%28handlers%2C%20last_handler%20%3A%20Context%20-%3E%20%20%3D%20nil%29"></a><div class="signature">
         
         def self.<strong>build_middleware</strong>(handlers, last_handler : <a href="../HTTP/Server/Context.html">Context</a> -&gt;  = <span class="n">nil</span>)
 
@@ -420,13 +430,13 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L185" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L198" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(port,handler)-class-method">
-      <a class="dashingAutolink" name="autolink-1428"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%2C%20handler%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1508"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%2C%20handler%29"></a><div class="signature">
         
         def self.<strong>new</strong>(port, handler)
 
@@ -436,13 +446,13 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L112" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(port,handlers:Array(HTTP::Handler))-class-method">
-      <a class="dashingAutolink" name="autolink-1429"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%2C%20handlers%20%3A%20Array%28HTTP%3A%3AHandler%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1509"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%2C%20handlers%20%3A%20Array%28HTTP%3A%3AHandler%29%29"></a><div class="signature">
         
         def self.<strong>new</strong>(port, handlers : <a href="../Array.html">Array</a>(<a href="../HTTP/Handler.html">HTTP::Handler</a>))
 
@@ -452,13 +462,13 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L108" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(port,handlers:Array(HTTP::Handler),&amp;handler:Context-&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1430"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%2C%20handlers%20%3A%20Array%28HTTP%3A%3AHandler%29%2C%20%26handler%20%3A%20Context%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1510"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%2C%20handlers%20%3A%20Array%28HTTP%3A%3AHandler%29%2C%20%26handler%20%3A%20Context%20-%3E%20%29"></a><div class="signature">
         
         def self.<strong>new</strong>(port, handlers : <a href="../Array.html">Array</a>(<a href="../HTTP/Handler.html">HTTP::Handler</a>), &amp;handler : <a href="../HTTP/Server/Context.html">Context</a> -&gt; )
 
@@ -468,13 +478,13 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(port,&amp;handler:Context-&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1431"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%2C%20%26handler%20%3A%20Context%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1511"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%2C%20%26handler%20%3A%20Context%20-%3E%20%29"></a><div class="signature">
         
         def self.<strong>new</strong>(port, &amp;handler : <a href="../HTTP/Server/Context.html">Context</a> -&gt; )
 
@@ -484,15 +494,15 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L100" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L97" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(host,port,handlers:Array(HTTP::Handler),&amp;handler:Context-&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1432"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%2C%20handlers%20%3A%20Array%28HTTP%3A%3AHandler%29%2C%20%26handler%20%3A%20Context%20-%3E%20%29"></a><div class="signature">
+    <div class="entry-detail" id="new(host:String,port:Int32,handlers:Array(HTTP::Handler),&amp;handler:Context-&gt;)-class-method">
+      <a class="dashingAutolink" name="autolink-1512"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20port%20%3A%20Int32%2C%20handlers%20%3A%20Array%28HTTP%3A%3AHandler%29%2C%20%26handler%20%3A%20Context%20-%3E%20%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(host, port, handlers : <a href="../Array.html">Array</a>(<a href="../HTTP/Handler.html">HTTP::Handler</a>), &amp;handler : <a href="../HTTP/Server/Context.html">Context</a> -&gt; )
+        def self.<strong>new</strong>(host : <a href="../String.html">String</a>, port : <a href="../Int32.html">Int32</a>, handlers : <a href="../Array.html">Array</a>(<a href="../HTTP/Handler.html">HTTP::Handler</a>), &amp;handler : <a href="../HTTP/Server/Context.html">Context</a> -&gt; )
 
         
       </div>
@@ -500,15 +510,15 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L119" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(host,port,&amp;handler:Context-&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-1433"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%2C%20%26handler%20%3A%20Context%20-%3E%20%29"></a><div class="signature">
+    <div class="entry-detail" id="new(host:String,port:Int32,&amp;handler:Context-&gt;)-class-method">
+      <a class="dashingAutolink" name="autolink-1513"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20port%20%3A%20Int32%2C%20%26handler%20%3A%20Context%20-%3E%20%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(host, port, &amp;handler : <a href="../HTTP/Server/Context.html">Context</a> -&gt; )
+        def self.<strong>new</strong>(host : <a href="../String.html">String</a>, port : <a href="../Int32.html">Int32</a>, &amp;handler : <a href="../HTTP/Server/Context.html">Context</a> -&gt; )
 
         
       </div>
@@ -516,15 +526,15 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L116" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(host,port,handlers:Array(HTTP::Handler))-class-method">
-      <a class="dashingAutolink" name="autolink-1434"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%2C%20handlers%20%3A%20Array%28HTTP%3A%3AHandler%29%29"></a><div class="signature">
+    <div class="entry-detail" id="new(host:String,port:Int32,handlers:Array(HTTP::Handler))-class-method">
+      <a class="dashingAutolink" name="autolink-1514"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20port%20%3A%20Int32%2C%20handlers%20%3A%20Array%28HTTP%3A%3AHandler%29%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(host, port, handlers : <a href="../Array.html">Array</a>(<a href="../HTTP/Handler.html">HTTP::Handler</a>))
+        def self.<strong>new</strong>(host : <a href="../String.html">String</a>, port : <a href="../Int32.html">Int32</a>, handlers : <a href="../Array.html">Array</a>(<a href="../HTTP/Handler.html">HTTP::Handler</a>))
 
         
       </div>
@@ -532,15 +542,15 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L123" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L120" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(host,port,handler)-class-method">
-      <a class="dashingAutolink" name="autolink-1435"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%2C%20handler%29"></a><div class="signature">
+    <div class="entry-detail" id="new(host:String,port:Int32,handler:HTTP::Handler|HTTP::Handler::Proc)-class-method">
+      <a class="dashingAutolink" name="autolink-1515"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20port%20%3A%20Int32%2C%20handler%20%3A%20HTTP%3A%3AHandler%20%7C%20HTTP%3A%3AHandler%3A%3AProc%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(host, port, handler)
+        def self.<strong>new</strong>(host : <a href="../String.html">String</a>, port : <a href="../Int32.html">Int32</a>, handler : <a href="../HTTP/Handler.html">HTTP::Handler</a> | <a href="../HTTP/Handler/Proc.html">HTTP::Handler::Proc</a>)
 
         
       </div>
@@ -548,7 +558,7 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L127" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -558,8 +568,24 @@ server.listen</code></pre>
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="bind-instance-method">
+      <a class="dashingAutolink" name="autolink-1516"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bind"></a><div class="signature">
+        
+        def <strong>bind</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L135" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-1436"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1517"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -569,13 +595,13 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L137" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L146" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="listen-instance-method">
-      <a class="dashingAutolink" name="autolink-1437"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20listen"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1518"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20listen"></a><div class="signature">
         
         def <strong>listen</strong>
 
@@ -585,15 +611,31 @@ server.listen</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e5285e4ddf5802886007cb4bf511f162dcedfda1/src/http/server/server.cr#L130" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L139" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="ssl-instance-method">
-      <a class="dashingAutolink" name="autolink-1438"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ssl"></a><div class="signature">
+    <div class="entry-detail" id="port-instance-method">
+      <a class="dashingAutolink" name="autolink-1519"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20port"></a><div class="signature">
         
-        def <strong>ssl</strong>
+        def <strong>port</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/fc89c1aeaa7ce2443ac2f3c10a5adcf96bef23ec/src/http/server/server.cr#L127" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ssl:Nil|OpenSSL::SSL::Context-instance-method">
+      <a class="dashingAutolink" name="autolink-1520"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ssl%20%3A%20Nil%20%7C%20OpenSSL%3A%3ASSL%3A%3AContext"></a><div class="signature">
+        
+        def <strong>ssl</strong> : <a href="../Nil.html">Nil</a> | <a href="../OpenSSL/SSL/Context.html">OpenSSL::SSL::Context</a>
 
         
       </div>
@@ -605,7 +647,7 @@ server.listen</code></pre>
     </div>
   
     <div class="entry-detail" id="ssl=(ssl:OpenSSL::SSL::Context|Nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-1439"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ssl%3D%28ssl%20%3A%20OpenSSL%3A%3ASSL%3A%3AContext%20%7C%20Nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1521"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ssl%3D%28ssl%20%3A%20OpenSSL%3A%3ASSL%3A%3AContext%20%7C%20Nil%29"></a><div class="signature">
         
         def <strong>ssl=</strong>(ssl : <a href="../OpenSSL/SSL/Context.html">OpenSSL::SSL::Context</a> | <a href="../Nil.html">Nil</a>)
 
