@@ -1,0 +1,631 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-889"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Crystal%3A%3AMacros%3A%3ATypeNode%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Crystal::Macros::TypeNode - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Crystal::Macros::TypeNode
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../../Crystal/Macros/TypeNode.html">Crystal::Macros::TypeNode</a></li>
+<li class="superclass"><a href="../../Crystal/Macros/ASTNode.html">Crystal::Macros::ASTNode</a></li>
+<li class="superclass"><a href="../../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Represents a type in the program, like <code><a href="../../Int32.html">Int32</a></code> or <code><a href="../../String.html">String</a></code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr" target="_blank">compiler/crystal/macros.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#abstract%3F%3ABoolLiteral-instance-method" class="signature"><strong>#abstract?</strong> : BoolLiteral</a>
+        
+          <div class="summary"><p>Returns true if this type is abstract.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#class%3ATypeNode-instance-method" class="signature"><strong>#class</strong> : TypeNode</a>
+        
+          <div class="summary"><p>Returns the class of this type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_attribute%3F%28name%3AStringLiteral%7CSymbolLiteral%29%3ABoolLiteral-instance-method" class="signature"><strong>#has_attribute?</strong>(name : StringLiteral | SymbolLiteral) : BoolLiteral</a>
+        
+          <div class="summary"><p>Returns true if this type has an attribute.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_constant%3F%28name%3AStringLiteral%7CSymbolLiteral%29%3ABoolLiteral-instance-method" class="signature"><strong>#has_constant?</strong>(name : StringLiteral | SymbolLiteral) : BoolLiteral</a>
+        
+          <div class="summary"><p>Returns true if this type has a constant.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#instance_vars%3ACrystal%3A%3AMacros%3A%3AArrayLiteral%28MetaVar%29-instance-method" class="signature"><strong>#instance_vars</strong> : Crystal::Macros::ArrayLiteral(MetaVar)</a>
+        
+          <div class="summary"><p>Returns the instance variables of this type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#methods%3AArray%28Def%29-instance-method" class="signature"><strong>#methods</strong> : Array(Def)</a>
+        
+          <div class="summary"><p>Returns the instance methods defined by this type, without including inherited methods.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name%3AMacroId-instance-method" class="signature"><strong>#name</strong> : MacroId</a>
+        
+          <div class="summary"><p>Returns the fully qualified name of this type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size%3ANumberLiteral-instance-method" class="signature"><strong>#size</strong> : NumberLiteral</a>
+        
+          <div class="summary"><p>Returns the number of elements in this tuple type or tuple metaclass type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#subclasses%3ACrystal%3A%3AMacros%3A%3AArrayLiteral%28MacroId%29-instance-method" class="signature"><strong>#subclasses</strong> : Crystal::Macros::ArrayLiteral(MacroId)</a>
+        
+          <div class="summary"><p>Returns the constants and types defined by this type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#superclass%3ATypeNode%7CNilLiteral-instance-method" class="signature"><strong>#superclass</strong> : TypeNode | NilLiteral</a>
+        
+          <div class="summary"><p>Returns the direct superclass of this type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#type_vars%3ACrystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29-instance-method" class="signature"><strong>#type_vars</strong> : Crystal::Macros::ArrayLiteral(TypeNode)</a>
+        
+          <div class="summary"><p>Returns the type variables of the generic type.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#union%3F%3ABoolLiteral-instance-method" class="signature"><strong>#union?</strong> : BoolLiteral</a>
+        
+          <div class="summary"><p>Returns true if this type is a union type, false otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#union_types%3ACrystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29-instance-method" class="signature"><strong>#union_types</strong> : Crystal::Macros::ArrayLiteral(TypeNode)</a>
+        
+          <div class="summary"><p>Returns the types comforming a union type, if this is a union type.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Crystal/Macros/ASTNode.html">Crystal::Macros::ASTNode</a></code>
+</h3>
+  
+    <a href="../../Crystal/Macros/ASTNode.html#%21%3D%28other%3AASTNode%29%3ABoolLiteral-instance-method" class="tooltip">
+      <span>!=(other : ASTNode) : BoolLiteral</span>
+    !=</a>, 
+  
+    <a href="../../Crystal/Macros/ASTNode.html#%3D%3D%28other%3AASTNode%29%3ABoolLiteral-instance-method" class="tooltip">
+      <span>==(other : ASTNode) : BoolLiteral</span>
+    ==</a>, 
+  
+    <a href="../../Crystal/Macros/ASTNode.html#class_name%3AStringLiteral-instance-method" class="tooltip">
+      <span>class_name : StringLiteral</span>
+    class_name</a>, 
+  
+    <a href="../../Crystal/Macros/ASTNode.html#id%3AMacroId-instance-method" class="tooltip">
+      <span>id : MacroId</span>
+    id</a>, 
+  
+    <a href="../../Crystal/Macros/ASTNode.html#raise%28message%29%3ANoReturn-instance-method" class="tooltip">
+      <span>raise(message) : NoReturn</span>
+    raise</a>, 
+  
+    <a href="../../Crystal/Macros/ASTNode.html#stringify%3AStringLiteral-instance-method" class="tooltip">
+      <span>stringify : StringLiteral</span>
+    stringify</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
+</h3>
+  
+    <a href="../../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br/>==(other : self)</span>
+    ==</a>, 
+  
+    <a href="../../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+  
+    <a href="../../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+  
+    <a href="../../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+  
+    <a href="../../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+  
+    <a href="../../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+  
+    <a href="../../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    ===</a>, 
+  
+    <a href="../../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+  
+    <a href="../../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+  
+    <a href="../../Object.html#clone-instance-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+  
+    <a href="../../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+  
+    <a href="../../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+  
+    <a href="../../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../../Object.html#inspect-instance-method" class="tooltip">
+      <span>inspect<br/>inspect(io : IO)</span>
+    inspect</a>, 
+  
+    <a href="../../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+  
+    <a href="../../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+  
+    <a href="../../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+  
+    <a href="../../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+  
+    <a href="../../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+  
+    <a href="../../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+  
+    <a href="../../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+  
+    <a href="../../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+    <a href="../../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+  
+    <a href="../../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+  
+    <a href="../../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self</span>
+    from_json</a>, 
+  
+    <a href="../../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string : String) : self</span>
+    from_yaml</a>, 
+  
+    <a href="../../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+  
+    <a href="../../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+  
+    <a href="../../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+  
+    <a href="../../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>, 
+  
+    <a href="../../Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
+      <span>|(other : U.class)</span>
+    |</a>
+  
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="abstract?:BoolLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-876"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abstract%3F%20%3A%20BoolLiteral"></a><div class="signature">
+        
+        def <strong>abstract?</strong> : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns true if this type is abstract.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1084" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="class:TypeNode-instance-method">
+      <a class="dashingAutolink" name="autolink-877"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20class%20%3A%20TypeNode"></a><div class="signature">
+        
+        def <strong>class</strong> : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the class of this type. With this you can, for example, obtain class
+methods by invoking <code>type<a href="../../Crystal/Macros/TypeNode.html#class%3ATypeNode-instance-method">.class</a><a href="../../Crystal/Macros/TypeNode.html#methods%3AArray%28Def%29-instance-method">.methods</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1153" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_attribute?(name:StringLiteral|SymbolLiteral):BoolLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-878"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_attribute%3F%28name%20%3A%20StringLiteral%20%7C%20SymbolLiteral%29%20%3A%20BoolLiteral"></a><div class="signature">
+        
+        def <strong>has_attribute?</strong>(name : <a href="../../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../../Crystal/Macros/SymbolLiteral.html">SymbolLiteral</a>) : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns true if this type has an attribute. For example <code>@[Flags]</code>
+or <code>@[Packed]</code> (the name you pass to this method is &#34;Flags&#34; or &#34;Packed&#34;
+in these cases).</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1119" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_constant?(name:StringLiteral|SymbolLiteral):BoolLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-879"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_constant%3F%28name%20%3A%20StringLiteral%20%7C%20SymbolLiteral%29%20%3A%20BoolLiteral"></a><div class="signature">
+        
+        def <strong>has_constant?</strong>(name : <a href="../../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../../Crystal/Macros/SymbolLiteral.html">SymbolLiteral</a>) : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns true if this type has a constant. For example <code>DEFAULT_OPTIONS</code>
+(the name you pass to this method is &#34;DEFAULT_OPTIONS&#34; or :DEFAULT_OPTIONS
+in this cases).</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1125" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="instance_vars:Crystal::Macros::ArrayLiteral(MetaVar)-instance-method">
+      <a class="dashingAutolink" name="autolink-880"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20instance_vars%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28MetaVar%29"></a><div class="signature">
+        
+        def <strong>instance_vars</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/MetaVar.html">MetaVar</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the instance variables of this type.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1092" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="methods:Array(Def)-instance-method">
+      <a class="dashingAutolink" name="autolink-881"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20methods%20%3A%20Array%28Def%29"></a><div class="signature">
+        
+        def <strong>methods</strong> : <a href="../../Array.html">Array</a>(<a href="../../Crystal/Macros/Def.html">Def</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the instance methods defined by this type, without including
+inherited methods.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1113" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name:MacroId-instance-method">
+      <a class="dashingAutolink" name="autolink-882"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name%20%3A%20MacroId"></a><div class="signature">
+        
+        def <strong>name</strong> : <a href="../../Crystal/Macros/MacroId.html">MacroId</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the fully qualified name of this type.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1088" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size:NumberLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-883"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20NumberLiteral"></a><div class="signature">
+        
+        def <strong>size</strong> : <a href="../../Crystal/Macros/NumberLiteral.html">NumberLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the number of elements in this tuple type or tuple metaclass type.
+Gives a compile error if this is not one of those types.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1130" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="subclasses:Crystal::Macros::ArrayLiteral(MacroId)-instance-method">
+      <a class="dashingAutolink" name="autolink-884"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20subclasses%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28MacroId%29"></a><div class="signature">
+        
+        def <strong>subclasses</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/MacroId.html">MacroId</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the constants and types defined by this type.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1108" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="superclass:TypeNode|NilLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-885"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20superclass%20%3A%20TypeNode%20%7C%20NilLiteral"></a><div class="signature">
+        
+        def <strong>superclass</strong> : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a> | <a href="../../Crystal/Macros/NilLiteral.html">NilLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the direct superclass of this type.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1096" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="type_vars:Crystal::Macros::ArrayLiteral(TypeNode)-instance-method">
+      <a class="dashingAutolink" name="autolink-886"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20type_vars%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
+        
+        def <strong>type_vars</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the type variables of the generic type. If the type is not
+generic, an empty array is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1148" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="union?:BoolLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-887"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20union%3F%20%3A%20BoolLiteral"></a><div class="signature">
+        
+        def <strong>union?</strong> : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns true if this type is a union type, false otherwise.</p>
+
+<p>See also: <code><a href="../../Crystal/Macros/TypeNode.html#union_types%3ACrystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29-instance-method">#union_types</a></code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1136" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="union_types:Crystal::Macros::ArrayLiteral(TypeNode)-instance-method">
+      <a class="dashingAutolink" name="autolink-888"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20union_types%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
+        
+        def <strong>union_types</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the types comforming a union type, if this is a union type.
+Gives a compile error otherwise.</p>
+
+<p>See also: <code><a href="../../Crystal/Macros/TypeNode.html#union%3F%3ABoolLiteral-instance-method">#union?</a></code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/compiler/crystal/macros.cr#L1143" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>
