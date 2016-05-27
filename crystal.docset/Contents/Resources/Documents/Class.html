@@ -43,7 +43,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr" target="_blank">class.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L1" target="_blank">class.cr</a>
     
     <br/>
   
@@ -74,6 +74,15 @@
     
       <li class="entry-summary">
         <a href="#from_json%28string_or_io%29%3Aself-class-method" class="signature"><strong>.from_json</strong>(string_or_io) : self</a>
+        
+          <div class="summary"><p>Deserializes the given JSON in <em>string_or_io</em> into an instance of <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="signature"><strong>.from_json</strong>(string_or_io, root : String) : self</a>
+        
+          <div class="summary"><p>Deserializes the given JSON in <em>string_or_io</em> into an instance of <code>self</code>, assuming the JSON consists of an JSON object with key <em>root</em>, and whose value is the value to deserialize.</p></div>
         
       </li>
     
@@ -137,6 +146,15 @@
     
       <li class="entry-summary">
         <a href="#from_json%28string_or_io%29%3Aself-instance-method" class="signature"><strong>#from_json</strong>(string_or_io) : self</a>
+        
+          <div class="summary"><p>Deserializes the given JSON in <em>string_or_io</em> into an instance of <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#from_json%28string_or_io%2Croot%3AString%29%3Aself-instance-method" class="signature"><strong>#from_json</strong>(string_or_io, root : String) : self</a>
+        
+          <div class="summary"><p>Deserializes the given JSON in <em>string_or_io</em> into an instance of <code>self</code>, assuming the JSON consists of an JSON object with key <em>root</em>, and whose value is the value to deserialize.</p></div>
         
       </li>
     
@@ -387,7 +405,7 @@
     cast</a>, 
   
     <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self</span>
+      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
     from_json</a>, 
   
     <a href="Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
@@ -433,7 +451,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -449,7 +467,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -479,7 +497,7 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -492,16 +510,52 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
         
       </div>
       
+        <div class="doc">
+<p>Deserializes the given JSON in <em>string_or_io</em> into
+an instance of <code>self</code>. This simply creates a <code>parser = <a href="JSON/PullParser.html">JSON::PullParser</a></code>
+and invokes <code>new(parser)</code>: classes that want to provide JSON
+deserialization must provide an <code>def initialize(parser : <a href="JSON/PullParser.html">JSON::PullParser</a></code>
+method.</p>
+
+<pre><code><span class="t">Int32</span>.from_json(<span class="s">&#34;1&#34;</span>)                <span class="c"># =&gt; 1</span>
+<span class="t">Array</span>(<span class="t">Int32</span>).from_json(<span class="s">&#34;[1, 2, 3]&#34;</span>) <span class="c"># =&gt; [1, 2, 3]</span></code></pre>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/json/from_json.cr#L1" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/json/from_json.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from_json(string_or_io,root:String):self-class-method">
+      <a class="dashingAutolink" name="autolink-534"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_json%28string_or_io%2C%20root%20%3A%20String%29%20%3A%20self"></a><div class="signature">
+        
+        def self.<strong>from_json</strong>(string_or_io, root : <a href="String.html">String</a>) : self
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deserializes the given JSON in <em>string_or_io</em> into
+an instance of <code>self</code>, assuming the JSON consists
+of an JSON object with key <em>root</em>, and whose value is
+the value to deserialize.</p>
+
+<pre><code><span class="t">Int32</span>.from_json(<span class="s">%({&#34;main&#34;: 1})</span>, root: <span class="s">&#34;main&#34;</span>).should eq(<span class="n">1</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/json/from_json.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="from_yaml(string:String):self-class-method">
-      <a class="dashingAutolink" name="autolink-534"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_yaml%28string%20%3A%20String%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-535"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_yaml%28string%20%3A%20String%29%20%3A%20self"></a><div class="signature">
         
         def self.<strong>from_yaml</strong>(string : <a href="String.html">String</a>) : self
 
@@ -511,13 +565,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/yaml/from_yaml.cr#L1" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/yaml/from_yaml.cr#L1" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-class-method">
-      <a class="dashingAutolink" name="autolink-535"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-536"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.hash"></a><div class="signature">
         
         def self.<strong>hash</strong>
 
@@ -527,13 +581,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io)-class-method">
-      <a class="dashingAutolink" name="autolink-536"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.inspect%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-537"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.inspect%28io%29"></a><div class="signature">
         
         def self.<strong>inspect</strong>(io)
 
@@ -543,13 +597,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L2" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="name:String-class-method">
-      <a class="dashingAutolink" name="autolink-537"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.name%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-538"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.name%20%3A%20String"></a><div class="signature">
         
         def self.<strong>name</strong> : <a href="String.html">String</a>
 
@@ -565,13 +619,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-class-method">
-      <a class="dashingAutolink" name="autolink-538"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-539"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_s%28io%29"></a><div class="signature">
         
         def self.<strong>to_s</strong>(io)
 
@@ -581,13 +635,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="|(other:U.class)-class-method">
-      <a class="dashingAutolink" name="autolink-539"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.%7C%28other%20%3A%20U.class%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-540"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.%7C%28other%20%3A%20U.class%29"></a><div class="signature">
         
         def self.<strong>|</strong>(other : U.class)
 
@@ -603,7 +657,7 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -614,7 +668,7 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:Class)-instance-method">
-      <a class="dashingAutolink" name="autolink-540"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Class%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-541"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Class%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="Class.html">Class</a>)
 
@@ -624,13 +678,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-541"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-542"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%29"></a><div class="signature">
         
         def <strong>===</strong>(other)
 
@@ -640,13 +694,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cast(other):self-instance-method">
-      <a class="dashingAutolink" name="autolink-542"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cast%28other%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-543"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cast%28other%29%20%3A%20self"></a><div class="signature">
         
         def <strong>cast</strong>(other) : self
 
@@ -670,29 +724,65 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="from_json(string_or_io):self-instance-method">
-      <a class="dashingAutolink" name="autolink-543"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_json%28string_or_io%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-544"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_json%28string_or_io%29%20%3A%20self"></a><div class="signature">
         
         def <strong>from_json</strong>(string_or_io) : self
 
         
       </div>
       
+        <div class="doc">
+<p>Deserializes the given JSON in <em>string_or_io</em> into
+an instance of <code>self</code>. This simply creates a <code>parser = <a href="JSON/PullParser.html">JSON::PullParser</a></code>
+and invokes <code>new(parser)</code>: classes that want to provide JSON
+deserialization must provide an <code>def initialize(parser : <a href="JSON/PullParser.html">JSON::PullParser</a></code>
+method.</p>
+
+<pre><code><span class="t">Int32</span>.from_json(<span class="s">&#34;1&#34;</span>)                <span class="c"># =&gt; 1</span>
+<span class="t">Array</span>(<span class="t">Int32</span>).from_json(<span class="s">&#34;[1, 2, 3]&#34;</span>) <span class="c"># =&gt; [1, 2, 3]</span></code></pre>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/json/from_json.cr#L1" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/json/from_json.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="from_json(string_or_io,root:String):self-instance-method">
+      <a class="dashingAutolink" name="autolink-545"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_json%28string_or_io%2C%20root%20%3A%20String%29%20%3A%20self"></a><div class="signature">
+        
+        def <strong>from_json</strong>(string_or_io, root : <a href="String.html">String</a>) : self
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deserializes the given JSON in <em>string_or_io</em> into
+an instance of <code>self</code>, assuming the JSON consists
+of an JSON object with key <em>root</em>, and whose value is
+the value to deserialize.</p>
+
+<pre><code><span class="t">Int32</span>.from_json(<span class="s">%({&#34;main&#34;: 1})</span>, root: <span class="s">&#34;main&#34;</span>).should eq(<span class="n">1</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/json/from_json.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="from_yaml(string:String):self-instance-method">
-      <a class="dashingAutolink" name="autolink-544"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_yaml%28string%20%3A%20String%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-546"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_yaml%28string%20%3A%20String%29%20%3A%20self"></a><div class="signature">
         
         def <strong>from_yaml</strong>(string : <a href="String.html">String</a>) : self
 
@@ -702,13 +792,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/yaml/from_yaml.cr#L1" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/yaml/from_yaml.cr#L1" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-545"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-547"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
         
         def <strong>hash</strong>
 
@@ -718,13 +808,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-546"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-548"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io)
 
@@ -734,13 +824,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L2" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="name:String-instance-method">
-      <a class="dashingAutolink" name="autolink-547"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-549"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name%20%3A%20String"></a><div class="signature">
         
         def <strong>name</strong> : <a href="String.html">String</a>
 
@@ -756,13 +846,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-548"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-550"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -772,13 +862,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="|(other:U.class)-instance-method">
-      <a class="dashingAutolink" name="autolink-549"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%7C%28other%20%3A%20U.class%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-551"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%7C%28other%20%3A%20U.class%29"></a><div class="signature">
         
         def <strong>|</strong>(other : U.class)
 
@@ -794,7 +884,7 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/class.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/class.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -805,7 +895,7 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="def_equals(*fields)-macro">
-      <a class="dashingAutolink" name="autolink-550"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_equals%28%2Afields%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-552"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_equals%28%2Afields%29"></a><div class="signature">
         
         macro <strong>def_equals</strong>(*fields)
 
@@ -829,13 +919,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L705" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L998" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="def_equals_and_hash(*fields)-macro">
-      <a class="dashingAutolink" name="autolink-551"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_equals_and_hash%28%2Afields%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-553"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_equals_and_hash%28%2Afields%29"></a><div class="signature">
         
         macro <strong>def_equals_and_hash</strong>(*fields)
 
@@ -860,13 +950,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L728" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L1021" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="def_hash(*fields)-macro">
-      <a class="dashingAutolink" name="autolink-552"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_hash%28%2Afields%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-554"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_hash%28%2Afields%29"></a><div class="signature">
         
         macro <strong>def_hash</strong>(*fields)
 
@@ -888,13 +978,13 @@ number <span class="o">=</span> [<span class="n">99</span>, <span class="s">&#34
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L678" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L971" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="delegate(method,required,*others)-macro">
-      <a class="dashingAutolink" name="autolink-553"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20delegate%28method%2C%20required%2C%20%2Aothers%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-555"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20delegate%28method%2C%20required%2C%20%2Aothers%29"></a><div class="signature">
         
         macro <strong>delegate</strong>(method, required, *others)
 
@@ -928,13 +1018,13 @@ wrapper.capitalize     <span class="c"># =&gt; &#34;Hello&#34;</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L645" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L938" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="forward_missing_to(delegate)-macro">
-      <a class="dashingAutolink" name="autolink-554"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20forward_missing_to%28delegate%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-556"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20forward_missing_to%28delegate%29"></a><div class="signature">
         
         macro <strong>forward_missing_to</strong>(delegate)
 
@@ -959,13 +1049,13 @@ wrapper.gsub(<span class="s">/E/</span>, <span class="s">&#34;A&#34;</span>) <sp
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L746" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L1039" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="getter(*names)-macro">
-      <a class="dashingAutolink" name="autolink-555"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20getter%28%2Anames%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-557"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20getter%28%2Anames%29"></a><div class="signature">
         
         macro <strong>getter</strong>(*names)
 
@@ -1007,7 +1097,40 @@ is declared with that type.</p>
 <pre><code><span class="k">class</span> <span class="t">Person</span>
   @name : <span class="t">String</span>
 
-  <span class="k">def</span> <span class="m">name</span>
+  <span class="k">def</span> <span class="m">name</span> : <span class="t">String</span>
+    @name
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>The type declaration can also include an initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  getter name : <span class="t">String</span> <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @name : <span class="t">String</span> <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+
+  <span class="k">def</span> <span class="m">name</span> : <span class="t">String</span>
+    @name
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>An assignment can be passed too, but in this case the type of the
+instance variable must be easily inferrable from the initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  getter name <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @name <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+
+  <span class="k">def</span> <span class="m">name</span> : <span class="t">String</span>
     @name
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
@@ -1016,13 +1139,13 @@ is declared with that type.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L218" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L259" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="getter!(*names)-macro">
-      <a class="dashingAutolink" name="autolink-556"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20getter%21%28%2Anames%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-558"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20getter%21%28%2Anames%29"></a><div class="signature">
         
         macro <strong>getter!</strong>(*names)
 
@@ -1081,13 +1204,13 @@ is declared with that type, as nilable.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L287" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L337" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="getter?(*names)-macro">
-      <a class="dashingAutolink" name="autolink-557"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20getter%3F%28%2Anames%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-559"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20getter%3F%28%2Anames%29"></a><div class="signature">
         
         macro <strong>getter?</strong>(*names)
 
@@ -1129,6 +1252,39 @@ is declared with that type.</p>
 <pre><code><span class="k">class</span> <span class="t">Person</span>
   @happy : <span class="t">Bool</span>
 
+  <span class="k">def</span> <span class="m">happy?</span> : <span class="t">Bool</span>
+    @happy
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>The type declaration can also include an initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  getter? happy : <span class="t">Bool</span> <span class="o">=</span> <span class="n">true</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @happy : <span class="t">Bool</span> <span class="o">=</span> <span class="n">true</span>
+
+  <span class="k">def</span> <span class="m">happy?</span> : <span class="t">Bool</span>
+    @happy
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>An assignment can be passed too, but in this case the type of the
+instance variable must be easily inferrable from the initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  getter? happy <span class="o">=</span> <span class="n">true</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @happy <span class="o">=</span> <span class="n">true</span>
+
   <span class="k">def</span> <span class="m">happy?</span>
     @happy
   <span class="k">end</span>
@@ -1138,13 +1294,13 @@ is declared with that type.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L352" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L443" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="property(*names)-macro">
-      <a class="dashingAutolink" name="autolink-558"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20property%28%2Anames%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-560"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20property%28%2Anames%29"></a><div class="signature">
         
         macro <strong>property</strong>(*names)
 
@@ -1196,18 +1352,57 @@ is declared with that type.</p>
     @name
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
+
+<p>The type declaration can also include an initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  property name : <span class="t">String</span> <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @name : <span class="t">String</span> <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+
+  <span class="k">def</span> <span class="m">name</span><span class="o">=</span>(@name : <span class="t">String</span>)
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="m">name</span>
+    @name
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>An assignment can be passed too, but in this case the type of the
+instance variable must be easily inferrable from the initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  property name <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @name <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+
+  <span class="k">def</span> <span class="m">name</span><span class="o">=</span>(@name : <span class="t">String</span>)
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="m">name</span>
+    @name
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L478" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L672" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="property!(*names)-macro">
-      <a class="dashingAutolink" name="autolink-559"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20property%21%28%2Anames%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-561"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20property%21%28%2Anames%29"></a><div class="signature">
         
         macro <strong>property!</strong>(*names)
 
@@ -1272,13 +1467,13 @@ is declared with that type, as nilable.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L545" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L765" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="property?(*names)-macro">
-      <a class="dashingAutolink" name="autolink-560"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20property%3F%28%2Anames%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-562"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20property%3F%28%2Anames%29"></a><div class="signature">
         
         macro <strong>property?</strong>(*names)
 
@@ -1334,18 +1529,57 @@ is declared with that type.</p>
     @happy.not_nil!
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
+
+<p>The type declaration can also include an initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  property? happy : <span class="t">Bool</span> <span class="o">=</span> <span class="n">true</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @happy : <span class="t">Bool</span> <span class="o">=</span> <span class="n">true</span>
+
+  <span class="k">def</span> <span class="m">happy</span><span class="o">=</span>(@happy : <span class="t">Bool</span>)
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="m">happy?</span> : <span class="t">Bool</span>
+    @happy
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>An assignment can be passed too, but in this case the type of the
+instance variable must be easily inferrable from the initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  property? happy <span class="o">=</span> <span class="n">true</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @happy <span class="o">=</span> <span class="n">true</span>
+
+  <span class="k">def</span> <span class="m">happy</span><span class="o">=</span>(@happy)
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="m">happy?</span>
+    @happy
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L617" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L884" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="setter(*names)-macro">
-      <a class="dashingAutolink" name="autolink-561"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20setter%28%2Anames%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-563"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20setter%28%2Anames%29"></a><div class="signature">
         
         macro <strong>setter</strong>(*names)
 
@@ -1386,6 +1620,37 @@ is declared with that type.</p>
 <pre><code><span class="k">class</span> <span class="t">Person</span>
   @name : <span class="t">String</span>
 
+  <span class="k">def</span> <span class="m">name</span><span class="o">=</span>(@name : <span class="t">String</span>)
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>The type declaration can also include an initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  setter name : <span class="t">String</span> <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @name : <span class="t">String</span> <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+
+  <span class="k">def</span> <span class="m">name</span><span class="o">=</span>(@name : <span class="t">String</span>)
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>An assignment can be passed too, but in this case the type of the
+instance variable must be easily inferrable from the initial value:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  setter name <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+<span class="k">end</span></code></pre>
+
+<p>Is the same as writing:</p>
+
+<pre><code><span class="k">class</span> <span class="t">Person</span>
+  @name <span class="o">=</span> <span class="s">&#34;John Doe&#34;</span>
+
   <span class="k">def</span> <span class="m">name</span><span class="o">=</span>(@name)
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
@@ -1394,7 +1659,7 @@ is declared with that type.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/bbf7c350dcb11e8906631fb62ac87fb965b23f4d/src/object.cr#L411" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/object.cr#L550" target="_blank">View source</a>]
         
       </div>
     </div>
