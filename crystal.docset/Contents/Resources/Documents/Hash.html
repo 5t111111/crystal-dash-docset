@@ -1363,8 +1363,8 @@ h.each_with_index(<span class="n">3</span>) <span class="k">do</span> <span clas
         <div class="doc">
 <p>Iterates the given block for each element with an arbitrary object given, and returns the initially given object.</p>
 
-<pre><code>evens <span class="o">=</span> (<span class="n">1</span>..<span class="n">10</span>).each_with_object(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>) { <span class="o">|</span>i, a<span class="o">|</span> a <span class="o"> i<span class="o">*</span><span class="n">2</span> }
-<span class="c"># =&gt; [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</span></span></code></pre>
+<pre><code>evens <span class="o">=</span> (<span class="n">1</span>..<span class="n">10</span>).each_with_object(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>) { <span class="o">|</span>i, a<span class="o">|</span> a <span class="o">&lt;&lt;</span> i<span class="o">*</span><span class="n">2</span> }
+<span class="c"># =&gt; [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</span></code></pre>
 </div>
       
       <br/>
@@ -1983,7 +1983,7 @@ prices.reduce(<span class="s">&#34;apple&#34;</span>) <span class="k">do</span> 
 
 <pre><code>h <span class="o">=</span> {<span class="s">&#34;a&#34;</span> =&gt; <span class="n">100</span>, <span class="s">&#34;b&#34;</span> =&gt; <span class="n">200</span>, <span class="s">&#34;c&#34;</span> =&gt; <span class="n">300</span>}
 h.reject { <span class="o">|</span>k, v<span class="o">|</span> k <span class="o">&gt;</span> <span class="s">&#34;a&#34;</span> } <span class="c"># =&gt; {&#34;a&#34; =&gt; 100}</span>
-h.reject { <span class="o">|</span>k, v<span class="o">|</span> v <span class="o"> <span class="n">200</span> } <span class="c"># =&gt; {&#34;b&#34; =&gt; 200, &#34;c&#34; =&gt; 300}</span></span></code></pre>
+h.reject { <span class="o">|</span>k, v<span class="o">|</span> v <span class="o">&lt;</span> <span class="n">200</span> } <span class="c"># =&gt; {&#34;b&#34; =&gt; 200, &#34;c&#34; =&gt; 300}</span></code></pre>
 </div>
       
       <br/>
@@ -2102,7 +2102,7 @@ h <span class="c"># =&gt; {&#34;b&#34;: 2, &#34;d&#34;: 4}</span></code></pre>
 
 <pre><code>h <span class="o">=</span> {<span class="s">&#34;a&#34;</span> =&gt; <span class="n">100</span>, <span class="s">&#34;b&#34;</span> =&gt; <span class="n">200</span>, <span class="s">&#34;c&#34;</span> =&gt; <span class="n">300</span>}
 h.select { <span class="o">|</span>k, v<span class="o">|</span> k <span class="o">&gt;</span> <span class="s">&#34;a&#34;</span> } <span class="c"># =&gt; {&#34;b&#34; =&gt; 200, &#34;c&#34; =&gt; 300}</span>
-h.select { <span class="o">|</span>k, v<span class="o">|</span> v <span class="o"> <span class="n">200</span> } <span class="c"># =&gt; {&#34;a&#34; =&gt; 100}</span></span></code></pre>
+h.select { <span class="o">|</span>k, v<span class="o">|</span> v <span class="o">&lt;</span> <span class="n">200</span> } <span class="c"># =&gt; {&#34;a&#34; =&gt; 100}</span></code></pre>
 </div>
       
       <br/>

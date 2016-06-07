@@ -63,7 +63,7 @@ its initial state. This is needed to implement the <code><a href="Iterator.html#
   <span class="k">end</span>
 
   <span class="k">def</span> <span class="m">next</span>
-    <span class="k">if</span> @produced <span class="o"> @size
+    <span class="k">if</span> @produced <span class="o">&lt;</span> @size
       @produced += <span class="n">1</span>
       <span class="n">0</span>
     <span class="k">else</span>
@@ -81,7 +81,7 @@ zeros <span class="o">=</span> <span class="t">Zeros</span>.<span class="k">new<
 zeros.to_a <span class="c"># =&gt; [0, 0, 0, 0, 0]</span>
 
 zeros.rewind
-zeros.first(<span class="n">3</span>).to_a <span class="c"># =&gt; [0, 0, 0]</span></span></code></pre>
+zeros.first(<span class="n">3</span>).to_a <span class="c"># =&gt; [0, 0, 0]</span></code></pre>
 
 <p>The standard library provides iterators for many classes, like <code><a href="Array.html">Array</a></code>, <code><a href="Hash.html">Hash</a></code>, <code><a href="Range.html">Range</a></code>, <code><a href="String.html">String</a></code> and <code><a href="IO.html">IO</a></code>.
 Usually to get an iterator you invoke a method that would usually yield elements to a block,
@@ -1066,11 +1066,11 @@ iter.<span class="k">next</span> <span class="c"># -&gt; Iterator::Stop::INSTANC
 <p>Returns an iterator that only starts to return elements once the given block
 has returned falsey value for one element.</p>
 
-<pre><code>iter <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">0</span>].each.skip_while { <span class="o">|</span>i<span class="o">|</span> i <span class="o"> <span class="n">3</span>}
+<pre><code>iter <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">0</span>].each.skip_while { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&lt;</span> <span class="n">3</span>}
 iter.<span class="k">next</span> <span class="c"># =&gt; 3</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; 4</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; 0</span>
-iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></span></code></pre>
+iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></code></pre>
 </div>
       
       <br/>
@@ -1165,10 +1165,10 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
 <p>Returns an iterator that returns elements while the given block returns a
 truthy value.</p>
 
-<pre><code>iter <span class="o">=</span> (<span class="n">1</span>..<span class="n">5</span>).each.take_while {<span class="o">|</span>i<span class="o">|</span> i <span class="o"><span class="n">3</span> }
+<pre><code>iter <span class="o">=</span> (<span class="n">1</span>..<span class="n">5</span>).each.take_while {<span class="o">|</span>i<span class="o">|</span> i <span class="o">&lt;</span><span class="n">3</span> }
 iter.<span class="k">next</span> <span class="c"># =&gt; 1</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; 2</span>
-iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></span></code></pre>
+iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></code></pre>
 </div>
       
       <br/>

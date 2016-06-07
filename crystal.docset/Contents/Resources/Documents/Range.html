@@ -41,7 +41,7 @@ x...y <span class="c"># an exclusive range, in mathematics: [x, y)</span></code>
 to think of the extra dot as if it pushes <em>y</em> further away, thus leaving it outside of the range.</p>
 
 <p>Ranges typically involve integers, but can be created using arbitrary objects as long as they define <code>succ</code> (or <code>pred</code>
-for <code><a href="Range.html#reverse_each%28%26block%29-instance-method">#reverse_each</a></code>), to get the next element in the range, and <code> and <code>==</code>, to know when the range reached the end:</code></p>
+for <code><a href="Range.html#reverse_each%28%26block%29-instance-method">#reverse_each</a></code>), to get the next element in the range, and <code>&lt;</code> and <code>==</code>, to know when the range reached the end:</p>
 
 <pre><code><span class="c"># Represents a string of &#39;x&#39;s.</span>
 <span class="k">struct</span> <span class="t">Xs</span>
@@ -56,19 +56,19 @@ for <code><a href="Range.html#reverse_each%28%26block%29-instance-method">#rever
     <span class="t">Xs</span>.<span class="k">new</span>(@size <span class="o">+</span> <span class="n">1</span>)
   <span class="k">end</span>
 
-  <span class="k">def</span> <span class="o"></span>(other)
-    @size <span class="o"></span> other.size
+  <span class="k">def</span> <span class="o">&lt;=&gt;</span>(other)
+    @size <span class="o">&lt;=&gt;</span> other.size
   <span class="k">end</span>
 
   <span class="k">def</span> <span class="m">inspect</span>(io)
-    @size.times { io <span class="o"> <span class="s">&#39;x&#39;</span> }
+    @size.times { io <span class="o">&lt;&lt;</span> <span class="s">&#39;x&#39;</span> }
   <span class="k">end</span>
 
   <span class="k">def</span> <span class="m">to_s</span>(io)
-    io <span class="o"> @size <span class="o"> <span class="s">&#39; &#39;</span>
+    io <span class="o">&lt;&lt;</span> @size <span class="o">&lt;&lt;</span> <span class="s">&#39; &#39;</span>
     inspect(io)
   <span class="k">end</span>
-<span class="k">end</span></span></span></span></code></pre>
+<span class="k">end</span></code></pre>
 
 <p>An example of using <code>Xs</code> to construct a range:</p>
 

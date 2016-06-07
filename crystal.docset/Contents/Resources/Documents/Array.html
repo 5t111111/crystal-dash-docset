@@ -55,7 +55,7 @@ and is reallocated when elements are pushed to it when more capacity
 is needed. This is normally known as a <a href="http://en.wikipedia.org/wiki/Dynamic_array" target="_blank">dynamic array</a>.</p>
 
 <p>You can use a special array literal syntax with other types too, as long as they define an argless
-<code><a href="Array.html#new-class-method">.new</a></code> method and a <code><a href="Array.html#%3C%3C%28value%3AT%29-instance-method">#</a></code> method. <code><a href="Set.html">Set</a></code> is one such type:</p>
+<code><a href="Array.html#new-class-method">.new</a></code> method and a <code><a href="Array.html#%3C%3C%28value%3AT%29-instance-method">#&lt;&lt;</a></code> method. <code><a href="Set.html">Set</a></code> is one such type:</p>
 
 <pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># =&gt; [1, 2, 3]</span>
 set.<span class="k">class</span>          <span class="c"># =&gt; Set(Int32)</span></code></pre>
@@ -63,9 +63,9 @@ set.<span class="k">class</span>          <span class="c"># =&gt; Set(Int32)</sp
 <p>The above is the same as this:</p>
 
 <pre><code>set <span class="o">=</span> <span class="t">Set</span>(<span class="k">typeof</span>(<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>)).<span class="k">new</span>
-set <span class="o"> <span class="n">1</span>
-set <span class="o"> <span class="n">2</span>
-set <span class="o"> <span class="n">3</span></span></span></span></code></pre>
+set <span class="o">&lt;&lt;</span> <span class="n">1</span>
+set <span class="o">&lt;&lt;</span> <span class="n">2</span>
+set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
 
 
 
@@ -239,14 +239,14 @@ set <span class="o"> <span class="n">3</span></span></span></span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#%3C%3C%28value%3AT%29-instance-method" class="signature"><strong>#(value : T)</strong></a>
+        <a href="#%3C%3C%28value%3AT%29-instance-method" class="signature"><strong>#&lt;&lt;</strong>(value : T)</a>
         
           <div class="summary"><p>Append.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%3C%3D%3E%28other%3AArray%29-instance-method" class="signature"><strong>#</strong>(other : Array)</a>
+        <a href="#%3C%3D%3E%28other%3AArray%29-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : Array)</a>
         
           <div class="summary"><p>Combined comparison operator.</p></div>
         
@@ -1025,15 +1025,15 @@ set <span class="o"> <span class="n">3</span></span></span></span></code></pre>
   
     <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
       <span>
-    , 
+    &lt;</span></a>, 
   
-    </span></a><a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
-      <span>
-    , 
+    <a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=(other : T)</span>
+    &lt;=</a>, 
   
-    </span></a><a href="Comparable.html#%3C%3D%3E%28other%3AT%29-instance-method" class="tooltip">
-      <span>(other : T)</span>
-    </a>, 
+    <a href="Comparable.html#%3C%3D%3E%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=&gt;(other : T)</span>
+    &lt;=&gt;</a>, 
   
     <a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
       <span>==(other : T)</span>
@@ -1489,7 +1489,6 @@ set <span class="o"> <span class="n">3</span></span></span></span></code></pre>
 
 
   
-
 </div>
 
 
@@ -1907,19 +1906,18 @@ that appear in <em>other</em>. The order of <code>self</code> is preserved.</p>
     </div>
   
     <div class="entry-detail" id="&lt;&lt;(value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-22"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%28value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-22"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3C%28value%20%3A%20T%29"></a><div class="signature">
         
-        def <strong>(value : T)
+        def <strong>&lt;&lt;</strong>(value : T)
 
         
-      </strong>
-</div>
+      </div>
       
         <div class="doc">
 <p>Append. Alias for <code><a href="Array.html#push%28%2Avalues%3AT%29-instance-method">#push</a></code>.</p>
 
 <pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>]
-a <span class="o"> <span class="n">3</span> <span class="c"># =&gt; [1,2,3]</span></span></code></pre>
+a <span class="o">&lt;&lt;</span> <span class="n">3</span> <span class="c"># =&gt; [1,2,3]</span></code></pre>
 </div>
       
       <br/>
@@ -1931,9 +1929,9 @@ a <span class="o"> <span class="n">3</span> <span class="c"># =&gt; [1,2,3]</spa
     </div>
   
     <div class="entry-detail" id="&lt;=&gt;(other:Array)-instance-method">
-      <a class="dashingAutolink" name="autolink-23"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%28other%20%3A%20Array%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-23"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Array%29"></a><div class="signature">
         
-        def <strong></strong>(other : <a href="Array.html">Array</a>)
+        def <strong>&lt;=&gt;</strong>(other : <a href="Array.html">Array</a>)
 
         
       </div>
@@ -1943,14 +1941,14 @@ a <span class="o"> <span class="n">3</span> <span class="c"># =&gt; [1,2,3]</spa
 <code>self</code> is greater than <em>other</em> and <em>-1</em> if <code>self</code> is smaller than <em>other</em>.</p>
 
 <p>It compares the elements of both arrays in the same position using the
-<code><a href="Array.html#%3C%3D%3E%28other%3AArray%29-instance-method">#</a></code> operator.  As soon as one of such comparisons returns a non-zero
+<code><a href="Array.html#%3C%3D%3E%28other%3AArray%29-instance-method">#&lt;=&gt;</a></code> operator.  As soon as one of such comparisons returns a non-zero
 value, that result is the return value of the comparison.</p>
 
 <p>If all elements are equal, the comparison is based on the size of the arrays.</p>
 
-<pre><code>[<span class="n">8</span>] <span class="o"></span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>] <span class="c"># =&gt; 1</span>
-[<span class="n">2</span>] <span class="o"></span> [<span class="n">4</span>, <span class="n">2</span>, <span class="n">3</span>] <span class="c"># =&gt; -1</span>
-[<span class="n">1</span>, <span class="n">2</span>] <span class="o"></span> [<span class="n">1</span>, <span class="n">2</span>] <span class="c"># =&gt; 0</span></code></pre>
+<pre><code>[<span class="n">8</span>] <span class="o">&lt;=&gt;</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>] <span class="c"># =&gt; 1</span>
+[<span class="n">2</span>] <span class="o">&lt;=&gt;</span> [<span class="n">4</span>, <span class="n">2</span>, <span class="n">3</span>] <span class="c"># =&gt; -1</span>
+[<span class="n">1</span>, <span class="n">2</span>] <span class="o">&lt;=&gt;</span> [<span class="n">1</span>, <span class="n">2</span>] <span class="c"># =&gt; 0</span></code></pre>
 </div>
       
       <br/>
@@ -2428,9 +2426,9 @@ ary[<span class="n">0</span>][<span class="n">0</span>] <span class="o">=</span>
 puts ary  <span class="c"># =&gt; [[5, 2], [3, 4]]</span>
 puts ary2 <span class="c"># =&gt; [[1, 2], [3, 4]]</span>
 
-ary2 <span class="o"> [<span class="n">7</span>, <span class="n">8</span>]
+ary2 <span class="o">&lt;&lt;</span> [<span class="n">7</span>, <span class="n">8</span>]
 puts ary  <span class="c"># =&gt; [[5, 2], [3, 4]]</span>
-puts ary2 <span class="c"># =&gt; [[1, 2], [3, 4], [7, 8]]</span></span></code></pre>
+puts ary2 <span class="c"># =&gt; [[1, 2], [3, 4], [7, 8]]</span></code></pre>
 </div>
       
       <br/>
@@ -2676,9 +2674,9 @@ ary[<span class="n">0</span>][<span class="n">0</span>] <span class="o">=</span>
 puts ary  <span class="c"># =&gt; [[5, 2], [3, 4]]</span>
 puts ary2 <span class="c"># =&gt; [[5, 2], [3, 4]]</span>
 
-ary2 <span class="o"> [<span class="n">7</span>, <span class="n">8</span>]
+ary2 <span class="o">&lt;&lt;</span> [<span class="n">7</span>, <span class="n">8</span>]
 puts ary  <span class="c"># =&gt; [[5, 2], [3, 4]]</span>
-puts ary2 <span class="c"># =&gt; [[5, 2], [3, 4], [7, 8]]</span></span></code></pre>
+puts ary2 <span class="c"># =&gt; [[5, 2], [3, 4], [7, 8]]</span></code></pre>
 </div>
       
       <br/>
@@ -2875,8 +2873,8 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop</span></
 
 <pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
 sums <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>
-a.each_permutation(<span class="n">2</span>) { <span class="o">|</span>p<span class="o">|</span> sums <span class="o"> p.sum } <span class="c">#=&gt; [1, 2, 3]</span>
-sums <span class="c">#=&gt; [3, 4, 3, 5, 4, 5]</span></span></code></pre>
+a.each_permutation(<span class="n">2</span>) { <span class="o">|</span>p<span class="o">|</span> sums <span class="o">&lt;&lt;</span> p.sum } <span class="c">#=&gt; [1, 2, 3]</span>
+sums <span class="c">#=&gt; [3, 4, 3, 5, 4, 5]</span></code></pre>
 </div>
       
       <br/>
@@ -4187,7 +4185,7 @@ using the given <em>random</em> number generator.  Returns <code>self</code>.</p
 a.sort <span class="c"># =&gt; [1, 2, 3]</span>
 a      <span class="c"># =&gt; [3, 1, 2]</span></code></pre>
 
-<p>Optionally, a block may be given that must implement a comparison, either with the comparison operator <code><a href="Array.html#%3C%3D%3E%28other%3AArray%29-instance-method">#</a></code>
+<p>Optionally, a block may be given that must implement a comparison, either with the comparison operator <code><a href="Array.html#%3C%3D%3E%28other%3AArray%29-instance-method">#&lt;=&gt;</a></code>
 or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a == b yields 0, and a &gt; b yields 1.</p>
 </div>
       
@@ -4214,7 +4212,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
 a.sort!
 a <span class="c"># =&gt; [1, 2, 3]</span></code></pre>
 
-<p>Optionally, a block may be given that must implement a comparison, either with the comparison operator <code><a href="Array.html#%3C%3D%3E%28other%3AArray%29-instance-method">#</a></code>
+<p>Optionally, a block may be given that must implement a comparison, either with the comparison operator <code><a href="Array.html#%3C%3D%3E%28other%3AArray%29-instance-method">#&lt;=&gt;</a></code>
 or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a == b yields 0, and a &gt; b yields 1.</p>
 </div>
       

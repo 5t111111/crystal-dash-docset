@@ -1358,22 +1358,22 @@ expressions to it, and letting the Proc finally invoke the <em>call</em>.</p>
 <p>Compare this:</p>
 
 <pre><code>i <span class="o">=</span> <span class="n">0</span>
-<span class="k">while</span> i <span class="o"> <span class="n">5</span>
+<span class="k">while</span> i <span class="o">&lt;</span> <span class="n">5</span>
   spawn { print(i) }
   i += <span class="n">1</span>
 <span class="k">end</span>
 <span class="t">Fiber</span>.<span class="k">yield</span>
-<span class="c"># Output: 55555</span></span></code></pre>
+<span class="c"># Output: 55555</span></code></pre>
 
 <p>To this:</p>
 
 <pre><code>i <span class="o">=</span> <span class="n">0</span>
-<span class="k">while</span> i <span class="o"> <span class="n">5</span>
+<span class="k">while</span> i <span class="o">&lt;</span> <span class="n">5</span>
   spawn print(i)
   i += <span class="n">1</span>
 <span class="k">end</span>
 <span class="t">Fiber</span>.<span class="k">yield</span>
-<span class="c"># Output: 01234</span></span></code></pre>
+<span class="c"># Output: 01234</span></code></pre>
 
 <p>This is because in the first case all spawned fibers refer to
 the same local variable, while in the second example copies of
