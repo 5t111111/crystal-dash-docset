@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3961"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Proc%28%2AT%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Proc(*T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4057"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Proc%28%2AT%2C%20R%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Proc(*T, R) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,13 +13,13 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Proc(*T)
+  <span class="kind">struct</span> Proc(*T, R)
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
-<li class="superclass"><a href="Proc.html">Proc(*T)</a></li>
+<li class="superclass"><a href="Proc.html">Proc(*T, R)</a></li>
 <li class="superclass"><a href="Value.html">Value</a></li>
 <li class="superclass"><a href="Object.html">Object</a></li>
 </ul>
@@ -40,9 +40,9 @@
 <span class="c"># A proc with two arguments:</span>
 -&gt;(x : <span class="t">Int32</span>, y : <span class="t">Int32</span>) { x <span class="o">+</span> y } <span class="c"># Proc(Int32, Int32, Int32)</span></code></pre>
 
-<p>The types of the arguments are mandatory, except when directly sending a proc literal to a lib fun in C bindings.</p>
+<p>The types of the arguments (T) are mandatory, except when directly sending a proc literal to a lib fun in C bindings.</p>
 
-<p>The return type is inferred from the proc&#39;s body.</p>
+<p>The return type (R) is inferred from the proc&#39;s body.</p>
 
 <p>A special new method is provided too:</p>
 
@@ -127,7 +127,12 @@ GC has no way of knowing that.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L91" target="_blank">proc.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L239" target="_blank">primitives.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L92" target="_blank">proc.cr</a>
     
     <br/>
   
@@ -167,6 +172,25 @@ GC has no way of knowing that.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#arity-instance-method" class="signature"><strong>#arity</strong></a>
+        
+          <div class="summary"><p>Returns the number of arguments of this Proc.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#call%28%2Aargs%3A%2AT%29%3AR-instance-method" class="signature"><strong>#call</strong>(*args : *T) : R</a>
+        
+          <div class="summary"><p>Invokes this Proc and returns the result.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#closure%3F-instance-method" class="signature"><strong>#closure?</strong></a>
         
       </li>
@@ -178,6 +202,13 @@ GC has no way of knowing that.</p>
     
       <li class="entry-summary">
         <a href="#hash-instance-method" class="signature"><strong>#hash</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#partial%28%2Aargs%3A%2AU%29-instance-method" class="signature"><strong>#partial</strong>(*args : *U)</a>
+        
+          <div class="summary"><p>Returns a new Proc that has its first arguments fixed to the values given by <em>args</em>.</p></div>
         
       </li>
     
@@ -204,9 +235,16 @@ GC has no way of knowing that.</p>
   <h3>Instance methods inherited from struct <code><a href="Value.html">Value</a></code>
 </h3>
   
+  
     <a href="Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
       <span>==(other)</span>
-    ==</a>
+    ==</a>, 
+    
+  
+    <a href="Value.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>
+    
   
 
 
@@ -219,81 +257,96 @@ GC has no way of knowing that.</p>
   <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
 </h3>
   
+  
     <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
       <span>!=(other)</span>
     !=</a>, 
+    
   
     <a href="Object.html#%21~%28other%29-instance-method" class="tooltip">
       <span>!~(other)</span>
     !~</a>, 
+    
   
     <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
       <span>==(other)</span>
     ==</a>, 
+    
   
     <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
       <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
     ===</a>, 
+    
   
     <a href="Object.html#%3D~%28other%29-instance-method" class="tooltip">
       <span>=~(other)</span>
     =~</a>, 
+    
   
     <a href="Object.html#class-instance-method" class="tooltip">
       <span>class</span>
     class</a>, 
-  
-    <a href="Object.html#clone-instance-method" class="tooltip">
-      <span>clone</span>
-    clone</a>, 
+    
   
     <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
       <span>crystal_type_id</span>
     crystal_type_id</a>, 
+    
   
     <a href="Object.html#dup-instance-method" class="tooltip">
       <span>dup</span>
     dup</a>, 
+    
   
     <a href="Object.html#hash-instance-method" class="tooltip">
       <span>hash</span>
     hash</a>, 
+    
   
-    <a href="Object.html#inspect-instance-method" class="tooltip">
-      <span>inspect<br/>inspect(io : IO)</span>
+    <a href="Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
     inspect</a>, 
+    
   
     <a href="Object.html#itself-instance-method" class="tooltip">
       <span>itself</span>
     itself</a>, 
+    
   
     <a href="Object.html#not_nil%21-instance-method" class="tooltip">
       <span>not_nil!</span>
     not_nil!</a>, 
+    
   
     <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
       <span>tap(&amp;block)</span>
     tap</a>, 
+    
   
     <a href="Object.html#to_json-instance-method" class="tooltip">
       <span>to_json</span>
     to_json</a>, 
+    
   
     <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
       <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
     to_pretty_json</a>, 
+    
   
     <a href="Object.html#to_s-instance-method" class="tooltip">
       <span>to_s<br/>to_s(io : IO)</span>
     to_s</a>, 
+    
   
-    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    <a href="Object.html#to_yaml-instance-method" class="tooltip">
+      <span>to_yaml<br/>to_yaml(io : IO)</span>
     to_yaml</a>, 
+    
   
     <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
       <span>try(&amp;block)</span>
     try</a>
+    
   
 
 
@@ -302,45 +355,66 @@ GC has no way of knowing that.</p>
   <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
 </h3>
   
+  
     <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
       <span>==(other : Class)</span>
     ==</a>, 
+    
   
     <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
       <span>===(other)</span>
     ===</a>, 
+    
   
     <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
       <span>cast(other) : self</span>
     cast</a>, 
+    
   
-    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="Object.html#clone-class-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+    
+  
+    <a href="Object.html#dup-class-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
+    
   
     <a href="Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
       <span>from_yaml(string : String) : self</span>
     from_yaml</a>, 
+    
   
     <a href="Object.html#hash-class-method" class="tooltip">
       <span>hash</span>
     hash</a>, 
+    
   
     <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
       <span>inspect(io)</span>
     inspect</a>, 
+    
   
     <a href="Object.html#name%3AString-class-method" class="tooltip">
       <span>name : String</span>
     name</a>, 
+    
   
     <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
+    
   
     <a href="Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
       <span>|(other : U.class)</span>
     |</a>
+    
   
 
 
@@ -351,7 +425,7 @@ GC has no way of knowing that.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(pointer:Pointer(Void),closure_data:Pointer(Void))-class-method">
-      <a class="dashingAutolink" name="autolink-3952"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pointer%20%3A%20Pointer%28Void%29%2C%20closure_data%20%3A%20Pointer%28Void%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4058"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pointer%20%3A%20Pointer%28Void%29%2C%20closure_data%20%3A%20Pointer%28Void%29%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pointer : <a href="Pointer.html">Pointer</a>(Void), closure_data : <a href="Pointer.html">Pointer</a>(Void))
 
@@ -361,7 +435,7 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L92" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L93" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -372,7 +446,7 @@ GC has no way of knowing that.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-3953"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4059"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>==</strong>(other : self)
 
@@ -382,13 +456,13 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L116" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L163" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-3954"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4060"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>===</strong>(other : self)
 
@@ -398,13 +472,13 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L120" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L167" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-3955"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4061"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%29"></a><div class="signature">
         
         def <strong>===</strong>(other)
 
@@ -414,13 +488,78 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L124" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L171" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="arity-instance-method">
+      <a class="dashingAutolink" name="autolink-4062"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20arity"></a><div class="signature">
+        
+        def <strong>arity</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the number of arguments of this Proc.</p>
+
+<pre><code>add <span class="o">=</span> -&gt;(x : <span class="t">Int32</span>, y : <span class="t">Int32</span>) { x <span class="o">+</span> y }
+add.arity <span class="c"># =&gt; 2</span>
+
+neg <span class="o">=</span> -&gt;(x : <span class="t">Int32</span>) { <span class="o">-</span>x }
+neg.arity <span class="c"># =&gt; 1</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L141" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="call(*args:*T):R-instance-method">
+      <a class="dashingAutolink" name="autolink-4063"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call%28%2Aargs%20%3A%20%2AT%29%20%3A%20R"></a><div class="signature">
+        
+        def <strong>call</strong>(*args : *T) : R
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Invokes this Proc and returns the result.</p>
+
+<pre><code>add <span class="o">=</span> -&gt;(x : <span class="t">Int32</span>, y : <span class="t">Int32</span>) { x <span class="o">+</span> y }
+add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =&gt; 3</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L248" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone-instance-method">
+      <a class="dashingAutolink" name="autolink-4064"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+        
+        def <strong>clone</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L179" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closure?-instance-method">
-      <a class="dashingAutolink" name="autolink-3956"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4065"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure%3F"></a><div class="signature">
         
         def <strong>closure?</strong>
 
@@ -430,13 +569,13 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L106" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L153" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closure_data-instance-method">
-      <a class="dashingAutolink" name="autolink-3957"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure_data"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4066"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure_data"></a><div class="signature">
         
         def <strong>closure_data</strong>
 
@@ -446,13 +585,13 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L102" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-3958"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4067"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
         
         def <strong>hash</strong>
 
@@ -462,13 +601,45 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L175" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="partial(*args:*U)-instance-method">
+      <a class="dashingAutolink" name="autolink-4068"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20partial%28%2Aargs%20%3A%20%2AU%29"></a><div class="signature">
+        
+        def <strong>partial</strong>(*args : *U)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a new Proc that has its first arguments fixed to the values given by <em>args</em>.</p>
+
+<p>See <a href="https://en.wikipedia.org/wiki/Partial_application" target="_blank">Wikipedia, Partial application</a></p>
+
+<pre><code>add <span class="o">=</span> -&gt;(x : <span class="t">Int32</span>, y : <span class="t">Int32</span>) { x <span class="o">+</span> y }
+add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =&gt; 3</span>
+
+add_one <span class="o">=</span> add.partial(<span class="n">1</span>)
+add_one.call(<span class="n">2</span>)  <span class="c"># =&gt; 3</span>
+add_one.call(<span class="n">10</span>) <span class="c"># =&gt; 11</span>
+
+add_one_and_two <span class="o">=</span> add_one.partial(<span class="n">2</span>)
+add_one_and_two.call <span class="c"># =&gt; 3</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L114" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pointer-instance-method">
-      <a class="dashingAutolink" name="autolink-3959"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pointer"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4069"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pointer"></a><div class="signature">
         
         def <strong>pointer</strong>
 
@@ -478,13 +649,13 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L98" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L145" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-3960"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4070"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -494,7 +665,7 @@ GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/proc.cr#L132" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/proc.cr#L183" target="_blank">View source</a>]
         
       </div>
     </div>

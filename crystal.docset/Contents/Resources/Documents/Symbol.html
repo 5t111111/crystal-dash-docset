@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4577"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Symbol%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Symbol - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4679"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Symbol%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Symbol - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -65,22 +65,22 @@ gets assigned a unique number.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L102" target="_blank">primitives.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L102" target="_blank">primitives.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/symbol.cr#L15" target="_blank">symbol.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/symbol.cr#L15" target="_blank">symbol.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/json/to_json.cr#L205" target="_blank">json/to_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/json/to_json.cr#L205" target="_blank">json/to_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/yaml/to_yaml.cr#L125" target="_blank">yaml/to_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/yaml/to_yaml.cr#L125" target="_blank">yaml/to_yaml.cr</a>
     
     <br/>
   
@@ -128,6 +128,11 @@ gets assigned a unique number.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#hash%3AInt32-instance-method" class="signature"><strong>#hash</strong> : Int32</a>
         
           <div class="summary"><p>Generates an <code><a href="Int32.html">Int32</a></code> hash value for this symbol.</p></div>
@@ -154,16 +159,16 @@ gets assigned a unique number.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_s%3AString-instance-method" class="signature"><strong>#to_s</strong> : String</a>
+        <a href="#to_s%28io%3AIO%29-instance-method" class="signature"><strong>#to_s</strong>(io : IO)</a>
         
-          <div class="summary"><p>Returns the symbol&#39;s name as a String.</p></div>
+          <div class="summary"><p>Appends the symbol&#39;s name to the passed IO.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_s%28io%3AIO%29-instance-method" class="signature"><strong>#to_s</strong>(io : IO)</a>
+        <a href="#to_s%3AString-instance-method" class="signature"><strong>#to_s</strong> : String</a>
         
-          <div class="summary"><p>Appends the symbol&#39;s name to the passed IO.</p></div>
+          <div class="summary"><p>Returns the symbol&#39;s name as a String.</p></div>
         
       </li>
     
@@ -185,29 +190,36 @@ gets assigned a unique number.</p>
   <h3>Instance methods inherited from module <code><a href="Comparable.html">Comparable(T)</a></code>
 </h3>
   
+  
     <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
       <span>
     &lt;</span></a>, 
+    
   
     <a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
       <span>&lt;=(other : T)</span>
     &lt;=</a>, 
+    
   
     <a href="Comparable.html#%3C%3D%3E%28other%3AT%29-instance-method" class="tooltip">
       <span>&lt;=&gt;(other : T)</span>
     &lt;=&gt;</a>, 
+    
   
     <a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
       <span>==(other : T)</span>
     ==</a>, 
+    
   
     <a href="Comparable.html#%3E%28other%3AT%29-instance-method" class="tooltip">
       <span>&gt;(other : T)</span>
     &gt;</a>, 
+    
   
     <a href="Comparable.html#%3E%3D%28other%3AT%29-instance-method" class="tooltip">
       <span>&gt;=(other : T)</span>
     &gt;=</a>
+    
   
 
 
@@ -220,9 +232,16 @@ gets assigned a unique number.</p>
   <h3>Instance methods inherited from struct <code><a href="Value.html">Value</a></code>
 </h3>
   
+  
     <a href="Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
       <span>==(other)</span>
-    ==</a>
+    ==</a>, 
+    
+  
+    <a href="Value.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>
+    
   
 
 
@@ -235,81 +254,96 @@ gets assigned a unique number.</p>
   <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
 </h3>
   
+  
     <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
       <span>!=(other)</span>
     !=</a>, 
+    
   
     <a href="Object.html#%21~%28other%29-instance-method" class="tooltip">
       <span>!~(other)</span>
     !~</a>, 
+    
   
     <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
       <span>==(other)</span>
     ==</a>, 
+    
   
     <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
       <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
     ===</a>, 
+    
   
     <a href="Object.html#%3D~%28other%29-instance-method" class="tooltip">
       <span>=~(other)</span>
     =~</a>, 
+    
   
     <a href="Object.html#class-instance-method" class="tooltip">
       <span>class</span>
     class</a>, 
-  
-    <a href="Object.html#clone-instance-method" class="tooltip">
-      <span>clone</span>
-    clone</a>, 
+    
   
     <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
       <span>crystal_type_id</span>
     crystal_type_id</a>, 
+    
   
     <a href="Object.html#dup-instance-method" class="tooltip">
       <span>dup</span>
     dup</a>, 
+    
   
     <a href="Object.html#hash-instance-method" class="tooltip">
       <span>hash</span>
     hash</a>, 
+    
   
-    <a href="Object.html#inspect-instance-method" class="tooltip">
-      <span>inspect<br/>inspect(io : IO)</span>
+    <a href="Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
     inspect</a>, 
+    
   
     <a href="Object.html#itself-instance-method" class="tooltip">
       <span>itself</span>
     itself</a>, 
+    
   
     <a href="Object.html#not_nil%21-instance-method" class="tooltip">
       <span>not_nil!</span>
     not_nil!</a>, 
+    
   
     <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
       <span>tap(&amp;block)</span>
     tap</a>, 
+    
   
     <a href="Object.html#to_json-instance-method" class="tooltip">
       <span>to_json</span>
     to_json</a>, 
+    
   
     <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
       <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
     to_pretty_json</a>, 
+    
   
     <a href="Object.html#to_s-instance-method" class="tooltip">
       <span>to_s<br/>to_s(io : IO)</span>
     to_s</a>, 
+    
   
-    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    <a href="Object.html#to_yaml-instance-method" class="tooltip">
+      <span>to_yaml<br/>to_yaml(io : IO)</span>
     to_yaml</a>, 
+    
   
     <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
       <span>try(&amp;block)</span>
     try</a>
+    
   
 
 
@@ -318,45 +352,66 @@ gets assigned a unique number.</p>
   <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
 </h3>
   
+  
     <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
       <span>==(other : Class)</span>
     ==</a>, 
+    
   
     <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
       <span>===(other)</span>
     ===</a>, 
+    
   
     <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
       <span>cast(other) : self</span>
     cast</a>, 
+    
   
-    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="Object.html#clone-class-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+    
+  
+    <a href="Object.html#dup-class-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
+    
   
     <a href="Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
       <span>from_yaml(string : String) : self</span>
     from_yaml</a>, 
+    
   
     <a href="Object.html#hash-class-method" class="tooltip">
       <span>hash</span>
     hash</a>, 
+    
   
     <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
       <span>inspect(io)</span>
     inspect</a>, 
+    
   
     <a href="Object.html#name%3AString-class-method" class="tooltip">
       <span>name : String</span>
     name</a>, 
+    
   
     <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
+    
   
     <a href="Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
       <span>|(other : U.class)</span>
     |</a>
+    
   
 
 
@@ -367,7 +422,7 @@ gets assigned a unique number.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="needs_quotes?(string):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-4566"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.needs_quotes%3F%28string%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4680"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.needs_quotes%3F%28string%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>needs_quotes?</strong>(string) : <a href="Bool.html">Bool</a>
 
@@ -384,7 +439,7 @@ gets assigned a unique number.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/symbol.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/symbol.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -395,7 +450,7 @@ gets assigned a unique number.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="!=(other:Symbol):Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-4567"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%21%3D%28other%20%3A%20Symbol%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4681"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%21%3D%28other%20%3A%20Symbol%29%20%3A%20Bool"></a><div class="signature">
         
         def <strong>!=</strong>(other : <a href="Symbol.html">Symbol</a>) : <a href="Bool.html">Bool</a>
 
@@ -407,13 +462,13 @@ gets assigned a unique number.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L110" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="&lt;=&gt;(other:Symbol)-instance-method">
-      <a class="dashingAutolink" name="autolink-4568"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Symbol%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4682"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Symbol%29"></a><div class="signature">
         
         def <strong>&lt;=&gt;</strong>(other : <a href="Symbol.html">Symbol</a>)
 
@@ -428,13 +483,13 @@ See <code><a href="String.html#%3C%3D%3E%28other%3Aself%29-instance-method">Stri
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/symbol.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/symbol.cr#L29" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other:Symbol):Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-4569"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Symbol%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4683"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Symbol%29%20%3A%20Bool"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="Symbol.html">Symbol</a>) : <a href="Bool.html">Bool</a>
 
@@ -446,13 +501,29 @@ See <code><a href="String.html#%3C%3D%3E%28other%3Aself%29-instance-method">Stri
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L105" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L105" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone-instance-method">
+      <a class="dashingAutolink" name="autolink-4684"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+        
+        def <strong>clone</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/symbol.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-4570"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4685"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%20%3A%20Int32"></a><div class="signature">
         
         def <strong>hash</strong> : <a href="Int32.html">Int32</a>
 
@@ -468,13 +539,13 @@ See <code><a href="String.html#%3C%3D%3E%28other%3Aself%29-instance-method">Stri
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/symbol.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/symbol.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-4571"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4686"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io : <a href="IO.html">IO</a>)
 
@@ -490,13 +561,13 @@ See <code><a href="String.html#%3C%3D%3E%28other%3Aself%29-instance-method">Stri
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/symbol.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/symbol.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_i:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-4572"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4687"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i%20%3A%20Int32"></a><div class="signature">
         
         def <strong>to_i</strong> : <a href="Int32.html">Int32</a>
 
@@ -508,13 +579,13 @@ See <code><a href="String.html#%3C%3D%3E%28other%3Aself%29-instance-method">Stri
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L115" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_json(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-4573"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4688"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28io%29"></a><div class="signature">
         
         def <strong>to_json</strong>(io)
 
@@ -524,13 +595,35 @@ See <code><a href="String.html#%3C%3D%3E%28other%3Aself%29-instance-method">Stri
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/json/to_json.cr#L206" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/json/to_json.cr#L206" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-4689"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Appends the symbol&#39;s name to the passed IO.</p>
+
+<pre><code><span class="n">:crystal</span>.to_s <span class="c"># =&gt; &#34;crystal&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/symbol.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s:String-instance-method">
-      <a class="dashingAutolink" name="autolink-4574"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4690"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%20%3A%20String"></a><div class="signature">
         
         def <strong>to_s</strong> : <a href="String.html">String</a>
 
@@ -547,35 +640,13 @@ See <code><a href="String.html#%3C%3D%3E%28other%3Aself%29-instance-method">Stri
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L125" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-4575"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
-        
-        def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Appends the symbol&#39;s name to the passed IO.</p>
-
-<pre><code><span class="n">:crystal</span>.to_s <span class="c"># =&gt; &#34;crystal&#34;</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/symbol.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_yaml(yaml:YAML::Generator)-instance-method">
-      <a class="dashingAutolink" name="autolink-4576"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28yaml%20%3A%20YAML%3A%3AGenerator%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4691"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28yaml%20%3A%20YAML%3A%3AGenerator%29"></a><div class="signature">
         
         def <strong>to_yaml</strong>(yaml : <a href="YAML/Generator.html">YAML::Generator</a>)
 
@@ -585,7 +656,7 @@ See <code><a href="String.html#%3C%3D%3E%28other%3Aself%29-instance-method">Stri
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/yaml/to_yaml.cr#L126" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/yaml/to_yaml.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>

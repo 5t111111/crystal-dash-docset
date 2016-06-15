@@ -1,0 +1,510 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-3977"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%3A%3AX509%3A%3AName%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL::X509::Name - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> OpenSSL::X509::Name
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../../OpenSSL/X509/Name.html">OpenSSL::X509::Name</a></li>
+<li class="superclass"><a href="../../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>:nodoc;</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L6" target="_blank">openssl/x509/name.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#parse%28string%3AString%29%3AName-class-method" class="signature"><strong>.parse</strong>(string : String) : Name</a>
+        
+          <div class="summary"><p>Parses entries in string and initializes a Name object.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28name%3ALibCrypto%3A%3AX509_NAME%29-class-method" class="signature"><strong>.new</strong>(name : LibCrypto::X509_NAME)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#add_entry%28oid%3AString%2Cvalue%3AString%29-instance-method" class="signature"><strong>#add_entry</strong>(oid : String, value : String)</a>
+        
+          <div class="summary"><p>Adds a new entry.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dup-instance-method" class="signature"><strong>#dup</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_a-instance-method" class="signature"><strong>#to_a</strong></a>
+        
+          <div class="summary"><p>Returns entries as an Array of oid, value pairs.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_unsafe%3ALibCrypto%3A%3AX509_NAME-instance-method" class="signature"><strong>#to_unsafe</strong> : LibCrypto::X509_NAME</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br/>==(other : self)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    ===</a>, 
+    
+  
+    <a href="../../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+    
+  
+    <a href="../../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../../Object.html#to_yaml-instance-method" class="tooltip">
+      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+    
+  
+    <a href="../../Object.html#clone-class-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+    
+  
+    <a href="../../Object.html#dup-class-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string : String) : self</span>
+    from_yaml</a>, 
+    
+  
+    <a href="../../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+    
+  
+    <a href="../../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>, 
+    
+  
+    <a href="../../Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
+      <span>|(other : U.class)</span>
+    |</a>
+    
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="parse(string:String):Name-class-method">
+      <a class="dashingAutolink" name="autolink-3978"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28string%20%3A%20String%29%20%3A%20Name"></a><div class="signature">
+        
+        def self.<strong>parse</strong>(string : <a href="../../String.html">String</a>) : <a href="../../OpenSSL/X509/Name.html">Name</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Parses entries in string and initializes a Name object.</p>
+
+<p>Example:</p>
+
+<pre><code><span class="t">OpenSSL</span><span class="t">::</span><span class="t">X509</span><span class="t">::</span><span class="t">Name</span>.parse(<span class="s">&#34;CN=nobody/DC=example&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(name:LibCrypto::X509_NAME)-class-method">
+      <a class="dashingAutolink" name="autolink-3979"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28name%20%3A%20LibCrypto%3A%3AX509_NAME%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(name : LibCrypto::X509_NAME)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new-class-method">
+      <a class="dashingAutolink" name="autolink-3980"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+        
+        def self.<strong>new</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="add_entry(oid:String,value:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-3981"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_entry%28oid%20%3A%20String%2C%20value%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>add_entry</strong>(oid : <a href="../../String.html">String</a>, value : <a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Adds a new entry.</p>
+
+<p>Example:</p>
+
+<pre><code>name <span class="o">=</span> <span class="t">OpenSSL</span><span class="t">::</span><span class="t">X509</span><span class="t">::</span><span class="t">Name</span>.<span class="k">new</span>
+name.add_entry <span class="s">&#34;CN&#34;</span>, <span class="s">&#34;Nobody&#34;</span>
+name.add_entry <span class="s">&#34;DC&#34;</span>, <span class="s">&#34;example&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dup-instance-method">
+      <a class="dashingAutolink" name="autolink-3982"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
+        
+        def <strong>dup</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="finalize-instance-method">
+      <a class="dashingAutolink" name="autolink-3983"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
+        
+        def <strong>finalize</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_a-instance-method">
+      <a class="dashingAutolink" name="autolink-3984"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
+        
+        def <strong>to_a</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns entries as an Array of oid, value pairs.</p>
+
+<p>Example:</p>
+
+<pre><code>name <span class="o">=</span> <span class="t">OpenSSL</span><span class="t">::</span><span class="t">X509</span><span class="t">::</span><span class="t">Name</span>.parse(<span class="s">&#34;CN=Nobody/DC=example&#34;</span>)
+name.to_a <span class="c"># =&gt; [{&#34;CN&#34;, &#34;Nobody&#34;}, {&#34;DC&#34;, &#34;example&#34;}]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_unsafe:LibCrypto::X509_NAME-instance-method">
+      <a class="dashingAutolink" name="autolink-3985"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20LibCrypto%3A%3AX509_NAME"></a><div class="signature">
+        
+        def <strong>to_unsafe</strong> : LibCrypto::X509_NAME
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/openssl/x509/name.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

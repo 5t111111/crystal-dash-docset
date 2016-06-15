@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3947"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Pointer%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Pointer(T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4018"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Pointer%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Pointer(T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -37,7 +37,7 @@ starting from it is valid. However, pointers make it possible to interface with 
 to implement efficient data structures. For example, both <code><a href="Array.html">Array</a></code> and <code><a href="Hash.html">Hash</a></code> are
 implemented using pointers.</p>
 
-<p>You can obtain pointers in four ways: <code><a href="Pointer.html#new%28address%3AInt%29-class-method">#new</a></code>, <code><a href="Pointer.html#malloc%28size%3AInt%3D%3Cspanclass%3D%22n%22%3E1%3C%2Fspan%3E%29-class-method">#malloc</a></code>, <code>pointerof</code> and by calling a C
+<p>You can obtain pointers in four ways: <code><a href="Pointer.html#new%28address%3AUInt64%29-class-method">#new</a></code>, <code><a href="Pointer.html#malloc%28size%3AUInt64%29-class-method">#malloc</a></code>, <code>pointerof</code> and by calling a C
 function that returns a pointer.</p>
 
 <p><code>pointerof(x)</code>, where <code>x</code> is a variable or an instance variable, returns a pointer to
@@ -78,12 +78,12 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L129" target="_blank">primitives.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L30" target="_blank">pointer.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L30" target="_blank">pointer.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L129" target="_blank">primitives.cr</a>
     
     <br/>
   
@@ -94,6 +94,13 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
 
   <h2>Class Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#malloc%28size%3AUInt64%29-class-method" class="signature"><strong>.malloc</strong>(size : UInt64)</a>
+        
+          <div class="summary"><p>Allocates <code>size * sizeof(T)</code> bytes from the system&#39;s heap initialized to zero and returns a pointer to the first byte from that memory.</p></div>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#malloc%28size%3AInt%3D%3Cspanclass%3D%22n%22%3E1%3C%2Fspan%3E%29-class-method" class="signature"><strong>.malloc</strong>(size : Int = <span class="n">1</span>)</a>
@@ -117,21 +124,14 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#malloc%28size%3AUInt64%29-class-method" class="signature"><strong>.malloc</strong>(size : UInt64)</a>
-        
-          <div class="summary"><p>Allocates <code>size * sizeof(T)</code> bytes from the system&#39;s heap initialized to zero and returns a pointer to the first byte from that memory.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28address%3AInt%29-class-method" class="signature"><strong>.new</strong>(address : Int)</a>
+        <a href="#new%28address%3AUInt64%29-class-method" class="signature"><strong>.new</strong>(address : UInt64)</a>
         
           <div class="summary"><p>Returns a pointer that points to the given memory address.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28address%3AUInt64%29-class-method" class="signature"><strong>.new</strong>(address : UInt64)</a>
+        <a href="#new%28address%3AInt%29-class-method" class="signature"><strong>.new</strong>(address : Int)</a>
         
           <div class="summary"><p>Returns a pointer that points to the given memory address.</p></div>
         
@@ -152,13 +152,6 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%2B%28offset%3AInt64%29%3Aself-instance-method" class="signature"><strong>#+</strong>(offset : Int64) : self</a>
-        
-          <div class="summary"><p>Returns a new pointer whose address is this pointer&#39;s address incremented by <code>other * sizeof(T)</code>.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#%2B%28other%3AInt%29-instance-method" class="signature"><strong>#+</strong>(other : Int)</a>
         
           <div class="summary"><p>Returns a new pointer whose address is this pointer&#39;s address incremented by <code>other * sizeof(T)</code>.</p></div>
@@ -166,9 +159,9 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28other%3AInt%29-instance-method" class="signature"><strong>#-</strong>(other : Int)</a>
+        <a href="#%2B%28offset%3AInt64%29%3Aself-instance-method" class="signature"><strong>#+</strong>(offset : Int64) : self</a>
         
-          <div class="summary"><p>Returns a new pointer whose address is this pointer&#39;s address decremented by <code>other * sizeof(T)</code>.</p></div>
+          <div class="summary"><p>Returns a new pointer whose address is this pointer&#39;s address incremented by <code>other * sizeof(T)</code>.</p></div>
         
       </li>
     
@@ -176,6 +169,13 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
         <a href="#-%28other%3Aself%29%3AInt64-instance-method" class="signature"><strong>#-</strong>(other : self) : Int64</a>
         
           <div class="summary"><p>Returns how many T elements are there between this pointer and <em>other</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28other%3AInt%29-instance-method" class="signature"><strong>#-</strong>(other : Int)</a>
+        
+          <div class="summary"><p>Returns a new pointer whose address is this pointer&#39;s address decremented by <code>other * sizeof(T)</code>.</p></div>
         
       </li>
     
@@ -218,6 +218,11 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
         <a href="#clear%28count%3D%3Cspanclass%3D%22n%22%3E1%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#clear</strong>(count = <span class="n">1</span>)</a>
         
           <div class="summary"><p>Clears (sets to &#34;zero&#34; bytes) a number of values pointed by this pointer.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
         
       </li>
     
@@ -346,29 +351,36 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
   <h3>Instance methods inherited from module <code><a href="Comparable.html">Comparable(T)</a></code>
 </h3>
   
+  
     <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
       <span>
     &lt;</span></a>, 
+    
   
     <a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
       <span>&lt;=(other : T)</span>
     &lt;=</a>, 
+    
   
     <a href="Comparable.html#%3C%3D%3E%28other%3AT%29-instance-method" class="tooltip">
       <span>&lt;=&gt;(other : T)</span>
     &lt;=&gt;</a>, 
+    
   
     <a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
       <span>==(other : T)</span>
     ==</a>, 
+    
   
     <a href="Comparable.html#%3E%28other%3AT%29-instance-method" class="tooltip">
       <span>&gt;(other : T)</span>
     &gt;</a>, 
+    
   
     <a href="Comparable.html#%3E%3D%28other%3AT%29-instance-method" class="tooltip">
       <span>&gt;=(other : T)</span>
     &gt;=</a>
+    
   
 
 
@@ -381,9 +393,16 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
   <h3>Instance methods inherited from struct <code><a href="Value.html">Value</a></code>
 </h3>
   
+  
     <a href="Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
       <span>==(other)</span>
-    ==</a>
+    ==</a>, 
+    
+  
+    <a href="Value.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>
+    
   
 
 
@@ -396,81 +415,96 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
   <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
 </h3>
   
+  
     <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
       <span>!=(other)</span>
     !=</a>, 
+    
   
     <a href="Object.html#%21~%28other%29-instance-method" class="tooltip">
       <span>!~(other)</span>
     !~</a>, 
+    
   
     <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
       <span>==(other)</span>
     ==</a>, 
+    
   
     <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
       <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
     ===</a>, 
+    
   
     <a href="Object.html#%3D~%28other%29-instance-method" class="tooltip">
       <span>=~(other)</span>
     =~</a>, 
+    
   
     <a href="Object.html#class-instance-method" class="tooltip">
       <span>class</span>
     class</a>, 
-  
-    <a href="Object.html#clone-instance-method" class="tooltip">
-      <span>clone</span>
-    clone</a>, 
+    
   
     <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
       <span>crystal_type_id</span>
     crystal_type_id</a>, 
+    
   
     <a href="Object.html#dup-instance-method" class="tooltip">
       <span>dup</span>
     dup</a>, 
+    
   
     <a href="Object.html#hash-instance-method" class="tooltip">
       <span>hash</span>
     hash</a>, 
+    
   
-    <a href="Object.html#inspect-instance-method" class="tooltip">
-      <span>inspect<br/>inspect(io : IO)</span>
+    <a href="Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
     inspect</a>, 
+    
   
     <a href="Object.html#itself-instance-method" class="tooltip">
       <span>itself</span>
     itself</a>, 
+    
   
     <a href="Object.html#not_nil%21-instance-method" class="tooltip">
       <span>not_nil!</span>
     not_nil!</a>, 
+    
   
     <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
       <span>tap(&amp;block)</span>
     tap</a>, 
+    
   
     <a href="Object.html#to_json-instance-method" class="tooltip">
       <span>to_json</span>
     to_json</a>, 
+    
   
     <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
       <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
     to_pretty_json</a>, 
+    
   
     <a href="Object.html#to_s-instance-method" class="tooltip">
       <span>to_s<br/>to_s(io : IO)</span>
     to_s</a>, 
+    
   
-    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    <a href="Object.html#to_yaml-instance-method" class="tooltip">
+      <span>to_yaml<br/>to_yaml(io : IO)</span>
     to_yaml</a>, 
+    
   
     <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
       <span>try(&amp;block)</span>
     try</a>
+    
   
 
 
@@ -479,45 +513,66 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
   <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
 </h3>
   
+  
     <a href="Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
       <span>==(other : Class)</span>
     ==</a>, 
+    
   
     <a href="Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
       <span>===(other)</span>
     ===</a>, 
+    
   
     <a href="Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
       <span>cast(other) : self</span>
     cast</a>, 
+    
   
-    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="Object.html#clone-class-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+    
+  
+    <a href="Object.html#dup-class-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
+    
   
     <a href="Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
       <span>from_yaml(string : String) : self</span>
     from_yaml</a>, 
+    
   
     <a href="Object.html#hash-class-method" class="tooltip">
       <span>hash</span>
     hash</a>, 
+    
   
     <a href="Object.html#inspect%28io%29-class-method" class="tooltip">
       <span>inspect(io)</span>
     inspect</a>, 
+    
   
     <a href="Object.html#name%3AString-class-method" class="tooltip">
       <span>name : String</span>
     name</a>, 
+    
   
     <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
+    
   
     <a href="Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
       <span>|(other : U.class)</span>
     |</a>
+    
   
 
 
@@ -527,103 +582,8 @@ puts x <span class="c"># =&gt; 2</span></code></pre>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="malloc(size:Int=&lt;spanclass=&#34;n&#34;&gt;1&lt;/span&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-3914"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.malloc%28size%20%3A%20Int%20%3D%201%29"></a><div class="signature">
-        
-        def self.<strong>malloc</strong>(size : <a href="Int.html">Int</a> = <span class="n">1</span>)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Allocates <code>size * sizeof(T)</code> bytes from the system&#39;s heap initialized
-to zero and returns a pointer to the first byte from that memory.
-The memory is allocated by the <code><a href="GC.html">GC</a></code>, so when there are
-no pointers to this memory, it will be automatically freed.</p>
-
-<pre><code><span class="c"># Allocate memory for an Int32: 4 bytes</span>
-ptr <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).malloc
-ptr.value <span class="c">#=&gt; 0</span>
-
-<span class="c"># Allocate memory for 10 Int32: 40 bytes</span>
-ptr <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).malloc(<span class="n">10</span>)
-ptr[<span class="n">0</span>] <span class="c">#=&gt; 0</span>
-...
-ptr[<span class="n">9</span>] <span class="c">#=&gt; 0</span>
-</code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L397" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="malloc(size:Int,&amp;block:Int32-&gt;T)-class-method">
-      <a class="dashingAutolink" name="autolink-3915"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.malloc%28size%20%3A%20Int%2C%20%26block%20%3A%20Int32%20-%3E%20T%29"></a><div class="signature">
-        
-        def self.<strong>malloc</strong>(size : <a href="Int.html">Int</a>, &amp;block : <a href="Int32.html">Int32</a> -&gt; T)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Allocates <code>size * sizeof(T)</code> bytes from the system&#39;s heap initialized
-to the value returned by the block (which is invoked once with each index in the range <code>0...size</code>)
-and returns a pointer to the first byte from that memory.
-The memory is allocated by the <code><a href="GC.html">GC</a></code>, so when there are
-no pointers to this memory, it will be automatically freed.</p>
-
-<pre><code><span class="c"># An Int32 occupies 4 bytes, so here we are requesting 16 bytes.</span>
-<span class="c"># i is an index in the range 0 .. 3</span>
-ptr <span class="o">=</span> <span class="t">Pointer</span>.malloc(<span class="n">4</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">+</span> <span class="n">10</span> }
-ptr[<span class="n">0</span>] <span class="c"># =&gt; 10</span>
-ptr[<span class="n">1</span>] <span class="c"># =&gt; 11</span>
-ptr[<span class="n">2</span>] <span class="c"># =&gt; 12</span>
-ptr[<span class="n">3</span>] <span class="c"># =&gt; 13</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L438" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="malloc(size:Int,value:T)-class-method">
-      <a class="dashingAutolink" name="autolink-3916"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.malloc%28size%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
-        
-        def self.<strong>malloc</strong>(size : <a href="Int.html">Int</a>, value : T)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Allocates <code>size * sizeof(T)</code> bytes from the system&#39;s heap initialized
-to <em>value</em> and returns a pointer to the first byte from that memory.
-The memory is allocated by the <code><a href="GC.html">GC</a></code>, so when there are
-no pointers to this memory, it will be automatically freed.</p>
-
-<pre><code><span class="c"># An Int32 occupies 4 bytes, so here we are requesting 8 bytes</span>
-<span class="c"># initialized to the number 42</span>
-ptr <span class="o">=</span> <span class="t">Pointer</span>.malloc(<span class="n">2</span>, <span class="n">42</span>)
-ptr[<span class="n">0</span>] <span class="c"># =&gt; 42</span>
-ptr[<span class="n">1</span>] <span class="c"># =&gt; 42</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L417" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="malloc(size:UInt64)-class-method">
-      <a class="dashingAutolink" name="autolink-3917"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.malloc%28size%20%3A%20UInt64%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4019"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.malloc%28size%20%3A%20UInt64%29"></a><div class="signature">
         
         def self.<strong>malloc</strong>(size : <a href="UInt64.html">UInt64</a>)
 
@@ -651,36 +611,108 @@ ptr[<span class="n">9</span>] <span class="c">#=&gt; 0</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L148" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(address:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-3918"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28address%20%3A%20Int%29"></a><div class="signature">
+    <div class="entry-detail" id="malloc(size:Int=&lt;spanclass=&#34;n&#34;&gt;1&lt;/span&gt;)-class-method">
+      <a class="dashingAutolink" name="autolink-4020"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.malloc%28size%20%3A%20Int%20%3D%201%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(address : <a href="Int.html">Int</a>)
+        def self.<strong>malloc</strong>(size : <a href="Int.html">Int</a> = <span class="n">1</span>)
 
         
       </div>
       
         <div class="doc">
-<p>Returns a pointer that points to the given memory address. This doesn&#39;t allocate memory.</p>
+<p>Allocates <code>size * sizeof(T)</code> bytes from the system&#39;s heap initialized
+to zero and returns a pointer to the first byte from that memory.
+The memory is allocated by the <code><a href="GC.html">GC</a></code>, so when there are
+no pointers to this memory, it will be automatically freed.</p>
 
-<pre><code>ptr <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).<span class="k">new</span>(<span class="n">5678</span>)
-ptr.address <span class="c"># =&gt; 5678</span></code></pre>
+<pre><code><span class="c"># Allocate memory for an Int32: 4 bytes</span>
+ptr <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).malloc
+ptr.value <span class="c">#=&gt; 0</span>
+
+<span class="c"># Allocate memory for 10 Int32: 40 bytes</span>
+ptr <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).malloc(<span class="n">10</span>)
+ptr[<span class="n">0</span>] <span class="c">#=&gt; 0</span>
+...
+ptr[<span class="n">9</span>] <span class="c">#=&gt; 0</span>
+</code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L376" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L405" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="malloc(size:Int,&amp;block:Int32-&gt;T)-class-method">
+      <a class="dashingAutolink" name="autolink-4021"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.malloc%28size%20%3A%20Int%2C%20%26block%20%3A%20Int32%20-%3E%20T%29"></a><div class="signature">
+        
+        def self.<strong>malloc</strong>(size : <a href="Int.html">Int</a>, &amp;block : <a href="Int32.html">Int32</a> -&gt; T)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Allocates <code>size * sizeof(T)</code> bytes from the system&#39;s heap initialized
+to the value returned by the block (which is invoked once with each index in the range <code>0...size</code>)
+and returns a pointer to the first byte from that memory.
+The memory is allocated by the <code><a href="GC.html">GC</a></code>, so when there are
+no pointers to this memory, it will be automatically freed.</p>
+
+<pre><code><span class="c"># An Int32 occupies 4 bytes, so here we are requesting 16 bytes.</span>
+<span class="c"># i is an index in the range 0 .. 3</span>
+ptr <span class="o">=</span> <span class="t">Pointer</span>.malloc(<span class="n">4</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">+</span> <span class="n">10</span> }
+ptr[<span class="n">0</span>] <span class="c"># =&gt; 10</span>
+ptr[<span class="n">1</span>] <span class="c"># =&gt; 11</span>
+ptr[<span class="n">2</span>] <span class="c"># =&gt; 12</span>
+ptr[<span class="n">3</span>] <span class="c"># =&gt; 13</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L446" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="malloc(size:Int,value:T)-class-method">
+      <a class="dashingAutolink" name="autolink-4022"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.malloc%28size%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
+        
+        def self.<strong>malloc</strong>(size : <a href="Int.html">Int</a>, value : T)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Allocates <code>size * sizeof(T)</code> bytes from the system&#39;s heap initialized
+to <em>value</em> and returns a pointer to the first byte from that memory.
+The memory is allocated by the <code><a href="GC.html">GC</a></code>, so when there are
+no pointers to this memory, it will be automatically freed.</p>
+
+<pre><code><span class="c"># An Int32 occupies 4 bytes, so here we are requesting 8 bytes</span>
+<span class="c"># initialized to the number 42</span>
+ptr <span class="o">=</span> <span class="t">Pointer</span>.malloc(<span class="n">2</span>, <span class="n">42</span>)
+ptr[<span class="n">0</span>] <span class="c"># =&gt; 42</span>
+ptr[<span class="n">1</span>] <span class="c"># =&gt; 42</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L425" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(address:UInt64)-class-method">
-      <a class="dashingAutolink" name="autolink-3919"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28address%20%3A%20UInt64%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4023"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28address%20%3A%20UInt64%29"></a><div class="signature">
         
         def self.<strong>new</strong>(address : <a href="UInt64.html">UInt64</a>)
 
@@ -697,13 +729,36 @@ ptr.address <span class="c"># =&gt; 5678</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L158" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L158" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(address:Int)-class-method">
+      <a class="dashingAutolink" name="autolink-4024"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28address%20%3A%20Int%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(address : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a pointer that points to the given memory address. This doesn&#39;t allocate memory.</p>
+
+<pre><code>ptr <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).<span class="k">new</span>(<span class="n">5678</span>)
+ptr.address <span class="c"># =&gt; 5678</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L384" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="null-class-method">
-      <a class="dashingAutolink" name="autolink-3920"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.null"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4025"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.null"></a><div class="signature">
         
         def self.<strong>null</strong>
 
@@ -723,7 +778,7 @@ ptr.address <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L366" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L374" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -733,35 +788,8 @@ ptr.address <span class="c"># =&gt; 0</span></code></pre>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="+(offset:Int64):self-instance-method">
-      <a class="dashingAutolink" name="autolink-3921"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28offset%20%3A%20Int64%29%20%3A%20self"></a><div class="signature">
-        
-        def <strong>+</strong>(offset : <a href="Int64.html">Int64</a>) : self
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Returns a new pointer whose address is this pointer&#39;s address incremented by <code>other * sizeof(T)</code>.</p>
-
-<pre><code>ptr <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).<span class="k">new</span>(<span class="n">1234</span>)
-ptr.address <span class="c"># =&gt; 1234</span>
-
-<span class="c"># An Int32 occupies four bytes</span>
-ptr2 <span class="o">=</span> ptr <span class="o">+</span> <span class="n">1_u64</span>
-ptr2.address <span class="c"># =&gt; 1238</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L223" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="+(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3922"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4026"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>+</strong>(other : <a href="Int.html">Int</a>)
 
@@ -782,13 +810,65 @@ ptr2.address <span class="c"># =&gt; 1238</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(offset:Int64):self-instance-method">
+      <a class="dashingAutolink" name="autolink-4027"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28offset%20%3A%20Int64%29%20%3A%20self"></a><div class="signature">
+        
+        def <strong>+</strong>(offset : <a href="Int64.html">Int64</a>) : self
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a new pointer whose address is this pointer&#39;s address incremented by <code>other * sizeof(T)</code>.</p>
+
+<pre><code>ptr <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).<span class="k">new</span>(<span class="n">1234</span>)
+ptr.address <span class="c"># =&gt; 1234</span>
+
+<span class="c"># An Int32 occupies four bytes</span>
+ptr2 <span class="o">=</span> ptr <span class="o">+</span> <span class="n">1_u64</span>
+ptr2.address <span class="c"># =&gt; 1238</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L223" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(other:self):Int64-instance-method">
+      <a class="dashingAutolink" name="autolink-4028"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20self%29%20%3A%20Int64"></a><div class="signature">
+        
+        def <strong>-</strong>(other : self) : <a href="Int64.html">Int64</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns how many T elements are there between this pointer and <em>other</em>.
+That is, this is <code>(self<a href="Pointer.html#address%3AUInt64-instance-method">.address</a> - other<a href="Pointer.html#address%3AUInt64-instance-method">.address</a>) / sizeof(T)</code>.</p>
+
+<pre><code>ptr1 <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).malloc(<span class="n">4</span>)
+ptr2 <span class="o">=</span> ptr1 <span class="o">+</span> <span class="n">2</span>
+ptr2 <span class="o">-</span> ptr1 <span class="c"># =&gt; 2</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L235" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="-(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3923"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4029"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>-</strong>(other : <a href="Int.html">Int</a>)
 
@@ -809,38 +889,13 @@ ptr2.address <span class="c"># =&gt; 1230</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L92" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="-(other:self):Int64-instance-method">
-      <a class="dashingAutolink" name="autolink-3924"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20self%29%20%3A%20Int64"></a><div class="signature">
-        
-        def <strong>-</strong>(other : self) : <a href="Int64.html">Int64</a>
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Returns how many T elements are there between this pointer and <em>other</em>.
-That is, this is <code>(self<a href="Pointer.html#address%3AUInt64-instance-method">.address</a> - other<a href="Pointer.html#address%3AUInt64-instance-method">.address</a>) / sizeof(T)</code>.</p>
-
-<pre><code>ptr1 <span class="o">=</span> <span class="t">Pointer</span>(<span class="t">Int32</span>).malloc(<span class="n">4</span>)
-ptr2 <span class="o">=</span> ptr1 <span class="o">+</span> <span class="n">2</span>
-ptr2 <span class="o">-</span> ptr1 <span class="c"># =&gt; 2</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L235" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L92" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="&lt;=&gt;(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-3925"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4030"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>&lt;=&gt;</strong>(other : self)
 
@@ -857,13 +912,13 @@ respectively.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L100" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L100" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[](offset)-instance-method">
-      <a class="dashingAutolink" name="autolink-3926"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28offset%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4031"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28offset%29"></a><div class="signature">
         
         def <strong>[]</strong>(offset)
 
@@ -883,13 +938,13 @@ ptr[<span class="n">3</span>] <span class="c"># =&gt; 13</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]=(offset,value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-3927"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28offset%2C%20value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4032"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28offset%2C%20value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>[]=</strong>(offset, value : T)
 
@@ -909,13 +964,13 @@ ptr2.value <span class="c"># =&gt; 42</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L126" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="address:UInt64-instance-method">
-      <a class="dashingAutolink" name="autolink-3928"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20address%20%3A%20UInt64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4033"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20address%20%3A%20UInt64"></a><div class="signature">
         
         def <strong>address</strong> : <a href="UInt64.html">UInt64</a>
 
@@ -932,13 +987,13 @@ ptr.address <span class="c"># =&gt; 1234</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L190" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L190" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="appender-instance-method">
-      <a class="dashingAutolink" name="autolink-3929"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20appender"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4034"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20appender"></a><div class="signature">
         
         def <strong>appender</strong>
 
@@ -950,13 +1005,13 @@ ptr.address <span class="c"># =&gt; 1234</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L445" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L453" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clear(count=&lt;spanclass=&#34;n&#34;&gt;1&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-3930"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clear%28count%20%3D%201%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4035"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clear%28count%20%3D%201%29"></a><div class="signature">
         
         def <strong>clear</strong>(count = <span class="n">1</span>)
 
@@ -974,13 +1029,29 @@ ptr <span class="c">#   [0, 0, 0, 13, 14, 15]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L467" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L475" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone-instance-method">
+      <a class="dashingAutolink" name="autolink-4036"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+        
+        def <strong>clone</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L480" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="copy_from(source:Pointer(T),count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3931"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_from%28source%20%3A%20Pointer%28T%29%2C%20count%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4037"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_from%28source%20%3A%20Pointer%28T%29%2C%20count%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>copy_from</strong>(source : <a href="Pointer.html">Pointer</a>(T), count : <a href="Int.html">Int</a>)
 
@@ -1009,13 +1080,13 @@ ptr1[<span class="n">3</span>] <span class="c"># =&gt; 4</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L148" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="copy_to(target:Pointer,count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3932"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_to%28target%20%3A%20Pointer%2C%20count%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4038"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_to%28target%20%3A%20Pointer%2C%20count%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>copy_to</strong>(target : <a href="Pointer.html">Pointer</a>, count : <a href="Int.html">Int</a>)
 
@@ -1044,13 +1115,13 @@ ptr2[<span class="n">3</span>] <span class="c"># =&gt; 14</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L188" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-3933"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4039"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
         
         def <strong>hash</strong>
 
@@ -1067,13 +1138,13 @@ ptr.hash <span class="c"># =&gt; 1234</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L285" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L293" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="map!(count:Int,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3934"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%21%28count%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4040"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%21%28count%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
         
         def <strong>map!</strong>(count : <a href="Int.html">Int</a>, &amp;block)
 
@@ -1092,13 +1163,13 @@ ptr <span class="c"># [2, 4, 6, 8]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L351" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L359" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="memcmp(other:Pointer(T),count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3935"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20memcmp%28other%20%3A%20Pointer%28T%29%2C%20count%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4041"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20memcmp%28other%20%3A%20Pointer%28T%29%2C%20count%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>memcmp</strong>(other : <a href="Pointer.html">Pointer</a>(T), count : <a href="Int.html">Int</a>)
 
@@ -1122,13 +1193,13 @@ ptr1.memcmp(ptr1, <span class="n">4</span>) <span class="c"># =&gt; 0</span></co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L261" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L269" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="move_from(source:Pointer(T),count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3936"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_from%28source%20%3A%20Pointer%28T%29%2C%20count%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4042"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_from%28source%20%3A%20Pointer%28T%29%2C%20count%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>move_from</strong>(source : <a href="Pointer.html">Pointer</a>(T), count : <a href="Int.html">Int</a>)
 
@@ -1156,13 +1227,13 @@ ptr1[<span class="n">3</span>] <span class="c"># =&gt; 3</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L205" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L209" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="move_to(target:Pointer,count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3937"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_to%28target%20%3A%20Pointer%2C%20count%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4043"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_to%28target%20%3A%20Pointer%2C%20count%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>move_to</strong>(target : <a href="Pointer.html">Pointer</a>, count : <a href="Int.html">Int</a>)
 
@@ -1190,13 +1261,13 @@ ptr1[<span class="n">3</span>] <span class="c"># =&gt; 3</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L244" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L252" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="null?-instance-method">
-      <a class="dashingAutolink" name="autolink-3938"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20null%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4044"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20null%3F"></a><div class="signature">
         
         def <strong>null?</strong>
 
@@ -1216,13 +1287,13 @@ b.null? <span class="c"># =&gt; true</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="realloc(size:UInt64):self-instance-method">
-      <a class="dashingAutolink" name="autolink-3939"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20realloc%28size%20%3A%20UInt64%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4045"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20realloc%28size%20%3A%20UInt64%29%20%3A%20self"></a><div class="signature">
         
         def <strong>realloc</strong>(size : <a href="UInt64.html">UInt64</a>) : self
 
@@ -1248,13 +1319,13 @@ ptr <span class="c"># [1, 2, 3, 4, 0, 0, 0, 0]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L209" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L209" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="realloc(size:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3940"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20realloc%28size%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4046"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20realloc%28size%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>realloc</strong>(size : <a href="Int.html">Int</a>)
 
@@ -1280,13 +1351,13 @@ ptr <span class="c"># [1, 2, 3, 4, 0, 0, 0, 0]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L324" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L332" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="shuffle!(count:Int,random=&lt;spanclass=&#34;t&#34;&gt;Random&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;::&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;DEFAULT&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-3941"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shuffle%21%28count%20%3A%20Int%2C%20random%20%3D%20Random%3A%3ADEFAULT%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4047"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shuffle%21%28count%20%3A%20Int%2C%20random%20%3D%20Random%3A%3ADEFAULT%29"></a><div class="signature">
         
         def <strong>shuffle!</strong>(count : <a href="Int.html">Int</a>, random = <span class="t">Random</span><span class="t">::</span><span class="t">DEFAULT</span>)
 
@@ -1304,13 +1375,13 @@ ptr <span class="c"># [3, 4, 1, 2]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L335" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L343" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="swap(i,j)-instance-method">
-      <a class="dashingAutolink" name="autolink-3942"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20swap%28i%2C%20j%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4048"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20swap%28i%2C%20j%29"></a><div class="signature">
         
         def <strong>swap</strong>(i, j)
 
@@ -1331,13 +1402,13 @@ ptr[<span class="n">3</span>] <span class="c"># =&gt; 3</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L275" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L283" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-3943"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4049"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
 
@@ -1358,13 +1429,13 @@ ptr2.to_s <span class="c"># =&gt; Pointer(Int32).null</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L297" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L305" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_slice(size)-instance-method">
-      <a class="dashingAutolink" name="autolink-3944"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_slice%28size%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4050"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_slice%28size%29"></a><div class="signature">
         
         def <strong>to_slice</strong>(size)
 
@@ -1382,13 +1453,13 @@ slice.<span class="k">class</span>                            <span class="c"># 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/pointer.cr#L456" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/pointer.cr#L464" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="value:T-instance-method">
-      <a class="dashingAutolink" name="autolink-3945"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20value%20%3A%20T"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4051"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20value%20%3A%20T"></a><div class="signature">
         
         def <strong>value</strong> : T
 
@@ -1406,13 +1477,13 @@ ptr.value <span class="c"># =&gt; 42</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L169" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L169" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="value=(value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-3946"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20value%3D%28value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4052"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20value%3D%28value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>value=</strong>(value : T)
 
@@ -1430,7 +1501,7 @@ ptr.value <span class="c"># =&gt; 42</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/032ab912ad736ef55dafcd01bf79ae63696b3116/src/primitives.cr#L180" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/primitives.cr#L180" target="_blank">View source</a>]
         
       </div>
     </div>
