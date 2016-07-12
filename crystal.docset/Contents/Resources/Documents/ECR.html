@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1019"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/ECR%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>ECR - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1026"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/ECR%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>ECR - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -32,10 +32,10 @@ The latter will not, but instead serve to control the structure as we do in Crys
 
 <p>Quick Example:</p>
 
-<pre><code><span class="k">require</span> <span class="s">&#34;ecr/macros&#34;</span>
+<pre><code><span class="k">require</span> <span class="s">&#34;ecr&#34;</span>
 
 <span class="k">class</span> <span class="t">Greeting</span>
-  <span class="k">def</span> <span class="m">initialize</span>(@name)
+  <span class="k">def</span> <span class="m">initialize</span>(@name : <span class="t">String</span>)
   <span class="k">end</span>
 
   <span class="t">ECR</span>.def_to_s <span class="s">&#34;greeting.ecr&#34;</span>
@@ -61,11 +61,13 @@ The latter will not, but instead serve to control the structure as we do in Crys
 
 <p>Using loops:</p>
 
-<pre><code><span class="k">require</span> <span class="s">&#34;ecr/macros&#34;</span>
+<pre><code><span class="k">require</span> <span class="s">&#34;ecr&#34;</span>
 
 <span class="k">class</span> <span class="t">Greeting</span>
+  @names : <span class="t">Array</span>(<span class="t">String</span>)
+
   <span class="k">def</span> <span class="m">initialize</span>(<span class="o">*</span>names)
-   @names <span class="o">=</span> names
+   @names <span class="o">=</span> names.to_a
   <span class="k">end</span>
 
   <span class="t">ECR</span>.def_to_s <span class="s">&#34;greeting.ecr&#34;</span>
@@ -89,13 +91,6 @@ The latter will not, but instead serve to control the structure as we do in Crys
 
 
 
-  <h2>Extended Modules</h2>
-  <ul class="other-types-list">
-  
-    <li class="other-type"><a href="ECR.html">ECR</a></li>
-  
-  </ul>
-
 
 
 
@@ -106,29 +101,17 @@ The latter will not, but instead serve to control the structure as we do in Crys
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/ecr.cr#L60" target="_blank">ecr.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/ecr.cr#L62" target="_blank">ecr.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/ecr/macros.cr#L13" target="_blank">ecr/macros.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/ecr/macros.cr#L13" target="_blank">ecr/macros.cr</a>
     
     <br/>
   
 
 
-
-  
-    <h2>Constant Summary</h2>
-  
-  <dl>
-    
-      <dt class="entry-const" id="DefaultBufferName">
-        <strong>DefaultBufferName</strong> = <code><span class="s">&#34;__str__&#34;</span></code>
-      </dt>
-      
-    
-  </dl>
 
 
 
@@ -169,7 +152,7 @@ The latter will not, but instead serve to control the structure as we do in Crys
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="def_to_s(filename)-macro">
-      <a class="dashingAutolink" name="autolink-1020"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_to_s%28filename%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1027"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_to_s%28filename%29"></a><div class="signature">
         
         macro <strong>def_to_s</strong>(filename)
 
@@ -209,13 +192,13 @@ to Crystal code that appends to the IO:</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/ecr/macros.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/ecr/macros.cr#L47" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="embed(filename,io_name)-macro">
-      <a class="dashingAutolink" name="autolink-1021"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20embed%28filename%2C%20io_name%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1028"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20embed%28filename%2C%20io_name%29"></a><div class="signature">
         
         macro <strong>embed</strong>(filename, io_name)
 
@@ -250,7 +233,7 @@ io <span class="o">&lt;&lt;</span> <span class="s">&#34;!&#34;</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/ecr/macros.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/ecr/macros.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>

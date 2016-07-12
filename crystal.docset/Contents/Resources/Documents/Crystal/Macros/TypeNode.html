@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-899"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Crystal%3A%3AMacros%3A%3ATypeNode%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Crystal::Macros::TypeNode - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-901"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Crystal%3A%3AMacros%3A%3ATypeNode%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Crystal::Macros::TypeNode - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -48,7 +48,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1114" target="_blank">compiler/crystal/macros.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1122" target="_blank">compiler/crystal/macros.cr</a>
     
     <br/>
   
@@ -61,6 +61,34 @@
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3C%28other%3ATypeNode%29%3ABoolLiteral-instance-method" class="signature"><strong>#&lt;</strong>(other : TypeNode) : BoolLiteral</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if <em>other</em> is an ancestor of <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3D%28other%3ATypeNode%29%3ABoolLiteral-instance-method" class="signature"><strong>#&lt;=</strong>(other : TypeNode) : BoolLiteral</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if <code>self</code> is the same as <em>other</em> or if <em>other</em> is an ancestor of <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3E%28other%3ATypeNode%29%3ABoolLiteral-instance-method" class="signature"><strong>#&gt;</strong>(other : TypeNode) : BoolLiteral</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if <code>self</code> is an ancestor of <em>other</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3E%3D%28other%3ATypeNode%29%3ABoolLiteral-instance-method" class="signature"><strong>#&gt;=</strong>(other : TypeNode) : BoolLiteral</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if <em>other</em> is the same as <code>self</code> or if <code>self</code> is an ancestor of <em>other</em>.</p></div>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#%5B%5D%28key%3ASymbolLiteral%7CMacroId%29%3ATypeNode%7CNilLiteral-instance-method" class="signature"><strong>#[]</strong>(key : SymbolLiteral | MacroId) : TypeNode | NilLiteral</a>
@@ -108,6 +136,13 @@
         <a href="#has_constant%3F%28name%3AStringLiteral%7CSymbolLiteral%29%3ABoolLiteral-instance-method" class="signature"><strong>#has_constant?</strong>(name : StringLiteral | SymbolLiteral) : BoolLiteral</a>
         
           <div class="summary"><p>Returns true if this type has a constant.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#instance%3ATypeNode-instance-method" class="signature"><strong>#instance</strong> : TypeNode</a>
+        
+          <div class="summary"><p>Returns the instance type of this type, if it&#39;s a class type, or <code>self</code> otherwise.</p></div>
         
       </li>
     
@@ -452,8 +487,82 @@
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="&lt;(other:TypeNode):BoolLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-902"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%28other%20%3A%20TypeNode%29%20%3A%20BoolLiteral"></a><div class="signature">
+        
+        def <strong>&lt;</strong>(other : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>) : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns <code>true</code> if <em>other</em> is an ancestor of <code>self</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1212" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;=(other:TypeNode):BoolLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-903"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%28other%20%3A%20TypeNode%29%20%3A%20BoolLiteral"></a><div class="signature">
+        
+        def <strong>&lt;=</strong>(other : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>) : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns <code>true</code> if <code>self</code> is the same as <em>other</em> or if
+<em>other</em> is an ancestor of <code>self</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1217" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&gt;(other:TypeNode):BoolLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-904"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3E%28other%20%3A%20TypeNode%29%20%3A%20BoolLiteral"></a><div class="signature">
+        
+        def <strong>&gt;</strong>(other : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>) : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns <code>true</code> if <code>self</code> is an ancestor of <em>other</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1221" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&gt;=(other:TypeNode):BoolLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-905"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3E%3D%28other%20%3A%20TypeNode%29%20%3A%20BoolLiteral"></a><div class="signature">
+        
+        def <strong>&gt;=</strong>(other : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>) : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns <code>true</code> if <em>other</em> is the same as <code>self</code> or if
+<code>self</code> is an ancestor of <em>other</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1226" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="[](key:SymbolLiteral|MacroId):TypeNode|NilLiteral-instance-method">
-      <a class="dashingAutolink" name="autolink-900"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%20%3A%20SymbolLiteral%20%7C%20MacroId%29%20%3A%20TypeNode%20%7C%20NilLiteral"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-906"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%20%3A%20SymbolLiteral%20%7C%20MacroId%29%20%3A%20TypeNode%20%7C%20NilLiteral"></a><div class="signature">
         
         def <strong>[]</strong>(key : <a href="../../Crystal/Macros/SymbolLiteral.html">SymbolLiteral</a> | <a href="../../Crystal/Macros/MacroId.html">MacroId</a>) : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a> | <a href="../../Crystal/Macros/NilLiteral.html">NilLiteral</a>
 
@@ -466,13 +575,13 @@ Gives a compile error if this is not a named tuple type.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1190" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1198" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="abstract?:BoolLiteral-instance-method">
-      <a class="dashingAutolink" name="autolink-901"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abstract%3F%20%3A%20BoolLiteral"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-907"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abstract%3F%20%3A%20BoolLiteral"></a><div class="signature">
         
         def <strong>abstract?</strong> : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
 
@@ -484,13 +593,13 @@ Gives a compile error if this is not a named tuple type.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1116" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1124" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="all_subclasses:Crystal::Macros::ArrayLiteral(TypeNode)-instance-method">
-      <a class="dashingAutolink" name="autolink-902"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20all_subclasses%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-908"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20all_subclasses%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
         
         def <strong>all_subclasses</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>)
 
@@ -502,13 +611,13 @@ Gives a compile error if this is not a named tuple type.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1154" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1162" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="class:TypeNode-instance-method">
-      <a class="dashingAutolink" name="autolink-903"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20class%20%3A%20TypeNode"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-909"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20class%20%3A%20TypeNode"></a><div class="signature">
         
         def <strong>class</strong> : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>
 
@@ -521,13 +630,13 @@ methods by invoking <code>type<a href="../../Crystal/Macros/TypeNode.html#class%
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1195" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1203" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="constants:Crystal::Macros::ArrayLiteral(MacroId)-instance-method">
-      <a class="dashingAutolink" name="autolink-904"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20constants%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28MacroId%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-910"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20constants%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28MacroId%29"></a><div class="signature">
         
         def <strong>constants</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/MacroId.html">MacroId</a>)
 
@@ -539,13 +648,13 @@ methods by invoking <code>type<a href="../../Crystal/Macros/TypeNode.html#class%
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1158" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1166" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="has_attribute?(name:StringLiteral|SymbolLiteral):BoolLiteral-instance-method">
-      <a class="dashingAutolink" name="autolink-905"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_attribute%3F%28name%20%3A%20StringLiteral%20%7C%20SymbolLiteral%29%20%3A%20BoolLiteral"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-911"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_attribute%3F%28name%20%3A%20StringLiteral%20%7C%20SymbolLiteral%29%20%3A%20BoolLiteral"></a><div class="signature">
         
         def <strong>has_attribute?</strong>(name : <a href="../../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../../Crystal/Macros/SymbolLiteral.html">SymbolLiteral</a>) : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
 
@@ -559,13 +668,13 @@ in these cases).</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1175" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1183" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="has_constant?(name:StringLiteral|SymbolLiteral):BoolLiteral-instance-method">
-      <a class="dashingAutolink" name="autolink-906"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_constant%3F%28name%20%3A%20StringLiteral%20%7C%20SymbolLiteral%29%20%3A%20BoolLiteral"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-912"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_constant%3F%28name%20%3A%20StringLiteral%20%7C%20SymbolLiteral%29%20%3A%20BoolLiteral"></a><div class="signature">
         
         def <strong>has_constant?</strong>(name : <a href="../../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../../Crystal/Macros/SymbolLiteral.html">SymbolLiteral</a>) : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
 
@@ -579,13 +688,32 @@ in this cases).</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1164" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1172" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="instance:TypeNode-instance-method">
+      <a class="dashingAutolink" name="autolink-913"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20instance%20%3A%20TypeNode"></a><div class="signature">
+        
+        def <strong>instance</strong> : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the instance type of this type, if it&#39;s a class type,
+or <code>self</code> otherwise. This is the opposite of <code><a href="../../Crystal/Macros/TypeNode.html#class%3ATypeNode-instance-method">#class</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1208" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="instance_vars:Crystal::Macros::ArrayLiteral(MetaVar)-instance-method">
-      <a class="dashingAutolink" name="autolink-907"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20instance_vars%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28MetaVar%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-914"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20instance_vars%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28MetaVar%29"></a><div class="signature">
         
         def <strong>instance_vars</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/MetaVar.html">MetaVar</a>)
 
@@ -597,13 +725,13 @@ in this cases).</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1142" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1150" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="keys:Crystal::Macros::ArrayLiteral(MacroId)-instance-method">
-      <a class="dashingAutolink" name="autolink-908"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20keys%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28MacroId%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-915"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20keys%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28MacroId%29"></a><div class="signature">
         
         def <strong>keys</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/MacroId.html">MacroId</a>)
 
@@ -616,13 +744,13 @@ Gives a compile error if this is not a named tuple type.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1185" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1193" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="methods:Array(Def)-instance-method">
-      <a class="dashingAutolink" name="autolink-909"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20methods%20%3A%20Array%28Def%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-916"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20methods%20%3A%20Array%28Def%29"></a><div class="signature">
         
         def <strong>methods</strong> : <a href="../../Array.html">Array</a>(<a href="../../Crystal/Macros/Def.html">Def</a>)
 
@@ -635,13 +763,13 @@ inherited methods.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1169" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1177" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="name:MacroId-instance-method">
-      <a class="dashingAutolink" name="autolink-910"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name%20%3A%20MacroId"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-917"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name%20%3A%20MacroId"></a><div class="signature">
         
         def <strong>name</strong> : <a href="../../Crystal/Macros/MacroId.html">MacroId</a>
 
@@ -653,13 +781,13 @@ inherited methods.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1133" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1141" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size:NumberLiteral-instance-method">
-      <a class="dashingAutolink" name="autolink-911"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20NumberLiteral"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-918"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20NumberLiteral"></a><div class="signature">
         
         def <strong>size</strong> : <a href="../../Crystal/Macros/NumberLiteral.html">NumberLiteral</a>
 
@@ -672,13 +800,13 @@ Gives a compile error if this is not one of those types.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1180" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1188" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="subclasses:Crystal::Macros::ArrayLiteral(TypeNode)-instance-method">
-      <a class="dashingAutolink" name="autolink-912"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20subclasses%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-919"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20subclasses%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
         
         def <strong>subclasses</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>)
 
@@ -690,13 +818,13 @@ Gives a compile error if this is not one of those types.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1150" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1158" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="superclass:TypeNode|NilLiteral-instance-method">
-      <a class="dashingAutolink" name="autolink-913"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20superclass%20%3A%20TypeNode%20%7C%20NilLiteral"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-920"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20superclass%20%3A%20TypeNode%20%7C%20NilLiteral"></a><div class="signature">
         
         def <strong>superclass</strong> : <a href="../../Crystal/Macros/TypeNode.html">TypeNode</a> | <a href="../../Crystal/Macros/NilLiteral.html">NilLiteral</a>
 
@@ -708,13 +836,13 @@ Gives a compile error if this is not one of those types.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1146" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1154" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="type_vars:Crystal::Macros::ArrayLiteral(TypeNode)-instance-method">
-      <a class="dashingAutolink" name="autolink-914"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20type_vars%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-921"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20type_vars%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
         
         def <strong>type_vars</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>)
 
@@ -727,13 +855,13 @@ generic, an empty array is returned.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1138" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1146" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="union?:BoolLiteral-instance-method">
-      <a class="dashingAutolink" name="autolink-915"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20union%3F%20%3A%20BoolLiteral"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-922"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20union%3F%20%3A%20BoolLiteral"></a><div class="signature">
         
         def <strong>union?</strong> : <a href="../../Crystal/Macros/BoolLiteral.html">BoolLiteral</a>
 
@@ -749,13 +877,13 @@ generic, an empty array is returned.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1122" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1130" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="union_types:Crystal::Macros::ArrayLiteral(TypeNode)-instance-method">
-      <a class="dashingAutolink" name="autolink-916"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20union_types%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-923"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20union_types%20%3A%20Crystal%3A%3AMacros%3A%3AArrayLiteral%28TypeNode%29"></a><div class="signature">
         
         def <strong>union_types</strong> : <a href="../../Crystal/Macros/ArrayLiteral.html">Crystal::Macros::ArrayLiteral</a>(<a href="../../Crystal/Macros/TypeNode.html">TypeNode</a>)
 
@@ -772,7 +900,7 @@ Gives a compile error otherwise.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/9bb0ada8cf0d77d6b3dd17c99ff92bea32083325/src/compiler/crystal/macros.cr#L1129" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L1137" target="_blank">View source</a>]
         
       </div>
     </div>
