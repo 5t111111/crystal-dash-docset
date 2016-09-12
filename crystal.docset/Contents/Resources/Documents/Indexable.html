@@ -1,0 +1,1094 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-2103"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Indexable%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Indexable(T) - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Indexable(T)
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>A container that allows accessing elements via a numeric index.</p>
+
+<p>Indexing starts at 0. A negative index is assumed to be
+relative to the end of the container: -1 indicates the last element,
+-2 is the next to last element, and so on.</p>
+
+<p>Types including this module are typically <code><a href="Array.html">Array</a></code>-like types.</p>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Iterable.html">Iterable</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+  <h2>Direct including types</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Array.html">Array(T)</a></li>
+  
+    <li class="other-type"><a href="BitArray.html">BitArray</a></li>
+  
+    <li class="other-type"><a href="Deque.html">Deque(T)</a></li>
+  
+    <li class="other-type"><a href="Slice.html">Slice(T)</a></li>
+  
+    <li class="other-type"><a href="StaticArray.html">StaticArray(T, N)</a></li>
+  
+    <li class="other-type"><a href="Tuple.html">Tuple(*T)</a></li>
+  
+  </ul>
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L8" target="_blank">indexable.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28index%3AInt%29-instance-method" class="signature"><strong>#[]</strong>(index : Int)</a>
+        
+          <div class="summary"><p>Returns the element at the given index.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28index%3AInt%29-instance-method" class="signature"><strong>#[]?</strong>(index : Int)</a>
+        
+          <div class="summary"><p>Returns the element at the given index.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#at%28index%3AInt%29-instance-method" class="signature"><strong>#at</strong>(index : Int)</a>
+        
+          <div class="summary"><p>Returns the element at the given index, if in bounds, otherwise raises <code><a href="IndexError.html">IndexError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#at%28index%3AInt%2C%26block%29-instance-method" class="signature"><strong>#at</strong>(index : Int, &amp;block)</a>
+        
+          <div class="summary"><p>Returns the element at the given index, if in bounds, otherwise executes the given block and returns its value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#bsearch%28%26block%29-instance-method" class="signature"><strong>#bsearch</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>By using binary search, returns the first element for which the passed block returns <code>true</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#bsearch_index%28%26block%29-instance-method" class="signature"><strong>#bsearch_index</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>By using binary search, returns the index of the first element for which the passed block returns <code>true</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each%28%26block%29-instance-method" class="signature"><strong>#each</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Calls the given block once for each element in <code>self</code>, passing that element as a parameter.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each-instance-method" class="signature"><strong>#each</strong></a>
+        
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for the elements of <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_index-instance-method" class="signature"><strong>#each_index</strong></a>
+        
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for each index in <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_index%28%26block%29-instance-method" class="signature"><strong>#each_index</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Calls the given block once for each index in <code>self</code>, passing that index as a parameter.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
+        
+          <div class="summary"><p>Returns <em>true</em> if <code>self</code> is empty, <em>false</em> otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#equals%3F%28other%2C%26block%29-instance-method" class="signature"><strong>#equals?</strong>(other, &amp;block)</a>
+        
+          <div class="summary"><p>Determines if <code>self</code> equals <em>other</em> according to a comparison done by the given block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first%28%26block%29-instance-method" class="signature"><strong>#first</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Returns the first element of <code>self</code> if it&#39;s not empty, or the given block&#39;s value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first-instance-method" class="signature"><strong>#first</strong></a>
+        
+          <div class="summary"><p>Returns the first element of <code>self</code> if it&#39;s not empty, or raises <code><a href="IndexError.html">IndexError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first%3F-instance-method" class="signature"><strong>#first?</strong></a>
+        
+          <div class="summary"><p>Returns the first element of <code>self</code> if it&#39;s not empty, or <code>nil</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hash-instance-method" class="signature"><strong>#hash</strong></a>
+        
+          <div class="summary"><p>Returns a hash code based on <code>self</code>&#39;s size and elements.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#index%28object%2Coffset%3AInt%3D0%29-instance-method" class="signature"><strong>#index</strong>(object, offset : Int = <span class="n">0</span>)</a>
+        
+          <div class="summary"><p>Returns the index of the first appearance of <em>value</em> in <code>self</code> starting from the given <em>offset</em>, or <code>nil</code> if the value is not in <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#index%28offset%3AInt%3D0%2C%26block%29-instance-method" class="signature"><strong>#index</strong>(offset : Int = <span class="n">0</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Returns the index of the first object in <code>self</code> for which the block returns <code>true</code>, starting from the given <em>offset</em>, or <code>nil</code> if no match is found.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last-instance-method" class="signature"><strong>#last</strong></a>
+        
+          <div class="summary"><p>Returns the last element of <code>self</code> if it&#39;s not empty, or raises <code><a href="IndexError.html">IndexError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last%28%26block%29-instance-method" class="signature"><strong>#last</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Returns the last element of <code>self</code> if it&#39;s not empty, or the given block&#39;s value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last%3F-instance-method" class="signature"><strong>#last?</strong></a>
+        
+          <div class="summary"><p>Returns the last element of <code>self</code> if it&#39;s not empty, or <code>nil</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reverse_each%28%26block%29-instance-method" class="signature"><strong>#reverse_each</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Same as <code><a href="Indexable.html#each%28%26block%29-instance-method">#each</a></code>, but works in reverse.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reverse_each-instance-method" class="signature"><strong>#reverse_each</strong></a>
+        
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> over the elements of <code>self</code> in reverse order.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rindex%28value%2Coffset%3Dsize-1%29-instance-method" class="signature"><strong>#rindex</strong>(value, offset = size <span class="o">-</span> <span class="n">1</span>)</a>
+        
+          <div class="summary"><p>Returns the index of the last appearance of <em>value</em> in <code>self</code>, or <code>nil</code> if the value is not in <code>self</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rindex%28offset%3Dsize-1%2C%26block%29-instance-method" class="signature"><strong>#rindex</strong>(offset = size <span class="o">-</span> <span class="n">1</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Returns the index of the first object in <code>self</code> for which the block returns <code>true</code>, starting from the last object, or <code>nil</code> if no match is found.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample%28random%3DRandom%3A%3ADEFAULT%29-instance-method" class="signature"><strong>#sample</strong>(random = <span class="t">Random</span><span class="t">::</span><span class="t">DEFAULT</span>)</a>
+        
+          <div class="summary"><p>Returns a random element from <code>self</code>, using the given <em>random</em> number generator.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
+        
+          <div class="summary"><p>Returns the number of elements in this container</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsafe_at%28index%3AInt%29-instance-method" class="signature"><strong>#unsafe_at</strong>(index : Int)</a>
+        
+          <div class="summary"><p>Returns the element at the given <em>index</em>, without doing any bounds check.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#values_at%28%2Aindexes%3AInt%29-instance-method" class="signature"><strong>#values_at</strong>(*indexes : Int)</a>
+        
+          <div class="summary"><p>Returns a tuple populated with the elements at the given indexes.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Iterable.html">Iterable</a></code>
+</h3>
+  
+  
+    <a href="Iterable.html#cycle-instance-method" class="tooltip">
+      <span>cycle<br/>cycle(n)</span>
+    cycle</a>, 
+    
+  
+    <a href="Iterable.html#each-instance-method" class="tooltip">
+      <span>each</span>
+    each</a>, 
+    
+  
+    <a href="Iterable.html#each_cons%28count%3AInt%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int)</span>
+    each_cons</a>, 
+    
+  
+    <a href="Iterable.html#each_slice%28count%3AInt%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int)</span>
+    each_slice</a>, 
+    
+  
+    <a href="Iterable.html#each_with_index%28offset%3D0%29-instance-method" class="tooltip">
+      <span>each_with_index(offset = <span class="n">0</span>)</span>
+    each_with_index</a>, 
+    
+  
+    <a href="Iterable.html#each_with_object%28obj%29-instance-method" class="tooltip">
+      <span>each_with_object(obj)</span>
+    each_with_object</a>
+    
+  
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="[](index:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-2104"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28index%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>[]</strong>(index : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the element at the given index.</p>
+
+<p>Negative indices can be used to start counting from the end of the array.
+Raises <code><a href="IndexError.html">IndexError</a></code> if trying to access an element outside the array&#39;s range.</p>
+
+<pre><code>ary <span class="o">=</span> [<span class="s">&#39;a&#39;</span>, <span class="s">&#39;b&#39;</span>, <span class="s">&#39;c&#39;</span>]
+ary[<span class="n">0</span>]  <span class="c"># =&gt; &#39;a&#39;</span>
+ary[<span class="n">2</span>]  <span class="c"># =&gt; &#39;c&#39;</span>
+ary[<span class="n">-1</span>] <span class="c"># =&gt; &#39;c&#39;</span>
+ary[<span class="n">-2</span>] <span class="c"># =&gt; &#39;b&#39;</span>
+
+ary[<span class="n">3</span>]  <span class="c"># raises IndexError</span>
+ary[<span class="n">-4</span>] <span class="c"># raises IndexError</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L75" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(index:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-2105"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28index%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>[]?</strong>(index : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the element at the given index.</p>
+
+<p>Negative indices can be used to start counting from the end of the array.
+Returns <code>nil</code> if trying to access an element outside the array&#39;s range.</p>
+
+<pre><code>ary <span class="o">=</span> [<span class="s">&#39;a&#39;</span>, <span class="s">&#39;b&#39;</span>, <span class="s">&#39;c&#39;</span>]
+ary[<span class="n">0</span>]?  <span class="c"># =&gt; &#39;a&#39;</span>
+ary[<span class="n">2</span>]?  <span class="c"># =&gt; &#39;c&#39;</span>
+ary[<span class="n">-1</span>]? <span class="c"># =&gt; &#39;c&#39;</span>
+ary[<span class="n">-2</span>]? <span class="c"># =&gt; &#39;b&#39;</span>
+
+ary[<span class="n">3</span>]?  <span class="c"># nil</span>
+ary[<span class="n">-4</span>]? <span class="c"># nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L95" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="at(index:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-2106"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at%28index%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>at</strong>(index : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the element at the given index, if in bounds,
+otherwise raises <code><a href="IndexError.html">IndexError</a></code>.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">:foo</span>, <span class="n">:bar</span>]
+a.at(<span class="n">0</span>) <span class="c"># =&gt; :foo</span>
+a.at(<span class="n">2</span>) <span class="c"># =&gt; IndexError</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="at(index:Int,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2107"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at%28index%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>at</strong>(index : <a href="Int.html">Int</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the element at the given index, if in bounds,
+otherwise executes the given block and returns its value.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">:foo</span>, <span class="n">:bar</span>]
+a.at(<span class="n">0</span>) { <span class="n">:baz</span> } <span class="c"># =&gt; :foo</span>
+a.at(<span class="n">2</span>) { <span class="n">:baz</span> } <span class="c"># =&gt; :baz</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bsearch(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2108"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bsearch%28%26block%29"></a><div class="signature">
+        
+        def <strong>bsearch</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>By using binary search, returns the first element
+for which the passed block returns <code>true</code>.</p>
+
+<p>If the block returns <code>false</code>, the finding element exists
+behind. If the block returns <code>true</code>, the finding element
+is itself or exists infront.</p>
+
+<p>Binary search needs sorted array, so self has to be sorted.</p>
+
+<p>Returns <code>nil</code> if the block didn&#39;t return <code>true</code> for any element.</p>
+
+<pre><code>[<span class="n">2</span>, <span class="n">5</span>, <span class="n">7</span>, <span class="n">10</span>].bsearch { <span class="o">|</span>x<span class="o">|</span> x <span class="o">&gt;=</span> <span class="n">4</span> } <span class="c"># =&gt; 5</span>
+[<span class="n">2</span>, <span class="n">5</span>, <span class="n">7</span>, <span class="n">10</span>].bsearch { <span class="o">|</span>x<span class="o">|</span> x <span class="o">&gt;</span> <span class="n">10</span> } <span class="c"># =&gt; nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L114" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bsearch_index(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2109"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bsearch_index%28%26block%29"></a><div class="signature">
+        
+        def <strong>bsearch_index</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>By using binary search, returns the index of the first element
+for which the passed block returns <code>true</code>.</p>
+
+<p>If the block returns <code>false</code>, the finding element exists
+behind. If the block returns <code>true</code>, the finding element
+is itself or exists infront.</p>
+
+<p>Binary search needs sorted array, so self has to be sorted.</p>
+
+<p>Returns <code>nil</code> if the block didn&#39;t return <code>true</code> for any element.</p>
+
+<pre><code>[<span class="n">2</span>, <span class="n">5</span>, <span class="n">7</span>, <span class="n">10</span>].bsearch_index { <span class="o">|</span>x, i<span class="o">|</span> x <span class="o">&gt;=</span> <span class="n">4</span> } <span class="c"># =&gt; 1</span>
+[<span class="n">2</span>, <span class="n">5</span>, <span class="n">7</span>, <span class="n">10</span>].bsearch_index { <span class="o">|</span>x, i<span class="o">|</span> x <span class="o">&gt;</span> <span class="n">10</span> } <span class="c"># =&gt; nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L133" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2110"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+        
+        def <strong>each</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Calls the given block once for each element in <code>self</code>, passing that
+element as a parameter.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="s">&#34;a&#34;</span>, <span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>]
+a.each { <span class="o">|</span>x<span class="o">|</span> print x, <span class="s">&#34; -- &#34;</span> }</code></pre>
+
+<p>produces:</p>
+
+<pre><code class="language-text">a -- b -- c --</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L150" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each-instance-method">
+      <a class="dashingAutolink" name="autolink-2111"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each"></a><div class="signature">
+        
+        def <strong>each</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an <code><a href="Iterator.html">Iterator</a></code> for the elements of <code>self</code>.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="s">&#34;a&#34;</span>, <span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>]
+iter <span class="o">=</span> a.each
+iter.<span class="k">next</span> <span class="c"># =&gt; &#34;a&#34;</span>
+iter.<span class="k">next</span> <span class="c"># =&gt; &#34;b&#34;</span></code></pre>
+
+<p>The returned iterator keeps a reference to <code>self</code>: if the array
+changes, the returned values of the iterator change as well.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L167" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_index-instance-method">
+      <a class="dashingAutolink" name="autolink-2112"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_index"></a><div class="signature">
+        
+        def <strong>each_index</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an <code><a href="Iterator.html">Iterator</a></code> for each index in <code>self</code>.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="s">&#34;a&#34;</span>, <span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>]
+iter <span class="o">=</span> a.each_index
+iter.<span class="k">next</span> <span class="c"># =&gt; 0</span>
+iter.<span class="k">next</span> <span class="c"># =&gt; 1</span></code></pre>
+
+<p>The returned iterator keeps a reference to <code>self</code>. If the array
+changes, the returned values of the iterator will change as well.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L204" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_index(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2113"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_index%28%26block%29"></a><div class="signature">
+        
+        def <strong>each_index</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Calls the given block once for each index in <code>self</code>, passing that
+index as a parameter.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="s">&#34;a&#34;</span>, <span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>]
+a.each_index { <span class="o">|</span>x<span class="o">|</span> print x, <span class="s">&#34; -- &#34;</span> }</code></pre>
+
+<p>produces:</p>
+
+<pre><code class="language-text">0 -- 1 -- 2 --</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L184" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="empty?-instance-method">
+      <a class="dashingAutolink" name="autolink-2114"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
+        
+        def <strong>empty?</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <em>true</em> if <code>self</code> is empty, <em>false</em> otherwise.</p>
+
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).empty? <span class="c"># =&gt; true</span>
+([<span class="n">1</span>]).empty?         <span class="c"># =&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L214" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="equals?(other,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2115"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20equals%3F%28other%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>equals?</strong>(other, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Determines if <code>self</code> equals <em>other</em> according to a comparison
+done by the given block.</p>
+
+<p>If <code>self</code>&#39;s size is the same as <em>other</em>&#39;s size, this method yields
+elements from <code>self</code> and <em>other</em> in tandem: if the block returns true
+for all of them, this method returns <em>true</em>. Otherwise it returns <em>false</em>.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
+b <span class="o">=</span> [<span class="s">&#34;a&#34;</span>, <span class="s">&#34;ab&#34;</span>, <span class="s">&#34;abc&#34;</span>]
+a.equals?(b) { <span class="o">|</span>x, y<span class="o">|</span> x <span class="o">==</span> y.size } <span class="c"># =&gt; true</span>
+a.equals?(b) { <span class="o">|</span>x, y<span class="o">|</span> x <span class="o">==</span> y }      <span class="c"># =&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L231" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2116"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first%28%26block%29"></a><div class="signature">
+        
+        def <strong>first</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the first element of <code>self</code> if it&#39;s not empty, or the given block&#39;s value.</p>
+
+<pre><code>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]).first { <span class="n">4</span> }   <span class="c"># =&gt; 1</span>
+(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).first { <span class="n">4</span> } <span class="c"># =&gt; 4</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L255" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first-instance-method">
+      <a class="dashingAutolink" name="autolink-2117"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first"></a><div class="signature">
+        
+        def <strong>first</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the first element of <code>self</code> if it&#39;s not empty, or raises <code><a href="IndexError.html">IndexError</a></code>.</p>
+
+<pre><code>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]).first   <span class="c"># =&gt; 1</span>
+(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).first <span class="c"># =&gt; raises IndexError</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L245" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first?-instance-method">
+      <a class="dashingAutolink" name="autolink-2118"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first%3F"></a><div class="signature">
+        
+        def <strong>first?</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the first element of <code>self</code> if it&#39;s not empty, or <code>nil</code>.</p>
+
+<pre><code>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]).first?   <span class="c"># =&gt; 1</span>
+(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).first? <span class="c"># =&gt; nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L265" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hash-instance-method">
+      <a class="dashingAutolink" name="autolink-2119"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+        
+        def <strong>hash</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a hash code based on <code>self</code>&#39;s size and elements.</p>
+
+<p>See <code><a href="Object.html#hash-instance-method">Object#hash</a></code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L272" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="index(object,offset:Int=0)-instance-method">
+      <a class="dashingAutolink" name="autolink-2120"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20index%28object%2C%20offset%20%3A%20Int%20%3D%200%29"></a><div class="signature">
+        
+        def <strong>index</strong>(object, offset : <a href="Int.html">Int</a> = <span class="n">0</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the index of the first appearance of <em>value</em> in <code>self</code>
+starting from the given <em>offset</em>, or <code>nil</code> if the value is not in <code>self</code>.</p>
+
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].index(<span class="n">2</span>, offset: <span class="n">2</span>) <span class="c"># =&gt; 4</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L284" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="index(offset:Int=0,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2121"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20index%28offset%20%3A%20Int%20%3D%200%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>index</strong>(offset : <a href="Int.html">Int</a> = <span class="n">0</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the index of the first object in <code>self</code> for which the block
+returns <code>true</code>, starting from the given <em>offset</em>, or <code>nil</code> if no match
+is found.</p>
+
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].rindex(offset: <span class="n">4</span>) { <span class="o">|</span>x<span class="o">|</span> x <span class="o">&lt;</span> <span class="n">2</span> } <span class="c"># =&gt; 4</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L295" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last-instance-method">
+      <a class="dashingAutolink" name="autolink-2122"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20last"></a><div class="signature">
+        
+        def <strong>last</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the last element of <code>self</code> if it&#39;s not empty, or raises <code><a href="IndexError.html">IndexError</a></code>.</p>
+
+<pre><code>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]).last   <span class="c"># =&gt; 3</span>
+(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).last <span class="c"># =&gt; raises IndexError</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L313" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2123"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20last%28%26block%29"></a><div class="signature">
+        
+        def <strong>last</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the last element of <code>self</code> if it&#39;s not empty, or the given block&#39;s value.</p>
+
+<pre><code>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]).last { <span class="n">4</span> }   <span class="c"># =&gt; 3</span>
+(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).last { <span class="n">4</span> } <span class="c"># =&gt; 4</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L323" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last?-instance-method">
+      <a class="dashingAutolink" name="autolink-2124"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20last%3F"></a><div class="signature">
+        
+        def <strong>last?</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the last element of <code>self</code> if it&#39;s not empty, or <code>nil</code>.</p>
+
+<pre><code>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]).last?   <span class="c"># =&gt; 1</span>
+(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).last? <span class="c"># =&gt; nil</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L333" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reverse_each(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2125"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse_each%28%26block%29"></a><div class="signature">
+        
+        def <strong>reverse_each</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Same as <code><a href="Indexable.html#each%28%26block%29-instance-method">#each</a></code>, but works in reverse.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L338" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reverse_each-instance-method">
+      <a class="dashingAutolink" name="autolink-2126"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse_each"></a><div class="signature">
+        
+        def <strong>reverse_each</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> over the elements of <code>self</code> in reverse order.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L346" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rindex(value,offset=size-1)-instance-method">
+      <a class="dashingAutolink" name="autolink-2127"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rindex%28value%2C%20offset%20%3D%20size%20-%201%29"></a><div class="signature">
+        
+        def <strong>rindex</strong>(value, offset = size <span class="o">-</span> <span class="n">1</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the index of the last appearance of <em>value</em> in <code>self</code>, or
+<code>nil</code> if the value is not in <code>self</code>.</p>
+
+<p>If <em>offset</em> is given, it defines the position to <em>end</em> the search
+(elements beyond this point are ignored).</p>
+
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">2</span>, <span class="n">3</span>].rindex(<span class="n">2</span>)            <span class="c"># =&gt; 3</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">2</span>, <span class="n">3</span>].rindex(<span class="n">2</span>, offset: <span class="n">2</span>) <span class="c"># =&gt; 1</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L360" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rindex(offset=size-1,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2128"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rindex%28offset%20%3D%20size%20-%201%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>rindex</strong>(offset = size <span class="o">-</span> <span class="n">1</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the index of the first object in <code>self</code> for which the block
+returns <code>true</code>, starting from the last object, or <code>nil</code> if no match
+is found.</p>
+
+<p>If <em>offset</em> is given, the search starts from that index towards the
+first elements in <code>self</code>.</p>
+
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">2</span>, <span class="n">3</span>].rindex { <span class="o">|</span>x<span class="o">|</span> x <span class="o">&lt;</span> <span class="n">3</span> }            <span class="c"># =&gt; 3</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">2</span>, <span class="n">3</span>].rindex(offset: <span class="n">2</span>) { <span class="o">|</span>x<span class="o">|</span> x <span class="o">&lt;</span> <span class="n">3</span> } <span class="c"># =&gt; 1</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L375" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample(random=Random::DEFAULT)-instance-method">
+      <a class="dashingAutolink" name="autolink-2129"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sample%28random%20%3D%20Random%3A%3ADEFAULT%29"></a><div class="signature">
+        
+        def <strong>sample</strong>(random = <span class="t">Random</span><span class="t">::</span><span class="t">DEFAULT</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a random element from <code>self</code>, using the given <em>random</em> number generator.
+Raises IndexError if <code>self</code> is empty.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
+a.sample                <span class="c"># =&gt; 2</span>
+a.sample                <span class="c"># =&gt; 1</span>
+a.sample(<span class="t">Random</span>.<span class="k">new</span>(<span class="n">1</span>)) <span class="c"># =&gt; 3</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L396" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size-instance-method">
+      <a class="dashingAutolink" name="autolink-2130"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20size"></a><div class="signature">
+        abstract 
+        def <strong>size</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the number of elements in this container</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe_at(index:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-2131"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20unsafe_at%28index%20%3A%20Int%29"></a><div class="signature">
+        abstract 
+        def <strong>unsafe_at</strong>(index : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the element at the given <em>index</em>, without doing any bounds check.</p>
+
+<p><code><a href="Indexable.html">Indexable</a></code> makes sure to invoke this method with <em>index</em> in <code>0..<a href="Indexable.html#size-instance-method">.size</a></code>,
+so converting negative indices to positive ones is not needed here.</p>
+
+<p>Clients never invoke this method directly. Instead, they access
+elements with <code><a href="index" target="_blank"></a>#</code> and <code><a href="Indexable.html#%5B%5D%3F%28index%3AInt%29-instance-method">#[]?(index)</a></code>.</p>
+
+<p>This method should only be directly invoked if you are absolutely
+sure the index is in bounds, to avoid a bounds check for a small boost
+of performance.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="values_at(*indexes:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-2132"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20values_at%28%2Aindexes%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>values_at</strong>(*indexes : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a tuple populated with the elements at the given indexes.
+Raises <code><a href="IndexError.html">IndexError</a></code> if any index is invalid.</p>
+
+<pre><code>[<span class="s">&#34;a&#34;</span>, <span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>, <span class="s">&#34;d&#34;</span>].values_at(<span class="n">0</span>, <span class="n">2</span>) <span class="c"># =&gt; {&#34;a&#34;, &#34;c&#34;}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/indexable.cr#L407" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

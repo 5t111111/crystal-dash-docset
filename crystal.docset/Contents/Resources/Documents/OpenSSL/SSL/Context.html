@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3936"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%3A%3ASSL%3A%3AContext%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL::SSL::Context - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3997"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%3A%3ASSL%3A%3AContext%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL::SSL::Context - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -52,7 +52,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L1" target="_blank">openssl/ssl/context.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L1" target="_blank">openssl/ssl/context.cr</a>
     
     <br/>
   
@@ -108,6 +108,20 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#add_x509_verify_flags%28flags%3AOpenSSL%3A%3AX509VerifyFlags%29-instance-method" class="signature"><strong>#add_x509_verify_flags</strong>(flags : OpenSSL::X509VerifyFlags)</a>
+        
+          <div class="summary"><p>Sets the given <code>OpenSSL::X509VerifyFlags</code> in this context, additionally to the already set ones.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#alpn_protocol%3D%28protocol%3AString%29-instance-method" class="signature"><strong>#alpn_protocol=</strong>(protocol : String)</a>
+        
+          <div class="summary"><p>Specifies an ALPN protocol to negotiate with the remote endpoint.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#ca_certificates%3D%28file_path%3AString%29-instance-method" class="signature"><strong>#ca_certificates=</strong>(file_path : String)</a>
         
           <div class="summary"><p>Sets the path to a file containing all CA certificates, in PEM format, used to validate the peers certificate.</p></div>
@@ -132,6 +146,13 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
         <a href="#ciphers%3D%28ciphers%3AString%29-instance-method" class="signature"><strong>#ciphers=</strong>(ciphers : String)</a>
         
           <div class="summary"><p>Specify a list of TLS ciphers to use or discard.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_verify_param%3D%28name%3AString%29-instance-method" class="signature"><strong>#default_verify_param=</strong>(name : String)</a>
+        
+          <div class="summary"><p>Set this context verify param to the default one of the given name.</p></div>
         
       </li>
     
@@ -183,7 +204,7 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#set_tmp_ecdh_key%28curve%3D%3Cspanclass%3D%22t%22%3ELibCrypto%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ENID_X9_62_prime256v1%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#set_tmp_ecdh_key</strong>(curve = <span class="t">LibCrypto</span><span class="t">::</span><span class="t">NID_X9_62_prime256v1</span>)</a>
+        <a href="#set_tmp_ecdh_key%28curve%3DLibCrypto%3A%3ANID_X9_62_prime256v1%29-instance-method" class="signature"><strong>#set_tmp_ecdh_key</strong>(curve = <span class="t">LibCrypto</span><span class="t">::</span><span class="t">NID_X9_62_prime256v1</span>)</a>
         
           <div class="summary"><p>Adds a temporary ECDH key curve to the TLS context.</p></div>
         
@@ -339,8 +360,8 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
     to_json</a>, 
     
   
-    <a href="../../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    <a href="../../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
     to_pretty_json</a>, 
     
   
@@ -392,8 +413,8 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
     dup</a>, 
     
   
-    <a href="../../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    <a href="../../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
     from_json</a>, 
     
   
@@ -417,6 +438,11 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
     name</a>, 
     
   
+    <a href="../../Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
     <a href="../../Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
@@ -436,7 +462,7 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(method:LibSSL::SSLMethod)-class-method">
-      <a class="dashingAutolink" name="autolink-3937"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28method%20%3A%20LibSSL%3A%3ASSLMethod%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3998"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28method%20%3A%20LibSSL%3A%3ASSLMethod%29"></a><div class="signature">
         
         def self.<strong>new</strong>(method : LibSSL::SSLMethod)
 
@@ -446,7 +472,7 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L135" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L135" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -457,7 +483,7 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="add_modes(mode:OpenSSL::SSL::Modes)-instance-method">
-      <a class="dashingAutolink" name="autolink-3938"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_modes%28mode%20%3A%20OpenSSL%3A%3ASSL%3A%3AModes%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3999"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_modes%28mode%20%3A%20OpenSSL%3A%3ASSL%3A%3AModes%29"></a><div class="signature">
         
         def <strong>add_modes</strong>(mode : <a href="../../OpenSSL/SSL/Modes.html">OpenSSL::SSL::Modes</a>)
 
@@ -469,13 +495,13 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L233" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L233" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="add_options(options:OpenSSL::SSL::Options)-instance-method">
-      <a class="dashingAutolink" name="autolink-3939"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_options%28options%20%3A%20OpenSSL%3A%3ASSL%3A%3AOptions%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4000"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_options%28options%20%3A%20OpenSSL%3A%3ASSL%3A%3AOptions%29"></a><div class="signature">
         
         def <strong>add_options</strong>(options : <a href="../../OpenSSL/SSL/Options.html">OpenSSL::SSL::Options</a>)
 
@@ -487,23 +513,68 @@ https://wiki.mozilla.org/Security/Server_Side_TLS</p>
 
 <p>Example:</p>
 
-<pre><code>context.add_options(
-  <span class="t">OpenSSL</span><span class="t">::</span><span class="t">SSL</span><span class="t">::</span><span class="t">Options</span><span class="t">::</span><span class="t">ALL</span> <span class="o">|</span>        <span class="c"># various workarounds</span>
-    <span class="t">OpenSSL</span><span class="t">::</span><span class="t">SSL</span><span class="t">::</span><span class="t">Options</span><span class="t">::</span><span class="t">NO_SSLV2</span> <span class="o">|</span> <span class="c"># disable overly deprecated SSLv2</span>
-    <span class="t">OpenSSL</span><span class="t">::</span><span class="t">SSL</span><span class="t">::</span><span class="t">Options</span><span class="t">::</span><span class="t">NO_SSLV3</span>   <span class="c"># disable deprecated SSLv3</span>
-)</code></pre>
+<p>context.add_options(
+OpenSSL::SSL::Options::ALL |        # various workarounds
+OpenSSL::SSL::Options::NO_SSLV2 | # disable overly deprecated SSLv2
+OpenSSL::SSL::Options::NO_SSLV3   # disable deprecated SSLv3
+)</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L257" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L258" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add_x509_verify_flags(flags:OpenSSL::X509VerifyFlags)-instance-method">
+      <a class="dashingAutolink" name="autolink-4001"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_x509_verify_flags%28flags%20%3A%20OpenSSL%3A%3AX509VerifyFlags%29"></a><div class="signature">
+        
+        def <strong>add_x509_verify_flags</strong>(flags : OpenSSL::X509VerifyFlags)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the given <code>OpenSSL::X509VerifyFlags</code> in this context, additionally to
+the already set ones.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L282" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="alpn_protocol=(protocol:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-4002"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20alpn_protocol%3D%28protocol%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>alpn_protocol=</strong>(protocol : <a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Specifies an ALPN protocol to negotiate with the remote endpoint. This is
+required to negotiate HTTP/2 with browsers, since browser vendors decided
+not to implement HTTP/2 over insecure connections.</p>
+
+<p>Example:</p>
+
+<pre><code>context.alpn_protocol <span class="o">=</span> <span class="s">&#34;h2&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L282" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ca_certificates=(file_path:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-3940"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ca_certificates%3D%28file_path%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4003"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ca_certificates%3D%28file_path%20%3A%20String%29"></a><div class="signature">
         
         def <strong>ca_certificates=</strong>(file_path : <a href="../../String.html">String</a>)
 
@@ -516,13 +587,13 @@ validate the peers certificate.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ca_certificates_path=(dir_path:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-3941"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ca_certificates_path%3D%28dir_path%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4004"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ca_certificates_path%3D%28dir_path%20%3A%20String%29"></a><div class="signature">
         
         def <strong>ca_certificates_path=</strong>(dir_path : <a href="../../String.html">String</a>)
 
@@ -536,13 +607,13 @@ and the <code>c_rehash(1)</code> utility must have been run in the directory.</p
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L192" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L192" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="certificate_chain=(file_path:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-3942"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20certificate_chain%3D%28file_path%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4005"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20certificate_chain%3D%28file_path%20%3A%20String%29"></a><div class="signature">
         
         def <strong>certificate_chain=</strong>(file_path : <a href="../../String.html">String</a>)
 
@@ -555,13 +626,13 @@ is presented to the client, in client mode this used as client certificate.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L199" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L199" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ciphers=(ciphers:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-3943"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ciphers%3D%28ciphers%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4006"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ciphers%3D%28ciphers%20%3A%20String%29"></a><div class="signature">
         
         def <strong>ciphers=</strong>(ciphers : <a href="../../String.html">String</a>)
 
@@ -573,13 +644,36 @@ is presented to the client, in client mode this used as client certificate.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L212" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L212" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_verify_param=(name:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-4007"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20default_verify_param%3D%28name%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>default_verify_param=</strong>(name : <a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Set this context verify param to the default one of the given name.</p>
+
+<p>Depending on the OpenSSL version, the available defaults are
+default, pkcs7, smime_sign, ssl_client and ssl_server</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L282" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="finalize-instance-method">
-      <a class="dashingAutolink" name="autolink-3944"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4008"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
         
         def <strong>finalize</strong>
 
@@ -589,13 +683,13 @@ is presented to the client, in client mode this used as client certificate.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L173" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L173" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="modes-instance-method">
-      <a class="dashingAutolink" name="autolink-3945"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20modes"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4009"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20modes"></a><div class="signature">
         
         def <strong>modes</strong>
 
@@ -607,13 +701,13 @@ is presented to the client, in client mode this used as client certificate.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L228" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L228" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="options-instance-method">
-      <a class="dashingAutolink" name="autolink-3946"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20options"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4010"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20options"></a><div class="signature">
         
         def <strong>options</strong>
 
@@ -625,13 +719,13 @@ is presented to the client, in client mode this used as client certificate.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L243" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L243" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="private_key=(file_path:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-3947"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20private_key%3D%28file_path%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4011"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20private_key%3D%28file_path%20%3A%20String%29"></a><div class="signature">
         
         def <strong>private_key=</strong>(file_path : <a href="../../String.html">String</a>)
 
@@ -644,13 +738,13 @@ The key must correspond to the entity certificate set by <code><a href="../../Op
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L206" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L206" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="remove_modes(mode:OpenSSL::SSL::Modes)-instance-method">
-      <a class="dashingAutolink" name="autolink-3948"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20remove_modes%28mode%20%3A%20OpenSSL%3A%3ASSL%3A%3AModes%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4012"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20remove_modes%28mode%20%3A%20OpenSSL%3A%3ASSL%3A%3AModes%29"></a><div class="signature">
         
         def <strong>remove_modes</strong>(mode : <a href="../../OpenSSL/SSL/Modes.html">OpenSSL::SSL::Modes</a>)
 
@@ -662,13 +756,13 @@ The key must correspond to the entity certificate set by <code><a href="../../Op
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L238" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L238" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="remove_options(options:OpenSSL::SSL::Options)-instance-method">
-      <a class="dashingAutolink" name="autolink-3949"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20remove_options%28options%20%3A%20OpenSSL%3A%3ASSL%3A%3AOptions%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4013"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20remove_options%28options%20%3A%20OpenSSL%3A%3ASSL%3A%3AOptions%29"></a><div class="signature">
         
         def <strong>remove_options</strong>(options : <a href="../../OpenSSL/SSL/Options.html">OpenSSL::SSL::Options</a>)
 
@@ -686,13 +780,13 @@ The key must correspond to the entity certificate set by <code><a href="../../Op
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L267" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L268" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="set_default_verify_paths-instance-method">
-      <a class="dashingAutolink" name="autolink-3950"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20set_default_verify_paths"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4014"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20set_default_verify_paths"></a><div class="signature">
         
         def <strong>set_default_verify_paths</strong>
 
@@ -704,13 +798,13 @@ The key must correspond to the entity certificate set by <code><a href="../../Op
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L178" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L178" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="set_tmp_ecdh_key(curve=&lt;spanclass=&#34;t&#34;&gt;LibCrypto&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;::&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;NID_X9_62_prime256v1&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-3951"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20set_tmp_ecdh_key%28curve%20%3D%20LibCrypto%3A%3ANID_X9_62_prime256v1%29"></a><div class="signature">
+    <div class="entry-detail" id="set_tmp_ecdh_key(curve=LibCrypto::NID_X9_62_prime256v1)-instance-method">
+      <a class="dashingAutolink" name="autolink-4015"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20set_tmp_ecdh_key%28curve%20%3D%20LibCrypto%3A%3ANID_X9_62_prime256v1%29"></a><div class="signature">
         
         def <strong>set_tmp_ecdh_key</strong>(curve = <span class="t">LibCrypto</span><span class="t">::</span><span class="t">NID_X9_62_prime256v1</span>)
 
@@ -723,13 +817,13 @@ enable the EECDH cipher suites. By default the prime256 curve will be used.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L220" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L220" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_unsafe:LibSSL::SSLContext-instance-method">
-      <a class="dashingAutolink" name="autolink-3952"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20LibSSL%3A%3ASSLContext"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4016"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20LibSSL%3A%3ASSLContext"></a><div class="signature">
         
         def <strong>to_unsafe</strong> : LibSSL::SSLContext
 
@@ -739,13 +833,13 @@ enable the EECDH cipher suites. By default the prime256 curve will be used.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L335" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L336" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="verify_mode-instance-method">
-      <a class="dashingAutolink" name="autolink-3953"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20verify_mode"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4017"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20verify_mode"></a><div class="signature">
         
         def <strong>verify_mode</strong>
 
@@ -757,13 +851,13 @@ enable the EECDH cipher suites. By default the prime256 curve will be used.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L272" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L273" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="verify_mode=(mode:OpenSSL::SSL::VerifyMode)-instance-method">
-      <a class="dashingAutolink" name="autolink-3954"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20verify_mode%3D%28mode%20%3A%20OpenSSL%3A%3ASSL%3A%3AVerifyMode%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4018"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20verify_mode%3D%28mode%20%3A%20OpenSSL%3A%3ASSL%3A%3AVerifyMode%29"></a><div class="signature">
         
         def <strong>verify_mode=</strong>(mode : <a href="../../OpenSSL/SSL/VerifyMode.html">OpenSSL::SSL::VerifyMode</a>)
 
@@ -775,7 +869,7 @@ enable the EECDH cipher suites. By default the prime256 curve will be used.</p><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/openssl/ssl/context.cr#L277" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/openssl/ssl/context.cr#L278" target="_blank">View source</a>]
         
       </div>
     </div>

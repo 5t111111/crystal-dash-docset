@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5640"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Union%28%2AT%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Union(*T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5708"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Union%28%2AT%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Union(*T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -62,7 +62,7 @@ might not return a union type:</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/union.cr#L19" target="_blank">union.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/union.cr#L19" target="_blank">union.cr</a>
     
     <br/>
   
@@ -81,6 +81,13 @@ might not return a union type:</p>
     
       <li class="entry-summary">
         <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nilable%3F-class-method" class="signature"><strong>.nilable?</strong></a>
+        
+          <div class="summary"><p>Returns <code>true</code> if this union includes the <code><a href="Nil.html">Nil</a></code> type.</p></div>
         
       </li>
     
@@ -192,8 +199,8 @@ might not return a union type:</p>
     to_json</a>, 
     
   
-    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    <a href="Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
     to_pretty_json</a>, 
     
   
@@ -245,8 +252,8 @@ might not return a union type:</p>
     dup</a>, 
     
   
-    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
     from_json</a>, 
     
   
@@ -270,6 +277,11 @@ might not return a union type:</p>
     name</a>, 
     
   
+    <a href="Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
     <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
@@ -289,7 +301,7 @@ might not return a union type:</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(pull:YAML::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-5641"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5709"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pull : <a href="YAML/PullParser.html">YAML::PullParser</a>)
 
@@ -299,13 +311,13 @@ might not return a union type:</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/yaml/from_yaml.cr#L140" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/yaml/from_yaml.cr#L144" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-5642"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5710"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pull : <a href="JSON/PullParser.html">JSON::PullParser</a>)
 
@@ -315,7 +327,30 @@ might not return a union type:</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/json/from_json.cr#L190" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/json/from_json.cr#L190" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nilable?-class-method">
+      <a class="dashingAutolink" name="autolink-5711"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.nilable%3F"></a><div class="signature">
+        
+        def self.<strong>nilable?</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns <code>true</code> if this union includes the <code><a href="Nil.html">Nil</a></code> type.</p>
+
+<pre><code>(<span class="t">Int32</span> <span class="o">|</span> <span class="t">String</span>).nilable? <span class="c"># =&gt; false</span>
+(<span class="t">Int32</span> <span class="o">|</span> <span class="t">Nil</span>).nilable?    <span class="c"># =&gt; true</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/union.cr#L26" target="_blank">View source</a>]
         
       </div>
     </div>

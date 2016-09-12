@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-148"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Base64%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Base64 - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-119"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Base64%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Base64 - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -23,8 +23,8 @@
 
   <h2>Overview</h2>
 
-  <p>The Base64 module provides for the encoding (<code><a href="Base64.html#encode%28data%29-instance-method">#encode</a></code>, <code><a href="Base64.html#strict_encode%28data%29-instance-method">#strict_encode</a></code>,
-<code><a href="Base64.html#urlsafe_encode%28data%2Cpadding%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-instance-method">#urlsafe_encode</a></code>) and decoding (<code><a href="Base64.html#decode%28data%29-instance-method">#decode</a></code>, <code>strict_decode</code>, <code>urlsafe_decode</code>)
+  <p>The Base64 module provides for the encoding (<code><a href="Base64.html#encode%28data%2Cio%3AIO%29-instance-method">#encode</a></code>, <code><a href="Base64.html#strict_encode%28data%2Cio%3AIO%29-instance-method">#strict_encode</a></code>,
+<code><a href="Base64.html#urlsafe_encode%28data%2Cio%3AIO%29-instance-method">#urlsafe_encode</a></code>) and decoding (<code><a href="Base64.html#decode%28data%2Cio%3AIO%29-instance-method">#decode</a></code>, <code>strict_decode</code>, <code>urlsafe_decode</code>)
 of binary data using a Base64 representation.</p>
 
 <h3>Example</h3>
@@ -63,7 +63,7 @@ data into purely printable characters.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/base64.cr#L17" target="_blank">base64.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L17" target="_blank">base64.cr</a>
     
     <br/>
   
@@ -76,6 +76,13 @@ data into purely printable characters.</p>
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#decode%28data%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(data, io : IO)</a>
+        
+          <div class="summary"><p>Write the Base64-decoded version of <code>data</code> to <code>io</code>.</p></div>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#decode%28data%29-instance-method" class="signature"><strong>#decode</strong>(data)</a>
@@ -92,9 +99,23 @@ data into purely printable characters.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#encode%28data%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(data, io : IO)</a>
+        
+          <div class="summary"><p>Write the Base64-encoded version of <code>data</code> to <code>io</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#encode%28data%29-instance-method" class="signature"><strong>#encode</strong>(data)</a>
         
           <div class="summary"><p>Returns the Base64-encoded version of <code>data</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strict_encode%28data%2Cio%3AIO%29-instance-method" class="signature"><strong>#strict_encode</strong>(data, io : IO)</a>
+        
+          <div class="summary"><p>Write the Base64-encoded version of <code>data</code> with no newlines to <code>io</code>.</p></div>
         
       </li>
     
@@ -106,7 +127,14 @@ data into purely printable characters.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#urlsafe_encode%28data%2Cpadding%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#urlsafe_encode</strong>(data, padding = <span class="n">false</span>)</a>
+        <a href="#urlsafe_encode%28data%2Cio%3AIO%29-instance-method" class="signature"><strong>#urlsafe_encode</strong>(data, io : IO)</a>
+        
+          <div class="summary"><p>Write the Base64-encoded version of <code>data</code> using a urlsafe alphabet to <code>io</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#urlsafe_encode%28data%2Cpadding%3Dfalse%29-instance-method" class="signature"><strong>#urlsafe_encode</strong>(data, padding = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Returns the Base64-encoded version of <code>data</code> using a urlsafe alphabet.</p></div>
         
@@ -127,8 +155,27 @@ data into purely printable characters.</p>
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="decode(data,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-120"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28data%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>decode</strong>(data, io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Write the Base64-decoded version of <code>data</code> to <code>io</code>.
+This will decode either the normal or urlsafe alphabets.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L179" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="decode(data)-instance-method">
-      <a class="dashingAutolink" name="autolink-143"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28data%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-121"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28data%29"></a><div class="signature">
         
         def <strong>decode</strong>(data)
 
@@ -141,13 +188,13 @@ This will decode either the normal or urlsafe alphabets.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/base64.cr#L116" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L169" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="decode_string(data)-instance-method">
-      <a class="dashingAutolink" name="autolink-144"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode_string%28data%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-122"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode_string%28data%29"></a><div class="signature">
         
         def <strong>decode_string</strong>(data)
 
@@ -162,13 +209,38 @@ This will decode either the normal or urlsafe alphabets.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/base64.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L193" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(data,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-123"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28data%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>encode</strong>(data, io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Write the Base64-encoded version of <code>data</code> to <code>io</code>.
+This method complies with RFC 2045.
+Line feeds are added to every 60 encoded characters.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;base64&#34;</span>
+<span class="t">Base64</span>.encode(<span class="s">&#34;Now is the time for all good coders\nto learn Crystal&#34;</span>, io)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="encode(data)-instance-method">
-      <a class="dashingAutolink" name="autolink-145"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28data%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-124"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28data%29"></a><div class="signature">
         
         def <strong>encode</strong>(data)
 
@@ -191,13 +263,37 @@ puts <span class="t">Base64</span>.encode(<span class="s">&#34;Now is the time f
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/base64.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strict_encode(data,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-125"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20strict_encode%28data%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>strict_encode</strong>(data, io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Write the Base64-encoded version of <code>data</code> with no newlines to <code>io</code>.
+This method complies with RFC 4648.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;base64&#34;</span>
+<span class="t">Base64</span>.strict_encode(<span class="s">&#34;Now is the time for all good coders\nto learn Crystal&#34;</span>, io)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L122" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="strict_encode(data)-instance-method">
-      <a class="dashingAutolink" name="autolink-146"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20strict_encode%28data%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-126"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20strict_encode%28data%29"></a><div class="signature">
         
         def <strong>strict_encode</strong>(data)
 
@@ -219,13 +315,40 @@ puts <span class="t">Base64</span>.strict_encode(<span class="s">&#34;Now is the
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/base64.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L102" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="urlsafe_encode(data,padding=&lt;spanclass=&#34;n&#34;&gt;false&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-147"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20urlsafe_encode%28data%2C%20padding%20%3D%20false%29"></a><div class="signature">
+    <div class="entry-detail" id="urlsafe_encode(data,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-127"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20urlsafe_encode%28data%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>urlsafe_encode</strong>(data, io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Write the Base64-encoded version of <code>data</code> using a urlsafe alphabet to <code>io</code>.
+This method complies with &#34;Base 64 Encoding with URL and Filename Safe
+Alphabet&#34; in RFC 4648.</p>
+
+<p>The alphabet uses &#39;-&#39; instead of &#39;+&#39; and &#39;_&#39; instead of &#39;/&#39;.</p>
+
+<p>The <code>padding</code> parameter defaults to false. When true, enough <code>=</code> characters
+are added to make the output divisible by 3.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L163" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="urlsafe_encode(data,padding=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-128"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20urlsafe_encode%28data%2C%20padding%20%3D%20false%29"></a><div class="signature">
         
         def <strong>urlsafe_encode</strong>(data, padding = <span class="n">false</span>)
 
@@ -246,7 +369,7 @@ are added to make the output divisible by 3.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/base64.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/base64.cr#L145" target="_blank">View source</a>]
         
       </div>
     </div>

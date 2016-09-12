@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4243"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/SecureRandom%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>SecureRandom - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4315"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/SecureRandom%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>SecureRandom - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -23,14 +23,19 @@
 
   <h2>Overview</h2>
 
-  <p>The SecureRandom module is an interface for creating secure random values in different formats.
-It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
+  <p>The SecureRandom module is an interface for creating cryptography secure
+random values in different formats.</p>
 
-<p>For example:</p>
+<p>Examples:</p>
 
 <pre><code class="language-crystal"><span class="t">SecureRandom</span>.base64 <span class="c"># =&gt; &#34;LIa9s/zWzJx49m/9zDX+VQ==&#34;</span>
 <span class="t">SecureRandom</span>.hex    <span class="c"># =&gt; &#34;c8353864ff9764a39ef74983ec0d4a38&#34;</span>
 <span class="t">SecureRandom</span>.uuid   <span class="c"># =&gt; &#34;c7ee4add-207f-411a-97b7-0d22788566d6&#34;</span></code></pre>
+
+<p>The implementation follows the
+<a href="https://github.com/jedisct1/libsodium/blob/6fad3644b53021fb377ca1207fa6e1ac96d0b131/src/libsodium/randombytes/sysrandom/randombytes_sysrandom.c" target="_blank">libsodium sysrandom</a>
+implementation and uses <code>getrandom</code> on Linux (when provided by the kernel),
+then tries to read from <code>/dev/urandom</code>.</p>
 
 
 
@@ -48,7 +53,7 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/secure_random.cr#L13" target="_blank">secure_random.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/secure_random.cr#L22" target="_blank">secure_random.cr</a>
     
     <br/>
   
@@ -61,30 +66,30 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#base64%28n%3AInt%3D%3Cspanclass%3D%22n%22%3E16%3C%2Fspan%3E%29%3AString-class-method" class="signature"><strong>.base64</strong>(n : Int = <span class="n">16</span>) : String</a>
+        <a href="#base64%28n%3AInt%3D16%29%3AString-class-method" class="signature"><strong>.base64</strong>(n : Int = <span class="n">16</span>) : String</a>
         
           <div class="summary"><p>Generates <em>n</em> random bytes that are encoded into Base64.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#hex%28n%3AInt%3D%3Cspanclass%3D%22n%22%3E16%3C%2Fspan%3E%29%3AString-class-method" class="signature"><strong>.hex</strong>(n : Int = <span class="n">16</span>) : String</a>
+        <a href="#hex%28n%3AInt%3D16%29%3AString-class-method" class="signature"><strong>.hex</strong>(n : Int = <span class="n">16</span>) : String</a>
         
           <div class="summary"><p>Generates a hexadecimal string based on <em>n</em> random bytes.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#random_bytes%28n%3AInt%3D%3Cspanclass%3D%22n%22%3E16%3C%2Fspan%3E%29%3ASlice%28UInt8%29-class-method" class="signature"><strong>.random_bytes</strong>(n : Int = <span class="n">16</span>) : Slice(UInt8)</a>
+        <a href="#random_bytes%28n%3AInt%3D16%29%3ASlice%28UInt8%29-class-method" class="signature"><strong>.random_bytes</strong>(n : Int = <span class="n">16</span>) : Slice(UInt8)</a>
         
           <div class="summary"><p>Generates a slice filled with <em>n</em> random bytes.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#urlsafe_base64%28n%3AInt%3D%3Cspanclass%3D%22n%22%3E16%3C%2Fspan%3E%2Cpadding%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29%3AString-class-method" class="signature"><strong>.urlsafe_base64</strong>(n : Int = <span class="n">16</span>, padding = <span class="n">false</span>) : String</a>
+        <a href="#urlsafe_base64%28n%3AInt%3D16%2Cpadding%3Dfalse%29%3AString-class-method" class="signature"><strong>.urlsafe_base64</strong>(n : Int = <span class="n">16</span>, padding = <span class="n">false</span>) : String</a>
         
-          <div class="summary"><p>URL-safe variant of <code><a href="SecureRandom.html#base64%28n%3AInt%3D%3Cspanclass%3D%22n%22%3E16%3C%2Fspan%3E%29%3AString-class-method">#base64</a></code></p></div>
+          <div class="summary"><p>URL-safe variant of <code><a href="SecureRandom.html#base64%28n%3AInt%3D16%29%3AString-class-method">#base64</a></code></p></div>
         
       </li>
     
@@ -110,8 +115,8 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="base64(n:Int=&lt;spanclass=&#34;n&#34;&gt;16&lt;/span&gt;):String-class-method">
-      <a class="dashingAutolink" name="autolink-4244"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.base64%28n%20%3A%20Int%20%3D%2016%29%20%3A%20String"></a><div class="signature">
+    <div class="entry-detail" id="base64(n:Int=16):String-class-method">
+      <a class="dashingAutolink" name="autolink-4316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.base64%28n%20%3A%20Int%20%3D%2016%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>base64</strong>(n : <a href="Int.html">Int</a> = <span class="n">16</span>) : <a href="String.html">String</a>
 
@@ -121,7 +126,7 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
         <div class="doc">
 <p>Generates <em>n</em> random bytes that are encoded into Base64.</p>
 
-<p>Check <code><a href="Base64.html#strict_encode%28data%29-instance-method">Base64#strict_encode</a></code> for details.</p>
+<p>Check <code><a href="Base64.html#strict_encode%28data%2Cio%3AIO%29-instance-method">Base64#strict_encode</a></code> for details.</p>
 
 <pre><code class="language-crystal"><span class="t">SecureRandom</span>.base64(<span class="n">4</span>) <span class="c"># =&gt; &#34;fK1eYg==&#34;</span></code></pre>
 </div>
@@ -129,13 +134,13 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/secure_random.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/secure_random.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="hex(n:Int=&lt;spanclass=&#34;n&#34;&gt;16&lt;/span&gt;):String-class-method">
-      <a class="dashingAutolink" name="autolink-4245"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.hex%28n%20%3A%20Int%20%3D%2016%29%20%3A%20String"></a><div class="signature">
+    <div class="entry-detail" id="hex(n:Int=16):String-class-method">
+      <a class="dashingAutolink" name="autolink-4317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.hex%28n%20%3A%20Int%20%3D%2016%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>hex</strong>(n : <a href="Int.html">Int</a> = <span class="n">16</span>) : <a href="String.html">String</a>
 
@@ -154,13 +159,13 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/secure_random.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/secure_random.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="random_bytes(n:Int=&lt;spanclass=&#34;n&#34;&gt;16&lt;/span&gt;):Slice(UInt8)-class-method">
-      <a class="dashingAutolink" name="autolink-4246"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.random_bytes%28n%20%3A%20Int%20%3D%2016%29%20%3A%20Slice%28UInt8%29"></a><div class="signature">
+    <div class="entry-detail" id="random_bytes(n:Int=16):Slice(UInt8)-class-method">
+      <a class="dashingAutolink" name="autolink-4318"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.random_bytes%28n%20%3A%20Int%20%3D%2016%29%20%3A%20Slice%28UInt8%29"></a><div class="signature">
         
         def self.<strong>random_bytes</strong>(n : <a href="Int.html">Int</a> = <span class="n">16</span>) : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>)
 
@@ -177,13 +182,13 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/secure_random.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/secure_random.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="urlsafe_base64(n:Int=&lt;spanclass=&#34;n&#34;&gt;16&lt;/span&gt;,padding=&lt;spanclass=&#34;n&#34;&gt;false&lt;/span&gt;):String-class-method">
-      <a class="dashingAutolink" name="autolink-4247"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.urlsafe_base64%28n%20%3A%20Int%20%3D%2016%2C%20padding%20%3D%20false%29%20%3A%20String"></a><div class="signature">
+    <div class="entry-detail" id="urlsafe_base64(n:Int=16,padding=false):String-class-method">
+      <a class="dashingAutolink" name="autolink-4319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.urlsafe_base64%28n%20%3A%20Int%20%3D%2016%2C%20padding%20%3D%20false%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>urlsafe_base64</strong>(n : <a href="Int.html">Int</a> = <span class="n">16</span>, padding = <span class="n">false</span>) : <a href="String.html">String</a>
 
@@ -191,9 +196,9 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
       </div>
       
         <div class="doc">
-<p>URL-safe variant of <code><a href="SecureRandom.html#base64%28n%3AInt%3D%3Cspanclass%3D%22n%22%3E16%3C%2Fspan%3E%29%3AString-class-method">#base64</a></code></p>
+<p>URL-safe variant of <code><a href="SecureRandom.html#base64%28n%3AInt%3D16%29%3AString-class-method">#base64</a></code></p>
 
-<p>Check <code><a href="Base64.html#urlsafe_encode%28data%2Cpadding%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-instance-method">Base64#urlsafe_encode</a></code> for details.</p>
+<p>Check <code><a href="Base64.html#urlsafe_encode%28data%2Cio%3AIO%29-instance-method">Base64#urlsafe_encode</a></code> for details.</p>
 
 <pre><code class="language-crystal"><span class="t">SecureRandom</span>.urlsafe_base64           <span class="c"># =&gt; &#34;MAD2bw8QaBdvITCveBNCrw&#34;</span>
 <span class="t">SecureRandom</span>.urlsafe_base64(<span class="n">8</span>, <span class="n">true</span>)  <span class="c"># =&gt; &#34;vvP1kcs841I=&#34;</span>
@@ -203,13 +208,13 @@ It uses the RNG (random number generator) of libcrypto (OpenSSL).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/secure_random.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/secure_random.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="uuid:String-class-method">
-      <a class="dashingAutolink" name="autolink-4248"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.uuid%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.uuid%20%3A%20String"></a><div class="signature">
         
         def self.<strong>uuid</strong> : <a href="String.html">String</a>
 
@@ -228,7 +233,7 @@ for the used algorithm and its implications.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/secure_random.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/secure_random.cr#L158" target="_blank">View source</a>]
         
       </div>
     </div>

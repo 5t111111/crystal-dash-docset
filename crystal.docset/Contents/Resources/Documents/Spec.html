@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4458"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Spec%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Spec - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4525"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Spec%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Spec - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -20,6 +20,64 @@
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>Crystal&#39;s builtin testing library.</p>
+
+<p>A basic spec looks like this:</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;spec&#34;</span>
+
+describe <span class="s">&#34;Array&#34;</span> <span class="k">do</span>
+  describe <span class="s">&#34;#size&#34;</span> <span class="k">do</span>
+    it <span class="s">&#34;correctly reports the number of elements in the Array&#34;</span> <span class="k">do</span>
+      [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].size.should eq <span class="n">3</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  describe <span class="s">&#34;#empty?&#34;</span> <span class="k">do</span>
+    it <span class="s">&#34;is empty when no elements are in the array&#34;</span> <span class="k">do</span>
+      (<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).empty?.should be_true
+    <span class="k">end</span>
+
+    it <span class="s">&#34;is not empty if there are elements in the array&#34;</span> <span class="k">do</span>
+      [<span class="n">1</span>].empty?.should be_false
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="c"># lots of more specs</span>
+
+<span class="k">end</span></code></pre>
+
+<p>With <code>describe</code> and a descriptive string test files are structured.
+There commonly is one top level <code>describe</code> that defines which greater unit,
+such as a class, is tested in this spec file. Further <code>describe</code> calls can
+be nested within to specify smaller units under test like individual methods.
+It can also be used to set up a certain context - think empty Array versus
+Array with elements. There is also the <code>context</code> method that behaves just like
+<code>describe</code> but has a lightly different meaning to the reader.</p>
+
+<p>Concrete test cases are defined with <code>it</code> within a <code>describe</code> block. A
+descriptive string is supplied to <code>it</code> describing what that test case
+tests specifically.</p>
+
+<p>Specs then use the <code>should</code> method to verify that the expected value is
+returned, see the example above for details.</p>
+
+<p>By convention, specs live in the <code>spec</code> directory of a project. You can compile
+and run the specs of a project by running:</p>
+
+<pre><code>crystal spec</code></pre>
+
+<p>Also, you can compile and run individual spec files by providing their path:</p>
+
+<pre><code>crystal spec spec<span class="s">/my/</span>test<span class="s">/file_spec.cr</span></code></pre>
+
+<p>In addition, you can also run individual specs by optionally providing a line
+number:</p>
+
+<pre><code>crystal spec spec<span class="s">/my/</span>test<span class="s">/file_spec.cr:14</span></code></pre>
 
 
 
@@ -37,27 +95,32 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/spec/context.cr#L1" target="_blank">spec/context.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec.cr#L68" target="_blank">spec.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/spec/expectations.cr#L1" target="_blank">spec/expectations.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec/context.cr#L1" target="_blank">spec/context.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/spec/formatter.cr#L1" target="_blank">spec/formatter.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec/expectations.cr#L1" target="_blank">spec/expectations.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/spec/junit_formatter.cr#L3" target="_blank">spec/junit_formatter.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec/formatter.cr#L1" target="_blank">spec/formatter.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/spec/source.cr#L1" target="_blank">spec/source.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec/junit_formatter.cr#L3" target="_blank">spec/junit_formatter.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec/source.cr#L1" target="_blank">spec/source.cr</a>
     
     <br/>
   
@@ -71,6 +134,20 @@
     
       <li class="entry-summary">
         <a href="#add_formatter%28formatter%29-class-method" class="signature"><strong>.add_formatter</strong>(formatter)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#after_each%28%26block%29-class-method" class="signature"><strong>.after_each</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Instructs the spec runner to execute the given block after each spec, regardless of where this method is invoked.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#before_each%28%26block%29-class-method" class="signature"><strong>.before_each</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Instructs the spec runner to execute the given block before each spec, regardless of where this method is invoked.</p></div>
         
       </li>
     
@@ -95,7 +172,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="add_formatter(formatter)-class-method">
-      <a class="dashingAutolink" name="autolink-4459"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.add_formatter%28formatter%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4526"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.add_formatter%28formatter%29"></a><div class="signature">
         
         def self.<strong>add_formatter</strong>(formatter)
 
@@ -105,13 +182,51 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/spec/formatter.cr#L96" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec/formatter.cr#L96" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="after_each(&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-4527"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.after_each%28%26block%29"></a><div class="signature">
+        
+        def self.<strong>after_each</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Instructs the spec runner to execute the given block
+after each spec, regardless of where this method is invoked.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec.cr#L210" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="before_each(&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-4528"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.before_each%28%26block%29"></a><div class="signature">
+        
+        def self.<strong>before_each</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Instructs the spec runner to execute the given block
+before each spec, regardless of where this method is invoked.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec.cr#L203" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="override_default_formatter(formatter)-class-method">
-      <a class="dashingAutolink" name="autolink-4460"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.override_default_formatter%28formatter%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4529"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.override_default_formatter%28formatter%29"></a><div class="signature">
         
         def self.<strong>override_default_formatter</strong>(formatter)
 
@@ -121,7 +236,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/spec/formatter.cr#L92" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/spec/formatter.cr#L92" target="_blank">View source</a>]
         
       </div>
     </div>

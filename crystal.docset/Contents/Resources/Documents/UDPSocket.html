@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5033"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/UDPSocket%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>UDPSocket - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5096"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/UDPSocket%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>UDPSocket - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -32,8 +32,9 @@
 
   <h2>Overview</h2>
 
-  <p>A User Datagram Protocol socket.
-UDP runs on top of the Internet Protocol (IP) and was developed for applications that do
+  <p>A User Datagram Protocol socket.</p>
+
+<p>UDP runs on top of the Internet Protocol (IP) and was developed for applications that do
 not require reliability, acknowledgement, or flow control features at the transport layer.
 This simple protocol provides transport layer addressing in the form of UDP ports and an
 optional checksum capability.</p>
@@ -43,9 +44,8 @@ an IP network without the need to set up special transmission channels or data p
 beforehand. The UDP socket only needs to be opened for communication. It listens for
 incoming messages and sends outgoing messages on request.</p>
 
-<p>This implementation supports both IPv4 and IPv6 addresses. For IPv4 addresses you need use
-<code><a href="Socket/Family.html">Socket::Family</a>::INET</code> family (used by default). And <code><a href="Socket/Family.html">Socket::Family</a>::INET6</code> for IPv6
-addresses accordingly.</p>
+<p>This implementation supports both IPv4 and IPv6 addresses. For IPv4 addresses you must use
+<code><a href="Socket/Family.html">Socket::Family</a>::INET</code> family (default) or <code><a href="Socket/Family.html">Socket::Family</a>::INET6</code> for IPv6 # addresses.</p>
 
 <p>Usage example:</p>
 
@@ -66,7 +66,7 @@ server.gets           <span class="c"># =&gt; &#34;message\n&#34;</span>
 client.close
 server.close</code></pre>
 
-<p>The <code><a href="UDPSocket.html#send%28slice%3ASlice%28UInt8%29%29-instance-method">#send</a></code> methods may sporadically fail with <code><a href="Errno.html#ECONNREFUSED">Errno::ECONNREFUSED</a></code> when sending datagrams
+<p>The <code><a href="UDPSocket.html#send%28message%3ASlice%28UInt8%29%29-instance-method">#send</a></code> methods may sporadically fail with <code><a href="Errno.html#ECONNREFUSED">Errno::ECONNREFUSED</a></code> when sending datagrams
 to a non-listening server.
 Wrap with an exception handler to prevent raising. Example:</p>
 
@@ -94,7 +94,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L50" target="_blank">socket/udp_socket.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L50" target="_blank">socket/udp_socket.cr</a>
     
     <br/>
   
@@ -107,7 +107,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28family%3ASocket%3A%3AFamily%3D%3Cspanclass%3D%22t%22%3ESocket%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EFamily%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EINET%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(family : Socket::Family = <span class="t">Socket</span><span class="t">::</span><span class="t">Family</span><span class="t">::</span><span class="t">INET</span>)</a>
+        <a href="#new%28family%3AFamily%3DFamily%3A%3AINET%29-class-method" class="signature"><strong>.new</strong>(family : Family = <span class="t">Family</span><span class="t">::</span><span class="t">INET</span>)</a>
         
       </li>
     
@@ -119,41 +119,51 @@ Wrap with an exception handler to prevent raising. Example:</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#bind%28host%2Cport%2Cdns_timeout%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#bind</strong>(host, port, dns_timeout = <span class="n">nil</span>)</a>
+        <a href="#bind%28host%2Cport%2Cdns_timeout%3Dnil%29-instance-method" class="signature"><strong>#bind</strong>(host, port, dns_timeout = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Creates a UDP socket from the given address.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#connect%28host%2Cport%2Cdns_timeout%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2Cconnect_timeout%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#connect</strong>(host, port, dns_timeout = <span class="n">nil</span>, connect_timeout = <span class="n">nil</span>)</a>
-        
-          <div class="summary"><p>Attempts to connect the socket to a remote address and port for this socket.</p></div>
+          <div class="summary"><p>Binds the UDP socket to a local address.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#receive%28slice%3ASlice%28UInt8%29%29%3ATuple%28Int32%2CIPAddress%29-instance-method" class="signature"><strong>#receive</strong>(slice : Slice(UInt8)) : Tuple(Int32, IPAddress)</a>
+        <a href="#connect%28host%2Cport%2Cdns_timeout%3Dnil%2Cconnect_timeout%3Dnil%29-instance-method" class="signature"><strong>#connect</strong>(host, port, dns_timeout = <span class="n">nil</span>, connect_timeout = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Connects the UDP socket to a remote address to send messages to.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#send</strong>(slice : Slice(UInt8))</a>
+        <a href="#receive%28message%3ASlice%28UInt8%29%29%3ATuple%28Int32%2CIPAddress%29-instance-method" class="signature"><strong>#receive</strong>(message : Slice(UInt8)) : Tuple(Int32, IPAddress)</a>
+        
+          <div class="summary"><p>Receives a binary message on the previously bound address.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send%28string%3AString%29-instance-method" class="signature"><strong>#send</strong>(string : String)</a>
+        <a href="#send%28message%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#send</strong>(message : Slice(UInt8))</a>
+        
+          <div class="summary"><p>Sends a binary message to the previously connected remote address.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send%28string%3AString%2Caddr%3AIPAddress%29-instance-method" class="signature"><strong>#send</strong>(string : String, addr : IPAddress)</a>
+        <a href="#send%28message%3AString%29-instance-method" class="signature"><strong>#send</strong>(message : String)</a>
+        
+          <div class="summary"><p>Sends a text message to the previously connected remote address.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#send%28slice%3ASlice%28UInt8%29%2Caddr%3AIPAddress%29-instance-method" class="signature"><strong>#send</strong>(slice : Slice(UInt8), addr : IPAddress)</a>
+        <a href="#send%28message%3AString%2Caddr%3AIPAddress%29-instance-method" class="signature"><strong>#send</strong>(message : String, addr : IPAddress)</a>
+        
+          <div class="summary"><p>Sends a text message to the specified remote address.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send%28message%3ASlice%28UInt8%29%2Caddr%3AIPAddress%29-instance-method" class="signature"><strong>#send</strong>(message : Slice(UInt8), addr : IPAddress)</a>
+        
+          <div class="summary"><p>Sends a binary message to the specified remote address.</p></div>
         
       </li>
     
@@ -213,7 +223,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
     close_write</a>, 
     
   
-    <a href="Socket.html#getsockopt%28optname%2Coptval%2Clevel%3D%3Cspanclass%3D%22t%22%3ELibC%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESOL_SOCKET%3C%2Fspan%3E%29-instance-method" class="tooltip">
+    <a href="Socket.html#getsockopt%28optname%2Coptval%2Clevel%3DLibC%3A%3ASOL_SOCKET%29-instance-method" class="tooltip">
       <span>getsockopt(optname, optval, level = <span class="t">LibC</span><span class="t">::</span><span class="t">SOL_SOCKET</span>)</span>
     getsockopt</a>, 
     
@@ -273,7 +283,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
     send_buffer_size=</a>, 
     
   
-    <a href="Socket.html#setsockopt%28optname%2Coptval%2Clevel%3D%3Cspanclass%3D%22t%22%3ELibC%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESOL_SOCKET%3C%2Fspan%3E%29-instance-method" class="tooltip">
+    <a href="Socket.html#setsockopt%28optname%2Coptval%2Clevel%3DLibC%3A%3ASOL_SOCKET%29-instance-method" class="tooltip">
       <span>setsockopt(optname, optval, level = <span class="t">LibC</span><span class="t">::</span><span class="t">SOL_SOCKET</span>)</span>
     setsockopt</a>
     
@@ -291,7 +301,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
     ip?</a>, 
     
   
-    <a href="Socket.html#new%28fd%2Cblocking%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-class-method" class="tooltip">
+    <a href="Socket.html#new%28fd%2Cblocking%3Dfalse%29-class-method" class="tooltip">
       <span>new(fd, blocking = <span class="n">false</span>)</span>
     new</a>
     
@@ -330,7 +340,17 @@ Wrap with an exception handler to prevent raising. Example:</p>
     closed?</a>, 
     
   
-    <a href="IO/FileDescriptor.html#fcntl%28cmd%2Carg%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="tooltip">
+    <a href="IO/FileDescriptor.html#cooked%28%26block%29-instance-method" class="tooltip">
+      <span>cooked(&amp;block)</span>
+    cooked</a>, 
+    
+  
+    <a href="IO/FileDescriptor.html#cooked%21-instance-method" class="tooltip">
+      <span>cooked!</span>
+    cooked!</a>, 
+    
+  
+    <a href="IO/FileDescriptor.html#fcntl%28cmd%2Carg%3D0%29-instance-method" class="tooltip">
       <span>fcntl(cmd, arg = <span class="n">0</span>)</span>
     fcntl</a>, 
     
@@ -345,6 +365,21 @@ Wrap with an exception handler to prevent raising. Example:</p>
     finalize</a>, 
     
   
+    <a href="IO/FileDescriptor.html#inspect%28io%29-instance-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+    
+  
+    <a href="IO/FileDescriptor.html#noecho%28%26block%29-instance-method" class="tooltip">
+      <span>noecho(&amp;block)</span>
+    noecho</a>, 
+    
+  
+    <a href="IO/FileDescriptor.html#noecho%21-instance-method" class="tooltip">
+      <span>noecho!</span>
+    noecho!</a>, 
+    
+  
     <a href="IO/FileDescriptor.html#pos-instance-method" class="tooltip">
       <span>pos</span>
     pos</a>, 
@@ -355,8 +390,18 @@ Wrap with an exception handler to prevent raising. Example:</p>
     pos=</a>, 
     
   
-    <a href="IO/FileDescriptor.html#read_timeout%3D%28read_timeout%3ANumber%29-instance-method" class="tooltip">
-      <span>read_timeout=(read_timeout : Number)<br/>read_timeout=(read_timeout : Time::Span)<br/>read_timeout=(read_timeout : Nil)</span>
+    <a href="IO/FileDescriptor.html#raw%28%26block%29-instance-method" class="tooltip">
+      <span>raw(&amp;block)</span>
+    raw</a>, 
+    
+  
+    <a href="IO/FileDescriptor.html#raw%21-instance-method" class="tooltip">
+      <span>raw!</span>
+    raw!</a>, 
+    
+  
+    <a href="IO/FileDescriptor.html#read_timeout%3D%28read_timeout%3ATime%3A%3ASpan%29-instance-method" class="tooltip">
+      <span>read_timeout=(read_timeout : Time::Span)<br/>read_timeout=(read_timeout : Number)<br/>read_timeout=(read_timeout : Nil)</span>
     read_timeout=</a>, 
     
   
@@ -365,7 +410,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
     reopen</a>, 
     
   
-    <a href="IO/FileDescriptor.html#seek%28offset%2Cwhence%3ASeek%3D%3Cspanclass%3D%22t%22%3ESeek%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESet%3C%2Fspan%3E%29-instance-method" class="tooltip">
+    <a href="IO/FileDescriptor.html#seek%28offset%2Cwhence%3ASeek%3DSeek%3A%3ASet%29-instance-method" class="tooltip">
       <span>seek(offset, whence : Seek = <span class="t">Seek</span><span class="t">::</span><span class="t">Set</span>)</span>
     seek</a>, 
     
@@ -378,11 +423,6 @@ Wrap with an exception handler to prevent raising. Example:</p>
     <a href="IO/FileDescriptor.html#tell-instance-method" class="tooltip">
       <span>tell</span>
     tell</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#to_fd_io-instance-method" class="tooltip">
-      <span>to_fd_io</span>
-    to_fd_io</a>, 
     
   
     <a href="IO/FileDescriptor.html#tty%3F-instance-method" class="tooltip">
@@ -400,8 +440,8 @@ Wrap with an exception handler to prevent raising. Example:</p>
     write_timed_out=</a>, 
     
   
-    <a href="IO/FileDescriptor.html#write_timeout%3D%28write_timeout%3ANil%29-instance-method" class="tooltip">
-      <span>write_timeout=(write_timeout : Nil)<br/>write_timeout=(write_timeout : Time::Span)<br/>write_timeout=(write_timeout : Number)</span>
+    <a href="IO/FileDescriptor.html#write_timeout%3D%28write_timeout%3ANumber%29-instance-method" class="tooltip">
+      <span>write_timeout=(write_timeout : Number)<br/>write_timeout=(write_timeout : Nil)<br/>write_timeout=(write_timeout : Time::Span)</span>
     write_timeout=</a>
     
   
@@ -413,12 +453,12 @@ Wrap with an exception handler to prevent raising. Example:</p>
 </h3>
   
   
-    <a href="IO/FileDescriptor.html#fcntl%28fd%2Ccmd%2Carg%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method" class="tooltip">
+    <a href="IO/FileDescriptor.html#fcntl%28fd%2Ccmd%2Carg%3D0%29-class-method" class="tooltip">
       <span>fcntl(fd, cmd, arg = <span class="n">0</span>)</span>
     fcntl</a>, 
     
   
-    <a href="IO/FileDescriptor.html#new%28fd%3AInt32%2Cblocking%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2Cedge_triggerable%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-class-method" class="tooltip">
+    <a href="IO/FileDescriptor.html#new%28fd%3AInt32%2Cblocking%3Dfalse%2Cedge_triggerable%3Dfalse%29-class-method" class="tooltip">
       <span>new(fd : Int32, blocking = <span class="n">false</span>, edge_triggerable = <span class="n">false</span>)</span>
     new</a>
     
@@ -529,18 +569,8 @@ Wrap with an exception handler to prevent raising. Example:</p>
     closed?</a>, 
     
   
-    <a href="IO.html#cooked%28%26block%29-instance-method" class="tooltip">
-      <span>cooked(&amp;block)</span>
-    cooked</a>, 
-    
-  
-    <a href="IO.html#cooked%21-instance-method" class="tooltip">
-      <span>cooked!</span>
-    cooked!</a>, 
-    
-  
-    <a href="IO.html#each_byte-instance-method" class="tooltip">
-      <span>each_byte<br/>each_byte(&amp;block)</span>
+    <a href="IO.html#each_byte%28%26block%29-instance-method" class="tooltip">
+      <span>each_byte(&amp;block)<br/>each_byte</span>
     each_byte</a>, 
     
   
@@ -584,19 +614,9 @@ Wrap with an exception handler to prevent raising. Example:</p>
     printf</a>, 
     
   
-    <a href="IO.html#puts%3ANil-instance-method" class="tooltip">
-      <span>puts : Nil<br/>puts(*objects : _) : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil</span>
+    <a href="IO.html#puts%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
+      <span>puts(*objects : _) : Nil<br/>puts : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil</span>
     puts</a>, 
-    
-  
-    <a href="IO.html#raw%28%26block%29-instance-method" class="tooltip">
-      <span>raw(&amp;block)</span>
-    raw</a>, 
-    
-  
-    <a href="IO.html#raw%21-instance-method" class="tooltip">
-      <span>raw!</span>
-    raw!</a>, 
     
   
     <a href="IO.html#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
@@ -609,7 +629,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
     read_byte</a>, 
     
   
-    <a href="IO.html#read_bytes%28type%2Cformat%3AIO%3A%3AByteFormat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%29-instance-method" class="tooltip">
+    <a href="IO.html#read_bytes%28type%2Cformat%3AIO%3A%3AByteFormat%3DIO%3A%3AByteFormat%3A%3ASystemEndian%29-instance-method" class="tooltip">
       <span>read_bytes(type, format : IO::ByteFormat = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span>)</span>
     read_bytes</a>, 
     
@@ -629,11 +649,6 @@ Wrap with an exception handler to prevent raising. Example:</p>
     read_line</a>, 
     
   
-    <a href="IO.html#read_nonblock%28size%29-instance-method" class="tooltip">
-      <span>read_nonblock(size)</span>
-    read_nonblock</a>, 
-    
-  
     <a href="IO.html#read_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
       <span>read_utf8(slice : Slice(UInt8))</span>
     read_utf8</a>, 
@@ -649,7 +664,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
     rewind</a>, 
     
   
-    <a href="IO.html#set_encoding%28encoding%3AString%2Cinvalid%3ASymbol%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-instance-method" class="tooltip">
+    <a href="IO.html#set_encoding%28encoding%3AString%2Cinvalid%3ASymbol%7CNil%3Dnil%29-instance-method" class="tooltip">
       <span>set_encoding(encoding : String, invalid : Symbol | Nil = <span class="n">nil</span>)</span>
     set_encoding</a>, 
     
@@ -674,7 +689,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
     write_byte</a>, 
     
   
-    <a href="IO.html#write_bytes%28object%2Cformat%3AIO%3A%3AByteFormat%3D%3Cspanclass%3D%22t%22%3EIO%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EByteFormat%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESystemEndian%3C%2Fspan%3E%29-instance-method" class="tooltip">
+    <a href="IO.html#write_bytes%28object%2Cformat%3AIO%3A%3AByteFormat%3DIO%3A%3AByteFormat%3A%3ASystemEndian%29-instance-method" class="tooltip">
       <span>write_bytes(object, format : IO::ByteFormat = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span>)</span>
     write_bytes</a>, 
     
@@ -697,7 +712,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
     copy</a>, 
     
   
-    <a href="IO.html#pipe%28read_blocking%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2Cwrite_blocking%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%2C%26block%29-class-method" class="tooltip">
+    <a href="IO.html#pipe%28read_blocking%3Dfalse%2Cwrite_blocking%3Dfalse%2C%26block%29-class-method" class="tooltip">
       <span>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>, &amp;block)<br/>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>)</span>
     pipe</a>, 
     
@@ -855,8 +870,8 @@ Wrap with an exception handler to prevent raising. Example:</p>
     to_json</a>, 
     
   
-    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    <a href="Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
     to_pretty_json</a>, 
     
   
@@ -908,8 +923,8 @@ Wrap with an exception handler to prevent raising. Example:</p>
     dup</a>, 
     
   
-    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
     from_json</a>, 
     
   
@@ -933,6 +948,11 @@ Wrap with an exception handler to prevent raising. Example:</p>
     name</a>, 
     
   
+    <a href="Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
     <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
@@ -951,10 +971,10 @@ Wrap with an exception handler to prevent raising. Example:</p>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(family:Socket::Family=&lt;spanclass=&#34;t&#34;&gt;Socket&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;::&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;Family&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;::&lt;/span&gt;&lt;spanclass=&#34;t&#34;&gt;INET&lt;/span&gt;)-class-method">
-      <a class="dashingAutolink" name="autolink-5034"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Socket%3A%3AFamily%20%3D%20Socket%3A%3AFamily%3A%3AINET%29"></a><div class="signature">
+    <div class="entry-detail" id="new(family:Family=Family::INET)-class-method">
+      <a class="dashingAutolink" name="autolink-5097"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Family%20%3D%20Family%3A%3AINET%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(family : <a href="Socket/Family.html">Socket::Family</a> = <span class="t">Socket</span><span class="t">::</span><span class="t">Family</span><span class="t">::</span><span class="t">INET</span>)
+        def self.<strong>new</strong>(family : <a href="Socket/Family.html">Family</a> = <span class="t">Family</span><span class="t">::</span><span class="t">INET</span>)
 
         
       </div>
@@ -962,7 +982,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -972,8 +992,8 @@ Wrap with an exception handler to prevent raising. Example:</p>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="bind(host,port,dns_timeout=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-5035"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bind%28host%2C%20port%2C%20dns_timeout%20%3D%20nil%29"></a><div class="signature">
+    <div class="entry-detail" id="bind(host,port,dns_timeout=nil)-instance-method">
+      <a class="dashingAutolink" name="autolink-5098"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bind%28host%2C%20port%2C%20dns_timeout%20%3D%20nil%29"></a><div class="signature">
         
         def <strong>bind</strong>(host, port, dns_timeout = <span class="n">nil</span>)
 
@@ -981,7 +1001,7 @@ Wrap with an exception handler to prevent raising. Example:</p>
       </div>
       
         <div class="doc">
-<p>Creates a UDP socket from the given address.</p>
+<p>Binds the UDP socket to a local address.</p>
 
 <pre><code>server <span class="o">=</span> <span class="t">UDPSocket</span>.<span class="k">new</span>
 server.bind <span class="s">&#34;localhost&#34;</span>, <span class="n">1234</span></code></pre>
@@ -990,13 +1010,13 @@ server.bind <span class="s">&#34;localhost&#34;</span>, <span class="n">1234</sp
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="connect(host,port,dns_timeout=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;,connect_timeout=&lt;spanclass=&#34;n&#34;&gt;nil&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-5036"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20connect%28host%2C%20port%2C%20dns_timeout%20%3D%20nil%2C%20connect_timeout%20%3D%20nil%29"></a><div class="signature">
+    <div class="entry-detail" id="connect(host,port,dns_timeout=nil,connect_timeout=nil)-instance-method">
+      <a class="dashingAutolink" name="autolink-5099"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20connect%28host%2C%20port%2C%20dns_timeout%20%3D%20nil%2C%20connect_timeout%20%3D%20nil%29"></a><div class="signature">
         
         def <strong>connect</strong>(host, port, dns_timeout = <span class="n">nil</span>, connect_timeout = <span class="n">nil</span>)
 
@@ -1004,96 +1024,117 @@ server.bind <span class="s">&#34;localhost&#34;</span>, <span class="n">1234</sp
       </div>
       
         <div class="doc">
-<p>Attempts to connect the socket to a remote address and port for this socket.</p>
+<p>Connects the UDP socket to a remote address to send messages to.</p>
 
 <pre><code>client <span class="o">=</span> <span class="t">UDPSocket</span>.<span class="k">new</span>
-client.connect <span class="s">&#34;localhost&#34;</span>, <span class="n">1234</span></code></pre>
+client.connect(<span class="s">&#34;localhost&#34;</span>, <span class="n">1234</span>)
+client.send(<span class="s">&#34;a text message&#34;</span>)</code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L87" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="receive(slice:Slice(UInt8)):Tuple(Int32,IPAddress)-instance-method">
-      <a class="dashingAutolink" name="autolink-5037"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20receive%28slice%20%3A%20Slice%28UInt8%29%29%20%3A%20Tuple%28Int32%2C%20IPAddress%29"></a><div class="signature">
+    <div class="entry-detail" id="receive(message:Slice(UInt8)):Tuple(Int32,IPAddress)-instance-method">
+      <a class="dashingAutolink" name="autolink-5100"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20receive%28message%20%3A%20Slice%28UInt8%29%29%20%3A%20Tuple%28Int32%2C%20IPAddress%29"></a><div class="signature">
         
-        def <strong>receive</strong>(slice : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>)) : <a href="Tuple.html">Tuple</a>(<a href="Int32.html">Int32</a>, <a href="Socket/IPAddress.html">IPAddress</a>)
+        def <strong>receive</strong>(message : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>)) : <a href="Tuple.html">Tuple</a>(<a href="Int32.html">Int32</a>, <a href="Socket/IPAddress.html">IPAddress</a>)
 
         
       </div>
       
+        <div class="doc">
+<p>Receives a binary message on the previously bound address.</p>
+
+<pre><code>server <span class="o">=</span> <span class="t">UDPSocket</span>.<span class="k">new</span>
+server.bind <span class="s">&#34;localhost&#34;</span>, <span class="n">1234</span>
+
+message <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">32</span>)
+message_size, client_addr <span class="o">=</span> server.receive(message)</code></pre>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L127" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L138" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="send(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-5038"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+    <div class="entry-detail" id="send(message:Slice(UInt8))-instance-method">
+      <a class="dashingAutolink" name="autolink-5101"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28message%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
         
-        def <strong>send</strong>(slice : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>))
+        def <strong>send</strong>(message : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>))
 
         
       </div>
       
+        <div class="doc"><p>Sends a binary message to the previously connected remote address. See
+<code><a href="UDPSocket.html#connect%28host%2Cport%2Cdns_timeout%3Dnil%2Cconnect_timeout%3Dnil%29-instance-method">#connect</a></code>.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L100" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L106" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="send(string:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-5039"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28string%20%3A%20String%29"></a><div class="signature">
+    <div class="entry-detail" id="send(message:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-5102"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28message%20%3A%20String%29"></a><div class="signature">
         
-        def <strong>send</strong>(string : <a href="String.html">String</a>)
+        def <strong>send</strong>(message : <a href="String.html">String</a>)
 
         
       </div>
       
+        <div class="doc"><p>Sends a text message to the previously connected remote address. See
+<code><a href="UDPSocket.html#connect%28host%2Cport%2Cdns_timeout%3Dnil%2Cconnect_timeout%3Dnil%29-instance-method">#connect</a></code>.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L96" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L100" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="send(string:String,addr:IPAddress)-instance-method">
-      <a class="dashingAutolink" name="autolink-5040"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28string%20%3A%20String%2C%20addr%20%3A%20IPAddress%29"></a><div class="signature">
+    <div class="entry-detail" id="send(message:String,addr:IPAddress)-instance-method">
+      <a class="dashingAutolink" name="autolink-5103"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28message%20%3A%20String%2C%20addr%20%3A%20IPAddress%29"></a><div class="signature">
         
-        def <strong>send</strong>(string : <a href="String.html">String</a>, addr : <a href="Socket/IPAddress.html">IPAddress</a>)
+        def <strong>send</strong>(message : <a href="String.html">String</a>, addr : <a href="Socket/IPAddress.html">IPAddress</a>)
 
         
       </div>
       
+        <div class="doc"><p>Sends a text message to the specified remote address.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L117" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="send(slice:Slice(UInt8),addr:IPAddress)-instance-method">
-      <a class="dashingAutolink" name="autolink-5041"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28slice%20%3A%20Slice%28UInt8%29%2C%20addr%20%3A%20IPAddress%29"></a><div class="signature">
+    <div class="entry-detail" id="send(message:Slice(UInt8),addr:IPAddress)-instance-method">
+      <a class="dashingAutolink" name="autolink-5104"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20send%28message%20%3A%20Slice%28UInt8%29%2C%20addr%20%3A%20IPAddress%29"></a><div class="signature">
         
-        def <strong>send</strong>(slice : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>), addr : <a href="Socket/IPAddress.html">IPAddress</a>)
+        def <strong>send</strong>(message : <a href="Slice.html">Slice</a>(<a href="UInt8.html">UInt8</a>), addr : <a href="Socket/IPAddress.html">IPAddress</a>)
 
         
       </div>
       
+        <div class="doc"><p>Sends a binary message to the specified remote address.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/socket/udp_socket.cr#L117" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/socket/udp_socket.cr#L122" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-447"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Channel%3A%3AReceiveOp%28C%2C%20T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Channel::ReceiveOp(C, T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-445"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Channel%3A%3ASendAction%28C%2C%20T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Channel::SendAction(C, T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,13 +13,13 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Channel::ReceiveOp(C, T)
+  <span class="kind">struct</span> Channel::SendAction(C, T)
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
-<li class="superclass"><a href="../Channel/ReceiveOp.html">Channel::ReceiveOp(C, T)</a></li>
+<li class="superclass"><a href="../Channel/SendAction.html">Channel::SendAction(C, T)</a></li>
 <li class="superclass"><a href="../Struct.html">Struct</a></li>
 <li class="superclass"><a href="../Value.html">Value</a></li>
 <li class="superclass"><a href="../Object.html">Object</a></li>
@@ -31,6 +31,13 @@
 
 
 
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../Channel/SelectAction.html">Channel::SelectAction</a></li>
+  
+  </ul>
 
 
 
@@ -44,7 +51,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/concurrent/channel.cr#L111" target="_blank">concurrent/channel.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/concurrent/channel.cr#L145" target="_blank">concurrent/channel.cr</a>
     
     <br/>
   
@@ -57,7 +64,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28channel%3AC%29-class-method" class="signature"><strong>.new</strong>(channel : C)</a>
+        <a href="#new%28channel%3AC%2Cvalue%3AT%29-class-method" class="signature"><strong>.new</strong>(channel : C, value : T)</a>
         
       </li>
     
@@ -95,6 +102,38 @@
 
 
 <div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../Channel/SelectAction.html">Channel::SelectAction</a></code>
+</h3>
+  
+  
+    <a href="../Channel/SelectAction.html#execute-instance-method" class="tooltip">
+      <span>execute</span>
+    execute</a>, 
+    
+  
+    <a href="../Channel/SelectAction.html#ready%3F-instance-method" class="tooltip">
+      <span>ready?</span>
+    ready?</a>, 
+    
+  
+    <a href="../Channel/SelectAction.html#unwait-instance-method" class="tooltip">
+      <span>unwait</span>
+    unwait</a>, 
+    
+  
+    <a href="../Channel/SelectAction.html#wait-instance-method" class="tooltip">
+      <span>wait</span>
+    wait</a>
+    
+  
+
+
+    
+
+
   
     
 
@@ -226,8 +265,8 @@
     to_json</a>, 
     
   
-    <a href="../Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    <a href="../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
     to_pretty_json</a>, 
     
   
@@ -279,8 +318,8 @@
     dup</a>, 
     
   
-    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
     from_json</a>, 
     
   
@@ -304,6 +343,11 @@
     name</a>, 
     
   
+    <a href="../Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
     <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
@@ -322,10 +366,10 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(channel:C)-class-method">
-      <a class="dashingAutolink" name="autolink-448"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28channel%20%3A%20C%29"></a><div class="signature">
+    <div class="entry-detail" id="new(channel:C,value:T)-class-method">
+      <a class="dashingAutolink" name="autolink-446"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28channel%20%3A%20C%2C%20value%20%3A%20T%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(channel : C)
+        def self.<strong>new</strong>(channel : C, value : T)
 
         
       </div>
@@ -333,7 +377,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/concurrent/channel.cr#L112" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/concurrent/channel.cr#L148" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -344,7 +388,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="execute-instance-method">
-      <a class="dashingAutolink" name="autolink-449"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20execute"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-447"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20execute"></a><div class="signature">
         
         def <strong>execute</strong>
 
@@ -354,13 +398,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/concurrent/channel.cr#L119" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/concurrent/channel.cr#L155" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ready?-instance-method">
-      <a class="dashingAutolink" name="autolink-450"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ready%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-448"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ready%3F"></a><div class="signature">
         
         def <strong>ready?</strong>
 
@@ -370,13 +414,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/concurrent/channel.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/concurrent/channel.cr#L151" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unwait-instance-method">
-      <a class="dashingAutolink" name="autolink-451"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unwait"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-449"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unwait"></a><div class="signature">
         
         def <strong>unwait</strong>
 
@@ -386,13 +430,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/concurrent/channel.cr#L127" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/concurrent/channel.cr#L163" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="wait-instance-method">
-      <a class="dashingAutolink" name="autolink-452"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20wait"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-450"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20wait"></a><div class="signature">
         
         def <strong>wait</strong>
 
@@ -402,7 +446,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/concurrent/channel.cr#L123" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/concurrent/channel.cr#L159" target="_blank">View source</a>]
         
       </div>
     </div>

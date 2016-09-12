@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4016"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OptionParser%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OptionParser - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4082"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OptionParser%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OptionParser - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -72,7 +72,7 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L25" target="_blank">option_parser.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L25" target="_blank">option_parser.cr</a>
     
     <br/>
   
@@ -83,6 +83,13 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
 
   <h2>Class Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+          <div class="summary"><p>Creates a new parser.</p></div>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#new%28%26block%29-class-method" class="signature"><strong>.new</strong>(&amp;block)</a>
@@ -105,13 +112,6 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
         
       </li>
     
-      <li class="entry-summary">
-        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
-        
-          <div class="summary"><p>Creates a new parser.</p></div>
-        
-      </li>
-    
   </ul>
 
 
@@ -123,6 +123,20 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
         <a href="#banner%3D%28banner%3AString%7CNil%29-instance-method" class="signature"><strong>#banner=</strong>(banner : String | Nil)</a>
         
           <div class="summary"><p>Establishes the initial message for the help printout.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#invalid_option%28%26invalid_option%3AString-%3E%29-instance-method" class="signature"><strong>#invalid_option</strong>(&amp;invalid_option : String -&gt; )</a>
+        
+          <div class="summary"><p>Sets a handler for option arguments that didn&#39;t match any of the setup options.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#missing_option%28%26missing_option%3AString-%3E%29-instance-method" class="signature"><strong>#missing_option</strong>(&amp;missing_option : String -&gt; )</a>
+        
+          <div class="summary"><p>Sets a handler for when a option that expects an argument wasn&#39;t given any.</p></div>
         
       </li>
     
@@ -155,7 +169,7 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
       </li>
     
       <li class="entry-summary">
-        <a href="#separator%28message%3D%3Cspanclass%3D%22s%22%3E%26quot%3B%26quot%3B%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#separator</strong>(message = <span class="s">&#34;&#34;</span>)</a>
+        <a href="#separator%28message%3D%26quot%3B%26quot%3B%29-instance-method" class="signature"><strong>#separator</strong>(message = <span class="s">&#34;&#34;</span>)</a>
         
           <div class="summary"><p>Adds a separator, with an optional header message, that will be used to print the help.</p></div>
         
@@ -171,7 +185,7 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
       <li class="entry-summary">
         <a href="#unknown_args%28%26unknown_args%3AArray%28String%29%2CArray%28String%29-%3E%29-instance-method" class="signature"><strong>#unknown_args</strong>(&amp;unknown_args : Array(String), Array(String) -&gt; )</a>
         
-          <div class="summary"><p>Sets a handler for arguments that didn&#39;t match any of the setup options.</p></div>
+          <div class="summary"><p>Sets a handler for regular arguments that didn&#39;t match any of the setup options.</p></div>
         
       </li>
     
@@ -306,8 +320,8 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
     to_json</a>, 
     
   
-    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    <a href="Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
     to_pretty_json</a>, 
     
   
@@ -359,8 +373,8 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
     dup</a>, 
     
   
-    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
     from_json</a>, 
     
   
@@ -384,6 +398,11 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
     name</a>, 
     
   
+    <a href="Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
     <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
@@ -402,62 +421,8 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-4017"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28%26block%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(&amp;block)
-
-        
-      </div>
-      
-        <div class="doc"><p>Creates a new parser, with its configuration specified in the block.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L70" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="parse(args,&amp;block):self-class-method">
-      <a class="dashingAutolink" name="autolink-4018"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28args%2C%20%26block%29%20%3A%20self"></a><div class="signature">
-        
-        def self.<strong>parse</strong>(args, &amp;block) : self
-
-        
-      </div>
-      
-        <div class="doc"><p>Creates a new parser, with its configuration specified in the block, and uses it to parse the passed <code>args</code>.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L47" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="parse!(&amp;block):self-class-method">
-      <a class="dashingAutolink" name="autolink-4019"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%21%28%26block%29%20%3A%20self"></a><div class="signature">
-        
-        def self.<strong>parse!</strong>(&amp;block) : self
-
-        
-      </div>
-      
-        <div class="doc"><p>Creates a new parser, with its configuration specified in the block, and uses it to parse the arguments passed to the program.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L55" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new-class-method">
-      <a class="dashingAutolink" name="autolink-4020"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4083"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
         
         def self.<strong>new</strong>
 
@@ -469,7 +434,61 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L66" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-4084"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28%26block%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new parser, with its configuration specified in the block.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L77" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse(args,&amp;block):self-class-method">
+      <a class="dashingAutolink" name="autolink-4085"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28args%2C%20%26block%29%20%3A%20self"></a><div class="signature">
+        
+        def self.<strong>parse</strong>(args, &amp;block) : self
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new parser, with its configuration specified in the block, and uses it to parse the passed <code>args</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse!(&amp;block):self-class-method">
+      <a class="dashingAutolink" name="autolink-4086"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%21%28%26block%29%20%3A%20self"></a><div class="signature">
+        
+        def self.<strong>parse!</strong>(&amp;block) : self
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new parser, with its configuration specified in the block, and uses it to parse the arguments passed to the program.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -480,7 +499,7 @@ puts <span class="s">&#34;Hello </span><span class="i">#{</span>destination<span
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="banner=(banner:String|Nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-4021"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20banner%3D%28banner%20%3A%20String%20%7C%20Nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4087"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20banner%3D%28banner%20%3A%20String%20%7C%20Nil%29"></a><div class="signature">
         
         def <strong>banner=</strong>(banner : <a href="String.html">String</a> | <a href="Nil.html">Nil</a>)
 
@@ -499,13 +518,57 @@ and a one-line template of its invocation.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L88" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="invalid_option(&amp;invalid_option:String-&gt;)-instance-method">
+      <a class="dashingAutolink" name="autolink-4088"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20invalid_option%28%26invalid_option%20%3A%20String%20-%3E%20%29"></a><div class="signature">
+        
+        def <strong>invalid_option</strong>(&amp;invalid_option : <a href="String.html">String</a> -&gt; )
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Sets a handler for option arguments that didn&#39;t match any of the setup options.</p>
+
+<p>You typically use this to display a help message. The default raises <code><a href="OptionParser/InvalidOption.html">InvalidOption</a></code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L143" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="missing_option(&amp;missing_option:String-&gt;)-instance-method">
+      <a class="dashingAutolink" name="autolink-4089"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20missing_option%28%26missing_option%20%3A%20String%20-%3E%20%29"></a><div class="signature">
+        
+        def <strong>missing_option</strong>(&amp;missing_option : <a href="String.html">String</a> -&gt; )
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Sets a handler for when a option that expects an argument wasn&#39;t given any.</p>
+
+<p>You typically use this to display a help message. The default raises <code><a href="OptionParser/MissingOption.html">MissingOption</a></code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L137" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="on(flag,description,&amp;block:String-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-4022"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20on%28flag%2C%20description%2C%20%26block%20%3A%20String%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4090"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20on%28flag%2C%20description%2C%20%26block%20%3A%20String%20-%3E%20%29"></a><div class="signature">
         
         def <strong>on</strong>(flag, description, &amp;block : <a href="String.html">String</a> -&gt; )
 
@@ -533,13 +596,13 @@ the block. Each flag has a description, which will be used for the help message.
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L100" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="on(short_flag,long_flag,description,&amp;block:String-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-4023"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20on%28short_flag%2C%20long_flag%2C%20description%2C%20%26block%20%3A%20String%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4091"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20on%28short_flag%2C%20long_flag%2C%20description%2C%20%26block%20%3A%20String%20-%3E%20%29"></a><div class="signature">
         
         def <strong>on</strong>(short_flag, long_flag, description, &amp;block : <a href="String.html">String</a> -&gt; )
 
@@ -555,13 +618,13 @@ the block. Each flag has a description, which will be used for the help message.
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L108" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse(args)-instance-method">
-      <a class="dashingAutolink" name="autolink-4024"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20parse%28args%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4092"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20parse%28args%29"></a><div class="signature">
         
         def <strong>parse</strong>(args)
 
@@ -573,13 +636,13 @@ the block. Each flag has a description, which will be used for the help message.
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L141" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L160" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse!-instance-method">
-      <a class="dashingAutolink" name="autolink-4025"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20parse%21"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4093"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20parse%21"></a><div class="signature">
         
         def <strong>parse!</strong>
 
@@ -591,13 +654,13 @@ the block. Each flag has a description, which will be used for the help message.
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L146" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L165" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="separator(message=&lt;spanclass=&#34;s&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-4026"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20separator%28message%20%3D%20%22%22%29"></a><div class="signature">
+    <div class="entry-detail" id="separator(message=&amp;quot;&amp;quot;)-instance-method">
+      <a class="dashingAutolink" name="autolink-4094"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20separator%28message%20%3D%20%22%22%29"></a><div class="signature">
         
         def <strong>separator</strong>(message = <span class="s">&#34;&#34;</span>)
 
@@ -613,13 +676,13 @@ the block. Each flag has a description, which will be used for the help message.
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-4027"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4095"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
 
@@ -631,13 +694,13 @@ the block. Each flag has a description, which will be used for the help message.
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L121" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L147" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unknown_args(&amp;unknown_args:Array(String),Array(String)-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-4028"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown_args%28%26unknown_args%20%3A%20Array%28String%29%2C%20Array%28String%29%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4096"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown_args%28%26unknown_args%20%3A%20Array%28String%29%2C%20Array%28String%29%20-%3E%20%29"></a><div class="signature">
         
         def <strong>unknown_args</strong>(&amp;unknown_args : <a href="Array.html">Array</a>(<a href="String.html">String</a>), <a href="Array.html">Array</a>(<a href="String.html">String</a>) -&gt; )
 
@@ -645,7 +708,7 @@ the block. Each flag has a description, which will be used for the help message.
       </div>
       
         <div class="doc">
-<p>Sets a handler for arguments that didn&#39;t match any of the setup options.</p>
+<p>Sets a handler for regular arguments that didn&#39;t match any of the setup options.</p>
 
 <p>You typically use this to get the main arguments (not modifiers) that your program expects (for example, filenames)</p>
 </div>
@@ -653,7 +716,7 @@ the block. Each flag has a description, which will be used for the help message.
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/option_parser.cr#L117" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/option_parser.cr#L131" target="_blank">View source</a>]
         
       </div>
     </div>

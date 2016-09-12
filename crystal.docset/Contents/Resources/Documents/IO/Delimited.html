@@ -1,0 +1,740 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-1970"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/IO%3A%3ADelimited%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>IO::Delimited - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> IO::Delimited
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../IO/Delimited.html">IO::Delimited</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>An IO that wraps another IO, and only reads up to the beginning of a
+specified delimiter.</p>
+
+<p>This is useful for exposing part of an underlying stream to a client.</p>
+
+<pre><code>io <span class="o">=</span> <span class="t">MemoryIO</span>.<span class="k">new</span> <span class="s">&#34;abc||123&#34;</span>
+delimited <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Delimited</span>.<span class="k">new</span>(io, read_delimiter: <span class="s">&#34;||&#34;</span>)
+
+delimited.gets_to_end <span class="c"># =&gt; &#34;abc&#34;</span>
+delimited.gets_to_end <span class="c"># =&gt; nil</span>
+io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../IO.html">IO</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L15" target="_blank">io/delimited.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28io%3AIO%2Cread_delimiter%3ABytes%2Csync_close%3ABool%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(io : IO, read_delimiter : Bytes, sync_close : Bool = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Creates a new <code><a href="../IO/Delimited.html">IO::Delimited</a></code> which wraps <em>io</em>, and can read until the byte sequence <em>read_delimiter</em> is found.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28io%3AIO%2Cread_delimiter%3AString%2Csync_close%3ABool%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(io : IO, read_delimiter : String, sync_close : Bool = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Creates a new <code><a href="../IO/Delimited.html">IO::Delimited</a></code> which wraps <em>io</em>, and can read until the byte sequence <em>read_delimiter</em> (interpreted as UTF-8) is found.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#closed%3F%3ABool-instance-method" class="signature"><strong>#closed?</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#read</strong>(slice : Slice(UInt8))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_delimiter%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#read_delimiter</strong> : Slice(UInt8)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sync_close%3D%28sync_close%29-instance-method" class="signature"><strong>#sync_close=</strong>(sync_close)</a>
+        
+          <div class="summary"><p>If <code>sync_close</code> is true, closing this IO will close the underlying IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sync_close%3F%3ABool-instance-method" class="signature"><strong>#sync_close?</strong> : Bool</a>
+        
+          <div class="summary"><p>If <code>sync_close</code> is true, closing this IO will close the underlying IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#write%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#write</strong>(slice : Slice(UInt8))</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../IO.html">IO</a></code>
+</h3>
+  
+  
+    <a href="../IO.html#%3C%3C%28obj%29%3Aself-instance-method" class="tooltip">
+      <span>&lt;
+    &lt;&lt;</span></a>, 
+    
+  
+    <a href="../IO.html#close-instance-method" class="tooltip">
+      <span>close</span>
+    close</a>, 
+    
+  
+    <a href="../IO.html#closed%3F-instance-method" class="tooltip">
+      <span>closed?</span>
+    closed?</a>, 
+    
+  
+    <a href="../IO.html#each_byte%28%26block%29-instance-method" class="tooltip">
+      <span>each_byte(&amp;block)<br/>each_byte</span>
+    each_byte</a>, 
+    
+  
+    <a href="../IO.html#each_char%28%26block%29-instance-method" class="tooltip">
+      <span>each_char(&amp;block)<br/>each_char</span>
+    each_char</a>, 
+    
+  
+    <a href="../IO.html#each_line%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="tooltip">
+      <span>each_line(*args, **options)<br/>each_line(*args, **options, &amp;block)</span>
+    each_line</a>, 
+    
+  
+    <a href="../IO.html#encoding%3AString-instance-method" class="tooltip">
+      <span>encoding : String</span>
+    encoding</a>, 
+    
+  
+    <a href="../IO.html#flush-instance-method" class="tooltip">
+      <span>flush</span>
+    flush</a>, 
+    
+  
+    <a href="../IO.html#gets%28limit%3AInt%29%3AString%7CNil-instance-method" class="tooltip">
+      <span>gets(limit : Int) : String | Nil<br/>gets(delimiter : Char, limit : Int) : String | Nil<br/>gets(delimiter : Char) : String | Nil<br/>gets : String | Nil<br/>gets(delimiter : String) : String | Nil</span>
+    gets</a>, 
+    
+  
+    <a href="../IO.html#gets_to_end%3AString-instance-method" class="tooltip">
+      <span>gets_to_end : String</span>
+    gets_to_end</a>, 
+    
+  
+    <a href="../IO.html#print%28obj%29%3ANil-instance-method" class="tooltip">
+      <span>print(obj) : Nil<br/>print(*objects : _) : Nil</span>
+    print</a>, 
+    
+  
+    <a href="../IO.html#printf%28format_string%2C%2Aargs%29%3ANil-instance-method" class="tooltip">
+      <span>printf(format_string, *args) : Nil<br/>printf(format_string, args : Array | Tuple) : Nil</span>
+    printf</a>, 
+    
+  
+    <a href="../IO.html#puts%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
+      <span>puts(*objects : _) : Nil<br/>puts : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil</span>
+    puts</a>, 
+    
+  
+    <a href="../IO.html#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
+      <span>read(slice : Slice(UInt8))</span>
+    read</a>, 
+    
+  
+    <a href="../IO.html#read_byte%3AUInt8%7CNil-instance-method" class="tooltip">
+      <span>read_byte : UInt8 | Nil</span>
+    read_byte</a>, 
+    
+  
+    <a href="../IO.html#read_bytes%28type%2Cformat%3AIO%3A%3AByteFormat%3DIO%3A%3AByteFormat%3A%3ASystemEndian%29-instance-method" class="tooltip">
+      <span>read_bytes(type, format : IO::ByteFormat = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span>)</span>
+    read_bytes</a>, 
+    
+  
+    <a href="../IO.html#read_char%3AChar%7CNil-instance-method" class="tooltip">
+      <span>read_char : Char | Nil</span>
+    read_char</a>, 
+    
+  
+    <a href="../IO.html#read_fully%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
+      <span>read_fully(slice : Slice(UInt8))</span>
+    read_fully</a>, 
+    
+  
+    <a href="../IO.html#read_line%28%2Aargs%2C%2A%2Aoptions%29%3AString%7CNil-instance-method" class="tooltip">
+      <span>read_line(*args, **options) : String | Nil</span>
+    read_line</a>, 
+    
+  
+    <a href="../IO.html#read_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
+      <span>read_utf8(slice : Slice(UInt8))</span>
+    read_utf8</a>, 
+    
+  
+    <a href="../IO.html#read_utf8_byte-instance-method" class="tooltip">
+      <span>read_utf8_byte</span>
+    read_utf8_byte</a>, 
+    
+  
+    <a href="../IO.html#rewind-instance-method" class="tooltip">
+      <span>rewind</span>
+    rewind</a>, 
+    
+  
+    <a href="../IO.html#set_encoding%28encoding%3AString%2Cinvalid%3ASymbol%7CNil%3Dnil%29-instance-method" class="tooltip">
+      <span>set_encoding(encoding : String, invalid : Symbol | Nil = <span class="n">nil</span>)</span>
+    set_encoding</a>, 
+    
+  
+    <a href="../IO.html#skip%28bytes_count%3AInt%29%3ANil-instance-method" class="tooltip">
+      <span>skip(bytes_count : Int) : Nil</span>
+    skip</a>, 
+    
+  
+    <a href="../IO.html#tty%3F%3ABool-instance-method" class="tooltip">
+      <span>tty? : Bool</span>
+    tty?</a>, 
+    
+  
+    <a href="../IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method" class="tooltip">
+      <span>write(slice : Slice(UInt8)) : Nil</span>
+    write</a>, 
+    
+  
+    <a href="../IO.html#write_byte%28byte%3AUInt8%29-instance-method" class="tooltip">
+      <span>write_byte(byte : UInt8)</span>
+    write_byte</a>, 
+    
+  
+    <a href="../IO.html#write_bytes%28object%2Cformat%3AIO%3A%3AByteFormat%3DIO%3A%3AByteFormat%3A%3ASystemEndian%29-instance-method" class="tooltip">
+      <span>write_bytes(object, format : IO::ByteFormat = <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">SystemEndian</span>)</span>
+    write_bytes</a>, 
+    
+  
+    <a href="../IO.html#write_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
+      <span>write_utf8(slice : Slice(UInt8))</span>
+    write_utf8</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from module <code><a href="../IO.html">IO</a></code>
+</h3>
+  
+  
+    <a href="../IO.html#copy%28src%2Cdst%2Climit%3AInt%29-class-method" class="tooltip">
+      <span>copy(src, dst, limit : Int)<br/>copy(src, dst)</span>
+    copy</a>, 
+    
+  
+    <a href="../IO.html#pipe%28read_blocking%3Dfalse%2Cwrite_blocking%3Dfalse%2C%26block%29-class-method" class="tooltip">
+      <span>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>, &amp;block)<br/>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>)</span>
+    pipe</a>, 
+    
+  
+    <a href="../IO.html#select%28read_ios%2Cwrite_ios%2Cerror_ios%2Ctimeout_sec%3ALibC%3A%3ATimeT%7CInt%7CFloat%7CNil%29-class-method" class="tooltip">
+      <span>select(read_ios, write_ios, error_ios, timeout_sec : LibC::TimeT | Int | Float | Nil)<br/>select(read_ios, write_ios = <span class="n">nil</span>, error_ios = <span class="n">nil</span>)</span>
+    select</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../JSON/Builder.html">JSON::Builder</a></code>
+</h3>
+  
+  
+    <a href="../JSON/Builder.html#json_array%28%26block%29-instance-method" class="tooltip">
+      <span>json_array(&amp;block)</span>
+    json_array</a>, 
+    
+  
+    <a href="../JSON/Builder.html#json_object%28%26block%29-instance-method" class="tooltip">
+      <span>json_object(&amp;block)</span>
+    json_object</a>
+    
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)<br/>==(other : self)</span>
+    ==</a>, 
+    
+  
+    <a href="../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    ===</a>, 
+    
+  
+    <a href="../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+    
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../Object.html#to_yaml-instance-method" class="tooltip">
+      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+    
+  
+    <a href="../Object.html#clone-class-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+    
+  
+    <a href="../Object.html#dup-class-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string : String) : self</span>
+    from_yaml</a>, 
+    
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+    
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+    
+  
+    <a href="../Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>, 
+    
+  
+    <a href="../Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
+      <span>|(other : U.class)</span>
+    |</a>
+    
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(io:IO,read_delimiter:Bytes,sync_close:Bool=false)-class-method">
+      <a class="dashingAutolink" name="autolink-1971"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20read_delimiter%20%3A%20Bytes%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>, read_delimiter : <a href="../Bytes.html">Bytes</a>, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new <code><a href="../IO/Delimited.html">IO::Delimited</a></code> which wraps <em>io</em>, and can read until the
+byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, calling
+<code><a href="../IO/Delimited.html#close-instance-method">#close</a></code> calls <code><a href="../IO/Delimited.html#close-instance-method">#close</a></code> on the underlying IO.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(io:IO,read_delimiter:String,sync_close:Bool=false)-class-method">
+      <a class="dashingAutolink" name="autolink-1972"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20read_delimiter%20%3A%20String%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>, read_delimiter : <a href="../String.html">String</a>, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new <code><a href="../IO/Delimited.html">IO::Delimited</a></code> which wraps <em>io</em>, and can read until the
+byte sequence <em>read_delimiter</em> (interpreted as UTF-8) is found. If
+<em>sync_close</em> is set, calling <code><a href="../IO/Delimited.html#close-instance-method">#close</a></code> calls <code><a href="../IO/Delimited.html#close-instance-method">#close</a></code> on the underlying
+IO.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="close-instance-method">
+      <a class="dashingAutolink" name="autolink-1973"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+        
+        def <strong>close</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L117" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="closed?:Bool-instance-method">
+      <a class="dashingAutolink" name="autolink-1974"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F%20%3A%20Bool"></a><div class="signature">
+        
+        def <strong>closed?</strong> : <a href="../Bool.html">Bool</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read(slice:Slice(UInt8))-instance-method">
+      <a class="dashingAutolink" name="autolink-1975"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+        
+        def <strong>read</strong>(slice : <a href="../Slice.html">Slice</a>(<a href="../UInt8.html">UInt8</a>))
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_delimiter:Slice(UInt8)-instance-method">
+      <a class="dashingAutolink" name="autolink-1976"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_delimiter%20%3A%20Slice%28UInt8%29"></a><div class="signature">
+        
+        def <strong>read_delimiter</strong> : <a href="../Slice.html">Slice</a>(<a href="../UInt8.html">UInt8</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sync_close=(sync_close)-instance-method">
+      <a class="dashingAutolink" name="autolink-1977"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%29"></a><div class="signature">
+        
+        def <strong>sync_close=</strong>(sync_close)
+
+        
+      </div>
+      
+        <div class="doc"><p>If <code>sync_close</code> is true, closing this IO will close the underlying IO.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sync_close?:Bool-instance-method">
+      <a class="dashingAutolink" name="autolink-1978"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F%20%3A%20Bool"></a><div class="signature">
+        
+        def <strong>sync_close?</strong> : <a href="../Bool.html">Bool</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>If <code>sync_close</code> is true, closing this IO will close the underlying IO.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="write(slice:Slice(UInt8))-instance-method">
+      <a class="dashingAutolink" name="autolink-1979"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+        
+        def <strong>write</strong>(slice : <a href="../Slice.html">Slice</a>(<a href="../UInt8.html">UInt8</a>))
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/io/delimited.cr#L113" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

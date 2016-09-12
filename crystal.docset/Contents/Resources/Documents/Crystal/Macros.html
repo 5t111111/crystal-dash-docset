@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-929"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Crystal%3A%3AMacros%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Crystal::Macros - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-943"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Crystal%3A%3AMacros%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Crystal::Macros - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -46,7 +46,7 @@ are documented on the classes in this module. Additionally, methods of the
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L7" target="_blank">compiler/crystal/macros.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L7" target="_blank">compiler/crystal/macros.cr</a>
     
     <br/>
   
@@ -68,9 +68,30 @@ are documented on the classes in this module. Additionally, methods of the
       </li>
     
       <li class="entry-summary">
-        <a href="#debug%28format%3D%3Cspanclass%3D%22n%22%3Etrue%3C%2Fspan%3E%29%3ANop-instance-method" class="signature"><strong>#debug</strong>(format = <span class="n">true</span>) : Nop</a>
+        <a href="#column_number%3AStringLiteral%7CNilLiteral-instance-method" class="signature"><strong>#column_number</strong> : StringLiteral | NilLiteral</a>
+        
+          <div class="summary"><p>Returns the column number where this node begins.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#debug%28format%3Dtrue%29%3ANop-instance-method" class="signature"><strong>#debug</strong>(format = <span class="n">true</span>) : Nop</a>
         
           <div class="summary"><p>Outputs the current macro&#39;s buffer to the standard output.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_column_number%3AStringLiteral%7CNilLiteral-instance-method" class="signature"><strong>#end_column_number</strong> : StringLiteral | NilLiteral</a>
+        
+          <div class="summary"><p>Returns the column number where this node ends.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_line_number%3AStringLiteral%7CNilLiteral-instance-method" class="signature"><strong>#end_line_number</strong> : StringLiteral | NilLiteral</a>
+        
+          <div class="summary"><p>Returns the line number where this node ends.</p></div>
         
       </li>
     
@@ -78,6 +99,20 @@ are documented on the classes in this module. Additionally, methods of the
         <a href="#env%28name%29%3AStringLiteral%7CNilLiteral-instance-method" class="signature"><strong>#env</strong>(name) : StringLiteral | NilLiteral</a>
         
           <div class="summary"><p>Gets the value of an environment variable at compile-time, or <code>nil</code> if it doesn&#39;t exist.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#filename%3AStringLiteral%7CNilLiteral-instance-method" class="signature"><strong>#filename</strong> : StringLiteral | NilLiteral</a>
+        
+          <div class="summary"><p>Returns the filename where this node is located.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#line_number%3AStringLiteral%7CNilLiteral-instance-method" class="signature"><strong>#line_number</strong> : StringLiteral | NilLiteral</a>
+        
+          <div class="summary"><p>Returns the line number where this node begins.</p></div>
         
       </li>
     
@@ -132,7 +167,7 @@ are documented on the classes in this module. Additionally, methods of the
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="`(command):MacroId-instance-method">
-      <a class="dashingAutolink" name="autolink-930"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%60%28command%29%20%3A%20MacroId"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-944"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%60%28command%29%20%3A%20MacroId"></a><div class="signature">
         
         def <strong>`</strong>(command) : <a href="../Crystal/Macros/MacroId.html">MacroId</a>
 
@@ -145,13 +180,36 @@ Gives a compile-time error if the command failed to execute.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="debug(format=&lt;spanclass=&#34;n&#34;&gt;true&lt;/span&gt;):Nop-instance-method">
-      <a class="dashingAutolink" name="autolink-931"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20debug%28format%20%3D%20true%29%20%3A%20Nop"></a><div class="signature">
+    <div class="entry-detail" id="column_number:StringLiteral|NilLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-945"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20column_number%20%3A%20StringLiteral%20%7C%20NilLiteral"></a><div class="signature">
+        
+        def <strong>column_number</strong> : <a href="../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../Crystal/Macros/NilLiteral.html">NilLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the column number where this node begins.
+Might return nil if the location is not known.</p>
+
+<p>The first column number in a line is 1.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L94" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debug(format=true):Nop-instance-method">
+      <a class="dashingAutolink" name="autolink-946"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20debug%28format%20%3D%20true%29%20%3A%20Nop"></a><div class="signature">
         
         def <strong>debug</strong>(format = <span class="n">true</span>) : <a href="../Crystal/Macros/Nop.html">Nop</a>
 
@@ -170,13 +228,59 @@ formatter, but you can disable this by passing <code>false</code> to this method
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_column_number:StringLiteral|NilLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-947"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_column_number%20%3A%20StringLiteral%20%7C%20NilLiteral"></a><div class="signature">
+        
+        def <strong>end_column_number</strong> : <a href="../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../Crystal/Macros/NilLiteral.html">NilLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the column number where this node ends.
+Might return nil if the location is not known.</p>
+
+<p>The first column number in a line is 1.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L108" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_line_number:StringLiteral|NilLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-948"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_line_number%20%3A%20StringLiteral%20%7C%20NilLiteral"></a><div class="signature">
+        
+        def <strong>end_line_number</strong> : <a href="../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../Crystal/Macros/NilLiteral.html">NilLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the line number where this node ends.
+Might return nil if the location is not known.</p>
+
+<p>The first line number in a file is 1.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="env(name):StringLiteral|NilLiteral-instance-method">
-      <a class="dashingAutolink" name="autolink-932"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20env%28name%29%20%3A%20StringLiteral%20%7C%20NilLiteral"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-949"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20env%28name%29%20%3A%20StringLiteral%20%7C%20NilLiteral"></a><div class="signature">
         
         def <strong>env</strong>(name) : <a href="../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../Crystal/Macros/NilLiteral.html">NilLiteral</a>
 
@@ -188,13 +292,55 @@ formatter, but you can disable this by passing <code>false</code> to this method
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="filename:StringLiteral|NilLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-950"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20filename%20%3A%20StringLiteral%20%7C%20NilLiteral"></a><div class="signature">
+        
+        def <strong>filename</strong> : <a href="../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../Crystal/Macros/NilLiteral.html">NilLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the filename where this node is located.
+Might return nil if the location is not known.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="line_number:StringLiteral|NilLiteral-instance-method">
+      <a class="dashingAutolink" name="autolink-951"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20line_number%20%3A%20StringLiteral%20%7C%20NilLiteral"></a><div class="signature">
+        
+        def <strong>line_number</strong> : <a href="../Crystal/Macros/StringLiteral.html">StringLiteral</a> | <a href="../Crystal/Macros/NilLiteral.html">NilLiteral</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the line number where this node begins.
+Might return nil if the location is not known.</p>
+
+<p>The first line number in a file is 1.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L87" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="p(expression):Nop-instance-method">
-      <a class="dashingAutolink" name="autolink-933"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20p%28expression%29%20%3A%20Nop"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-952"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20p%28expression%29%20%3A%20Nop"></a><div class="signature">
         
         def <strong>p</strong>(expression) : <a href="../Crystal/Macros/Nop.html">Nop</a>
 
@@ -206,13 +352,13 @@ formatter, but you can disable this by passing <code>false</code> to this method
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L26" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="puts(expression):Nop-instance-method">
-      <a class="dashingAutolink" name="autolink-934"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20puts%28expression%29%20%3A%20Nop"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-953"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20puts%28expression%29%20%3A%20Nop"></a><div class="signature">
         
         def <strong>puts</strong>(expression) : <a href="../Crystal/Macros/Nop.html">Nop</a>
 
@@ -224,13 +370,13 @@ formatter, but you can disable this by passing <code>false</code> to this method
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="raise(message):NoReturn-instance-method">
-      <a class="dashingAutolink" name="autolink-935"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raise%28message%29%20%3A%20NoReturn"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-954"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raise%28message%29%20%3A%20NoReturn"></a><div class="signature">
         
         def <strong>raise</strong>(message) : NoReturn
 
@@ -242,13 +388,13 @@ formatter, but you can disable this by passing <code>false</code> to this method
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="run(filename,*args):MacroId-instance-method">
-      <a class="dashingAutolink" name="autolink-936"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20run%28filename%2C%20%2Aargs%29%20%3A%20MacroId"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-955"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20run%28filename%2C%20%2Aargs%29%20%3A%20MacroId"></a><div class="signature">
         
         def <strong>run</strong>(filename, *args) : <a href="../Crystal/Macros/MacroId.html">MacroId</a>
 
@@ -290,13 +436,13 @@ A connection to <code>http://example.com</code> is never made at runtime.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L75" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="system(command):MacroId-instance-method">
-      <a class="dashingAutolink" name="autolink-937"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20system%28command%29%20%3A%20MacroId"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-956"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20system%28command%29%20%3A%20MacroId"></a><div class="signature">
         
         def <strong>system</strong>(command) : <a href="../Crystal/Macros/MacroId.html">MacroId</a>
 
@@ -309,7 +455,7 @@ Gives a compile-time error if the command failed to execute.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/compiler/crystal/macros.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/compiler/crystal/macros.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>

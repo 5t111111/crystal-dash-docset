@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3670"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/NamedTuple%28%2A%2AT%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>NamedTuple(**T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3779"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/NamedTuple%28%2A%2AT%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>NamedTuple(**T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -68,17 +68,17 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L25" target="_blank">named_tuple.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L25" target="_blank">named_tuple.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/json/to_json.cr#L266" target="_blank">json/to_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/json/to_json.cr#L266" target="_blank">json/to_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/yaml/to_yaml.cr#L77" target="_blank">yaml/to_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/yaml/to_yaml.cr#L77" target="_blank">yaml/to_yaml.cr</a>
     
     <br/>
   
@@ -136,14 +136,14 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28key%3ASymbol%29-instance-method" class="signature"><strong>#[]</strong>(key : Symbol)</a>
+        <a href="#%5B%5D%28key%3ASymbol%7CString%29-instance-method" class="signature"><strong>#[]</strong>(key : Symbol | String)</a>
         
           <div class="summary"><p>Returns the value for the given <em>key</em>, if there&#39;s such key, otherwise raises <code><a href="KeyError.html">KeyError</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%3F%28key%3ASymbol%29-instance-method" class="signature"><strong>#[]?</strong>(key : Symbol)</a>
+        <a href="#%5B%5D%3F%28key%3ASymbol%7CString%29-instance-method" class="signature"><strong>#[]?</strong>(key : Symbol | String)</a>
         
           <div class="summary"><p>Returns the value for the given <em>key</em>, if there&#39;s such key, otherwise returns <code>nil</code>.</p></div>
         
@@ -178,7 +178,7 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#each_with_index%28offset%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-instance-method" class="signature"><strong>#each_with_index</strong>(offset = <span class="n">0</span>, &amp;block)</a>
+        <a href="#each_with_index%28offset%3D0%2C%26block%29-instance-method" class="signature"><strong>#each_with_index</strong>(offset = <span class="n">0</span>, &amp;block)</a>
         
           <div class="summary"><p>Yields each key and value, together with an index starting at <em>offset</em>, in this named tuple.</p></div>
         
@@ -192,16 +192,23 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#fetch%28key%3ASymbol%2C%26block%29-instance-method" class="signature"><strong>#fetch</strong>(key : Symbol, &amp;block)</a>
+        <a href="#fetch%28key%3AString%2C%26block%29-instance-method" class="signature"><strong>#fetch</strong>(key : String, &amp;block)</a>
         
           <div class="summary"><p>Returns the value for the given <em>key</em>, if there&#39;s such key, otherwise the value returned by the block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#fetch%28key%3ASymbol%2Cdefault_value%29-instance-method" class="signature"><strong>#fetch</strong>(key : Symbol, default_value)</a>
+        <a href="#fetch%28key%3ASymbol%7CString%2Cdefault_value%29-instance-method" class="signature"><strong>#fetch</strong>(key : Symbol | String, default_value)</a>
         
           <div class="summary"><p>Returns the value for the given <em>key</em>, if there&#39;s such key, otherwise returns <em>default_value</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fetch%28key%3ASymbol%2C%26block%29-instance-method" class="signature"><strong>#fetch</strong>(key : Symbol, &amp;block)</a>
+        
+          <div class="summary"><p>Returns the value for the given <em>key</em>, if there&#39;s such key, otherwise the value returned by the block.</p></div>
         
       </li>
     
@@ -398,8 +405,8 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
     to_json</a>, 
     
   
-    <a href="Object.html#to_pretty_json%28io%3AIO%29-instance-method" class="tooltip">
-      <span>to_pretty_json(io : IO)<br/>to_pretty_json</span>
+    <a href="Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
     to_pretty_json</a>, 
     
   
@@ -451,8 +458,8 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
     dup</a>, 
     
   
-    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
     from_json</a>, 
     
   
@@ -476,6 +483,11 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
     name</a>, 
     
   
+    <a href="Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
     <a href="Object.html#to_s%28io%29-class-method" class="tooltip">
       <span>to_s(io)</span>
     to_s</a>, 
@@ -495,7 +507,7 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="from(hash:Hash)-class-method">
-      <a class="dashingAutolink" name="autolink-3671"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from%28hash%20%3A%20Hash%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3749"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from%28hash%20%3A%20Hash%29"></a><div class="signature">
         
         def self.<strong>from</strong>(hash : <a href="Hash.html">Hash</a>)
 
@@ -513,13 +525,13 @@ and might raise <code><a href="KeyError.html">KeyError</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new-class-method">
-      <a class="dashingAutolink" name="autolink-3672"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3750"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
         
         def self.<strong>new</strong>
 
@@ -541,13 +553,13 @@ creates empty named tuples, something that you can&#39;t do with a tuple literal
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-3673"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3751"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pull : <a href="JSON/PullParser.html">JSON::PullParser</a>)
 
@@ -557,13 +569,13 @@ creates empty named tuples, something that you can&#39;t do with a tuple literal
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/json/from_json.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/json/from_json.cr#L148" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(pull:YAML::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-3674"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3752"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pull : <a href="YAML/PullParser.html">YAML::PullParser</a>)
 
@@ -573,7 +585,7 @@ creates empty named tuples, something that you can&#39;t do with a tuple literal
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/yaml/from_yaml.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/yaml/from_yaml.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -584,7 +596,7 @@ creates empty named tuples, something that you can&#39;t do with a tuple literal
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:NamedTuple)-instance-method">
-      <a class="dashingAutolink" name="autolink-3675"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20NamedTuple%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3753"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20NamedTuple%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="NamedTuple.html">NamedTuple</a>)
 
@@ -608,13 +620,13 @@ tuple1 <span class="o">==</span> tuple4 <span class="c"># =&gt; true</span></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L399" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L420" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-3676"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3754"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>==</strong>(other : self)
 
@@ -638,15 +650,15 @@ tuple1 <span class="o">==</span> tuple4 <span class="c"># =&gt; true</span></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L391" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L412" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="[](key:Symbol)-instance-method">
-      <a class="dashingAutolink" name="autolink-3677"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%20%3A%20Symbol%29"></a><div class="signature">
+    <div class="entry-detail" id="[](key:Symbol|String)-instance-method">
+      <a class="dashingAutolink" name="autolink-3755"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%20%3A%20Symbol%20%7C%20String%29"></a><div class="signature">
         
-        def <strong>[]</strong>(key : <a href="Symbol.html">Symbol</a>)
+        def <strong>[]</strong>(key : <a href="Symbol.html">Symbol</a> | <a href="String.html">String</a>)
 
         
       </div>
@@ -659,6 +671,9 @@ tuple1 <span class="o">==</span> tuple4 <span class="c"># =&gt; true</span></cod
 key <span class="o">=</span> <span class="n">:name</span>
 tuple[key] <span class="c"># =&gt; &#34;Crystal&#34;</span>
 
+key <span class="o">=</span> <span class="s">&#34;year&#34;</span>
+tuple[key] <span class="c"># =&gt; 2011</span>
+
 key <span class="o">=</span> <span class="n">:other</span>
 tuple[key] <span class="c"># # =&gt; KeyError</span></code></pre>
 </div>
@@ -666,15 +681,15 @@ tuple[key] <span class="c"># # =&gt; KeyError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L92" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="[]?(key:Symbol)-instance-method">
-      <a class="dashingAutolink" name="autolink-3678"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28key%20%3A%20Symbol%29"></a><div class="signature">
+    <div class="entry-detail" id="[]?(key:Symbol|String)-instance-method">
+      <a class="dashingAutolink" name="autolink-3756"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28key%20%3A%20Symbol%20%7C%20String%29"></a><div class="signature">
         
-        def <strong>[]?</strong>(key : <a href="Symbol.html">Symbol</a>)
+        def <strong>[]?</strong>(key : <a href="Symbol.html">Symbol</a> | <a href="String.html">String</a>)
 
         
       </div>
@@ -687,6 +702,9 @@ tuple[key] <span class="c"># # =&gt; KeyError</span></code></pre>
 key <span class="o">=</span> <span class="n">:name</span>
 tuple[key]? <span class="c"># =&gt; &#34;Crystal&#34;</span>
 
+key <span class="o">=</span> <span class="s">&#34;year&#34;</span>
+tuple[key] <span class="c"># =&gt; 2011</span>
+
 key <span class="o">=</span> <span class="n">:other</span>
 tuple[key]? <span class="c"># =&gt; nil</span></code></pre>
 </div>
@@ -694,13 +712,13 @@ tuple[key]? <span class="c"># =&gt; nil</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L107" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-3679"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3757"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -712,13 +730,13 @@ tuple[key]? <span class="c"># =&gt; nil</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L416" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L437" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3680"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3758"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block)
 
@@ -742,13 +760,13 @@ year <span class="o">=</span> <span class="n">2011</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L238" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L259" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_key(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3681"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_key%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3759"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_key%28%26block%29"></a><div class="signature">
         
         def <strong>each_key</strong>(&amp;block)
 
@@ -772,13 +790,13 @@ year</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L260" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L281" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_value(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3682"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_value%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3760"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_value%28%26block%29"></a><div class="signature">
         
         def <strong>each_value</strong>(&amp;block)
 
@@ -802,13 +820,13 @@ tuple.each_value <span class="k">do</span> <span class="o">|</span>value<span cl
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L282" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L303" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_with_index(offset=&lt;spanclass=&#34;n&#34;&gt;0&lt;/span&gt;,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3683"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_index%28offset%20%3D%200%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="each_with_index(offset=0,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-3761"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_index%28offset%20%3D%200%2C%20%26block%29"></a><div class="signature">
         
         def <strong>each_with_index</strong>(offset = <span class="n">0</span>, &amp;block)
 
@@ -832,13 +850,13 @@ tuple.each_with_index <span class="k">do</span> <span class="o">|</span>key, val
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L304" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L325" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="empty?-instance-method">
-      <a class="dashingAutolink" name="autolink-3684"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3762"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
         
         def <strong>empty?</strong>
 
@@ -855,13 +873,62 @@ tuple.empty? <span class="c"># =&gt; false</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L374" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L395" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fetch(key:String,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-3763"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%20%3A%20String%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>fetch</strong>(key : <a href="String.html">String</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the value for the given <em>key</em>, if there&#39;s such key, otherwise the value returned by the block.</p>
+
+<pre><code>tuple <span class="o">=</span> {name: <span class="s">&#34;Crystal&#34;</span>, year: <span class="n">2011</span>}
+tuple.fetch(<span class="s">&#34;name&#34;</span>) { <span class="s">&#34;Unknown&#34;</span> } <span class="c"># =&gt; &#34;Crystal&#34;</span>
+tuple.fetch(<span class="s">&#34;other&#34;</span>) { <span class="n">0</span> }        <span class="c"># =&gt; 0</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L150" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fetch(key:Symbol|String,default_value)-instance-method">
+      <a class="dashingAutolink" name="autolink-3764"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%20%3A%20Symbol%20%7C%20String%2C%20default_value%29"></a><div class="signature">
+        
+        def <strong>fetch</strong>(key : <a href="Symbol.html">Symbol</a> | <a href="String.html">String</a>, default_value)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the value for the given <em>key</em>, if there&#39;s such key, otherwise returns <em>default_value</em>.</p>
+
+<pre><code>tuple <span class="o">=</span> {name: <span class="s">&#34;Crystal&#34;</span>, year: <span class="n">2011</span>}
+tuple.fetch(<span class="n">:name</span>, <span class="s">&#34;Unknown&#34;</span>) <span class="c"># =&gt; &#34;Crystal&#34;</span>
+tuple.fetch(<span class="s">&#34;year&#34;</span>, <span class="n">0</span>)        <span class="c"># =&gt; 2011</span>
+tuple.fetch(<span class="n">:other</span>, <span class="n">0</span>)        <span class="c"># =&gt; 0</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fetch(key:Symbol,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3685"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%20%3A%20Symbol%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3765"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%20%3A%20Symbol%2C%20%26block%29"></a><div class="signature">
         
         def <strong>fetch</strong>(key : <a href="Symbol.html">Symbol</a>, &amp;block)
 
@@ -879,37 +946,13 @@ tuple.fetch(<span class="n">:other</span>) { <span class="n">0</span> }        <
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L129" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fetch(key:Symbol,default_value)-instance-method">
-      <a class="dashingAutolink" name="autolink-3686"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%20%3A%20Symbol%2C%20default_value%29"></a><div class="signature">
-        
-        def <strong>fetch</strong>(key : <a href="Symbol.html">Symbol</a>, default_value)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Returns the value for the given <em>key</em>, if there&#39;s such key, otherwise returns <em>default_value</em>.</p>
-
-<pre><code>tuple <span class="o">=</span> {name: <span class="s">&#34;Crystal&#34;</span>, year: <span class="n">2011</span>}
-tuple.fetch(<span class="n">:name</span>, <span class="s">&#34;Unknown&#34;</span>) <span class="c"># =&gt; &#34;Crystal&#34;</span>
-tuple.fetch(<span class="n">:other</span>, <span class="n">0</span>)        <span class="c"># =&gt; 0</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L118" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L136" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="from(hash:Hash)-instance-method">
-      <a class="dashingAutolink" name="autolink-3687"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from%28hash%20%3A%20Hash%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3766"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from%28hash%20%3A%20Hash%29"></a><div class="signature">
         
         def <strong>from</strong>(hash : <a href="Hash.html">Hash</a>)
 
@@ -933,13 +976,13 @@ speak_about(<span class="o">**</span>{thing: <span class="t">String</span>, n: <
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="has_key?(key:Symbol):Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-3688"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_key%3F%28key%20%3A%20Symbol%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3767"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_key%3F%28key%20%3A%20Symbol%29%20%3A%20Bool"></a><div class="signature">
         
         def <strong>has_key?</strong>(key : <a href="Symbol.html">Symbol</a>) : <a href="Bool.html">Bool</a>
 
@@ -957,13 +1000,13 @@ tuple.has_key?(<span class="n">:other</span>) <span class="c"># =&gt; false</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L192" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L213" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-3689"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3768"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
         
         def <strong>hash</strong>
 
@@ -979,13 +1022,13 @@ tuple.has_key?(<span class="n">:other</span>) <span class="c"># =&gt; false</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L139" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L160" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect-instance-method">
-      <a class="dashingAutolink" name="autolink-3690"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3769"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect"></a><div class="signature">
         
         def <strong>inspect</strong>
 
@@ -997,13 +1040,13 @@ tuple.has_key?(<span class="n">:other</span>) <span class="c"># =&gt; false</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L149" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L170" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="keys-instance-method">
-      <a class="dashingAutolink" name="autolink-3691"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20keys"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3770"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20keys"></a><div class="signature">
         
         def <strong>keys</strong>
 
@@ -1020,13 +1063,13 @@ tuple.keys <span class="c"># =&gt; {:name, :year}</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L159" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L180" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="map(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3692"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3771"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%28%26block%29"></a><div class="signature">
         
         def <strong>map</strong>(&amp;block)
 
@@ -1044,13 +1087,13 @@ tuple.map { <span class="o">|</span>k, v<span class="o">|</span> <span class="s"
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L320" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L341" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size-instance-method">
-      <a class="dashingAutolink" name="autolink-3693"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3772"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
         
         def <strong>size</strong>
 
@@ -1067,13 +1110,13 @@ tuple.size <span class="c"># =&gt; 2</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L364" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L385" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_a-instance-method">
-      <a class="dashingAutolink" name="autolink-3694"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3773"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
         
         def <strong>to_a</strong>
 
@@ -1090,13 +1133,13 @@ tuple.to_a <span class="c"># =&gt; [{:name, &#34;Crystal&#34;}, {:year, 2011}]</
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L334" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L355" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_h-instance-method">
-      <a class="dashingAutolink" name="autolink-3695"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_h"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3774"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_h"></a><div class="signature">
         
         def <strong>to_h</strong>
 
@@ -1113,13 +1156,13 @@ tuple.to_h <span class="c"># =&gt; {:name =&gt; &#34;Crystal&#34;, :year =&gt; 2
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L348" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L369" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_json(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-3696"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3775"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_json</strong>(io : <a href="IO.html">IO</a>)
 
@@ -1129,13 +1172,13 @@ tuple.to_h <span class="c"># =&gt; {:name =&gt; &#34;Crystal&#34;, :year =&gt; 2
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/json/to_json.cr#L267" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/json/to_json.cr#L267" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-3697"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3776"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -1152,13 +1195,13 @@ tuple.to_s <span class="c"># =&gt; %({name: &#34;Crystal&#34;, year: 2011})</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L205" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L226" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_yaml(yaml:YAML::Generator)-instance-method">
-      <a class="dashingAutolink" name="autolink-3698"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28yaml%20%3A%20YAML%3A%3AGenerator%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3777"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28yaml%20%3A%20YAML%3A%3AGenerator%29"></a><div class="signature">
         
         def <strong>to_yaml</strong>(yaml : <a href="YAML/Generator.html">YAML::Generator</a>)
 
@@ -1168,13 +1211,13 @@ tuple.to_s <span class="c"># =&gt; %({name: &#34;Crystal&#34;, year: 2011})</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/yaml/to_yaml.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/yaml/to_yaml.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="values-instance-method">
-      <a class="dashingAutolink" name="autolink-3699"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20values"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3778"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20values"></a><div class="signature">
         
         def <strong>values</strong>
 
@@ -1191,7 +1234,7 @@ tuple.values <span class="c"># =&gt; {&#34;Crystal&#34;, 2011}</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/68783f1ebdd5b9bbefc8892ddbc200fe1f13bbea/src/named_tuple.cr#L175" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/named_tuple.cr#L196" target="_blank">View source</a>]
         
       </div>
     </div>
