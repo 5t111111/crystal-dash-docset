@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3850"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OAuth%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OAuth - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3942"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OAuth%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OAuth - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -20,6 +20,42 @@
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>The OAuth module provides an <code><a href="OAuth/Consumer.html">OAuth::Consumer</a></code> as specified by <a href="https://tools.ietf.org/html/rfc5849" target="_blank">RFC5849</a>.</p>
+
+<h3>Performing HTTP client requests with OAuth authentication</h3>
+
+<p>Assuming you have an access token, its secret, the consumer key and the consumer secret,
+you can setup an <code><a href="HTTP/Client.html">HTTP::Client</a></code> to be authenticated with OAuth using this code:</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;http/client&#34;</span>
+<span class="k">require</span> <span class="s">&#34;oauth&#34;</span>
+
+token <span class="o">=</span> <span class="s">&#34;some_token&#34;</span>
+secret <span class="o">=</span> <span class="s">&#34;some_secret&#34;</span>
+consumer_key <span class="o">=</span> <span class="s">&#34;some_consumer_key&#34;</span>
+consumer_secret <span class="o">=</span> <span class="s">&#34;some_consumer_secret&#34;</span>
+
+<span class="c"># Create an HTTP::Client as usual</span>
+client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;api.example.com&#34;</span>, tls: <span class="n">true</span>)
+
+<span class="c"># Prepare it for using OAuth authentication</span>
+<span class="t">OAuth</span>.authenticate(client, token, secret, consumer_key, consumer_secret)
+
+<span class="c"># Execute requests as usual: they will be authenticated</span>
+client.get(<span class="s">&#34;/some_path&#34;</span>)</code></pre>
+
+<p>This is implemented with <code><a href="HTTP/Client.html#before_request%28%26callback%3AHTTP%3A%3ARequest-%3E%29-instance-method">HTTP::Client#before_request</a></code> to add an authorization
+header to every request.</p>
+
+<p>Alternatively, you can create an <code><a href="OAuth/Consumer.html">OAuth::Consumer</a></code> and then invoke its <code><a href="OAuth/Consumer.html#authenticate%28client%3AHTTP%3A%3AClient%2Ctoken%3AAccessToken%29%3ANil-instance-method">OAuth::Consumer#authenticate</a></code>
+method, or create an <code><a href="OAuth/AccessToken.html">OAuth::AccessToken</a></code> and invoke its <code><a href="OAuth/AccessToken.html#authenticate%28client%2Cconsumer_key%2Cconsumer_secret%2Cextra_params%3Dnil%29-instance-method">OAuth::AccessToken#authenticate</a></code>.</p>
+
+<h3>Obtaining access tokens</h3>
+
+<p>See <code><a href="OAuth/Consumer.html">OAuth::Consumer</a></code> for an example.</p>
 
 
 
@@ -37,7 +73,12 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/oauth/access_token.cr#L1" target="_blank">oauth/access_token.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/access_token.cr#L1" target="_blank">oauth/access_token.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/oauth.cr#L36" target="_blank">oauth/oauth.cr</a>
     
     <br/>
   
@@ -45,6 +86,18 @@
 
 
 
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#authenticate%28client%3AHTTP%3A%3AClient%2Ctoken%2Ctoken_secret%2Cconsumer_key%2Cconsumer_secret%2Cextra_params%3Dnil%29%3ANil-class-method" class="signature"><strong>.authenticate</strong>(client : HTTP::Client, token, token_secret, consumer_key, consumer_secret, extra_params = <span class="n">nil</span>) : Nil</a>
+        
+          <div class="summary"><p>Sets up an HTTP::Client to add an OAuth authorization header to every request performed.</p></div>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -56,6 +109,28 @@
   
 </div>
 
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="authenticate(client:HTTP::Client,token,token_secret,consumer_key,consumer_secret,extra_params=nil):Nil-class-method">
+      <a class="dashingAutolink" name="autolink-3943"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.authenticate%28client%20%3A%20HTTP%3A%3AClient%2C%20token%2C%20token_secret%2C%20consumer_key%2C%20consumer_secret%2C%20extra_params%20%3D%20nil%29%20%3A%20Nil"></a><div class="signature">
+        
+        def self.<strong>authenticate</strong>(client : <a href="HTTP/Client.html">HTTP::Client</a>, token, token_secret, consumer_key, consumer_secret, extra_params = <span class="n">nil</span>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets up an HTTP::Client to add an OAuth authorization header to every request performed.
+Check this module&#39;s docs for an example usage.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/oauth.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 

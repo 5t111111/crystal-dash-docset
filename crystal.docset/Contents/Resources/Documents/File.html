@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1218"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/File%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>File - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1307"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/File%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>File - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -44,17 +44,17 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L7" target="_blank">file.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L7" target="_blank">file.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file/flock.cr#L16" target="_blank">file/flock.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file/flock.cr#L16" target="_blank">file/flock.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file/stat.cr#L3" target="_blank">file/stat.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file/stat.cr#L3" target="_blank">file/stat.cr</a>
     
     <br/>
   
@@ -100,6 +100,13 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#basename%28path%29%3AString-class-method" class="signature"><strong>.basename</strong>(path) : String</a>
+        
+          <div class="summary"><p>Returns the last component of the given <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#basename%28path%2Csuffix%29%3AString-class-method" class="signature"><strong>.basename</strong>(path, suffix) : String</a>
         
           <div class="summary"><p>Returns the last component of the given <em>path</em>.</p></div>
@@ -107,9 +114,16 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#basename%28path%29%3AString-class-method" class="signature"><strong>.basename</strong>(path) : String</a>
+        <a href="#chmod%28path%2Cmode%3AInt%29-class-method" class="signature"><strong>.chmod</strong>(path, mode : Int)</a>
         
-          <div class="summary"><p>Returns the last component of the given <em>path</em>.</p></div>
+          <div class="summary"><p>Changes the permissions of the specified file.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chown%28path%2Cuid%3AInt%7CNil%3D-1%2Cgid%3AInt%3D-1%2Cfollow_symlinks%3Dfalse%29-class-method" class="signature"><strong>.chown</strong>(path, uid : Int | Nil = <span class="n">-1</span>, gid : Int = <span class="n">-1</span>, follow_symlinks = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Changes the owner of the specified file.</p></div>
         
       </li>
     
@@ -135,16 +149,16 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#each_line%28filename%2Cencoding%3Dnil%2Cinvalid%3Dnil%2C%26block%29-class-method" class="signature"><strong>.each_line</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>, &amp;block)</a>
+        <a href="#each_line%28filename%2Cencoding%3Dnil%2Cinvalid%3Dnil%29-class-method" class="signature"><strong>.each_line</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Yields each line in <em>filename</em> to the given block.</p></div>
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for each line in <em>filename</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_line%28filename%2Cencoding%3Dnil%2Cinvalid%3Dnil%29-class-method" class="signature"><strong>.each_line</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>)</a>
+        <a href="#each_line%28filename%2Cencoding%3Dnil%2Cinvalid%3Dnil%2C%26block%29-class-method" class="signature"><strong>.each_line</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>, &amp;block)</a>
         
-          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for each line in <em>filename</em>.</p></div>
+          <div class="summary"><p>Yields each line in <em>filename</em> to the given block.</p></div>
         
       </li>
     
@@ -1026,8 +1040,8 @@
     to_s</a>, 
     
   
-    <a href="Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
-      <span>|(other : U.class)</span>
+    <a href="Object.html#%7C%28other%3AU.class%29forallU-class-method" class="tooltip">
+      <span>|(other : U.class) forall U</span>
     |</a>
     
   
@@ -1039,8 +1053,30 @@
 
   <h2>Class Method Detail</h2>
   
+    <div class="entry-detail" id="basename(path):String-class-method">
+      <a class="dashingAutolink" name="autolink-1308"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.basename%28path%29%20%3A%20String"></a><div class="signature">
+        
+        def self.<strong>basename</strong>(path) : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the last component of the given <em>path</em>.</p>
+
+<pre><code><span class="t">File</span>.basename(<span class="s">&#34;/foo/bar/file.cr&#34;</span>) <span class="c"># =&gt; &#34;file.cr&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L214" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="basename(path,suffix):String-class-method">
-      <a class="dashingAutolink" name="autolink-1219"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.basename%28path%2C%20suffix%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1309"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.basename%28path%2C%20suffix%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>basename</strong>(path, suffix) : <a href="String.html">String</a>
 
@@ -1058,35 +1094,69 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L238" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L238" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="basename(path):String-class-method">
-      <a class="dashingAutolink" name="autolink-1220"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.basename%28path%29%20%3A%20String"></a><div class="signature">
+    <div class="entry-detail" id="chmod(path,mode:Int)-class-method">
+      <a class="dashingAutolink" name="autolink-1310"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.chmod%28path%2C%20mode%20%3A%20Int%29"></a><div class="signature">
         
-        def self.<strong>basename</strong>(path) : <a href="String.html">String</a>
+        def self.<strong>chmod</strong>(path, mode : <a href="Int.html">Int</a>)
 
         
       </div>
       
         <div class="doc">
-<p>Returns the last component of the given <em>path</em>.</p>
+<p>Changes the permissions of the specified file.</p>
 
-<pre><code><span class="t">File</span>.basename(<span class="s">&#34;/foo/bar/file.cr&#34;</span>) <span class="c"># =&gt; &#34;file.cr&#34;</span></code></pre>
+<p>Symlinks are dereferenced, so that only the permissions of the symlink
+destination are changed, never the permissions of the symlink itself.</p>
+
+<pre><code><span class="t">File</span>.chmod(<span class="s">&#34;foo/bin&#34;</span>, <span class="n">0o755</span>)
+<span class="t">File</span>.chmod(<span class="s">&#34;foo/bin/exec&#34;</span>, <span class="n">0o700</span>)</code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L214" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L276" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chown(path,uid:Int|Nil=-1,gid:Int=-1,follow_symlinks=false)-class-method">
+      <a class="dashingAutolink" name="autolink-1311"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.chown%28path%2C%20uid%20%3A%20Int%20%7C%20Nil%20%3D%20-1%2C%20gid%20%3A%20Int%20%3D%20-1%2C%20follow_symlinks%20%3D%20false%29"></a><div class="signature">
+        
+        def self.<strong>chown</strong>(path, uid : <a href="Int.html">Int</a> | <a href="Nil.html">Nil</a> = <span class="n">-1</span>, gid : <a href="Int.html">Int</a> = <span class="n">-1</span>, follow_symlinks = <span class="n">false</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Changes the owner of the specified file.</p>
+
+<pre><code><span class="t">File</span>.chown(<span class="s">&#34;/foo/bar/baz.cr&#34;</span>, <span class="n">1001</span>, <span class="n">100</span>)
+<span class="t">File</span>.chown(<span class="s">&#34;/foo/bar&#34;</span>, gid: <span class="n">100</span>)</code></pre>
+
+<p>Unless <em>follow_symlinks</em> is set to true, then the owner symlink itself will
+be changed, otherwise the owner of the symlink destination file will be
+changed. For example, assuming symlinks as <code>foo -&gt; bar -&gt; baz</code>:</p>
+
+<pre><code><span class="t">File</span>.chown(<span class="s">&#34;foo&#34;</span>, gid: <span class="n">100</span>)                        <span class="c"># changes foo&#39;s gid</span>
+<span class="t">File</span>.chown(<span class="s">&#34;foo&#34;</span>, gid: <span class="n">100</span>, follow_symlinks: <span class="n">true</span>) <span class="c"># changes baz&#39;s gid</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L258" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="delete(path)-class-method">
-      <a class="dashingAutolink" name="autolink-1221"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.delete%28path%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1312"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.delete%28path%29"></a><div class="signature">
         
         def self.<strong>delete</strong>(path)
 
@@ -1104,13 +1174,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L250" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L289" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="directory?(path):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-1222"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.directory%3F%28path%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1313"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.directory%3F%28path%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>directory?</strong>(path) : <a href="Bool.html">Bool</a>
 
@@ -1130,13 +1200,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L186" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L186" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dirname(path):String-class-method">
-      <a class="dashingAutolink" name="autolink-1223"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dirname%28path%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1314"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dirname%28path%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>dirname</strong>(path) : <a href="String.html">String</a>
 
@@ -1152,13 +1222,31 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L195" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L195" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_line(filename,encoding=nil,invalid=nil)-class-method">
+      <a class="dashingAutolink" name="autolink-1315"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each_line%28filename%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29"></a><div class="signature">
+        
+        def self.<strong>each_line</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for each line in <em>filename</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L449" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_line(filename,encoding=nil,invalid=nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1224"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each_line%28filename%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each_line%28filename%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>each_line</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>, &amp;block)
 
@@ -1176,31 +1264,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L401" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="each_line(filename,encoding=nil,invalid=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-1225"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each_line%28filename%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29"></a><div class="signature">
-        
-        def self.<strong>each_line</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>)
-
-        
-      </div>
-      
-        <div class="doc"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> for each line in <em>filename</em>.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L410" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L440" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="executable?(path):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-1226"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.executable%3F%28path%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.executable%3F%28path%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>executable?</strong>(path) : <a href="Bool.html">Bool</a>
 
@@ -1217,13 +1287,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L148" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exists?(path):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-1227"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exists%3F%28path%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1318"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exists%3F%28path%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>exists?</strong>(path) : <a href="Bool.html">Bool</a>
 
@@ -1241,13 +1311,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L118" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L118" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="expand_path(path,dir=nil):String-class-method">
-      <a class="dashingAutolink" name="autolink-1228"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.expand_path%28path%2C%20dir%20%3D%20nil%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.expand_path%28path%2C%20dir%20%3D%20nil%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>expand_path</strong>(path, dir = <span class="n">nil</span>) : <a href="String.html">String</a>
 
@@ -1267,13 +1337,13 @@ referenced from the current working directory of the process unless
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L283" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L322" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="extname(filename):String-class-method">
-      <a class="dashingAutolink" name="autolink-1229"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.extname%28filename%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.extname%28filename%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>extname</strong>(filename) : <a href="String.html">String</a>
 
@@ -1289,13 +1359,13 @@ referenced from the current working directory of the process unless
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L262" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L301" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="file?(path):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-1230"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.file%3F%28path%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1321"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.file%3F%28path%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>file?</strong>(path) : <a href="Bool.html">Bool</a>
 
@@ -1315,13 +1385,13 @@ referenced from the current working directory of the process unless
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L166" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L166" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="join(parts:Array|Tuple):String-class-method">
-      <a class="dashingAutolink" name="autolink-1231"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.join%28parts%20%3A%20Array%20%7C%20Tuple%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1322"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.join%28parts%20%3A%20Array%20%7C%20Tuple%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>join</strong>(parts : <a href="Array.html">Array</a> | <a href="Tuple.html">Tuple</a>) : <a href="String.html">String</a>
 
@@ -1339,13 +1409,13 @@ referenced from the current working directory of the process unless
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L459" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L498" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="join(*parts):String-class-method">
-      <a class="dashingAutolink" name="autolink-1232"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.join%28%2Aparts%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1323"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.join%28%2Aparts%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>join</strong>(*parts) : <a href="String.html">String</a>
 
@@ -1363,13 +1433,13 @@ referenced from the current working directory of the process unless
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L448" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L487" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="link(old_path,new_path)-class-method">
-      <a class="dashingAutolink" name="autolink-1233"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.link%28old_path%2C%20new_path%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1324"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.link%28old_path%2C%20new_path%29"></a><div class="signature">
         
         def self.<strong>link</strong>(old_path, new_path)
 
@@ -1382,13 +1452,13 @@ given by <em>old_path</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L330" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L369" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="lstat(path):Stat-class-method">
-      <a class="dashingAutolink" name="autolink-1234"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.lstat%28path%29%20%3A%20Stat"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1325"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.lstat%28path%29%20%3A%20Stat"></a><div class="signature">
         
         def self.<strong>lstat</strong>(path) : <a href="File/Stat.html">Stat</a>
 
@@ -1408,13 +1478,13 @@ information about it is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(filename:String,mode=&amp;quot;r&amp;quot;,perm=DEFAULT_CREATE_MODE,encoding=nil,invalid=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-1235"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28filename%20%3A%20String%2C%20mode%20%3D%20%22r%22%2C%20perm%20%3D%20DEFAULT_CREATE_MODE%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1326"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28filename%20%3A%20String%2C%20mode%20%3D%20%22r%22%2C%20perm%20%3D%20DEFAULT_CREATE_MODE%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29"></a><div class="signature">
         
         def self.<strong>new</strong>(filename : <a href="String.html">String</a>, mode = <span class="s">&#34;r&#34;</span>, perm = <span class="t">DEFAULT_CREATE_MODE</span>, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>)
 
@@ -1424,13 +1494,13 @@ information about it is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L25" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="open(filename,mode=&amp;quot;r&amp;quot;,perm=DEFAULT_CREATE_MODE,encoding=nil,invalid=nil):self-class-method">
-      <a class="dashingAutolink" name="autolink-1236"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28filename%2C%20mode%20%3D%20%22r%22%2C%20perm%20%3D%20DEFAULT_CREATE_MODE%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1327"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28filename%2C%20mode%20%3D%20%22r%22%2C%20perm%20%3D%20DEFAULT_CREATE_MODE%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29%20%3A%20self"></a><div class="signature">
         
         def self.<strong>open</strong>(filename, mode = <span class="s">&#34;r&#34;</span>, perm = <span class="t">DEFAULT_CREATE_MODE</span>, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>) : self
 
@@ -1443,13 +1513,13 @@ permissions may be set using the <em>perm</em> parameter.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L357" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L396" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="open(filename,mode=&amp;quot;r&amp;quot;,perm=DEFAULT_CREATE_MODE,encoding=nil,invalid=nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1237"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28filename%2C%20mode%20%3D%20%22r%22%2C%20perm%20%3D%20DEFAULT_CREATE_MODE%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1328"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28filename%2C%20mode%20%3D%20%22r%22%2C%20perm%20%3D%20DEFAULT_CREATE_MODE%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>open</strong>(filename, mode = <span class="s">&#34;r&#34;</span>, perm = <span class="t">DEFAULT_CREATE_MODE</span>, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>, &amp;block)
 
@@ -1463,13 +1533,13 @@ file as an argument, the file will be automatically closed when the block return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L364" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L403" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read(filename,encoding=nil,invalid=nil):String-class-method">
-      <a class="dashingAutolink" name="autolink-1238"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.read%28filename%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1329"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.read%28filename%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>read</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>) : <a href="String.html">String</a>
 
@@ -1486,13 +1556,13 @@ file as an argument, the file will be automatically closed when the block return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L379" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L418" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_lines(filename,encoding=nil,invalid=nil):Array(String)-class-method">
-      <a class="dashingAutolink" name="autolink-1239"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.read_lines%28filename%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29%20%3A%20Array%28String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1330"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.read_lines%28filename%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29%20%3A%20Array%28String%29"></a><div class="signature">
         
         def self.<strong>read_lines</strong>(filename, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>) : <a href="Array.html">Array</a>(<a href="String.html">String</a>)
 
@@ -1509,13 +1579,13 @@ file as an argument, the file will be automatically closed when the block return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L420" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L459" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="readable?(path):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-1240"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.readable%3F%28path%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1331"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.readable%3F%28path%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>readable?</strong>(path) : <a href="Bool.html">Bool</a>
 
@@ -1532,13 +1602,13 @@ file as an argument, the file will be automatically closed when the block return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="real_path(path):String-class-method">
-      <a class="dashingAutolink" name="autolink-1241"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.real_path%28path%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1332"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.real_path%28path%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>real_path</strong>(path) : <a href="String.html">String</a>
 
@@ -1550,13 +1620,13 @@ file as an argument, the file will be automatically closed when the block return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L322" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L361" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="rename(old_filename,new_filename)-class-method">
-      <a class="dashingAutolink" name="autolink-1242"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.rename%28old_filename%2C%20new_filename%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1333"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.rename%28old_filename%2C%20new_filename%29"></a><div class="signature">
         
         def self.<strong>rename</strong>(old_filename, new_filename)
 
@@ -1572,13 +1642,13 @@ file as an argument, the file will be automatically closed when the block return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L493" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L532" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size(filename):UInt64-class-method">
-      <a class="dashingAutolink" name="autolink-1243"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.size%28filename%29%20%3A%20UInt64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1334"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.size%28filename%29%20%3A%20UInt64"></a><div class="signature">
         
         def self.<strong>size</strong>(filename) : <a href="UInt64.html">UInt64</a>
 
@@ -1590,13 +1660,13 @@ file as an argument, the file will be automatically closed when the block return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L484" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L523" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="stat(path):Stat-class-method">
-      <a class="dashingAutolink" name="autolink-1244"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.stat%28path%29%20%3A%20Stat"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1335"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.stat%28path%29%20%3A%20Stat"></a><div class="signature">
         
         def self.<strong>stat</strong>(path) : <a href="File/Stat.html">Stat</a>
 
@@ -1616,13 +1686,13 @@ it is followed and information about the target is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L88" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="symlink(old_path,new_path)-class-method">
-      <a class="dashingAutolink" name="autolink-1245"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.symlink%28old_path%2C%20new_path%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1336"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.symlink%28old_path%2C%20new_path%29"></a><div class="signature">
         
         def self.<strong>symlink</strong>(old_path, new_path)
 
@@ -1634,13 +1704,13 @@ it is followed and information about the target is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L337" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L376" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="symlink?(path):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-1246"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.symlink%3F%28path%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1337"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.symlink%3F%28path%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>symlink?</strong>(path) : <a href="Bool.html">Bool</a>
 
@@ -1652,13 +1722,13 @@ it is followed and information about the target is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L344" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L383" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="writable?(path):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-1247"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.writable%3F%28path%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1338"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.writable%3F%28path%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>writable?</strong>(path) : <a href="Bool.html">Bool</a>
 
@@ -1675,13 +1745,13 @@ it is followed and information about the target is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L138" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L138" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write(filename,content,perm=DEFAULT_CREATE_MODE,encoding=nil,invalid=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-1248"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.write%28filename%2C%20content%2C%20perm%20%3D%20DEFAULT_CREATE_MODE%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1339"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.write%28filename%2C%20content%2C%20perm%20%3D%20DEFAULT_CREATE_MODE%2C%20encoding%20%3D%20nil%2C%20invalid%20%3D%20nil%29"></a><div class="signature">
         
         def self.<strong>write</strong>(filename, content, perm = <span class="t">DEFAULT_CREATE_MODE</span>, encoding = <span class="n">nil</span>, invalid = <span class="n">nil</span>)
 
@@ -1699,7 +1769,7 @@ it is followed and information about the target is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L435" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L474" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1710,7 +1780,7 @@ it is followed and information about the target is returned.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="flock_exclusive(blocking=true,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1249"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_exclusive%28blocking%20%3D%20true%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1340"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_exclusive%28blocking%20%3D%20true%2C%20%26block%29"></a><div class="signature">
         
         def <strong>flock_exclusive</strong>(blocking = <span class="n">true</span>, &amp;block)
 
@@ -1720,13 +1790,13 @@ it is followed and information about the target is returned.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file/flock.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file/flock.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="flock_exclusive(blocking=true)-instance-method">
-      <a class="dashingAutolink" name="autolink-1250"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_exclusive%28blocking%20%3D%20true%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1341"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_exclusive%28blocking%20%3D%20true%29"></a><div class="signature">
         
         def <strong>flock_exclusive</strong>(blocking = <span class="n">true</span>)
 
@@ -1739,13 +1809,13 @@ Errno::EWOULDBLOCK is raised if <em>blocking</em> is set to <code>false</code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file/flock.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file/flock.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="flock_shared(blocking=true,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1251"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_shared%28blocking%20%3D%20true%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1342"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_shared%28blocking%20%3D%20true%2C%20%26block%29"></a><div class="signature">
         
         def <strong>flock_shared</strong>(blocking = <span class="n">true</span>, &amp;block)
 
@@ -1755,13 +1825,13 @@ Errno::EWOULDBLOCK is raised if <em>blocking</em> is set to <code>false</code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file/flock.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file/flock.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="flock_shared(blocking=true)-instance-method">
-      <a class="dashingAutolink" name="autolink-1252"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_shared%28blocking%20%3D%20true%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1343"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_shared%28blocking%20%3D%20true%29"></a><div class="signature">
         
         def <strong>flock_shared</strong>(blocking = <span class="n">true</span>)
 
@@ -1774,13 +1844,13 @@ Errno::EWOULDBLOCK is raised if <em>blocking</em> is set to <code>false</code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file/flock.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file/flock.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="flock_unlock-instance-method">
-      <a class="dashingAutolink" name="autolink-1253"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_unlock"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1344"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flock_unlock"></a><div class="signature">
         
         def <strong>flock_unlock</strong>
 
@@ -1792,13 +1862,13 @@ Errno::EWOULDBLOCK is raised if <em>blocking</em> is set to <code>false</code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file/flock.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file/flock.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-1254"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1345"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io)
 
@@ -1808,13 +1878,13 @@ Errno::EWOULDBLOCK is raised if <em>blocking</em> is set to <code>false</code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L517" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L556" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="path:String-instance-method">
-      <a class="dashingAutolink" name="autolink-1255"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20path%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1346"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20path%20%3A%20String"></a><div class="signature">
         
         def <strong>path</strong> : <a href="String.html">String</a>
 
@@ -1824,13 +1894,13 @@ Errno::EWOULDBLOCK is raised if <em>blocking</em> is set to <code>false</code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size-instance-method">
-      <a class="dashingAutolink" name="autolink-1256"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1347"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
         
         def <strong>size</strong>
 
@@ -1842,13 +1912,13 @@ Errno::EWOULDBLOCK is raised if <em>blocking</em> is set to <code>false</code> a
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L502" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L541" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="truncate(size=0)-instance-method">
-      <a class="dashingAutolink" name="autolink-1257"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20truncate%28size%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1348"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20truncate%28size%20%3D%200%29"></a><div class="signature">
         
         def <strong>truncate</strong>(size = <span class="n">0</span>)
 
@@ -1861,7 +1931,7 @@ for writing.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/file.cr#L508" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/file.cr#L547" target="_blank">View source</a>]
         
       </div>
     </div>

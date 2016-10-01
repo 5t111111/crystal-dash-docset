@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3837"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OAuth%3A%3AConsumer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OAuth::Consumer - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3929"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OAuth%3A%3AConsumer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OAuth::Consumer - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -27,6 +27,58 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>An OAuth consumer.</p>
+
+<p>For a quick example of how to authenticate an <code><a href="../HTTP/Client.html">HTTP::Client</a></code> with OAuth if
+you already have an access token, check the <code><a href="../OAuth.html">OAuth</a></code> module description.</p>
+
+<p>This class also provides methods to get request tokens, build authorize URIs
+and get access tokens, as specified by <a href="https://tools.ietf.org/html/rfc5849" target="_blank">RFC5849</a>.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;oauth&#34;</span>
+
+consumer_key <span class="o">=</span> <span class="s">&#34;some_key&#34;</span>
+consumer_secret <span class="o">=</span> <span class="s">&#34;some_secret&#34;</span>
+oauth_callback <span class="o">=</span> <span class="s">&#34;http://some.callback&#34;</span>
+
+<span class="c"># Create consumer, optionally pass custom URIs if needed,</span>
+<span class="c"># if the request, authorize or access_token URIs are not the standard ones</span>
+consumer <span class="o">=</span> <span class="t">OAuth</span><span class="t">::</span><span class="t">Consumer</span>.<span class="k">new</span>(<span class="s">&#34;api.example.com&#34;</span>, consumer_key, consumer_secret)
+
+<span class="c"># Get a request token.</span>
+<span class="c"># We probably need to save this somewhere to get it back in the</span>
+<span class="c"># callback URL (saving token and secret should be enough)</span>
+request_token <span class="o">=</span> consumer.get_request_token(oauth_callback)
+
+<span class="c"># Build an authorize URI</span>
+authorize_uri <span class="o">=</span> consumer.get_authorize_uri(request_token, oauth_callback)
+
+<span class="c"># Redirect the user to `authorize_uri`...</span>
+<span class="c">#</span>
+<span class="c"># ...</span>
+<span class="c">#</span>
+<span class="c"># When http://some.callback is hit, once the user authorized the access,</span>
+<span class="c"># we resume our logic to finally get an access token. The callback URL</span>
+<span class="c"># should receive an `oauth_verifier` parameter that we need to use.</span>
+oauth_verifier <span class="o">=</span> request.params[<span class="s">&#34;oauth_verifier&#34;</span>]
+
+<span class="c"># Get the access token</span>
+access_token <span class="o">=</span> consumer.get_access_token(request_token, oauth_verifier)
+
+<span class="c"># Probably save the access token for reuse... This can be done</span>
+<span class="c"># with `to_json` and `from_json`.</span>
+
+<span class="c"># Use the token to authenticate an HTTP::Client</span>
+client <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;api.example.com&#34;</span>, tls: <span class="n">true</span>)
+access_token.authenticate(client, consumer_key, consumer_secret)
+
+<span class="c"># And do requests as usual</span>
+client.get <span class="s">&#34;/some_path&#34;</span></code></pre>
+
 
 
 
@@ -43,7 +95,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/oauth/consumer.cr#L1" target="_blank">oauth/consumer.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/consumer.cr#L52" target="_blank">oauth/consumer.cr</a>
     
     <br/>
   
@@ -68,22 +120,30 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#authenticate%28client%3AHTTP%3A%3AClient%2Ctoken%3AAccessToken%29-instance-method" class="signature"><strong>#authenticate</strong>(client : HTTP::Client, token : AccessToken)</a>
+        <a href="#authenticate%28client%3AHTTP%3A%3AClient%2Ctoken%3AAccessToken%29%3ANil-instance-method" class="signature"><strong>#authenticate</strong>(client : HTTP::Client, token : AccessToken) : Nil</a>
+        
+          <div class="summary"><p>Authenticated an HTTP::Client to add an OAuth authorization header, as specified by <a href="https://tools.ietf.org/html/rfc5849#section-3" target="_blank">RFC5849, Section 3</a></p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#get_access_token%28request_token%2Coauth_verifier%2Cextra_params%3Dnil%29-instance-method" class="signature"><strong>#get_access_token</strong>(request_token, oauth_verifier, extra_params = <span class="n">nil</span>)</a>
+        <a href="#get_access_token%28request_token%2Coauth_verifier%2Cextra_params%3Dnil%29%3AAccessToken-instance-method" class="signature"><strong>#get_access_token</strong>(request_token, oauth_verifier, extra_params = <span class="n">nil</span>) : AccessToken</a>
+        
+          <div class="summary"><p>Gets an access token from a previously obtained request token and an <em>oauth_verifier</em> obtained from an authorize URI, as specified by <a href="https://tools.ietf.org/html/rfc5849#section-2.3" target="_blank">RFC5849, Section 2.3</a></p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#get_authorize_uri%28request_token%2Coauth_callback%3Dnil%29-instance-method" class="signature"><strong>#get_authorize_uri</strong>(request_token, oauth_callback = <span class="n">nil</span>)</a>
+        <a href="#get_authorize_uri%28request_token%2Coauth_callback%3Dnil%29%3AString-instance-method" class="signature"><strong>#get_authorize_uri</strong>(request_token, oauth_callback = <span class="n">nil</span>) : String</a>
+        
+          <div class="summary"><p>Returns an authorize URI from a given request token to redirect the user to obtain an access token, as specified by <a href="https://tools.ietf.org/html/rfc5849#section-2.2" target="_blank">RFC5849, Section 2.2</a></p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#get_request_token%28oauth_callback%3D%26quot%3Boob%26quot%3B%29-instance-method" class="signature"><strong>#get_request_token</strong>(oauth_callback = <span class="s">&#34;oob&#34;</span>)</a>
+        <a href="#get_request_token%28oauth_callback%3D%26quot%3Boob%26quot%3B%29%3ARequestToken-instance-method" class="signature"><strong>#get_request_token</strong>(oauth_callback = <span class="s">&#34;oob&#34;</span>) : RequestToken</a>
+        
+          <div class="summary"><p>Obtains a request token, also known as &#34;temporary credentials&#34;, as specified by <a href="https://tools.ietf.org/html/rfc5849#section-2.1" target="_blank">RFC5849, Section 2.1</a></p></div>
         
       </li>
     
@@ -306,8 +366,8 @@
     to_s</a>, 
     
   
-    <a href="../Object.html#%7C%28other%3AU.class%29-class-method" class="tooltip">
-      <span>|(other : U.class)</span>
+    <a href="../Object.html#%7C%28other%3AU.class%29forallU-class-method" class="tooltip">
+      <span>|(other : U.class) forall U</span>
     |</a>
     
   
@@ -320,7 +380,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(host:String,consumer_key:String,consumer_secret:String,port:Int32=443,scheme:String=&amp;quot;https&amp;quot;,request_token_uri:String=&amp;quot;/oauth/request_token&amp;quot;,authorize_uri:String=&amp;quot;/oauth/authorize&amp;quot;,access_token_uri:String=&amp;quot;/oauth/access_token&amp;quot;)-class-method">
-      <a class="dashingAutolink" name="autolink-3838"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20consumer_key%20%3A%20String%2C%20consumer_secret%20%3A%20String%2C%20port%20%3A%20Int32%20%3D%20443%2C%20scheme%20%3A%20String%20%3D%20%22https%22%2C%20request_token_uri%20%3A%20String%20%3D%20%22%2Foauth%2Frequest_token%22%2C%20authorize_uri%20%3A%20String%20%3D%20%22%2Foauth%2Fauthorize%22%2C%20access_token_uri%20%3A%20String%20%3D%20%22%2Foauth%2Faccess_token%22%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3930"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20consumer_key%20%3A%20String%2C%20consumer_secret%20%3A%20String%2C%20port%20%3A%20Int32%20%3D%20443%2C%20scheme%20%3A%20String%20%3D%20%22https%22%2C%20request_token_uri%20%3A%20String%20%3D%20%22%2Foauth%2Frequest_token%22%2C%20authorize_uri%20%3A%20String%20%3D%20%22%2Foauth%2Fauthorize%22%2C%20access_token_uri%20%3A%20String%20%3D%20%22%2Foauth%2Faccess_token%22%29"></a><div class="signature">
         
         def self.<strong>new</strong>(host : <a href="../String.html">String</a>, consumer_key : <a href="../String.html">String</a>, consumer_secret : <a href="../String.html">String</a>, port : <a href="../Int32.html">Int32</a> = <span class="n">443</span>, scheme : <a href="../String.html">String</a> = <span class="s">&#34;https&#34;</span>, request_token_uri : <a href="../String.html">String</a> = <span class="s">&#34;/oauth/request_token&#34;</span>, authorize_uri : <a href="../String.html">String</a> = <span class="s">&#34;/oauth/authorize&#34;</span>, access_token_uri : <a href="../String.html">String</a> = <span class="s">&#34;/oauth/access_token&#34;</span>)
 
@@ -330,7 +390,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/oauth/consumer.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/consumer.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -340,66 +400,88 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="authenticate(client:HTTP::Client,token:AccessToken)-instance-method">
-      <a class="dashingAutolink" name="autolink-3839"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20authenticate%28client%20%3A%20HTTP%3A%3AClient%2C%20token%20%3A%20AccessToken%29"></a><div class="signature">
+    <div class="entry-detail" id="authenticate(client:HTTP::Client,token:AccessToken):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-3931"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20authenticate%28client%20%3A%20HTTP%3A%3AClient%2C%20token%20%3A%20AccessToken%29%20%3A%20Nil"></a><div class="signature">
         
-        def <strong>authenticate</strong>(client : <a href="../HTTP/Client.html">HTTP::Client</a>, token : <a href="../OAuth/AccessToken.html">AccessToken</a>)
+        def <strong>authenticate</strong>(client : <a href="../HTTP/Client.html">HTTP::Client</a>, token : <a href="../OAuth/AccessToken.html">AccessToken</a>) : <a href="../Nil.html">Nil</a>
 
         
       </div>
       
+        <div class="doc"><p>Authenticated an HTTP::Client to add an OAuth authorization header, as specified by
+<a href="https://tools.ietf.org/html/rfc5849#section-3" target="_blank">RFC5849, Section 3</a></p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/oauth/consumer.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/consumer.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="get_access_token(request_token,oauth_verifier,extra_params=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3840"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_access_token%28request_token%2C%20oauth_verifier%2C%20extra_params%20%3D%20nil%29"></a><div class="signature">
+    <div class="entry-detail" id="get_access_token(request_token,oauth_verifier,extra_params=nil):AccessToken-instance-method">
+      <a class="dashingAutolink" name="autolink-3932"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_access_token%28request_token%2C%20oauth_verifier%2C%20extra_params%20%3D%20nil%29%20%3A%20AccessToken"></a><div class="signature">
         
-        def <strong>get_access_token</strong>(request_token, oauth_verifier, extra_params = <span class="n">nil</span>)
+        def <strong>get_access_token</strong>(request_token, oauth_verifier, extra_params = <span class="n">nil</span>) : <a href="../OAuth/AccessToken.html">AccessToken</a>
 
         
       </div>
       
+        <div class="doc">
+<p>Gets an access token from a previously obtained request token and an <em>oauth_verifier</em>
+obtained from an authorize URI, as specified by
+<a href="https://tools.ietf.org/html/rfc5849#section-2.3" target="_blank">RFC5849, Section 2.3</a></p>
+
+<p>Raises <code><a href="../OAuth/Error.html">OAuth::Error</a></code> if there was an error getting the access token.</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/oauth/consumer.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/consumer.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="get_authorize_uri(request_token,oauth_callback=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3841"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_authorize_uri%28request_token%2C%20oauth_callback%20%3D%20nil%29"></a><div class="signature">
+    <div class="entry-detail" id="get_authorize_uri(request_token,oauth_callback=nil):String-instance-method">
+      <a class="dashingAutolink" name="autolink-3933"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_authorize_uri%28request_token%2C%20oauth_callback%20%3D%20nil%29%20%3A%20String"></a><div class="signature">
         
-        def <strong>get_authorize_uri</strong>(request_token, oauth_callback = <span class="n">nil</span>)
+        def <strong>get_authorize_uri</strong>(request_token, oauth_callback = <span class="n">nil</span>) : <a href="../String.html">String</a>
 
         
       </div>
       
+        <div class="doc"><p>Returns an authorize URI from a given request token to redirect the user
+to obtain an access token, as specified by
+<a href="https://tools.ietf.org/html/rfc5849#section-2.2" target="_blank">RFC5849, Section 2.2</a></p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/oauth/consumer.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/consumer.cr#L80" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="get_request_token(oauth_callback=&amp;quot;oob&amp;quot;)-instance-method">
-      <a class="dashingAutolink" name="autolink-3842"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_request_token%28oauth_callback%20%3D%20%22oob%22%29"></a><div class="signature">
+    <div class="entry-detail" id="get_request_token(oauth_callback=&amp;quot;oob&amp;quot;):RequestToken-instance-method">
+      <a class="dashingAutolink" name="autolink-3934"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_request_token%28oauth_callback%20%3D%20%22oob%22%29%20%3A%20RequestToken"></a><div class="signature">
         
-        def <strong>get_request_token</strong>(oauth_callback = <span class="s">&#34;oob&#34;</span>)
+        def <strong>get_request_token</strong>(oauth_callback = <span class="s">&#34;oob&#34;</span>) : <a href="../OAuth/RequestToken.html">RequestToken</a>
 
         
       </div>
       
+        <div class="doc">
+<p>Obtains a request token, also known as &#34;temporary credentials&#34;, as specified by
+<a href="https://tools.ietf.org/html/rfc5849#section-2.1" target="_blank">RFC5849, Section 2.1</a></p>
+
+<p>Raises <code><a href="../OAuth/Error.html">OAuth::Error</a></code> if there was an error getting the request token.</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/798b2e228718d2c405d1a9f8c55e16a651d37fee/src/oauth/consumer.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/oauth/consumer.cr#L68" target="_blank">View source</a>]
         
       </div>
     </div>
