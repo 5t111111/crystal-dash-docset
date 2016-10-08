@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4272"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Process%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Process - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4318"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Process%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Process - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -43,17 +43,39 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/kernel.cr#L155" target="_blank">kernel.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/kernel.cr#L155" target="_blank">kernel.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L7" target="_blank">process.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L7" target="_blank">process.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process/executable_path.cr#L5" target="_blank">process/executable_path.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process/executable_path.cr#L54" target="_blank">process/executable_path.cr</a>
     
     <br/>
   
 
 
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="PATH_DELIMITER">
+        <strong>PATH_DELIMITER</strong> = <code>{% <span class="k">if</span> flag?(<span class="n">:windows</span>) %} <span class="s">&#39;;&#39;</span> {% <span class="k">else</span> %} <span class="s">&#39;:&#39;</span> {% <span class="k">end</span> %}</code>
+      </dt>
+      
+    
+  </dl>
 
 
 
@@ -75,6 +97,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#executable_path-class-method" class="signature"><strong>.executable_path</strong></a>
+        
+          <div class="summary"><p>Returns an absolute path to the executable file of the currently running program.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#exists%3F%28pid%3AInt%29-class-method" class="signature"><strong>.exists?</strong>(pid : Int)</a>
         
           <div class="summary"><p>Returns true if the process identified by <em>pid</em> is valid for a currently registered process, false otherwise.</p></div>
@@ -85,6 +114,13 @@
         <a href="#exit%28status%3D0%29-class-method" class="signature"><strong>.exit</strong>(status = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Terminate the current process immediately.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#find_executable%28name%2Cpath%3DENV%5B%26quot%3BPATH%26quot%3B%5D%3F%2Cpwd%3DDir.current%29-class-method" class="signature"><strong>.find_executable</strong>(name, path = <span class="t">ENV</span>[<span class="s">&#34;PATH&#34;</span>]?, pwd = <span class="t">Dir</span>.current)</a>
+        
+          <div class="summary"><p>Searches an executable, checking for an absolute path, a path relative to <em>pwd</em> or absolute path, then eventually searching in directories declared in <em>path</em>.</p></div>
         
       </li>
     
@@ -110,11 +146,6 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28pid%29-class-method" class="signature"><strong>.new</strong>(pid)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#new%28command%3AString%2Cargs%3Dnil%2Cenv%3AEnv%3Dnil%2Cclear_env%3ABool%3Dfalse%2Cshell%3ABool%3Dfalse%2Cinput%3AStdio%3Dfalse%2Coutput%3AStdio%3Dfalse%2Cerror%3AStdio%3Dfalse%2Cchdir%3AString%7CNil%3Dnil%29-class-method" class="signature"><strong>.new</strong>(command : String, args = <span class="n">nil</span>, env : Env = <span class="n">nil</span>, clear_env : Bool = <span class="n">false</span>, shell : Bool = <span class="n">false</span>, input : Stdio = <span class="n">false</span>, output : Stdio = <span class="n">false</span>, error : Stdio = <span class="n">false</span>, chdir : String | Nil = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Creates a process, executes it, but doesn&#39;t wait for it to complete.</p></div>
@@ -122,9 +153,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#pgid%28pid%3AInt32%29%3ALibC%3A%3APidT-class-method" class="signature"><strong>.pgid</strong>(pid : Int32) : LibC::PidT</a>
-        
-          <div class="summary"><p>Returns the process group identifier of the process identified by <em>pid</em>.</p></div>
+        <a href="#new%28pid%29-class-method" class="signature"><strong>.new</strong>(pid)</a>
         
       </li>
     
@@ -132,6 +161,13 @@
         <a href="#pgid%3ALibC%3A%3APidT-class-method" class="signature"><strong>.pgid</strong> : LibC::PidT</a>
         
           <div class="summary"><p>Returns the process group identifier of the current process.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pgid%28pid%3AInt32%29%3ALibC%3A%3APidT-class-method" class="signature"><strong>.pgid</strong>(pid : Int32) : LibC::PidT</a>
+        
+          <div class="summary"><p>Returns the process group identifier of the process identified by <em>pid</em>.</p></div>
         
       </li>
     
@@ -150,16 +186,16 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#run%28command%3AString%2Cargs%3Dnil%2Cenv%3AEnv%3Dnil%2Cclear_env%3ABool%3Dfalse%2Cshell%3ABool%3Dfalse%2Cinput%3AStdio%3Dfalse%2Coutput%3AStdio%3Dfalse%2Cerror%3AStdio%3Dfalse%2Cchdir%3AString%7CNil%3Dnil%29%3AProcess%3A%3AStatus-class-method" class="signature"><strong>.run</strong>(command : String, args = <span class="n">nil</span>, env : Env = <span class="n">nil</span>, clear_env : Bool = <span class="n">false</span>, shell : Bool = <span class="n">false</span>, input : Stdio = <span class="n">false</span>, output : Stdio = <span class="n">false</span>, error : Stdio = <span class="n">false</span>, chdir : String | Nil = <span class="n">nil</span>) : Process::Status</a>
+        <a href="#run%28command%3AString%2Cargs%3Dnil%2Cenv%3AEnv%3Dnil%2Cclear_env%3ABool%3Dfalse%2Cshell%3ABool%3Dfalse%2Cinput%3AStdio%3Dnil%2Coutput%3AStdio%3Dnil%2Cerror%3AStdio%3Dnil%2Cchdir%3AString%7CNil%3Dnil%2C%26block%29-class-method" class="signature"><strong>.run</strong>(command : String, args = <span class="n">nil</span>, env : Env = <span class="n">nil</span>, clear_env : Bool = <span class="n">false</span>, shell : Bool = <span class="n">false</span>, input : Stdio = <span class="n">nil</span>, output : Stdio = <span class="n">nil</span>, error : Stdio = <span class="n">nil</span>, chdir : String | Nil = <span class="n">nil</span>, &amp;block)</a>
         
-          <div class="summary"><p>Executes a process and waits for it to complete.</p></div>
+          <div class="summary"><p>Executes a process, yields the block, and then waits for it to finish.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#run%28command%3AString%2Cargs%3Dnil%2Cenv%3AEnv%3Dnil%2Cclear_env%3ABool%3Dfalse%2Cshell%3ABool%3Dfalse%2Cinput%3AStdio%3Dnil%2Coutput%3AStdio%3Dnil%2Cerror%3AStdio%3Dnil%2Cchdir%3AString%7CNil%3Dnil%2C%26block%29-class-method" class="signature"><strong>.run</strong>(command : String, args = <span class="n">nil</span>, env : Env = <span class="n">nil</span>, clear_env : Bool = <span class="n">false</span>, shell : Bool = <span class="n">false</span>, input : Stdio = <span class="n">nil</span>, output : Stdio = <span class="n">nil</span>, error : Stdio = <span class="n">nil</span>, chdir : String | Nil = <span class="n">nil</span>, &amp;block)</a>
+        <a href="#run%28command%3AString%2Cargs%3Dnil%2Cenv%3AEnv%3Dnil%2Cclear_env%3ABool%3Dfalse%2Cshell%3ABool%3Dfalse%2Cinput%3AStdio%3Dfalse%2Coutput%3AStdio%3Dfalse%2Cerror%3AStdio%3Dfalse%2Cchdir%3AString%7CNil%3Dnil%29%3AProcess%3A%3AStatus-class-method" class="signature"><strong>.run</strong>(command : String, args = <span class="n">nil</span>, env : Env = <span class="n">nil</span>, clear_env : Bool = <span class="n">false</span>, shell : Bool = <span class="n">false</span>, input : Stdio = <span class="n">false</span>, output : Stdio = <span class="n">false</span>, error : Stdio = <span class="n">false</span>, chdir : String | Nil = <span class="n">nil</span>) : Process::Status</a>
         
-          <div class="summary"><p>Executes a process, yields the block, and then waits for it to finish.</p></div>
+          <div class="summary"><p>Executes a process and waits for it to complete.</p></div>
         
       </li>
     
@@ -492,7 +528,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="after_fork_child_callbacks-class-method">
-      <a class="dashingAutolink" name="autolink-4273"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.after_fork_child_callbacks"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.after_fork_child_callbacks"></a><div class="signature">
         
         def self.<strong>after_fork_child_callbacks</strong>
 
@@ -504,13 +540,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/kernel.cr#L157" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/kernel.cr#L157" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exec(command:String,args=nil,env:Env=nil,clear_env:Bool=false,shell:Bool=false,input:Bool|IO::FileDescriptor=true,output:Bool|IO::FileDescriptor=true,error:Bool|IO::FileDescriptor=true,chdir:String|Nil=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-4274"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exec%28command%20%3A%20String%2C%20args%20%3D%20nil%2C%20env%20%3A%20Env%20%3D%20nil%2C%20clear_env%20%3A%20Bool%20%3D%20false%2C%20shell%20%3A%20Bool%20%3D%20false%2C%20input%20%3A%20Bool%20%7C%20IO%3A%3AFileDescriptor%20%3D%20true%2C%20output%20%3A%20Bool%20%7C%20IO%3A%3AFileDescriptor%20%3D%20true%2C%20error%20%3A%20Bool%20%7C%20IO%3A%3AFileDescriptor%20%3D%20true%2C%20chdir%20%3A%20String%20%7C%20Nil%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exec%28command%20%3A%20String%2C%20args%20%3D%20nil%2C%20env%20%3A%20Env%20%3D%20nil%2C%20clear_env%20%3A%20Bool%20%3D%20false%2C%20shell%20%3A%20Bool%20%3D%20false%2C%20input%20%3A%20Bool%20%7C%20IO%3A%3AFileDescriptor%20%3D%20true%2C%20output%20%3A%20Bool%20%7C%20IO%3A%3AFileDescriptor%20%3D%20true%2C%20error%20%3A%20Bool%20%7C%20IO%3A%3AFileDescriptor%20%3D%20true%2C%20chdir%20%3A%20String%20%7C%20Nil%20%3D%20nil%29"></a><div class="signature">
         
         def self.<strong>exec</strong>(command : <a href="String.html">String</a>, args = <span class="n">nil</span>, env : <a href="Process/Env.html">Env</a> = <span class="n">nil</span>, clear_env : <a href="Bool.html">Bool</a> = <span class="n">false</span>, shell : <a href="Bool.html">Bool</a> = <span class="n">false</span>, input : <a href="Bool.html">Bool</a> | <a href="IO/FileDescriptor.html">IO::FileDescriptor</a> = <span class="n">true</span>, output : <a href="Bool.html">Bool</a> | <a href="IO/FileDescriptor.html">IO::FileDescriptor</a> = <span class="n">true</span>, error : <a href="Bool.html">Bool</a> | <a href="IO/FileDescriptor.html">IO::FileDescriptor</a> = <span class="n">true</span>, chdir : <a href="String.html">String</a> | <a href="Nil.html">Nil</a> = <span class="n">nil</span>)
 
@@ -535,13 +571,40 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L173" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L173" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="executable_path-class-method">
+      <a class="dashingAutolink" name="autolink-4321"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.executable_path"></a><div class="signature">
+        
+        def self.<strong>executable_path</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an absolute path to the executable file of the currently running
+program. This is in opposition to <code><a href="toplevel.html#PROGRAM_NAME">PROGRAM_NAME</a></code> which may be a relative or
+absolute path, just the executable file name or a symlink.</p>
+
+<p>The executable path will be canonicalized (all symlinks and relative paths
+will be expanded).</p>
+
+<p>Returns <code>nil</code> if the file can&#39;t be found.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process/executable_path.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exists?(pid:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-4275"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exists%3F%28pid%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4322"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exists%3F%28pid%20%3A%20Int%29"></a><div class="signature">
         
         def self.<strong>exists?</strong>(pid : <a href="Int.html">Int</a>)
 
@@ -555,13 +618,13 @@ returns true for a process in the zombie or similar state.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exit(status=0)-class-method">
-      <a class="dashingAutolink" name="autolink-4276"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exit%28status%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4323"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.exit%28status%20%3D%200%29"></a><div class="signature">
         
         def self.<strong>exit</strong>(status = <span class="n">0</span>)
 
@@ -579,13 +642,33 @@ not run any handlers registered with <code>at_exit</code>, use <code>::exit</cod
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="find_executable(name,path=ENV[&amp;quot;PATH&amp;quot;]?,pwd=Dir.current)-class-method">
+      <a class="dashingAutolink" name="autolink-4324"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.find_executable%28name%2C%20path%20%3D%20ENV%5B%22PATH%22%5D%3F%2C%20pwd%20%3D%20Dir.current%29"></a><div class="signature">
+        
+        def self.<strong>find_executable</strong>(name, path = <span class="t">ENV</span>[<span class="s">&#34;PATH&#34;</span>]?, pwd = <span class="t">Dir</span>.current)
+
+        
+      </div>
+      
+        <div class="doc"><p>Searches an executable, checking for an absolute path, a path relative to
+<em>pwd</em> or absolute path, then eventually searching in directories declared
+in <em>path</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process/executable_path.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fork(&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-4277"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.fork%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4325"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.fork%28%26block%29"></a><div class="signature">
         
         def self.<strong>fork</strong>(&amp;block)
 
@@ -598,13 +681,13 @@ returns a <code><a href="Process.html">Process</a></code> representing the new c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fork:self|Nil-class-method">
-      <a class="dashingAutolink" name="autolink-4278"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.fork%20%3A%20self%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4326"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.fork%20%3A%20self%20%7C%20Nil"></a><div class="signature">
         
         def self.<strong>fork</strong> : self | <a href="Nil.html">Nil</a>
 
@@ -618,13 +701,13 @@ and nil inside the new child process.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L89" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="kill(signal:Signal,*pids:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-4279"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.kill%28signal%20%3A%20Signal%2C%20%2Apids%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4327"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.kill%28signal%20%3A%20Signal%2C%20%2Apids%20%3A%20Int%29"></a><div class="signature">
         
         def self.<strong>kill</strong>(signal : <a href="Signal.html">Signal</a>, *pids : <a href="Int.html">Int</a>)
 
@@ -636,29 +719,13 @@ and nil inside the new child process.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L40" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(pid)-class-method">
-      <a class="dashingAutolink" name="autolink-4280"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pid%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(pid)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L258" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(command:String,args=nil,env:Env=nil,clear_env:Bool=false,shell:Bool=false,input:Stdio=false,output:Stdio=false,error:Stdio=false,chdir:String|Nil=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-4281"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28command%20%3A%20String%2C%20args%20%3D%20nil%2C%20env%20%3A%20Env%20%3D%20nil%2C%20clear_env%20%3A%20Bool%20%3D%20false%2C%20shell%20%3A%20Bool%20%3D%20false%2C%20input%20%3A%20Stdio%20%3D%20false%2C%20output%20%3A%20Stdio%20%3D%20false%2C%20error%20%3A%20Stdio%20%3D%20false%2C%20chdir%20%3A%20String%20%7C%20Nil%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4328"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28command%20%3A%20String%2C%20args%20%3D%20nil%2C%20env%20%3A%20Env%20%3D%20nil%2C%20clear_env%20%3A%20Bool%20%3D%20false%2C%20shell%20%3A%20Bool%20%3D%20false%2C%20input%20%3A%20Stdio%20%3D%20false%2C%20output%20%3A%20Stdio%20%3D%20false%2C%20error%20%3A%20Stdio%20%3D%20false%2C%20chdir%20%3A%20String%20%7C%20Nil%20%3D%20nil%29"></a><div class="signature">
         
         def self.<strong>new</strong>(command : <a href="String.html">String</a>, args = <span class="n">nil</span>, env : <a href="Process/Env.html">Env</a> = <span class="n">nil</span>, clear_env : <a href="Bool.html">Bool</a> = <span class="n">false</span>, shell : <a href="Bool.html">Bool</a> = <span class="n">false</span>, input : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, output : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, error : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, chdir : <a href="String.html">String</a> | <a href="Nil.html">Nil</a> = <span class="n">nil</span>)
 
@@ -676,31 +743,29 @@ and nil inside the new child process.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L196" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L196" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="pgid(pid:Int32):LibC::PidT-class-method">
-      <a class="dashingAutolink" name="autolink-4282"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.pgid%28pid%20%3A%20Int32%29%20%3A%20LibC%3A%3APidT"></a><div class="signature">
+    <div class="entry-detail" id="new(pid)-class-method">
+      <a class="dashingAutolink" name="autolink-4329"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pid%29"></a><div class="signature">
         
-        def self.<strong>pgid</strong>(pid : <a href="Int32.html">Int32</a>) : <a href="LibC/PidT.html">LibC::PidT</a>
+        def self.<strong>new</strong>(pid)
 
         
       </div>
       
-        <div class="doc"><p>Returns the process group identifier of the process identified by <em>pid</em>.</p></div>
-      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L258" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pgid:LibC::PidT-class-method">
-      <a class="dashingAutolink" name="autolink-4283"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.pgid%20%3A%20LibC%3A%3APidT"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4330"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.pgid%20%3A%20LibC%3A%3APidT"></a><div class="signature">
         
         def self.<strong>pgid</strong> : <a href="LibC/PidT.html">LibC::PidT</a>
 
@@ -712,13 +777,31 @@ and nil inside the new child process.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pgid(pid:Int32):LibC::PidT-class-method">
+      <a class="dashingAutolink" name="autolink-4331"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.pgid%28pid%20%3A%20Int32%29%20%3A%20LibC%3A%3APidT"></a><div class="signature">
+        
+        def self.<strong>pgid</strong>(pid : <a href="Int32.html">Int32</a>) : <a href="LibC/PidT.html">LibC::PidT</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the process group identifier of the process identified by <em>pid</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pid:LibC::PidT-class-method">
-      <a class="dashingAutolink" name="autolink-4284"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.pid%20%3A%20LibC%3A%3APidT"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4332"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.pid%20%3A%20LibC%3A%3APidT"></a><div class="signature">
         
         def self.<strong>pid</strong> : <a href="LibC/PidT.html">LibC::PidT</a>
 
@@ -730,13 +813,13 @@ and nil inside the new child process.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ppid:LibC::PidT-class-method">
-      <a class="dashingAutolink" name="autolink-4285"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.ppid%20%3A%20LibC%3A%3APidT"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4333"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.ppid%20%3A%20LibC%3A%3APidT"></a><div class="signature">
         
         def self.<strong>ppid</strong> : <a href="LibC/PidT.html">LibC::PidT</a>
 
@@ -748,35 +831,13 @@ and nil inside the new child process.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L35" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="run(command:String,args=nil,env:Env=nil,clear_env:Bool=false,shell:Bool=false,input:Stdio=false,output:Stdio=false,error:Stdio=false,chdir:String|Nil=nil):Process::Status-class-method">
-      <a class="dashingAutolink" name="autolink-4286"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.run%28command%20%3A%20String%2C%20args%20%3D%20nil%2C%20env%20%3A%20Env%20%3D%20nil%2C%20clear_env%20%3A%20Bool%20%3D%20false%2C%20shell%20%3A%20Bool%20%3D%20false%2C%20input%20%3A%20Stdio%20%3D%20false%2C%20output%20%3A%20Stdio%20%3D%20false%2C%20error%20%3A%20Stdio%20%3D%20false%2C%20chdir%20%3A%20String%20%7C%20Nil%20%3D%20nil%29%20%3A%20Process%3A%3AStatus"></a><div class="signature">
-        
-        def self.<strong>run</strong>(command : <a href="String.html">String</a>, args = <span class="n">nil</span>, env : <a href="Process/Env.html">Env</a> = <span class="n">nil</span>, clear_env : <a href="Bool.html">Bool</a> = <span class="n">false</span>, shell : <a href="Bool.html">Bool</a> = <span class="n">false</span>, input : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, output : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, error : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, chdir : <a href="String.html">String</a> | <a href="Nil.html">Nil</a> = <span class="n">nil</span>) : <a href="Process/Status.html">Process::Status</a>
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Executes a process and waits for it to complete.</p>
-
-<p>By default the process is configured without input, output or error.</p>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L143" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="run(command:String,args=nil,env:Env=nil,clear_env:Bool=false,shell:Bool=false,input:Stdio=nil,output:Stdio=nil,error:Stdio=nil,chdir:String|Nil=nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-4287"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.run%28command%20%3A%20String%2C%20args%20%3D%20nil%2C%20env%20%3A%20Env%20%3D%20nil%2C%20clear_env%20%3A%20Bool%20%3D%20false%2C%20shell%20%3A%20Bool%20%3D%20false%2C%20input%20%3A%20Stdio%20%3D%20nil%2C%20output%20%3A%20Stdio%20%3D%20nil%2C%20error%20%3A%20Stdio%20%3D%20nil%2C%20chdir%20%3A%20String%20%7C%20Nil%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4334"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.run%28command%20%3A%20String%2C%20args%20%3D%20nil%2C%20env%20%3A%20Env%20%3D%20nil%2C%20clear_env%20%3A%20Bool%20%3D%20false%2C%20shell%20%3A%20Bool%20%3D%20false%2C%20input%20%3A%20Stdio%20%3D%20nil%2C%20output%20%3A%20Stdio%20%3D%20nil%2C%20error%20%3A%20Stdio%20%3D%20nil%2C%20chdir%20%3A%20String%20%7C%20Nil%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>run</strong>(command : <a href="String.html">String</a>, args = <span class="n">nil</span>, env : <a href="Process/Env.html">Env</a> = <span class="n">nil</span>, clear_env : <a href="Bool.html">Bool</a> = <span class="n">false</span>, shell : <a href="Bool.html">Bool</a> = <span class="n">false</span>, input : <a href="Process/Stdio.html">Stdio</a> = <span class="n">nil</span>, output : <a href="Process/Stdio.html">Stdio</a> = <span class="n">nil</span>, error : <a href="Process/Stdio.html">Stdio</a> = <span class="n">nil</span>, chdir : <a href="String.html">String</a> | <a href="Nil.html">Nil</a> = <span class="n">nil</span>, &amp;block)
 
@@ -795,13 +856,35 @@ will be closed automatically at the end of the block.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="run(command:String,args=nil,env:Env=nil,clear_env:Bool=false,shell:Bool=false,input:Stdio=false,output:Stdio=false,error:Stdio=false,chdir:String|Nil=nil):Process::Status-class-method">
+      <a class="dashingAutolink" name="autolink-4335"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.run%28command%20%3A%20String%2C%20args%20%3D%20nil%2C%20env%20%3A%20Env%20%3D%20nil%2C%20clear_env%20%3A%20Bool%20%3D%20false%2C%20shell%20%3A%20Bool%20%3D%20false%2C%20input%20%3A%20Stdio%20%3D%20false%2C%20output%20%3A%20Stdio%20%3D%20false%2C%20error%20%3A%20Stdio%20%3D%20false%2C%20chdir%20%3A%20String%20%7C%20Nil%20%3D%20nil%29%20%3A%20Process%3A%3AStatus"></a><div class="signature">
+        
+        def self.<strong>run</strong>(command : <a href="String.html">String</a>, args = <span class="n">nil</span>, env : <a href="Process/Env.html">Env</a> = <span class="n">nil</span>, clear_env : <a href="Bool.html">Bool</a> = <span class="n">false</span>, shell : <a href="Bool.html">Bool</a> = <span class="n">false</span>, input : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, output : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, error : <a href="Process/Stdio.html">Stdio</a> = <span class="n">false</span>, chdir : <a href="String.html">String</a> | <a href="Nil.html">Nil</a> = <span class="n">nil</span>) : <a href="Process/Status.html">Process::Status</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Executes a process and waits for it to complete.</p>
+
+<p>By default the process is configured without input, output or error.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L143" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="times:Tms-class-method">
-      <a class="dashingAutolink" name="autolink-4288"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.times%20%3A%20Tms"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4336"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.times%20%3A%20Tms"></a><div class="signature">
         
         def self.<strong>times</strong> : <a href="Process/Tms.html">Tms</a>
 
@@ -814,7 +897,7 @@ of terminated children are returned.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -825,7 +908,7 @@ of terminated children are returned.</p></div>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-4289"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4337"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -837,13 +920,13 @@ of terminated children are returned.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L295" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L295" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="error-instance-method">
-      <a class="dashingAutolink" name="autolink-4290"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4338"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error"></a><div class="signature">
         
         def <strong>error</strong>
 
@@ -855,13 +938,13 @@ of terminated children are returned.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L187" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="error?:IO::FileDescriptor|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-4291"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%3F%20%3A%20IO%3A%3AFileDescriptor%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4339"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%3F%20%3A%20IO%3A%3AFileDescriptor%20%7C%20Nil"></a><div class="signature">
         
         def <strong>error?</strong> : <a href="IO/FileDescriptor.html">IO::FileDescriptor</a> | <a href="Nil.html">Nil</a>
 
@@ -873,13 +956,13 @@ of terminated children are returned.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L187" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exists?-instance-method">
-      <a class="dashingAutolink" name="autolink-4292"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exists%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4340"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exists%3F"></a><div class="signature">
         
         def <strong>exists?</strong>
 
@@ -892,13 +975,13 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L285" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L285" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="input-instance-method">
-      <a class="dashingAutolink" name="autolink-4293"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20input"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4341"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20input"></a><div class="signature">
         
         def <strong>input</strong>
 
@@ -910,13 +993,13 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L181" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L181" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="input?:IO::FileDescriptor|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-4294"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20input%3F%20%3A%20IO%3A%3AFileDescriptor%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4342"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20input%3F%20%3A%20IO%3A%3AFileDescriptor%20%7C%20Nil"></a><div class="signature">
         
         def <strong>input?</strong> : <a href="IO/FileDescriptor.html">IO::FileDescriptor</a> | <a href="Nil.html">Nil</a>
 
@@ -928,13 +1011,13 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L181" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L181" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="kill(sig=Signal::TERM)-instance-method">
-      <a class="dashingAutolink" name="autolink-4295"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20kill%28sig%20%3D%20Signal%3A%3ATERM%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4343"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20kill%28sig%20%3D%20Signal%3A%3ATERM%29"></a><div class="signature">
         
         def <strong>kill</strong>(sig = <span class="t">Signal</span><span class="t">::</span><span class="t">TERM</span>)
 
@@ -946,13 +1029,13 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L264" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L264" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="output-instance-method">
-      <a class="dashingAutolink" name="autolink-4296"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20output"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4344"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20output"></a><div class="signature">
         
         def <strong>output</strong>
 
@@ -964,13 +1047,13 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="output?:IO::FileDescriptor|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-4297"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20output%3F%20%3A%20IO%3A%3AFileDescriptor%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4345"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20output%3F%20%3A%20IO%3A%3AFileDescriptor%20%7C%20Nil"></a><div class="signature">
         
         def <strong>output?</strong> : <a href="IO/FileDescriptor.html">IO::FileDescriptor</a> | <a href="Nil.html">Nil</a>
 
@@ -982,13 +1065,13 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pid:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-4298"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pid%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4346"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pid%20%3A%20Int32"></a><div class="signature">
         
         def <strong>pid</strong> : <a href="Int32.html">Int32</a>
 
@@ -998,13 +1081,13 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L178" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L178" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="terminated?-instance-method">
-      <a class="dashingAutolink" name="autolink-4299"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20terminated%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4347"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20terminated%3F"></a><div class="signature">
         
         def <strong>terminated?</strong>
 
@@ -1016,13 +1099,13 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L290" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L290" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="wait:Process::Status-instance-method">
-      <a class="dashingAutolink" name="autolink-4300"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20wait%20%3A%20Process%3A%3AStatus"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4348"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20wait%20%3A%20Process%3A%3AStatus"></a><div class="signature">
         
         def <strong>wait</strong> : <a href="Process/Status.html">Process::Status</a>
 
@@ -1034,7 +1117,7 @@ Note that this returns true for processes in the zombie or similar state.</p></d
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/034e7629f055667ebe3df2c6948564d3cbf54e6d/src/process.cr#L269" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/process.cr#L269" target="_blank">View source</a>]
         
       </div>
     </div>
