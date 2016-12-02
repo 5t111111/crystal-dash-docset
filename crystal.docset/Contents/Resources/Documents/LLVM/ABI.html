@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3109"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/LLVM%3A%3AABI%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>LLVM::ABI - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3480"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/LLVM%3A%3AABI%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>LLVM::ABI - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -42,6 +42,10 @@
   <h2>Direct Known Subclasses</h2>
   <ul class="other-types-list">
   
+    <li class="other-type"><a href="../LLVM/ABI/AArch64.html">LLVM::ABI::AArch64</a></li>
+  
+    <li class="other-type"><a href="../LLVM/ABI/ARM.html">LLVM::ABI::ARM</a></li>
+  
     <li class="other-type"><a href="../LLVM/ABI/X86.html">LLVM::ABI::X86</a></li>
   
     <li class="other-type"><a href="../LLVM/ABI/X86_64.html">LLVM::ABI::X86_64</a></li>
@@ -56,7 +60,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/abi.cr#L2" target="_blank">llvm/abi.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L2" target="_blank">llvm/abi.cr</a>
     
     <br/>
   
@@ -86,12 +90,27 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#align%28type%3AType%2Cpointer_size%29-instance-method" class="signature"><strong>#align</strong>(type : Type, pointer_size)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#align%28type%3AType%29-instance-method" class="signature"><strong>#align</strong>(type : Type)</a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#align_offset%28offset%2Ctype%29-instance-method" class="signature"><strong>#align_offset</strong>(offset, type)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#osx%3F%3ABool-instance-method" class="signature"><strong>#osx?</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size%28type%3AType%2Cpointer_size%29-instance-method" class="signature"><strong>#size</strong>(type : Type, pointer_size)</a>
         
       </li>
     
@@ -124,8 +143,8 @@
 </h3>
   
   
-    <a href="../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>==(other)<br/>==(other : self)</span>
+    <a href="../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
     ==</a>, 
     
   
@@ -163,6 +182,16 @@
 
     
 
+  <h3>Class methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
 
   
     
@@ -186,8 +215,8 @@
     ==</a>, 
     
   
-    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -251,8 +280,8 @@
     to_s</a>, 
     
   
-    <a href="../Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -294,8 +323,8 @@
     dup</a>, 
     
   
-    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -343,7 +372,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(target_machine:TargetMachine)-class-method">
-      <a class="dashingAutolink" name="autolink-3102"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28target_machine%20%3A%20TargetMachine%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3470"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28target_machine%20%3A%20TargetMachine%29"></a><div class="signature">
         
         def self.<strong>new</strong>(target_machine : <a href="../LLVM/TargetMachine.html">TargetMachine</a>)
 
@@ -353,7 +382,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/abi.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -364,7 +393,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="abi_info(atys:Array(Type),rty:Type,ret_def:Bool)-instance-method">
-      <a class="dashingAutolink" name="autolink-3103"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20abi_info%28atys%20%3A%20Array%28Type%29%2C%20rty%20%3A%20Type%2C%20ret_def%20%3A%20Bool%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3471"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20abi_info%28atys%20%3A%20Array%28Type%29%2C%20rty%20%3A%20Type%2C%20ret_def%20%3A%20Bool%29"></a><div class="signature">
         abstract 
         def <strong>abi_info</strong>(atys : <a href="../Array.html">Array</a>(<a href="../LLVM/Type.html">Type</a>), rty : <a href="../LLVM/Type.html">Type</a>, ret_def : <a href="../Bool.html">Bool</a>)
 
@@ -374,13 +403,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/abi.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="align(type:Type,pointer_size)-instance-method">
+      <a class="dashingAutolink" name="autolink-3472"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20align%28type%20%3A%20Type%2C%20pointer_size%29"></a><div class="signature">
+        
+        def <strong>align</strong>(type : <a href="../LLVM/Type.html">Type</a>, pointer_size)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="align(type:Type)-instance-method">
-      <a class="dashingAutolink" name="autolink-3104"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20align%28type%20%3A%20Type%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3473"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20align%28type%20%3A%20Type%29"></a><div class="signature">
         abstract 
         def <strong>align</strong>(type : <a href="../LLVM/Type.html">Type</a>)
 
@@ -390,13 +435,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/abi.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="align_offset(offset,type)-instance-method">
+      <a class="dashingAutolink" name="autolink-3474"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20align_offset%28offset%2C%20type%29"></a><div class="signature">
+        
+        def <strong>align_offset</strong>(offset, type)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="osx?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-3105"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20osx%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3475"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20osx%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>osx?</strong> : <a href="../Bool.html">Bool</a>
 
@@ -406,13 +467,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/abi.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size(type:Type,pointer_size)-instance-method">
+      <a class="dashingAutolink" name="autolink-3476"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%28type%20%3A%20Type%2C%20pointer_size%29"></a><div class="signature">
+        
+        def <strong>size</strong>(type : <a href="../LLVM/Type.html">Type</a>, pointer_size)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size(type:Type)-instance-method">
-      <a class="dashingAutolink" name="autolink-3106"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20size%28type%20%3A%20Type%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3477"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20size%28type%20%3A%20Type%29"></a><div class="signature">
         abstract 
         def <strong>size</strong>(type : <a href="../LLVM/Type.html">Type</a>)
 
@@ -422,13 +499,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/abi.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="target_data:TargetData-instance-method">
-      <a class="dashingAutolink" name="autolink-3107"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20target_data%20%3A%20TargetData"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3478"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20target_data%20%3A%20TargetData"></a><div class="signature">
         
         def <strong>target_data</strong> : <a href="../LLVM/TargetData.html">TargetData</a>
 
@@ -438,13 +515,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/abi.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L3" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="windows?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-3108"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20windows%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3479"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20windows%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>windows?</strong> : <a href="../Bool.html">Bool</a>
 
@@ -454,7 +531,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/abi.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>

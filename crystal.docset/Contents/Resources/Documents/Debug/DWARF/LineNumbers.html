@@ -1,0 +1,463 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-1169"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Debug%3A%3ADWARF%3A%3ALineNumbers%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Debug::DWARF::LineNumbers - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> Debug::DWARF::LineNumbers
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../../Debug/DWARF/LineNumbers.html">Debug::DWARF::LineNumbers</a></li>
+<li class="superclass"><a href="../../Struct.html">Struct</a></li>
+<li class="superclass"><a href="../../Value.html">Value</a></li>
+<li class="superclass"><a href="../../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>DWARF Line Numbers parser. Supports DWARF versions 2, 3 and 4.</p>
+
+<p>Usually located in the <code>.debug_line</code> section of ELF executables, or the
+<code>__debug_line</code> section of Mach-O files.</p>
+
+<p>Documentation:</p>
+
+<ul>
+<li>
+<a href="http://dwarfstd.org/doc/dwarf-2.0.0.pdf" target="_blank">DWARF2</a> section 6.2</li>
+<li>
+<a href="http://dwarfstd.org/doc/Dwarf3.pdf" target="_blank">DWARF3</a> section 6.2</li>
+<li>
+<a href="http://dwarfstd.org/doc/DWARF4.pdf" target="_blank">DWARF4</a> section 6.2</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/debug/dwarf/line_numbers.cr#L42" target="_blank">debug/dwarf/line_numbers.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28io%3AIO%3A%3AFileDescriptor%2Csize%29-class-method" class="signature"><strong>.new</strong>(io : IO::FileDescriptor, size)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#directories%3AArray%28String%29-instance-method" class="signature"><strong>#directories</strong> : Array(String)</a>
+        
+          <div class="summary"><p>The array of indexed directory paths.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#files%3AArray%28String%29-instance-method" class="signature"><strong>#files</strong> : Array(String)</a>
+        
+          <div class="summary"><p>The array of indexed file names.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#find%28address%29-instance-method" class="signature"><strong>#find</strong>(address)</a>
+        
+          <div class="summary"><p>Returns the <code><a href="../../Debug/DWARF/LineNumbers/Row.html">Row</a></code> for the given Program Counter (PC) address if found.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#matrix%3AArray%28Array%28Row%29%29-instance-method" class="signature"><strong>#matrix</strong> : Array(Array(Row))</a>
+        
+          <div class="summary"><p>Matrix of decompressed <code><a href="../../Debug/DWARF/LineNumbers/Row.html">Row</a></code> to search line number informations from the address of an instruction.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../../Struct.html">Struct</a></code>
+</h3>
+  
+  
+    <a href="../../Struct.html#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="tooltip">
+      <span>==(other : self) : Bool</span>
+    ==</a>, 
+    
+  
+    <a href="../../Struct.html#hash%3AInt32-instance-method" class="tooltip">
+      <span>hash : Int32</span>
+    hash</a>, 
+    
+  
+    <a href="../../Struct.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Struct.html#to_s%28io%29-instance-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>
+    
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../../Value.html">Value</a></code>
+</h3>
+  
+  
+    <a href="../../Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Value.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>
+    
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+    
+  
+    <a href="../../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+    
+  
+    <a href="../../Object.html#clone-class-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+    
+  
+    <a href="../../Object.html#dup-class-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string : String) : self</span>
+    from_yaml</a>, 
+    
+  
+    <a href="../../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+    
+  
+    <a href="../../Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
+    <a href="../../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>, 
+    
+  
+    <a href="../../Object.html#%7C%28other%3AU.class%29forallU-class-method" class="tooltip">
+      <span>|(other : U.class) forall U</span>
+    |</a>
+    
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(io:IO::FileDescriptor,size)-class-method">
+      <a class="dashingAutolink" name="autolink-1170"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%3A%3AFileDescriptor%2C%20size%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(io : <a href="../../IO/FileDescriptor.html">IO::FileDescriptor</a>, size)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/debug/dwarf/line_numbers.cr#L174" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="directories:Array(String)-instance-method">
+      <a class="dashingAutolink" name="autolink-1171"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20directories%20%3A%20Array%28String%29"></a><div class="signature">
+        
+        def <strong>directories</strong> : <a href="../../Array.html">Array</a>(<a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>The array of indexed directory paths.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/debug/dwarf/line_numbers.cr#L167" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="files:Array(String)-instance-method">
+      <a class="dashingAutolink" name="autolink-1172"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20files%20%3A%20Array%28String%29"></a><div class="signature">
+        
+        def <strong>files</strong> : <a href="../../Array.html">Array</a>(<a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>The array of indexed file names.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/debug/dwarf/line_numbers.cr#L170" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="find(address)-instance-method">
+      <a class="dashingAutolink" name="autolink-1173"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20find%28address%29"></a><div class="signature">
+        
+        def <strong>find</strong>(address)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the <code><a href="../../Debug/DWARF/LineNumbers/Row.html">Row</a></code> for the given Program Counter (PC) address if found.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/debug/dwarf/line_numbers.cr#L183" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="matrix:Array(Array(Row))-instance-method">
+      <a class="dashingAutolink" name="autolink-1174"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20matrix%20%3A%20Array%28Array%28Row%29%29"></a><div class="signature">
+        
+        def <strong>matrix</strong> : <a href="../../Array.html">Array</a>(<a href="../../Array.html">Array</a>(<a href="../../Debug/DWARF/LineNumbers/Row.html">Row</a>))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Matrix of decompressed <code><a href="../../Debug/DWARF/LineNumbers/Row.html">Row</a></code> to search line number informations from the
+address of an instruction.</p>
+
+<p>The matrix contains indexed references to <code><a href="../../Debug/DWARF/LineNumbers.html#directories%3AArray%28String%29-instance-method">#directories</a></code> and <code><a href="../../Debug/DWARF/LineNumbers.html#files%3AArray%28String%29-instance-method">#files</a></code> to
+reduce the memory usage of repeating a String many times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/debug/dwarf/line_numbers.cr#L164" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

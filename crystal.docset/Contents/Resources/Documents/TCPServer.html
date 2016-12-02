@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4942"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/TCPServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>TCPServer - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5272"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/TCPServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>TCPServer - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -61,7 +61,7 @@ loop <span class="k">do</span>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L15" target="_blank">socket/tcp_server.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L15" target="_blank">socket/tcp_server.cr</a>
     
     <br/>
   
@@ -74,11 +74,6 @@ loop <span class="k">do</span>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28host%2Cport%2Cbacklog%3D128%29-class-method" class="signature"><strong>.new</strong>(host, port, backlog = <span class="n">128</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#new%28port%3AInt%2Cbacklog%3D128%29-class-method" class="signature"><strong>.new</strong>(port : Int, backlog = <span class="n">128</span>)</a>
         
           <div class="summary"><p>Creates a new TCP server, listening on all local interfaces (<code>::</code>).</p></div>
@@ -86,9 +81,7 @@ loop <span class="k">do</span>
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28host%2Cport%2Cbacklog%3D128%2C%26block%29-class-method" class="signature"><strong>.open</strong>(host, port, backlog = <span class="n">128</span>, &amp;block)</a>
-        
-          <div class="summary"><p>Creates a new TCP server and yields it to the block.</p></div>
+        <a href="#new%28host%2Cport%2Cbacklog%3D128%29-class-method" class="signature"><strong>.new</strong>(host, port, backlog = <span class="n">128</span>)</a>
         
       </li>
     
@@ -96,6 +89,13 @@ loop <span class="k">do</span>
         <a href="#open%28port%3AInt%2Cbacklog%3D128%2C%26block%29-class-method" class="signature"><strong>.open</strong>(port : Int, backlog = <span class="n">128</span>, &amp;block)</a>
         
           <div class="summary"><p>Creates a new TCP server, listening on all interfaces, and yields it to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28host%2Cport%2Cbacklog%3D128%2C%26block%29-class-method" class="signature"><strong>.open</strong>(host, port, backlog = <span class="n">128</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Creates a new TCP server and yields it to the block.</p></div>
         
       </li>
     
@@ -107,13 +107,6 @@ loop <span class="k">do</span>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#accept%3ATCPSocket-instance-method" class="signature"><strong>#accept</strong> : TCPSocket</a>
-        
-          <div class="summary"><p>Accepts an incoming connection.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#accept%28%26block%29-instance-method" class="signature"><strong>#accept</strong>(&amp;block)</a>
         
           <div class="summary"><p>Accepts an incoming connection and yields the client socket to the block.</p></div>
@@ -121,7 +114,7 @@ loop <span class="k">do</span>
       </li>
     
       <li class="entry-summary">
-        <a href="#accept%3F%3ATCPSocket%7CNil-instance-method" class="signature"><strong>#accept?</strong> : TCPSocket | Nil</a>
+        <a href="#accept%3ATCPSocket-instance-method" class="signature"><strong>#accept</strong> : TCPSocket</a>
         
           <div class="summary"><p>Accepts an incoming connection.</p></div>
         
@@ -131,6 +124,13 @@ loop <span class="k">do</span>
         <a href="#accept%3F%28%26block%29-instance-method" class="signature"><strong>#accept?</strong>(&amp;block)</a>
         
           <div class="summary"><p>Accepts an incoming connection and yields the client socket to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#accept%3F%3ATCPSocket%7CNil-instance-method" class="signature"><strong>#accept?</strong> : TCPSocket | Nil</a>
+        
+          <div class="summary"><p>Accepts an incoming connection.</p></div>
         
       </li>
     
@@ -196,8 +196,8 @@ loop <span class="k">do</span>
 </h3>
   
   
-    <a href="TCPSocket.html#new%28fd%3AInt32%29-class-method" class="tooltip">
-      <span>new(fd : Int32)<br/>new(host, port, dns_timeout = <span class="n">nil</span>, connect_timeout = <span class="n">nil</span>)</span>
+    <a href="TCPSocket.html#new%28host%2Cport%2Cdns_timeout%3Dnil%2Cconnect_timeout%3Dnil%29-class-method" class="tooltip">
+      <span>new(host, port, dns_timeout = <span class="n">nil</span>, connect_timeout = <span class="n">nil</span>)<br/>new(fd : Int32)</span>
     new</a>, 
     
   
@@ -435,7 +435,7 @@ loop <span class="k">do</span>
     
   
     <a href="IO/FileDescriptor.html#read_timeout%3D%28read_timeout%3ATime%3A%3ASpan%29-instance-method" class="tooltip">
-      <span>read_timeout=(read_timeout : Time::Span)<br/>read_timeout=(read_timeout : Number)<br/>read_timeout=(read_timeout : Nil)</span>
+      <span>read_timeout=(read_timeout : Time::Span)<br/>read_timeout=(read_timeout : Nil)<br/>read_timeout=(read_timeout : Number)</span>
     read_timeout=</a>, 
     
   
@@ -444,8 +444,8 @@ loop <span class="k">do</span>
     reopen</a>, 
     
   
-    <a href="IO/FileDescriptor.html#seek%28offset%2Cwhence%3ASeek%3DSeek%3A%3ASet%29-instance-method" class="tooltip">
-      <span>seek(offset, whence : Seek = <span class="t">Seek</span><span class="t">::</span><span class="t">Set</span>)</span>
+    <a href="IO/FileDescriptor.html#seek%28offset%2Cwhence%3ASeek%3DSeek%3A%3ASet%2C%26block%29-instance-method" class="tooltip">
+      <span>seek(offset, whence : Seek = <span class="t">Seek</span><span class="t">::</span><span class="t">Set</span>, &amp;block)<br/>seek(offset, whence : Seek = <span class="t">Seek</span><span class="t">::</span><span class="t">Set</span>)</span>
     seek</a>, 
     
   
@@ -474,8 +474,8 @@ loop <span class="k">do</span>
     write_timed_out=</a>, 
     
   
-    <a href="IO/FileDescriptor.html#write_timeout%3D%28write_timeout%3ANumber%29-instance-method" class="tooltip">
-      <span>write_timeout=(write_timeout : Number)<br/>write_timeout=(write_timeout : Nil)<br/>write_timeout=(write_timeout : Time::Span)</span>
+    <a href="IO/FileDescriptor.html#write_timeout%3D%28write_timeout%3ATime%3A%3ASpan%29-instance-method" class="tooltip">
+      <span>write_timeout=(write_timeout : Time::Span)<br/>write_timeout=(write_timeout : Nil)<br/>write_timeout=(write_timeout : Number)</span>
     write_timeout=</a>
     
   
@@ -603,8 +603,8 @@ loop <span class="k">do</span>
     closed?</a>, 
     
   
-    <a href="IO.html#each_byte%28%26block%29-instance-method" class="tooltip">
-      <span>each_byte(&amp;block)<br/>each_byte</span>
+    <a href="IO.html#each_byte-instance-method" class="tooltip">
+      <span>each_byte<br/>each_byte(&amp;block)</span>
     each_byte</a>, 
     
   
@@ -613,8 +613,8 @@ loop <span class="k">do</span>
     each_char</a>, 
     
   
-    <a href="IO.html#each_line%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="tooltip">
-      <span>each_line(*args, **options)<br/>each_line(*args, **options, &amp;block)</span>
+    <a href="IO.html#each_line%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="tooltip">
+      <span>each_line(*args, **options, &amp;block)<br/>each_line(*args, **options)</span>
     each_line</a>, 
     
   
@@ -628,8 +628,8 @@ loop <span class="k">do</span>
     flush</a>, 
     
   
-    <a href="IO.html#gets%28limit%3AInt%29%3AString%7CNil-instance-method" class="tooltip">
-      <span>gets(limit : Int) : String | Nil<br/>gets(delimiter : Char, limit : Int) : String | Nil<br/>gets(delimiter : Char) : String | Nil<br/>gets : String | Nil<br/>gets(delimiter : String) : String | Nil</span>
+    <a href="IO.html#gets%3AString%7CNil-instance-method" class="tooltip">
+      <span>gets : String | Nil<br/>gets(delimiter : String) : String | Nil<br/>gets(delimiter : Char) : String | Nil<br/>gets(limit : Int) : String | Nil<br/>gets(delimiter : Char, limit : Int) : String | Nil</span>
     gets</a>, 
     
   
@@ -649,7 +649,7 @@ loop <span class="k">do</span>
     
   
     <a href="IO.html#puts%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
-      <span>puts(*objects : _) : Nil<br/>puts : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil</span>
+      <span>puts(*objects : _) : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil<br/>puts : Nil</span>
     puts</a>, 
     
   
@@ -746,8 +746,8 @@ loop <span class="k">do</span>
     copy</a>, 
     
   
-    <a href="IO.html#pipe%28read_blocking%3Dfalse%2Cwrite_blocking%3Dfalse%2C%26block%29-class-method" class="tooltip">
-      <span>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>, &amp;block)<br/>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>)</span>
+    <a href="IO.html#pipe%28read_blocking%3Dfalse%2Cwrite_blocking%3Dfalse%29-class-method" class="tooltip">
+      <span>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>)<br/>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>, &amp;block)</span>
     pipe</a>, 
     
   
@@ -787,8 +787,8 @@ loop <span class="k">do</span>
 </h3>
   
   
-    <a href="Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>==(other)<br/>==(other : self)</span>
+    <a href="Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
     ==</a>, 
     
   
@@ -826,6 +826,16 @@ loop <span class="k">do</span>
 
     
 
+  <h3>Class methods inherited from class <code><a href="Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
 
   
     
@@ -849,8 +859,8 @@ loop <span class="k">do</span>
     ==</a>, 
     
   
-    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -914,8 +924,8 @@ loop <span class="k">do</span>
     to_s</a>, 
     
   
-    <a href="Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -957,8 +967,8 @@ loop <span class="k">do</span>
     dup</a>, 
     
   
-    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -1005,24 +1015,8 @@ loop <span class="k">do</span>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(host,port,backlog=128)-class-method">
-      <a class="dashingAutolink" name="autolink-4934"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%2C%20backlog%20%3D%20128%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(host, port, backlog = <span class="n">128</span>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L16" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new(port:Int,backlog=128)-class-method">
-      <a class="dashingAutolink" name="autolink-4935"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%20%3A%20Int%2C%20backlog%20%3D%20128%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5273"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%20%3A%20Int%2C%20backlog%20%3D%20128%29"></a><div class="signature">
         
         def self.<strong>new</strong>(port : <a href="Int.html">Int</a>, backlog = <span class="n">128</span>)
 
@@ -1034,36 +1028,29 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L41" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="open(host,port,backlog=128,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-4936"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28host%2C%20port%2C%20backlog%20%3D%20128%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="new(host,port,backlog=128)-class-method">
+      <a class="dashingAutolink" name="autolink-5274"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%2C%20backlog%20%3D%20128%29"></a><div class="signature">
         
-        def self.<strong>open</strong>(host, port, backlog = <span class="n">128</span>, &amp;block)
+        def self.<strong>new</strong>(host, port, backlog = <span class="n">128</span>)
 
         
       </div>
       
-        <div class="doc">
-<p>Creates a new TCP server and yields it to the block. Eventually closes the
-server socket when the block returns.</p>
-
-<p>Returns the value of the block.</p>
-</div>
-      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="open(port:Int,backlog=128,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-4937"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28port%20%3A%20Int%2C%20backlog%20%3D%20128%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5275"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28port%20%3A%20Int%2C%20backlog%20%3D%20128%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>open</strong>(port : <a href="Int.html">Int</a>, backlog = <span class="n">128</span>, &amp;block)
 
@@ -1080,7 +1067,30 @@ block. Eventually closes the server socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L62" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(host,port,backlog=128,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-5276"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28host%2C%20port%2C%20backlog%20%3D%20128%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>open</strong>(host, port, backlog = <span class="n">128</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new TCP server and yields it to the block. Eventually closes the
+server socket when the block returns.</p>
+
+<p>Returns the value of the block.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1090,38 +1100,8 @@ block. Eventually closes the server socket when the block returns.</p>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="accept:TCPSocket-instance-method">
-      <a class="dashingAutolink" name="autolink-4938"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%20%3A%20TCPSocket"></a><div class="signature">
-        
-        def <strong>accept</strong> : <a href="TCPSocket.html">TCPSocket</a>
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Accepts an incoming connection.</p>
-
-<p>Returns the client socket. Raises an <code><a href="IO/Error.html">IO::Error</a></code> (closed stream) exception
-if the server is closed after invoking this method.</p>
-
-<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
-
-server <span class="o">=</span> <span class="t">TCPServer</span>.<span class="k">new</span>(<span class="n">2202</span>)
-socket <span class="o">=</span> server.accept
-socket.puts <span class="t">Time</span>.now
-socket.close</code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L132" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="accept(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4939"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5277"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%28%26block%29"></a><div class="signature">
         
         def <strong>accept</strong>(&amp;block)
 
@@ -1146,13 +1126,74 @@ server.accept <span class="k">do</span> <span class="o">|</span>socket<span clas
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="accept:TCPSocket-instance-method">
+      <a class="dashingAutolink" name="autolink-5278"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%20%3A%20TCPSocket"></a><div class="signature">
+        
+        def <strong>accept</strong> : <a href="TCPSocket.html">TCPSocket</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Accepts an incoming connection.</p>
+
+<p>Returns the client socket. Raises an <code><a href="IO/Error.html">IO::Error</a></code> (closed stream) exception
+if the server is closed after invoking this method.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
+
+server <span class="o">=</span> <span class="t">TCPServer</span>.<span class="k">new</span>(<span class="n">2202</span>)
+socket <span class="o">=</span> server.accept
+socket.puts <span class="t">Time</span>.now
+socket.close</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L132" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="accept?(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-5279"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F%28%26block%29"></a><div class="signature">
+        
+        def <strong>accept?</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Accepts an incoming connection and yields the client socket to the block.
+Eventualy closes the connection when the block returns.</p>
+
+<p>Returns the value of the block or <code>nil</code> if the server is closed after
+invoking this method.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
+
+server <span class="o">=</span> <span class="t">TCPServer</span>.<span class="k">new</span>(<span class="n">2202</span>)
+server.accept? <span class="k">do</span> <span class="o">|</span>socket<span class="o">|</span>
+  socket.puts <span class="t">Time</span>.now
+<span class="k">end</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L108" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="accept?:TCPSocket|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-4940"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F%20%3A%20TCPSocket%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5280"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F%20%3A%20TCPSocket%20%7C%20Nil"></a><div class="signature">
         
         def <strong>accept?</strong> : <a href="TCPSocket.html">TCPSocket</a> | <a href="Nil.html">Nil</a>
 
@@ -1182,38 +1223,7 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L155" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="accept?(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4941"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F%28%26block%29"></a><div class="signature">
-        
-        def <strong>accept?</strong>(&amp;block)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Accepts an incoming connection and yields the client socket to the block.
-Eventualy closes the connection when the block returns.</p>
-
-<p>Returns the value of the block or <code>nil</code> if the server is closed after
-invoking this method.</p>
-
-<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
-
-server <span class="o">=</span> <span class="t">TCPServer</span>.<span class="k">new</span>(<span class="n">2202</span>)
-server.accept? <span class="k">do</span> <span class="o">|</span>socket<span class="o">|</span>
-  socket.puts <span class="t">Time</span>.now
-<span class="k">end</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/socket/tcp_server.cr#L108" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/socket/tcp_server.cr#L155" target="_blank">View source</a>]
         
       </div>
     </div>

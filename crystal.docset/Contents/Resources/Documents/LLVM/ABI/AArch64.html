@@ -1,0 +1,480 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-3406"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/LLVM%3A%3AABI%3A%3AAArch64%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>LLVM::ABI::AArch64 - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> LLVM::ABI::AArch64
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../../LLVM/ABI/AArch64.html">LLVM::ABI::AArch64</a></li>
+<li class="superclass"><a href="../../LLVM/ABI.html">LLVM::ABI</a></li>
+<li class="superclass"><a href="../../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Based on
+https://github.com/rust-lang/rust/blob/master/src/librustc_trans/cabi_aarch64.rs</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi/aarch64.cr#L5" target="_blank">llvm/abi/aarch64.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#abi_info%28atys%3AArray%28Type%29%2Crty%3AType%2Cret_def%3ABool%29-instance-method" class="signature"><strong>#abi_info</strong>(atys : Array(Type), rty : Type, ret_def : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#align%28type%3AType%29-instance-method" class="signature"><strong>#align</strong>(type : Type)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#homogeneous_aggregate%3F%28type%29-instance-method" class="signature"><strong>#homogeneous_aggregate?</strong>(type)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#register%3F%28type%29-instance-method" class="signature"><strong>#register?</strong>(type)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size%28type%3AType%29-instance-method" class="signature"><strong>#size</strong>(type : Type)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../LLVM/ABI.html">LLVM::ABI</a></code>
+</h3>
+  
+  
+    <a href="../../LLVM/ABI.html#abi_info%28atys%3AArray%28Type%29%2Crty%3AType%2Cret_def%3ABool%29-instance-method" class="tooltip">
+      <span>abi_info(atys : Array(Type), rty : Type, ret_def : Bool)</span>
+    abi_info</a>, 
+    
+  
+    <a href="../../LLVM/ABI.html#align%28type%3AType%2Cpointer_size%29-instance-method" class="tooltip">
+      <span>align(type : Type, pointer_size)<br/>align(type : Type)</span>
+    align</a>, 
+    
+  
+    <a href="../../LLVM/ABI.html#align_offset%28offset%2Ctype%29-instance-method" class="tooltip">
+      <span>align_offset(offset, type)</span>
+    align_offset</a>, 
+    
+  
+    <a href="../../LLVM/ABI.html#osx%3F%3ABool-instance-method" class="tooltip">
+      <span>osx? : Bool</span>
+    osx?</a>, 
+    
+  
+    <a href="../../LLVM/ABI.html#size%28type%3AType%2Cpointer_size%29-instance-method" class="tooltip">
+      <span>size(type : Type, pointer_size)<br/>size(type : Type)</span>
+    size</a>, 
+    
+  
+    <a href="../../LLVM/ABI.html#target_data%3ATargetData-instance-method" class="tooltip">
+      <span>target_data : TargetData</span>
+    target_data</a>, 
+    
+  
+    <a href="../../LLVM/ABI.html#windows%3F%3ABool-instance-method" class="tooltip">
+      <span>windows? : Bool</span>
+    windows?</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../LLVM/ABI.html">LLVM::ABI</a></code>
+</h3>
+  
+  
+    <a href="../../LLVM/ABI.html#new%28target_machine%3ATargetMachine%29-class-method" class="tooltip">
+      <span>new(target_machine : TargetMachine)</span>
+    new</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../../Object.html#crystal_type_id-instance-method" class="tooltip">
+      <span>crystal_type_id</span>
+    crystal_type_id</a>, 
+    
+  
+    <a href="../../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../../Object.html#to_json-instance-method" class="tooltip">
+      <span>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+    
+  
+    <a href="../../Object.html#clone-class-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+    
+  
+    <a href="../../Object.html#dup-class-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string : String) : self</span>
+    from_yaml</a>, 
+    
+  
+    <a href="../../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+    
+  
+    <a href="../../Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
+    <a href="../../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>, 
+    
+  
+    <a href="../../Object.html#%7C%28other%3AU.class%29forallU-class-method" class="tooltip">
+      <span>|(other : U.class) forall U</span>
+    |</a>
+    
+  
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="abi_info(atys:Array(Type),rty:Type,ret_def:Bool)-instance-method">
+      <a class="dashingAutolink" name="autolink-3407"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abi_info%28atys%20%3A%20Array%28Type%29%2C%20rty%20%3A%20Type%2C%20ret_def%20%3A%20Bool%29"></a><div class="signature">
+        
+        def <strong>abi_info</strong>(atys : <a href="../../Array.html">Array</a>(<a href="../../LLVM/Type.html">Type</a>), rty : <a href="../../LLVM/Type.html">Type</a>, ret_def : <a href="../../Bool.html">Bool</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi/aarch64.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="align(type:Type)-instance-method">
+      <a class="dashingAutolink" name="autolink-3408"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20align%28type%20%3A%20Type%29"></a><div class="signature">
+        
+        def <strong>align</strong>(type : <a href="../../LLVM/Type.html">Type</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi/aarch64.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="homogeneous_aggregate?(type)-instance-method">
+      <a class="dashingAutolink" name="autolink-3409"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20homogeneous_aggregate%3F%28type%29"></a><div class="signature">
+        
+        def <strong>homogeneous_aggregate?</strong>(type)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi/aarch64.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="register?(type)-instance-method">
+      <a class="dashingAutolink" name="autolink-3410"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20register%3F%28type%29"></a><div class="signature">
+        
+        def <strong>register?</strong>(type)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi/aarch64.cr#L142" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size(type:Type)-instance-method">
+      <a class="dashingAutolink" name="autolink-3411"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%28type%20%3A%20Type%29"></a><div class="signature">
+        
+        def <strong>size</strong>(type : <a href="../../LLVM/Type.html">Type</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/abi/aarch64.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

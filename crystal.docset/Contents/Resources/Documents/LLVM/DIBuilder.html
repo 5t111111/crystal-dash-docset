@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3286"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/LLVM%3A%3ADIBuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>LLVM::DIBuilder - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3636"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/LLVM%3A%3ADIBuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>LLVM::DIBuilder - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -44,7 +44,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L3" target="_blank">llvm/di_builder.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L3" target="_blank">llvm/di_builder.cr</a>
     
     <br/>
   
@@ -67,6 +67,11 @@
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#create_auto_variable%28scope%2Cname%2Cfile%2Cline%2Ctype%29-instance-method" class="signature"><strong>#create_auto_variable</strong>(scope, name, file, line, type)</a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#create_basic_type%28name%2Csize_in_bits%2Calign_in_bits%2Cencoding%29-instance-method" class="signature"><strong>#create_basic_type</strong>(name, size_in_bits, align_in_bits, encoding)</a>
@@ -109,17 +114,22 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#create_local_variable%28tag%2Cscope%2Cname%2Cfile%2Cline%2Ctype%29-instance-method" class="signature"><strong>#create_local_variable</strong>(tag, scope, name, file, line, type)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#create_member_type%28scope%2Cname%2Cfile%2Cline%2Csize_in_bits%2Calign_in_bits%2Coffset_in_bits%2Cflags%2Cty%29-instance-method" class="signature"><strong>#create_member_type</strong>(scope, name, file, line, size_in_bits, align_in_bits, offset_in_bits, flags, ty)</a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#create_parameter_variable%28scope%2Cname%2Cargno%2Cfile%2Cline%2Ctype%29-instance-method" class="signature"><strong>#create_parameter_variable</strong>(scope, name, argno, file, line, type)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#create_pointer_type%28pointee%2Csize_in_bits%2Calign_in_bits%2Cname%29-instance-method" class="signature"><strong>#create_pointer_type</strong>(pointee, size_in_bits, align_in_bits, name)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create_replaceable_composite_type%28scope%2Cname%2Cfile%2Cline%29-instance-method" class="signature"><strong>#create_replaceable_composite_type</strong>(scope, name, file, line)</a>
         
       </li>
     
@@ -154,12 +164,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#replace_all_uses%28from%2Cto%29-instance-method" class="signature"><strong>#replace_all_uses</strong>(from, to)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#temporary_md_node%28context%29-instance-method" class="signature"><strong>#temporary_md_node</strong>(context)</a>
+        <a href="#replace_temporary%28from%2Cto%29-instance-method" class="signature"><strong>#replace_temporary</strong>(from, to)</a>
         
       </li>
     
@@ -251,8 +256,8 @@
     ==</a>, 
     
   
-    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -316,8 +321,8 @@
     to_s</a>, 
     
   
-    <a href="../Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -359,8 +364,8 @@
     dup</a>, 
     
   
-    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -408,7 +413,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(llvm_module)-class-method">
-      <a class="dashingAutolink" name="autolink-3265"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28llvm_module%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3637"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28llvm_module%29"></a><div class="signature">
         
         def self.<strong>new</strong>(llvm_module)
 
@@ -418,7 +423,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -428,8 +433,24 @@
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="create_auto_variable(scope,name,file,line,type)-instance-method">
+      <a class="dashingAutolink" name="autolink-3638"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_auto_variable%28scope%2C%20name%2C%20file%2C%20line%2C%20type%29"></a><div class="signature">
+        
+        def <strong>create_auto_variable</strong>(scope, name, file, line, type)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L46" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="create_basic_type(name,size_in_bits,align_in_bits,encoding)-instance-method">
-      <a class="dashingAutolink" name="autolink-3266"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_basic_type%28name%2C%20size_in_bits%2C%20align_in_bits%2C%20encoding%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3639"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_basic_type%28name%2C%20size_in_bits%2C%20align_in_bits%2C%20encoding%29"></a><div class="signature">
         
         def <strong>create_basic_type</strong>(name, size_in_bits, align_in_bits, encoding)
 
@@ -439,13 +460,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_compile_unit(lang,file,dir,producer,optimized,flags,runtime_version)-instance-method">
-      <a class="dashingAutolink" name="autolink-3267"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_compile_unit%28lang%2C%20file%2C%20dir%2C%20producer%2C%20optimized%2C%20flags%2C%20runtime_version%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3640"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_compile_unit%28lang%2C%20file%2C%20dir%2C%20producer%2C%20optimized%2C%20flags%2C%20runtime_version%29"></a><div class="signature">
         
         def <strong>create_compile_unit</strong>(lang, file, dir, producer, optimized, flags, runtime_version)
 
@@ -455,13 +476,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_enumeration_type(scope,name,file,line_number,size_in_bits,align_in_bits,elements,underlying_type)-instance-method">
-      <a class="dashingAutolink" name="autolink-3268"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_enumeration_type%28scope%2C%20name%2C%20file%2C%20line_number%2C%20size_in_bits%2C%20align_in_bits%2C%20elements%2C%20underlying_type%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3641"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_enumeration_type%28scope%2C%20name%2C%20file%2C%20line_number%2C%20size_in_bits%2C%20align_in_bits%2C%20elements%2C%20underlying_type%29"></a><div class="signature">
         
         def <strong>create_enumeration_type</strong>(scope, name, file, line_number, size_in_bits, align_in_bits, elements, underlying_type)
 
@@ -471,13 +492,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_enumerator(name,value)-instance-method">
-      <a class="dashingAutolink" name="autolink-3269"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_enumerator%28name%2C%20value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3642"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_enumerator%28name%2C%20value%29"></a><div class="signature">
         
         def <strong>create_enumerator</strong>(name, value)
 
@@ -487,13 +508,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_expression(addr,length)-instance-method">
-      <a class="dashingAutolink" name="autolink-3270"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_expression%28addr%2C%20length%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3643"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_expression%28addr%2C%20length%29"></a><div class="signature">
         
         def <strong>create_expression</strong>(addr, length)
 
@@ -503,13 +524,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_file(file,dir)-instance-method">
-      <a class="dashingAutolink" name="autolink-3271"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_file%28file%2C%20dir%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3644"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_file%28file%2C%20dir%29"></a><div class="signature">
         
         def <strong>create_file</strong>(file, dir)
 
@@ -519,13 +540,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_function(scope,name,linkage_name,file,line,composite_type,is_local_to_unit,is_definition,scope_line,flags,is_optimized,func)-instance-method">
-      <a class="dashingAutolink" name="autolink-3272"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_function%28scope%2C%20name%2C%20linkage_name%2C%20file%2C%20line%2C%20composite_type%2C%20is_local_to_unit%2C%20is_definition%2C%20scope_line%2C%20flags%2C%20is_optimized%2C%20func%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3645"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_function%28scope%2C%20name%2C%20linkage_name%2C%20file%2C%20line%2C%20composite_type%2C%20is_local_to_unit%2C%20is_definition%2C%20scope_line%2C%20flags%2C%20is_optimized%2C%20func%29"></a><div class="signature">
         
         def <strong>create_function</strong>(scope, name, linkage_name, file, line, composite_type, is_local_to_unit, is_definition, scope_line, flags, is_optimized, func)
 
@@ -535,13 +556,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_lexical_block(scope,file,line,column)-instance-method">
-      <a class="dashingAutolink" name="autolink-3273"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_lexical_block%28scope%2C%20file%2C%20line%2C%20column%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3646"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_lexical_block%28scope%2C%20file%2C%20line%2C%20column%29"></a><div class="signature">
         
         def <strong>create_lexical_block</strong>(scope, file, line, column)
 
@@ -551,29 +572,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L28" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="create_local_variable(tag,scope,name,file,line,type)-instance-method">
-      <a class="dashingAutolink" name="autolink-3274"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_local_variable%28tag%2C%20scope%2C%20name%2C%20file%2C%20line%2C%20type%29"></a><div class="signature">
-        
-        def <strong>create_local_variable</strong>(tag, scope, name, file, line, type)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_member_type(scope,name,file,line,size_in_bits,align_in_bits,offset_in_bits,flags,ty)-instance-method">
-      <a class="dashingAutolink" name="autolink-3275"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_member_type%28scope%2C%20name%2C%20file%2C%20line%2C%20size_in_bits%2C%20align_in_bits%2C%20offset_in_bits%2C%20flags%2C%20ty%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3647"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_member_type%28scope%2C%20name%2C%20file%2C%20line%2C%20size_in_bits%2C%20align_in_bits%2C%20offset_in_bits%2C%20flags%2C%20ty%29"></a><div class="signature">
         
         def <strong>create_member_type</strong>(scope, name, file, line, size_in_bits, align_in_bits, offset_in_bits, flags, ty)
 
@@ -583,13 +588,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_parameter_variable(scope,name,argno,file,line,type)-instance-method">
+      <a class="dashingAutolink" name="autolink-3648"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_parameter_variable%28scope%2C%20name%2C%20argno%2C%20file%2C%20line%2C%20type%29"></a><div class="signature">
+        
+        def <strong>create_parameter_variable</strong>(scope, name, argno, file, line, type)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L50" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_pointer_type(pointee,size_in_bits,align_in_bits,name)-instance-method">
-      <a class="dashingAutolink" name="autolink-3276"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_pointer_type%28pointee%2C%20size_in_bits%2C%20align_in_bits%2C%20name%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3649"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_pointer_type%28pointee%2C%20size_in_bits%2C%20align_in_bits%2C%20name%29"></a><div class="signature">
         
         def <strong>create_pointer_type</strong>(pointee, size_in_bits, align_in_bits, name)
 
@@ -599,13 +620,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_replaceable_composite_type(scope,name,file,line)-instance-method">
+      <a class="dashingAutolink" name="autolink-3650"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_replaceable_composite_type%28scope%2C%20name%2C%20file%2C%20line%29"></a><div class="signature">
+        
+        def <strong>create_replaceable_composite_type</strong>(scope, name, file, line)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_struct_type(scope,name,file,line,size_in_bits,align_in_bits,flags,derived_from,element_types)-instance-method">
-      <a class="dashingAutolink" name="autolink-3277"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_struct_type%28scope%2C%20name%2C%20file%2C%20line%2C%20size_in_bits%2C%20align_in_bits%2C%20flags%2C%20derived_from%2C%20element_types%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3651"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_struct_type%28scope%2C%20name%2C%20file%2C%20line%2C%20size_in_bits%2C%20align_in_bits%2C%20flags%2C%20derived_from%2C%20element_types%29"></a><div class="signature">
         
         def <strong>create_struct_type</strong>(scope, name, file, line, size_in_bits, align_in_bits, flags, derived_from, element_types)
 
@@ -615,13 +652,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L75" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="create_subroutine_type(file,parameter_types)-instance-method">
-      <a class="dashingAutolink" name="autolink-3278"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_subroutine_type%28file%2C%20parameter_types%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3652"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20create_subroutine_type%28file%2C%20parameter_types%29"></a><div class="signature">
         
         def <strong>create_subroutine_type</strong>(file, parameter_types)
 
@@ -631,13 +668,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="finalize-instance-method">
-      <a class="dashingAutolink" name="autolink-3279"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3653"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
         
         def <strong>finalize</strong>
 
@@ -647,13 +684,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L91" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="get_or_create_array(elements:Array(LibLLVMExt::Metadata))-instance-method">
-      <a class="dashingAutolink" name="autolink-3280"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_or_create_array%28elements%20%3A%20Array%28LibLLVMExt%3A%3AMetadata%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3654"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_or_create_array%28elements%20%3A%20Array%28LibLLVMExt%3A%3AMetadata%29%29"></a><div class="signature">
         
         def <strong>get_or_create_array</strong>(elements : <a href="../Array.html">Array</a>(LibLLVMExt::Metadata))
 
@@ -663,13 +700,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="get_or_create_type_array(types:Array(LibLLVMExt::Metadata))-instance-method">
-      <a class="dashingAutolink" name="autolink-3281"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_or_create_type_array%28types%20%3A%20Array%28LibLLVMExt%3A%3AMetadata%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3655"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_or_create_type_array%28types%20%3A%20Array%28LibLLVMExt%3A%3AMetadata%29%29"></a><div class="signature">
         
         def <strong>get_or_create_type_array</strong>(types : <a href="../Array.html">Array</a>(LibLLVMExt::Metadata))
 
@@ -679,13 +716,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="insert_declare_at_end(storage,var_info,expr,dl,block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3282"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20insert_declare_at_end%28storage%2C%20var_info%2C%20expr%2C%20dl%2C%20block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3656"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20insert_declare_at_end%28storage%2C%20var_info%2C%20expr%2C%20dl%2C%20block%29"></a><div class="signature">
         
         def <strong>insert_declare_at_end</strong>(storage, var_info, expr, dl, block)
 
@@ -695,15 +732,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="replace_all_uses(from,to)-instance-method">
-      <a class="dashingAutolink" name="autolink-3283"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20replace_all_uses%28from%2C%20to%29"></a><div class="signature">
+    <div class="entry-detail" id="replace_temporary(from,to)-instance-method">
+      <a class="dashingAutolink" name="autolink-3657"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20replace_temporary%28from%2C%20to%29"></a><div class="signature">
         
-        def <strong>replace_all_uses</strong>(from, to)
+        def <strong>replace_temporary</strong>(from, to)
 
         
       </div>
@@ -711,29 +748,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L87" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="temporary_md_node(context)-instance-method">
-      <a class="dashingAutolink" name="autolink-3284"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20temporary_md_node%28context%29"></a><div class="signature">
-        
-        def <strong>temporary_md_node</strong>(context)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L97" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_unsafe:LibLLVMExt::DIBuilder-instance-method">
-      <a class="dashingAutolink" name="autolink-3285"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20LibLLVMExt%3A%3ADIBuilder"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3658"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20LibLLVMExt%3A%3ADIBuilder"></a><div class="signature">
         
         def <strong>to_unsafe</strong> : LibLLVMExt::DIBuilder
 
@@ -743,7 +764,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/llvm/di_builder.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/llvm/di_builder.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1830"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AHeaders%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTTP::Headers - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-2101"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AHeaders%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTTP::Headers - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -59,7 +59,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L5" target="_blank">http/headers.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L5" target="_blank">http/headers.cr</a>
     
     <br/>
   
@@ -114,12 +114,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#add%28key%2Cvalue%3AArray%28String%29%29-instance-method" class="signature"><strong>#add</strong>(key, value : Array(String))</a>
+        <a href="#add%28key%2Cvalue%3AString%29-instance-method" class="signature"><strong>#add</strong>(key, value : String)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#add%28key%2Cvalue%3AString%29-instance-method" class="signature"><strong>#add</strong>(key, value : String)</a>
+        <a href="#add%28key%2Cvalue%3AArray%28String%29%29-instance-method" class="signature"><strong>#add</strong>(key, value : Array(String))</a>
         
       </li>
     
@@ -149,7 +149,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#fetch%28key%2Cdefault%29-instance-method" class="signature"><strong>#fetch</strong>(key, default)</a>
+        <a href="#fetch%28key%2C%26block%29-instance-method" class="signature"><strong>#fetch</strong>(key, &amp;block)</a>
         
       </li>
     
@@ -159,7 +159,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#fetch%28key%2C%26block%29-instance-method" class="signature"><strong>#fetch</strong>(key, &amp;block)</a>
+        <a href="#fetch%28key%2Cdefault%29-instance-method" class="signature"><strong>#fetch</strong>(key, default)</a>
         
       </li>
     
@@ -229,14 +229,19 @@
 </h3>
   
   
-    <a href="../Enumerable.html#all%3F-instance-method" class="tooltip">
-      <span>all?<br/>all?(&amp;block)</span>
+    <a href="../Enumerable.html#all%3F%28%26block%29-instance-method" class="tooltip">
+      <span>all?(&amp;block)<br/>all?</span>
     all?</a>, 
     
   
-    <a href="../Enumerable.html#any%3F-instance-method" class="tooltip">
-      <span>any?<br/>any?(&amp;block)</span>
+    <a href="../Enumerable.html#any%3F%28%26block%29-instance-method" class="tooltip">
+      <span>any?(&amp;block)<br/>any?</span>
     any?</a>, 
+    
+  
+    <a href="../Enumerable.html#chunks%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>chunks(&amp;block : T -&gt; U)</span>
+    chunks</a>, 
     
   
     <a href="../Enumerable.html#compact_map%28%26block%29-instance-method" class="tooltip">
@@ -244,13 +249,13 @@
     compact_map</a>, 
     
   
-    <a href="../Enumerable.html#count%28item%29-instance-method" class="tooltip">
-      <span>count(item)<br/>count(&amp;block)</span>
+    <a href="../Enumerable.html#count%28%26block%29-instance-method" class="tooltip">
+      <span>count(&amp;block)<br/>count(item)</span>
     count</a>, 
     
   
-    <a href="../Enumerable.html#cycle%28%26block%29-instance-method" class="tooltip">
-      <span>cycle(&amp;block)<br/>cycle(n, &amp;block)</span>
+    <a href="../Enumerable.html#cycle%28n%2C%26block%29-instance-method" class="tooltip">
+      <span>cycle(n, &amp;block)<br/>cycle(&amp;block)</span>
     cycle</a>, 
     
   
@@ -284,8 +289,8 @@
     find</a>, 
     
   
-    <a href="../Enumerable.html#first-instance-method" class="tooltip">
-      <span>first<br/>first(count : Int)</span>
+    <a href="../Enumerable.html#first%28count%3AInt%29-instance-method" class="tooltip">
+      <span>first(count : Int)<br/>first</span>
     first</a>, 
     
   
@@ -294,8 +299,8 @@
     first?</a>, 
     
   
-    <a href="../Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%29forallU-instance-method" class="tooltip">
-      <span>flat_map(&amp;block : T -&gt; Array(U)) forall U</span>
+    <a href="../Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%7CU%29forallU-instance-method" class="tooltip">
+      <span>flat_map(&amp;block : T -&gt; Array(U) | U) forall U</span>
     flat_map</a>, 
     
   
@@ -309,8 +314,8 @@
     group_by</a>, 
     
   
-    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%2C%26block%29forallU-instance-method" class="tooltip">
-      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U</span>
+    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%29forallU-instance-method" class="tooltip">
+      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U</span>
     in_groups_of</a>, 
     
   
@@ -319,8 +324,8 @@
     includes?</a>, 
     
   
-    <a href="../Enumerable.html#index%28obj%29-instance-method" class="tooltip">
-      <span>index(obj)<br/>index(&amp;block)</span>
+    <a href="../Enumerable.html#index%28%26block%29-instance-method" class="tooltip">
+      <span>index(&amp;block)<br/>index(obj)</span>
     index</a>, 
     
   
@@ -329,8 +334,8 @@
     index_by</a>, 
     
   
-    <a href="../Enumerable.html#join%28separator%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
-      <span>join(separator = <span class="s">&#34;&#34;</span>)<br/>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)<br/>join(separator, io)</span>
+    <a href="../Enumerable.html#join%28separator%2Cio%29-instance-method" class="tooltip">
+      <span>join(separator, io)<br/>join(separator = <span class="s">&#34;&#34;</span>)<br/>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)</span>
     join</a>, 
     
   
@@ -449,13 +454,13 @@
     partition</a>, 
     
   
-    <a href="../Enumerable.html#product%28initial%3ANumber%2C%26block%29-instance-method" class="tooltip">
-      <span>product(initial : Number, &amp;block)<br/>product<br/>product(initial : Number)<br/>product(&amp;block)</span>
+    <a href="../Enumerable.html#product%28%26block%29-instance-method" class="tooltip">
+      <span>product(&amp;block)<br/>product(initial : Number, &amp;block)<br/>product<br/>product(initial : Number)</span>
     product</a>, 
     
   
-    <a href="../Enumerable.html#reduce%28memo%2C%26block%29-instance-method" class="tooltip">
-      <span>reduce(memo, &amp;block)<br/>reduce(&amp;block)</span>
+    <a href="../Enumerable.html#reduce%28%26block%29-instance-method" class="tooltip">
+      <span>reduce(&amp;block)<br/>reduce(memo, &amp;block)</span>
     reduce</a>, 
     
   
@@ -484,8 +489,8 @@
     skip_while</a>, 
     
   
-    <a href="../Enumerable.html#sum-instance-method" class="tooltip">
-      <span>sum<br/>sum(initial)<br/>sum(&amp;block)<br/>sum(initial, &amp;block)</span>
+    <a href="../Enumerable.html#sum%28initial%29-instance-method" class="tooltip">
+      <span>sum(initial)<br/>sum<br/>sum(initial, &amp;block)<br/>sum(&amp;block)</span>
     sum</a>, 
     
   
@@ -590,8 +595,8 @@
     ==</a>, 
     
   
-    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -655,8 +660,8 @@
     to_s</a>, 
     
   
-    <a href="../Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -698,8 +703,8 @@
     dup</a>, 
     
   
-    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -747,7 +752,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new-class-method">
-      <a class="dashingAutolink" name="autolink-1804"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2102"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
         
         def self.<strong>new</strong>
 
@@ -757,7 +762,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -768,7 +773,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:Hash)-instance-method">
-      <a class="dashingAutolink" name="autolink-1805"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Hash%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2103"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Hash%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="../Hash.html">Hash</a>)
 
@@ -778,13 +783,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L159" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L159" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-1806"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2104"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>==</strong>(other : self)
 
@@ -794,13 +799,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L155" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[](key)-instance-method">
-      <a class="dashingAutolink" name="autolink-1807"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2105"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%29"></a><div class="signature">
         
         def <strong>[]</strong>(key)
 
@@ -810,13 +815,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L65" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]=(key,value:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-1808"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28key%2C%20value%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2106"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28key%2C%20value%20%3A%20String%29"></a><div class="signature">
         
         def <strong>[]=</strong>(key, value : <a href="../String.html">String</a>)
 
@@ -826,13 +831,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]=(key,value:Array(String))-instance-method">
-      <a class="dashingAutolink" name="autolink-1809"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28key%2C%20value%20%3A%20Array%28String%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2107"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28key%2C%20value%20%3A%20Array%28String%29%29"></a><div class="signature">
         
         def <strong>[]=</strong>(key, value : <a href="../Array.html">Array</a>(<a href="../String.html">String</a>))
 
@@ -842,13 +847,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]?(key)-instance-method">
-      <a class="dashingAutolink" name="autolink-1810"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28key%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2108"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28key%29"></a><div class="signature">
         
         def <strong>[]?</strong>(key)
 
@@ -858,29 +863,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L69" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="add(key,value:Array(String))-instance-method">
-      <a class="dashingAutolink" name="autolink-1811"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28key%2C%20value%20%3A%20Array%28String%29%29"></a><div class="signature">
-        
-        def <strong>add</strong>(key, value : <a href="../Array.html">Array</a>(<a href="../String.html">String</a>))
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L108" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L69" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="add(key,value:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-1812"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28key%2C%20value%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2109"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28key%2C%20value%20%3A%20String%29"></a><div class="signature">
         
         def <strong>add</strong>(key, value : <a href="../String.html">String</a>)
 
@@ -890,13 +879,29 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L95" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(key,value:Array(String))-instance-method">
+      <a class="dashingAutolink" name="autolink-2110"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28key%2C%20value%20%3A%20Array%28String%29%29"></a><div class="signature">
+        
+        def <strong>add</strong>(key, value : <a href="../Array.html">Array</a>(<a href="../String.html">String</a>))
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L108" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-1813"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2111"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -906,13 +911,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L203" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L203" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="delete(key)-instance-method">
-      <a class="dashingAutolink" name="autolink-1814"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28key%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2112"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28key%29"></a><div class="signature">
         
         def <strong>delete</strong>(key)
 
@@ -922,13 +927,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L143" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L143" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dup-instance-method">
-      <a class="dashingAutolink" name="autolink-1815"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2113"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
         
         def <strong>dup</strong>
 
@@ -938,13 +943,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L195" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L195" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1816"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2114"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block)
 
@@ -954,13 +959,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L181" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L181" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="empty?-instance-method">
-      <a class="dashingAutolink" name="autolink-1817"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2115"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
         
         def <strong>empty?</strong>
 
@@ -970,45 +975,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L139" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fetch(key,default)-instance-method">
-      <a class="dashingAutolink" name="autolink-1818"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%2C%20default%29"></a><div class="signature">
-        
-        def <strong>fetch</strong>(key, default)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L126" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fetch(key)-instance-method">
-      <a class="dashingAutolink" name="autolink-1819"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%29"></a><div class="signature">
-        
-        def <strong>fetch</strong>(key)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L121" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L139" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fetch(key,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1820"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2116"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%2C%20%26block%29"></a><div class="signature">
         
         def <strong>fetch</strong>(key, &amp;block)
 
@@ -1018,13 +991,45 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L130" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L130" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fetch(key)-instance-method">
+      <a class="dashingAutolink" name="autolink-2117"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%29"></a><div class="signature">
+        
+        def <strong>fetch</strong>(key)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L121" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fetch(key,default)-instance-method">
+      <a class="dashingAutolink" name="autolink-2118"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fetch%28key%2C%20default%29"></a><div class="signature">
+        
+        def <strong>fetch</strong>(key, default)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="get(key)-instance-method">
-      <a class="dashingAutolink" name="autolink-1821"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get%28key%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2119"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get%28key%29"></a><div class="signature">
         
         def <strong>get</strong>(key)
 
@@ -1034,13 +1039,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L187" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L187" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="get?(key)-instance-method">
-      <a class="dashingAutolink" name="autolink-1822"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get%3F%28key%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2120"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get%3F%28key%29"></a><div class="signature">
         
         def <strong>get?</strong>(key)
 
@@ -1050,13 +1055,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L191" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L191" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="has_key?(key)-instance-method">
-      <a class="dashingAutolink" name="autolink-1823"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_key%3F%28key%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2121"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_key%3F%28key%29"></a><div class="signature">
         
         def <strong>has_key?</strong>(key)
 
@@ -1066,13 +1071,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L135" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L135" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="includes_word?(key,word)-instance-method">
-      <a class="dashingAutolink" name="autolink-1824"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20includes_word%3F%28key%2C%20word%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2122"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20includes_word%3F%28key%2C%20word%29"></a><div class="signature">
         
         def <strong>includes_word?</strong>(key, word)
 
@@ -1090,13 +1095,13 @@ headers.includes_word?(<span class="s">&#34;Connection&#34;</span>, <span class=
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-1825"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2123"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io : <a href="../IO.html">IO</a>)
 
@@ -1106,13 +1111,13 @@ headers.includes_word?(<span class="s">&#34;Connection&#34;</span>, <span class=
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L226" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L226" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="merge!(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-1826"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20merge%21%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2124"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20merge%21%28other%29"></a><div class="signature">
         
         def <strong>merge!</strong>(other)
 
@@ -1122,13 +1127,13 @@ headers.includes_word?(<span class="s">&#34;Connection&#34;</span>, <span class=
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L148" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="same?(other:HTTP::Headers)-instance-method">
-      <a class="dashingAutolink" name="autolink-1827"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20same%3F%28other%20%3A%20HTTP%3A%3AHeaders%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2125"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20same%3F%28other%20%3A%20HTTP%3A%3AHeaders%29"></a><div class="signature">
         
         def <strong>same?</strong>(other : <a href="../HTTP/Headers.html">HTTP::Headers</a>)
 
@@ -1138,13 +1143,13 @@ headers.includes_word?(<span class="s">&#34;Connection&#34;</span>, <span class=
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L207" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L207" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-1828"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2126"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="../IO.html">IO</a>)
 
@@ -1154,7 +1159,7 @@ headers.includes_word?(<span class="s">&#34;Connection&#34;</span>, <span class=
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L211" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L211" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1165,7 +1170,7 @@ headers.includes_word?(<span class="s">&#34;Connection&#34;</span>, <span class=
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="method_missing(call)-macro">
-      <a class="dashingAutolink" name="autolink-1829"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20method_missing%28call%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2127"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20method_missing%28call%29"></a><div class="signature">
         
         macro <strong>method_missing</strong>(call)
 
@@ -1175,7 +1180,7 @@ headers.includes_word?(<span class="s">&#34;Connection&#34;</span>, <span class=
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/http/headers.cr#L230" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/http/headers.cr#L230" target="_blank">View source</a>]
         
       </div>
     </div>

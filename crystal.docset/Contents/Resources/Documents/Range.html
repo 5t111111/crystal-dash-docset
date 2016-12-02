@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4386"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Range%28B%2C%20E%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Range(B, E) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4722"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Range%28B%2C%20E%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Range(B, E) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -86,7 +86,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     <li class="other-type">
 <a href="Enumerable.html">Enumerable</a>(B)</li>
   
-    <li class="other-type"><a href="Iterable.html">Iterable</a></li>
+    <li class="other-type">
+<a href="Iterable.html">Iterable</a>(B)</li>
   
   </ul>
 
@@ -102,12 +103,12 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L52" target="_blank">range.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L52" target="_blank">range.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range/bsearch.cr#L70" target="_blank">range/bsearch.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range/bsearch.cr#L70" target="_blank">range/bsearch.cr</a>
     
     <br/>
   
@@ -176,16 +177,16 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
       </li>
     
       <li class="entry-summary">
-        <a href="#each-instance-method" class="signature"><strong>#each</strong></a>
+        <a href="#each%28%26block%29-instance-method" class="signature"><strong>#each</strong>(&amp;block)</a>
         
-          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> over the elements of this range.</p></div>
+          <div class="summary"><p>Iterates over the elements of this range, passing each in turn to the block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each%28%26block%29-instance-method" class="signature"><strong>#each</strong>(&amp;block)</a>
+        <a href="#each-instance-method" class="signature"><strong>#each</strong></a>
         
-          <div class="summary"><p>Iterates over the elements of this range, passing each in turn to the block.</p></div>
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> over the elements of this range.</p></div>
         
       </li>
     
@@ -232,16 +233,16 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
       </li>
     
       <li class="entry-summary">
-        <a href="#step%28n%3D1%2C%26block%29-instance-method" class="signature"><strong>#step</strong>(n = <span class="n">1</span>, &amp;block)</a>
+        <a href="#step%28n%3AInt%3D1%29-instance-method" class="signature"><strong>#step</strong>(n : Int = <span class="n">1</span>)</a>
         
-          <div class="summary"><p>Iterates over this range, passing each nth element to the block.</p></div>
+          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> that returns each nth element in this range.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#step%28n%3AInt%3D1%29-instance-method" class="signature"><strong>#step</strong>(n : Int = <span class="n">1</span>)</a>
+        <a href="#step%28n%3D1%2C%26block%29-instance-method" class="signature"><strong>#step</strong>(n = <span class="n">1</span>, &amp;block)</a>
         
-          <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> that returns each nth element in this range.</p></div>
+          <div class="summary"><p>Iterates over this range, passing each nth element to the block.</p></div>
         
       </li>
     
@@ -262,12 +263,17 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
   
     
 
-  <h3>Instance methods inherited from module <code><a href="Iterable.html">Iterable</a></code>
+  <h3>Instance methods inherited from module <code><a href="Iterable.html">Iterable({&#34;T&#34;, T})</a></code>
 </h3>
   
   
-    <a href="Iterable.html#cycle-instance-method" class="tooltip">
-      <span>cycle<br/>cycle(n)</span>
+    <a href="Iterable.html#chunk%28%26block%3AT-%3EU%29forallU-instance-method" class="tooltip">
+      <span>chunk(&amp;block : T -&gt; U) forall U</span>
+    chunk</a>, 
+    
+  
+    <a href="Iterable.html#cycle%28n%29-instance-method" class="tooltip">
+      <span>cycle(n)<br/>cycle</span>
     cycle</a>, 
     
   
@@ -308,14 +314,19 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
 </h3>
   
   
-    <a href="Enumerable.html#all%3F-instance-method" class="tooltip">
-      <span>all?<br/>all?(&amp;block)</span>
+    <a href="Enumerable.html#all%3F%28%26block%29-instance-method" class="tooltip">
+      <span>all?(&amp;block)<br/>all?</span>
     all?</a>, 
     
   
-    <a href="Enumerable.html#any%3F-instance-method" class="tooltip">
-      <span>any?<br/>any?(&amp;block)</span>
+    <a href="Enumerable.html#any%3F%28%26block%29-instance-method" class="tooltip">
+      <span>any?(&amp;block)<br/>any?</span>
     any?</a>, 
+    
+  
+    <a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>chunks(&amp;block : T -&gt; U)</span>
+    chunks</a>, 
     
   
     <a href="Enumerable.html#compact_map%28%26block%29-instance-method" class="tooltip">
@@ -323,13 +334,13 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     compact_map</a>, 
     
   
-    <a href="Enumerable.html#count%28item%29-instance-method" class="tooltip">
-      <span>count(item)<br/>count(&amp;block)</span>
+    <a href="Enumerable.html#count%28%26block%29-instance-method" class="tooltip">
+      <span>count(&amp;block)<br/>count(item)</span>
     count</a>, 
     
   
-    <a href="Enumerable.html#cycle%28%26block%29-instance-method" class="tooltip">
-      <span>cycle(&amp;block)<br/>cycle(n, &amp;block)</span>
+    <a href="Enumerable.html#cycle%28n%2C%26block%29-instance-method" class="tooltip">
+      <span>cycle(n, &amp;block)<br/>cycle(&amp;block)</span>
     cycle</a>, 
     
   
@@ -363,8 +374,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     find</a>, 
     
   
-    <a href="Enumerable.html#first-instance-method" class="tooltip">
-      <span>first<br/>first(count : Int)</span>
+    <a href="Enumerable.html#first%28count%3AInt%29-instance-method" class="tooltip">
+      <span>first(count : Int)<br/>first</span>
     first</a>, 
     
   
@@ -373,8 +384,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     first?</a>, 
     
   
-    <a href="Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%29forallU-instance-method" class="tooltip">
-      <span>flat_map(&amp;block : T -&gt; Array(U)) forall U</span>
+    <a href="Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%7CU%29forallU-instance-method" class="tooltip">
+      <span>flat_map(&amp;block : T -&gt; Array(U) | U) forall U</span>
     flat_map</a>, 
     
   
@@ -388,8 +399,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     group_by</a>, 
     
   
-    <a href="Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%2C%26block%29forallU-instance-method" class="tooltip">
-      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U</span>
+    <a href="Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%29forallU-instance-method" class="tooltip">
+      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U</span>
     in_groups_of</a>, 
     
   
@@ -398,8 +409,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     includes?</a>, 
     
   
-    <a href="Enumerable.html#index%28obj%29-instance-method" class="tooltip">
-      <span>index(obj)<br/>index(&amp;block)</span>
+    <a href="Enumerable.html#index%28%26block%29-instance-method" class="tooltip">
+      <span>index(&amp;block)<br/>index(obj)</span>
     index</a>, 
     
   
@@ -408,8 +419,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     index_by</a>, 
     
   
-    <a href="Enumerable.html#join%28separator%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
-      <span>join(separator = <span class="s">&#34;&#34;</span>)<br/>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)<br/>join(separator, io)</span>
+    <a href="Enumerable.html#join%28separator%2Cio%29-instance-method" class="tooltip">
+      <span>join(separator, io)<br/>join(separator = <span class="s">&#34;&#34;</span>)<br/>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)</span>
     join</a>, 
     
   
@@ -528,13 +539,13 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     partition</a>, 
     
   
-    <a href="Enumerable.html#product%28initial%3ANumber%2C%26block%29-instance-method" class="tooltip">
-      <span>product(initial : Number, &amp;block)<br/>product<br/>product(initial : Number)<br/>product(&amp;block)</span>
+    <a href="Enumerable.html#product%28%26block%29-instance-method" class="tooltip">
+      <span>product(&amp;block)<br/>product(initial : Number, &amp;block)<br/>product<br/>product(initial : Number)</span>
     product</a>, 
     
   
-    <a href="Enumerable.html#reduce%28memo%2C%26block%29-instance-method" class="tooltip">
-      <span>reduce(memo, &amp;block)<br/>reduce(&amp;block)</span>
+    <a href="Enumerable.html#reduce%28%26block%29-instance-method" class="tooltip">
+      <span>reduce(&amp;block)<br/>reduce(memo, &amp;block)</span>
     reduce</a>, 
     
   
@@ -563,8 +574,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     skip_while</a>, 
     
   
-    <a href="Enumerable.html#sum-instance-method" class="tooltip">
-      <span>sum<br/>sum(initial)<br/>sum(&amp;block)<br/>sum(initial, &amp;block)</span>
+    <a href="Enumerable.html#sum%28initial%29-instance-method" class="tooltip">
+      <span>sum(initial)<br/>sum<br/>sum(initial, &amp;block)<br/>sum(&amp;block)</span>
     sum</a>, 
     
   
@@ -669,8 +680,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     ==</a>, 
     
   
-    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -734,8 +745,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     to_s</a>, 
     
   
-    <a href="Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -777,8 +788,8 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
     dup</a>, 
     
   
-    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -826,7 +837,7 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(begin:B,end:E,exclusive:Bool=false)-class-method">
-      <a class="dashingAutolink" name="autolink-4368"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28begin%20%3A%20B%2C%20end%20%3A%20E%2C%20exclusive%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4723"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28begin%20%3A%20B%2C%20end%20%3A%20E%2C%20exclusive%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
         
         def self.<strong>new</strong>(begin : B, end : E, exclusive : <a href="Bool.html">Bool</a> = <span class="n">false</span>)
 
@@ -843,7 +854,7 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L82" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L82" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -854,7 +865,7 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="===(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-4369"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4724"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28value%29"></a><div class="signature">
         
         def <strong>===</strong>(value)
 
@@ -874,19 +885,19 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
 
 <pre><code class="language-text">high</code></pre>
 
-<p>See <code><a href="Object.html#%3D%3D%3D%28other%29-instance-method">Object#===</a></code>.</p>
+<p>See <code><a href="Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method">Object#===</a></code>.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L238" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L238" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="begin:B-instance-method">
-      <a class="dashingAutolink" name="autolink-4370"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20begin%20%3A%20B"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4725"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20begin%20%3A%20B"></a><div class="signature">
         
         def <strong>begin</strong> : B
 
@@ -903,13 +914,13 @@ r.includes?(<span class="t">Xs</span>.<span class="k">new</span>(<span class="n"
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="bsearch(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4371"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bsearch%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4726"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bsearch%28%26block%29"></a><div class="signature">
         
         def <strong>bsearch</strong>(&amp;block)
 
@@ -933,13 +944,13 @@ is itself or exists infront.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range/bsearch.cr#L84" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range/bsearch.cr#L84" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-4372"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4727"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -951,13 +962,13 @@ is itself or exists infront.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L274" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L274" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="covers?(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-4373"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20covers%3F%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4728"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20covers%3F%28value%29"></a><div class="signature">
         
         def <strong>covers?</strong>(value)
 
@@ -969,13 +980,13 @@ is itself or exists infront.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L217" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L217" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cycle-instance-method">
-      <a class="dashingAutolink" name="autolink-4374"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4729"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle"></a><div class="signature">
         
         def <strong>cycle</strong>
 
@@ -991,35 +1002,13 @@ is itself or exists infront.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L90" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="each-instance-method">
-      <a class="dashingAutolink" name="autolink-4375"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each"></a><div class="signature">
-        
-        def <strong>each</strong>
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Returns an <code><a href="Iterator.html">Iterator</a></code> over the elements of this range.</p>
-
-<pre><code>(<span class="n">1</span>..<span class="n">3</span>).each.skip(<span class="n">1</span>).to_a <span class="c"># =&gt; [2, 3]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L90" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4376"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4730"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block)
 
@@ -1036,13 +1025,35 @@ is itself or exists infront.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L100" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L100" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each-instance-method">
+      <a class="dashingAutolink" name="autolink-4731"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each"></a><div class="signature">
+        
+        def <strong>each</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an <code><a href="Iterator.html">Iterator</a></code> over the elements of this range.</p>
+
+<pre><code>(<span class="n">1</span>..<span class="n">3</span>).each.skip(<span class="n">1</span>).to_a <span class="c"># =&gt; [2, 3]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L115" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="end:E-instance-method">
-      <a class="dashingAutolink" name="autolink-4377"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end%20%3A%20E"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4732"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end%20%3A%20E"></a><div class="signature">
         
         def <strong>end</strong> : E
 
@@ -1059,13 +1070,13 @@ is itself or exists infront.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="excludes_end?-instance-method">
-      <a class="dashingAutolink" name="autolink-4378"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20excludes_end%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4733"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20excludes_end%3F"></a><div class="signature">
         
         def <strong>excludes_end?</strong>
 
@@ -1082,13 +1093,13 @@ is itself or exists infront.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L194" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L194" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exclusive?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-4379"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exclusive%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4734"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exclusive%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>exclusive?</strong> : <a href="Bool.html">Bool</a>
 
@@ -1101,13 +1112,13 @@ Returns <code>false</code> otherwise (default).</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="includes?(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-4380"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20includes%3F%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4735"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20includes%3F%28value%29"></a><div class="signature">
         
         def <strong>includes?</strong>(value)
 
@@ -1128,13 +1139,13 @@ Returns <code>false</code> otherwise (default).</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L208" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L208" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reverse_each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4381"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse_each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4736"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse_each%28%26block%29"></a><div class="signature">
         
         def <strong>reverse_each</strong>(&amp;block)
 
@@ -1151,13 +1162,13 @@ Returns <code>false</code> otherwise (default).</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L125" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reverse_each-instance-method">
-      <a class="dashingAutolink" name="autolink-4382"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse_each"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4737"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse_each"></a><div class="signature">
         
         def <strong>reverse_each</strong>
 
@@ -1173,13 +1184,35 @@ Returns <code>false</code> otherwise (default).</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L140" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L140" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="step(n:Int=1)-instance-method">
+      <a class="dashingAutolink" name="autolink-4738"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20step%28n%20%3A%20Int%20%3D%201%29"></a><div class="signature">
+        
+        def <strong>step</strong>(n : <a href="Int.html">Int</a> = <span class="n">1</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an <code><a href="Iterator.html">Iterator</a></code> that returns each nth element in this range.</p>
+
+<pre><code>(<span class="n">1</span>..<span class="n">10</span>).step(<span class="n">3</span>).skip(<span class="n">1</span>).to_a <span class="c"># =&gt; [4, 7, 10]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="step(n=1,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-4383"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20step%28n%20%3D%201%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4739"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20step%28n%20%3D%201%2C%20%26block%29"></a><div class="signature">
         
         def <strong>step</strong>(n = <span class="n">1</span>, &amp;block)
 
@@ -1213,35 +1246,13 @@ range.step(<span class="n">3</span>) { <span class="o">|</span>x<span class="o">
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L169" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="step(n:Int=1)-instance-method">
-      <a class="dashingAutolink" name="autolink-4384"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20step%28n%20%3A%20Int%20%3D%201%29"></a><div class="signature">
-        
-        def <strong>step</strong>(n : <a href="Int.html">Int</a> = <span class="n">1</span>)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Returns an <code><a href="Iterator.html">Iterator</a></code> that returns each nth element in this range.</p>
-
-<pre><code>(<span class="n">1</span>..<span class="n">10</span>).step(<span class="n">3</span>).skip(<span class="n">1</span>).to_a <span class="c"># =&gt; [4, 7, 10]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L169" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sum(initial)-instance-method">
-      <a class="dashingAutolink" name="autolink-4385"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum%28initial%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4740"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum%28initial%29"></a><div class="signature">
         
         def <strong>sum</strong>(initial)
 
@@ -1254,7 +1265,7 @@ otherwise it is same as <code><a href="Enumerable.html#sum-instance-method">Enum
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/range.cr#L256" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/range.cr#L256" target="_blank">View source</a>]
         
       </div>
     </div>

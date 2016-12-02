@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-2942"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/JSON%3A%3AAny%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>JSON::Any - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3266"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/JSON%3A%3AAny%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>JSON::Any - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -37,7 +37,7 @@ and can be used for traversing dynamic or unknown JSON structures.</p>
 obj[<span class="s">&#34;access&#34;</span>][<span class="n">1</span>][<span class="s">&#34;name&#34;</span>].as_s  <span class="c"># =&gt; &#34;any&#34;</span>
 obj[<span class="s">&#34;access&#34;</span>][<span class="n">1</span>][<span class="s">&#34;speed&#34;</span>].as_s <span class="c"># =&gt; &#34;slow&#34;</span></code></pre>
 
-<p>Note that methods used to traverse a JSON structure, <code><a href="../JSON/Any.html#%5B%5D%28key%3AString%29%3AJSON%3A%3AAny-instance-method">#[]</a></code>, <code><a href="../JSON/Any.html#%5B%5D%3F%28key%3AString%29%3AJSON%3A%3AAny%7CNil-instance-method">#[]?</a></code> and <code><a href="../JSON/Any.html#each%28%26block%29-instance-method">#each</a></code>,
+<p>Note that methods used to traverse a JSON structure, <code><a href="../JSON/Any.html#%5B%5D%28index%3AInt%29%3AJSON%3A%3AAny-instance-method">#[]</a></code>, <code><a href="../JSON/Any.html#%5B%5D%3F%28index%3AInt%29%3AJSON%3A%3AAny%7CNil-instance-method">#[]?</a></code> and <code><a href="../JSON/Any.html#each%28%26block%29-instance-method">#each</a></code>,
 always return a <code><a href="../JSON/Any.html">JSON::Any</a></code> to allow further traversal. To convert them to <code><a href="../String.html">String</a></code>,
 <code><a href="../Int32.html">Int32</a></code>, etc., use the &#34;as_&#34; methods, such as <code><a href="../JSON/Any.html#as_s%3AString-instance-method">#as_s</a></code>, <code><a href="../JSON/Any.html#as_i%3AInt32-instance-method">#as_i</a></code>, which perform
 a type check against the raw underlying value. This means that invoking <code><a href="../JSON/Any.html#as_s%3AString-instance-method">#as_s</a></code>
@@ -68,7 +68,7 @@ be converted (parsed) to a String.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L16" target="_blank">json/any.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L16" target="_blank">json/any.cr</a>
     
     <br/>
   
@@ -81,16 +81,16 @@ be converted (parsed) to a String.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        <a href="#new%28raw%3AJSON%3A%3AType%29-class-method" class="signature"><strong>.new</strong>(raw : JSON::Type)</a>
         
-          <div class="summary"><p>Reads a <code><a href="../JSON/Any.html">JSON::Any</a></code> value from the given pull parser.</p></div>
+          <div class="summary"><p>Creates a <code><a href="../JSON/Any.html">JSON::Any</a></code> that wraps the given <code><a href="../JSON/Type.html">JSON::Type</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28raw%3AJSON%3A%3AType%29-class-method" class="signature"><strong>.new</strong>(raw : JSON::Type)</a>
+        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
-          <div class="summary"><p>Creates a <code><a href="../JSON/Any.html">JSON::Any</a></code> that wraps the given <code><a href="../JSON/Type.html">JSON::Type</a></code>.</p></div>
+          <div class="summary"><p>Reads a <code><a href="../JSON/Any.html">JSON::Any</a></code> value from the given pull parser.</p></div>
         
       </li>
     
@@ -102,13 +102,6 @@ be converted (parsed) to a String.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="signature"><strong>#==</strong>(other : JSON::Any)</a>
-        
-          <div class="summary"><p>Returns true if both <code>self</code> and <em>other</em>&#39;s raw object are equal.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#%3D%3D%28other%29-instance-method" class="signature"><strong>#==</strong>(other)</a>
         
           <div class="summary"><p>Returns true if the raw object is equal to <em>other</em>.</p></div>
@@ -116,9 +109,9 @@ be converted (parsed) to a String.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28key%3AString%29%3AJSON%3A%3AAny-instance-method" class="signature"><strong>#[]</strong>(key : String) : JSON::Any</a>
+        <a href="#%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="signature"><strong>#==</strong>(other : JSON::Any)</a>
         
-          <div class="summary"><p>Assumes the underlying value is a Hash and returns the element with the given key.</p></div>
+          <div class="summary"><p>Returns true if both <code>self</code> and <em>other</em>&#39;s raw object are equal.</p></div>
         
       </li>
     
@@ -130,9 +123,9 @@ be converted (parsed) to a String.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%3F%28key%3AString%29%3AJSON%3A%3AAny%7CNil-instance-method" class="signature"><strong>#[]?</strong>(key : String) : JSON::Any | Nil</a>
+        <a href="#%5B%5D%28key%3AString%29%3AJSON%3A%3AAny-instance-method" class="signature"><strong>#[]</strong>(key : String) : JSON::Any</a>
         
-          <div class="summary"><p>Assumes the underlying value is a Hash and returns the element with the given key, or nil if the key is not present.</p></div>
+          <div class="summary"><p>Assumes the underlying value is a Hash and returns the element with the given key.</p></div>
         
       </li>
     
@@ -140,6 +133,13 @@ be converted (parsed) to a String.</p>
         <a href="#%5B%5D%3F%28index%3AInt%29%3AJSON%3A%3AAny%7CNil-instance-method" class="signature"><strong>#[]?</strong>(index : Int) : JSON::Any | Nil</a>
         
           <div class="summary"><p>Assumes the underlying value is an Array and returns the element at the given index, or nil if out of bounds.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%3AString%29%3AJSON%3A%3AAny%7CNil-instance-method" class="signature"><strong>#[]?</strong>(key : String) : JSON::Any | Nil</a>
+        
+          <div class="summary"><p>Assumes the underlying value is a Hash and returns the element with the given key, or nil if the key is not present.</p></div>
         
       </li>
     
@@ -297,14 +297,19 @@ be converted (parsed) to a String.</p>
 </h3>
   
   
-    <a href="../Enumerable.html#all%3F-instance-method" class="tooltip">
-      <span>all?<br/>all?(&amp;block)</span>
+    <a href="../Enumerable.html#all%3F%28%26block%29-instance-method" class="tooltip">
+      <span>all?(&amp;block)<br/>all?</span>
     all?</a>, 
     
   
-    <a href="../Enumerable.html#any%3F-instance-method" class="tooltip">
-      <span>any?<br/>any?(&amp;block)</span>
+    <a href="../Enumerable.html#any%3F%28%26block%29-instance-method" class="tooltip">
+      <span>any?(&amp;block)<br/>any?</span>
     any?</a>, 
+    
+  
+    <a href="../Enumerable.html#chunks%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>chunks(&amp;block : T -&gt; U)</span>
+    chunks</a>, 
     
   
     <a href="../Enumerable.html#compact_map%28%26block%29-instance-method" class="tooltip">
@@ -312,13 +317,13 @@ be converted (parsed) to a String.</p>
     compact_map</a>, 
     
   
-    <a href="../Enumerable.html#count%28item%29-instance-method" class="tooltip">
-      <span>count(item)<br/>count(&amp;block)</span>
+    <a href="../Enumerable.html#count%28%26block%29-instance-method" class="tooltip">
+      <span>count(&amp;block)<br/>count(item)</span>
     count</a>, 
     
   
-    <a href="../Enumerable.html#cycle%28%26block%29-instance-method" class="tooltip">
-      <span>cycle(&amp;block)<br/>cycle(n, &amp;block)</span>
+    <a href="../Enumerable.html#cycle%28n%2C%26block%29-instance-method" class="tooltip">
+      <span>cycle(n, &amp;block)<br/>cycle(&amp;block)</span>
     cycle</a>, 
     
   
@@ -352,8 +357,8 @@ be converted (parsed) to a String.</p>
     find</a>, 
     
   
-    <a href="../Enumerable.html#first-instance-method" class="tooltip">
-      <span>first<br/>first(count : Int)</span>
+    <a href="../Enumerable.html#first%28count%3AInt%29-instance-method" class="tooltip">
+      <span>first(count : Int)<br/>first</span>
     first</a>, 
     
   
@@ -362,8 +367,8 @@ be converted (parsed) to a String.</p>
     first?</a>, 
     
   
-    <a href="../Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%29forallU-instance-method" class="tooltip">
-      <span>flat_map(&amp;block : T -&gt; Array(U)) forall U</span>
+    <a href="../Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%7CU%29forallU-instance-method" class="tooltip">
+      <span>flat_map(&amp;block : T -&gt; Array(U) | U) forall U</span>
     flat_map</a>, 
     
   
@@ -377,8 +382,8 @@ be converted (parsed) to a String.</p>
     group_by</a>, 
     
   
-    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%2C%26block%29forallU-instance-method" class="tooltip">
-      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U</span>
+    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%29forallU-instance-method" class="tooltip">
+      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U</span>
     in_groups_of</a>, 
     
   
@@ -387,8 +392,8 @@ be converted (parsed) to a String.</p>
     includes?</a>, 
     
   
-    <a href="../Enumerable.html#index%28obj%29-instance-method" class="tooltip">
-      <span>index(obj)<br/>index(&amp;block)</span>
+    <a href="../Enumerable.html#index%28%26block%29-instance-method" class="tooltip">
+      <span>index(&amp;block)<br/>index(obj)</span>
     index</a>, 
     
   
@@ -397,8 +402,8 @@ be converted (parsed) to a String.</p>
     index_by</a>, 
     
   
-    <a href="../Enumerable.html#join%28separator%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
-      <span>join(separator = <span class="s">&#34;&#34;</span>)<br/>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)<br/>join(separator, io)</span>
+    <a href="../Enumerable.html#join%28separator%2Cio%29-instance-method" class="tooltip">
+      <span>join(separator, io)<br/>join(separator = <span class="s">&#34;&#34;</span>)<br/>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)</span>
     join</a>, 
     
   
@@ -517,13 +522,13 @@ be converted (parsed) to a String.</p>
     partition</a>, 
     
   
-    <a href="../Enumerable.html#product%28initial%3ANumber%2C%26block%29-instance-method" class="tooltip">
-      <span>product(initial : Number, &amp;block)<br/>product<br/>product(initial : Number)<br/>product(&amp;block)</span>
+    <a href="../Enumerable.html#product%28%26block%29-instance-method" class="tooltip">
+      <span>product(&amp;block)<br/>product(initial : Number, &amp;block)<br/>product<br/>product(initial : Number)</span>
     product</a>, 
     
   
-    <a href="../Enumerable.html#reduce%28memo%2C%26block%29-instance-method" class="tooltip">
-      <span>reduce(memo, &amp;block)<br/>reduce(&amp;block)</span>
+    <a href="../Enumerable.html#reduce%28%26block%29-instance-method" class="tooltip">
+      <span>reduce(&amp;block)<br/>reduce(memo, &amp;block)</span>
     reduce</a>, 
     
   
@@ -552,8 +557,8 @@ be converted (parsed) to a String.</p>
     skip_while</a>, 
     
   
-    <a href="../Enumerable.html#sum-instance-method" class="tooltip">
-      <span>sum<br/>sum(initial)<br/>sum(&amp;block)<br/>sum(initial, &amp;block)</span>
+    <a href="../Enumerable.html#sum%28initial%29-instance-method" class="tooltip">
+      <span>sum(initial)<br/>sum<br/>sum(initial, &amp;block)<br/>sum(&amp;block)</span>
     sum</a>, 
     
   
@@ -658,8 +663,8 @@ be converted (parsed) to a String.</p>
     ==</a>, 
     
   
-    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -723,8 +728,8 @@ be converted (parsed) to a String.</p>
     to_s</a>, 
     
   
-    <a href="../Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -766,8 +771,8 @@ be converted (parsed) to a String.</p>
     dup</a>, 
     
   
-    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -814,26 +819,8 @@ be converted (parsed) to a String.</p>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-2914"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(pull : <a href="../JSON/PullParser.html">JSON::PullParser</a>)
-
-        
-      </div>
-      
-        <div class="doc"><p>Reads a <code><a href="../JSON/Any.html">JSON::Any</a></code> value from the given pull parser.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L20" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new(raw:JSON::Type)-class-method">
-      <a class="dashingAutolink" name="autolink-2915"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28raw%20%3A%20JSON%3A%3AType%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3267"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28raw%20%3A%20JSON%3A%3AType%29"></a><div class="signature">
         
         def self.<strong>new</strong>(raw : <a href="../JSON/Type.html">JSON::Type</a>)
 
@@ -845,7 +832,25 @@ be converted (parsed) to a String.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+      <a class="dashingAutolink" name="autolink-3268"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(pull : <a href="../JSON/PullParser.html">JSON::PullParser</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Reads a <code><a href="../JSON/Any.html">JSON::Any</a></code> value from the given pull parser.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -855,26 +860,8 @@ be converted (parsed) to a String.</p>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="==(other:JSON::Any)-instance-method">
-      <a class="dashingAutolink" name="autolink-2916"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20JSON%3A%3AAny%29"></a><div class="signature">
-        
-        def <strong>==</strong>(other : <a href="../JSON/Any.html">JSON::Any</a>)
-
-        
-      </div>
-      
-        <div class="doc"><p>Returns true if both <code>self</code> and <em>other</em>&#39;s raw object are equal.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L234" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="==(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-2917"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3269"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%29"></a><div class="signature">
         
         def <strong>==</strong>(other)
 
@@ -886,33 +873,31 @@ be converted (parsed) to a String.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L239" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L239" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="[](key:String):JSON::Any-instance-method">
-      <a class="dashingAutolink" name="autolink-2918"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%20%3A%20String%29%20%3A%20JSON%3A%3AAny"></a><div class="signature">
+    <div class="entry-detail" id="==(other:JSON::Any)-instance-method">
+      <a class="dashingAutolink" name="autolink-3270"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20JSON%3A%3AAny%29"></a><div class="signature">
         
-        def <strong>[]</strong>(key : <a href="../String.html">String</a>) : <a href="../JSON/Any.html">JSON::Any</a>
+        def <strong>==</strong>(other : <a href="../JSON/Any.html">JSON::Any</a>)
 
         
       </div>
       
-        <div class="doc"><p>Assumes the underlying value is a Hash and returns the element
-with the given key.
-Raises if the underlying value is not a Hash.</p></div>
+        <div class="doc"><p>Returns true if both <code>self</code> and <em>other</em>&#39;s raw object are equal.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L98" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L234" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[](index:Int):JSON::Any-instance-method">
-      <a class="dashingAutolink" name="autolink-2919"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28index%20%3A%20Int%29%20%3A%20JSON%3A%3AAny"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3271"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28index%20%3A%20Int%29%20%3A%20JSON%3A%3AAny"></a><div class="signature">
         
         def <strong>[]</strong>(index : <a href="../Int.html">Int</a>) : <a href="../JSON/Any.html">JSON::Any</a>
 
@@ -926,33 +911,33 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="[]?(key:String):JSON::Any|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2920"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28key%20%3A%20String%29%20%3A%20JSON%3A%3AAny%20%7C%20Nil"></a><div class="signature">
+    <div class="entry-detail" id="[](key:String):JSON::Any-instance-method">
+      <a class="dashingAutolink" name="autolink-3272"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%20%3A%20String%29%20%3A%20JSON%3A%3AAny"></a><div class="signature">
         
-        def <strong>[]?</strong>(key : <a href="../String.html">String</a>) : <a href="../JSON/Any.html">JSON::Any</a> | <a href="../Nil.html">Nil</a>
+        def <strong>[]</strong>(key : <a href="../String.html">String</a>) : <a href="../JSON/Any.html">JSON::Any</a>
 
         
       </div>
       
         <div class="doc"><p>Assumes the underlying value is a Hash and returns the element
-with the given key, or nil if the key is not present.
+with the given key.
 Raises if the underlying value is not a Hash.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]?(index:Int):JSON::Any|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2921"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28index%20%3A%20Int%29%20%3A%20JSON%3A%3AAny%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3273"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28index%20%3A%20Int%29%20%3A%20JSON%3A%3AAny%20%7C%20Nil"></a><div class="signature">
         
         def <strong>[]?</strong>(index : <a href="../Int.html">Int</a>) : <a href="../JSON/Any.html">JSON::Any</a> | <a href="../Nil.html">Nil</a>
 
@@ -966,13 +951,33 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key:String):JSON::Any|Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-3274"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28key%20%3A%20String%29%20%3A%20JSON%3A%3AAny%20%7C%20Nil"></a><div class="signature">
+        
+        def <strong>[]?</strong>(key : <a href="../String.html">String</a>) : <a href="../JSON/Any.html">JSON::Any</a> | <a href="../Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Assumes the underlying value is a Hash and returns the element
+with the given key, or nil if the key is not present.
+Raises if the underlying value is not a Hash.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L110" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_a:Array(Type)-instance-method">
-      <a class="dashingAutolink" name="autolink-2922"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_a%20%3A%20Array%28Type%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3275"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_a%20%3A%20Array%28Type%29"></a><div class="signature">
         
         def <strong>as_a</strong> : <a href="../Array.html">Array</a>(<a href="../JSON/Type.html">Type</a>)
 
@@ -984,13 +989,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L204" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L204" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_a?:Array(Type)|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2923"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_a%3F%20%3A%20Array%28Type%29%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3276"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_a%3F%20%3A%20Array%28Type%29%20%7C%20Nil"></a><div class="signature">
         
         def <strong>as_a?</strong> : <a href="../Array.html">Array</a>(<a href="../JSON/Type.html">Type</a>) | <a href="../Nil.html">Nil</a>
 
@@ -1002,13 +1007,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L209" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L209" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_bool:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-2924"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_bool%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3277"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_bool%20%3A%20Bool"></a><div class="signature">
         
         def <strong>as_bool</strong> : <a href="../Bool.html">Bool</a>
 
@@ -1020,13 +1025,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L144" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L144" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_bool?:Bool|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2925"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_bool%3F%20%3A%20Bool%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3278"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_bool%3F%20%3A%20Bool%20%7C%20Nil"></a><div class="signature">
         
         def <strong>as_bool?</strong> : <a href="../Bool.html">Bool</a> | <a href="../Nil.html">Nil</a>
 
@@ -1038,13 +1043,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L149" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_f:Float64-instance-method">
-      <a class="dashingAutolink" name="autolink-2926"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_f%20%3A%20Float64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3279"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_f%20%3A%20Float64"></a><div class="signature">
         
         def <strong>as_f</strong> : <a href="../Float64.html">Float64</a>
 
@@ -1056,13 +1061,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L174" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L174" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_f32:Float32-instance-method">
-      <a class="dashingAutolink" name="autolink-2927"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_f32%20%3A%20Float32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3280"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_f32%20%3A%20Float32"></a><div class="signature">
         
         def <strong>as_f32</strong> : <a href="../Float32.html">Float32</a>
 
@@ -1074,13 +1079,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L184" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_f32?:Float32|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2928"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_f32%3F%20%3A%20Float32%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3281"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_f32%3F%20%3A%20Float32%20%7C%20Nil"></a><div class="signature">
         
         def <strong>as_f32?</strong> : <a href="../Float32.html">Float32</a> | <a href="../Nil.html">Nil</a>
 
@@ -1092,13 +1097,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L189" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L189" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_f?:Float64|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2929"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_f%3F%20%3A%20Float64%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3282"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_f%3F%20%3A%20Float64%20%7C%20Nil"></a><div class="signature">
         
         def <strong>as_f?</strong> : <a href="../Float64.html">Float64</a> | <a href="../Nil.html">Nil</a>
 
@@ -1110,13 +1115,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L179" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L179" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_h:Hash(String,Type)-instance-method">
-      <a class="dashingAutolink" name="autolink-2930"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_h%20%3A%20Hash%28String%2C%20Type%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3283"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_h%20%3A%20Hash%28String%2C%20Type%29"></a><div class="signature">
         
         def <strong>as_h</strong> : <a href="../Hash.html">Hash</a>(<a href="../String.html">String</a>, <a href="../JSON/Type.html">Type</a>)
 
@@ -1128,13 +1133,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L214" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L214" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_h?:Hash(String,Type)|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2931"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_h%3F%20%3A%20Hash%28String%2C%20Type%29%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3284"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_h%3F%20%3A%20Hash%28String%2C%20Type%29%20%7C%20Nil"></a><div class="signature">
         
         def <strong>as_h?</strong> : <a href="../Hash.html">Hash</a>(<a href="../String.html">String</a>, <a href="../JSON/Type.html">Type</a>) | <a href="../Nil.html">Nil</a>
 
@@ -1146,13 +1151,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L219" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L219" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_i:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-2932"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_i%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3285"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_i%20%3A%20Int32"></a><div class="signature">
         
         def <strong>as_i</strong> : <a href="../Int32.html">Int32</a>
 
@@ -1164,13 +1169,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L154" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L154" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_i64:Int64-instance-method">
-      <a class="dashingAutolink" name="autolink-2933"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_i64%20%3A%20Int64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3286"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_i64%20%3A%20Int64"></a><div class="signature">
         
         def <strong>as_i64</strong> : <a href="../Int64.html">Int64</a>
 
@@ -1182,13 +1187,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L164" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L164" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_i64?:Int64|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2934"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_i64%3F%20%3A%20Int64%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3287"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_i64%3F%20%3A%20Int64%20%7C%20Nil"></a><div class="signature">
         
         def <strong>as_i64?</strong> : <a href="../Int64.html">Int64</a> | <a href="../Nil.html">Nil</a>
 
@@ -1200,13 +1205,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L169" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L169" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_i?:Int32|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2935"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_i%3F%20%3A%20Int32%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3288"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_i%3F%20%3A%20Int32%20%7C%20Nil"></a><div class="signature">
         
         def <strong>as_i?</strong> : <a href="../Int32.html">Int32</a> | <a href="../Nil.html">Nil</a>
 
@@ -1218,13 +1223,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L159" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L159" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_nil:Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2936"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_nil%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3289"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_nil%20%3A%20Nil"></a><div class="signature">
         
         def <strong>as_nil</strong> : <a href="../Nil.html">Nil</a>
 
@@ -1236,13 +1241,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L139" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L139" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_s:String-instance-method">
-      <a class="dashingAutolink" name="autolink-2937"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_s%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3290"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_s%20%3A%20String"></a><div class="signature">
         
         def <strong>as_s</strong> : <a href="../String.html">String</a>
 
@@ -1254,13 +1259,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L194" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L194" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_s?:String|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-2938"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_s%3F%20%3A%20String%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3291"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_s%3F%20%3A%20String%20%7C%20Nil"></a><div class="signature">
         
         def <strong>as_s?</strong> : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a>
 
@@ -1272,13 +1277,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L199" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L199" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-2939"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3292"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block)
 
@@ -1292,13 +1297,13 @@ Raises if the underlying value is not an <code><a href="../Array.html">Array</a>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L123" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L123" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="raw:JSON::Type-instance-method">
-      <a class="dashingAutolink" name="autolink-2940"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raw%20%3A%20JSON%3A%3AType"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3293"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raw%20%3A%20JSON%3A%3AType"></a><div class="signature">
         
         def <strong>raw</strong> : <a href="../JSON/Type.html">JSON::Type</a>
 
@@ -1310,13 +1315,13 @@ Raises if the underlying value is not an <code><a href="../Array.html">Array</a>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L50" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L50" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size:Int-instance-method">
-      <a class="dashingAutolink" name="autolink-2941"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3294"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int"></a><div class="signature">
         
         def <strong>size</strong> : <a href="../Int.html">Int</a>
 
@@ -1330,7 +1335,7 @@ Raises if the underlying value is not an <code><a href="../Array.html">Array</a>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/json/any.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/json/any.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>

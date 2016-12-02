@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3649"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Logger%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Logger - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3996"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Logger%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Logger - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -37,6 +37,9 @@ You can then give the Logger a level, and only messages at that level of higher 
 <p>For instance, in a production system, you may have your Logger set to INFO or even WARN.
 When you are developing the system, however, you probably want to know about the program&rsquo;s internal state,
 and would set the Logger to DEBUG.</p>
+
+<p>If logging to multiple locations is required, an <code><a href="IO/MultiWriter.html">IO::MultiWriter</a></code> can be
+used.</p>
 
 <h3>Example</h3>
 
@@ -76,7 +79,7 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L33" target="_blank">logger.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L36" target="_blank">logger.cr</a>
     
     <br/>
   
@@ -147,16 +150,16 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
       </li>
     
       <li class="entry-summary">
-        <a href="#debug%28message%2Cprogname%3Dnil%29-instance-method" class="signature"><strong>#debug</strong>(message, progname = <span class="n">nil</span>)</a>
+        <a href="#debug%28progname%3Dnil%2C%26block%29-instance-method" class="signature"><strong>#debug</strong>(progname = <span class="n">nil</span>, &amp;block)</a>
         
-          <div class="summary"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#DEBUG">DEBUG</a></code>.</p></div>
+          <div class="summary"><p>Logs the message as returned from the given block if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#DEBUG">DEBUG</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#debug%28progname%3Dnil%2C%26block%29-instance-method" class="signature"><strong>#debug</strong>(progname = <span class="n">nil</span>, &amp;block)</a>
+        <a href="#debug%28message%2Cprogname%3Dnil%29-instance-method" class="signature"><strong>#debug</strong>(message, progname = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Logs the message as returned from the given block if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#DEBUG">DEBUG</a></code>.</p></div>
+          <div class="summary"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#DEBUG">DEBUG</a></code>.</p></div>
         
       </li>
     
@@ -168,16 +171,16 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
       </li>
     
       <li class="entry-summary">
-        <a href="#error%28message%2Cprogname%3Dnil%29-instance-method" class="signature"><strong>#error</strong>(message, progname = <span class="n">nil</span>)</a>
+        <a href="#error%28progname%3Dnil%2C%26block%29-instance-method" class="signature"><strong>#error</strong>(progname = <span class="n">nil</span>, &amp;block)</a>
         
-          <div class="summary"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#ERROR">ERROR</a></code>.</p></div>
+          <div class="summary"><p>Logs the message as returned from the given block if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#ERROR">ERROR</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#error%28progname%3Dnil%2C%26block%29-instance-method" class="signature"><strong>#error</strong>(progname = <span class="n">nil</span>, &amp;block)</a>
+        <a href="#error%28message%2Cprogname%3Dnil%29-instance-method" class="signature"><strong>#error</strong>(message, progname = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Logs the message as returned from the given block if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#ERROR">ERROR</a></code>.</p></div>
+          <div class="summary"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#ERROR">ERROR</a></code>.</p></div>
         
       </li>
     
@@ -220,16 +223,16 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
       </li>
     
       <li class="entry-summary">
-        <a href="#info%28progname%3Dnil%2C%26block%29-instance-method" class="signature"><strong>#info</strong>(progname = <span class="n">nil</span>, &amp;block)</a>
+        <a href="#info%28message%2Cprogname%3Dnil%29-instance-method" class="signature"><strong>#info</strong>(message, progname = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Logs the message as returned from the given block if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>.</p></div>
+          <div class="summary"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#info%28message%2Cprogname%3Dnil%29-instance-method" class="signature"><strong>#info</strong>(message, progname = <span class="n">nil</span>)</a>
+        <a href="#info%28progname%3Dnil%2C%26block%29-instance-method" class="signature"><strong>#info</strong>(progname = <span class="n">nil</span>, &amp;block)</a>
         
-          <div class="summary"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>.</p></div>
+          <div class="summary"><p>Logs the message as returned from the given block if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>.</p></div>
         
       </li>
     
@@ -330,8 +333,8 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
 </h3>
   
   
-    <a href="Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>==(other)<br/>==(other : self)</span>
+    <a href="Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
     ==</a>, 
     
   
@@ -369,6 +372,16 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
 
     
 
+  <h3>Class methods inherited from class <code><a href="Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
 
   
     
@@ -392,8 +405,8 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
     ==</a>, 
     
   
-    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -457,8 +470,8 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
     to_s</a>, 
     
   
-    <a href="Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -500,8 +513,8 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
     dup</a>, 
     
   
-    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -549,7 +562,7 @@ log.warn(<span class="s">&#34;Nothing to do!&#34;</span>)
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(io:IO|Nil)-class-method">
-      <a class="dashingAutolink" name="autolink-3621"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%20%7C%20Nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3997"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%20%7C%20Nil%29"></a><div class="signature">
         
         def self.<strong>new</strong>(io : <a href="IO.html">IO</a> | <a href="Nil.html">Nil</a>)
 
@@ -562,7 +575,7 @@ If <em>io</em> is <code>nil</code> then all log calls will be silently ignored.<
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -573,7 +586,7 @@ If <em>io</em> is <code>nil</code> then all log calls will be silently ignored.<
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-3622"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3998"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -585,32 +598,13 @@ If <em>io</em> is <code>nil</code> then all log calls will be silently ignored.<
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L83" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="debug(message,progname=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3623"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20debug%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
-        
-        def <strong>debug</strong>(message, progname = <span class="n">nil</span>)
-
-        
-      </div>
-      
-        <div class="doc"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#DEBUG">DEBUG</a></code>.
-<em>progname</em> overrides a default progname set in this logger.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L86" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="debug(progname=nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3624"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20debug%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3999"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20debug%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>debug</strong>(progname = <span class="n">nil</span>, &amp;block)
 
@@ -624,13 +618,32 @@ is lower or equal to <code><a href="Logger.html#DEBUG">DEBUG</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="debug(message,progname=nil)-instance-method">
+      <a class="dashingAutolink" name="autolink-4000"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20debug%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
+        
+        def <strong>debug</strong>(message, progname = <span class="n">nil</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#DEBUG">DEBUG</a></code>.
+<em>progname</em> overrides a default progname set in this logger.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="debug?-instance-method">
-      <a class="dashingAutolink" name="autolink-3625"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20debug%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4001"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20debug%3F"></a><div class="signature">
         
         def <strong>debug?</strong>
 
@@ -642,32 +655,13 @@ is lower or equal to <code><a href="Logger.html#DEBUG">DEBUG</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="error(message,progname=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3626"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
-        
-        def <strong>error</strong>(message, progname = <span class="n">nil</span>)
-
-        
-      </div>
-      
-        <div class="doc"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#ERROR">ERROR</a></code>.
-<em>progname</em> overrides a default progname set in this logger.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="error(progname=nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3627"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4002"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>error</strong>(progname = <span class="n">nil</span>, &amp;block)
 
@@ -681,13 +675,32 @@ is lower or equal to <code><a href="Logger.html#ERROR">ERROR</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error(message,progname=nil)-instance-method">
+      <a class="dashingAutolink" name="autolink-4003"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
+        
+        def <strong>error</strong>(message, progname = <span class="n">nil</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#ERROR">ERROR</a></code>.
+<em>progname</em> overrides a default progname set in this logger.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="error?-instance-method">
-      <a class="dashingAutolink" name="autolink-3628"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4004"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%3F"></a><div class="signature">
         
         def <strong>error?</strong>
 
@@ -699,13 +712,13 @@ is lower or equal to <code><a href="Logger.html#ERROR">ERROR</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fatal(progname=nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3629"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fatal%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4005"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fatal%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>fatal</strong>(progname = <span class="n">nil</span>, &amp;block)
 
@@ -719,13 +732,13 @@ is lower or equal to <code><a href="Logger.html#FATAL">FATAL</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fatal(message,progname=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3630"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fatal%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4006"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fatal%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
         
         def <strong>fatal</strong>(message, progname = <span class="n">nil</span>)
 
@@ -738,13 +751,13 @@ is lower or equal to <code><a href="Logger.html#FATAL">FATAL</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fatal?-instance-method">
-      <a class="dashingAutolink" name="autolink-3631"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fatal%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4007"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fatal%3F"></a><div class="signature">
         
         def <strong>fatal?</strong>
 
@@ -756,13 +769,13 @@ is lower or equal to <code><a href="Logger.html#FATAL">FATAL</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="formatter:String,Time,String,String,IO-&gt;Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-3632"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20formatter%20%3A%20String%2C%20Time%2C%20String%2C%20String%2C%20IO%20-%3E%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4008"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20formatter%20%3A%20String%2C%20Time%2C%20String%2C%20String%2C%20IO%20-%3E%20Nil"></a><div class="signature">
         
         def <strong>formatter</strong> : <a href="String.html">String</a>, <a href="Time.html">Time</a>, <a href="String.html">String</a>, <a href="String.html">String</a>, <a href="IO.html">IO</a> -&gt; <a href="Nil.html">Nil</a>
 
@@ -772,13 +785,13 @@ is lower or equal to <code><a href="Logger.html#FATAL">FATAL</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="formatter=(formatter)-instance-method">
-      <a class="dashingAutolink" name="autolink-3633"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20formatter%3D%28formatter%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4009"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20formatter%3D%28formatter%29"></a><div class="signature">
         
         def <strong>formatter=</strong>(formatter)
 
@@ -788,13 +801,32 @@ is lower or equal to <code><a href="Logger.html#FATAL">FATAL</a></code>. The blo
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="info(message,progname=nil)-instance-method">
+      <a class="dashingAutolink" name="autolink-4010"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20info%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
+        
+        def <strong>info</strong>(message, progname = <span class="n">nil</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>.
+<em>progname</em> overrides a default progname set in this logger.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="info(progname=nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3634"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20info%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4011"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20info%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>info</strong>(progname = <span class="n">nil</span>, &amp;block)
 
@@ -808,32 +840,13 @@ is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>. The block
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="info(message,progname=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3635"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20info%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
-        
-        def <strong>info</strong>(message, progname = <span class="n">nil</span>)
-
-        
-      </div>
-      
-        <div class="doc"><p>Logs <em>message</em> if the logger&#39;s current severity is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>.
-<em>progname</em> overrides a default progname set in this logger.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="info?-instance-method">
-      <a class="dashingAutolink" name="autolink-3636"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20info%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4012"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20info%3F"></a><div class="signature">
         
         def <strong>info?</strong>
 
@@ -845,13 +858,13 @@ is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>. The block
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="level:Severity-instance-method">
-      <a class="dashingAutolink" name="autolink-3637"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20level%20%3A%20Severity"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4013"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20level%20%3A%20Severity"></a><div class="signature">
         
         def <strong>level</strong> : <a href="Logger/Severity.html">Severity</a>
 
@@ -861,13 +874,13 @@ is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>. The block
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="level=(level:Severity)-instance-method">
-      <a class="dashingAutolink" name="autolink-3638"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20level%3D%28level%20%3A%20Severity%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4014"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20level%3D%28level%20%3A%20Severity%29"></a><div class="signature">
         
         def <strong>level=</strong>(level : <a href="Logger/Severity.html">Severity</a>)
 
@@ -877,13 +890,13 @@ is lower or equal to <code><a href="Logger.html#INFO">INFO</a></code>. The block
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="log(severity,message,progname=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3639"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20log%28severity%2C%20message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4015"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20log%28severity%2C%20message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
         
         def <strong>log</strong>(severity, message, progname = <span class="n">nil</span>)
 
@@ -896,13 +909,13 @@ severity. <em>progname</em> overrides a default progname set in this logger.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L117" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L120" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="log(severity,progname=nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3640"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20log%28severity%2C%20progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4016"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20log%28severity%2C%20progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>log</strong>(severity, progname = <span class="n">nil</span>, &amp;block)
 
@@ -916,13 +929,13 @@ if <em>severity</em> is lower. <em>progname</em> overrides a default progname se
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L125" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="progname:String-instance-method">
-      <a class="dashingAutolink" name="autolink-3641"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20progname%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4017"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20progname%20%3A%20String"></a><div class="signature">
         
         def <strong>progname</strong> : <a href="String.html">String</a>
 
@@ -932,13 +945,13 @@ if <em>severity</em> is lower. <em>progname</em> overrides a default progname se
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="progname=(progname:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-3642"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20progname%3D%28progname%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4018"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20progname%3D%28progname%20%3A%20String%29"></a><div class="signature">
         
         def <strong>progname=</strong>(progname : <a href="String.html">String</a>)
 
@@ -948,13 +961,13 @@ if <em>severity</em> is lower. <em>progname</em> overrides a default progname se
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unknown(message,progname=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3643"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4019"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
         
         def <strong>unknown</strong>(message, progname = <span class="n">nil</span>)
 
@@ -967,13 +980,13 @@ if <em>severity</em> is lower. <em>progname</em> overrides a default progname se
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unknown(progname=nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3644"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4020"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>unknown</strong>(progname = <span class="n">nil</span>, &amp;block)
 
@@ -987,13 +1000,13 @@ is lower or equal to <code><a href="Logger.html#UNKNOWN">UNKNOWN</a></code>. The
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unknown?-instance-method">
-      <a class="dashingAutolink" name="autolink-3645"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4021"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown%3F"></a><div class="signature">
         
         def <strong>unknown?</strong>
 
@@ -1005,13 +1018,13 @@ is lower or equal to <code><a href="Logger.html#UNKNOWN">UNKNOWN</a></code>. The
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="warn(progname=nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3646"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20warn%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4022"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20warn%28progname%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>warn</strong>(progname = <span class="n">nil</span>, &amp;block)
 
@@ -1025,13 +1038,13 @@ is lower or equal to <code><a href="Logger.html#WARN">WARN</a></code>. The block
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="warn(message,progname=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3647"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20warn%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4023"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20warn%28message%2C%20progname%20%3D%20nil%29"></a><div class="signature">
         
         def <strong>warn</strong>(message, progname = <span class="n">nil</span>)
 
@@ -1044,13 +1057,13 @@ is lower or equal to <code><a href="Logger.html#WARN">WARN</a></code>. The block
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="warn?-instance-method">
-      <a class="dashingAutolink" name="autolink-3648"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20warn%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4024"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20warn%3F"></a><div class="signature">
         
         def <strong>warn?</strong>
 
@@ -1062,7 +1075,7 @@ is lower or equal to <code><a href="Logger.html#WARN">WARN</a></code>. The block
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/logger.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/logger.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>

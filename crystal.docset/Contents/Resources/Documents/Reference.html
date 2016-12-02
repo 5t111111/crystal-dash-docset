@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4408"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Reference%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Reference - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4753"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Reference%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Reference - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -37,7 +37,7 @@ It is set as a class&#39; superclass when you don&#39;t specify one:</p>
 <p>A reference type is passed by reference: when you pass it to methods,
 return it from methods or assign it to variables, a pointer is actually passed.</p>
 
-<p>Invoking <code>new</code> on a Reference allocates a new instance on the heap.
+<p>Invoking <code><a href="Reference.html#new-class-method">.new</a></code> on a Reference allocates a new instance on the heap.
 The instance&#39;s memory is automatically freed (garbage-collected) when
 the instance is no longer referred by any other entity in the program.</p>
 
@@ -110,6 +110,8 @@ the instance is no longer referred by any other entity in the program.</p>
   
     <li class="other-type"><a href="HTTP/Handler.html">HTTP::Handler</a></li>
   
+    <li class="other-type"><a href="HTTP/Params/Builder.html">HTTP::Params::Builder</a></li>
+  
     <li class="other-type"><a href="HTTP/Request.html">HTTP::Request</a></li>
   
     <li class="other-type"><a href="HTTP/Server.html">HTTP::Server</a></li>
@@ -131,6 +133,10 @@ the instance is no longer referred by any other entity in the program.</p>
     <li class="other-type"><a href="IO/FileDescriptor.html">IO::FileDescriptor</a></li>
   
     <li class="other-type"><a href="IO/Hexdump.html">IO::Hexdump</a></li>
+  
+    <li class="other-type"><a href="IO/Memory.html">IO::Memory</a></li>
+  
+    <li class="other-type"><a href="IO/MultiWriter.html">IO::MultiWriter</a></li>
   
     <li class="other-type"><a href="IO/Sized.html">IO::Sized</a></li>
   
@@ -179,8 +185,6 @@ the instance is no longer referred by any other entity in the program.</p>
     <li class="other-type"><a href="Markdown/HTMLRenderer.html">Markdown::HTMLRenderer</a></li>
   
     <li class="other-type"><a href="Markdown/Parser.html">Markdown::Parser</a></li>
-  
-    <li class="other-type"><a href="MemoryIO.html">MemoryIO</a></li>
   
     <li class="other-type"><a href="Mutex.html">Mutex</a></li>
   
@@ -258,12 +262,12 @@ the instance is no longer referred by any other entity in the program.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/primitives.cr#L36" target="_blank">primitives.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/primitives.cr#L36" target="_blank">primitives.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L13" target="_blank">reference.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L13" target="_blank">reference.cr</a>
     
     <br/>
   
@@ -271,6 +275,16 @@ the instance is no longer referred by any other entity in the program.</p>
 
 
 
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -278,16 +292,16 @@ the instance is no longer referred by any other entity in the program.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%3D%3D%28other%29-instance-method" class="signature"><strong>#==</strong>(other)</a>
+        <a href="#%3D%3D%28other%3Aself%29-instance-method" class="signature"><strong>#==</strong>(other : self)</a>
         
-          <div class="summary"><p>Returns false (other can only be a <code><a href="Value.html">Value</a></code> here).</p></div>
+          <div class="summary"><p>Returns true if this reference is the same as other.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%3D%3D%28other%3Aself%29-instance-method" class="signature"><strong>#==</strong>(other : self)</a>
+        <a href="#%3D%3D%28other%29-instance-method" class="signature"><strong>#==</strong>(other)</a>
         
-          <div class="summary"><p>Returns true if this reference is the same as other.</p></div>
+          <div class="summary"><p>Returns false (other can only be a <code><a href="Value.html">Value</a></code> here).</p></div>
         
       </li>
     
@@ -365,8 +379,8 @@ the instance is no longer referred by any other entity in the program.</p>
     ==</a>, 
     
   
-    <a href="Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -430,8 +444,8 @@ the instance is no longer referred by any other entity in the program.</p>
     to_s</a>, 
     
   
-    <a href="Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -473,8 +487,8 @@ the instance is no longer referred by any other entity in the program.</p>
     dup</a>, 
     
   
-    <a href="Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -519,30 +533,31 @@ the instance is no longer referred by any other entity in the program.</p>
 </div>
 
 
-
-
-  <h2>Instance Method Detail</h2>
+  <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="==(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-4399"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%29"></a><div class="signature">
+    <div class="entry-detail" id="new-class-method">
+      <a class="dashingAutolink" name="autolink-4754"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
         
-        def <strong>==</strong>(other)
+        def self.<strong>new</strong>
 
         
       </div>
-      
-        <div class="doc"><p>Returns false (other can only be a <code><a href="Value.html">Value</a></code> here).</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/primitives.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
+
+  <h2>Instance Method Detail</h2>
+  
     <div class="entry-detail" id="==(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-4400"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4755"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>==</strong>(other : self)
 
@@ -554,13 +569,31 @@ the instance is no longer referred by any other entity in the program.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="==(other)-instance-method">
+      <a class="dashingAutolink" name="autolink-4756"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%29"></a><div class="signature">
+        
+        def <strong>==</strong>(other)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns false (other can only be a <code><a href="Value.html">Value</a></code> here).</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dup-instance-method">
-      <a class="dashingAutolink" name="autolink-4401"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4757"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
         
         def <strong>dup</strong>
 
@@ -577,13 +610,13 @@ the instance is no longer referred by any other entity in the program.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-4402"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4758"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
         
         def <strong>hash</strong>
 
@@ -595,13 +628,13 @@ the instance is no longer referred by any other entity in the program.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io:IO):Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-4403"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4759"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>inspect</strong>(io : <a href="IO.html">IO</a>) : <a href="Nil.html">Nil</a>
 
@@ -611,13 +644,13 @@ the instance is no longer referred by any other entity in the program.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="object_id:UInt64-instance-method">
-      <a class="dashingAutolink" name="autolink-4404"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20object_id%20%3A%20UInt64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4760"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20object_id%20%3A%20UInt64"></a><div class="signature">
         
         def <strong>object_id</strong> : <a href="UInt64.html">UInt64</a>
 
@@ -640,13 +673,13 @@ string2.object_id <span class="o">==</span> string.object_id <span class="c"># =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/primitives.cr#L50" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/primitives.cr#L50" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="same?(other:Reference)-instance-method">
-      <a class="dashingAutolink" name="autolink-4405"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20same%3F%28other%20%3A%20Reference%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4761"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20same%3F%28other%20%3A%20Reference%29"></a><div class="signature">
         
         def <strong>same?</strong>(other : <a href="Reference.html">Reference</a>)
 
@@ -659,13 +692,13 @@ true if this reference&#39;s <code><a href="Reference.html#object_id%3AUInt64-in
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L26" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="same?(other:Nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-4406"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20same%3F%28other%20%3A%20Nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4762"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20same%3F%28other%20%3A%20Nil%29"></a><div class="signature">
         
         def <strong>same?</strong>(other : <a href="Nil.html">Nil</a>)
 
@@ -677,13 +710,13 @@ true if this reference&#39;s <code><a href="Reference.html#object_id%3AUInt64-in
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO):Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-4407"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4763"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>) : <a href="Nil.html">Nil</a>
 
@@ -693,7 +726,7 @@ true if this reference&#39;s <code><a href="Reference.html#object_id%3AUInt64-in
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/reference.cr#L72" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/reference.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>

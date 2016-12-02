@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1655"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/GC%3A%3AStats%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>GC::Stats - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1943"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/GC%3A%3AStats%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>GC::Stats - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -44,7 +44,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/gc/boehm.cr#L123" target="_blank">gc/boehm.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/gc/boehm.cr#L123" target="_blank">gc/boehm.cr</a>
     
     <br/>
   
@@ -57,7 +57,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28collections%3ALibC%3A%3AULong%2Cbytes_found%3ALibC%3A%3ALong%29-class-method" class="signature"><strong>.new</strong>(collections : LibC::ULong, bytes_found : LibC::Long)</a>
+        <a href="#new%28heap_size%3ALibC%3A%3AULong%2Cfree_bytes%3ALibC%3A%3AULong%2Cunmapped_bytes%3ALibC%3A%3AULong%2Cbytes_since_gc%3ALibC%3A%3AULong%2Ctotal_bytes%3ALibC%3A%3AULong%29-class-method" class="signature"><strong>.new</strong>(heap_size : LibC::ULong, free_bytes : LibC::ULong, unmapped_bytes : LibC::ULong, bytes_since_gc : LibC::ULong, total_bytes : LibC::ULong)</a>
         
       </li>
     
@@ -69,7 +69,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#bytes_found%3ALibC%3A%3ALong-instance-method" class="signature"><strong>#bytes_found</strong> : LibC::Long</a>
+        <a href="#bytes_since_gc%3ALibC%3A%3AULong-instance-method" class="signature"><strong>#bytes_since_gc</strong> : LibC::ULong</a>
         
       </li>
     
@@ -79,7 +79,22 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#collections%3ALibC%3A%3AULong-instance-method" class="signature"><strong>#collections</strong> : LibC::ULong</a>
+        <a href="#free_bytes%3ALibC%3A%3AULong-instance-method" class="signature"><strong>#free_bytes</strong> : LibC::ULong</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#heap_size%3ALibC%3A%3AULong-instance-method" class="signature"><strong>#heap_size</strong> : LibC::ULong</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#total_bytes%3ALibC%3A%3AULong-instance-method" class="signature"><strong>#total_bytes</strong> : LibC::ULong</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unmapped_bytes%3ALibC%3A%3AULong-instance-method" class="signature"><strong>#unmapped_bytes</strong> : LibC::ULong</a>
         
       </li>
     
@@ -166,8 +181,8 @@
     ==</a>, 
     
   
-    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -231,8 +246,8 @@
     to_s</a>, 
     
   
-    <a href="../Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -274,8 +289,8 @@
     dup</a>, 
     
   
-    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -322,10 +337,10 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(collections:LibC::ULong,bytes_found:LibC::Long)-class-method">
-      <a class="dashingAutolink" name="autolink-1651"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28collections%20%3A%20LibC%3A%3AULong%2C%20bytes_found%20%3A%20LibC%3A%3ALong%29"></a><div class="signature">
+    <div class="entry-detail" id="new(heap_size:LibC::ULong,free_bytes:LibC::ULong,unmapped_bytes:LibC::ULong,bytes_since_gc:LibC::ULong,total_bytes:LibC::ULong)-class-method">
+      <a class="dashingAutolink" name="autolink-1944"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28heap_size%20%3A%20LibC%3A%3AULong%2C%20free_bytes%20%3A%20LibC%3A%3AULong%2C%20unmapped_bytes%20%3A%20LibC%3A%3AULong%2C%20bytes_since_gc%20%3A%20LibC%3A%3AULong%2C%20total_bytes%20%3A%20LibC%3A%3AULong%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(collections : <a href="../LibC/ULong.html">LibC::ULong</a>, bytes_found : <a href="../LibC/Long.html">LibC::Long</a>)
+        def self.<strong>new</strong>(heap_size : <a href="../LibC/ULong.html">LibC::ULong</a>, free_bytes : <a href="../LibC/ULong.html">LibC::ULong</a>, unmapped_bytes : <a href="../LibC/ULong.html">LibC::ULong</a>, bytes_since_gc : <a href="../LibC/ULong.html">LibC::ULong</a>, total_bytes : <a href="../LibC/ULong.html">LibC::ULong</a>)
 
         
       </div>
@@ -333,7 +348,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/gc/boehm.cr#L123" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/gc/boehm.cr#L123" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -343,10 +358,10 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="bytes_found:LibC::Long-instance-method">
-      <a class="dashingAutolink" name="autolink-1652"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bytes_found%20%3A%20LibC%3A%3ALong"></a><div class="signature">
+    <div class="entry-detail" id="bytes_since_gc:LibC::ULong-instance-method">
+      <a class="dashingAutolink" name="autolink-1945"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bytes_since_gc%20%3A%20LibC%3A%3AULong"></a><div class="signature">
         
-        def <strong>bytes_found</strong> : <a href="../LibC/Long.html">LibC::Long</a>
+        def <strong>bytes_since_gc</strong> : <a href="../LibC/ULong.html">LibC::ULong</a>
 
         
       </div>
@@ -358,7 +373,7 @@
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-1653"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1946"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -368,15 +383,57 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/gc/boehm.cr#L123" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/gc/boehm.cr#L123" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="collections:LibC::ULong-instance-method">
-      <a class="dashingAutolink" name="autolink-1654"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20collections%20%3A%20LibC%3A%3AULong"></a><div class="signature">
+    <div class="entry-detail" id="free_bytes:LibC::ULong-instance-method">
+      <a class="dashingAutolink" name="autolink-1947"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20free_bytes%20%3A%20LibC%3A%3AULong"></a><div class="signature">
         
-        def <strong>collections</strong> : <a href="../LibC/ULong.html">LibC::ULong</a>
+        def <strong>free_bytes</strong> : <a href="../LibC/ULong.html">LibC::ULong</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="heap_size:LibC::ULong-instance-method">
+      <a class="dashingAutolink" name="autolink-1948"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20heap_size%20%3A%20LibC%3A%3AULong"></a><div class="signature">
+        
+        def <strong>heap_size</strong> : <a href="../LibC/ULong.html">LibC::ULong</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="total_bytes:LibC::ULong-instance-method">
+      <a class="dashingAutolink" name="autolink-1949"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20total_bytes%20%3A%20LibC%3A%3AULong"></a><div class="signature">
+        
+        def <strong>total_bytes</strong> : <a href="../LibC/ULong.html">LibC::ULong</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unmapped_bytes:LibC::ULong-instance-method">
+      <a class="dashingAutolink" name="autolink-1950"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unmapped_bytes%20%3A%20LibC%3A%3AULong"></a><div class="signature">
+        
+        def <strong>unmapped_bytes</strong> : <a href="../LibC/ULong.html">LibC::ULong</a>
 
         
       </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4030"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OAuth2%3A%3AClient%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OAuth2::Client - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4381"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OAuth2%3A%3AClient%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OAuth2::Client - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -48,6 +48,7 @@ redirect_uri <span class="o">=</span> <span class="s">&#34;http://some.callback&
 
 <span class="c"># Create oauth client, optionally pass custom URIs if needed,</span>
 <span class="c"># if the authorize or token URIs are not the standard ones</span>
+<span class="c"># (they can also be absolute URLs)</span>
 oauth2_client <span class="o">=</span> <span class="t">OAuth2</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="s">&#34;api.example.com&#34;</span>, client_id, client_secret,
   redirect_uri: redirect_uri)
 
@@ -98,7 +99,7 @@ tokens before each request.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/oauth2/client.cr#L55" target="_blank">oauth2/client.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/oauth2/client.cr#L56" target="_blank">oauth2/client.cr</a>
     
     <br/>
   
@@ -112,6 +113,8 @@ tokens before each request.</p>
     
       <li class="entry-summary">
         <a href="#new%28host%3AString%2Cclient_id%3AString%2Cclient_secret%3AString%2Cport%3D443%2Cscheme%3D%26quot%3Bhttps%26quot%3B%2Cauthorize_uri%3D%26quot%3B%2Foauth2%2Fauthorize%26quot%3B%2Ctoken_uri%3D%26quot%3B%2Foauth2%2Ftoken%26quot%3B%2Credirect_uri%3AString%7CNil%3Dnil%29-class-method" class="signature"><strong>.new</strong>(host : String, client_id : String, client_secret : String, port = <span class="n">443</span>, scheme = <span class="s">&#34;https&#34;</span>, authorize_uri = <span class="s">&#34;/oauth2/authorize&#34;</span>, token_uri = <span class="s">&#34;/oauth2/token&#34;</span>, redirect_uri : String | Nil = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Creates an OAuth client.</p></div>
         
       </li>
     
@@ -130,7 +133,7 @@ tokens before each request.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#get_access_token_using_client_credentials%28scope%3Dnil%29%3AAccessToken-instance-method" class="signature"><strong>#get_access_token_using_client_credentials</strong>(scope = <span class="n">nil</span>) : AccessToken</a>
+        <a href="#get_access_token_using_client_credentials%28scope%3Dnil%29-instance-method" class="signature"><strong>#get_access_token_using_client_credentials</strong>(scope = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Gets an access token using client credentials, as specified by <a href="https://tools.ietf.org/html/rfc6749#section-4.4.2" target="_blank">RFC 6749, Section 4.4.2</a></p></div>
         
@@ -150,6 +153,13 @@ tokens before each request.</p>
         
       </li>
     
+      <li class="entry-summary">
+        <a href="#get_authorize_uri%28scope%3Dnil%2Cstate%3Dnil%2C%26block%3AHTTP%3A%3AParams%3A%3ABuilder-%3E%29%3AString-instance-method" class="signature"><strong>#get_authorize_uri</strong>(scope = <span class="n">nil</span>, state = <span class="n">nil</span>, &amp;block : HTTP::Params::Builder -&gt; ) : String</a>
+        
+          <div class="summary"><p>Builds an authorize URI, as specified by <a href="https://tools.ietf.org/html/rfc6749#section-4.1.1" target="_blank">RFC6749, Section 4.1.1</a></p></div>
+        
+      </li>
+    
   </ul>
 
 
@@ -164,8 +174,8 @@ tokens before each request.</p>
 </h3>
   
   
-    <a href="../Reference.html#%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>==(other)<br/>==(other : self)</span>
+    <a href="../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
     ==</a>, 
     
   
@@ -203,6 +213,16 @@ tokens before each request.</p>
 
     
 
+  <h3>Class methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
 
   
     
@@ -226,8 +246,8 @@ tokens before each request.</p>
     ==</a>, 
     
   
-    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -291,8 +311,8 @@ tokens before each request.</p>
     to_s</a>, 
     
   
-    <a href="../Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -334,8 +354,8 @@ tokens before each request.</p>
     dup</a>, 
     
   
-    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -383,17 +403,26 @@ tokens before each request.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(host:String,client_id:String,client_secret:String,port=443,scheme=&amp;quot;https&amp;quot;,authorize_uri=&amp;quot;/oauth2/authorize&amp;quot;,token_uri=&amp;quot;/oauth2/token&amp;quot;,redirect_uri:String|Nil=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-4025"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20client_id%20%3A%20String%2C%20client_secret%20%3A%20String%2C%20port%20%3D%20443%2C%20scheme%20%3D%20%22https%22%2C%20authorize_uri%20%3D%20%22%2Foauth2%2Fauthorize%22%2C%20token_uri%20%3D%20%22%2Foauth2%2Ftoken%22%2C%20redirect_uri%20%3A%20String%20%7C%20Nil%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4382"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20client_id%20%3A%20String%2C%20client_secret%20%3A%20String%2C%20port%20%3D%20443%2C%20scheme%20%3D%20%22https%22%2C%20authorize_uri%20%3D%20%22%2Foauth2%2Fauthorize%22%2C%20token_uri%20%3D%20%22%2Foauth2%2Ftoken%22%2C%20redirect_uri%20%3A%20String%20%7C%20Nil%20%3D%20nil%29"></a><div class="signature">
         
         def self.<strong>new</strong>(host : <a href="../String.html">String</a>, client_id : <a href="../String.html">String</a>, client_secret : <a href="../String.html">String</a>, port = <span class="n">443</span>, scheme = <span class="s">&#34;https&#34;</span>, authorize_uri = <span class="s">&#34;/oauth2/authorize&#34;</span>, token_uri = <span class="s">&#34;/oauth2/token&#34;</span>, redirect_uri : <a href="../String.html">String</a> | <a href="../Nil.html">Nil</a> = <span class="n">nil</span>)
 
         
       </div>
       
+        <div class="doc">
+<p>Creates an OAuth client.</p>
+
+<p>Any or all of the customizable URIs <em>authorize_uri</em> and
+<em>token_uri</em> can be relative or absolute.
+If they are relative, the given <em>host</em>, <em>port</em> and <em>scheme</em> will be used.
+If they are absolute, the absolute URL will be used.</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/oauth2/client.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/oauth2/client.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -404,7 +433,7 @@ tokens before each request.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="get_access_token_using_authorization_code(authorization_code):AccessToken-instance-method">
-      <a class="dashingAutolink" name="autolink-4026"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_access_token_using_authorization_code%28authorization_code%29%20%3A%20AccessToken"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4383"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_access_token_using_authorization_code%28authorization_code%29%20%3A%20AccessToken"></a><div class="signature">
         
         def <strong>get_access_token_using_authorization_code</strong>(authorization_code) : <a href="../OAuth2/AccessToken.html">AccessToken</a>
 
@@ -417,15 +446,15 @@ tokens before each request.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/oauth2/client.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/oauth2/client.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="get_access_token_using_client_credentials(scope=nil):AccessToken-instance-method">
-      <a class="dashingAutolink" name="autolink-4027"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_access_token_using_client_credentials%28scope%20%3D%20nil%29%20%3A%20AccessToken"></a><div class="signature">
+    <div class="entry-detail" id="get_access_token_using_client_credentials(scope=nil)-instance-method">
+      <a class="dashingAutolink" name="autolink-4384"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_access_token_using_client_credentials%28scope%20%3D%20nil%29"></a><div class="signature">
         
-        def <strong>get_access_token_using_client_credentials</strong>(scope = <span class="n">nil</span>) : <a href="../OAuth2/AccessToken.html">AccessToken</a>
+        def <strong>get_access_token_using_client_credentials</strong>(scope = <span class="n">nil</span>)
 
         
       </div>
@@ -436,13 +465,13 @@ tokens before each request.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/oauth2/client.cr#L100" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/oauth2/client.cr#L129" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="get_access_token_using_refresh_token(refresh_token,scope=nil):AccessToken-instance-method">
-      <a class="dashingAutolink" name="autolink-4028"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_access_token_using_refresh_token%28refresh_token%2C%20scope%20%3D%20nil%29%20%3A%20AccessToken"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4385"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_access_token_using_refresh_token%28refresh_token%2C%20scope%20%3D%20nil%29%20%3A%20AccessToken"></a><div class="signature">
         
         def <strong>get_access_token_using_refresh_token</strong>(refresh_token, scope = <span class="n">nil</span>) : <a href="../OAuth2/AccessToken.html">AccessToken</a>
 
@@ -455,13 +484,13 @@ tokens before each request.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/oauth2/client.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/oauth2/client.cr#L119" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="get_authorize_uri(scope=nil,state=nil):String-instance-method">
-      <a class="dashingAutolink" name="autolink-4029"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_authorize_uri%28scope%20%3D%20nil%2C%20state%20%3D%20nil%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4386"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_authorize_uri%28scope%20%3D%20nil%2C%20state%20%3D%20nil%29%20%3A%20String"></a><div class="signature">
         
         def <strong>get_authorize_uri</strong>(scope = <span class="n">nil</span>, state = <span class="n">nil</span>) : <a href="../String.html">String</a>
 
@@ -474,7 +503,31 @@ tokens before each request.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/oauth2/client.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/oauth2/client.cr#L73" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_authorize_uri(scope=nil,state=nil,&amp;block:HTTP::Params::Builder-&gt;):String-instance-method">
+      <a class="dashingAutolink" name="autolink-4387"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20get_authorize_uri%28scope%20%3D%20nil%2C%20state%20%3D%20nil%2C%20%26block%20%3A%20HTTP%3A%3AParams%3A%3ABuilder%20-%3E%20%29%20%3A%20String"></a><div class="signature">
+        
+        def <strong>get_authorize_uri</strong>(scope = <span class="n">nil</span>, state = <span class="n">nil</span>, &amp;block : <a href="../HTTP/Params/Builder.html">HTTP::Params::Builder</a> -&gt; ) : <a href="../String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Builds an authorize URI, as specified by
+<a href="https://tools.ietf.org/html/rfc6749#section-4.1.1" target="_blank">RFC6749, Section 4.1.1</a></p>
+
+<p>Yields an <code><a href="../HTTP/Params.html">HTTP::Params</a>::Builder</code> to add extra parameters other than those
+defined by the standard.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/oauth2/client.cr#L82" target="_blank">View source</a>]
         
       </div>
     </div>

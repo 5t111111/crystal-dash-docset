@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-6068"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%3A%3AAny%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML::Any - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-6415"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%3A%3AAny%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML::Any - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -46,7 +46,7 @@ data <span class="o">=</span> <span class="t">YAML</span>.parse <span class="s">
 data[<span class="s">&#34;foo&#34;</span>][<span class="s">&#34;bar&#34;</span>][<span class="s">&#34;baz&#34;</span>][<span class="n">1</span>].as_s <span class="c"># =&gt; &#34;qux&#34;</span>
 data[<span class="s">&#34;foo&#34;</span>][<span class="s">&#34;bar&#34;</span>][<span class="s">&#34;baz&#34;</span>].as_a    <span class="c"># =&gt; [&#34;qux&#34;, &#34;fox&#34;]</span></code></pre>
 
-<p>Note that methods used to traverse a YAML structure, <code><a href="../YAML/Any.html#%5B%5D%28key%3AString%29%3AYAML%3A%3AAny-instance-method">#[]</a></code>, <code><a href="../YAML/Any.html#%5B%5D%3F%28key%3AString%29%3AYAML%3A%3AAny%7CNil-instance-method">#[]?</a></code> and <code><a href="../YAML/Any.html#each%28%26block%29-instance-method">#each</a></code>,
+<p>Note that methods used to traverse a YAML structure, <code><a href="../YAML/Any.html#%5B%5D%28index%3AInt%29%3AYAML%3A%3AAny-instance-method">#[]</a></code>, <code><a href="../YAML/Any.html#%5B%5D%3F%28index%3AInt%29%3AYAML%3A%3AAny%7CNil-instance-method">#[]?</a></code> and <code><a href="../YAML/Any.html#each%28%26block%29-instance-method">#each</a></code>,
 always return a <code><a href="../YAML/Any.html">YAML::Any</a></code> to allow further traversal. To convert them to <code><a href="../String.html">String</a></code>,
 <code><a href="../Array.html">Array</a></code>, etc., use the &#34;as_&#34; methods, such as <code><a href="../YAML/Any.html#as_s%3AString-instance-method">#as_s</a></code>, <code><a href="../YAML/Any.html#as_a%3AArray%28Type%29-instance-method">#as_a</a></code>, which perform
 a type check against the raw underlying value. This means that invoking <code><a href="../YAML/Any.html#as_s%3AString-instance-method">#as_s</a></code>
@@ -77,7 +77,7 @@ be converted (parsed) to a String.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L25" target="_blank">yaml/any.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L25" target="_blank">yaml/any.cr</a>
     
     <br/>
   
@@ -90,16 +90,16 @@ be converted (parsed) to a String.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28raw%3AYAML%3A%3AType%29-class-method" class="signature"><strong>.new</strong>(raw : YAML::Type)</a>
+        <a href="#new%28pull%3AYAML%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : YAML::PullParser)</a>
         
-          <div class="summary"><p>Creates a <code><a href="../YAML/Any.html">YAML::Any</a></code> that wraps the given <code><a href="../YAML/Type.html">YAML::Type</a></code>.</p></div>
+          <div class="summary"><p>Reads a <code><a href="../YAML/Any.html">YAML::Any</a></code> value from the given pull parser.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28pull%3AYAML%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : YAML::PullParser)</a>
+        <a href="#new%28raw%3AYAML%3A%3AType%29-class-method" class="signature"><strong>.new</strong>(raw : YAML::Type)</a>
         
-          <div class="summary"><p>Reads a <code><a href="../YAML/Any.html">YAML::Any</a></code> value from the given pull parser.</p></div>
+          <div class="summary"><p>Creates a <code><a href="../YAML/Any.html">YAML::Any</a></code> that wraps the given <code><a href="../YAML/Type.html">YAML::Type</a></code>.</p></div>
         
       </li>
     
@@ -125,13 +125,6 @@ be converted (parsed) to a String.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28key%3AString%29%3AYAML%3A%3AAny-instance-method" class="signature"><strong>#[]</strong>(key : String) : YAML::Any</a>
-        
-          <div class="summary"><p>Assumes the underlying value is a Hash and returns the element with the given key.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#%5B%5D%28index%3AInt%29%3AYAML%3A%3AAny-instance-method" class="signature"><strong>#[]</strong>(index : Int) : YAML::Any</a>
         
           <div class="summary"><p>Assumes the underlying value is an Array and returns the element at the given index.</p></div>
@@ -139,9 +132,9 @@ be converted (parsed) to a String.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%3F%28key%3AString%29%3AYAML%3A%3AAny%7CNil-instance-method" class="signature"><strong>#[]?</strong>(key : String) : YAML::Any | Nil</a>
+        <a href="#%5B%5D%28key%3AString%29%3AYAML%3A%3AAny-instance-method" class="signature"><strong>#[]</strong>(key : String) : YAML::Any</a>
         
-          <div class="summary"><p>Assumes the underlying value is a Hash and returns the element with the given key, or nil if the key is not present.</p></div>
+          <div class="summary"><p>Assumes the underlying value is a Hash and returns the element with the given key.</p></div>
         
       </li>
     
@@ -149,6 +142,13 @@ be converted (parsed) to a String.</p>
         <a href="#%5B%5D%3F%28index%3AInt%29%3AYAML%3A%3AAny%7CNil-instance-method" class="signature"><strong>#[]?</strong>(index : Int) : YAML::Any | Nil</a>
         
           <div class="summary"><p>Assumes the underlying value is an Array and returns the element at the given index, or nil if out of bounds.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28key%3AString%29%3AYAML%3A%3AAny%7CNil-instance-method" class="signature"><strong>#[]?</strong>(key : String) : YAML::Any | Nil</a>
+        
+          <div class="summary"><p>Assumes the underlying value is a Hash and returns the element with the given key, or nil if the key is not present.</p></div>
         
       </li>
     
@@ -215,14 +215,19 @@ be converted (parsed) to a String.</p>
 </h3>
   
   
-    <a href="../Enumerable.html#all%3F-instance-method" class="tooltip">
-      <span>all?<br/>all?(&amp;block)</span>
+    <a href="../Enumerable.html#all%3F%28%26block%29-instance-method" class="tooltip">
+      <span>all?(&amp;block)<br/>all?</span>
     all?</a>, 
     
   
-    <a href="../Enumerable.html#any%3F-instance-method" class="tooltip">
-      <span>any?<br/>any?(&amp;block)</span>
+    <a href="../Enumerable.html#any%3F%28%26block%29-instance-method" class="tooltip">
+      <span>any?(&amp;block)<br/>any?</span>
     any?</a>, 
+    
+  
+    <a href="../Enumerable.html#chunks%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
+      <span>chunks(&amp;block : T -&gt; U)</span>
+    chunks</a>, 
     
   
     <a href="../Enumerable.html#compact_map%28%26block%29-instance-method" class="tooltip">
@@ -230,13 +235,13 @@ be converted (parsed) to a String.</p>
     compact_map</a>, 
     
   
-    <a href="../Enumerable.html#count%28item%29-instance-method" class="tooltip">
-      <span>count(item)<br/>count(&amp;block)</span>
+    <a href="../Enumerable.html#count%28%26block%29-instance-method" class="tooltip">
+      <span>count(&amp;block)<br/>count(item)</span>
     count</a>, 
     
   
-    <a href="../Enumerable.html#cycle%28%26block%29-instance-method" class="tooltip">
-      <span>cycle(&amp;block)<br/>cycle(n, &amp;block)</span>
+    <a href="../Enumerable.html#cycle%28n%2C%26block%29-instance-method" class="tooltip">
+      <span>cycle(n, &amp;block)<br/>cycle(&amp;block)</span>
     cycle</a>, 
     
   
@@ -270,8 +275,8 @@ be converted (parsed) to a String.</p>
     find</a>, 
     
   
-    <a href="../Enumerable.html#first-instance-method" class="tooltip">
-      <span>first<br/>first(count : Int)</span>
+    <a href="../Enumerable.html#first%28count%3AInt%29-instance-method" class="tooltip">
+      <span>first(count : Int)<br/>first</span>
     first</a>, 
     
   
@@ -280,8 +285,8 @@ be converted (parsed) to a String.</p>
     first?</a>, 
     
   
-    <a href="../Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%29forallU-instance-method" class="tooltip">
-      <span>flat_map(&amp;block : T -&gt; Array(U)) forall U</span>
+    <a href="../Enumerable.html#flat_map%28%26block%3AT-%3EArray%28U%29%7CU%29forallU-instance-method" class="tooltip">
+      <span>flat_map(&amp;block : T -&gt; Array(U) | U) forall U</span>
     flat_map</a>, 
     
   
@@ -295,8 +300,8 @@ be converted (parsed) to a String.</p>
     group_by</a>, 
     
   
-    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%2C%26block%29forallU-instance-method" class="tooltip">
-      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U</span>
+    <a href="../Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%29forallU-instance-method" class="tooltip">
+      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U</span>
     in_groups_of</a>, 
     
   
@@ -305,8 +310,8 @@ be converted (parsed) to a String.</p>
     includes?</a>, 
     
   
-    <a href="../Enumerable.html#index%28obj%29-instance-method" class="tooltip">
-      <span>index(obj)<br/>index(&amp;block)</span>
+    <a href="../Enumerable.html#index%28%26block%29-instance-method" class="tooltip">
+      <span>index(&amp;block)<br/>index(obj)</span>
     index</a>, 
     
   
@@ -315,8 +320,8 @@ be converted (parsed) to a String.</p>
     index_by</a>, 
     
   
-    <a href="../Enumerable.html#join%28separator%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
-      <span>join(separator = <span class="s">&#34;&#34;</span>)<br/>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)<br/>join(separator, io)</span>
+    <a href="../Enumerable.html#join%28separator%2Cio%29-instance-method" class="tooltip">
+      <span>join(separator, io)<br/>join(separator = <span class="s">&#34;&#34;</span>)<br/>join(separator, io, &amp;block)<br/>join(separator = <span class="s">&#34;&#34;</span>, &amp;block)</span>
     join</a>, 
     
   
@@ -435,13 +440,13 @@ be converted (parsed) to a String.</p>
     partition</a>, 
     
   
-    <a href="../Enumerable.html#product%28initial%3ANumber%2C%26block%29-instance-method" class="tooltip">
-      <span>product(initial : Number, &amp;block)<br/>product<br/>product(initial : Number)<br/>product(&amp;block)</span>
+    <a href="../Enumerable.html#product%28%26block%29-instance-method" class="tooltip">
+      <span>product(&amp;block)<br/>product(initial : Number, &amp;block)<br/>product<br/>product(initial : Number)</span>
     product</a>, 
     
   
-    <a href="../Enumerable.html#reduce%28memo%2C%26block%29-instance-method" class="tooltip">
-      <span>reduce(memo, &amp;block)<br/>reduce(&amp;block)</span>
+    <a href="../Enumerable.html#reduce%28%26block%29-instance-method" class="tooltip">
+      <span>reduce(&amp;block)<br/>reduce(memo, &amp;block)</span>
     reduce</a>, 
     
   
@@ -470,8 +475,8 @@ be converted (parsed) to a String.</p>
     skip_while</a>, 
     
   
-    <a href="../Enumerable.html#sum-instance-method" class="tooltip">
-      <span>sum<br/>sum(initial)<br/>sum(&amp;block)<br/>sum(initial, &amp;block)</span>
+    <a href="../Enumerable.html#sum%28initial%29-instance-method" class="tooltip">
+      <span>sum(initial)<br/>sum<br/>sum(initial, &amp;block)<br/>sum(&amp;block)</span>
     sum</a>, 
     
   
@@ -576,8 +581,8 @@ be converted (parsed) to a String.</p>
     ==</a>, 
     
   
-    <a href="../Object.html#%3D%3D%3D%28other%29-instance-method" class="tooltip">
-      <span>===(other)<br/>===(other : YAML::Any)<br/>===(other : JSON::Any)</span>
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
     ===</a>, 
     
   
@@ -641,8 +646,8 @@ be converted (parsed) to a String.</p>
     to_s</a>, 
     
   
-    <a href="../Object.html#to_yaml-instance-method" class="tooltip">
-      <span>to_yaml<br/>to_yaml(io : IO)</span>
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
     to_yaml</a>, 
     
   
@@ -684,8 +689,8 @@ be converted (parsed) to a String.</p>
     dup</a>, 
     
   
-    <a href="../Object.html#from_json%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_json(string_or_io) : self<br/>from_json(string_or_io, root : String) : self</span>
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
     from_json</a>, 
     
   
@@ -732,26 +737,8 @@ be converted (parsed) to a String.</p>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(raw:YAML::Type)-class-method">
-      <a class="dashingAutolink" name="autolink-6053"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28raw%20%3A%20YAML%3A%3AType%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(raw : <a href="../YAML/Type.html">YAML::Type</a>)
-
-        
-      </div>
-      
-        <div class="doc"><p>Creates a <code><a href="../YAML/Any.html">YAML::Any</a></code> that wraps the given <code><a href="../YAML/Type.html">YAML::Type</a></code>.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L58" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="new(pull:YAML::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-6054"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6416"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pull : <a href="../YAML/PullParser.html">YAML::PullParser</a>)
 
@@ -763,7 +750,25 @@ be converted (parsed) to a String.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(raw:YAML::Type)-class-method">
+      <a class="dashingAutolink" name="autolink-6417"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28raw%20%3A%20YAML%3A%3AType%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(raw : <a href="../YAML/Type.html">YAML::Type</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../YAML/Any.html">YAML::Any</a></code> that wraps the given <code><a href="../YAML/Type.html">YAML::Type</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -774,7 +779,7 @@ be converted (parsed) to a String.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:YAML::Any)-instance-method">
-      <a class="dashingAutolink" name="autolink-6055"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20YAML%3A%3AAny%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6418"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20YAML%3A%3AAny%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="../YAML/Any.html">YAML::Any</a>)
 
@@ -786,13 +791,13 @@ be converted (parsed) to a String.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L174" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L174" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-6056"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6419"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%29"></a><div class="signature">
         
         def <strong>==</strong>(other)
 
@@ -804,33 +809,13 @@ be converted (parsed) to a String.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L179" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="[](key:String):YAML::Any-instance-method">
-      <a class="dashingAutolink" name="autolink-6057"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%20%3A%20String%29%20%3A%20YAML%3A%3AAny"></a><div class="signature">
-        
-        def <strong>[]</strong>(key : <a href="../String.html">String</a>) : <a href="../YAML/Any.html">YAML::Any</a>
-
-        
-      </div>
-      
-        <div class="doc"><p>Assumes the underlying value is a Hash and returns the element
-with the given key.
-Raises if the underlying value is not a Hash.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L103" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L179" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[](index:Int):YAML::Any-instance-method">
-      <a class="dashingAutolink" name="autolink-6058"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28index%20%3A%20Int%29%20%3A%20YAML%3A%3AAny"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6420"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28index%20%3A%20Int%29%20%3A%20YAML%3A%3AAny"></a><div class="signature">
         
         def <strong>[]</strong>(index : <a href="../Int.html">Int</a>) : <a href="../YAML/Any.html">YAML::Any</a>
 
@@ -844,33 +829,33 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="[]?(key:String):YAML::Any|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-6059"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28key%20%3A%20String%29%20%3A%20YAML%3A%3AAny%20%7C%20Nil"></a><div class="signature">
+    <div class="entry-detail" id="[](key:String):YAML::Any-instance-method">
+      <a class="dashingAutolink" name="autolink-6421"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28key%20%3A%20String%29%20%3A%20YAML%3A%3AAny"></a><div class="signature">
         
-        def <strong>[]?</strong>(key : <a href="../String.html">String</a>) : <a href="../YAML/Any.html">YAML::Any</a> | <a href="../Nil.html">Nil</a>
+        def <strong>[]</strong>(key : <a href="../String.html">String</a>) : <a href="../YAML/Any.html">YAML::Any</a>
 
         
       </div>
       
         <div class="doc"><p>Assumes the underlying value is a Hash and returns the element
-with the given key, or nil if the key is not present.
+with the given key.
 Raises if the underlying value is not a Hash.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L103" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]?(index:Int):YAML::Any|Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-6060"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28index%20%3A%20Int%29%20%3A%20YAML%3A%3AAny%20%7C%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6422"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28index%20%3A%20Int%29%20%3A%20YAML%3A%3AAny%20%7C%20Nil"></a><div class="signature">
         
         def <strong>[]?</strong>(index : <a href="../Int.html">Int</a>) : <a href="../YAML/Any.html">YAML::Any</a> | <a href="../Nil.html">Nil</a>
 
@@ -884,13 +869,33 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(key:String):YAML::Any|Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-6423"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28key%20%3A%20String%29%20%3A%20YAML%3A%3AAny%20%7C%20Nil"></a><div class="signature">
+        
+        def <strong>[]?</strong>(key : <a href="../String.html">String</a>) : <a href="../YAML/Any.html">YAML::Any</a> | <a href="../Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Assumes the underlying value is a Hash and returns the element
+with the given key, or nil if the key is not present.
+Raises if the underlying value is not a Hash.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L115" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_a:Array(Type)-instance-method">
-      <a class="dashingAutolink" name="autolink-6061"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_a%20%3A%20Array%28Type%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6424"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_a%20%3A%20Array%28Type%29"></a><div class="signature">
         
         def <strong>as_a</strong> : <a href="../Array.html">Array</a>(<a href="../YAML/Type.html">Type</a>)
 
@@ -902,13 +907,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L154" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L154" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_h:Hash(Type,Type)-instance-method">
-      <a class="dashingAutolink" name="autolink-6062"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_h%20%3A%20Hash%28Type%2C%20Type%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6425"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_h%20%3A%20Hash%28Type%2C%20Type%29"></a><div class="signature">
         
         def <strong>as_h</strong> : <a href="../Hash.html">Hash</a>(<a href="../YAML/Type.html">Type</a>, <a href="../YAML/Type.html">Type</a>)
 
@@ -920,13 +925,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L159" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L159" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_nil:Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-6063"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_nil%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6426"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_nil%20%3A%20Nil"></a><div class="signature">
         
         def <strong>as_nil</strong> : <a href="../Nil.html">Nil</a>
 
@@ -938,13 +943,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L144" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L144" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="as_s:String-instance-method">
-      <a class="dashingAutolink" name="autolink-6064"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_s%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6427"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20as_s%20%3A%20String"></a><div class="signature">
         
         def <strong>as_s</strong> : <a href="../String.html">String</a>
 
@@ -956,13 +961,13 @@ Raises if the underlying value is not an Array.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L149" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-6065"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6428"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block)
 
@@ -976,13 +981,13 @@ Raises if the underlying value is not an <code><a href="../Array.html">Array</a>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="raw:YAML::Type-instance-method">
-      <a class="dashingAutolink" name="autolink-6066"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raw%20%3A%20YAML%3A%3AType"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6429"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raw%20%3A%20YAML%3A%3AType"></a><div class="signature">
         
         def <strong>raw</strong> : <a href="../YAML/Type.html">YAML::Type</a>
 
@@ -994,13 +999,13 @@ Raises if the underlying value is not an <code><a href="../Array.html">Array</a>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size:Int-instance-method">
-      <a class="dashingAutolink" name="autolink-6067"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6430"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int"></a><div class="signature">
         
         def <strong>size</strong> : <a href="../Int.html">Int</a>
 
@@ -1014,7 +1019,7 @@ Raises if the underlying value is not an <code><a href="../Array.html">Array</a>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/yaml/any.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/yaml/any.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>

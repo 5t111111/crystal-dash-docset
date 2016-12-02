@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1373"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/FileUtils%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>FileUtils - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1643"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/FileUtils%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>FileUtils - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -44,7 +44,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/file_utils.cr#L1" target="_blank">file_utils.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L1" target="_blank">file_utils.cr</a>
     
     <br/>
   
@@ -59,19 +59,30 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#cmp%28stream1%3AIO%2Cstream2%3AIO%29-instance-method" class="signature"><strong>#cmp</strong>(stream1 : IO, stream2 : IO)</a>
+        <a href="#cd%28path%3AString%29-instance-method" class="signature"><strong>#cd</strong>(path : String)</a>
+        
+          <div class="summary"><p>Changes the current working directory of the process to the given string <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cd%28path%3AString%2C%26block%29-instance-method" class="signature"><strong>#cd</strong>(path : String, &amp;block)</a>
+        
+          <div class="summary"><p>Changes the current working firectory of the process to the given string <em>path</em> and invoked the block, restoring the original working directory when the block exits.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#cmp%28filename1%3AString%2Cfilename2%3AString%29-instance-method" class="signature"><strong>#cmp</strong>(filename1 : String, filename2 : String)</a>
         
+          <div class="summary"><p>Compares two files <em>filename1</em> to <em>filename2</em> to determine if they are identical.</p></div>
+        
       </li>
     
       <li class="entry-summary">
-        <a href="#cp%28srcs%3AEnumerable%28String%29%2Cdest%3AString%29-instance-method" class="signature"><strong>#cp</strong>(srcs : Enumerable(String), dest : String)</a>
+        <a href="#cmp%28stream1%3AIO%2Cstream2%3AIO%29-instance-method" class="signature"><strong>#cmp</strong>(stream1 : IO, stream2 : IO)</a>
         
-          <div class="summary"><p>Copies a list of files <em>src</em> to <em>dest</em>.</p></div>
+          <div class="summary"><p>Compares two streams <em>stream1</em> to <em>stream2</em> to determine if they are identical.</p></div>
         
       </li>
     
@@ -83,6 +94,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#cp%28srcs%3AEnumerable%28String%29%2Cdest%3AString%29-instance-method" class="signature"><strong>#cp</strong>(srcs : Enumerable(String), dest : String)</a>
+        
+          <div class="summary"><p>Copies a list of files <em>src</em> to <em>dest</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#cp_r%28src_path%3AString%2Cdest_path%3AString%29-instance-method" class="signature"><strong>#cp_r</strong>(src_path : String, dest_path : String)</a>
         
           <div class="summary"><p>Copies a file or directory <em>src_path</em> to <em>dest_path</em> If <em>src_path</em> is a directory, this method copies all its contents recursively <code></code>` FileUtils.cp_r(&#34;src_dir&#34;, &#34;src_dir_copy&#34;) <code></code>`</p></div>
@@ -90,9 +108,107 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#rm_r%28path%3AString%29-instance-method" class="signature"><strong>#rm_r</strong>(path : String)</a>
+        <a href="#mkdir%28path%3AString%2Cmode%3D511%29%3ANil-instance-method" class="signature"><strong>#mkdir</strong>(path : String, mode = <span class="n">511</span>) : Nil</a>
+        
+          <div class="summary"><p>Creates a new directory at the given <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mkdir%28paths%3AEnumerable%28String%29%2Cmode%3D511%29%3ANil-instance-method" class="signature"><strong>#mkdir</strong>(paths : Enumerable(String), mode = <span class="n">511</span>) : Nil</a>
+        
+          <div class="summary"><p>Creates a new directory at the given <em>paths</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mkdir_p%28path%3AString%2Cmode%3D511%29%3ANil-instance-method" class="signature"><strong>#mkdir_p</strong>(path : String, mode = <span class="n">511</span>) : Nil</a>
+        
+          <div class="summary"><p>Creates a new directory at the given <em>path</em>, including any non-existing intermediate directories.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mkdir_p%28paths%3AEnumerable%28String%29%2Cmode%3D511%29%3ANil-instance-method" class="signature"><strong>#mkdir_p</strong>(paths : Enumerable(String), mode = <span class="n">511</span>) : Nil</a>
+        
+          <div class="summary"><p>Creates a new directory at the given <em>paths</em>, including any non-existing intermediate directories.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mv%28srcs%3AEnumerable%28String%29%2Cdest%3AString%29%3ANil-instance-method" class="signature"><strong>#mv</strong>(srcs : Enumerable(String), dest : String) : Nil</a>
+        
+          <div class="summary"><p>Moves every <em>srcs</em> to <em>dest</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mv%28src_path%3AString%2Cdest_path%3AString%29%3ANil-instance-method" class="signature"><strong>#mv</strong>(src_path : String, dest_path : String) : Nil</a>
+        
+          <div class="summary"><p>Moves <em>src_path</em> to <em>dest_path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pwd%3AString-instance-method" class="signature"><strong>#pwd</strong> : String</a>
+        
+          <div class="summary"><p>Returns the current working directory.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rm%28path%3AString%29%3ANil-instance-method" class="signature"><strong>#rm</strong>(path : String) : Nil</a>
+        
+          <div class="summary"><p>Deletes the <em>path</em> file given.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rm%28paths%3AEnumerable%28String%29%29%3ANil-instance-method" class="signature"><strong>#rm</strong>(paths : Enumerable(String)) : Nil</a>
+        
+          <div class="summary"><p>Deletes all <em>paths</em> file given.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rm_r%28path%3AString%29%3ANil-instance-method" class="signature"><strong>#rm_r</strong>(path : String) : Nil</a>
         
           <div class="summary"><p>Deletes a file or directory <em>path</em> If <em>path</em> is a directory, this method removes all its contents recursively <code></code>` FileUtils.rm_r(&#34;dir&#34;) FileUtils.rm_r(&#34;file.cr&#34;) <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rm_r%28paths%3AEnumerable%28String%29%29%3ANil-instance-method" class="signature"><strong>#rm_r</strong>(paths : Enumerable(String)) : Nil</a>
+        
+          <div class="summary"><p>Deletes a list of files or directories <em>paths</em> If one path is a directory, this method removes all its contents recursively <code></code>` FileUtils.rm_r([&#34;dir&#34;, &#34;file.cr&#34;]) <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rm_rf%28path%3AString%29%3ANil-instance-method" class="signature"><strong>#rm_rf</strong>(path : String) : Nil</a>
+        
+          <div class="summary"><p>Deletes a file or directory <em>path</em> If <em>path</em> is a directory, this method removes all its contents recursively Ignore all errors.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rm_rf%28paths%3AEnumerable%28String%29%29%3ANil-instance-method" class="signature"><strong>#rm_rf</strong>(paths : Enumerable(String)) : Nil</a>
+        
+          <div class="summary"><p>Deletes a list of files or directories <em>paths</em> If one path is a directory, this method removes all its contents recursively Ignore all errors.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rmdir%28path%3AString%29%3ANil-instance-method" class="signature"><strong>#rmdir</strong>(path : String) : Nil</a>
+        
+          <div class="summary"><p>Removes the directory at the given <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rmdir%28paths%3AEnumerable%28String%29%29%3ANil-instance-method" class="signature"><strong>#rmdir</strong>(paths : Enumerable(String)) : Nil</a>
+        
+          <div class="summary"><p>Removes all directories at the given <em>paths</em>.</p></div>
         
       </li>
     
@@ -111,63 +227,101 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="cmp(stream1:IO,stream2:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-1367"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cmp%28stream1%20%3A%20IO%2C%20stream2%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="cd(path:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-1644"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cd%28path%20%3A%20String%29"></a><div class="signature">
         
-        def <strong>cmp</strong>(stream1 : <a href="IO.html">IO</a>, stream2 : <a href="IO.html">IO</a>)
+        def <strong>cd</strong>(path : <a href="String.html">String</a>)
 
         
       </div>
       
+        <div class="doc">
+<p>Changes the current working directory of the process to the given string <em>path</em>.
+Alias of Dir.cd.</p>
+
+<pre><code><span class="t">FileUtils</span>.cd(<span class="s">&#34;to/directory&#34;</span>)</code></pre>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/file_utils.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cd(path:String,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-1645"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cd%28path%20%3A%20String%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>cd</strong>(path : <a href="String.html">String</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Changes the current working firectory of the process to the given string <em>path</em>
+and invoked the block, restoring the original working directory when the block exits.
+Alias of Dir.cd with block.</p>
+
+<pre><code><span class="t">FileUtils</span>.cd(<span class="s">&#34;to/directory&#34;</span>) { puts <span class="s">&#34;Do something useful here!&#34;</span> }</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cmp(filename1:String,filename2:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-1368"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cmp%28filename1%20%3A%20String%2C%20filename2%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1646"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cmp%28filename1%20%3A%20String%2C%20filename2%20%3A%20String%29"></a><div class="signature">
         
         def <strong>cmp</strong>(filename1 : <a href="String.html">String</a>, filename2 : <a href="String.html">String</a>)
 
         
       </div>
       
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/file_utils.cr#L4" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="cp(srcs:Enumerable(String),dest:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-1369"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cp%28srcs%20%3A%20Enumerable%28String%29%2C%20dest%20%3A%20String%29"></a><div class="signature">
-        
-        def <strong>cp</strong>(srcs : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>), dest : <a href="String.html">String</a>)
-
-        
-      </div>
-      
         <div class="doc">
-<p>Copies a list of files <em>src</em> to <em>dest</em>.
-<em>dest</em> must be an existing directory.</p>
+<p>Compares two files <em>filename1</em> to <em>filename2</em> to determine if they are identical.
+Returns true if content are the same, false otherwise.</p>
 
-<pre><code><span class="t">FileUtils</span>.cp({<span class="s">&#34;cgi.cr&#34;</span>, <span class="s">&#34;complex.cr&#34;</span>, <span class="s">&#34;date.cr&#34;</span>}, <span class="s">&#34;files&#34;</span>)</code></pre>
+<pre><code><span class="t">FileUtils</span>.cmp(<span class="s">&#34;foo.cr&#34;</span>, <span class="s">&#34;bar.cr&#34;</span>)</code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/file_utils.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cmp(stream1:IO,stream2:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-1647"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cmp%28stream1%20%3A%20IO%2C%20stream2%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>cmp</strong>(stream1 : <a href="IO.html">IO</a>, stream2 : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Compares two streams <em>stream1</em> to <em>stream2</em> to determine if they are identical.
+Returns true if content are the same, false otherwise.</p>
+
+<pre><code><span class="t">FileUtils</span>.cmp(stream1 : <span class="t">IO</span>, stream2 : <span class="t">IO</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cp(src_path:String,dest:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-1370"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cp%28src_path%20%3A%20String%2C%20dest%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1648"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cp%28src_path%20%3A%20String%2C%20dest%20%3A%20String%29"></a><div class="signature">
         
         def <strong>cp</strong>(src_path : <a href="String.html">String</a>, dest : <a href="String.html">String</a>)
 
@@ -185,13 +339,36 @@ Permission bits are copied too.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/file_utils.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cp(srcs:Enumerable(String),dest:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-1649"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cp%28srcs%20%3A%20Enumerable%28String%29%2C%20dest%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>cp</strong>(srcs : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>), dest : <a href="String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Copies a list of files <em>src</em> to <em>dest</em>.
+<em>dest</em> must be an existing directory.</p>
+
+<pre><code><span class="t">FileUtils</span>.cp({<span class="s">&#34;cgi.cr&#34;</span>, <span class="s">&#34;complex.cr&#34;</span>, <span class="s">&#34;date.cr&#34;</span>}, <span class="s">&#34;files&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cp_r(src_path:String,dest_path:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-1371"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cp_r%28src_path%20%3A%20String%2C%20dest_path%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1650"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cp_r%28src_path%20%3A%20String%2C%20dest_path%20%3A%20String%29"></a><div class="signature">
         
         def <strong>cp_r</strong>(src_path : <a href="String.html">String</a>, dest_path : <a href="String.html">String</a>)
 
@@ -208,15 +385,224 @@ If <em>src_path</em> is a directory, this method copies all its contents recursi
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/file_utils.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="rm_r(path:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-1372"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rm_r%28path%20%3A%20String%29"></a><div class="signature">
+    <div class="entry-detail" id="mkdir(path:String,mode=511):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1651"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mkdir%28path%20%3A%20String%2C%20mode%20%3D%20511%29%20%3A%20Nil"></a><div class="signature">
         
-        def <strong>rm_r</strong>(path : <a href="String.html">String</a>)
+        def <strong>mkdir</strong>(path : <a href="String.html">String</a>, mode = <span class="n">511</span>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new directory at the given <em>path</em>. The linux-style permission <em>mode</em>
+can be specified, with a default of 777 (0o777).
+Alias of Dir.mkdir</p>
+
+<pre><code><span class="t">FileUtils</span>.mkdir(<span class="s">&#34;foo&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L112" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mkdir(paths:Enumerable(String),mode=511):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1652"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mkdir%28paths%20%3A%20Enumerable%28String%29%2C%20mode%20%3D%20511%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>mkdir</strong>(paths : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>), mode = <span class="n">511</span>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new directory at the given <em>paths</em>. The linux-style permission <em>mode</em>
+can be specified, with a default of 777 (0o777).</p>
+
+<pre><code><span class="t">FileUtils</span>.mkdir([<span class="s">&#34;foo&#34;</span>, <span class="s">&#34;bar&#34;</span>])</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L121" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mkdir_p(path:String,mode=511):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1653"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mkdir_p%28path%20%3A%20String%2C%20mode%20%3D%20511%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>mkdir_p</strong>(path : <a href="String.html">String</a>, mode = <span class="n">511</span>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new directory at the given <em>path</em>, including any non-existing
+intermediate directories. The linux-style permission <em>mode</em> can be specified,
+with a default of 777 (0o777).
+Alias of Dir.mkdir_p</p>
+
+<pre><code><span class="t">FileUtils</span>.mkdir_p(<span class="s">&#34;foo&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L134" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mkdir_p(paths:Enumerable(String),mode=511):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1654"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mkdir_p%28paths%20%3A%20Enumerable%28String%29%2C%20mode%20%3D%20511%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>mkdir_p</strong>(paths : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>), mode = <span class="n">511</span>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new directory at the given <em>paths</em>, including any non-existing
+intermediate directories. The linux-style permission <em>mode</em> can be specified,
+with a default of 777 (0o777).</p>
+
+<pre><code><span class="t">FileUtils</span>.mkdir_p([<span class="s">&#34;foo&#34;</span>, <span class="s">&#34;bar&#34;</span>])</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L144" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mv(srcs:Enumerable(String),dest:String):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1655"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mv%28srcs%20%3A%20Enumerable%28String%29%2C%20dest%20%3A%20String%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>mv</strong>(srcs : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>), dest : <a href="String.html">String</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Moves every <em>srcs</em> to <em>dest</em>.</p>
+
+<pre><code><span class="t">FileUtils</span>.mv([<span class="s">&#34;afile&#34;</span>, <span class="s">&#34;foo&#34;</span>, <span class="s">&#34;bar&#34;</span>], <span class="s">&#34;src&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L163" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mv(src_path:String,dest_path:String):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1656"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mv%28src_path%20%3A%20String%2C%20dest_path%20%3A%20String%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>mv</strong>(src_path : <a href="String.html">String</a>, dest_path : <a href="String.html">String</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Moves <em>src_path</em> to <em>dest_path</em>.
+Alias of File.rename</p>
+
+<pre><code><span class="t">FileUtils</span>.mv(<span class="s">&#34;afile&#34;</span>, <span class="s">&#34;afile.cr&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pwd:String-instance-method">
+      <a class="dashingAutolink" name="autolink-1657"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pwd%20%3A%20String"></a><div class="signature">
+        
+        def <strong>pwd</strong> : <a href="String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the current working directory.
+Alias of Dir.current</p>
+
+<pre><code><span class="t">FileUtils</span>.pwd</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rm(path:String):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1658"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rm%28path%20%3A%20String%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>rm</strong>(path : <a href="String.html">String</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deletes the <em>path</em> file given.
+Alias of File.delete</p>
+
+<pre><code><span class="t">FileUtils</span>.rm(<span class="s">&#34;afile.cr&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L187" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rm(paths:Enumerable(String)):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1659"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rm%28paths%20%3A%20Enumerable%28String%29%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>rm</strong>(paths : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>)) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deletes all <em>paths</em> file given.</p>
+
+<pre><code><span class="t">FileUtils</span>.rm([<span class="s">&#34;afile.cr&#34;</span>, <span class="s">&#34;bfile.cr&#34;</span>])</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L195" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rm_r(path:String):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1660"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rm_r%28path%20%3A%20String%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>rm_r</strong>(path : <a href="String.html">String</a>) : <a href="Nil.html">Nil</a>
 
         
       </div>
@@ -232,7 +618,125 @@ If <em>path</em> is a directory, this method removes all its contents recursivel
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/7f82f79bd1e3a7a1a73607e35c0662906736f1f8/src/file_utils.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L207" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rm_r(paths:Enumerable(String)):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1661"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rm_r%28paths%20%3A%20Enumerable%28String%29%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>rm_r</strong>(paths : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>)) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deletes a list of files or directories <em>paths</em>
+If one path is a directory, this method removes all its contents recursively</p>
+
+<pre><code><span class="t">FileUtils</span>.rm_r([<span class="s">&#34;dir&#34;</span>, <span class="s">&#34;file.cr&#34;</span>])</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L228" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rm_rf(path:String):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1662"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rm_rf%28path%20%3A%20String%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>rm_rf</strong>(path : <a href="String.html">String</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deletes a file or directory <em>path</em>
+If <em>path</em> is a directory, this method removes all its contents recursively
+Ignore all errors.</p>
+
+<pre><code><span class="t">FileUtils</span>.rm_rf(<span class="s">&#34;dir&#34;</span>)
+<span class="t">FileUtils</span>.rm_rf(<span class="s">&#34;file.cr&#34;</span>)
+<span class="t">FileUtils</span>.rm_rf(<span class="s">&#34;non_existent_file&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L242" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rm_rf(paths:Enumerable(String)):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1663"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rm_rf%28paths%20%3A%20Enumerable%28String%29%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>rm_rf</strong>(paths : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>)) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deletes a list of files or directories <em>paths</em>
+If one path is a directory, this method removes all its contents recursively
+Ignore all errors.</p>
+
+<pre><code><span class="t">FileUtils</span>.rm_rf([<span class="s">&#34;dir&#34;</span>, <span class="s">&#34;file.cr&#34;</span>, <span class="s">&#34;non_existent_file&#34;</span>])</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L255" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rmdir(path:String):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1664"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rmdir%28path%20%3A%20String%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>rmdir</strong>(path : <a href="String.html">String</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Removes the directory at the given <em>path</em>.
+Alias of Dir.rmdir</p>
+
+<pre><code><span class="t">FileUtils</span>.rmdir(<span class="s">&#34;dir&#34;</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L269" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rmdir(paths:Enumerable(String)):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-1665"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rmdir%28paths%20%3A%20Enumerable%28String%29%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>rmdir</strong>(paths : <a href="Enumerable.html">Enumerable</a>(<a href="String.html">String</a>)) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Removes all directories at the given <em>paths</em>.</p>
+
+<pre><code><span class="t">FileUtils</span>.rmdir([<span class="s">&#34;dir1&#34;</span>, <span class="s">&#34;dir2&#34;</span>, <span class="s">&#34;dir3&#34;</span>])</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/file_utils.cr#L276" target="_blank">View source</a>]
         
       </div>
     </div>
