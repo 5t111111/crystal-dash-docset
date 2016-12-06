@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-2395"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/IO%3A%3AByteFormat%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>IO::ByteFormat - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-2418"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/IO%3A%3AByteFormat%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>IO::ByteFormat - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -23,7 +23,32 @@
 
   <h2>Overview</h2>
 
-  <p>Defines a byte format to encode integers and floats.</p>
+  <p>Defines a byte format to encode integers and floats
+from/to <code><a href="../Bytes.html">Bytes</a></code> and <code><a href="../IO.html">IO</a></code>.</p>
+
+<h3>Decode from bytes</h3>
+
+<pre><code>bytes <span class="o">=</span> <span class="t">Bytes</span>[<span class="n">0x34</span>, <span class="n">0x12</span>]
+int16 <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">LittleEndian</span>.decode(<span class="t">Int16</span>, bytes)
+int16 <span class="c"># =&gt; 0x1234_i16</span></code></pre>
+
+<h3>Decode from an IO</h3>
+
+<pre><code>io <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span>(<span class="t">Bytes</span>[<span class="n">0x34</span>, <span class="n">0x12</span>])
+int16 <span class="o">=</span> io.read_bytes(<span class="t">Int16</span>, <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">LittleEndian</span>)
+int16 <span class="c"># =&gt; 0x1234_i16</span></code></pre>
+
+<h3>Encode to bytes</h3>
+
+<pre><code>bytes <span class="o">=</span> uninitialized <span class="t">UInt8</span>[<span class="n">2</span>]
+<span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">LittleEndian</span>.encode(<span class="n">0x1234_i16</span>, bytes.to_slice)
+bytes <span class="c"># =&gt; Bytes[0x34, 0x12]</span></code></pre>
+
+<h3>Encode to IO</h3>
+
+<pre><code>io <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span>
+io.write_bytes(<span class="n">0x1234_i16</span>, <span class="t">IO</span><span class="t">::</span><span class="t">ByteFormat</span><span class="t">::</span><span class="t">LittleEndian</span>)
+io.to_slice <span class="c"># =&gt; Bytes[0x34, 0x12]</span></code></pre>
 
 
 
@@ -41,7 +66,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L2" target="_blank">io/byte_format.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L35" target="_blank">io/byte_format.cr</a>
     
     <br/>
   
@@ -61,32 +86,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#decode%28type%3AFloat32.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(type : Float32.class, io : IO)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#decode%28int%3AUInt64.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt64.class, io : IO)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#decode%28int%3AInt64.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : Int64.class, io : IO)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#decode%28int%3AUInt32.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt32.class, io : IO)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#decode%28int%3AInt32.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : Int32.class, io : IO)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#decode%28int%3AUInt16.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt16.class, io : IO)</a>
+        <a href="#decode%28int%3AUInt8.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt8.class, io : IO)</a>
         
       </li>
     
@@ -96,7 +96,32 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#decode%28int%3AUInt8.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt8.class, io : IO)</a>
+        <a href="#decode%28int%3AUInt16.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt16.class, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28int%3AInt32.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : Int32.class, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28int%3AUInt32.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt32.class, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28int%3AInt64.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : Int64.class, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28int%3AUInt64.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt64.class, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28type%3AFloat32.class%2Cio%3AIO%29-instance-method" class="signature"><strong>#decode</strong>(type : Float32.class, io : IO)</a>
         
       </li>
     
@@ -106,37 +131,62 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28float%3AFloat64%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(float : Float64, io : IO)</a>
+        <a href="#decode%28int%3AInt8.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(int : Int8.class, bytes : Bytes)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28float%3AFloat32%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(float : Float32, io : IO)</a>
+        <a href="#decode%28int%3AUInt8.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt8.class, bytes : Bytes)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28int%3AUInt64%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt64, io : IO)</a>
+        <a href="#decode%28int%3AInt16.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(int : Int16.class, bytes : Bytes)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28int%3AInt64%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : Int64, io : IO)</a>
+        <a href="#decode%28int%3AUInt16.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt16.class, bytes : Bytes)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28int%3AUInt32%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt32, io : IO)</a>
+        <a href="#decode%28int%3AInt32.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(int : Int32.class, bytes : Bytes)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28int%3AInt32%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : Int32, io : IO)</a>
+        <a href="#decode%28int%3AUInt32.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt32.class, bytes : Bytes)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28int%3AUInt16%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt16, io : IO)</a>
+        <a href="#decode%28int%3AInt64.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(int : Int64.class, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28int%3AUInt64.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(int : UInt64.class, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28type%3AFloat32.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(type : Float32.class, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28type%3AFloat64.class%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#decode</strong>(type : Float64.class, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28float%3AFloat64%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(float : Float64, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AUInt8%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt8, io : IO)</a>
         
       </li>
     
@@ -146,7 +196,82 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28int%3AUInt8%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt8, io : IO)</a>
+        <a href="#encode%28int%3AUInt16%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt16, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AInt32%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : Int32, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AUInt32%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt32, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AInt64%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : Int64, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AUInt64%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt64, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28float%3AFloat32%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(float : Float32, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28float%3AFloat64%2Cio%3AIO%29-instance-method" class="signature"><strong>#encode</strong>(float : Float64, io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AInt8%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(int : Int8, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AUInt8%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt8, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AInt16%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(int : Int16, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AUInt16%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt16, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AInt32%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(int : Int32, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AUInt32%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt32, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AInt64%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(int : Int64, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28int%3AUInt64%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(int : UInt64, bytes : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28float%3AFloat32%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#encode</strong>(float : Float32, bytes : Bytes)</a>
         
       </li>
     
@@ -171,7 +296,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="decode(int:Int8.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2375"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int8.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2419"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int8.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
         abstract 
         def <strong>decode</strong>(int : Int8.class, io : <a href="../IO.html">IO</a>)
 
@@ -181,125 +306,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L14" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="decode(type:Float32.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2376"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28type%20%3A%20Float32.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        
-        def <strong>decode</strong>(type : Float32.class, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L29" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="decode(int:UInt64.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2377"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt64.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        abstract 
-        def <strong>decode</strong>(int : UInt64.class, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L21" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="decode(int:Int64.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2378"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int64.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        abstract 
-        def <strong>decode</strong>(int : Int64.class, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L20" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="decode(int:UInt32.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2379"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt32.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        abstract 
-        def <strong>decode</strong>(int : UInt32.class, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L19" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="decode(int:Int32.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2380"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int32.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        abstract 
-        def <strong>decode</strong>(int : Int32.class, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L18" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="decode(int:UInt16.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2381"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt16.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        abstract 
-        def <strong>decode</strong>(int : UInt16.class, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L17" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="decode(int:Int16.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2382"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int16.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        abstract 
-        def <strong>decode</strong>(int : Int16.class, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="decode(int:UInt8.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2383"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt8.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2420"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt8.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
         abstract 
         def <strong>decode</strong>(int : UInt8.class, io : <a href="../IO.html">IO</a>)
 
@@ -309,13 +322,125 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(int:Int16.class,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2421"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int16.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>decode</strong>(int : Int16.class, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(int:UInt16.class,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2422"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt16.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>decode</strong>(int : UInt16.class, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L61" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(int:Int32.class,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2423"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int32.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>decode</strong>(int : Int32.class, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L62" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(int:UInt32.class,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2424"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt32.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>decode</strong>(int : UInt32.class, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(int:Int64.class,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2425"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int64.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>decode</strong>(int : Int64.class, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(int:UInt64.class,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2426"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt64.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>decode</strong>(int : UInt64.class, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(type:Float32.class,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2427"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28type%20%3A%20Float32.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>decode</strong>(type : Float32.class, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="decode(type:Float64.class,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2384"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28type%20%3A%20Float64.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2428"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28type%20%3A%20Float64.class%2C%20io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>decode</strong>(type : Float64.class, io : <a href="../IO.html">IO</a>)
 
@@ -325,47 +450,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L106" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="encode(float:Float64,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2385"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28float%20%3A%20Float64%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        
-        def <strong>encode</strong>(float : <a href="../Float64.html">Float64</a>, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L34" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="encode(float:Float32,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2386"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28float%20%3A%20Float32%2C%20io%20%3A%20IO%29"></a><div class="signature">
-        
-        def <strong>encode</strong>(float : <a href="../Float32.html">Float32</a>, io : <a href="../IO.html">IO</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L25" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="encode(int:UInt64,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2387"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt64%2C%20io%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="decode(int:Int8.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2429"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int8.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
         abstract 
-        def <strong>encode</strong>(int : <a href="../UInt64.html">UInt64</a>, io : <a href="../IO.html">IO</a>)
+        def <strong>decode</strong>(int : Int8.class, bytes : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -373,15 +466,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L69" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="encode(int:Int64,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2388"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int64%2C%20io%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="decode(int:UInt8.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2430"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt8.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
         abstract 
-        def <strong>encode</strong>(int : <a href="../Int64.html">Int64</a>, io : <a href="../IO.html">IO</a>)
+        def <strong>decode</strong>(int : UInt8.class, bytes : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -389,15 +482,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="encode(int:UInt32,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2389"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt32%2C%20io%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="decode(int:Int16.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2431"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int16.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
         abstract 
-        def <strong>encode</strong>(int : <a href="../UInt32.html">UInt32</a>, io : <a href="../IO.html">IO</a>)
+        def <strong>decode</strong>(int : Int16.class, bytes : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -405,15 +498,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="encode(int:Int32,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2390"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int32%2C%20io%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="decode(int:UInt16.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2432"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt16.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
         abstract 
-        def <strong>encode</strong>(int : <a href="../Int32.html">Int32</a>, io : <a href="../IO.html">IO</a>)
+        def <strong>decode</strong>(int : UInt16.class, bytes : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -421,15 +514,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="encode(int:UInt16,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2391"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt16%2C%20io%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="decode(int:Int32.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2433"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int32.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
         abstract 
-        def <strong>encode</strong>(int : <a href="../UInt16.html">UInt16</a>, io : <a href="../IO.html">IO</a>)
+        def <strong>decode</strong>(int : Int32.class, bytes : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -437,15 +530,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="encode(int:Int16,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2392"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int16%2C%20io%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="decode(int:UInt32.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2434"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt32.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
         abstract 
-        def <strong>encode</strong>(int : <a href="../Int16.html">Int16</a>, io : <a href="../IO.html">IO</a>)
+        def <strong>decode</strong>(int : UInt32.class, bytes : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -453,13 +546,93 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(int:Int64.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2435"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20Int64.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>decode</strong>(int : Int64.class, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L75" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(int:UInt64.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2436"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20decode%28int%20%3A%20UInt64.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>decode</strong>(int : UInt64.class, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L76" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(type:Float32.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2437"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28type%20%3A%20Float32.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        
+        def <strong>decode</strong>(type : Float32.class, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L93" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(type:Float64.class,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2438"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20decode%28type%20%3A%20Float64.class%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        
+        def <strong>decode</strong>(type : Float64.class, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(float:Float64,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2439"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28float%20%3A%20Float64%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        
+        def <strong>encode</strong>(float : <a href="../Float64.html">Float64</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L102" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="encode(int:UInt8,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2393"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt8%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2440"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt8%2C%20io%20%3A%20IO%29"></a><div class="signature">
         abstract 
         def <strong>encode</strong>(int : <a href="../UInt8.html">UInt8</a>, io : <a href="../IO.html">IO</a>)
 
@@ -469,13 +642,285 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:Int16,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2441"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int16%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../Int16.html">Int16</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:UInt16,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2442"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt16%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../UInt16.html">UInt16</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:Int32,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2443"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int32%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../Int32.html">Int32</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:UInt32,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2444"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt32%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../UInt32.html">UInt32</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:Int64,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2445"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int64%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../Int64.html">Int64</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:UInt64,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2446"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt64%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../UInt64.html">UInt64</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(float:Float32,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2447"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28float%20%3A%20Float32%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>encode</strong>(float : <a href="../Float32.html">Float32</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(float:Float64,io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2448"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28float%20%3A%20Float64%2C%20io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>encode</strong>(float : <a href="../Float64.html">Float64</a>, io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L98" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:Int8,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2449"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int8%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../Int8.html">Int8</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:UInt8,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2450"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt8%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../UInt8.html">UInt8</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:Int16,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2451"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int16%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../Int16.html">Int16</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:UInt16,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2452"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt16%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../UInt16.html">UInt16</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:Int32,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2453"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int32%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../Int32.html">Int32</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:UInt32,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2454"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt32%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../UInt32.html">UInt32</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:Int64,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2455"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int64%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../Int64.html">Int64</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(int:UInt64,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2456"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20UInt64%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        abstract 
+        def <strong>encode</strong>(int : <a href="../UInt64.html">UInt64</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L54" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(float:Float32,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2457"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20encode%28float%20%3A%20Float32%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        
+        def <strong>encode</strong>(float : <a href="../Float32.html">Float32</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L84" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="encode(int:Int8,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-2394"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int8%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2458"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20encode%28int%20%3A%20Int8%2C%20io%20%3A%20IO%29"></a><div class="signature">
         abstract 
         def <strong>encode</strong>(int : <a href="../Int8.html">Int8</a>, io : <a href="../IO.html">IO</a>)
 
@@ -485,7 +930,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b0cc6f70f2531e073f76b8e83f8be722e7ec2073/src/io/byte_format.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/io/byte_format.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
