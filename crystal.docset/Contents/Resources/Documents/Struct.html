@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5356"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Struct%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Struct - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5442"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Struct%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Struct - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -46,7 +46,7 @@ method should return the modified struct:</p>
 <pre><code><span class="k">struct</span> <span class="t">Mutable</span>
   property value
 
-  <span class="k">def</span> <span class="m">initialize</span>(@value)
+  <span class="k">def</span> <span class="m">initialize</span>(@value : <span class="t">Int32</span>)
   <span class="k">end</span>
 <span class="k">end</span>
 
@@ -193,9 +193,9 @@ names instead of indices.</p>
   
     <li class="other-type"><a href="Slice.html">Slice(T)</a></li>
   
-    <li class="other-type"><a href="Socket/IPAddress.html">Socket::IPAddress</a></li>
+    <li class="other-type"><a href="Socket/Address.html">Socket::Address</a></li>
   
-    <li class="other-type"><a href="Socket/UNIXAddress.html">Socket::UNIXAddress</a></li>
+    <li class="other-type"><a href="Socket/Addrinfo.html">Socket::Addrinfo</a></li>
   
     <li class="other-type"><a href="String/Formatter/Flags.html">String::Formatter::Flags</a></li>
   
@@ -231,7 +231,7 @@ names instead of indices.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/struct.cr#L45" target="_blank">struct.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/struct.cr#L45" target="_blank">struct.cr</a>
     
     <br/>
   
@@ -248,7 +248,7 @@ names instead of indices.</p>
       <li class="entry-summary">
         <a href="#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="signature"><strong>#==</strong>(other : self) : Bool</a>
         
-          <div class="summary"><p>Returns <code>true</code> if this struct is equal to <code>other</code>.</p></div>
+          <div class="summary"><p>Returns <code>true</code> if this struct is equal to <em>other</em>.</p></div>
         
       </li>
     
@@ -342,11 +342,6 @@ names instead of indices.</p>
     <a href="Object.html#class-instance-method" class="tooltip">
       <span>class</span>
     class</a>, 
-    
-  
-    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
-      <span>crystal_type_id</span>
-    crystal_type_id</a>, 
     
   
     <a href="Object.html#dup-instance-method" class="tooltip">
@@ -452,8 +447,8 @@ names instead of indices.</p>
     from_json</a>, 
     
   
-    <a href="Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string : String) : self</span>
+    <a href="Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
     from_yaml</a>, 
     
   
@@ -498,7 +493,7 @@ names instead of indices.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:self):Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-5351"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5443"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29%20%3A%20Bool"></a><div class="signature">
         
         def <strong>==</strong>(other : self) : <a href="Bool.html">Bool</a>
 
@@ -506,7 +501,7 @@ names instead of indices.</p>
       </div>
       
         <div class="doc">
-<p>Returns <code>true</code> if this struct is equal to <code>other</code>.</p>
+<p>Returns <code>true</code> if this struct is equal to <em>other</em>.</p>
 
 <p>Both structs&#39;s instance vars are compared to each other. Thus, two
 structs are considered equal if each of their instance variables are
@@ -514,7 +509,7 @@ equal. Subclasses should override this method to provide specific
 equality semantics.</p>
 
 <pre><code><span class="k">struct</span> <span class="t">Point</span>
-  <span class="k">def</span> <span class="m">initialize</span>(@x, @y)
+  <span class="k">def</span> <span class="m">initialize</span>(@x : <span class="t">Int32</span>, @y : <span class="t">Int32</span>)
   <span class="k">end</span>
 <span class="k">end</span>
 
@@ -529,13 +524,13 @@ p1 <span class="o">==</span> p3 <span class="c"># =&gt; false</span></code></pre
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/struct.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/struct.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-5352"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5444"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%20%3A%20Int32"></a><div class="signature">
         
         def <strong>hash</strong> : <a href="Int32.html">Int32</a>
 
@@ -551,13 +546,13 @@ p1 <span class="o">==</span> p3 <span class="c"># =&gt; false</span></code></pre
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/struct.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/struct.cr#L76" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io:IO):Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-5353"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5445"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>inspect</strong>(io : <a href="IO.html">IO</a>) : <a href="Nil.html">Nil</a>
 
@@ -569,7 +564,7 @@ p1 <span class="o">==</span> p3 <span class="c"># =&gt; false</span></code></pre
 to the given IO.</p>
 
 <pre><code><span class="k">struct</span> <span class="t">Point</span>
-  <span class="k">def</span> <span class="m">initialize</span>(@x, @y)
+  <span class="k">def</span> <span class="m">initialize</span>(@x : <span class="t">Int32</span>, @y : <span class="t">Int32</span>)
   <span class="k">end</span>
 <span class="k">end</span>
 
@@ -581,13 +576,13 @@ p1.inspect <span class="c"># &#34;Point(@x=1, @y=2)&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/struct.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/struct.cr#L97" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pretty_print(pp):Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-5354"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pretty_print%28pp%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5446"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pretty_print%28pp%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>pretty_print</strong>(pp) : <a href="Nil.html">Nil</a>
 
@@ -597,13 +592,13 @@ p1.inspect <span class="c"># &#34;Point(@x=1, @y=2)&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/struct.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/struct.cr#L110" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-5355"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5447"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -615,7 +610,7 @@ p1.inspect <span class="c"># &#34;Point(@x=1, @y=2)&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/struct.cr#L135" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/struct.cr#L133" target="_blank">View source</a>]
         
       </div>
     </div>

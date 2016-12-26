@@ -77,8 +77,6 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
     <li class="other-type">
 <a href="Comparable.html">Comparable</a>(<a href="Array.html">Array(T)</a>)</li>
   
-    <li class="other-type"><a href="Enumerable.html">Enumerable(T)</a></li>
-  
     <li class="other-type"><a href="Indexable.html">Indexable(T)</a></li>
   
   </ul>
@@ -95,17 +93,17 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L46" target="_blank">array.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L46" target="_blank">array.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/json/to_json.cr#L223" target="_blank">json/to_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L223" target="_blank">json/to_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/yaml/to_yaml.cr#L30" target="_blank">yaml/to_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/to_yaml.cr#L30" target="_blank">yaml/to_yaml.cr</a>
     
     <br/>
   
@@ -125,12 +123,12 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#each_product%28arrays%2C%26block%29-class-method" class="signature"><strong>.each_product</strong>(arrays, &amp;block)</a>
+        <a href="#each_product%28arrays%3AArray%28Array%29%2Creuse%3Dfalse%2C%26block%29-class-method" class="signature"><strong>.each_product</strong>(arrays : Array(Array), reuse = <span class="n">false</span>, &amp;block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_product%28%2Aarrays%3AArray%2C%26block%29-class-method" class="signature"><strong>.each_product</strong>(*arrays : Array, &amp;block)</a>
+        <a href="#each_product%28%2Aarrays%3AArray%2Creuse%3Dfalse%2C%26block%29-class-method" class="signature"><strong>.each_product</strong>(*arrays : Array, reuse = <span class="n">false</span>, &amp;block)</a>
         
       </li>
     
@@ -142,7 +140,7 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#from_yaml%28string%3AString%2C%26block%29-class-method" class="signature"><strong>.from_yaml</strong>(string : String, &amp;block)</a>
+        <a href="#from_yaml%28string_or_io%2C%26block%29-class-method" class="signature"><strong>.from_yaml</strong>(string_or_io, &amp;block)</a>
         
       </li>
     
@@ -261,16 +259,16 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28start%3AInt%2Ccount%3AInt%29-instance-method" class="signature"><strong>#[]</strong>(start : Int, count : Int)</a>
+        <a href="#%5B%5D%28range%3ARange%28Int%2CInt%29%29-instance-method" class="signature"><strong>#[]</strong>(range : Range(Int, Int))</a>
         
-          <div class="summary"><p>Returns count or less (if there aren&#39;t enough) elements starting at the given start index.</p></div>
+          <div class="summary"><p>Returns all elements that are within the given range.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28range%3ARange%28Int%2CInt%29%29-instance-method" class="signature"><strong>#[]</strong>(range : Range(Int, Int))</a>
+        <a href="#%5B%5D%28start%3AInt%2Ccount%3AInt%29-instance-method" class="signature"><strong>#[]</strong>(start : Int, count : Int)</a>
         
-          <div class="summary"><p>Returns all elements that are within the given range.</p></div>
+          <div class="summary"><p>Returns count or less (if there aren&#39;t enough) elements starting at the given start index.</p></div>
         
       </li>
     
@@ -392,41 +390,48 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#each_combination%28size%3AInt%3Dself.size%2C%26block%29-instance-method" class="signature"><strong>#each_combination</strong>(size : Int = <span class="k">self</span>.size, &amp;block)</a>
+        <a href="#each_combination%28size%3AInt%3Dself.size%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#each_combination</strong>(size : Int = <span class="k">self</span>.size, reuse = <span class="n">false</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_combination%28size%3AInt%3Dself.size%29-instance-method" class="signature"><strong>#each_combination</strong>(size : Int = <span class="k">self</span>.size)</a>
+        <a href="#each_combination%28size%3AInt%3Dself.size%2Creuse%3Dfalse%2C%26block%29-instance-method" class="signature"><strong>#each_combination</strong>(size : Int = <span class="k">self</span>.size, reuse = <span class="n">false</span>, &amp;block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_permutation%28size%3AInt%3Dself.size%29-instance-method" class="signature"><strong>#each_permutation</strong>(size : Int = <span class="k">self</span>.size)</a>
+        <a href="#each_permutation%28size%3AInt%3Dself.size%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#each_permutation</strong>(size : Int = <span class="k">self</span>.size, reuse = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Returns an <code><a href="Iterator.html">Iterator</a></code> over each possible permutation of <em>size</em> of <code>self</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_permutation%28size%3AInt%3Dself.size%2C%26block%29-instance-method" class="signature"><strong>#each_permutation</strong>(size : Int = <span class="k">self</span>.size, &amp;block)</a>
+        <a href="#each_permutation%28size%3AInt%3Dself.size%2Creuse%3Dfalse%2C%26block%29-instance-method" class="signature"><strong>#each_permutation</strong>(size : Int = <span class="k">self</span>.size, reuse = <span class="n">false</span>, &amp;block)</a>
         
           <div class="summary"><p>Yields each possible permutation of <em>size</em> of <code>self</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_repeated_combination%28size%3AInt%3Dself.size%2C%26block%29-instance-method" class="signature"><strong>#each_repeated_combination</strong>(size : Int = <span class="k">self</span>.size, &amp;block)</a>
+        <a href="#each_repeated_combination%28size%3AInt%3Dself.size%2Creuse%3Dfalse%2C%26block%29-instance-method" class="signature"><strong>#each_repeated_combination</strong>(size : Int = <span class="k">self</span>.size, reuse = <span class="n">false</span>, &amp;block)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_repeated_combination%28size%3AInt%3Dself.size%29-instance-method" class="signature"><strong>#each_repeated_combination</strong>(size : Int = <span class="k">self</span>.size)</a>
+        <a href="#each_repeated_combination%28size%3AInt%3Dself.size%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#each_repeated_combination</strong>(size : Int = <span class="k">self</span>.size, reuse = <span class="n">false</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_repeated_permutation%28size%3AInt%3Dself.size%2C%26block%29-instance-method" class="signature"><strong>#each_repeated_permutation</strong>(size : Int = <span class="k">self</span>.size, &amp;block)</a>
+        <a href="#each_repeated_permutation%28size%3AInt%3Dself.size%2Creuse%3Dfalse%2C%26block%29-instance-method" class="signature"><strong>#each_repeated_permutation</strong>(size : Int = <span class="k">self</span>.size, reuse = <span class="n">false</span>, &amp;block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fill%28from%3AInt%2Ccount%3AInt%2C%26block%29-instance-method" class="signature"><strong>#fill</strong>(from : Int, count : Int, &amp;block)</a>
+        
+          <div class="summary"><p>Yields each index of <code>self</code>, starting at <em>from</em> and just <em>count</em> times, to the given block and then assigns the block&#39;s value in that position.</p></div>
         
       </li>
     
@@ -480,16 +485,9 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#fill%28from%3AInt%2Ccount%3AInt%2C%26block%29-instance-method" class="signature"><strong>#fill</strong>(from : Int, count : Int, &amp;block)</a>
-        
-          <div class="summary"><p>Yields each index of <code>self</code>, starting at <em>from</em> and just <em>count</em> times, to the given block and then assigns the block&#39;s value in that position.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#first%28n%3AInt%29-instance-method" class="signature"><strong>#first</strong>(n : Int)</a>
         
-          <div class="summary"><p>Returns the first <code>n</code> elements of the array.</p></div>
+          <div class="summary"><p>Returns the first <em>n</em> elements of the array.</p></div>
         
       </li>
     
@@ -510,7 +508,7 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
       <li class="entry-summary">
         <a href="#last%28n%3AInt%29-instance-method" class="signature"><strong>#last</strong>(n : Int)</a>
         
-          <div class="summary"><p>Returns the last <code>n</code> elements of the array.</p></div>
+          <div class="summary"><p>Returns the last <em>n</em> elements of the array.</p></div>
         
       </li>
     
@@ -545,6 +543,8 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
       <li class="entry-summary">
         <a href="#pop%28%26block%29-instance-method" class="signature"><strong>#pop</strong>(&amp;block)</a>
         
+          <div class="summary"><p>Removes the last value from <code>self</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -563,6 +563,8 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
     
       <li class="entry-summary">
         <a href="#pop%3F-instance-method" class="signature"><strong>#pop?</strong></a>
+        
+          <div class="summary"><p>Like <code><a href="Array.html#pop%28%26block%29-instance-method">#pop</a></code>, but returns <code>nil</code> if <code>self</code> is empty.</p></div>
         
       </li>
     
@@ -826,26 +828,6 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#zip%28other%3AArray%2C%26block%29-instance-method" class="signature"><strong>#zip</strong>(other : Array, &amp;block)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#zip%28other%3AArray%28U%29%29forallU-instance-method" class="signature"><strong>#zip</strong>(other : Array(U)) forall U</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#zip%3F%28other%3AArray%2C%26block%29-instance-method" class="signature"><strong>#zip?</strong>(other : Array, &amp;block)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#zip%3F%28other%3AArray%28U%29%29forallU-instance-method" class="signature"><strong>#zip?</strong>(other : Array(U)) forall U</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#%7C%28other%3AArray%28U%29%29forallU-instance-method" class="signature"><strong>#|</strong>(other : Array(U)) forall U</a>
         
           <div class="summary"><p>Set union: returns a new Array by joining <code>self</code> with <em>other</em>, excluding any duplicates, and preserving the order from <code>self</code>.</p></div>
@@ -1010,54 +992,17 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
   
     <a href="Indexable.html#values_at%28%2Aindexes%3AInt%29-instance-method" class="tooltip">
       <span>values_at(*indexes : Int)</span>
-    values_at</a>
+    values_at</a>, 
     
   
-
-
-    
-
-
-  
-    
-
-  <h3>Instance methods inherited from module <code><a href="Iterable.html">Iterable(T)</a></code>
-</h3>
-  
-  
-    <a href="Iterable.html#chunk%28%26block%3AT-%3EU%29forallU-instance-method" class="tooltip">
-      <span>chunk(&amp;block : T -&gt; U) forall U</span>
-    chunk</a>, 
+    <a href="Indexable.html#zip%28other%3AIndexable%2C%26block%29-instance-method" class="tooltip">
+      <span>zip(other : Indexable, &amp;block)<br/>zip(other : Indexable(U)) forall U</span>
+    zip</a>, 
     
   
-    <a href="Iterable.html#cycle%28n%29-instance-method" class="tooltip">
-      <span>cycle(n)<br/>cycle</span>
-    cycle</a>, 
-    
-  
-    <a href="Iterable.html#each-instance-method" class="tooltip">
-      <span>each</span>
-    each</a>, 
-    
-  
-    <a href="Iterable.html#each_cons%28count%3AInt%29-instance-method" class="tooltip">
-      <span>each_cons(count : Int)</span>
-    each_cons</a>, 
-    
-  
-    <a href="Iterable.html#each_slice%28count%3AInt%29-instance-method" class="tooltip">
-      <span>each_slice(count : Int)</span>
-    each_slice</a>, 
-    
-  
-    <a href="Iterable.html#each_with_index%28offset%3D0%29-instance-method" class="tooltip">
-      <span>each_with_index(offset = <span class="n">0</span>)</span>
-    each_with_index</a>, 
-    
-  
-    <a href="Iterable.html#each_with_object%28obj%29-instance-method" class="tooltip">
-      <span>each_with_object(obj)</span>
-    each_with_object</a>
+    <a href="Indexable.html#zip%3F%28other%3AIndexable%2C%26block%29-instance-method" class="tooltip">
+      <span>zip?(other : Indexable, &amp;block)<br/>zip?(other : Indexable(U)) forall U</span>
+    zip?</a>
     
   
 
@@ -1082,8 +1027,8 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
     any?</a>, 
     
   
-    <a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
-      <span>chunks(&amp;block : T -&gt; U)</span>
+    <a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29forallU-instance-method" class="tooltip">
+      <span>chunks(&amp;block : T -&gt; U) forall U</span>
     chunks</a>, 
     
   
@@ -1107,13 +1052,13 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
     each</a>, 
     
   
-    <a href="Enumerable.html#each_cons%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
-      <span>each_cons(count : Int, &amp;block)</span>
+    <a href="Enumerable.html#each_cons%28count%3AInt%2Creuse%3Dfalse%2C%26block%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int, reuse = <span class="n">false</span>, &amp;block)</span>
     each_cons</a>, 
     
   
-    <a href="Enumerable.html#each_slice%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
-      <span>each_slice(count : Int, &amp;block)</span>
+    <a href="Enumerable.html#each_slice%28count%3AInt%2Creuse%3Dfalse%2C%26block%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int, reuse = <span class="n">false</span>, &amp;block)</span>
     each_slice</a>, 
     
   
@@ -1158,7 +1103,7 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
     
   
     <a href="Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%29forallU-instance-method" class="tooltip">
-      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U</span>
+      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, reuse = <span class="n">false</span>, &amp;block) forall U</span>
     in_groups_of</a>, 
     
   
@@ -1365,6 +1310,53 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
   
     
 
+  <h3>Instance methods inherited from module <code><a href="Iterable.html">Iterable(T)</a></code>
+</h3>
+  
+  
+    <a href="Iterable.html#chunk%28reuse%3Dfalse%2C%26block%3AT-%3EU%29forallU-instance-method" class="tooltip">
+      <span>chunk(reuse = <span class="n">false</span>, &amp;block : T -&gt; U) forall U</span>
+    chunk</a>, 
+    
+  
+    <a href="Iterable.html#cycle%28n%29-instance-method" class="tooltip">
+      <span>cycle(n)<br/>cycle</span>
+    cycle</a>, 
+    
+  
+    <a href="Iterable.html#each-instance-method" class="tooltip">
+      <span>each</span>
+    each</a>, 
+    
+  
+    <a href="Iterable.html#each_cons%28count%3AInt%2Creuse%3Dfalse%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int, reuse = <span class="n">false</span>)</span>
+    each_cons</a>, 
+    
+  
+    <a href="Iterable.html#each_slice%28count%3AInt%2Creuse%3Dfalse%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int, reuse = <span class="n">false</span>)</span>
+    each_slice</a>, 
+    
+  
+    <a href="Iterable.html#each_with_index%28offset%3D0%29-instance-method" class="tooltip">
+      <span>each_with_index(offset = <span class="n">0</span>)</span>
+    each_with_index</a>, 
+    
+  
+    <a href="Iterable.html#each_with_object%28obj%29-instance-method" class="tooltip">
+      <span>each_with_object(obj)</span>
+    each_with_object</a>
+    
+  
+
+
+    
+
+
+  
+    
+
   <h3>Instance methods inherited from class <code><a href="Reference.html">Reference</a></code>
 </h3>
   
@@ -1459,11 +1451,6 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
     <a href="Object.html#class-instance-method" class="tooltip">
       <span>class</span>
     class</a>, 
-    
-  
-    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
-      <span>crystal_type_id</span>
-    crystal_type_id</a>, 
     
   
     <a href="Object.html#dup-instance-method" class="tooltip">
@@ -1569,8 +1556,8 @@ set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
     from_json</a>, 
     
   
-    <a href="Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string : String) : self</span>
+    <a href="Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
     from_yaml</a>, 
     
   
@@ -1635,15 +1622,15 @@ by passing it to a C function.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L147" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_product(arrays,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-4"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each_product%28arrays%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="each_product(arrays:Array(Array),reuse=false,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-4"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each_product%28arrays%20%3A%20Array%28Array%29%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>each_product</strong>(arrays, &amp;block)
+        def self.<strong>each_product</strong>(arrays : <a href="Array.html">Array</a>(<a href="Array.html">Array</a>), reuse = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -1651,15 +1638,15 @@ by passing it to a C function.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1139" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1177" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_product(*arrays:Array,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each_product%28%2Aarrays%20%3A%20Array%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="each_product(*arrays:Array,reuse=false,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-5"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each_product%28%2Aarrays%20%3A%20Array%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>each_product</strong>(*arrays : <a href="Array.html">Array</a>, &amp;block)
+        def self.<strong>each_product</strong>(*arrays : <a href="Array.html">Array</a>, reuse = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -1667,7 +1654,7 @@ by passing it to a C function.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1163" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1211" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1704,15 +1691,15 @@ creating an Array in memory, which might be expensive.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/json/from_json.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/from_json.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="from_yaml(string:String,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-7"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_yaml%28string%20%3A%20String%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="from_yaml(string_or_io,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-7"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_yaml%28string_or_io%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>from_yaml</strong>(string : <a href="String.html">String</a>, &amp;block)
+        def self.<strong>from_yaml</strong>(string_or_io, &amp;block)
 
         
       </div>
@@ -1720,7 +1707,7 @@ creating an Array in memory, which might be expensive.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/yaml/from_yaml.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/from_yaml.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1747,7 +1734,7 @@ puts ary <span class="c"># =&gt; [[2], [2], [2]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L102" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1776,7 +1763,7 @@ ary.size <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1792,7 +1779,7 @@ ary.size <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/json/from_json.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/from_json.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1808,7 +1795,7 @@ ary.size <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/yaml/from_yaml.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/from_yaml.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1826,7 +1813,7 @@ ary.size <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1854,7 +1841,7 @@ puts ary <span class="c"># =&gt; [[2], [1], [1]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L127" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1870,7 +1857,7 @@ puts ary <span class="c"># =&gt; [[2], [1], [1]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/json/from_json.cr#L109" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/from_json.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1886,7 +1873,7 @@ puts ary <span class="c"># =&gt; [[2], [1], [1]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/yaml/from_yaml.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/from_yaml.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1902,7 +1889,7 @@ puts ary <span class="c"># =&gt; [[2], [1], [1]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1127" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1165" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1918,7 +1905,7 @@ puts ary <span class="c"># =&gt; [[2], [1], [1]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1135" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1173" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1949,7 +1936,7 @@ and <em>other</em>, excluding any duplicates. The order is preserved from <code>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L203" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L202" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1971,7 +1958,7 @@ and <em>other</em>, excluding any duplicates. The order is preserved from <code>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L289" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L288" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1995,7 +1982,7 @@ The type of the new array is the union of the types of both the original arrays.
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L260" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L259" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2018,7 +2005,7 @@ that appear in <em>other</em>. The order of <code>self</code> is preserved.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L275" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L274" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2041,7 +2028,7 @@ a <span class="o">&lt;&lt;</span> <span class="n">3</span> <span class="c"># =&g
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L303" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L302" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2072,7 +2059,7 @@ value, that result is the return value of the comparison.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L185" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2097,46 +2084,13 @@ ary <span class="o">==</span> [<span class="n">2</span>, <span class="n">3</span
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L162" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="[](start:Int,count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-25"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28start%20%3A%20Int%2C%20count%20%3A%20Int%29"></a><div class="signature">
-        
-        def <strong>[]</strong>(start : <a href="Int.html">Int</a>, count : <a href="Int.html">Int</a>)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Returns count or less (if there aren&#39;t enough) elements starting at the
-given start index.</p>
-
-<p>Negative indices count backward from the end of the array (-1 is the last
-element). Additionally, an empty array is returned when the starting index
-for an element range is at the end of the array.</p>
-
-<p>Raises <code><a href="IndexError.html">IndexError</a></code> if the starting index is out of range.</p>
-
-<pre><code>a <span class="o">=</span> [<span class="s">&#34;a&#34;</span>, <span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>, <span class="s">&#34;d&#34;</span>, <span class="s">&#34;e&#34;</span>]
-a[<span class="n">-3</span>, <span class="n">3</span>] <span class="c"># =&gt; [&#34;c&#34;, &#34;d&#34;, &#34;e&#34;]</span>
-a[<span class="n">6</span>, <span class="n">1</span>]  <span class="c"># =&gt; Index Error</span>
-a[<span class="n">1</span>, <span class="n">2</span>]  <span class="c"># =&gt; [&#34;b&#34;, &#34;c&#34;]</span>
-a[<span class="n">5</span>, <span class="n">1</span>]  <span class="c"># =&gt; []</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L477" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L161" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[](range:Range(Int,Int))-instance-method">
-      <a class="dashingAutolink" name="autolink-26"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28range%20%3A%20Range%28Int%2C%20Int%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-25"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28range%20%3A%20Range%28Int%2C%20Int%29%29"></a><div class="signature">
         
         def <strong>[]</strong>(range : <a href="Range.html">Range</a>(<a href="Int.html">Int</a>, <a href="Int.html">Int</a>))
 
@@ -2163,7 +2117,40 @@ a[<span class="n">-2</span>...<span class="n">-1</span>] <span class="c"># =&gt;
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L457" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L456" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](start:Int,count:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-26"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28start%20%3A%20Int%2C%20count%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>[]</strong>(start : <a href="Int.html">Int</a>, count : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns count or less (if there aren&#39;t enough) elements starting at the
+given start index.</p>
+
+<p>Negative indices count backward from the end of the array (-1 is the last
+element). Additionally, an empty array is returned when the starting index
+for an element range is at the end of the array.</p>
+
+<p>Raises <code><a href="IndexError.html">IndexError</a></code> if the starting index is out of range.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="s">&#34;a&#34;</span>, <span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>, <span class="s">&#34;d&#34;</span>, <span class="s">&#34;e&#34;</span>]
+a[<span class="n">-3</span>, <span class="n">3</span>] <span class="c"># =&gt; [&#34;c&#34;, &#34;d&#34;, &#34;e&#34;]</span>
+a[<span class="n">6</span>, <span class="n">1</span>]  <span class="c"># =&gt; Index Error</span>
+a[<span class="n">1</span>, <span class="n">2</span>]  <span class="c"># =&gt; [&#34;b&#34;, &#34;c&#34;]</span>
+a[<span class="n">5</span>, <span class="n">1</span>]  <span class="c"># =&gt; []</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L476" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2195,7 +2182,7 @@ a <span class="c"># =&gt; [1, 6, 7, 8, 9, 10, 5]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L437" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L436" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2223,7 +2210,7 @@ a <span class="c"># =&gt; [1, 6, 2, 3, 4, 5]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L375" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L374" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2252,7 +2239,7 @@ ary[<span class="n">3</span>] <span class="o">=</span> <span class="n">5</span> 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L320" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L319" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2284,7 +2271,7 @@ a <span class="c"># =&gt; [1, 6, 7, 8, 9, 10, 5]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L394" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L393" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2318,7 +2305,7 @@ a <span class="c"># =&gt; [1, 6, 2, 3, 4, 5]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L342" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L341" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2341,7 +2328,7 @@ a.clear <span class="c"># =&gt; []</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L510" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L509" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2374,7 +2361,7 @@ puts ary2 <span class="c"># =&gt; [[1, 2], [3, 4], [7, 8]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L532" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L531" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2390,7 +2377,7 @@ puts ary2 <span class="c"># =&gt; [[1, 2], [3, 4], [7, 8]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1016" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1029" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2412,7 +2399,7 @@ puts ary2 <span class="c"># =&gt; [[1, 2], [3, 4], [7, 8]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L541" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L540" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2436,7 +2423,7 @@ ary <span class="c"># =&gt; [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;]</span></code
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L552" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L551" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2460,7 +2447,7 @@ ary <span class="c"># =&gt; [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;, &#34;d&#34;]
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L577" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L576" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2484,7 +2471,7 @@ ary <span class="c"># =&gt; [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;, &#34;d&#34;]
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L563" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L562" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2514,7 +2501,7 @@ a             <span class="c"># =&gt; [&#34;a&#34;, &#34;c&#34;]</span></code></
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L611" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L610" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2542,7 +2529,7 @@ a.delete_at(<span class="n">99</span>, <span class="n">1</span>) <span class="c"
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L660" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L659" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2568,7 +2555,7 @@ a.delete_at(<span class="n">99</span>) <span class="c"># =&gt; IndexError</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L624" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L623" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2595,7 +2582,7 @@ a.delete_at(<span class="n">99</span>..<span class="n">100</span>) <span class="
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L644" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L643" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2628,15 +2615,15 @@ puts ary2 <span class="c"># =&gt; [[5, 2], [3, 4], [7, 8]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L685" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L684" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_combination(size:Int=self.size,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-44"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_combination%28size%20%3A%20Int%20%3D%20self.size%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="each_combination(size:Int=self.size,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-44"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_combination%28size%20%3A%20Int%20%3D%20self.size%2C%20reuse%20%3D%20false%29"></a><div class="signature">
         
-        def <strong>each_combination</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, &amp;block)
+        def <strong>each_combination</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, reuse = <span class="n">false</span>)
 
         
       </div>
@@ -2644,15 +2631,15 @@ puts ary2 <span class="c"># =&gt; [[5, 2], [3, 4], [7, 8]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1024" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1085" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_combination(size:Int=self.size)-instance-method">
-      <a class="dashingAutolink" name="autolink-45"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_combination%28size%20%3A%20Int%20%3D%20self.size%29"></a><div class="signature">
+    <div class="entry-detail" id="each_combination(size:Int=self.size,reuse=false,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-45"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_combination%28size%20%3A%20Int%20%3D%20self.size%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def <strong>each_combination</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size)
+        def <strong>each_combination</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, reuse = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -2660,15 +2647,15 @@ puts ary2 <span class="c"># =&gt; [[5, 2], [3, 4], [7, 8]]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1060" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1037" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_permutation(size:Int=self.size)-instance-method">
-      <a class="dashingAutolink" name="autolink-46"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_permutation%28size%20%3A%20Int%20%3D%20self.size%29"></a><div class="signature">
+    <div class="entry-detail" id="each_permutation(size:Int=self.size,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-46"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_permutation%28size%20%3A%20Int%20%3D%20self.size%2C%20reuse%20%3D%20false%29"></a><div class="signature">
         
-        def <strong>each_permutation</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size)
+        def <strong>each_permutation</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, reuse = <span class="n">false</span>)
 
         
       </div>
@@ -2684,20 +2671,27 @@ iter.<span class="k">next</span> <span class="c"># =&gt; [2, 3, 1]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; [3, 1, 2]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; [3, 2, 1]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop</span></code></pre>
+
+<p>By default, a new array is created and returned for each permutation.
+If <em>reuse</em> is given, the array can be reused: if <em>reuse</em> is
+an <code><a href="Array.html">Array</a></code>, this array will be reused; if <em>reuse</em> if truthy,
+the method will create a new array and reuse it. This can be
+used to prevent many memory allocations when each slice of
+interest is to be used in a read-only fashion.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1010" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1023" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_permutation(size:Int=self.size,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-47"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_permutation%28size%20%3A%20Int%20%3D%20self.size%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="each_permutation(size:Int=self.size,reuse=false,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-47"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_permutation%28size%20%3A%20Int%20%3D%20self.size%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def <strong>each_permutation</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, &amp;block)
+        def <strong>each_permutation</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, reuse = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -2709,20 +2703,27 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop</span></
 sums <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>
 a.each_permutation(<span class="n">2</span>) { <span class="o">|</span>p<span class="o">|</span> sums <span class="o">&lt;&lt;</span> p.sum } <span class="c">#=&gt; [1, 2, 3]</span>
 sums <span class="c">#=&gt; [3, 4, 3, 5, 4, 5]</span></code></pre>
+
+<p>By default, a new array is created and yielded for each permutation.
+If <em>reuse</em> is given, the array can be reused: if <em>reuse</em> is
+an <code><a href="Array.html">Array</a></code>, this array will be reused; if <em>reuse</em> if truthy,
+the method will create a new array and reuse it. This can be
+used to prevent many memory allocations when each slice of
+interest is to be used in a read-only fashion.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L965" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L970" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_repeated_combination(size:Int=self.size,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-48"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_repeated_combination%28size%20%3A%20Int%20%3D%20self.size%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="each_repeated_combination(size:Int=self.size,reuse=false,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-48"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_repeated_combination%28size%20%3A%20Int%20%3D%20self.size%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def <strong>each_repeated_combination</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, &amp;block)
+        def <strong>each_repeated_combination</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, reuse = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -2730,15 +2731,15 @@ sums <span class="c">#=&gt; [3, 4, 3, 5, 4, 5]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1088" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1125" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_repeated_combination(size:Int=self.size)-instance-method">
-      <a class="dashingAutolink" name="autolink-49"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_repeated_combination%28size%20%3A%20Int%20%3D%20self.size%29"></a><div class="signature">
+    <div class="entry-detail" id="each_repeated_combination(size:Int=self.size,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-49"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_repeated_combination%28size%20%3A%20Int%20%3D%20self.size%2C%20reuse%20%3D%20false%29"></a><div class="signature">
         
-        def <strong>each_repeated_combination</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size)
+        def <strong>each_repeated_combination</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, reuse = <span class="n">false</span>)
 
         
       </div>
@@ -2746,15 +2747,15 @@ sums <span class="c">#=&gt; [3, 4, 3, 5, 4, 5]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1121" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1159" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_repeated_permutation(size:Int=self.size,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-50"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_repeated_permutation%28size%20%3A%20Int%20%3D%20self.size%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="each_repeated_permutation(size:Int=self.size,reuse=false,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-50"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_repeated_permutation%28size%20%3A%20Int%20%3D%20self.size%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def <strong>each_repeated_permutation</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, &amp;block)
+        def <strong>each_repeated_permutation</strong>(size : <a href="Int.html">Int</a> = <span class="k">self</span>.size, reuse = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -2762,186 +2763,13 @@ sums <span class="c">#=&gt; [3, 4, 3, 5, 4, 5]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1177" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fill(from:Int,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-51"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28from%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
-        
-        def <strong>fill</strong>(from : <a href="Int.html">Int</a>, &amp;block)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Yields each index of <code>self</code>, starting at <em>from</em>, to the given block and then assigns
-the block&#39;s value in that position. Returns <code>self</code>.</p>
-
-<p>Negative values of <em>from</em> count from the end of the array.</p>
-
-<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>]
-a.fill(<span class="n">2</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> i } <span class="c"># =&gt; [1, 2, 4, 9]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L714" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fill(range:Range(Int,Int),&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-52"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28range%20%3A%20Range%28Int%2C%20Int%29%2C%20%26block%29"></a><div class="signature">
-        
-        def <strong>fill</strong>(range : <a href="Range.html">Range</a>(<a href="Int.html">Int</a>, <a href="Int.html">Int</a>), &amp;block)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Yields each index of <code>self</code>, in the given <em>range</em>, to the given block and then assigns
-the block&#39;s value in that position. Returns <code>self</code>.</p>
-
-<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>]
-a.fill(<span class="n">2</span>..<span class="n">3</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> i } <span class="c"># =&gt; [1, 2, 4, 9, 5, 6]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L755" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fill(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-53"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28%26block%29"></a><div class="signature">
-        
-        def <strong>fill</strong>(&amp;block)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Yields each index of <code>self</code> to the given block and then assigns
-the block&#39;s value in that position. Returns <code>self</code>.</p>
-
-<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>]
-a.fill { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> i } <span class="c"># =&gt; [0, 1, 4, 9]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L699" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fill(value:T,from:Int,count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-54"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28value%20%3A%20T%2C%20from%20%3A%20Int%2C%20count%20%3A%20Int%29"></a><div class="signature">
-        
-        def <strong>fill</strong>(value : T, from : <a href="Int.html">Int</a>, count : <a href="Int.html">Int</a>)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Replaces every element in <code>self</code>, starting at <em>from</em> and only <em>count</em> times,
-with the given <em>value</em>. Returns <code>self</code>.</p>
-
-<p>Negative values of <em>from</em> count from the end of the array.</p>
-
-<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>]
-a.fill(<span class="n">9</span>, <span class="n">2</span>, <span class="n">2</span>) <span class="c"># =&gt; [1, 2, 9, 9, 5]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L792" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fill(value:T,from:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-55"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28value%20%3A%20T%2C%20from%20%3A%20Int%29"></a><div class="signature">
-        
-        def <strong>fill</strong>(value : T, from : <a href="Int.html">Int</a>)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Replaces every element in <code>self</code>, starting at <em>from</em>, with the given <em>value</em>. Returns <code>self</code>.</p>
-
-<p>Negative values of <em>from</em> count from the end of the array.</p>
-
-<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>]
-a.fill(<span class="n">9</span>, <span class="n">2</span>) <span class="c"># =&gt; [1, 2, 9, 9, 9]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L779" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fill(value:T,range:Range(Int,Int))-instance-method">
-      <a class="dashingAutolink" name="autolink-56"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28value%20%3A%20T%2C%20range%20%3A%20Range%28Int%2C%20Int%29%29"></a><div class="signature">
-        
-        def <strong>fill</strong>(value : T, range : <a href="Range.html">Range</a>(<a href="Int.html">Int</a>, <a href="Int.html">Int</a>))
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Replaces every element in <em>range</em> with <em>value</em>. Returns <code>self</code>.</p>
-
-<p>Negative values of <em>from</em> count from the end of the array.</p>
-
-<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>]
-a.fill(<span class="n">9</span>, <span class="n">2</span>..<span class="n">3</span>) <span class="c"># =&gt; [1, 2, 9, 9, 5]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L804" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="fill(value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-57"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28value%20%3A%20T%29"></a><div class="signature">
-        
-        def <strong>fill</strong>(value : T)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Replaces every element in <code>self</code> with the given <em>value</em>. Returns <code>self</code>.</p>
-
-<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
-a.fill(<span class="n">9</span>) <span class="c"># =&gt; [9, 9, 9]</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L767" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1225" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fill(from:Int,count:Int,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-58"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28from%20%3A%20Int%2C%20count%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-51"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28from%20%3A%20Int%2C%20count%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
         
         def <strong>fill</strong>(from : <a href="Int.html">Int</a>, count : <a href="Int.html">Int</a>, &amp;block)
 
@@ -2961,7 +2789,180 @@ a.fill(<span class="n">2</span>, <span class="n">2</span>) { <span class="o">|</
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L733" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L732" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fill(from:Int,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-52"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28from%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>fill</strong>(from : <a href="Int.html">Int</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Yields each index of <code>self</code>, starting at <em>from</em>, to the given block and then assigns
+the block&#39;s value in that position. Returns <code>self</code>.</p>
+
+<p>Negative values of <em>from</em> count from the end of the array.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>]
+a.fill(<span class="n">2</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> i } <span class="c"># =&gt; [1, 2, 4, 9]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L713" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fill(range:Range(Int,Int),&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-53"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28range%20%3A%20Range%28Int%2C%20Int%29%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>fill</strong>(range : <a href="Range.html">Range</a>(<a href="Int.html">Int</a>, <a href="Int.html">Int</a>), &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Yields each index of <code>self</code>, in the given <em>range</em>, to the given block and then assigns
+the block&#39;s value in that position. Returns <code>self</code>.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>]
+a.fill(<span class="n">2</span>..<span class="n">3</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> i } <span class="c"># =&gt; [1, 2, 4, 9, 5, 6]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L754" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fill(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-54"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28%26block%29"></a><div class="signature">
+        
+        def <strong>fill</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Yields each index of <code>self</code> to the given block and then assigns
+the block&#39;s value in that position. Returns <code>self</code>.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>]
+a.fill { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> i } <span class="c"># =&gt; [0, 1, 4, 9]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L698" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fill(value:T,from:Int,count:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-55"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28value%20%3A%20T%2C%20from%20%3A%20Int%2C%20count%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>fill</strong>(value : T, from : <a href="Int.html">Int</a>, count : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Replaces every element in <code>self</code>, starting at <em>from</em> and only <em>count</em> times,
+with the given <em>value</em>. Returns <code>self</code>.</p>
+
+<p>Negative values of <em>from</em> count from the end of the array.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>]
+a.fill(<span class="n">9</span>, <span class="n">2</span>, <span class="n">2</span>) <span class="c"># =&gt; [1, 2, 9, 9, 5]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L791" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fill(value:T,from:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-56"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28value%20%3A%20T%2C%20from%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>fill</strong>(value : T, from : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Replaces every element in <code>self</code>, starting at <em>from</em>, with the given <em>value</em>. Returns <code>self</code>.</p>
+
+<p>Negative values of <em>from</em> count from the end of the array.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>]
+a.fill(<span class="n">9</span>, <span class="n">2</span>) <span class="c"># =&gt; [1, 2, 9, 9, 9]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L778" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fill(value:T,range:Range(Int,Int))-instance-method">
+      <a class="dashingAutolink" name="autolink-57"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28value%20%3A%20T%2C%20range%20%3A%20Range%28Int%2C%20Int%29%29"></a><div class="signature">
+        
+        def <strong>fill</strong>(value : T, range : <a href="Range.html">Range</a>(<a href="Int.html">Int</a>, <a href="Int.html">Int</a>))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Replaces every element in <em>range</em> with <em>value</em>. Returns <code>self</code>.</p>
+
+<p>Negative values of <em>from</em> count from the end of the array.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>]
+a.fill(<span class="n">9</span>, <span class="n">2</span>..<span class="n">3</span>) <span class="c"># =&gt; [1, 2, 9, 9, 5]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L803" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fill(value:T)-instance-method">
+      <a class="dashingAutolink" name="autolink-58"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fill%28value%20%3A%20T%29"></a><div class="signature">
+        
+        def <strong>fill</strong>(value : T)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Replaces every element in <code>self</code> with the given <em>value</em>. Returns <code>self</code>.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
+a.fill(<span class="n">9</span>) <span class="c"># =&gt; [9, 9, 9]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L766" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2975,7 +2976,7 @@ a.fill(<span class="n">2</span>, <span class="n">2</span>) { <span class="o">|</
       </div>
       
         <div class="doc">
-<p>Returns the first <code>n</code> elements of the array.</p>
+<p>Returns the first <em>n</em> elements of the array.</p>
 
 <pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].first(<span class="n">2</span>) <span class="c"># =&gt; [1, 2]</span>
 [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].first(<span class="n">4</span>) <span class="c"># =&gt; [1, 2, 3]</span></code></pre>
@@ -2984,7 +2985,7 @@ a.fill(<span class="n">2</span>, <span class="n">2</span>) { <span class="o">|</
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L814" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L813" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3000,18 +3001,19 @@ a.fill(<span class="n">2</span>, <span class="n">2</span>) { <span class="o">|</
         <div class="doc">
 <p>Returns a new Array that is a one-dimensional flattening of self (recursively).</p>
 
-<p>That is, for every element that is an array, extract its elements into the new array.</p>
+<p>That is, for every element that is an array or an iterator, extract its elements into the new array.</p>
 
-<pre><code>s <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># =&gt; [1, 2, 3]</span>
-t <span class="o">=</span> [<span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>, [<span class="n">7</span>, <span class="n">8</span>]] <span class="c"># =&gt; [4, 5, 6, [7, 8]]</span>
-a <span class="o">=</span> [s, t, <span class="n">9</span>, <span class="n">10</span>]     <span class="c"># =&gt; [[1, 2, 3], [4, 5, 6, [7, 8]], 9, 10]</span>
-a.flatten             <span class="c"># =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span></code></pre>
+<pre><code>s <span class="o">=</span> [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]          <span class="c"># =&gt; [1, 2, 3]</span>
+t <span class="o">=</span> [<span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>, [<span class="n">7</span>, <span class="n">8</span>]]  <span class="c"># =&gt; [4, 5, 6, [7, 8]]</span>
+u <span class="o">=</span> [<span class="n">9</span>, [<span class="n">10</span>, <span class="n">11</span>].each] <span class="c"># =&gt; [9, Indexable#ItemIterator]</span>
+a <span class="o">=</span> [s, t, u, <span class="n">12</span>, <span class="n">13</span>]  <span class="c"># =&gt; [[1, 2, 3], [4, 5, 6, [7, 8]], 9, 10]</span>
+a.flatten              <span class="c"># =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1076" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1113" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3039,7 +3041,7 @@ a.insert(<span class="n">-1</span>, <span class="s">&#34;z&#34;</span>) <span cl
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L829" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L828" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3053,7 +3055,7 @@ a.insert(<span class="n">-1</span>, <span class="s">&#34;z&#34;</span>) <span cl
       </div>
       
         <div class="doc">
-<p>Returns the last <code>n</code> elements of the array.</p>
+<p>Returns the last <em>n</em> elements of the array.</p>
 
 <pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].last(<span class="n">2</span>) <span class="c"># =&gt; [2, 3]</span>
 [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].last(<span class="n">4</span>) <span class="c"># =&gt; [1, 2, 3]</span></code></pre>
@@ -3062,7 +3064,7 @@ a.insert(<span class="n">-1</span>, <span class="s">&#34;z&#34;</span>) <span cl
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L857" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L856" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3080,7 +3082,7 @@ a.insert(<span class="n">-1</span>, <span class="s">&#34;z&#34;</span>) <span cl
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L871" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L870" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3105,7 +3107,7 @@ a <span class="c"># =&gt; [1, 4, 9]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L883" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L882" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3123,7 +3125,7 @@ a <span class="c"># =&gt; [1, 4, 9]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L936" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L935" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3151,7 +3153,7 @@ a.permutations(<span class="n">4</span>) <span class="c">#=&gt; []</span></code>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L950" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L949" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3164,10 +3166,19 @@ a.permutations(<span class="n">4</span>) <span class="c">#=&gt; []</span></code>
         
       </div>
       
+        <div class="doc">
+<p>Removes the last value from <code>self</code>.
+If the array is empty, the given block is called.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>]
+a.pop { <span class="s">&#34;Testing&#34;</span> } <span class="c"># =&gt; 1</span>
+a.pop { <span class="s">&#34;Testing&#34;</span> } <span class="c"># =&gt; &#34;Testing&#34;</span></code></pre>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1204" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1260" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3193,7 +3204,7 @@ a     <span class="c"># =&gt; [&#34;a&#34;, &#34;b&#34;]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1200" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1248" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3225,7 +3236,7 @@ a        <span class="c"># =&gt; []</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1230" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1286" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3238,10 +3249,12 @@ a        <span class="c"># =&gt; []</span></code></pre>
         
       </div>
       
+        <div class="doc"><p>Like <code><a href="Array.html#pop%28%26block%29-instance-method">#pop</a></code>, but returns <code>nil</code> if <code>self</code> is empty.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1244" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1301" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3257,7 +3270,7 @@ a        <span class="c"># =&gt; []</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1534" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1591" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3273,7 +3286,7 @@ a        <span class="c"># =&gt; []</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1256" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1313" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3289,7 +3302,7 @@ a        <span class="c"># =&gt; []</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1248" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1305" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3307,13 +3320,13 @@ a        <span class="c"># =&gt; []</span></code></pre>
 of values to push into <code>self</code>. Returns <code>self</code>.</p>
 
 <pre><code>a <span class="o">=</span> [<span class="s">&#34;a&#34;</span>]
-a.push([<span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>]) <span class="c"># =&gt; [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;]</span></code></pre>
+a.push(<span class="s">&#34;b&#34;</span>, <span class="s">&#34;c&#34;</span>) <span class="c"># =&gt; [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1287" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1344" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3343,7 +3356,7 @@ a.push(<span class="n">1</span>)   <span class="c"># =&gt; [&#34;a&#34;, &#34;b&
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1273" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1330" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3366,7 +3379,7 @@ passed block returns <em>true</em>. Returns <code>nil</code> if no changes were 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L900" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L899" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3382,7 +3395,7 @@ passed block returns <em>true</em>. Returns <code>nil</code> if no changes were 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1080" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1117" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3398,7 +3411,7 @@ passed block returns <em>true</em>. Returns <code>nil</code> if no changes were 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1169" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1217" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3414,7 +3427,7 @@ passed block returns <em>true</em>. Returns <code>nil</code> if no changes were 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1297" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1354" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3437,7 +3450,7 @@ a.reverse <span class="c"># =&gt; [3, 2, 1]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1310" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1367" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3455,7 +3468,7 @@ a.reverse <span class="c"># =&gt; [3, 2, 1]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1315" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1372" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3471,7 +3484,7 @@ a.reverse <span class="c"># =&gt; [3, 2, 1]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1337" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1394" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3487,7 +3500,7 @@ a.reverse <span class="c"># =&gt; [3, 2, 1]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1320" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1377" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3512,7 +3525,7 @@ a.sample(<span class="n">2</span>, <span class="t">Random</span>.<span class="k"
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1357" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1414" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3535,7 +3548,7 @@ passed block returns <em>true</em>. Returns <code>nil</code> if no changes were 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L892" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L891" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3567,7 +3580,7 @@ a          <span class="c"># =&gt; []</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1426" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1483" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3592,7 +3605,7 @@ a       <span class="c"># =&gt; [&#34;b&#34;, &#34;c&#34;]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1395" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1452" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3608,7 +3621,7 @@ a       <span class="c"># =&gt; [&#34;b&#34;, &#34;c&#34;]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1399" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1456" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3624,7 +3637,7 @@ a       <span class="c"># =&gt; [&#34;b&#34;, &#34;c&#34;]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1441" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1498" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3643,7 +3656,7 @@ using the given <em>random</em> number generator.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1447" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1504" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3662,7 +3675,7 @@ using the given <em>random</em> number generator.  Returns <code>self</code>.</p
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1453" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1510" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3684,7 +3697,7 @@ using the given <em>random</em> number generator.  Returns <code>self</code>.</p
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3711,7 +3724,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1468" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1525" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3727,7 +3740,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1472" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1529" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3754,7 +3767,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1486" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1543" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3770,7 +3783,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1491" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1548" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3786,7 +3799,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1496" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1553" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3802,7 +3815,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1500" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1557" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3818,7 +3831,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1508" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1565" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3834,7 +3847,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1521" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1578" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3850,7 +3863,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/json/to_json.cr#L224" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L224" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3866,7 +3879,7 @@ or a comparison between <em>a</em> and <em>b</em>, where a &lt; b yields -1, a =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1525" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1582" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3892,7 +3905,7 @@ ary.to_unsafe[<span class="n">0</span>] <span class="c"># =&gt; 1</span></code><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1550" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1607" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3908,7 +3921,7 @@ ary.to_unsafe[<span class="n">0</span>] <span class="c"># =&gt; 1</span></code><
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/yaml/to_yaml.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/to_yaml.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3932,7 +3945,7 @@ a           <span class="c"># =&gt; [[:a, :b], [:c, :d], [:e, :f]]</span></code>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1561" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1618" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3956,7 +3969,7 @@ a      <span class="c"># =&gt; [ &#34;a&#34;, &#34;a&#34;, &#34;b&#34;, &#34;b&#
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1584" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1641" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -3981,7 +3994,7 @@ a                   <span class="c"># =&gt; [{&#34;student&#34;, &#34;sam&#34;},
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1596" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1653" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -4005,7 +4018,7 @@ a       <span class="c"># =&gt; [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;]</span></
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1612" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1669" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -4029,7 +4042,7 @@ a                    <span class="c"># =&gt; [{&#34;student&#34;, &#34;sam&#34;}
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1623" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1680" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -4045,7 +4058,7 @@ a                    <span class="c"># =&gt; [{&#34;student&#34;, &#34;sam&#34;}
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L500" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L499" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -4075,7 +4088,7 @@ a.unshift(<span class="n">1</span>)   <span class="c"># =&gt; [1, &#34;a&#34;, &
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1662" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1719" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -4094,7 +4107,7 @@ of values to add to the array. Returns <code>self</code>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1668" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1725" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -4110,77 +4123,13 @@ of values to add to the array. Returns <code>self</code>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1681" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="zip(other:Array,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-114"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20zip%28other%20%3A%20Array%2C%20%26block%29"></a><div class="signature">
-        
-        def <strong>zip</strong>(other : <a href="Array.html">Array</a>, &amp;block)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1686" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="zip(other:Array(U))forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-115"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20zip%28other%20%3A%20Array%28U%29%29%20forall%20U"></a><div class="signature">
-        
-        def <strong>zip</strong>(other : <a href="Array.html">Array</a>(U)) forall U
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1692" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="zip?(other:Array,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-116"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20zip%3F%28other%20%3A%20Array%2C%20%26block%29"></a><div class="signature">
-        
-        def <strong>zip?</strong>(other : <a href="Array.html">Array</a>, &amp;block)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1698" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="zip?(other:Array(U))forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-117"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20zip%3F%28other%20%3A%20Array%28U%29%29%20forall%20U"></a><div class="signature">
-        
-        def <strong>zip?</strong>(other : <a href="Array.html">Array</a>(U)) forall U
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L1704" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L1738" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="|(other:Array(U))forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-118"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%7C%28other%20%3A%20Array%28U%29%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-114"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%7C%28other%20%3A%20Array%28U%29%29%20forall%20U"></a><div class="signature">
         
         def <strong>|</strong>(other : <a href="Array.html">Array</a>(U)) forall U
 
@@ -4199,7 +4148,7 @@ any duplicates, and preserving the order from <code>self</code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/array.cr#L231" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/array.cr#L230" target="_blank">View source</a>]
         
       </div>
     </div>

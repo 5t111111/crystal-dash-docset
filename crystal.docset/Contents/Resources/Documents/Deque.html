@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1381"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Deque%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Deque(T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1353"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Deque%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Deque(T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -51,8 +51,6 @@ and remove the item at the beginning of the queue.</p>
     <li class="other-type">
 <a href="Comparable.html">Comparable</a>(<a href="Deque.html">Deque(T)</a>)</li>
   
-    <li class="other-type"><a href="Enumerable.html">Enumerable(T)</a></li>
-  
     <li class="other-type"><a href="Indexable.html">Indexable(T)</a></li>
   
   </ul>
@@ -69,7 +67,7 @@ and remove the item at the beginning of the queue.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L12" target="_blank">deque.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L12" target="_blank">deque.cr</a>
     
     <br/>
   
@@ -110,7 +108,7 @@ and remove the item at the beginning of the queue.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28size%3AInt%2C%26block%29-class-method" class="signature"><strong>.new</strong>(size : Int, &amp;block)</a>
+        <a href="#new%28size%3AInt%2C%26block%3AInt32-%3ET%29-class-method" class="signature"><strong>.new</strong>(size : Int, &amp;block : Int32 -&gt; T)</a>
         
           <div class="summary"><p>Creates a new Deque of the given size and invokes the block once for each index of the deque, assigning the block&#39;s value in that index.</p></div>
         
@@ -182,7 +180,7 @@ and remove the item at the beginning of the queue.</p>
       <li class="entry-summary">
         <a href="#delete_at%28index%3AInt%29-instance-method" class="signature"><strong>#delete_at</strong>(index : Int)</a>
         
-          <div class="summary"><p>Delete the item that is present at the <code>index</code>.</p></div>
+          <div class="summary"><p>Delete the item that is present at the <em>index</em>.</p></div>
         
       </li>
     
@@ -203,7 +201,7 @@ and remove the item at the beginning of the queue.</p>
       <li class="entry-summary">
         <a href="#insert%28index%3AInt%2Cvalue%3AT%29-instance-method" class="signature"><strong>#insert</strong>(index : Int, value : T)</a>
         
-          <div class="summary"><p>Insert a new item before the item at <code>index</code>.</p></div>
+          <div class="summary"><p>Insert a new item before the item at <em>index</em>.</p></div>
         
       </li>
     
@@ -215,7 +213,7 @@ and remove the item at the beginning of the queue.</p>
       <li class="entry-summary">
         <a href="#pop%28n%3AInt%29-instance-method" class="signature"><strong>#pop</strong>(n : Int)</a>
         
-          <div class="summary"><p>Removes the last <code>n</code> (at most) items in the deque.</p></div>
+          <div class="summary"><p>Removes the last <em>n</em> (at most) items in the deque.</p></div>
         
       </li>
     
@@ -255,7 +253,7 @@ and remove the item at the beginning of the queue.</p>
       <li class="entry-summary">
         <a href="#rotate%21%28n%3AInt%3D1%29-instance-method" class="signature"><strong>#rotate!</strong>(n : Int = <span class="n">1</span>)</a>
         
-          <div class="summary"><p>Rotates this deque in place so that the element at <code>n</code> becomes first.</p></div>
+          <div class="summary"><p>Rotates this deque in place so that the element at <em>n</em> becomes first.</p></div>
         
       </li>
     
@@ -269,7 +267,7 @@ and remove the item at the beginning of the queue.</p>
       <li class="entry-summary">
         <a href="#shift%28n%3AInt%29-instance-method" class="signature"><strong>#shift</strong>(n : Int)</a>
         
-          <div class="summary"><p>Removes the first <code>n</code> (at most) items in the deque.</p></div>
+          <div class="summary"><p>Removes the first <em>n</em> (at most) items in the deque.</p></div>
         
       </li>
     
@@ -297,7 +295,7 @@ and remove the item at the beginning of the queue.</p>
       <li class="entry-summary">
         <a href="#swap%28i%2Cj%29-instance-method" class="signature"><strong>#swap</strong>(i, j)</a>
         
-          <div class="summary"><p>Swaps the items at the indices <code>i</code> and <code>j</code>.</p></div>
+          <div class="summary"><p>Swaps the items at the indices <em>i</em> and <em>j</em>.</p></div>
         
       </li>
     
@@ -483,54 +481,17 @@ and remove the item at the beginning of the queue.</p>
   
     <a href="Indexable.html#values_at%28%2Aindexes%3AInt%29-instance-method" class="tooltip">
       <span>values_at(*indexes : Int)</span>
-    values_at</a>
+    values_at</a>, 
     
   
-
-
-    
-
-
-  
-    
-
-  <h3>Instance methods inherited from module <code><a href="Iterable.html">Iterable(T)</a></code>
-</h3>
-  
-  
-    <a href="Iterable.html#chunk%28%26block%3AT-%3EU%29forallU-instance-method" class="tooltip">
-      <span>chunk(&amp;block : T -&gt; U) forall U</span>
-    chunk</a>, 
+    <a href="Indexable.html#zip%28other%3AIndexable%2C%26block%29-instance-method" class="tooltip">
+      <span>zip(other : Indexable, &amp;block)<br/>zip(other : Indexable(U)) forall U</span>
+    zip</a>, 
     
   
-    <a href="Iterable.html#cycle%28n%29-instance-method" class="tooltip">
-      <span>cycle(n)<br/>cycle</span>
-    cycle</a>, 
-    
-  
-    <a href="Iterable.html#each-instance-method" class="tooltip">
-      <span>each</span>
-    each</a>, 
-    
-  
-    <a href="Iterable.html#each_cons%28count%3AInt%29-instance-method" class="tooltip">
-      <span>each_cons(count : Int)</span>
-    each_cons</a>, 
-    
-  
-    <a href="Iterable.html#each_slice%28count%3AInt%29-instance-method" class="tooltip">
-      <span>each_slice(count : Int)</span>
-    each_slice</a>, 
-    
-  
-    <a href="Iterable.html#each_with_index%28offset%3D0%29-instance-method" class="tooltip">
-      <span>each_with_index(offset = <span class="n">0</span>)</span>
-    each_with_index</a>, 
-    
-  
-    <a href="Iterable.html#each_with_object%28obj%29-instance-method" class="tooltip">
-      <span>each_with_object(obj)</span>
-    each_with_object</a>
+    <a href="Indexable.html#zip%3F%28other%3AIndexable%2C%26block%29-instance-method" class="tooltip">
+      <span>zip?(other : Indexable, &amp;block)<br/>zip?(other : Indexable(U)) forall U</span>
+    zip?</a>
     
   
 
@@ -555,8 +516,8 @@ and remove the item at the beginning of the queue.</p>
     any?</a>, 
     
   
-    <a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
-      <span>chunks(&amp;block : T -&gt; U)</span>
+    <a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29forallU-instance-method" class="tooltip">
+      <span>chunks(&amp;block : T -&gt; U) forall U</span>
     chunks</a>, 
     
   
@@ -580,13 +541,13 @@ and remove the item at the beginning of the queue.</p>
     each</a>, 
     
   
-    <a href="Enumerable.html#each_cons%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
-      <span>each_cons(count : Int, &amp;block)</span>
+    <a href="Enumerable.html#each_cons%28count%3AInt%2Creuse%3Dfalse%2C%26block%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int, reuse = <span class="n">false</span>, &amp;block)</span>
     each_cons</a>, 
     
   
-    <a href="Enumerable.html#each_slice%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
-      <span>each_slice(count : Int, &amp;block)</span>
+    <a href="Enumerable.html#each_slice%28count%3AInt%2Creuse%3Dfalse%2C%26block%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int, reuse = <span class="n">false</span>, &amp;block)</span>
     each_slice</a>, 
     
   
@@ -631,7 +592,7 @@ and remove the item at the beginning of the queue.</p>
     
   
     <a href="Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%29forallU-instance-method" class="tooltip">
-      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U</span>
+      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, reuse = <span class="n">false</span>, &amp;block) forall U</span>
     in_groups_of</a>, 
     
   
@@ -838,6 +799,53 @@ and remove the item at the beginning of the queue.</p>
   
     
 
+  <h3>Instance methods inherited from module <code><a href="Iterable.html">Iterable(T)</a></code>
+</h3>
+  
+  
+    <a href="Iterable.html#chunk%28reuse%3Dfalse%2C%26block%3AT-%3EU%29forallU-instance-method" class="tooltip">
+      <span>chunk(reuse = <span class="n">false</span>, &amp;block : T -&gt; U) forall U</span>
+    chunk</a>, 
+    
+  
+    <a href="Iterable.html#cycle%28n%29-instance-method" class="tooltip">
+      <span>cycle(n)<br/>cycle</span>
+    cycle</a>, 
+    
+  
+    <a href="Iterable.html#each-instance-method" class="tooltip">
+      <span>each</span>
+    each</a>, 
+    
+  
+    <a href="Iterable.html#each_cons%28count%3AInt%2Creuse%3Dfalse%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int, reuse = <span class="n">false</span>)</span>
+    each_cons</a>, 
+    
+  
+    <a href="Iterable.html#each_slice%28count%3AInt%2Creuse%3Dfalse%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int, reuse = <span class="n">false</span>)</span>
+    each_slice</a>, 
+    
+  
+    <a href="Iterable.html#each_with_index%28offset%3D0%29-instance-method" class="tooltip">
+      <span>each_with_index(offset = <span class="n">0</span>)</span>
+    each_with_index</a>, 
+    
+  
+    <a href="Iterable.html#each_with_object%28obj%29-instance-method" class="tooltip">
+      <span>each_with_object(obj)</span>
+    each_with_object</a>
+    
+  
+
+
+    
+
+
+  
+    
+
   <h3>Instance methods inherited from class <code><a href="Reference.html">Reference</a></code>
 </h3>
   
@@ -932,11 +940,6 @@ and remove the item at the beginning of the queue.</p>
     <a href="Object.html#class-instance-method" class="tooltip">
       <span>class</span>
     class</a>, 
-    
-  
-    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
-      <span>crystal_type_id</span>
-    crystal_type_id</a>, 
     
   
     <a href="Object.html#dup-instance-method" class="tooltip">
@@ -1042,8 +1045,8 @@ and remove the item at the beginning of the queue.</p>
     from_json</a>, 
     
   
-    <a href="Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string : String) : self</span>
+    <a href="Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
     from_yaml</a>, 
     
   
@@ -1086,7 +1089,7 @@ and remove the item at the beginning of the queue.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(size:Int,value:T)-class-method">
-      <a class="dashingAutolink" name="autolink-1346"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1354"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
         
         def self.<strong>new</strong>(size : <a href="Int.html">Int</a>, value : T)
 
@@ -1102,13 +1105,13 @@ and remove the item at the beginning of the queue.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(initial_capacity:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-1347"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28initial_capacity%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1355"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28initial_capacity%20%3A%20Int%29"></a><div class="signature">
         
         def self.<strong>new</strong>(initial_capacity : <a href="Int.html">Int</a>)
 
@@ -1129,13 +1132,13 @@ deq.size <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(array:Array(T))-class-method">
-      <a class="dashingAutolink" name="autolink-1348"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28array%20%3A%20Array%28T%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1356"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28array%20%3A%20Array%28T%29%29"></a><div class="signature">
         
         def self.<strong>new</strong>(array : <a href="Array.html">Array</a>(T))
 
@@ -1151,13 +1154,13 @@ deq.size <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L102" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new-class-method">
-      <a class="dashingAutolink" name="autolink-1349"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1357"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
         
         def self.<strong>new</strong>
 
@@ -1169,15 +1172,15 @@ deq.size <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L26" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(size:Int,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-1350"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="new(size:Int,&amp;block:Int32-&gt;T)-class-method">
+      <a class="dashingAutolink" name="autolink-1358"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20%26block%20%3A%20Int32%20-%3E%20T%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(size : <a href="Int.html">Int</a>, &amp;block)
+        def self.<strong>new</strong>(size : <a href="Int.html">Int</a>, &amp;block : <a href="Int32.html">Int32</a> -&gt; T)
 
         
       </div>
@@ -1192,7 +1195,7 @@ value in that index.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1203,7 +1206,7 @@ value in that index.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="+(other:Deque(U))forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1351"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Deque%28U%29%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1359"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Deque%28U%29%29%20forall%20U"></a><div class="signature">
         
         def <strong>+</strong>(other : <a href="Deque.html">Deque</a>(U)) forall U
 
@@ -1216,13 +1219,13 @@ deque is the union of the types of both the other deques.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L126" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L123" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="&lt;&lt;(value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-1352"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3C%28value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1360"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3C%28value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>&lt;&lt;</strong>(value : T)
 
@@ -1234,13 +1237,13 @@ deque is the union of the types of both the other deques.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L136" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L133" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other:Deque)-instance-method">
-      <a class="dashingAutolink" name="autolink-1353"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Deque%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1361"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Deque%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="Deque.html">Deque</a>)
 
@@ -1260,13 +1263,13 @@ deq <span class="o">==</span> <span class="t">Deque</span>{<span class="n">2</sp
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]=(index:Int,value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-1354"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28index%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1362"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28index%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>[]=</strong>(index : <a href="Int.html">Int</a>, value : T)
 
@@ -1282,13 +1285,13 @@ deq <span class="o">==</span> <span class="t">Deque</span>{<span class="n">2</sp
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L143" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L140" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clear-instance-method">
-      <a class="dashingAutolink" name="autolink-1355"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clear"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1363"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clear"></a><div class="signature">
         
         def <strong>clear</strong>
 
@@ -1300,13 +1303,13 @@ deq <span class="o">==</span> <span class="t">Deque</span>{<span class="n">2</sp
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L160" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L157" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-1356"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1364"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -1323,13 +1326,13 @@ That is, it returns a deep copy of this deque.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L173" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L170" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="concat(other:Enumerable(T))-instance-method">
-      <a class="dashingAutolink" name="autolink-1357"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20concat%28other%20%3A%20Enumerable%28T%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1365"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20concat%28other%20%3A%20Enumerable%28T%29%29"></a><div class="signature">
         
         def <strong>concat</strong>(other : <a href="Enumerable.html">Enumerable</a>(T))
 
@@ -1341,13 +1344,13 @@ That is, it returns a deep copy of this deque.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L178" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L175" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="delete(obj)-instance-method">
-      <a class="dashingAutolink" name="autolink-1358"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28obj%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1366"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete%28obj%29"></a><div class="signature">
         
         def <strong>delete</strong>(obj)
 
@@ -1365,13 +1368,13 @@ a <span class="c"># =&gt; Deque{&#34;a&#34;, &#34;c&#34;}</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L192" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L189" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="delete_at(index:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-1359"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete_at%28index%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1367"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete_at%28index%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>delete_at</strong>(index : <a href="Int.html">Int</a>)
 
@@ -1379,7 +1382,7 @@ a <span class="c"># =&gt; Deque{&#34;a&#34;, &#34;c&#34;}</span></code></pre>
       </div>
       
         <div class="doc">
-<p>Delete the item that is present at the <code>index</code>. Items to the right of this one will have their indices decremented.
+<p>Delete the item that is present at the <em>index</em>. Items to the right of this one will have their indices decremented.
 Raises <code><a href="IndexError.html">IndexError</a></code> if trying to delete an element outside the deque&#39;s range.</p>
 
 <pre><code>a <span class="o">=</span> <span class="t">Deque</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>}
@@ -1389,13 +1392,13 @@ a.delete_at(<span class="n">1</span>) <span class="c"># =&gt; Deque{1, 3}</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L213" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L210" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dup-instance-method">
-      <a class="dashingAutolink" name="autolink-1360"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1368"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
         
         def <strong>dup</strong>
 
@@ -1408,13 +1411,13 @@ That is, it returns a shallow copy of this deque.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L263" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L260" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1361"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1369"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block)
 
@@ -1430,13 +1433,13 @@ That is, it returns a shallow copy of this deque.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L270" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L267" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="insert(index:Int,value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-1362"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20insert%28index%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1370"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20insert%28index%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>insert</strong>(index : <a href="Int.html">Int</a>, value : T)
 
@@ -1444,22 +1447,22 @@ That is, it returns a shallow copy of this deque.</p></div>
       </div>
       
         <div class="doc">
-<p>Insert a new item before the item at <code>index</code>. Items to the right of this one will have their indices incremented.</p>
+<p>Insert a new item before the item at <em>index</em>. Items to the right of this one will have their indices incremented.</p>
 
 <pre><code>a <span class="o">=</span> <span class="t">Deque</span>{<span class="n">0</span>, <span class="n">1</span>, <span class="n">2</span>}
-a.insert_at(<span class="n">1</span>, <span class="n">7</span>) <span class="c"># =&gt; Deque{0, 7, 1, 2}</span></code></pre>
+a.insert(<span class="n">1</span>, <span class="n">7</span>) <span class="c"># =&gt; Deque{0, 7, 1, 2}</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L284" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L281" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-1363"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1371"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io : <a href="IO.html">IO</a>)
 
@@ -1469,31 +1472,31 @@ a.insert_at(<span class="n">1</span>, <span class="n">7</span>) <span class="c">
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L332" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L329" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pop(n:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-1364"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pop%28n%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1372"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pop%28n%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>pop</strong>(n : <a href="Int.html">Int</a>)
 
         
       </div>
       
-        <div class="doc"><p>Removes the last <code>n</code> (at most) items in the deque.</p></div>
+        <div class="doc"><p>Removes the last <em>n</em> (at most) items in the deque.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L388" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L385" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pop-instance-method">
-      <a class="dashingAutolink" name="autolink-1365"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pop"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1373"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pop"></a><div class="signature">
         
         def <strong>pop</strong>
 
@@ -1511,13 +1514,13 @@ a.pop <span class="c"># =&gt; 3</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L364" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L361" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pop(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1366"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pop%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1374"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pop%28%26block%29"></a><div class="signature">
         
         def <strong>pop</strong>(&amp;block)
 
@@ -1529,13 +1532,13 @@ a.pop <span class="c"># =&gt; 3</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L369" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L366" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pop?-instance-method">
-      <a class="dashingAutolink" name="autolink-1367"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pop%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1375"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pop%3F"></a><div class="signature">
         
         def <strong>pop?</strong>
 
@@ -1547,13 +1550,13 @@ a.pop <span class="c"># =&gt; 3</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L383" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L380" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pretty_print(pp)-instance-method">
-      <a class="dashingAutolink" name="autolink-1368"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pretty_print%28pp%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1376"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pretty_print%28pp%29"></a><div class="signature">
         
         def <strong>pretty_print</strong>(pp)
 
@@ -1563,13 +1566,13 @@ a.pop <span class="c"># =&gt; 3</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L341" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L338" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="push(value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-1369"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20push%28value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1377"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20push%28value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>push</strong>(value : T)
 
@@ -1586,13 +1589,13 @@ a.push <span class="n">3</span> <span class="c"># =&gt; Deque{1, 2, 3}</span></c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L403" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L400" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="rotate!(n:Int=1)-instance-method">
-      <a class="dashingAutolink" name="autolink-1370"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rotate%21%28n%20%3A%20Int%20%3D%201%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1378"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rotate%21%28n%20%3A%20Int%20%3D%201%29"></a><div class="signature">
         
         def <strong>rotate!</strong>(n : <a href="Int.html">Int</a> = <span class="n">1</span>)
 
@@ -1600,22 +1603,22 @@ a.push <span class="n">3</span> <span class="c"># =&gt; Deque{1, 2, 3}</span></c
       </div>
       
         <div class="doc">
-<p>Rotates this deque in place so that the element at <code>n</code> becomes first.</p>
+<p>Rotates this deque in place so that the element at <em>n</em> becomes first.</p>
 
-<p>For positive <code>n</code>, equivalent to <code>n.times { push(shift) }</code>.
-For negative <code>n</code>, equivalent to <code>(-n).times { unshift(pop) }</code>.</p>
+<p>For positive <em>n</em>, equivalent to <code>n.times { push(shift) }</code>.
+For negative <em>n</em>, equivalent to <code>(-n).times { unshift(pop) }</code>.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L416" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L413" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="shift(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1371"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shift%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1379"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shift%28%26block%29"></a><div class="signature">
         
         def <strong>shift</strong>(&amp;block)
 
@@ -1627,31 +1630,31 @@ For negative <code>n</code>, equivalent to <code>(-n).times { unshift(pop) }</co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L448" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L445" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="shift(n:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-1372"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shift%28n%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1380"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shift%28n%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>shift</strong>(n : <a href="Int.html">Int</a>)
 
         
       </div>
       
-        <div class="doc"><p>Removes the first <code>n</code> (at most) items in the deque.</p></div>
+        <div class="doc"><p>Removes the first <em>n</em> (at most) items in the deque.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L467" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L464" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="shift-instance-method">
-      <a class="dashingAutolink" name="autolink-1373"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shift"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1381"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shift"></a><div class="signature">
         
         def <strong>shift</strong>
 
@@ -1669,13 +1672,13 @@ a.shift <span class="c"># =&gt; 1</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L443" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L440" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="shift?-instance-method">
-      <a class="dashingAutolink" name="autolink-1374"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shift%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1382"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shift%3F"></a><div class="signature">
         
         def <strong>shift?</strong>
 
@@ -1687,13 +1690,13 @@ a.shift <span class="c"># =&gt; 1</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L462" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L459" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size-instance-method">
-      <a class="dashingAutolink" name="autolink-1375"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1383"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
         
         def <strong>size</strong>
 
@@ -1709,31 +1712,31 @@ a.shift <span class="c"># =&gt; 1</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L353" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L350" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="swap(i,j)-instance-method">
-      <a class="dashingAutolink" name="autolink-1376"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20swap%28i%2C%20j%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1384"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20swap%28i%2C%20j%29"></a><div class="signature">
         
         def <strong>swap</strong>(i, j)
 
         
       </div>
       
-        <div class="doc"><p>Swaps the items at the indices <code>i</code> and <code>j</code>.</p></div>
+        <div class="doc"><p>Swaps the items at the indices <em>i</em> and <em>j</em>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L477" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L474" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_a-instance-method">
-      <a class="dashingAutolink" name="autolink-1377"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1385"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
         
         def <strong>to_a</strong>
 
@@ -1745,13 +1748,13 @@ a.shift <span class="c"># =&gt; 1</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L483" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L480" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-1378"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1386"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
 
@@ -1761,13 +1764,13 @@ a.shift <span class="c"># =&gt; 1</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L491" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L488" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unsafe_at(index:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-1379"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unsafe_at%28index%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1387"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unsafe_at%28index%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>unsafe_at</strong>(index : <a href="Int.html">Int</a>)
 
@@ -1777,13 +1780,13 @@ a.shift <span class="c"># =&gt; 1</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L153" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L150" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unshift(value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-1380"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unshift%28value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1388"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unshift%28value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>unshift</strong>(value : T)
 
@@ -1800,7 +1803,7 @@ a.unshift <span class="n">0</span> <span class="c"># =&gt; Deque{0, 1, 2}</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/deque.cr#L501" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/deque.cr#L498" target="_blank">View source</a>]
         
       </div>
     </div>

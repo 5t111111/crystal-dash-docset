@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3329"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Iterator%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Iterator(T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3313"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Iterator%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Iterator(T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -58,7 +58,7 @@ its initial state. This is needed to implement the <code><a href="Iterator.html#
 <pre><code><span class="k">class</span> <span class="t">Zeros</span>
   <span class="k">include</span> <span class="t">Iterator</span>(<span class="t">Int32</span>)
 
-  <span class="k">def</span> <span class="m">initialize</span>(@size)
+  <span class="k">def</span> <span class="m">initialize</span>(@size : <span class="t">Int32</span>)
     @produced <span class="o">=</span> <span class="n">0</span>
   <span class="k">end</span>
 
@@ -85,7 +85,7 @@ zeros.first(<span class="n">3</span>).to_a <span class="c"># =&gt; [0, 0, 0]</sp
 
 <p>The standard library provides iterators for many classes, like <code><a href="Array.html">Array</a></code>, <code><a href="Hash.html">Hash</a></code>, <code><a href="Range.html">Range</a></code>, <code><a href="String.html">String</a></code> and <code><a href="IO.html">IO</a></code>.
 Usually to get an iterator you invoke a method that would usually yield elements to a block,
-but without passing a block: <code>Array#each</code>, <code>Array#each_index</code>, <code><a href="Hash.html#each-instance-method">Hash#each</a></code>, <code><a href="String.html#each_char%28%26block%29-instance-method">String#each_char</a></code>,
+but without passing a block: <code>Array#each</code>, <code>Array#each_index</code>, <code><a href="Hash.html#each-instance-method">Hash#each</a></code>, <code><a href="String.html#each_char-instance-method">String#each_char</a></code>,
 <code><a href="IO.html#each_line%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method">IO#each_line</a></code>, etc.</p>
 
 
@@ -111,7 +111,7 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L75" target="_blank">iterator.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L75" target="_blank">iterator.cr</a>
     
     <br/>
   
@@ -155,7 +155,7 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
       </li>
     
       <li class="entry-summary">
-        <a href="#chunk%28%26block%3AT-%3EU%29forallT%2CU-instance-method" class="signature"><strong>#chunk</strong>(&amp;block : T -&gt; U) forall T, U</a>
+        <a href="#chunk%28reuse%3Dfalse%2C%26block%3AT-%3EU%29forallT%2CU-instance-method" class="signature"><strong>#chunk</strong>(reuse = <span class="n">false</span>, &amp;block : T -&gt; U) forall T, U</a>
         
           <div class="summary"><p>Returns an Iterator that enumerates over the items, chunking them together based on the return value of the block.</p></div>
         
@@ -169,7 +169,7 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
       </li>
     
       <li class="entry-summary">
-        <a href="#cons%28n%3AInt%29-instance-method" class="signature"><strong>#cons</strong>(n : Int)</a>
+        <a href="#cons%28n%3AInt%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#cons</strong>(n : Int, reuse = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Returns an iterator that returns consecutive chunks of the size <em>n</em>.</p></div>
         
@@ -202,7 +202,7 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
       </li>
     
       <li class="entry-summary">
-        <a href="#each_slice%28n%29-instance-method" class="signature"><strong>#each_slice</strong>(n)</a>
+        <a href="#each_slice%28n%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#each_slice</strong>(n, reuse = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Returns an iterator that then returns slices of n elements of the initial iterator.</p></div>
         
@@ -216,7 +216,14 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
       </li>
     
       <li class="entry-summary">
-        <a href="#in_groups_of%28size%3AInt%2Cfilled_up_with%3Dnil%29-instance-method" class="signature"><strong>#in_groups_of</strong>(size : Int, filled_up_with = <span class="n">nil</span>)</a>
+        <a href="#flatten-instance-method" class="signature"><strong>#flatten</strong></a>
+        
+          <div class="summary"><p>Returns an iterator that flattens nested iterators and arrays into a single iterator whose type is the union of the simple types of all of the nested iterators and arrays (and their nested iterators and arrays, and so on).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#in_groups_of%28size%3AInt%2Cfilled_up_with%3Dnil%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#in_groups_of</strong>(size : Int, filled_up_with = <span class="n">nil</span>, reuse = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Returns an iterator that chunks the iterator&#39;s elements in arrays of <em>size</em> filling up the remaining elements if no element remains with nil or a given optional parameter.</p></div>
         
@@ -272,9 +279,9 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
       </li>
     
       <li class="entry-summary">
-        <a href="#slice%28n%3AInt%29-instance-method" class="signature"><strong>#slice</strong>(n : Int)</a>
+        <a href="#slice%28n%3AInt%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#slice</strong>(n : Int, reuse = <span class="n">false</span>)</a>
         
-          <div class="summary"><p>Returns an iterator that returns slices of n elements of the initial iterator.</p></div>
+          <div class="summary"><p>Alias of <code><a href="Iterator.html#each_slice%28n%2Creuse%3Dfalse%29-instance-method">#each_slice</a></code></p></div>
         
       </li>
     
@@ -372,8 +379,8 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
     any?</a>, 
     
   
-    <a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29-instance-method" class="tooltip">
-      <span>chunks(&amp;block : T -&gt; U)</span>
+    <a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29forallU-instance-method" class="tooltip">
+      <span>chunks(&amp;block : T -&gt; U) forall U</span>
     chunks</a>, 
     
   
@@ -397,13 +404,13 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
     each</a>, 
     
   
-    <a href="Enumerable.html#each_cons%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
-      <span>each_cons(count : Int, &amp;block)</span>
+    <a href="Enumerable.html#each_cons%28count%3AInt%2Creuse%3Dfalse%2C%26block%29-instance-method" class="tooltip">
+      <span>each_cons(count : Int, reuse = <span class="n">false</span>, &amp;block)</span>
     each_cons</a>, 
     
   
-    <a href="Enumerable.html#each_slice%28count%3AInt%2C%26block%29-instance-method" class="tooltip">
-      <span>each_slice(count : Int, &amp;block)</span>
+    <a href="Enumerable.html#each_slice%28count%3AInt%2Creuse%3Dfalse%2C%26block%29-instance-method" class="tooltip">
+      <span>each_slice(count : Int, reuse = <span class="n">false</span>, &amp;block)</span>
     each_slice</a>, 
     
   
@@ -448,7 +455,7 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
     
   
     <a href="Enumerable.html#in_groups_of%28size%3AInt%2Cfilled_up_with%3AU%3Dnil%29forallU-instance-method" class="tooltip">
-      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, &amp;block) forall U</span>
+      <span>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>) forall U<br/>in_groups_of(size : Int, filled_up_with : U = <span class="n">nil</span>, reuse = <span class="n">false</span>, &amp;block) forall U</span>
     in_groups_of</a>, 
     
   
@@ -659,7 +666,7 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="of(element:T)-class-method">
-      <a class="dashingAutolink" name="autolink-3297"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.of%28element%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3314"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.of%28element%20%3A%20T%29"></a><div class="signature">
         
         def self.<strong>of</strong>(element : T)
 
@@ -669,13 +676,13 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="of(&amp;block:-&gt;T)-class-method">
-      <a class="dashingAutolink" name="autolink-3298"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.of%28%26block%20%3A%20%20-%3E%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3315"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.of%28%26block%20%3A%20%20-%3E%20T%29"></a><div class="signature">
         
         def self.<strong>of</strong>(&amp;block :  -&gt; T)
 
@@ -685,13 +692,13 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L132" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L132" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="stop-class-method">
-      <a class="dashingAutolink" name="autolink-3299"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.stop"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.stop"></a><div class="signature">
         
         def self.<strong>stop</strong>
 
@@ -703,7 +710,7 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L109" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -714,7 +721,7 @@ but without passing a block: <code>Array#each</code>, <code>Array#each_index</co
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="chain(other:Iterator(U))forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3300"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chain%28other%20%3A%20Iterator%28U%29%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chain%28other%20%3A%20Iterator%28U%29%29%20forall%20U"></a><div class="signature">
         
         def <strong>chain</strong>(other : <a href="Iterator.html">Iterator</a>(U)) forall U
 
@@ -736,15 +743,15 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L164" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L164" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="chunk(&amp;block:T-&gt;U)forallT,U-instance-method">
-      <a class="dashingAutolink" name="autolink-3301"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chunk%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20T%2C%20U"></a><div class="signature">
+    <div class="entry-detail" id="chunk(reuse=false,&amp;block:T-&gt;U)forallT,U-instance-method">
+      <a class="dashingAutolink" name="autolink-3318"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chunk%28reuse%20%3D%20false%2C%20%26block%20%3A%20T%20-%3E%20U%29%20forall%20T%2C%20U"></a><div class="signature">
         
-        def <strong>chunk</strong>(&amp;block : T -&gt; U) forall T, U
+        def <strong>chunk</strong>(reuse = <span class="n">false</span>, &amp;block : T -&gt; U) forall T, U
 
         
       </div>
@@ -777,19 +784,26 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
 <code>Enumerable::Chunk::Alone</code> specifies that the element should be chunked by itself</li>
 </ul>
 
-<p>See also: <code><a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29-instance-method">Enumerable#chunks</a></code></p>
+<p>By default, a new array is returned for each chunk when invoking <code><a href="Iterator.html#next-instance-method">#next</a></code>.
+If <em>reuse</em> is given, the array can be reused: if <em>reuse</em> is
+an <code><a href="Array.html">Array</a></code>, this array will be reused; if <em>reuse</em> if truthy,
+the method will create a new array and reuse it. This can be
+used to prevent many memory allocations when each slice of
+interest is to be used in a read-only fashion.</p>
+
+<p>See also: <code><a href="Enumerable.html#chunks%28%26block%3AT-%3EU%29forallU-instance-method">Enumerable#chunks</a></code></p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L1012" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L1068" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="compact_map(&amp;func:T-&gt;_)-instance-method">
-      <a class="dashingAutolink" name="autolink-3302"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20compact_map%28%26func%20%3A%20T%20-%3E%20_%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20compact_map%28%26func%20%3A%20T%20-%3E%20_%29"></a><div class="signature">
         
         def <strong>compact_map</strong>(&amp;func : T -&gt; _)
 
@@ -810,15 +824,15 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L204" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L204" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="cons(n:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3303"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cons%28n%20%3A%20Int%29"></a><div class="signature">
+    <div class="entry-detail" id="cons(n:Int,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-3320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cons%28n%20%3A%20Int%2C%20reuse%20%3D%20false%29"></a><div class="signature">
         
-        def <strong>cons</strong>(n : <a href="Int.html">Int</a>)
+        def <strong>cons</strong>(n : <a href="Int.html">Int</a>, reuse = <span class="n">false</span>)
 
         
       </div>
@@ -831,18 +845,25 @@ iter.<span class="k">next</span> <span class="c"># =&gt; [1, 2, 3]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; [2, 3, 4]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; [3, 4, 5]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></code></pre>
+
+<p>By default, a new array is returned for each consecutive slice when invoking <code><a href="Iterator.html#next-instance-method">#next</a></code>.
+If <em>reuse</em> is given, the array can be reused: if <em>reuse</em> is
+an <code><a href="Array.html">Array</a></code>, this array will be reused; if <em>reuse</em> if truthy,
+the method will create a new array and reuse it. This can be
+used to prevent many memory allocations when each slice of
+interest is to be used in a read-only fashion.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L233" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L239" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cycle(n:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3304"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle%28n%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3321"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle%28n%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>cycle</strong>(n : <a href="Int.html">Int</a>)
 
@@ -867,13 +888,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L308" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L329" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cycle-instance-method">
-      <a class="dashingAutolink" name="autolink-3305"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3322"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle"></a><div class="signature">
         
         def <strong>cycle</strong>
 
@@ -898,13 +919,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; &#34;a&#34;</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L274" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L295" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each-instance-method">
-      <a class="dashingAutolink" name="autolink-3306"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3323"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each"></a><div class="signature">
         
         def <strong>each</strong>
 
@@ -914,13 +935,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; &#34;a&#34;</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L340" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L361" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3307"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3324"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block)
 
@@ -938,15 +959,15 @@ iter.each {<span class="o">|</span>x<span class="o">|</span> print x, <span clas
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L350" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L371" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_slice(n)-instance-method">
-      <a class="dashingAutolink" name="autolink-3308"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_slice%28n%29"></a><div class="signature">
+    <div class="entry-detail" id="each_slice(n,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-3325"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_slice%28n%2C%20reuse%20%3D%20false%29"></a><div class="signature">
         
-        def <strong>each_slice</strong>(n)
+        def <strong>each_slice</strong>(n, reuse = <span class="n">false</span>)
 
         
       </div>
@@ -960,18 +981,25 @@ iter.<span class="k">next</span> <span class="c"># =&gt; [1, 2, 3]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; [4, 5, 6]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; [7, 8, 9]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></code></pre>
+
+<p>By default, a new array is returned for each silce when invoking <code><a href="Iterator.html#next-instance-method">#next</a></code>.
+If <em>reuse</em> is given, the array can be reused: if <em>reuse</em> is
+an <code><a href="Array.html">Array</a></code>, this array will be reused; if <em>reuse</em> if truthy,
+the method will create a new array and reuse it. This can be
+used to prevent many memory allocations when each slice of
+interest is to be used in a read-only fashion.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L367" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L394" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="first(n:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3309"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first%28n%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3326"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first%28n%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>first</strong>(n : <a href="Int.html">Int</a>)
 
@@ -991,15 +1019,44 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L737" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L786" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="in_groups_of(size:Int,filled_up_with=nil)-instance-method">
-      <a class="dashingAutolink" name="autolink-3310"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20in_groups_of%28size%20%3A%20Int%2C%20filled_up_with%20%3D%20nil%29"></a><div class="signature">
+    <div class="entry-detail" id="flatten-instance-method">
+      <a class="dashingAutolink" name="autolink-3327"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flatten"></a><div class="signature">
         
-        def <strong>in_groups_of</strong>(size : <a href="Int.html">Int</a>, filled_up_with = <span class="n">nil</span>)
+        def <strong>flatten</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an iterator that flattens nested iterators and arrays into a single iterator
+whose type is the union of the simple types of all of the nested iterators and arrays
+(and their nested iterators and arrays, and so on).</p>
+
+<pre><code>iter <span class="o">=</span> [(<span class="n">1</span>..<span class="n">2</span>).each, (<span class="s">&#39;a&#39;</span>..<span class="s">&#39;b&#39;</span>).each].each.flatten
+iter.<span class="k">next</span> <span class="c"># =&gt; 1</span>
+iter.<span class="k">next</span> <span class="c"># =&gt; 2</span>
+iter.<span class="k">next</span> <span class="c"># =&gt; &#39;a&#39;</span>
+iter.<span class="k">next</span> <span class="c"># =&gt; &#39;b&#39;</span>
+iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L409" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="in_groups_of(size:Int,filled_up_with=nil,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-3328"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20in_groups_of%28size%20%3A%20Int%2C%20filled_up_with%20%3D%20nil%2C%20reuse%20%3D%20false%29"></a><div class="signature">
+        
+        def <strong>in_groups_of</strong>(size : <a href="Int.html">Int</a>, filled_up_with = <span class="n">nil</span>, reuse = <span class="n">false</span>)
 
         
       </div>
@@ -1018,18 +1075,25 @@ iter <span class="o">=</span> (<span class="n">1</span>..<span class="n">3</span
 iter.<span class="k">next</span> <span class="c"># =&gt; [1, 2]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; [3, &#39;z&#39;]</span>
 iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></code></pre>
+
+<p>By default, a new array is created and yielded for each group.
+If <em>reuse</em> is given, the array can be reused: if <em>reuse</em> is
+an <code><a href="Array.html">Array</a></code>, this array will be reused; if <em>reuse</em> if truthy,
+the method will create a new array and reuse it. This can be
+used to prevent many memory allocations when each slice of
+interest is to be used in a read-only fashion.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L477" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L499" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="map(&amp;func:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3311"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3329"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>map</strong>(&amp;func : T -&gt; U) forall U
 
@@ -1050,13 +1114,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L512" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L552" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="next-instance-method">
-      <a class="dashingAutolink" name="autolink-3312"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20next"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3330"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20next"></a><div class="signature">
         abstract 
         def <strong>next</strong>
 
@@ -1069,13 +1133,13 @@ are no more elements.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L149" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reject(&amp;func:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3313"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reject%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3331"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reject%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>reject</strong>(&amp;func : T -&gt; U) forall U
 
@@ -1094,13 +1158,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L536" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L576" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="rewind-instance-method">
-      <a class="dashingAutolink" name="autolink-3314"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20rewind"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3332"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20rewind"></a><div class="signature">
         abstract 
         def <strong>rewind</strong>
 
@@ -1112,13 +1176,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L152" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L152" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="select(&amp;func:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3315"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20select%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3333"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20select%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>select</strong>(&amp;func : T -&gt; U) forall U
 
@@ -1138,13 +1202,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L565" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L605" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="skip(n:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip%28n%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3334"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip%28n%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>skip</strong>(n : <a href="Int.html">Int</a>)
 
@@ -1163,13 +1227,13 @@ iter.<span class="k">next</span> <span class="c"># -&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L593" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L633" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="skip_while(&amp;func:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip_while%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3335"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip_while%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>skip_while</strong>(&amp;func : T -&gt; U) forall U
 
@@ -1190,40 +1254,31 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L629" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L669" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="slice(n:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3318"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20slice%28n%20%3A%20Int%29"></a><div class="signature">
+    <div class="entry-detail" id="slice(n:Int,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-3336"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20slice%28n%20%3A%20Int%2C%20reuse%20%3D%20false%29"></a><div class="signature">
         
-        def <strong>slice</strong>(n : <a href="Int.html">Int</a>)
+        def <strong>slice</strong>(n : <a href="Int.html">Int</a>, reuse = <span class="n">false</span>)
 
         
       </div>
       
-        <div class="doc">
-<p>Returns an iterator that returns slices of n elements of the initial
-iterator.</p>
-
-<pre><code>iter <span class="o">=</span> (<span class="n">1</span>..<span class="n">9</span>).each.slice(<span class="n">3</span>)
-iter.<span class="k">next</span> <span class="c"># =&gt; [1, 2, 3]</span>
-iter.<span class="k">next</span> <span class="c"># =&gt; [4, 5, 6]</span>
-iter.<span class="k">next</span> <span class="c"># =&gt; [7, 8, 9]</span>
-iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANCE</span></code></pre>
-</div>
+        <div class="doc"><p>Alias of <code><a href="Iterator.html#each_slice%28n%2Creuse%3Dfalse%29-instance-method">#each_slice</a></code></p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L667" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L699" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="step(n:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20step%28n%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3337"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20step%28n%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>step</strong>(n : <a href="Int.html">Int</a>)
 
@@ -1244,13 +1299,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L705" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L754" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="stop-instance-method">
-      <a class="dashingAutolink" name="autolink-3320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stop"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3338"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stop"></a><div class="signature">
         
         def <strong>stop</strong>
 
@@ -1262,13 +1317,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="take_while(&amp;func:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3321"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20take_while%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3339"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20take_while%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>take_while</strong>(&amp;func : T -&gt; U) forall U
 
@@ -1288,13 +1343,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L773" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L822" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tap(&amp;block:T-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-3322"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tap%28%26block%20%3A%20T%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3340"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tap%28%26block%20%3A%20T%20-%3E%20%29"></a><div class="signature">
         
         def <strong>tap</strong>(&amp;block : T -&gt; )
 
@@ -1319,13 +1374,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L815" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L864" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="uniq-instance-method">
-      <a class="dashingAutolink" name="autolink-3323"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20uniq"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3341"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20uniq"></a><div class="signature">
         
         def <strong>uniq</strong>
 
@@ -1345,13 +1400,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L841" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L890" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="uniq(&amp;func:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3324"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20uniq%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3342"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20uniq%28%26func%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>uniq</strong>(&amp;func : T -&gt; U) forall U
 
@@ -1372,13 +1427,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L854" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L903" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="with_index(offset:Int=0)-instance-method">
-      <a class="dashingAutolink" name="autolink-3325"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_index%28offset%20%3A%20Int%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3343"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_index%28offset%20%3A%20Int%20%3D%200%29"></a><div class="signature">
         
         def <strong>with_index</strong>(offset : <a href="Int.html">Int</a> = <span class="n">0</span>)
 
@@ -1398,13 +1453,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L892" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L941" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="with_index(offset:Int=0,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3326"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_index%28offset%20%3A%20Int%20%3D%200%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3344"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_index%28offset%20%3A%20Int%20%3D%200%2C%20%26block%29"></a><div class="signature">
         
         def <strong>with_index</strong>(offset : <a href="Int.html">Int</a> = <span class="n">0</span>, &amp;block)
 
@@ -1416,13 +1471,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L897" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L946" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="with_object(obj)-instance-method">
-      <a class="dashingAutolink" name="autolink-3327"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_object%28obj%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3345"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_object%28obj%29"></a><div class="signature">
         
         def <strong>with_object</strong>(obj)
 
@@ -1442,13 +1497,13 @@ iter.<span class="k">next</span> <span class="c"># =&gt; Iterator::Stop::INSTANC
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L931" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L980" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="zip(other:Iterator(U))forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3328"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20zip%28other%20%3A%20Iterator%28U%29%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3346"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20zip%28other%20%3A%20Iterator%28U%29%29%20forall%20U"></a><div class="signature">
         
         def <strong>zip</strong>(other : <a href="Iterator.html">Iterator</a>(U)) forall U
 
@@ -1471,7 +1526,7 @@ one pairwise as tuples.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterator.cr#L959" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterator.cr#L1008" target="_blank">View source</a>]
         
       </div>
     </div>

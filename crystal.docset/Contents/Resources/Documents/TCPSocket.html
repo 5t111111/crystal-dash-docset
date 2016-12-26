@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5392"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/TCPSocket%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>TCPSocket - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5469"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/TCPSocket%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>TCPSocket - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -36,7 +36,9 @@
 
 <p>Usage example:</p>
 
-<pre><code>client <span class="o">=</span> <span class="t">TCPSocket</span>.<span class="k">new</span>(<span class="s">&#34;localhost&#34;</span>, <span class="n">1234</span>)
+<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
+
+client <span class="o">=</span> <span class="t">TCPSocket</span>.<span class="k">new</span>(<span class="s">&#34;localhost&#34;</span>, <span class="n">1234</span>)
 client <span class="o">&lt;&lt;</span> <span class="s">&#34;message\n&#34;</span>
 response <span class="o">=</span> client.gets
 client.close</code></pre>
@@ -64,7 +66,7 @@ client.close</code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L12" target="_blank">socket/tcp_socket.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L14" target="_blank">socket/tcp_socket.cr</a>
     
     <br/>
   
@@ -77,14 +79,19 @@ client.close</code></pre>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28host%2Cport%2Cdns_timeout%3Dnil%2Cconnect_timeout%3Dnil%29-class-method" class="signature"><strong>.new</strong>(host, port, dns_timeout = <span class="n">nil</span>, connect_timeout = <span class="n">nil</span>)</a>
-        
-          <div class="summary"><p>Creates a new TCP connection to a remote TCP server.</p></div>
+        <a href="#new%28fd%3AInt32%2Cfamily%3AFamily%2Ctype%3AType%2Cprotocol%3AProtocol%29-class-method" class="signature"><strong>.new</strong>(fd : Int32, family : Family, type : Type, protocol : Protocol)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28fd%3AInt32%29-class-method" class="signature"><strong>.new</strong>(fd : Int32)</a>
+        <a href="#new%28family%3AFamily%2Ctype%3AType%2Cprotocol%3AProtocol%29-class-method" class="signature"><strong>.new</strong>(family : Family, type : Type, protocol : Protocol)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28host%2Cport%2Cdns_timeout%3Dnil%2Cconnect_timeout%3Dnil%29-class-method" class="signature"><strong>.new</strong>(host, port, dns_timeout = <span class="n">nil</span>, connect_timeout = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Creates a new TCP connection to a remote TCP server.</p></div>
         
       </li>
     
@@ -188,6 +195,21 @@ client.close</code></pre>
 </h3>
   
   
+    <a href="Socket.html#accept-instance-method" class="tooltip">
+      <span>accept</span>
+    accept</a>, 
+    
+  
+    <a href="Socket.html#accept%3F-instance-method" class="tooltip">
+      <span>accept?</span>
+    accept?</a>, 
+    
+  
+    <a href="Socket.html#bind%28host%3AString%2Cport%3AInt%29-instance-method" class="tooltip">
+      <span>bind(host : String, port : Int)<br/>bind(port : Int)<br/>bind(addr)<br/>bind(addr, &amp;block)</span>
+    bind</a>, 
+    
+  
     <a href="Socket.html#broadcast%3D%28val%3ABool%29-instance-method" class="tooltip">
       <span>broadcast=(val : Bool)</span>
     broadcast=</a>, 
@@ -206,6 +228,16 @@ client.close</code></pre>
     <a href="Socket.html#close_write-instance-method" class="tooltip">
       <span>close_write</span>
     close_write</a>, 
+    
+  
+    <a href="Socket.html#connect%28host%3AString%2Cport%3AInt%2Cconnect_timeout%3Dnil%29-instance-method" class="tooltip">
+      <span>connect(host : String, port : Int, connect_timeout = <span class="n">nil</span>)<br/>connect(addr, timeout = <span class="n">nil</span>) : Nil<br/>connect(addr, timeout = <span class="n">nil</span>, &amp;block)</span>
+    connect</a>, 
+    
+  
+    <a href="Socket.html#family%3AFamily-instance-method" class="tooltip">
+      <span>family : Family</span>
+    family</a>, 
     
   
     <a href="Socket.html#getsockopt%28optname%2Coptval%2Clevel%3DLibC%3A%3ASOL_SOCKET%29-instance-method" class="tooltip">
@@ -238,6 +270,21 @@ client.close</code></pre>
     linger=</a>, 
     
   
+    <a href="Socket.html#listen%28backlog%3DSOMAXCONN%29-instance-method" class="tooltip">
+      <span>listen(backlog = <span class="t">SOMAXCONN</span>)<br/>listen(backlog = <span class="t">SOMAXCONN</span>, &amp;block)</span>
+    listen</a>, 
+    
+  
+    <a href="Socket.html#protocol%3AProtocol-instance-method" class="tooltip">
+      <span>protocol : Protocol</span>
+    protocol</a>, 
+    
+  
+    <a href="Socket.html#receive%28max_message_size%3D512%29%3ATuple%28String%2CAddress%29-instance-method" class="tooltip">
+      <span>receive(max_message_size = <span class="n">512</span>) : Tuple(String, Address)<br/>receive(message : Bytes) : Tuple(Int32, Address)</span>
+    receive</a>, 
+    
+  
     <a href="Socket.html#recv_buffer_size-instance-method" class="tooltip">
       <span>recv_buffer_size</span>
     recv_buffer_size</a>, 
@@ -258,6 +305,21 @@ client.close</code></pre>
     reuse_address?</a>, 
     
   
+    <a href="Socket.html#reuse_port%3D%28val%3ABool%29-instance-method" class="tooltip">
+      <span>reuse_port=(val : Bool)</span>
+    reuse_port=</a>, 
+    
+  
+    <a href="Socket.html#reuse_port%3F-instance-method" class="tooltip">
+      <span>reuse_port?</span>
+    reuse_port?</a>, 
+    
+  
+    <a href="Socket.html#send%28message%29-instance-method" class="tooltip">
+      <span>send(message)<br/>send(message : Bytes)<br/>send(message, to addr : Address)<br/>send(message : Bytes, to addr : Address)</span>
+    send</a>, 
+    
+  
     <a href="Socket.html#send_buffer_size-instance-method" class="tooltip">
       <span>send_buffer_size</span>
     send_buffer_size</a>, 
@@ -270,7 +332,12 @@ client.close</code></pre>
   
     <a href="Socket.html#setsockopt%28optname%2Coptval%2Clevel%3DLibC%3A%3ASOL_SOCKET%29-instance-method" class="tooltip">
       <span>setsockopt(optname, optval, level = <span class="t">LibC</span><span class="t">::</span><span class="t">SOL_SOCKET</span>)</span>
-    setsockopt</a>
+    setsockopt</a>, 
+    
+  
+    <a href="Socket.html#type%3AType-instance-method" class="tooltip">
+      <span>type : Type</span>
+    type</a>
     
   
 
@@ -286,9 +353,24 @@ client.close</code></pre>
     ip?</a>, 
     
   
-    <a href="Socket.html#new%28fd%2Cblocking%3Dfalse%29-class-method" class="tooltip">
-      <span>new(fd, blocking = <span class="n">false</span>)</span>
-    new</a>
+    <a href="Socket.html#new%28fd%3AInt32%2Cfamily%2Ctype%2Cprotocol%3DProtocol%3A%3AIP%29-class-method" class="tooltip">
+      <span>new(fd : Int32, family, type, protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>)<br/>new(family, type, protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, blocking = <span class="n">false</span>)</span>
+    new</a>, 
+    
+  
+    <a href="Socket.html#tcp%28family%3AFamily%2Cblocking%3Dfalse%29-class-method" class="tooltip">
+      <span>tcp(family : Family, blocking = <span class="n">false</span>)</span>
+    tcp</a>, 
+    
+  
+    <a href="Socket.html#udp%28family%3AFamily%2Cblocking%3Dfalse%29-class-method" class="tooltip">
+      <span>udp(family : Family, blocking = <span class="n">false</span>)</span>
+    udp</a>, 
+    
+  
+    <a href="Socket.html#unix%28type%3AType%3DType%3A%3AStream%2Cblocking%3Dfalse%29-class-method" class="tooltip">
+      <span>unix(type : Type = <span class="t">Type</span><span class="t">::</span><span class="t">Stream</span>, blocking = <span class="n">false</span>)</span>
+    unix</a>
     
   
 
@@ -482,8 +564,8 @@ client.close</code></pre>
     flush_on_newline?</a>, 
     
   
-    <a href="IO/Buffered.html#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read(slice : Slice(UInt8))</span>
+    <a href="IO/Buffered.html#read%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read(slice : Bytes)</span>
     read</a>, 
     
   
@@ -512,8 +594,8 @@ client.close</code></pre>
     unbuffered_flush</a>, 
     
   
-    <a href="IO/Buffered.html#unbuffered_read%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>unbuffered_read(slice : Slice(UInt8))</span>
+    <a href="IO/Buffered.html#unbuffered_read%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>unbuffered_read(slice : Bytes)</span>
     unbuffered_read</a>, 
     
   
@@ -522,13 +604,13 @@ client.close</code></pre>
     unbuffered_rewind</a>, 
     
   
-    <a href="IO/Buffered.html#unbuffered_write%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>unbuffered_write(slice : Slice(UInt8))</span>
+    <a href="IO/Buffered.html#unbuffered_write%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>unbuffered_write(slice : Bytes)</span>
     unbuffered_write</a>, 
     
   
-    <a href="IO/Buffered.html#write%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>write(slice : Slice(UInt8))</span>
+    <a href="IO/Buffered.html#write%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>write(slice : Bytes)</span>
     write</a>
     
   
@@ -584,8 +666,8 @@ client.close</code></pre>
     flush</a>, 
     
   
-    <a href="IO.html#gets%3AString%3F-instance-method" class="tooltip">
-      <span>gets : String?<br/>gets(delimiter : String) : String?<br/>gets(delimiter : Char) : String?<br/>gets(limit : Int) : String?<br/>gets(delimiter : Char, limit : Int) : String?</span>
+    <a href="IO.html#gets%28chomp%3Dtrue%29%3AString%3F-instance-method" class="tooltip">
+      <span>gets(chomp = <span class="n">true</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(limit : Int, chomp = <span class="n">false</span>) : String?</span>
     gets</a>, 
     
   
@@ -609,8 +691,8 @@ client.close</code></pre>
     puts</a>, 
     
   
-    <a href="IO.html#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read(slice : Slice(UInt8))</span>
+    <a href="IO.html#read%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read(slice : Bytes)</span>
     read</a>, 
     
   
@@ -629,9 +711,14 @@ client.close</code></pre>
     read_char</a>, 
     
   
-    <a href="IO.html#read_fully%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read_fully(slice : Slice(UInt8))</span>
+    <a href="IO.html#read_fully%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_fully(slice : Bytes)</span>
     read_fully</a>, 
+    
+  
+    <a href="IO.html#read_fully%3F%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_fully?(slice : Bytes)</span>
+    read_fully?</a>, 
     
   
     <a href="IO.html#read_line%28%2Aargs%2C%2A%2Aoptions%29%3AString%3F-instance-method" class="tooltip">
@@ -639,8 +726,8 @@ client.close</code></pre>
     read_line</a>, 
     
   
-    <a href="IO.html#read_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read_utf8(slice : Slice(UInt8))</span>
+    <a href="IO.html#read_utf8%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_utf8(slice : Bytes)</span>
     read_utf8</a>, 
     
   
@@ -669,8 +756,8 @@ client.close</code></pre>
     tty?</a>, 
     
   
-    <a href="IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method" class="tooltip">
-      <span>write(slice : Slice(UInt8)) : Nil</span>
+    <a href="IO.html#write%28slice%3ABytes%29%3ANil-instance-method" class="tooltip">
+      <span>write(slice : Bytes) : Nil</span>
     write</a>, 
     
   
@@ -684,8 +771,8 @@ client.close</code></pre>
     write_bytes</a>, 
     
   
-    <a href="IO.html#write_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>write_utf8(slice : Slice(UInt8))</span>
+    <a href="IO.html#write_utf8%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>write_utf8(slice : Bytes)</span>
     write_utf8</a>
     
   
@@ -835,11 +922,6 @@ client.close</code></pre>
     class</a>, 
     
   
-    <a href="Object.html#crystal_type_id-instance-method" class="tooltip">
-      <span>crystal_type_id</span>
-    crystal_type_id</a>, 
-    
-  
     <a href="Object.html#dup-instance-method" class="tooltip">
       <span>dup</span>
     dup</a>, 
@@ -943,8 +1025,8 @@ client.close</code></pre>
     from_json</a>, 
     
   
-    <a href="Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string : String) : self</span>
+    <a href="Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
     from_yaml</a>, 
     
   
@@ -986,8 +1068,40 @@ client.close</code></pre>
 
   <h2>Class Method Detail</h2>
   
+    <div class="entry-detail" id="new(fd:Int32,family:Family,type:Type,protocol:Protocol)-class-method">
+      <a class="dashingAutolink" name="autolink-5470"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28fd%20%3A%20Int32%2C%20family%20%3A%20Family%2C%20type%20%3A%20Type%2C%20protocol%20%3A%20Protocol%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(fd : <a href="Int32.html">Int32</a>, family : <a href="Socket/Family.html">Family</a>, type : <a href="Socket/Type.html">Type</a>, protocol : <a href="Socket/Protocol.html">Protocol</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(family:Family,type:Type,protocol:Protocol)-class-method">
+      <a class="dashingAutolink" name="autolink-5471"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Family%2C%20type%20%3A%20Type%2C%20protocol%20%3A%20Protocol%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(family : <a href="Socket/Family.html">Family</a>, type : <a href="Socket/Type.html">Type</a>, protocol : <a href="Socket/Protocol.html">Protocol</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="new(host,port,dns_timeout=nil,connect_timeout=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-5381"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%2C%20dns_timeout%20%3D%20nil%2C%20connect_timeout%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5472"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%2C%20port%2C%20dns_timeout%20%3D%20nil%2C%20connect_timeout%20%3D%20nil%29"></a><div class="signature">
         
         def self.<strong>new</strong>(host, port, dns_timeout = <span class="n">nil</span>, connect_timeout = <span class="n">nil</span>)
 
@@ -1007,29 +1121,13 @@ must be in seconds (integers or floats).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L20" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(fd:Int32)-class-method">
-      <a class="dashingAutolink" name="autolink-5382"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28fd%20%3A%20Int32%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(fd : <a href="Int32.html">Int32</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="open(host,port,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5383"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28host%2C%20port%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5473"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28host%2C%20port%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>open</strong>(host, port, &amp;block)
 
@@ -1046,7 +1144,7 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1057,7 +1155,7 @@ eventually closes the socket when the block returns.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="tcp_keepalive_count-instance-method">
-      <a class="dashingAutolink" name="autolink-5384"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_count"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5474"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_count"></a><div class="signature">
         
         def <strong>tcp_keepalive_count</strong>
 
@@ -1069,13 +1167,13 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tcp_keepalive_count=(val:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-5385"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_count%3D%28val%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5475"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_count%3D%28val%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>tcp_keepalive_count=</strong>(val : <a href="Int.html">Int</a>)
 
@@ -1085,13 +1183,13 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tcp_keepalive_idle-instance-method">
-      <a class="dashingAutolink" name="autolink-5386"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_idle"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5476"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_idle"></a><div class="signature">
         
         def <strong>tcp_keepalive_idle</strong>
 
@@ -1103,13 +1201,13 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tcp_keepalive_idle=(val:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-5387"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_idle%3D%28val%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5477"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_idle%3D%28val%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>tcp_keepalive_idle=</strong>(val : <a href="Int.html">Int</a>)
 
@@ -1119,13 +1217,13 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tcp_keepalive_interval-instance-method">
-      <a class="dashingAutolink" name="autolink-5388"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_interval"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5478"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_interval"></a><div class="signature">
         
         def <strong>tcp_keepalive_interval</strong>
 
@@ -1137,13 +1235,13 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tcp_keepalive_interval=(val:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-5389"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_interval%3D%28val%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5479"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_keepalive_interval%3D%28val%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>tcp_keepalive_interval=</strong>(val : <a href="Int.html">Int</a>)
 
@@ -1153,13 +1251,13 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tcp_nodelay=(val:Bool)-instance-method">
-      <a class="dashingAutolink" name="autolink-5390"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_nodelay%3D%28val%20%3A%20Bool%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5480"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_nodelay%3D%28val%20%3A%20Bool%29"></a><div class="signature">
         
         def <strong>tcp_nodelay=</strong>(val : <a href="Bool.html">Bool</a>)
 
@@ -1171,13 +1269,13 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L57" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tcp_nodelay?-instance-method">
-      <a class="dashingAutolink" name="autolink-5391"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_nodelay%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5481"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tcp_nodelay%3F"></a><div class="signature">
         
         def <strong>tcp_nodelay?</strong>
 
@@ -1189,7 +1287,7 @@ eventually closes the socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket/tcp_socket.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/tcp_socket.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -1,0 +1,162 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-5090"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::Server - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Socket::Server
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Direct including types</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../TCPServer.html">TCPServer</a></li>
+  
+    <li class="other-type"><a href="../UNIXServer.html">UNIXServer</a></li>
+  
+  </ul>
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/server.cr#L2" target="_blank">socket/server.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#accept%28%26block%29-instance-method" class="signature"><strong>#accept</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Accepts an incoming connection and yields the client socket to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#accept%3F%28%26block%29-instance-method" class="signature"><strong>#accept?</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Accepts an incoming connection and yields the client socket to the block.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="accept(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-5088"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%28%26block%29"></a><div class="signature">
+        
+        def <strong>accept</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Accepts an incoming connection and yields the client socket to the block.
+Eventually closes the connection when the block returns.</p>
+
+<p>Returns the value of the block. If the server is closed after invoking this
+method, an <code><a href="../IO/Error.html">IO::Error</a></code> (closed stream) exception will be raised.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
+
+server <span class="o">=</span> <span class="t">TCPServer</span>.<span class="k">new</span>(<span class="n">2202</span>)
+server.accept <span class="k">do</span> <span class="o">|</span>socket<span class="o">|</span>
+  socket.puts <span class="t">Time</span>.now
+<span class="k">end</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/server.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="accept?(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-5089"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F%28%26block%29"></a><div class="signature">
+        
+        def <strong>accept?</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Accepts an incoming connection and yields the client socket to the block.
+Eventualy closes the connection when the block returns.</p>
+
+<p>Returns the value of the block or <code>nil</code> if the server is closed after
+invoking this method.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
+
+server <span class="o">=</span> <span class="t">UNIXServer</span>.<span class="k">new</span>(<span class="s">&#34;/tmp/service.sock&#34;</span>)
+server.accept? <span class="k">do</span> <span class="o">|</span>socket<span class="o">|</span>
+  socket.puts <span class="t">Time</span>.now
+<span class="k">end</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/server.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

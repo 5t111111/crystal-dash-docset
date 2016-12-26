@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5031"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AIPAddress%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::IPAddress - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5072"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AIPAddress%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::IPAddress - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -20,6 +20,7 @@
 
   <ul class="superclass-hierarchy">
 <li class="superclass"><a href="../Socket/IPAddress.html">Socket::IPAddress</a></li>
+<li class="superclass"><a href="../Socket/Address.html">Socket::Address</a></li>
 <li class="superclass"><a href="../Struct.html">Struct</a></li>
 <li class="superclass"><a href="../Value.html">Value</a></li>
 <li class="superclass"><a href="../Object.html">Object</a></li>
@@ -44,7 +45,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L34" target="_blank">socket.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L29" target="_blank">socket/address.cr</a>
     
     <br/>
   
@@ -57,12 +58,22 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28family%3AFamily%2Caddress%3AString%2Cport%3AInt%29-class-method" class="signature"><strong>.new</strong>(family : Family, address : String, port : Int)</a>
+        <a href="#from%28sockaddr%3APointer%28LibC%3A%3ASockaddr%29%2Caddrlen%29%3AIPAddress-class-method" class="signature"><strong>.from</strong>(sockaddr : Pointer(LibC::Sockaddr), addrlen) : IPAddress</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28sockaddr%3ALibC%3A%3ASockaddrIn6%2Caddrlen%3ALibC%3A%3ASocklenT%29-class-method" class="signature"><strong>.new</strong>(sockaddr : LibC::SockaddrIn6, addrlen : LibC::SocklenT)</a>
+        <a href="#new%28address%3AString%2Cport%3AInt32%29-class-method" class="signature"><strong>.new</strong>(address : String, port : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28sockaddr%3APointer%28LibC%3A%3ASockaddrIn6%29%2Csize%29-class-method" class="signature"><strong>.new</strong>(sockaddr : Pointer(LibC::SockaddrIn6), size)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28sockaddr%3APointer%28LibC%3A%3ASockaddrIn%29%2Csize%29-class-method" class="signature"><strong>.new</strong>(sockaddr : Pointer(LibC::SockaddrIn), size)</a>
         
       </li>
     
@@ -74,32 +85,27 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#address%3AString-instance-method" class="signature"><strong>#address</strong> : String</a>
+        <a href="#%3D%3D%28other%3AIPAddress%29-instance-method" class="signature"><strong>#==</strong>(other : IPAddress)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#addrlen-instance-method" class="signature"><strong>#addrlen</strong></a>
+        <a href="#address-instance-method" class="signature"><strong>#address</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#family%3AFamily-instance-method" class="signature"><strong>#family</strong> : Family</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#port%3AUInt16-instance-method" class="signature"><strong>#port</strong> : UInt16</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sockaddr-instance-method" class="signature"><strong>#sockaddr</strong></a>
+        <a href="#port%3AInt32-instance-method" class="signature"><strong>#port</strong> : Int32</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_s%28io%29-instance-method" class="signature"><strong>#to_s</strong>(io)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_unsafe%3APointer%28LibC%3A%3ASockaddr%29-instance-method" class="signature"><strong>#to_unsafe</strong> : Pointer(LibC::Sockaddr)</a>
         
       </li>
     
@@ -110,6 +116,53 @@
 
 
 <div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Socket/Address.html">Socket::Address</a></code>
+</h3>
+  
+  
+    <a href="../Socket/Address.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Socket/Address.html#family%3AFamily-instance-method" class="tooltip">
+      <span>family : Family</span>
+    family</a>, 
+    
+  
+    <a href="../Socket/Address.html#size%3AInt32-instance-method" class="tooltip">
+      <span>size : Int32</span>
+    size</a>, 
+    
+  
+    <a href="../Socket/Address.html#to_unsafe%3APointer%28LibC%3A%3ASockaddr%29-instance-method" class="tooltip">
+      <span>to_unsafe : Pointer(LibC::Sockaddr)</span>
+    to_unsafe</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from struct <code><a href="../Socket/Address.html">Socket::Address</a></code>
+</h3>
+  
+  
+    <a href="../Socket/Address.html#from%28sockaddr%3APointer%28LibC%3A%3ASockaddr%29%2Caddrlen%29%3AAddress-class-method" class="tooltip">
+      <span>from(sockaddr : Pointer(LibC::Sockaddr), addrlen) : Address</span>
+    from</a>, 
+    
+  
+    <a href="../Socket/Address.html#new%28family%3AFamily%2Csize%3AInt32%29-class-method" class="tooltip">
+      <span>new(family : Family, size : Int32)</span>
+    new</a>
+    
+  
+
+
   
     
 
@@ -204,11 +257,6 @@
     <a href="../Object.html#class-instance-method" class="tooltip">
       <span>class</span>
     class</a>, 
-    
-  
-    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
-      <span>crystal_type_id</span>
-    crystal_type_id</a>, 
     
   
     <a href="../Object.html#dup-instance-method" class="tooltip">
@@ -314,8 +362,8 @@
     from_json</a>, 
     
   
-    <a href="../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string : String) : self</span>
+    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
     from_yaml</a>, 
     
   
@@ -357,10 +405,10 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(family:Family,address:String,port:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-5023"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Family%2C%20address%20%3A%20String%2C%20port%20%3A%20Int%29"></a><div class="signature">
+    <div class="entry-detail" id="from(sockaddr:Pointer(LibC::Sockaddr),addrlen):IPAddress-class-method">
+      <a class="dashingAutolink" name="autolink-5073"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from%28sockaddr%20%3A%20Pointer%28LibC%3A%3ASockaddr%29%2C%20addrlen%29%20%3A%20IPAddress"></a><div class="signature">
         
-        def self.<strong>new</strong>(family : <a href="../Socket/Family.html">Family</a>, address : <a href="../String.html">String</a>, port : <a href="../Int.html">Int</a>)
+        def self.<strong>from</strong>(sockaddr : <a href="../Pointer.html">Pointer</a>(LibC::Sockaddr), addrlen) : <a href="../Socket/IPAddress.html">IPAddress</a>
 
         
       </div>
@@ -368,15 +416,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(sockaddr:LibC::SockaddrIn6,addrlen:LibC::SocklenT)-class-method">
-      <a class="dashingAutolink" name="autolink-5024"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28sockaddr%20%3A%20LibC%3A%3ASockaddrIn6%2C%20addrlen%20%3A%20LibC%3A%3ASocklenT%29"></a><div class="signature">
+    <div class="entry-detail" id="new(address:String,port:Int32)-class-method">
+      <a class="dashingAutolink" name="autolink-5074"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28address%20%3A%20String%2C%20port%20%3A%20Int32%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(sockaddr : LibC::SockaddrIn6, addrlen : <a href="../LibC/SocklenT.html">LibC::SocklenT</a>)
+        def self.<strong>new</strong>(address : <a href="../String.html">String</a>, port : <a href="../Int32.html">Int32</a>)
 
         
       </div>
@@ -384,7 +432,39 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(sockaddr:Pointer(LibC::SockaddrIn6),size)-class-method">
+      <a class="dashingAutolink" name="autolink-5075"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28sockaddr%20%3A%20Pointer%28LibC%3A%3ASockaddrIn6%29%2C%20size%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(sockaddr : <a href="../Pointer.html">Pointer</a>(LibC::SockaddrIn6), size)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(sockaddr:Pointer(LibC::SockaddrIn),size)-class-method">
+      <a class="dashingAutolink" name="autolink-5076"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28sockaddr%20%3A%20Pointer%28LibC%3A%3ASockaddrIn%29%2C%20size%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(sockaddr : <a href="../Pointer.html">Pointer</a>(LibC::SockaddrIn), size)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -394,10 +474,10 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="address:String-instance-method">
-      <a class="dashingAutolink" name="autolink-5025"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20address%20%3A%20String"></a><div class="signature">
+    <div class="entry-detail" id="==(other:IPAddress)-instance-method">
+      <a class="dashingAutolink" name="autolink-5077"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20IPAddress%29"></a><div class="signature">
         
-        def <strong>address</strong> : <a href="../String.html">String</a>
+        def <strong>==</strong>(other : <a href="../Socket/IPAddress.html">IPAddress</a>)
 
         
       </div>
@@ -405,15 +485,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="addrlen-instance-method">
-      <a class="dashingAutolink" name="autolink-5026"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20addrlen"></a><div class="signature">
+    <div class="entry-detail" id="address-instance-method">
+      <a class="dashingAutolink" name="autolink-5078"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20address"></a><div class="signature">
         
-        def <strong>addrlen</strong>
+        def <strong>address</strong>
 
         
       </div>
@@ -421,15 +501,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="family:Family-instance-method">
-      <a class="dashingAutolink" name="autolink-5027"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20family%20%3A%20Family"></a><div class="signature">
+    <div class="entry-detail" id="port:Int32-instance-method">
+      <a class="dashingAutolink" name="autolink-5079"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20port%20%3A%20Int32"></a><div class="signature">
         
-        def <strong>family</strong> : <a href="../Socket/Family.html">Family</a>
+        def <strong>port</strong> : <a href="../Int32.html">Int32</a>
 
         
       </div>
@@ -437,45 +517,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L35" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="port:UInt16-instance-method">
-      <a class="dashingAutolink" name="autolink-5028"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20port%20%3A%20UInt16"></a><div class="signature">
-        
-        def <strong>port</strong> : <a href="../UInt16.html">UInt16</a>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L37" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sockaddr-instance-method">
-      <a class="dashingAutolink" name="autolink-5029"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sockaddr"></a><div class="signature">
-        
-        def <strong>sockaddr</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-5030"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5080"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -485,7 +533,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/socket.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L119" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_unsafe:Pointer(LibC::Sockaddr)-instance-method">
+      <a class="dashingAutolink" name="autolink-5081"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20Pointer%28LibC%3A%3ASockaddr%29"></a><div class="signature">
+        
+        def <strong>to_unsafe</strong> : <a href="../Pointer.html">Pointer</a>(LibC::Sockaddr)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L127" target="_blank">View source</a>]
         
       </div>
     </div>

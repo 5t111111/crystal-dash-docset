@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5127"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/String%3A%3ABuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>String::Builder - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5200"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/String%3A%3ABuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>String::Builder - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -56,7 +56,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L6" target="_blank">string/builder.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L6" target="_blank">string/builder.cr</a>
     
     <br/>
   
@@ -91,6 +91,13 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#back%28amount%3AInt%29-instance-method" class="signature"><strong>#back</strong>(amount : Int)</a>
+        
+          <div class="summary"><p>Moves the write pointer, and the resulting string bytesize, by the given amount</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#buffer-instance-method" class="signature"><strong>#buffer</strong></a>
         
       </li>
@@ -101,12 +108,24 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#capacity%3AInt32-instance-method" class="signature"><strong>#capacity</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chomp%21%28byte%3AUInt8%29-instance-method" class="signature"><strong>#chomp!</strong>(byte : UInt8)</a>
+        
+          <div class="summary"><p>Chomps the last byte from the string buffer.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#read</strong>(slice : Slice(UInt8))</a>
+        <a href="#read%28slice%3ABytes%29-instance-method" class="signature"><strong>#read</strong>(slice : Bytes)</a>
         
       </li>
     
@@ -116,7 +135,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#write%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#write</strong>(slice : Slice(UInt8))</a>
+        <a href="#write%28slice%3ABytes%29-instance-method" class="signature"><strong>#write</strong>(slice : Bytes)</a>
         
       </li>
     
@@ -174,8 +193,8 @@
     flush</a>, 
     
   
-    <a href="../IO.html#gets%3AString%3F-instance-method" class="tooltip">
-      <span>gets : String?<br/>gets(delimiter : String) : String?<br/>gets(delimiter : Char) : String?<br/>gets(limit : Int) : String?<br/>gets(delimiter : Char, limit : Int) : String?</span>
+    <a href="../IO.html#gets%28chomp%3Dtrue%29%3AString%3F-instance-method" class="tooltip">
+      <span>gets(chomp = <span class="n">true</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(limit : Int, chomp = <span class="n">false</span>) : String?</span>
     gets</a>, 
     
   
@@ -199,8 +218,8 @@
     puts</a>, 
     
   
-    <a href="../IO.html#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read(slice : Slice(UInt8))</span>
+    <a href="../IO.html#read%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read(slice : Bytes)</span>
     read</a>, 
     
   
@@ -219,9 +238,14 @@
     read_char</a>, 
     
   
-    <a href="../IO.html#read_fully%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read_fully(slice : Slice(UInt8))</span>
+    <a href="../IO.html#read_fully%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_fully(slice : Bytes)</span>
     read_fully</a>, 
+    
+  
+    <a href="../IO.html#read_fully%3F%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_fully?(slice : Bytes)</span>
+    read_fully?</a>, 
     
   
     <a href="../IO.html#read_line%28%2Aargs%2C%2A%2Aoptions%29%3AString%3F-instance-method" class="tooltip">
@@ -229,8 +253,8 @@
     read_line</a>, 
     
   
-    <a href="../IO.html#read_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read_utf8(slice : Slice(UInt8))</span>
+    <a href="../IO.html#read_utf8%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_utf8(slice : Bytes)</span>
     read_utf8</a>, 
     
   
@@ -259,8 +283,8 @@
     tty?</a>, 
     
   
-    <a href="../IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method" class="tooltip">
-      <span>write(slice : Slice(UInt8)) : Nil</span>
+    <a href="../IO.html#write%28slice%3ABytes%29%3ANil-instance-method" class="tooltip">
+      <span>write(slice : Bytes) : Nil</span>
     write</a>, 
     
   
@@ -274,8 +298,8 @@
     write_bytes</a>, 
     
   
-    <a href="../IO.html#write_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>write_utf8(slice : Slice(UInt8))</span>
+    <a href="../IO.html#write_utf8%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>write_utf8(slice : Bytes)</span>
     write_utf8</a>
     
   
@@ -425,11 +449,6 @@
     class</a>, 
     
   
-    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
-      <span>crystal_type_id</span>
-    crystal_type_id</a>, 
-    
-  
     <a href="../Object.html#dup-instance-method" class="tooltip">
       <span>dup</span>
     dup</a>, 
@@ -533,8 +552,8 @@
     from_json</a>, 
     
   
-    <a href="../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string : String) : self</span>
+    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
     from_yaml</a>, 
     
   
@@ -577,7 +596,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="build(capacity:Int=64,&amp;block):String-class-method">
-      <a class="dashingAutolink" name="autolink-5118"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28capacity%20%3A%20Int%20%3D%2064%2C%20%26block%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5201"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28capacity%20%3A%20Int%20%3D%2064%2C%20%26block%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>build</strong>(capacity : <a href="../Int.html">Int</a> = <span class="n">64</span>, &amp;block) : <a href="../String.html">String</a>
 
@@ -587,13 +606,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(capacity:Int=64)-class-method">
-      <a class="dashingAutolink" name="autolink-5119"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28capacity%20%3A%20Int%20%3D%2064%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5202"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28capacity%20%3A%20Int%20%3D%2064%29"></a><div class="signature">
         
         def self.<strong>new</strong>(capacity : <a href="../Int.html">Int</a> = <span class="n">64</span>)
 
@@ -603,13 +622,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(string:String)-class-method">
-      <a class="dashingAutolink" name="autolink-5120"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28string%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5203"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28string%20%3A%20String%29"></a><div class="signature">
         
         def self.<strong>new</strong>(string : <a href="../String.html">String</a>)
 
@@ -619,7 +638,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -629,8 +648,27 @@
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="back(amount:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-5204"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20back%28amount%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>back</strong>(amount : <a href="../Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Moves the write pointer, and the resulting string bytesize,
+by the given amount</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L79" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="buffer-instance-method">
-      <a class="dashingAutolink" name="autolink-5121"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20buffer"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5205"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20buffer"></a><div class="signature">
         
         def <strong>buffer</strong>
 
@@ -640,13 +678,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="bytesize:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-5122"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bytesize%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5206"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bytesize%20%3A%20Int32"></a><div class="signature">
         
         def <strong>bytesize</strong> : <a href="../Int32.html">Int32</a>
 
@@ -656,13 +694,49 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="capacity:Int32-instance-method">
+      <a class="dashingAutolink" name="autolink-5207"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20capacity%20%3A%20Int32"></a><div class="signature">
+        
+        def <strong>capacity</strong> : <a href="../Int32.html">Int32</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chomp!(byte:UInt8)-instance-method">
+      <a class="dashingAutolink" name="autolink-5208"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chomp%21%28byte%20%3A%20UInt8%29"></a><div class="signature">
+        
+        def <strong>chomp!</strong>(byte : <a href="../UInt8.html">UInt8</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Chomps the last byte from the string buffer.
+If the byte is &#39;\n&#39; and there&#39;s a &#39;\r&#39; before it, it is
+also removed.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="empty?-instance-method">
-      <a class="dashingAutolink" name="autolink-5123"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5209"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20empty%3F"></a><div class="signature">
         
         def <strong>empty?</strong>
 
@@ -672,15 +746,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="read(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-5124"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+    <div class="entry-detail" id="read(slice:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-5210"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Bytes%29"></a><div class="signature">
         
-        def <strong>read</strong>(slice : <a href="../Slice.html">Slice</a>(<a href="../UInt8.html">UInt8</a>))
+        def <strong>read</strong>(slice : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -688,13 +762,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s-instance-method">
-      <a class="dashingAutolink" name="autolink-5125"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5211"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s"></a><div class="signature">
         
         def <strong>to_s</strong>
 
@@ -704,15 +778,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L87" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="write(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-5126"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+    <div class="entry-detail" id="write(slice:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-5212"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Bytes%29"></a><div class="signature">
         
-        def <strong>write</strong>(slice : <a href="../Slice.html">Slice</a>(<a href="../UInt8.html">UInt8</a>))
+        def <strong>write</strong>(slice : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -720,7 +794,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/string/builder.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/string/builder.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>

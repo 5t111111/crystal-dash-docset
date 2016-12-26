@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3292"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Iterable%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Iterable(T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3300"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Iterable%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Iterable(T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -41,6 +41,8 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
   
     <li class="other-type"><a href="Dir.html">Dir</a></li>
   
+    <li class="other-type"><a href="Hash.html">Hash(K, V)</a></li>
+  
     <li class="other-type"><a href="Indexable.html">Indexable(T)</a></li>
   
     <li class="other-type"><a href="Range.html">Range(B, E)</a></li>
@@ -55,7 +57,7 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L3" target="_blank">iterable.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L3" target="_blank">iterable.cr</a>
     
     <br/>
   
@@ -70,7 +72,7 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#chunk%28%26block%3AT-%3EU%29forallU-instance-method" class="signature"><strong>#chunk</strong>(&amp;block : T -&gt; U) forall U</a>
+        <a href="#chunk%28reuse%3Dfalse%2C%26block%3AT-%3EU%29forallU-instance-method" class="signature"><strong>#chunk</strong>(reuse = <span class="n">false</span>, &amp;block : T -&gt; U) forall U</a>
         
           <div class="summary"><p>Returns an Iterator that enumerates over the items, chunking them together based on the return value of the block.</p></div>
         
@@ -98,16 +100,16 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
       </li>
     
       <li class="entry-summary">
-        <a href="#each_cons%28count%3AInt%29-instance-method" class="signature"><strong>#each_cons</strong>(count : Int)</a>
+        <a href="#each_cons%28count%3AInt%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#each_cons</strong>(count : Int, reuse = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Same as <code>each.cons(count)</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each_slice%28count%3AInt%29-instance-method" class="signature"><strong>#each_slice</strong>(count : Int)</a>
+        <a href="#each_slice%28count%3AInt%2Creuse%3Dfalse%29-instance-method" class="signature"><strong>#each_slice</strong>(count : Int, reuse = <span class="n">false</span>)</a>
         
-          <div class="summary"><p>Same as <code>each.slice(count)</code>.</p></div>
+          <div class="summary"><p>Same as <code>each.slice(count, reuse)</code>.</p></div>
         
       </li>
     
@@ -140,10 +142,10 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="chunk(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-3284"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chunk%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+    <div class="entry-detail" id="chunk(reuse=false,&amp;block:T-&gt;U)forallU-instance-method">
+      <a class="dashingAutolink" name="autolink-3301"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chunk%28reuse%20%3D%20false%2C%20%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
-        def <strong>chunk</strong>(&amp;block : T -&gt; U) forall U
+        def <strong>chunk</strong>(reuse = <span class="n">false</span>, &amp;block : T -&gt; U) forall U
 
         
       </div>
@@ -159,13 +161,13 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cycle(n)-instance-method">
-      <a class="dashingAutolink" name="autolink-3285"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle%28n%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3302"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle%28n%29"></a><div class="signature">
         
         def <strong>cycle</strong>(n)
 
@@ -177,13 +179,13 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cycle-instance-method">
-      <a class="dashingAutolink" name="autolink-3286"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3303"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle"></a><div class="signature">
         
         def <strong>cycle</strong>
 
@@ -195,13 +197,13 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each-instance-method">
-      <a class="dashingAutolink" name="autolink-3287"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20each"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3304"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20each"></a><div class="signature">
         abstract 
         def <strong>each</strong>
 
@@ -213,15 +215,15 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_cons(count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3288"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_cons%28count%20%3A%20Int%29"></a><div class="signature">
+    <div class="entry-detail" id="each_cons(count:Int,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-3305"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_cons%28count%20%3A%20Int%2C%20reuse%20%3D%20false%29"></a><div class="signature">
         
-        def <strong>each_cons</strong>(count : <a href="Int.html">Int</a>)
+        def <strong>each_cons</strong>(count : <a href="Int.html">Int</a>, reuse = <span class="n">false</span>)
 
         
       </div>
@@ -231,31 +233,31 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each_slice(count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-3289"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_slice%28count%20%3A%20Int%29"></a><div class="signature">
+    <div class="entry-detail" id="each_slice(count:Int,reuse=false)-instance-method">
+      <a class="dashingAutolink" name="autolink-3306"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_slice%28count%20%3A%20Int%2C%20reuse%20%3D%20false%29"></a><div class="signature">
         
-        def <strong>each_slice</strong>(count : <a href="Int.html">Int</a>)
+        def <strong>each_slice</strong>(count : <a href="Int.html">Int</a>, reuse = <span class="n">false</span>)
 
         
       </div>
       
-        <div class="doc"><p>Same as <code>each.slice(count)</code>.</p></div>
+        <div class="doc"><p>Same as <code>each.slice(count, reuse)</code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_with_index(offset=0)-instance-method">
-      <a class="dashingAutolink" name="autolink-3290"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_index%28offset%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3307"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_index%28offset%20%3D%200%29"></a><div class="signature">
         
         def <strong>each_with_index</strong>(offset = <span class="n">0</span>)
 
@@ -267,13 +269,13 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_with_object(obj)-instance-method">
-      <a class="dashingAutolink" name="autolink-3291"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_object%28obj%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3308"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_object%28obj%29"></a><div class="signature">
         
         def <strong>each_with_object</strong>(obj)
 
@@ -285,7 +287,7 @@ that provide an <code><a href="Iterable.html#each-instance-method">#each</a></co
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/iterable.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/iterable.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>

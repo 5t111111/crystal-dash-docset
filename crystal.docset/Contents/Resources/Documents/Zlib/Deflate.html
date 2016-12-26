@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-6635"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Zlib%3A%3ADeflate%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Zlib::Deflate - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-6710"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Zlib%3A%3ADeflate%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Zlib::Deflate - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -39,7 +39,9 @@ data has been written to a Zlib::Deflate instance.</p>
 
 <h3>Example: compress a file</h3>
 
-<pre><code><span class="t">File</span>.open(<span class="s">&#34;./file.txt&#34;</span>, <span class="s">&#34;r&#34;</span>) <span class="k">do</span> <span class="o">|</span>input_file<span class="o">|</span>
+<pre><code><span class="k">require</span> <span class="s">&#34;zlib&#34;</span>
+
+<span class="t">File</span>.open(<span class="s">&#34;./file.txt&#34;</span>, <span class="s">&#34;r&#34;</span>) <span class="k">do</span> <span class="o">|</span>input_file<span class="o">|</span>
   <span class="t">File</span>.open(<span class="s">&#34;./file.gzip&#34;</span>, <span class="s">&#34;w&#34;</span>) <span class="k">do</span> <span class="o">|</span>output_file<span class="o">|</span>
     <span class="t">Zlib</span><span class="t">::</span><span class="t">Deflate</span>.gzip(output_file) <span class="k">do</span> <span class="o">|</span>deflate<span class="o">|</span>
       <span class="t">IO</span>.copy(input_file, deflate)
@@ -72,7 +74,7 @@ data has been written to a Zlib::Deflate instance.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L22" target="_blank">zlib/deflate.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L24" target="_blank">zlib/deflate.cr</a>
     
     <br/>
   
@@ -141,7 +143,7 @@ data has been written to a Zlib::Deflate instance.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#read</strong>(slice : Slice(UInt8))</a>
+        <a href="#read%28slice%3ABytes%29-instance-method" class="signature"><strong>#read</strong>(slice : Bytes)</a>
         
           <div class="summary"><p>Always raises: this is a write-only IO.</p></div>
         
@@ -162,9 +164,9 @@ data has been written to a Zlib::Deflate instance.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#write%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#write</strong>(slice : Slice(UInt8))</a>
+        <a href="#write%28slice%3ABytes%29-instance-method" class="signature"><strong>#write</strong>(slice : Bytes)</a>
         
-          <div class="summary"><p>See <code><a href="../IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method">IO#write</a></code>.</p></div>
+          <div class="summary"><p>See <code><a href="../IO.html#write%28slice%3ABytes%29%3ANil-instance-method">IO#write</a></code>.</p></div>
         
       </li>
     
@@ -222,8 +224,8 @@ data has been written to a Zlib::Deflate instance.</p>
     flush</a>, 
     
   
-    <a href="../IO.html#gets%3AString%3F-instance-method" class="tooltip">
-      <span>gets : String?<br/>gets(delimiter : String) : String?<br/>gets(delimiter : Char) : String?<br/>gets(limit : Int) : String?<br/>gets(delimiter : Char, limit : Int) : String?</span>
+    <a href="../IO.html#gets%28chomp%3Dtrue%29%3AString%3F-instance-method" class="tooltip">
+      <span>gets(chomp = <span class="n">true</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(limit : Int, chomp = <span class="n">false</span>) : String?</span>
     gets</a>, 
     
   
@@ -247,8 +249,8 @@ data has been written to a Zlib::Deflate instance.</p>
     puts</a>, 
     
   
-    <a href="../IO.html#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read(slice : Slice(UInt8))</span>
+    <a href="../IO.html#read%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read(slice : Bytes)</span>
     read</a>, 
     
   
@@ -267,9 +269,14 @@ data has been written to a Zlib::Deflate instance.</p>
     read_char</a>, 
     
   
-    <a href="../IO.html#read_fully%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read_fully(slice : Slice(UInt8))</span>
+    <a href="../IO.html#read_fully%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_fully(slice : Bytes)</span>
     read_fully</a>, 
+    
+  
+    <a href="../IO.html#read_fully%3F%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_fully?(slice : Bytes)</span>
+    read_fully?</a>, 
     
   
     <a href="../IO.html#read_line%28%2Aargs%2C%2A%2Aoptions%29%3AString%3F-instance-method" class="tooltip">
@@ -277,8 +284,8 @@ data has been written to a Zlib::Deflate instance.</p>
     read_line</a>, 
     
   
-    <a href="../IO.html#read_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>read_utf8(slice : Slice(UInt8))</span>
+    <a href="../IO.html#read_utf8%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>read_utf8(slice : Bytes)</span>
     read_utf8</a>, 
     
   
@@ -307,8 +314,8 @@ data has been written to a Zlib::Deflate instance.</p>
     tty?</a>, 
     
   
-    <a href="../IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method" class="tooltip">
-      <span>write(slice : Slice(UInt8)) : Nil</span>
+    <a href="../IO.html#write%28slice%3ABytes%29%3ANil-instance-method" class="tooltip">
+      <span>write(slice : Bytes) : Nil</span>
     write</a>, 
     
   
@@ -322,8 +329,8 @@ data has been written to a Zlib::Deflate instance.</p>
     write_bytes</a>, 
     
   
-    <a href="../IO.html#write_utf8%28slice%3ASlice%28UInt8%29%29-instance-method" class="tooltip">
-      <span>write_utf8(slice : Slice(UInt8))</span>
+    <a href="../IO.html#write_utf8%28slice%3ABytes%29-instance-method" class="tooltip">
+      <span>write_utf8(slice : Bytes)</span>
     write_utf8</a>
     
   
@@ -473,11 +480,6 @@ data has been written to a Zlib::Deflate instance.</p>
     class</a>, 
     
   
-    <a href="../Object.html#crystal_type_id-instance-method" class="tooltip">
-      <span>crystal_type_id</span>
-    crystal_type_id</a>, 
-    
-  
     <a href="../Object.html#dup-instance-method" class="tooltip">
       <span>dup</span>
     dup</a>, 
@@ -581,8 +583,8 @@ data has been written to a Zlib::Deflate instance.</p>
     from_json</a>, 
     
   
-    <a href="../Object.html#from_yaml%28string%3AString%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string : String) : self</span>
+    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
     from_yaml</a>, 
     
   
@@ -625,7 +627,7 @@ data has been written to a Zlib::Deflate instance.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="gzip(output,sync_close:Bool=false):self-class-method">
-      <a class="dashingAutolink" name="autolink-6624"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.gzip%28output%2C%20sync_close%20%3A%20Bool%20%3D%20false%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6711"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.gzip%28output%2C%20sync_close%20%3A%20Bool%20%3D%20false%29%20%3A%20self"></a><div class="signature">
         
         def self.<strong>gzip</strong>(output, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>) : self
 
@@ -638,13 +640,13 @@ has written.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="gzip(output,sync_close:Bool=false,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-6625"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.gzip%28output%2C%20sync_close%20%3A%20Bool%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6712"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.gzip%28output%2C%20sync_close%20%3A%20Bool%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>gzip</strong>(output, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>, &amp;block)
 
@@ -657,13 +659,13 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L68" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(output:IO,level=LibZ::DEFAULT_COMPRESSION,wbits=LibZ::MAX_BITS,mem_level=LibZ::DEF_MEM_LEVEL,strategy=LibZ::Strategy::DEFAULT_STRATEGY,sync_close:Bool=false)-class-method">
-      <a class="dashingAutolink" name="autolink-6626"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28output%20%3A%20IO%2C%20level%20%3D%20LibZ%3A%3ADEFAULT_COMPRESSION%2C%20wbits%20%3D%20LibZ%3A%3AMAX_BITS%2C%20mem_level%20%3D%20LibZ%3A%3ADEF_MEM_LEVEL%2C%20strategy%20%3D%20LibZ%3A%3AStrategy%3A%3ADEFAULT_STRATEGY%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6713"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28output%20%3A%20IO%2C%20level%20%3D%20LibZ%3A%3ADEFAULT_COMPRESSION%2C%20wbits%20%3D%20LibZ%3A%3AMAX_BITS%2C%20mem_level%20%3D%20LibZ%3A%3ADEF_MEM_LEVEL%2C%20strategy%20%3D%20LibZ%3A%3AStrategy%3A%3ADEFAULT_STRATEGY%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
         
         def self.<strong>new</strong>(output : <a href="../IO.html">IO</a>, level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, wbits = <span class="t">LibZ</span><span class="t">::</span><span class="t">MAX_BITS</span>, mem_level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEF_MEM_LEVEL</span>, strategy = <span class="t">LibZ</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">DEFAULT_STRATEGY</span>, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>)
 
@@ -676,13 +678,13 @@ has written.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(output:IO,level=LibZ::DEFAULT_COMPRESSION,wbits=LibZ::MAX_BITS,mem_level=LibZ::DEF_MEM_LEVEL,strategy=LibZ::Strategy::DEFAULT_STRATEGY,sync_close:Bool=false,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-6627"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28output%20%3A%20IO%2C%20level%20%3D%20LibZ%3A%3ADEFAULT_COMPRESSION%2C%20wbits%20%3D%20LibZ%3A%3AMAX_BITS%2C%20mem_level%20%3D%20LibZ%3A%3ADEF_MEM_LEVEL%2C%20strategy%20%3D%20LibZ%3A%3AStrategy%3A%3ADEFAULT_STRATEGY%2C%20sync_close%20%3A%20Bool%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6714"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28output%20%3A%20IO%2C%20level%20%3D%20LibZ%3A%3ADEFAULT_COMPRESSION%2C%20wbits%20%3D%20LibZ%3A%3AMAX_BITS%2C%20mem_level%20%3D%20LibZ%3A%3ADEF_MEM_LEVEL%2C%20strategy%20%3D%20LibZ%3A%3AStrategy%3A%3ADEFAULT_STRATEGY%2C%20sync_close%20%3A%20Bool%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>new</strong>(output : <a href="../IO.html">IO</a>, level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, wbits = <span class="t">LibZ</span><span class="t">::</span><span class="t">MAX_BITS</span>, mem_level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEF_MEM_LEVEL</span>, strategy = <span class="t">LibZ</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">DEFAULT_STRATEGY</span>, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>, &amp;block)
 
@@ -695,7 +697,7 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -706,7 +708,7 @@ it at its end.</p></div>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-6628"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6715"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -718,13 +720,13 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closed?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-6629"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6716"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>closed?</strong> : <a href="../Bool.html">Bool</a>
 
@@ -736,13 +738,13 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="flush-instance-method">
-      <a class="dashingAutolink" name="autolink-6630"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6717"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
         
         def <strong>flush</strong>
 
@@ -754,15 +756,15 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L92" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="read(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-6631"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+    <div class="entry-detail" id="read(slice:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-6718"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Bytes%29"></a><div class="signature">
         
-        def <strong>read</strong>(slice : <a href="../Slice.html">Slice</a>(<a href="../UInt8.html">UInt8</a>))
+        def <strong>read</strong>(slice : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
@@ -772,13 +774,13 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sync_close=(sync_close:Bool)-instance-method">
-      <a class="dashingAutolink" name="autolink-6632"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%20%3A%20Bool%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6719"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%20%3A%20Bool%29"></a><div class="signature">
         
         def <strong>sync_close=</strong>(sync_close : <a href="../Bool.html">Bool</a>)
 
@@ -790,13 +792,13 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sync_close?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-6633"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6720"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>sync_close?</strong> : <a href="../Bool.html">Bool</a>
 
@@ -808,25 +810,25 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="write(slice:Slice(UInt8))-instance-method">
-      <a class="dashingAutolink" name="autolink-6634"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Slice%28UInt8%29%29"></a><div class="signature">
+    <div class="entry-detail" id="write(slice:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-6721"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Bytes%29"></a><div class="signature">
         
-        def <strong>write</strong>(slice : <a href="../Slice.html">Slice</a>(<a href="../UInt8.html">UInt8</a>))
+        def <strong>write</strong>(slice : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
       
-        <div class="doc"><p>See <code><a href="../IO.html#write%28slice%3ASlice%28UInt8%29%29%3ANil-instance-method">IO#write</a></code>.</p></div>
+        <div class="doc"><p>See <code><a href="../IO.html#write%28slice%3ABytes%29%3ANil-instance-method">IO#write</a></code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/18e76172444c7bd07f58bf360bc21981b667668d/src/zlib/deflate.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/zlib/deflate.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
