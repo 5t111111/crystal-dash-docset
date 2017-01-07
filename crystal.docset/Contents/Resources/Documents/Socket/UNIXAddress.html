@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5096"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AUNIXAddress%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::UNIXAddress - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5132"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AUNIXAddress%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::UNIXAddress - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -29,6 +29,17 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>UNIX address representation.</p>
+
+<p>Holds the local path of an UNIX address, usually coming from an opened
+connection (e.g. <code>Socket#local_address</code>, <code><a href="../Socket.html#receive%28max_message_size%3D512%29%3ATuple%28String%2CAddress%29-instance-method">Socket#receive</a></code>).</p>
+
+<p>Example:</p>
+
+<pre><code><span class="t">Socket</span><span class="t">::</span><span class="t">UNIXAddress</span>.<span class="k">new</span>(<span class="s">&#34;/tmp/my.sock&#34;</span>)</code></pre>
+
 
 
 
@@ -45,7 +56,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L155" target="_blank">socket/address.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/address.cr#L190" target="_blank">socket/address.cr</a>
     
     <br/>
   
@@ -59,6 +70,8 @@
     
       <li class="entry-summary">
         <a href="#from%28sockaddr%3APointer%28LibC%3A%3ASockaddr%29%2Caddrlen%29%3AUNIXAddress-class-method" class="signature"><strong>.from</strong>(sockaddr : Pointer(LibC::Sockaddr), addrlen) : UNIXAddress</a>
+        
+          <div class="summary"><p>Creates an <code><a href="../UNIXSocket.html">UNIXSocket</a></code> from the internal OS representation.</p></div>
         
       </li>
     
@@ -289,8 +302,8 @@
     tap</a>, 
     
   
-    <a href="../Object.html#to_json-instance-method" class="tooltip">
-      <span>to_json</span>
+    <a href="../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
     to_json</a>, 
     
   
@@ -396,23 +409,25 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="from(sockaddr:Pointer(LibC::Sockaddr),addrlen):UNIXAddress-class-method">
-      <a class="dashingAutolink" name="autolink-5097"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from%28sockaddr%20%3A%20Pointer%28LibC%3A%3ASockaddr%29%2C%20addrlen%29%20%3A%20UNIXAddress"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5133"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from%28sockaddr%20%3A%20Pointer%28LibC%3A%3ASockaddr%29%2C%20addrlen%29%20%3A%20UNIXAddress"></a><div class="signature">
         
         def self.<strong>from</strong>(sockaddr : <a href="../Pointer.html">Pointer</a>(LibC::Sockaddr), addrlen) : <a href="../Socket/UNIXAddress.html">UNIXAddress</a>
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code><a href="../UNIXSocket.html">UNIXSocket</a></code> from the internal OS representation.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L169" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/address.cr#L205" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(sockaddr:Pointer(LibC::SockaddrUn),size)-class-method">
-      <a class="dashingAutolink" name="autolink-5098"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28sockaddr%20%3A%20Pointer%28LibC%3A%3ASockaddrUn%29%2C%20size%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5134"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28sockaddr%20%3A%20Pointer%28LibC%3A%3ASockaddrUn%29%2C%20size%29"></a><div class="signature">
         
         def self.<strong>new</strong>(sockaddr : <a href="../Pointer.html">Pointer</a>(LibC::SockaddrUn), size)
 
@@ -422,13 +437,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L173" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/address.cr#L209" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(path:String)-class-method">
-      <a class="dashingAutolink" name="autolink-5099"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28path%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5135"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28path%20%3A%20String%29"></a><div class="signature">
         
         def self.<strong>new</strong>(path : <a href="../String.html">String</a>)
 
@@ -438,7 +453,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L161" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/address.cr#L196" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -449,7 +464,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:UNIXAddress)-instance-method">
-      <a class="dashingAutolink" name="autolink-5100"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20UNIXAddress%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5136"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20UNIXAddress%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="../Socket/UNIXAddress.html">UNIXAddress</a>)
 
@@ -459,13 +474,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L179" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/address.cr#L215" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="path:String-instance-method">
-      <a class="dashingAutolink" name="autolink-5101"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20path%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5137"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20path%20%3A%20String"></a><div class="signature">
         
         def <strong>path</strong> : <a href="../String.html">String</a>
 
@@ -475,13 +490,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L156" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/address.cr#L191" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-5102"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5138"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -491,13 +506,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/address.cr#L219" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_unsafe:Pointer(LibC::Sockaddr)-instance-method">
-      <a class="dashingAutolink" name="autolink-5103"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20Pointer%28LibC%3A%3ASockaddr%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5139"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20Pointer%28LibC%3A%3ASockaddr%29"></a><div class="signature">
         
         def <strong>to_unsafe</strong> : <a href="../Pointer.html">Pointer</a>(LibC::Sockaddr)
 
@@ -507,7 +522,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/address.cr#L187" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/address.cr#L223" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1482"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Enumerable%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Enumerable(T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1559"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Enumerable%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Enumerable(T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -99,12 +99,12 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L29" target="_blank">enumerable.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L29" target="_blank">enumerable.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/set.cr#L393" target="_blank">set.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/set.cr#L392" target="_blank">set.cr</a>
     
     <br/>
   
@@ -252,7 +252,7 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
       </li>
     
       <li class="entry-summary">
-        <a href="#flat_map%28%26block%3AT-%3EArray%28U%29%7CU%29forallU-instance-method" class="signature"><strong>#flat_map</strong>(&amp;block : T -&gt; Array(U) | U) forall U</a>
+        <a href="#flat_map%28%26block%3AT-%3EArray%28U%29%7CIterator%28U%29%7CU%29forallU-instance-method" class="signature"><strong>#flat_map</strong>(&amp;block : T -&gt; Array(U) | Iterator(U) | U) forall U</a>
         
           <div class="summary"><p>Returns a new array with the concatenated results of running the block (which is expected to return arrays) once for every element in the collection.</p></div>
         
@@ -350,7 +350,7 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
       </li>
     
       <li class="entry-summary">
-        <a href="#map_with_index%28%26block%3AT%2CInt32-%3EU%29-instance-method" class="signature"><strong>#map_with_index</strong>(&amp;block : T, Int32 -&gt; U)</a>
+        <a href="#map_with_index%28%26block%3AT%2CInt32-%3EU%29forallU-instance-method" class="signature"><strong>#map_with_index</strong>(&amp;block : T, Int32 -&gt; U) forall U</a>
         
           <div class="summary"><p>Like <code><a href="Enumerable.html#map%28%26block%3AT-%3EU%29forallU-instance-method">#map</a></code>, but the block gets passed both the element and its index.</p></div>
         
@@ -632,7 +632,7 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
       <li class="entry-summary">
         <a href="#to_h-instance-method" class="signature"><strong>#to_h</strong></a>
         
-          <div class="summary"><p>Creates a hash out of an Enumerable where each element is a 2 element structure (for instance a Tuple or an Array)</p></div>
+          <div class="summary"><p>Creates a hash out of an Enumerable where each element is a 2 element structure (for instance a <code><a href="Tuple.html">Tuple</a></code> or an <code><a href="Array.html">Array</a></code>)</p></div>
         
       </li>
     
@@ -659,7 +659,7 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="all?(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1483"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20all%3F%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1484"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20all%3F%28%26block%29"></a><div class="signature">
         
         def <strong>all?</strong>(&amp;block)
 
@@ -669,20 +669,20 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
         <div class="doc">
 <p>Returns <code>true</code> if the passed block returns a value other than <code>false</code> or <code>nil</code> for all elements of the collection.</p>
 
-<pre><code>[<span class="s">&#34;ant&#34;</span>, <span class="s">&#34;bear&#34;</span>, <span class="s">&#34;cat&#34;</span>].all? { <span class="o">|</span>word<span class="o">|</span> word.size <span class="o">&gt;=</span> <span class="n">3</span> }  <span class="c">#=&gt; true</span>
-[<span class="s">&#34;ant&#34;</span>, <span class="s">&#34;bear&#34;</span>, <span class="s">&#34;cat&#34;</span>].all? { <span class="o">|</span>word<span class="o">|</span> word.size <span class="o">&gt;=</span> <span class="n">4</span> }  <span class="c">#=&gt; false</span></code></pre>
+<pre><code>[<span class="s">&#34;ant&#34;</span>, <span class="s">&#34;bear&#34;</span>, <span class="s">&#34;cat&#34;</span>].all? { <span class="o">|</span>word<span class="o">|</span> word.size <span class="o">&gt;=</span> <span class="n">3</span> } <span class="c"># =&gt; true</span>
+[<span class="s">&#34;ant&#34;</span>, <span class="s">&#34;bear&#34;</span>, <span class="s">&#34;cat&#34;</span>].all? { <span class="o">|</span>word<span class="o">|</span> word.size <span class="o">&gt;=</span> <span class="n">4</span> } <span class="c"># =&gt; false</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="all?-instance-method">
-      <a class="dashingAutolink" name="autolink-1484"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20all%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1485"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20all%3F"></a><div class="signature">
         
         def <strong>all?</strong>
 
@@ -692,20 +692,20 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
         <div class="doc">
 <p>Returns <code>true</code> if none of the elements of the collection is <code>false</code> or <code>nil</code>.</p>
 
-<pre><code>[<span class="n">nil</span>, <span class="n">true</span>, <span class="n">99</span>].all?  <span class="c">#=&gt; false</span>
-[<span class="n">15</span>].all?             <span class="c">#=&gt; true</span></code></pre>
+<pre><code>[<span class="n">nil</span>, <span class="n">true</span>, <span class="n">99</span>].all? <span class="c"># =&gt; false</span>
+[<span class="n">15</span>].all?            <span class="c"># =&gt; true</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="any?(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1485"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20any%3F%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1486"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20any%3F%28%26block%29"></a><div class="signature">
         
         def <strong>any?</strong>(&amp;block)
 
@@ -715,20 +715,20 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
         <div class="doc">
 <p>Returns <code>true</code> if the passed block returns a value other than <code>false</code> or <code>nil</code> for at least one element of the collection.</p>
 
-<pre><code>[<span class="s">&#34;ant&#34;</span>, <span class="s">&#34;bear&#34;</span>, <span class="s">&#34;cat&#34;</span>].any? { <span class="o">|</span>word<span class="o">|</span> word.size <span class="o">&gt;=</span> <span class="n">4</span> }  <span class="c">#=&gt; true</span>
-[<span class="s">&#34;ant&#34;</span>, <span class="s">&#34;bear&#34;</span>, <span class="s">&#34;cat&#34;</span>].any? { <span class="o">|</span>word<span class="o">|</span> word.size <span class="o">&gt;</span> <span class="n">4</span> }   <span class="c">#=&gt; false</span></code></pre>
+<pre><code>[<span class="s">&#34;ant&#34;</span>, <span class="s">&#34;bear&#34;</span>, <span class="s">&#34;cat&#34;</span>].any? { <span class="o">|</span>word<span class="o">|</span> word.size <span class="o">&gt;=</span> <span class="n">4</span> } <span class="c"># =&gt; true</span>
+[<span class="s">&#34;ant&#34;</span>, <span class="s">&#34;bear&#34;</span>, <span class="s">&#34;cat&#34;</span>].any? { <span class="o">|</span>word<span class="o">|</span> word.size <span class="o">&gt;</span> <span class="n">4</span> }  <span class="c"># =&gt; false</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="any?-instance-method">
-      <a class="dashingAutolink" name="autolink-1486"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20any%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1487"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20any%3F"></a><div class="signature">
         
         def <strong>any?</strong>
 
@@ -738,20 +738,20 @@ the <code><a href="Iterator.html">Iterator</a></code> and <code><a href="Iterabl
         <div class="doc">
 <p>Returns <code>true</code> if at least one of the collection members is not <code>false</code> or <code>nil</code>.</p>
 
-<pre><code>[<span class="n">nil</span>, <span class="n">true</span>, <span class="n">99</span>].any?  <span class="c">#=&gt; true</span>
-[<span class="n">nil</span>, <span class="n">false</span>].any?     <span class="c">#=&gt; false</span></code></pre>
+<pre><code>[<span class="n">nil</span>, <span class="n">true</span>, <span class="n">99</span>].any? <span class="c"># =&gt; true</span>
+[<span class="n">nil</span>, <span class="n">false</span>].any?    <span class="c"># =&gt; false</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="chunks(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1487"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chunks%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1488"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chunks%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>chunks</strong>(&amp;block : T -&gt; U) forall U
 
@@ -777,19 +777,19 @@ ary <span class="c"># =&gt; [{false, [3, 1]}, {true, [4]}, {false, [1, 5, 9]}, {
 <code>Enumerable::Chunk::Alone</code> specifies that the element should be chunked by itself</li>
 </ul>
 
-<p>See also: <code><a href="Iterator.html#chunk%28reuse%3Dfalse%2C%26block%3AT-%3EU%29forallT%2CU-instance-method">Iterator#chunk</a></code></p>
+<p>See also: <code><a href="Iterator.html#chunk%28reuse%3Dfalse%2C%26block%3AT-%3EU%29forallT%2CU-instance-method">Iterator#chunk</a></code>.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L94" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="compact_map(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1488"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20compact_map%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1489"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20compact_map%28%26block%29"></a><div class="signature">
         
         def <strong>compact_map</strong>(&amp;block)
 
@@ -799,20 +799,20 @@ ary <span class="c"># =&gt; [{false, [3, 1]}, {true, [4]}, {false, [1, 5, 9]}, {
         <div class="doc">
 <p>Returns an array with the results of running the block against each element of the collection, removing <code>nil</code> values.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].map { <span class="o">|</span>name<span class="o">|</span> name.match(<span class="s">/^A./</span>) }         <span class="c">#=&gt; [#&lt;Regex::MatchData &#34;Al&#34;&gt;, nil]</span>
-[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].compact_map { <span class="o">|</span>name<span class="o">|</span> name.match(<span class="s">/^A./</span>) } <span class="c">#=&gt; [#&lt;Regex::MatchData &#34;Al&#34;&gt;]</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].map { <span class="o">|</span>name<span class="o">|</span> name.match(<span class="s">/^A./</span>) }         <span class="c"># =&gt; [#&lt;Regex::MatchData &#34;Al&#34;&gt;, nil]</span>
+[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].compact_map { <span class="o">|</span>name<span class="o">|</span> name.match(<span class="s">/^A./</span>) } <span class="c"># =&gt; [#&lt;Regex::MatchData &#34;Al&#34;&gt;]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L187" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L192" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="count(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1489"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20count%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1490"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20count%28%26block%29"></a><div class="signature">
         
         def <strong>count</strong>(&amp;block)
 
@@ -822,19 +822,19 @@ ary <span class="c"># =&gt; [{false, [3, 1]}, {true, [4]}, {false, [1, 5, 9]}, {
         <div class="doc">
 <p>Returns the number of elements in the collection for which the passed block returns <code>true</code>.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].count { <span class="o">|</span>i<span class="o">|</span> i <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span> }  <span class="c">#=&gt; 2</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].count { <span class="o">|</span>i<span class="o">|</span> i <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span> } <span class="c"># =&gt; 2</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L202" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L208" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="count(item)-instance-method">
-      <a class="dashingAutolink" name="autolink-1490"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20count%28item%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1491"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20count%28item%29"></a><div class="signature">
         
         def <strong>count</strong>(item)
 
@@ -844,19 +844,19 @@ ary <span class="c"># =&gt; [{false, [3, 1]}, {true, [4]}, {false, [1, 5, 9]}, {
         <div class="doc">
 <p>Returns the number of times that the passed item is present in the collection.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].count(<span class="n">3</span>)  <span class="c">#=&gt; 1</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].count(<span class="n">3</span>) <span class="c"># =&gt; 1</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L212" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L219" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cycle(n,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1491"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle%28n%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1492"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle%28n%2C%20%26block%29"></a><div class="signature">
         
         def <strong>cycle</strong>(n, &amp;block)
 
@@ -868,13 +868,13 @@ ary <span class="c"># =&gt; [{false, [3, 1]}, {true, [4]}, {false, [1, 5, 9]}, {
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L222" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L229" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cycle(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1492"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1493"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cycle%28%26block%29"></a><div class="signature">
         
         def <strong>cycle</strong>(&amp;block)
 
@@ -886,13 +886,13 @@ ary <span class="c"># =&gt; [{false, [3, 1]}, {true, [4]}, {false, [1, 5, 9]}, {
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L217" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L224" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block:T-&gt;_)-instance-method">
-      <a class="dashingAutolink" name="autolink-1493"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20each%28%26block%20%3A%20T%20-%3E%20_%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1494"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/abstract%20%0A%20%20%20%20%20%20%20%20def%20each%28%26block%20%3A%20T%20-%3E%20_%29"></a><div class="signature">
         abstract 
         def <strong>each</strong>(&amp;block : T -&gt; _)
 
@@ -904,13 +904,13 @@ ary <span class="c"># =&gt; [{false, [3, 1]}, {true, [4]}, {false, [1, 5, 9]}, {
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_cons(count:Int,reuse=false,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1494"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_cons%28count%20%3A%20Int%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1495"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_cons%28count%20%3A%20Int%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
         def <strong>each_cons</strong>(count : <a href="Int.html">Int</a>, reuse = <span class="n">false</span>, &amp;block)
 
@@ -926,10 +926,10 @@ ary <span class="c"># =&gt; [{false, [3, 1]}, {true, [4]}, {false, [1, 5, 9]}, {
 
 <p>Prints:</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>]
-[<span class="n">2</span>, <span class="n">3</span>]
-[<span class="n">3</span>, <span class="n">4</span>]
-[<span class="n">4</span>, <span class="n">5</span>]</code></pre>
+<pre><code class="language-text">[1, 2]
+[2, 3]
+[3, 4]
+[4, 5]</code></pre>
 
 <p>By default, a new array is created and yielded for each consecutive slice of elements.
 If <em>reuse</em> is given, the array can be reused: if <em>reuse</em> is
@@ -942,13 +942,13 @@ interest is to be used in a read-only fashion.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L245" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L256" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_slice(count:Int,reuse=false,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1495"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_slice%28count%20%3A%20Int%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1496"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_slice%28count%20%3A%20Int%2C%20reuse%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
         def <strong>each_slice</strong>(count : <a href="Int.html">Int</a>, reuse = <span class="n">false</span>, &amp;block)
 
@@ -965,9 +965,9 @@ and runs the block for each of those.</p>
 
 <p>Prints:</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>]
-[<span class="n">3</span>, <span class="n">4</span>]
-[<span class="n">5</span>]</code></pre>
+<pre><code class="language-text">[1, 2]
+[3, 4]
+[5]</code></pre>
 
 <p>Note that the last one can be smaller.</p>
 
@@ -982,13 +982,13 @@ interest is to be used in a read-only fashion.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L291" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L306" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_with_index(offset=0,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1496"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_index%28offset%20%3D%200%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1497"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_index%28offset%20%3D%200%2C%20%26block%29"></a><div class="signature">
         
         def <strong>each_with_index</strong>(offset = <span class="n">0</span>, &amp;block)
 
@@ -1004,8 +1004,8 @@ interest is to be used in a read-only fashion.</p>
 
 <p>Prints:</p>
 
-<pre><code><span class="t">User</span> <span class="c">#0: Alice</span>
-<span class="t">User</span> <span class="c">#1: Bob</span></code></pre>
+<pre><code class="language-text">User # 0: Alice
+User # 1: Bob</code></pre>
 
 <p>Accepts an optional <em>offset</em> parameter, which tells it to start counting from there. So, a more human
 friendly version of the previous snippet would be:</p>
@@ -1016,20 +1016,20 @@ friendly version of the previous snippet would be:</p>
 
 <p>Which would print:</p>
 
-<pre><code><span class="t">User</span> <span class="c">#1: Alice</span>
-<span class="t">User</span> <span class="c">#2: Bob</span></code></pre>
+<pre><code class="language-text">User # 1: Alice
+User # 2: Bob</code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L345" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L367" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each_with_object(obj,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1497"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_object%28obj%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1498"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each_with_object%28obj%2C%20%26block%29"></a><div class="signature">
         
         def <strong>each_with_object</strong>(obj, &amp;block)
 
@@ -1039,21 +1039,22 @@ friendly version of the previous snippet would be:</p>
         <div class="doc">
 <p>Iterates over the collection, passing each element and the initial object <em>obj</em>. Returns that object.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].each_with_object({} <span class="k">of</span> <span class="t">String</span> =&gt; <span class="t">Int32</span>) <span class="k">do</span> <span class="o">|</span>user, sizes<span class="o">|</span>
+<pre><code>hash <span class="o">=</span> [<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].each_with_object({} <span class="k">of</span> <span class="t">String</span> =&gt; <span class="t">Int32</span>) <span class="k">do</span> <span class="o">|</span>user, sizes<span class="o">|</span>
   sizes[user] <span class="o">=</span> user.size
-<span class="k">end</span>  <span class="c">#=&gt; {&#34;Alice&#34; =&gt; 5, &#34;Bob&#34; =&gt; 3}</span></code></pre>
+<span class="k">end</span>
+hash <span class="c"># =&gt; {&#34;Alice&#34; =&gt; 5, &#34;Bob&#34; =&gt; 3}</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L359" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L383" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="find(if_none=nil,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1498"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20find%28if_none%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1499"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20find%28if_none%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>find</strong>(if_none = <span class="n">nil</span>, &amp;block)
 
@@ -1065,21 +1066,21 @@ friendly version of the previous snippet would be:</p>
 
 <p>Accepts an optional parameter <em>if_none</em>, to set what gets returned if no element is found (defaults to <code>nil</code>).</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].find { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">2</span> }      <span class="c">#=&gt; 3</span>
-[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].find { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">8</span> }      <span class="c">#=&gt; nil</span>
-[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].find(<span class="n">-1</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">8</span> }  <span class="c">#=&gt; -1</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].find { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">2</span> }     <span class="c"># =&gt; 3</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].find { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">8</span> }     <span class="c"># =&gt; nil</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].find(<span class="n">-1</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">8</span> } <span class="c"># =&gt; -1</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L374" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L399" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="first(count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-1499"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first%28count%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1500"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first%28count%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>first</strong>(count : <a href="Int.html">Int</a>)
 
@@ -1096,13 +1097,13 @@ include the case of calling it over an empty collection, in which case it return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1101" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1214" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="first-instance-method">
-      <a class="dashingAutolink" name="autolink-1500"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1501"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first"></a><div class="signature">
         
         def <strong>first</strong>
 
@@ -1114,13 +1115,13 @@ include the case of calling it over an empty collection, in which case it return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L382" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L407" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="first?-instance-method">
-      <a class="dashingAutolink" name="autolink-1501"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1502"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20first%3F"></a><div class="signature">
         
         def <strong>first?</strong>
 
@@ -1132,15 +1133,15 @@ include the case of calling it over an empty collection, in which case it return
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L388" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L413" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="flat_map(&amp;block:T-&gt;Array(U)|U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1502"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flat_map%28%26block%20%3A%20T%20-%3E%20Array%28U%29%20%7C%20U%29%20forall%20U"></a><div class="signature">
+    <div class="entry-detail" id="flat_map(&amp;block:T-&gt;Array(U)|Iterator(U)|U)forallU-instance-method">
+      <a class="dashingAutolink" name="autolink-1503"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flat_map%28%26block%20%3A%20T%20-%3E%20Array%28U%29%20%7C%20Iterator%28U%29%20%7C%20U%29%20forall%20U"></a><div class="signature">
         
-        def <strong>flat_map</strong>(&amp;block : T -&gt; <a href="Array.html">Array</a>(U) | U) forall U
+        def <strong>flat_map</strong>(&amp;block : T -&gt; <a href="Array.html">Array</a>(U) | <a href="Iterator.html">Iterator</a>(U) | U) forall U
 
         
       </div>
@@ -1149,21 +1150,22 @@ include the case of calling it over an empty collection, in which case it return
 <p>Returns a new array with the concatenated results of running the block (which is expected to return arrays) once for
 every element in the collection.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].flat_map <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
+<pre><code>array <span class="o">=</span> [<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].flat_map <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
   user.chars
-<span class="k">end</span>  <span class="c">#=&gt; [&#39;A&#39;, &#39;l&#39;, &#39;i&#39;, &#39;c&#39;, &#39;e&#39;, &#39;B&#39;, &#39;o&#39;, &#39;b&#39;]</span></code></pre>
+<span class="k">end</span>
+array <span class="c"># =&gt; [&#39;A&#39;, &#39;l&#39;, &#39;i&#39;, &#39;c&#39;, &#39;e&#39;, &#39;B&#39;, &#39;o&#39;, &#39;b&#39;]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L399" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L427" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="grep(pattern)-instance-method">
-      <a class="dashingAutolink" name="autolink-1503"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20grep%28pattern%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1504"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20grep%28pattern%29"></a><div class="signature">
         
         def <strong>grep</strong>(pattern)
 
@@ -1173,19 +1175,19 @@ every element in the collection.</p>
         <div class="doc">
 <p>Returns an array with all the elements in the collection that match the <code>RegExp</code> <em>pattern</em>.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].grep(<span class="s">/^A/</span>)  <span class="c">#=&gt; [&#34;Alice&#34;]</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].grep(<span class="s">/^A/</span>) <span class="c"># =&gt; [&#34;Alice&#34;]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L416" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L445" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="group_by(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1504"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20group_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1505"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20group_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>group_by</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1196,19 +1198,19 @@ every element in the collection.</p>
 <p>Returns a <code><a href="Hash.html">Hash</a></code> whose keys are each different value that the passed block returned when run for each element in the
 collection, and which values are an array of the elements for which the block returned that value.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>, <span class="s">&#34;Ary&#34;</span>].group_by { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; {5 =&gt; [&#34;Alice&#34;], 3 =&gt; [&#34;Bob&#34;, &#34;Ary&#34;]}</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>, <span class="s">&#34;Ary&#34;</span>].group_by { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; {5 =&gt; [&#34;Alice&#34;], 3 =&gt; [&#34;Bob&#34;, &#34;Ary&#34;]}</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L425" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L455" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="in_groups_of(size:Int,filled_up_with:U=nil)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1505"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20in_groups_of%28size%20%3A%20Int%2C%20filled_up_with%20%3A%20U%20%3D%20nil%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1506"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20in_groups_of%28size%20%3A%20Int%2C%20filled_up_with%20%3A%20U%20%3D%20nil%29%20forall%20U"></a><div class="signature">
         
         def <strong>in_groups_of</strong>(size : <a href="Int.html">Int</a>, filled_up_with : U = <span class="n">nil</span>) forall U
 
@@ -1218,20 +1220,20 @@ collection, and which values are an array of the elements for which the block re
         <div class="doc">
 <p>Returns an <code><a href="Array.html">Array</a></code> with chunks in the given size, eventually filled up with given value or nil.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].in_groups_of(<span class="n">2</span>, <span class="n">0</span>) <span class="c">#=&gt; [[1, 2], [3, 0]]</span>
-[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].in_groups_of(<span class="n">2</span>) <span class="c">#=&gt; [[1, 2], [3, nil]]</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].in_groups_of(<span class="n">2</span>, <span class="n">0</span>) <span class="c"># =&gt; [[1, 2], [3, 0]]</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].in_groups_of(<span class="n">2</span>)    <span class="c"># =&gt; [[1, 2], [3, nil]]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L442" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L474" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="in_groups_of(size:Int,filled_up_with:U=nil,reuse=false,&amp;block)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1506"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20in_groups_of%28size%20%3A%20Int%2C%20filled_up_with%20%3A%20U%20%3D%20nil%2C%20reuse%20%3D%20false%2C%20%26block%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1507"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20in_groups_of%28size%20%3A%20Int%2C%20filled_up_with%20%3A%20U%20%3D%20nil%2C%20reuse%20%3D%20false%2C%20%26block%29%20forall%20U"></a><div class="signature">
         
         def <strong>in_groups_of</strong>(size : <a href="Int.html">Int</a>, filled_up_with : U = <span class="n">nil</span>, reuse = <span class="n">false</span>, &amp;block) forall U
 
@@ -1242,8 +1244,8 @@ collection, and which values are an array of the elements for which the block re
 <p>Yields a block with the chunks in the given size.</p>
 
 <pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">4</span>].in_groups_of(<span class="n">2</span>, <span class="n">0</span>) { <span class="o">|</span>e<span class="o">|</span> p e.sum }
-<span class="c">#=&gt; 3</span>
-<span class="c">#=&gt; 4</span></code></pre>
+<span class="c"># =&gt; 3</span>
+<span class="c"># =&gt; 4</span></code></pre>
 
 <p>By default, a new array is created and yielded for each group.
 If <em>reuse</em> is given, the array can be reused: if <em>reuse</em> is
@@ -1256,13 +1258,13 @@ interest is to be used in a read-only fashion.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L464" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L498" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="includes?(obj)-instance-method">
-      <a class="dashingAutolink" name="autolink-1507"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20includes%3F%28obj%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1508"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20includes%3F%28obj%29"></a><div class="signature">
         
         def <strong>includes?</strong>(obj)
 
@@ -1272,20 +1274,20 @@ interest is to be used in a read-only fashion.</p>
         <div class="doc">
 <p>Returns <code>true</code> if the collection contains <em>obj</em>, <code>false</code> otherwise.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].includes?(<span class="n">2</span>)  <span class="c">#=&gt; true</span>
-[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].includes?(<span class="n">5</span>)  <span class="c">#=&gt; false</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].includes?(<span class="n">2</span>) <span class="c"># =&gt; true</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].includes?(<span class="n">5</span>) <span class="c"># =&gt; false</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L478" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L513" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="index(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1508"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20index%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1509"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20index%28%26block%29"></a><div class="signature">
         
         def <strong>index</strong>(&amp;block)
 
@@ -1295,7 +1297,7 @@ interest is to be used in a read-only fashion.</p>
         <div class="doc">
 <p>Returns the index of the first element for which the passed block returns <code>true</code>.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].index { <span class="o">|</span>name<span class="o">|</span> name.size <span class="o">&lt;</span> <span class="n">4</span> }  <span class="c">#=&gt; 1 (Bob&#39;s index)</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].index { <span class="o">|</span>name<span class="o">|</span> name.size <span class="o">&lt;</span> <span class="n">4</span> } <span class="c"># =&gt; 1 (Bob&#39;s index)</span></code></pre>
 
 <p>Returns <code>nil</code> if the block didn&#39;t return <code>true</code>for any element.</p>
 </div>
@@ -1303,13 +1305,13 @@ interest is to be used in a read-only fashion.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L487" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L524" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="index(obj)-instance-method">
-      <a class="dashingAutolink" name="autolink-1509"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20index%28obj%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1510"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20index%28obj%29"></a><div class="signature">
         
         def <strong>index</strong>(obj)
 
@@ -1319,7 +1321,7 @@ interest is to be used in a read-only fashion.</p>
         <div class="doc">
 <p>Returns the index of the object <em>obj</em> in the collection.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].index(<span class="s">&#34;Alice&#34;</span>)  <span class="c">#=&gt; 0</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].index(<span class="s">&#34;Alice&#34;</span>) <span class="c"># =&gt; 0</span></code></pre>
 
 <p>Returns <code>nil</code> if <em>obj</em> is not in the collection.</p>
 </div>
@@ -1327,13 +1329,13 @@ interest is to be used in a read-only fashion.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L499" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L538" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="index_by(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1510"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20index_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1511"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20index_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>index_by</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1347,23 +1349,22 @@ Be aware, if two elements return the same value as a key one will override
 the other. If you want to keep all values, then you should probably use
 <code><a href="Enumerable.html#group_by%28%26block%3AT-%3EU%29forallU-instance-method">#group_by</a></code> instead.</p>
 
-<pre><code>[<span class="s">&#34;Anna&#34;</span>, <span class="s">&#34;Ary&#34;</span>, <span class="s">&#34;Alice&#34;</span>].index_by {<span class="o">|</span>e<span class="o">|</span> e.size }
-<span class="c">#=&gt; {4=&gt;&#34;Anna&#34;, 3=&gt;&#34;Ary&#34;, 5=&gt;&#34;Alice&#34;}</span>
-[<span class="s">&#34;Anna&#34;</span>, <span class="s">&#34;Ary&#34;</span>, <span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].index_by {<span class="o">|</span>e<span class="o">|</span> e.size }
-<span class="c"># =&gt; {4=&gt;&#34;Anna&#34;, 3=&gt;&#34;Bob&#34;, 5=&gt;&#34;Alice&#34;}</span></code></pre>
-
+<pre><code>[<span class="s">&#34;Anna&#34;</span>, <span class="s">&#34;Ary&#34;</span>, <span class="s">&#34;Alice&#34;</span>].index_by { <span class="o">|</span>e<span class="o">|</span> e.size }
+<span class="c"># =&gt; {4 =&gt; &#34;Anna&#34;, 3 =&gt; &#34;Ary&#34;, 5 =&gt; &#34;Alice&#34;}</span>
+[<span class="s">&#34;Anna&#34;</span>, <span class="s">&#34;Ary&#34;</span>, <span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].index_by { <span class="o">|</span>e<span class="o">|</span> e.size }
+<span class="c"># =&gt; {4 =&gt; &#34;Anna&#34;, 3 =&gt; &#34;Bob&#34;, 5 =&gt; &#34;Alice&#34;}</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L515" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L554" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="join(separator,io)-instance-method">
-      <a class="dashingAutolink" name="autolink-1511"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20join%28separator%2C%20io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1512"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20join%28separator%2C%20io%29"></a><div class="signature">
         
         def <strong>join</strong>(separator, io)
 
@@ -1377,19 +1378,19 @@ the other. If you want to keep all values, then you should probably use
 
 <p>Prints:</p>
 
-<pre><code><span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span></code></pre>
+<pre><code class="language-text">1, 2, 3, 4, 5</code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L586" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L632" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="join(separator=&amp;quot;&amp;quot;)-instance-method">
-      <a class="dashingAutolink" name="autolink-1512"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20join%28separator%20%3D%20%22%22%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1513"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20join%28separator%20%3D%20%22%22%29"></a><div class="signature">
         
         def <strong>join</strong>(separator = <span class="s">&#34;&#34;</span>)
 
@@ -1399,19 +1400,19 @@ the other. If you want to keep all values, then you should probably use
         <div class="doc">
 <p>Returns a <code><a href="String.html">String</a></code> created by concatenating the elements in the collection, separated by <em>separator</em> (defaults to none).</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].join(<span class="s">&#34;, &#34;</span>)  <span class="c">#=&gt; &#34;1, 2, 3, 4, 5&#34;</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].join(<span class="s">&#34;, &#34;</span>) <span class="c"># =&gt; &#34;1, 2, 3, 4, 5&#34;</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L559" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L601" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="join(separator,io,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1513"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20join%28separator%2C%20io%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1514"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20join%28separator%2C%20io%2C%20%26block%29"></a><div class="signature">
         
         def <strong>join</strong>(separator, io, &amp;block)
 
@@ -1426,19 +1427,19 @@ done via a block.</p>
 
 <p>Prints:</p>
 
-<pre><code>(<span class="n">1</span>), (<span class="n">2</span>), (<span class="n">3</span>), (<span class="n">4</span>), (<span class="n">5</span>)</code></pre>
+<pre><code class="language-text">(1), (2), (3), (4), (5)</code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L600" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L650" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="join(separator=&amp;quot;&amp;quot;,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1514"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20join%28separator%20%3D%20%22%22%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1515"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20join%28separator%20%3D%20%22%22%2C%20%26block%29"></a><div class="signature">
         
         def <strong>join</strong>(separator = <span class="s">&#34;&#34;</span>, &amp;block)
 
@@ -1449,19 +1450,19 @@ done via a block.</p>
 <p>Returns a <code><a href="String.html">String</a></code> created by concatenating the results of passing the elements in the collection to the passed
 block, separated by <em>separator</em> (defaults to none).</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].join(<span class="s">&#34;, &#34;</span>) { <span class="o">|</span>i<span class="o">|</span> <span class="o">-</span>i }  <span class="c">#=&gt; &#34;-1, -2, -3, -4, -5&#34;</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].join(<span class="s">&#34;, &#34;</span>) { <span class="o">|</span>i<span class="o">|</span> <span class="o">-</span>i } <span class="c"># =&gt; &#34;-1, -2, -3, -4, -5&#34;</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L570" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L613" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="map(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1515"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1516"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>map</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1471,21 +1472,21 @@ block, separated by <em>separator</em> (defaults to none).</p>
         <div class="doc">
 <p>Returns an array with the results of running the block against each element of the collection.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].map { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> <span class="n">10</span> }  <span class="c">#=&gt; [10, 20, 30]</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].map { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> <span class="n">10</span> } <span class="c"># =&gt; [10, 20, 30]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L611" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L662" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="map_with_index(&amp;block:T,Int32-&gt;U)-instance-method">
-      <a class="dashingAutolink" name="autolink-1516"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map_with_index%28%26block%20%3A%20T%2C%20Int32%20-%3E%20U%29"></a><div class="signature">
+    <div class="entry-detail" id="map_with_index(&amp;block:T,Int32-&gt;U)forallU-instance-method">
+      <a class="dashingAutolink" name="autolink-1517"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20map_with_index%28%26block%20%3A%20T%2C%20Int32%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
-        def <strong>map_with_index</strong>(&amp;block : T, <a href="Int32.html">Int32</a> -&gt; U)
+        def <strong>map_with_index</strong>(&amp;block : T, <a href="Int32.html">Int32</a> -&gt; U) forall U
 
         
       </div>
@@ -1493,19 +1494,20 @@ block, separated by <em>separator</em> (defaults to none).</p>
         <div class="doc">
 <p>Like <code><a href="Enumerable.html#map%28%26block%3AT-%3EU%29forallU-instance-method">#map</a></code>, but the block gets passed both the element and its index.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].map_with_index { <span class="o">|</span>name, i<span class="o">|</span> <span class="s">&#34;User #</span><span class="i">#{</span>i<span class="s"><span class="i">}</span>: </span><span class="i">#{</span>name<span class="s"><span class="i">}</span>&#34;</span> }  <span class="c">#=&gt; [&#34;User #0: Alice&#34;, &#34;User #1: Bob&#34;]</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].map_with_index { <span class="o">|</span>name, i<span class="o">|</span> <span class="s">&#34;User #</span><span class="i">#{</span>i<span class="s"><span class="i">}</span>: </span><span class="i">#{</span>name<span class="s"><span class="i">}</span>&#34;</span> }
+<span class="c"># =&gt; [&#34;User #0: Alice&#34;, &#34;User #1: Bob&#34;]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L621" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L674" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="max-instance-method">
-      <a class="dashingAutolink" name="autolink-1517"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1518"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max"></a><div class="signature">
         
         def <strong>max</strong>
 
@@ -1517,8 +1519,8 @@ block, separated by <em>separator</em> (defaults to none).</p>
 
 <p>It compares using <code>&gt;</code> so it will work for any type that supports that method.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].max         <span class="c">#=&gt; 3</span>
-[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].max  <span class="c">#=&gt; &#34;Bob&#34;</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].max        <span class="c"># =&gt; 3</span>
+[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].max <span class="c"># =&gt; &#34;Bob&#34;</span></code></pre>
 
 <p>Raises <code><a href="Enumerable/EmptyError.html">Enumerable::EmptyError</a></code> if the collection is empty.</p>
 </div>
@@ -1526,13 +1528,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L635" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L690" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="max?-instance-method">
-      <a class="dashingAutolink" name="autolink-1518"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1519"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max%3F"></a><div class="signature">
         
         def <strong>max?</strong>
 
@@ -1544,13 +1546,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L640" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L695" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="max_by(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1519"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1520"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>max_by</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1562,7 +1564,7 @@ block, separated by <em>separator</em> (defaults to none).</p>
 
 <p>It compares using <code>&gt;</code> so the block must return a type that supports that method</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].max_by { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; &#34;Alice&#34;</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].max_by { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; &#34;Alice&#34;</span></code></pre>
 
 <p>Raises <code><a href="Enumerable/EmptyError.html">Enumerable::EmptyError</a></code> if the collection is empty.</p>
 </div>
@@ -1570,13 +1572,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L651" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L708" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="max_by?(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1520"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max_by%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1521"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max_by%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>max_by?</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1588,13 +1590,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L658" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L715" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="max_of(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1521"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max_of%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1522"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max_of%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>max_of</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1604,19 +1606,19 @@ block, separated by <em>separator</em> (defaults to none).</p>
         <div class="doc">
 <p>Like <code><a href="Enumerable.html#max_by%28%26block%3AT-%3EU%29forallU-instance-method">#max_by</a></code> but instead of the element, returns the value returned by the block.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].max_of { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; 5 (Alice&#39;s size)</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].max_of { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; 5 (Alice&#39;s size)</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L684" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L742" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="max_of?(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1522"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max_of%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1523"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20max_of%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>max_of?</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1628,13 +1630,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L691" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L749" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="min-instance-method">
-      <a class="dashingAutolink" name="autolink-1523"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1524"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min"></a><div class="signature">
         
         def <strong>min</strong>
 
@@ -1646,8 +1648,8 @@ block, separated by <em>separator</em> (defaults to none).</p>
 
 <p>It compares using <code>&lt;</code> so it will work for any type that supports that method.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].min         <span class="c">#=&gt; 1</span>
-[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].min  <span class="c">#=&gt; &#34;Alice&#34;</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].min        <span class="c"># =&gt; 1</span>
+[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].min <span class="c"># =&gt; &#34;Alice&#34;</span></code></pre>
 
 <p>Raises <code><a href="Enumerable/EmptyError.html">Enumerable::EmptyError</a></code> if the collection is empty.</p>
 </div>
@@ -1655,13 +1657,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L719" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L779" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="min?-instance-method">
-      <a class="dashingAutolink" name="autolink-1524"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1525"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min%3F"></a><div class="signature">
         
         def <strong>min?</strong>
 
@@ -1673,13 +1675,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L724" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L784" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="min_by(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1525"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1526"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>min_by</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1691,7 +1693,7 @@ block, separated by <em>separator</em> (defaults to none).</p>
 
 <p>It compares using <code>&lt;</code> so the block must return a type that supports that method</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].min_by { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; &#34;Bob&#34;</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].min_by { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; &#34;Bob&#34;</span></code></pre>
 
 <p>Raises <code><a href="Enumerable/EmptyError.html">Enumerable::EmptyError</a></code> if the collection is empty.</p>
 </div>
@@ -1699,13 +1701,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L735" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L797" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="min_by?(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1526"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min_by%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1527"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min_by%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>min_by?</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1717,13 +1719,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L742" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L804" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="min_of(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1527"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min_of%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1528"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min_of%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>min_of</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1733,19 +1735,19 @@ block, separated by <em>separator</em> (defaults to none).</p>
         <div class="doc">
 <p>Like <code><a href="Enumerable.html#min_by%28%26block%3AT-%3EU%29forallU-instance-method">#min_by</a></code> but instead of the element, returns the value returned by the block.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].min_of { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; 3 (Bob&#39;s size)</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].min_of { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; 3 (Bob&#39;s size)</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L768" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L831" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="min_of?(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1528"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min_of%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1529"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20min_of%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>min_of?</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1757,13 +1759,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L775" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L838" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="minmax-instance-method">
-      <a class="dashingAutolink" name="autolink-1529"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1530"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax"></a><div class="signature">
         
         def <strong>minmax</strong>
 
@@ -1773,7 +1775,7 @@ block, separated by <em>separator</em> (defaults to none).</p>
         <div class="doc">
 <p>Returns a tuple with both the minimum and maximum value.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].minmax  <span class="c">#=&gt; {1, 3}</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].minmax <span class="c"># =&gt; {1, 3}</span></code></pre>
 
 <p>Raises <code><a href="Enumerable/EmptyError.html">Enumerable::EmptyError</a></code> if the collection is empty.</p>
 </div>
@@ -1781,13 +1783,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L800" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L865" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="minmax?-instance-method">
-      <a class="dashingAutolink" name="autolink-1530"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1531"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax%3F"></a><div class="signature">
         
         def <strong>minmax?</strong>
 
@@ -1799,13 +1801,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L805" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L870" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="minmax_by(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1531"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1532"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax_by%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>minmax_by</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1815,7 +1817,7 @@ block, separated by <em>separator</em> (defaults to none).</p>
         <div class="doc">
 <p>Returns a tuple with both the minimum and maximum values according to the passed block.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>, <span class="s">&#34;Carl&#34;</span>].minmax_by { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; {&#34;Bob&#34;, &#34;Alice&#34;}</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>, <span class="s">&#34;Carl&#34;</span>].minmax_by { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; {&#34;Bob&#34;, &#34;Alice&#34;}</span></code></pre>
 
 <p>Raises <code><a href="Enumerable/EmptyError.html">Enumerable::EmptyError</a></code> if the collection is empty.</p>
 </div>
@@ -1823,13 +1825,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L814" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L881" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="minmax_by?(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1532"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax_by%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1533"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax_by%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>minmax_by?</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1841,13 +1843,13 @@ block, separated by <em>separator</em> (defaults to none).</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L821" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L888" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="minmax_of(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1533"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax_of%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1534"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax_of%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>minmax_of</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1858,7 +1860,7 @@ block, separated by <em>separator</em> (defaults to none).</p>
 <p>Returns a tuple with both the minimum and maximum value the block returns when passed the elements in the
 collection.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>, <span class="s">&#34;Carl&#34;</span>].minmax_of { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; {3, 5}</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>, <span class="s">&#34;Carl&#34;</span>].minmax_of { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; {3, 5}</span></code></pre>
 
 <p>Raises <code><a href="Enumerable/EmptyError.html">Enumerable::EmptyError</a></code> if the collection is empty.</p>
 </div>
@@ -1866,13 +1868,13 @@ collection.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L855" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L924" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="minmax_of?(&amp;block:T-&gt;U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-1534"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax_of%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1535"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minmax_of%3F%28%26block%20%3A%20T%20-%3E%20U%29%20forall%20U"></a><div class="signature">
         
         def <strong>minmax_of?</strong>(&amp;block : T -&gt; U) forall U
 
@@ -1884,13 +1886,13 @@ collection.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L862" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L931" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="none?(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1535"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20none%3F%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1536"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20none%3F%28%26block%29"></a><div class="signature">
         
         def <strong>none?</strong>(&amp;block)
 
@@ -1900,7 +1902,7 @@ collection.</p>
         <div class="doc">
 <p>Returns <code>true</code> if the passed block returns <code>true</code> for none of the elements of the collection.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].none? { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">5</span> }  <span class="c">#=&gt; true</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].none? { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">5</span> } <span class="c"># =&gt; true</span></code></pre>
 
 <p>It&#39;s the opposite of <code><a href="Enumerable.html#all%3F%28%26block%29-instance-method">#all?</a></code>.</p>
 </div>
@@ -1908,13 +1910,13 @@ collection.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L891" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L962" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="none?-instance-method">
-      <a class="dashingAutolink" name="autolink-1536"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20none%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1537"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20none%3F"></a><div class="signature">
         
         def <strong>none?</strong>
 
@@ -1924,8 +1926,8 @@ collection.</p>
         <div class="doc">
 <p>Returns <code>true</code> if all of the elements of the collection are <code>false</code> or <code>nil</code>.</p>
 
-<pre><code>[<span class="n">nil</span>, <span class="n">false</span>].none?        <span class="c">#=&gt; true</span>
-[<span class="n">nil</span>, <span class="n">false</span>, <span class="n">true</span>].none?  <span class="c">#=&gt; false</span></code></pre>
+<pre><code>[<span class="n">nil</span>, <span class="n">false</span>].none?       <span class="c"># =&gt; true</span>
+[<span class="n">nil</span>, <span class="n">false</span>, <span class="n">true</span>].none? <span class="c"># =&gt; false</span></code></pre>
 
 <p>It&#39;s the opposite of <code><a href="Enumerable.html#all%3F%28%26block%29-instance-method">#all?</a></code>.</p>
 </div>
@@ -1933,13 +1935,13 @@ collection.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L902" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L975" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="one?(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1537"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20one%3F%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1538"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20one%3F%28%26block%29"></a><div class="signature">
         
         def <strong>one?</strong>(&amp;block)
 
@@ -1949,20 +1951,20 @@ collection.</p>
         <div class="doc">
 <p>Returns <code>true</code> if the passed block returns <code>true</code> for exactly one of the elements of the collection.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].one? { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">2</span> }  <span class="c">#=&gt; true</span>
-[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].one? { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">1</span> }  <span class="c">#=&gt; false</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].one? { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">2</span> } <span class="c"># =&gt; true</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>].one? { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&gt;</span> <span class="n">1</span> } <span class="c"># =&gt; false</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L911" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L985" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="partition(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1538"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20partition%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1539"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20partition%28%26block%29"></a><div class="signature">
         
         def <strong>partition</strong>(&amp;block)
 
@@ -1973,19 +1975,19 @@ collection.</p>
 <p>Returns a tuple with two arrays. The first one contains the elements in the collection for which the passed block
 returned <code>true</code>, and the second one those for which it returned <code>false</code>.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].partition { <span class="o">|</span>i<span class="o">|</span> i <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span>}  <span class="c">#=&gt; {[2, 4, 6], [1, 3, 5]}</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].partition { <span class="o">|</span>i<span class="o">|</span> i <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span> } <span class="c"># =&gt; {[2, 4, 6], [1, 3, 5]}</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L925" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1000" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="product(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1539"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20product%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1540"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20product%28%26block%29"></a><div class="signature">
         
         def <strong>product</strong>(&amp;block)
 
@@ -1995,23 +1997,23 @@ returned <code>true</code>, and the second one those for which it returned <code
         <div class="doc">
 <p>Multiplies all results of the passed block for each element in the collection.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].product { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; 15 (5 * 3)</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].product { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; 15 (5 * 3)</span></code></pre>
 
 <p>If the collection is empty, returns 1.</p>
 
-<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).product { <span class="o">|</span>x<span class="o">|</span> x <span class="o">+</span> <span class="n">1</span> } <span class="c">#=&gt; 1</span></code></pre>
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).product { <span class="o">|</span>x<span class="o">|</span> x <span class="o">+</span> <span class="n">1</span> } <span class="c"># =&gt; 1</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1080" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1189" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="product(initial:Number,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1540"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20product%28initial%20%3A%20Number%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1541"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20product%28initial%20%3A%20Number%2C%20%26block%29"></a><div class="signature">
         
         def <strong>product</strong>(initial : <a href="Number.html">Number</a>, &amp;block)
 
@@ -2021,23 +2023,23 @@ returned <code>true</code>, and the second one those for which it returned <code
         <div class="doc">
 <p>Multiplies <em>initial</em> and all results of the passed block for each element in the collection.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].product(<span class="n">2</span>) { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; 30 (2 * 5 * 3)</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].product(<span class="n">2</span>) { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; 30 (2 * 5 * 3)</span></code></pre>
 
 <p>If the collection is empty, returns one.</p>
 
-<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>).product(<span class="n">1</span>) { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c">#=&gt; 1</span></code></pre>
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>).product(<span class="n">1</span>) { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; 1</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1093" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1206" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="product-instance-method">
-      <a class="dashingAutolink" name="autolink-1541"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20product"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1542"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20product"></a><div class="signature">
         
         def <strong>product</strong>
 
@@ -2049,23 +2051,23 @@ returned <code>true</code>, and the second one those for which it returned <code
 
 <p>Only collections of numbers (objects that can be multiplied via a <code>*</code> method) are supported.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].product  <span class="c">#=&gt; 720</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].product <span class="c"># =&gt; 720</span></code></pre>
 
 <p>If the collection is empty, returns 1.</p>
 
-<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).product <span class="c">#=&gt; 1</span></code></pre>
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).product <span class="c"># =&gt; 1</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1053" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1154" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="product(initial:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-1542"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20product%28initial%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1543"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20product%28initial%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>product</strong>(initial : <a href="Number.html">Number</a>)
 
@@ -2080,23 +2082,23 @@ type to avoid overflow.</p>
 
 <p>Only collections of numbers (objects that can be multiplied via a <code>*</code> method) are supported.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].product(<span class="n">7</span>)  <span class="c">#=&gt; 5040</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].product(<span class="n">7</span>) <span class="c"># =&gt; 5040</span></code></pre>
 
 <p>If the collection is empty, returns <em>initial</em>.</p>
 
-<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).product(<span class="n">7</span>) <span class="c">#=&gt; 7</span></code></pre>
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).product(<span class="n">7</span>) <span class="c"># =&gt; 7</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1069" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1174" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reduce(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1543"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reduce%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1544"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reduce%28%26block%29"></a><div class="signature">
         
         def <strong>reduce</strong>(&amp;block)
 
@@ -2111,19 +2113,19 @@ to reduce them to a single value.</p>
 result becomes the new value for <em>memo</em>. At the end of the iteration, the final value of <em>memo</em> is
 the return value for the method. The initial value for the accumulator is the first element in the collection.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].reduce { <span class="o">|</span>acc, i<span class="o">|</span> acc <span class="o">+</span> i }  <span class="c">#=&gt; 15</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].reduce { <span class="o">|</span>acc, i<span class="o">|</span> acc <span class="o">+</span> i } <span class="c"># =&gt; 15</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L532" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L572" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reduce(memo,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1544"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reduce%28memo%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1545"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reduce%28memo%2C%20%26block%29"></a><div class="signature">
         
         def <strong>reduce</strong>(memo, &amp;block)
 
@@ -2133,19 +2135,19 @@ the return value for the method. The initial value for the accumulator is the fi
         <div class="doc">
 <p>Just like the other variant, but you can set the initial value of the accumulator.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].reduce(<span class="n">10</span>) { <span class="o">|</span>acc, i<span class="o">|</span> acc <span class="o">+</span> i }  <span class="c">#=&gt; 25</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].reduce(<span class="n">10</span>) { <span class="o">|</span>acc, i<span class="o">|</span> acc <span class="o">+</span> i } <span class="c"># =&gt; 25</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L548" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L589" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reject(&amp;block:T-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-1545"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reject%28%26block%20%3A%20T%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1546"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reject%28%26block%20%3A%20T%20-%3E%20%29"></a><div class="signature">
         
         def <strong>reject</strong>(&amp;block : T -&gt; )
 
@@ -2155,19 +2157,19 @@ the return value for the method. The initial value for the accumulator is the fi
         <div class="doc">
 <p>Returns an array with all the elements in the collection for which the passed block returns <code>false</code>.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].reject { <span class="o">|</span>i<span class="o">|</span> i <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span>}  <span class="c">#=&gt; [1, 3, 5]</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].reject { <span class="o">|</span>i<span class="o">|</span> i <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span> } <span class="c"># =&gt; [1, 3, 5]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L938" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1014" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="select(&amp;block:T-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-1546"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20select%28%26block%20%3A%20T%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1547"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20select%28%26block%20%3A%20T%20-%3E%20%29"></a><div class="signature">
         
         def <strong>select</strong>(&amp;block : T -&gt; )
 
@@ -2177,19 +2179,19 @@ the return value for the method. The initial value for the accumulator is the fi
         <div class="doc">
 <p>Returns an array with all the elements in the collection for which the passed block returns <code>true</code>.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].select { <span class="o">|</span>i<span class="o">|</span> i <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span>}  <span class="c">#=&gt; [2, 4, 6]</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].select { <span class="o">|</span>i<span class="o">|</span> i <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span> } <span class="c"># =&gt; [2, 4, 6]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L948" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1025" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size-instance-method">
-      <a class="dashingAutolink" name="autolink-1547"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1548"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
         
         def <strong>size</strong>
 
@@ -2199,19 +2201,19 @@ the return value for the method. The initial value for the accumulator is the fi
         <div class="doc">
 <p>Returns the number of elements in the collection.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].size  <span class="c">#=&gt; 4</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].size <span class="c"># =&gt; 4</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L958" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1036" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="skip(count:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-1548"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip%28count%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1549"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip%28count%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>skip</strong>(count : <a href="Int.html">Int</a>)
 
@@ -2223,19 +2225,19 @@ the return value for the method. The initial value for the accumulator is the fi
 
 <p>If <em>count</em> is bigger than the number of elements in the collection, returns an empty array.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].skip(<span class="n">3</span>)  <span class="c">#=&gt; [4, 5, 6]</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].skip(<span class="n">3</span>) <span class="c"># =&gt; [4, 5, 6]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L967" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1047" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="skip_while(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1549"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip_while%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1550"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip_while%28%26block%29"></a><div class="signature">
         
         def <strong>skip_while</strong>(&amp;block)
 
@@ -2245,19 +2247,19 @@ the return value for the method. The initial value for the accumulator is the fi
         <div class="doc">
 <p>Skips elements up to, but not including, the first element for which the block returns nil or false and returns an array containing the remaining elements.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">0</span>].skip_while {<span class="o">|</span>i<span class="o">|</span> i <span class="o">&lt;</span> <span class="n">3</span>} <span class="c">#=&gt; [3, 4, 5, 0]</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">0</span>].skip_while { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&lt;</span> <span class="n">3</span> } <span class="c"># =&gt; [3, 4, 5, 0]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L981" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1062" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sum(initial)-instance-method">
-      <a class="dashingAutolink" name="autolink-1550"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum%28initial%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1551"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum%28initial%29"></a><div class="signature">
         
         def <strong>sum</strong>(initial)
 
@@ -2272,23 +2274,23 @@ overflow.</p>
 
 <p>Only collections of numbers (objects that can be added via an <code>+</code> method) are supported.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].sum(<span class="n">7</span>)  <span class="c">#=&gt; 28</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].sum(<span class="n">7</span>) <span class="c"># =&gt; 28</span></code></pre>
 
 <p>If the collection is empty, returns <em>initial</em>.</p>
 
-<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).sum(<span class="n">7</span>) <span class="c">#=&gt; 7</span></code></pre>
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).sum(<span class="n">7</span>) <span class="c"># =&gt; 7</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1016" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1105" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sum-instance-method">
-      <a class="dashingAutolink" name="autolink-1551"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1552"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum"></a><div class="signature">
         
         def <strong>sum</strong>
 
@@ -2300,23 +2302,23 @@ overflow.</p>
 
 <p>Only collections of numbers (objects that can be added via an <code>+</code> method) are supported.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].sum  <span class="c">#=&gt; 21</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>].sum <span class="c"># =&gt; 21</span></code></pre>
 
 <p>If the collection is empty, returns zero.</p>
 
-<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).sum <span class="c">#=&gt; 0</span></code></pre>
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).sum <span class="c"># =&gt; 0</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1000" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1085" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sum(initial,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1552"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum%28initial%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1553"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum%28initial%2C%20%26block%29"></a><div class="signature">
         
         def <strong>sum</strong>(initial, &amp;block)
 
@@ -2326,23 +2328,23 @@ overflow.</p>
         <div class="doc">
 <p>Adds <em>initial</em> and all results of the passed block for each element in the collection.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].sum(<span class="n">1</span>) { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; 9 (1 + 5 + 3)</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].sum(<span class="n">1</span>) { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; 9 (1 + 5 + 3)</span></code></pre>
 
 <p>If the collection is empty, returns zero.</p>
 
-<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>).sum(<span class="n">1</span>) { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c">#=&gt; 1</span></code></pre>
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>).sum(<span class="n">1</span>) { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; 1</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1040" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1137" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sum(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1553"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1554"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sum%28%26block%29"></a><div class="signature">
         
         def <strong>sum</strong>(&amp;block)
 
@@ -2352,23 +2354,23 @@ overflow.</p>
         <div class="doc">
 <p>Adds all results of the passed block for each element in the collection.</p>
 
-<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].sum { <span class="o">|</span>name<span class="o">|</span> name.size }  <span class="c">#=&gt; 8 (5 + 3)</span></code></pre>
+<pre><code>[<span class="s">&#34;Alice&#34;</span>, <span class="s">&#34;Bob&#34;</span>].sum { <span class="o">|</span>name<span class="o">|</span> name.size } <span class="c"># =&gt; 8 (5 + 3)</span></code></pre>
 
 <p>If the collection is empty, returns zero.</p>
 
-<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).sum { <span class="o">|</span>x<span class="o">|</span> x <span class="o">+</span> <span class="n">1</span> } <span class="c">#=&gt; 0</span></code></pre>
+<pre><code>(<span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span>).sum { <span class="o">|</span>x<span class="o">|</span> x <span class="o">+</span> <span class="n">1</span> } <span class="c"># =&gt; 0</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1027" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1120" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="take_while(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-1554"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20take_while%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1555"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20take_while%28%26block%29"></a><div class="signature">
         
         def <strong>take_while</strong>(&amp;block)
 
@@ -2378,19 +2380,19 @@ overflow.</p>
         <div class="doc">
 <p>Passes elements to the block until the block returns nil or false, then stops iterating and returns an array of all prior elements.</p>
 
-<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">0</span>].take_while {<span class="o">|</span>i<span class="o">|</span> i <span class="o">&lt;</span> <span class="n">3</span>} <span class="c">#=&gt; [1, 2]</span></code></pre>
+<pre><code>[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">0</span>].take_while { <span class="o">|</span>i<span class="o">|</span> i <span class="o">&lt;</span> <span class="n">3</span> } <span class="c"># =&gt; [1, 2]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1116" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1230" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_a-instance-method">
-      <a class="dashingAutolink" name="autolink-1555"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1556"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
         
         def <strong>to_a</strong>
 
@@ -2400,19 +2402,19 @@ overflow.</p>
         <div class="doc">
 <p>Returns an array with all the elements in the collection.</p>
 
-<pre><code>(<span class="n">1</span>..<span class="n">5</span>).to_a  <span class="c">#=&gt; [1, 2, 3, 4, 5]</span></code></pre>
+<pre><code>(<span class="n">1</span>..<span class="n">5</span>).to_a <span class="c"># =&gt; [1, 2, 3, 4, 5]</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1129" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1244" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_h-instance-method">
-      <a class="dashingAutolink" name="autolink-1556"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_h"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1557"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_h"></a><div class="signature">
         
         def <strong>to_h</strong>
 
@@ -2421,22 +2423,22 @@ overflow.</p>
       
         <div class="doc">
 <p>Creates a hash out of an Enumerable where each element is a
-2 element structure (for instance a Tuple or an Array)</p>
+2 element structure (for instance a <code><a href="Tuple.html">Tuple</a></code> or an <code><a href="Array.html">Array</a></code>)</p>
 
-<pre><code>[[<span class="n">:a</span>, <span class="n">:b</span>], [<span class="n">:c</span>, <span class="n">:d</span>]].to_h =&gt; {a: <span class="n">:b</span>, c: <span class="n">:d</span>}
-<span class="t">Tuple</span>.<span class="k">new</span>({<span class="n">:a</span>, <span class="n">1</span>}, {<span class="n">:c</span>, <span class="n">2</span>}).to_h =&gt; {a: <span class="n">1</span>, c: <span class="n">2</span>}</code></pre>
+<pre><code>[[<span class="n">:a</span>, <span class="n">:b</span>], [<span class="n">:c</span>, <span class="n">:d</span>]].to_h        <span class="c"># =&gt; {:a =&gt; :b, :c =&gt; :d}</span>
+<span class="t">Tuple</span>.<span class="k">new</span>({<span class="n">:a</span>, <span class="n">1</span>}, {<span class="n">:c</span>, <span class="n">2</span>}).to_h <span class="c"># =&gt; {:a =&gt; 1, :c =&gt; 2}</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/enumerable.cr#L1141" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/enumerable.cr#L1257" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_set-instance-method">
-      <a class="dashingAutolink" name="autolink-1557"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_set"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1558"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_set"></a><div class="signature">
         
         def <strong>to_set</strong>
 
@@ -2448,7 +2450,7 @@ overflow.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/set.cr#L395" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/set.cr#L394" target="_blank">View source</a>]
         
       </div>
     </div>

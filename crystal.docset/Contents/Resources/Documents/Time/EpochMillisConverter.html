@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5604"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Time%3A%3AEpochMillisConverter%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Time::EpochMillisConverter - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5641"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Time%3A%3AEpochMillisConverter%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Time::EpochMillisConverter - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -29,15 +29,15 @@ since the unix epoch. See <code><a href="../Time.html#epoch_ms%28milliseconds%3A
 
 <pre><code><span class="k">require</span> <span class="s">&#34;json&#34;</span>
 
-<span class="k">class</span> <span class="t">Person</span>
+<span class="k">class</span> <span class="t">Timestamp</span>
   <span class="t">JSON</span>.mapping({
-    birth_date: {<span class="k">type</span>: <span class="t">Time</span>, converter: <span class="t">Time</span><span class="t">::</span><span class="t">EpochMillisConverter</span>},
+    value: {<span class="k">type</span>: <span class="t">Time</span>, converter: <span class="t">Time</span><span class="t">::</span><span class="t">EpochMillisConverter</span>},
   })
 <span class="k">end</span>
 
-person <span class="o">=</span> <span class="t">Person</span>.from_json(<span class="s">%({&#34;birth_date&#34;: 1459860483856})</span>)
-person.birth_date <span class="c"># =&gt; 2016-04-05 12:48:03 UTC</span>
-person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459860483856})</span></code></pre>
+timestamp <span class="o">=</span> <span class="t">Timestamp</span>.from_json(<span class="s">%({&#34;value&#34;: 1459860483856})</span>)
+timestamp.value   <span class="c"># =&gt; 2016-04-05 12:48:03.856 UTC</span>
+timestamp.to_json <span class="c"># =&gt; %({&#34;value&#34;:1459860483856})</span></code></pre>
 
 
 
@@ -55,22 +55,22 @@ person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459860483856}
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/from_json.cr#L246" target="_blank">json/from_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/from_json.cr#L246" target="_blank">json/from_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L348" target="_blank">json/to_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/to_json.cr#L171" target="_blank">json/to_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/from_yaml.cr#L175" target="_blank">yaml/from_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/yaml/from_yaml.cr#L175" target="_blank">yaml/from_yaml.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/to_yaml.cr#L119" target="_blank">yaml/to_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/yaml/to_yaml.cr#L115" target="_blank">yaml/to_yaml.cr</a>
     
     <br/>
   
@@ -93,12 +93,12 @@ person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459860483856}
       </li>
     
       <li class="entry-summary">
-        <a href="#to_json%28value%3ATime%2Cio%3AIO%29-class-method" class="signature"><strong>.to_json</strong>(value : Time, io : IO)</a>
+        <a href="#to_json%28value%3ATime%2Cjson%3AJSON%3A%3ABuilder%29-class-method" class="signature"><strong>.to_json</strong>(value : Time, json : JSON::Builder)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_yaml%28value%3ATime%2Cemitter%3AYAML%3A%3AEmitter%29-class-method" class="signature"><strong>.to_yaml</strong>(value : Time, emitter : YAML::Emitter)</a>
+        <a href="#to_yaml%28value%3ATime%2Cyaml%3AYAML%3A%3ABuilder%29-class-method" class="signature"><strong>.to_yaml</strong>(value : Time, yaml : YAML::Builder)</a>
         
       </li>
     
@@ -118,7 +118,7 @@ person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459860483856}
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="from_json(value:JSON::PullParser):Time-class-method">
-      <a class="dashingAutolink" name="autolink-5605"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_json%28value%20%3A%20JSON%3A%3APullParser%29%20%3A%20Time"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5642"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_json%28value%20%3A%20JSON%3A%3APullParser%29%20%3A%20Time"></a><div class="signature">
         
         def self.<strong>from_json</strong>(value : <a href="../JSON/PullParser.html">JSON::PullParser</a>) : <a href="../Time.html">Time</a>
 
@@ -128,13 +128,13 @@ person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459860483856}
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/from_json.cr#L247" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/from_json.cr#L247" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="from_yaml(value:YAML::PullParser):Time-class-method">
-      <a class="dashingAutolink" name="autolink-5606"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_yaml%28value%20%3A%20YAML%3A%3APullParser%29%20%3A%20Time"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5643"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.from_yaml%28value%20%3A%20YAML%3A%3APullParser%29%20%3A%20Time"></a><div class="signature">
         
         def self.<strong>from_yaml</strong>(value : <a href="../YAML/PullParser.html">YAML::PullParser</a>) : <a href="../Time.html">Time</a>
 
@@ -144,15 +144,15 @@ person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459860483856}
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/from_yaml.cr#L176" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/yaml/from_yaml.cr#L176" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="to_json(value:Time,io:IO)-class-method">
-      <a class="dashingAutolink" name="autolink-5607"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_json%28value%20%3A%20Time%2C%20io%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="to_json(value:Time,json:JSON::Builder)-class-method">
+      <a class="dashingAutolink" name="autolink-5644"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_json%28value%20%3A%20Time%2C%20json%20%3A%20JSON%3A%3ABuilder%29"></a><div class="signature">
         
-        def self.<strong>to_json</strong>(value : <a href="../Time.html">Time</a>, io : <a href="../IO.html">IO</a>)
+        def self.<strong>to_json</strong>(value : <a href="../Time.html">Time</a>, json : <a href="../JSON/Builder.html">JSON::Builder</a>)
 
         
       </div>
@@ -160,15 +160,15 @@ person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459860483856}
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L349" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/to_json.cr#L172" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="to_yaml(value:Time,emitter:YAML::Emitter)-class-method">
-      <a class="dashingAutolink" name="autolink-5608"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_yaml%28value%20%3A%20Time%2C%20emitter%20%3A%20YAML%3A%3AEmitter%29"></a><div class="signature">
+    <div class="entry-detail" id="to_yaml(value:Time,yaml:YAML::Builder)-class-method">
+      <a class="dashingAutolink" name="autolink-5645"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.to_yaml%28value%20%3A%20Time%2C%20yaml%20%3A%20YAML%3A%3ABuilder%29"></a><div class="signature">
         
-        def self.<strong>to_yaml</strong>(value : <a href="../Time.html">Time</a>, emitter : <a href="../YAML/Emitter.html">YAML::Emitter</a>)
+        def self.<strong>to_yaml</strong>(value : <a href="../Time.html">Time</a>, yaml : <a href="../YAML/Builder.html">YAML::Builder</a>)
 
         
       </div>
@@ -176,7 +176,7 @@ person.to_json    <span class="c"># =&gt; %({&#34;birth_date&#34;:1459860483856}
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/to_yaml.cr#L120" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/yaml/to_yaml.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>

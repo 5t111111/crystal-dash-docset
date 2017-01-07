@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5055"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AAddrinfo%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::Addrinfo - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5088"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Socket%3A%3AAddrinfo%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Socket::Addrinfo - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -28,6 +28,10 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>Domain name resolver.</p>
+
 
 
 
@@ -44,7 +48,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L2" target="_blank">socket/addrinfo.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L3" target="_blank">socket/addrinfo.cr</a>
     
     <br/>
   
@@ -62,17 +66,44 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#resolve%28host%2Cservice%2Cfamily%3AFamily%2Ctype%3AType%2Cprotocol%3AProtocol%3DProtocol%3A%3AIP%2Ctimeout%3Dnil%2C%26block%29-class-method" class="signature"><strong>.resolve</strong>(host, service, family : Family, type : Type, protocol : Protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, timeout = <span class="n">nil</span>, &amp;block)</a>
+        <a href="#resolve%28domain%2Cservice%2Cfamily%3AFamily%3F%3Dnil%2Ctype%3AType%3Dnil%2Cprotocol%3AProtocol%3DProtocol%3A%3AIP%2Ctimeout%3Dnil%29%3AArray%28Addrinfo%29-class-method" class="signature"><strong>.resolve</strong>(domain, service, family : Family? = <span class="n">nil</span>, type : Type = <span class="n">nil</span>, protocol : Protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, timeout = <span class="n">nil</span>) : Array(Addrinfo)</a>
+        
+          <div class="summary"><p>Resolves a domain that best matches the given options.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#tcp%28host%2Cservice%2Cfamily%3DFamily%3A%3AUNSPEC%2Ctimeout%3Dnil%2C%26block%29-class-method" class="signature"><strong>.tcp</strong>(host, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>, &amp;block)</a>
+        <a href="#resolve%28domain%2Cservice%2Cfamily%3AFamily%3F%3Dnil%2Ctype%3AType%3Dnil%2Cprotocol%3AProtocol%3DProtocol%3A%3AIP%2Ctimeout%3Dnil%2C%26block%29-class-method" class="signature"><strong>.resolve</strong>(domain, service, family : Family? = <span class="n">nil</span>, type : Type = <span class="n">nil</span>, protocol : Protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, timeout = <span class="n">nil</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Resolves a domain that best matches the given options.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#udp%28host%2Cservice%2Cfamily%3DFamily%3A%3AUNSPEC%2Ctimeout%3Dnil%2C%26block%29-class-method" class="signature"><strong>.udp</strong>(host, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>, &amp;block)</a>
+        <a href="#tcp%28domain%2Cservice%2Cfamily%3DFamily%3A%3AUNSPEC%2Ctimeout%3Dnil%29%3AArray%28Addrinfo%29-class-method" class="signature"><strong>.tcp</strong>(domain, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>) : Array(Addrinfo)</a>
+        
+          <div class="summary"><p>Resolves <em>domain</em> for the UDP protocol and returns an <code><a href="../Array.html">Array</a></code> of possible <code><a href="../Socket/Addrinfo.html">Addrinfo</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tcp%28domain%2Cservice%2Cfamily%3DFamily%3A%3AUNSPEC%2Ctimeout%3Dnil%2C%26block%29-class-method" class="signature"><strong>.tcp</strong>(domain, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Resolves a domain for the TCP protocol with STREAM type, and yields each possible <code><a href="../Socket/Addrinfo.html">Addrinfo</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#udp%28domain%2Cservice%2Cfamily%3DFamily%3A%3AUNSPEC%2Ctimeout%3Dnil%29%3AArray%28Addrinfo%29-class-method" class="signature"><strong>.udp</strong>(domain, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>) : Array(Addrinfo)</a>
+        
+          <div class="summary"><p>Resolves <em>domain</em> for the UDP protocol and returns an <code><a href="../Array.html">Array</a></code> of possible <code><a href="../Socket/Addrinfo.html">Addrinfo</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#udp%28domain%2Cservice%2Cfamily%3DFamily%3A%3AUNSPEC%2Ctimeout%3Dnil%2C%26block%29-class-method" class="signature"><strong>.udp</strong>(domain, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Resolves a domain for the UDP protocol with DGRAM type, and yields each possible <code><a href="../Socket/Addrinfo.html">Addrinfo</a></code>.</p></div>
         
       </li>
     
@@ -90,6 +121,8 @@
     
       <li class="entry-summary">
         <a href="#ip_address-instance-method" class="signature"><strong>#ip_address</strong></a>
+        
+          <div class="summary"><p>Returns an <code><a href="../Socket/IPAddress.html">IPAddress</a></code> matching this addrinfo.</p></div>
         
       </li>
     
@@ -256,8 +289,8 @@
     tap</a>, 
     
   
-    <a href="../Object.html#to_json-instance-method" class="tooltip">
-      <span>to_json</span>
+    <a href="../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
     to_json</a>, 
     
   
@@ -363,7 +396,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(addrinfo:Pointer(LibC::Addrinfo))-class-method">
-      <a class="dashingAutolink" name="autolink-5056"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28addrinfo%20%3A%20Pointer%28LibC%3A%3AAddrinfo%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5089"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28addrinfo%20%3A%20Pointer%28LibC%3A%3AAddrinfo%29%29"></a><div class="signature">
         
         def self.<strong>new</strong>(addrinfo : <a href="../Pointer.html">Pointer</a>(LibC::Addrinfo))
 
@@ -373,55 +406,169 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L139" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="resolve(host,service,family:Family,type:Type,protocol:Protocol=Protocol::IP,timeout=nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5057"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.resolve%28host%2C%20service%2C%20family%20%3A%20Family%2C%20type%20%3A%20Type%2C%20protocol%20%3A%20Protocol%20%3D%20Protocol%3A%3AIP%2C%20timeout%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="resolve(domain,service,family:Family?=nil,type:Type=nil,protocol:Protocol=Protocol::IP,timeout=nil):Array(Addrinfo)-class-method">
+      <a class="dashingAutolink" name="autolink-5090"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.resolve%28domain%2C%20service%2C%20family%20%3A%20Family%3F%20%3D%20nil%2C%20type%20%3A%20Type%20%3D%20nil%2C%20protocol%20%3A%20Protocol%20%3D%20Protocol%3A%3AIP%2C%20timeout%20%3D%20nil%29%20%3A%20Array%28Addrinfo%29"></a><div class="signature">
         
-        def self.<strong>resolve</strong>(host, service, family : <a href="../Socket/Family.html">Family</a>, type : <a href="../Socket/Type.html">Type</a>, protocol : <a href="../Socket/Protocol.html">Protocol</a> = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, timeout = <span class="n">nil</span>, &amp;block)
+        def self.<strong>resolve</strong>(domain, service, family : <a href="../Socket/Family.html">Family</a>? = <span class="n">nil</span>, type : <a href="../Socket/Type.html">Type</a> = <span class="n">nil</span>, protocol : <a href="../Socket/Protocol.html">Protocol</a> = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, timeout = <span class="n">nil</span>) : <a href="../Array.html">Array</a>(<a href="../Socket/Addrinfo.html">Addrinfo</a>)
 
         
       </div>
       
+        <div class="doc">
+<p>Resolves a domain that best matches the given options.</p>
+
+<ul>
+<li>
+<em>domain</em> may be an IP address or a domain name.</li>
+<li>
+<em>service</em> may be a port number or a service name. It must be specified,
+  because different servers may handle the <code>mail</code> or <code>http</code> services for
+  example.</li>
+<li>
+<em>family</em> is optional and defaults to <code><a href="../Socket/Family.html#UNSPEC">Family::UNSPEC</a></code>
+</li>
+<li>
+<em>type</em> is the intented socket type (e.g. <code><a href="../Socket/Type.html#STREAM">Type::STREAM</a></code>) and must be
+  specified.</li>
+<li>
+<em>protocol</em> is the intented socket protocol (e.g. <code><a href="../Socket/Protocol.html#TCP">Protocol::TCP</a></code>) and
+  should be specified.</li>
+</ul>
+
+<p>Example:</p>
+
+<pre><code>addrinfos <span class="o">=</span> <span class="t">Socket</span><span class="t">::</span><span class="t">Addrinfo</span>.resolve(<span class="s">&#34;example.org&#34;</span>, <span class="s">&#34;http&#34;</span>, <span class="k">type</span>: <span class="t">Socket</span><span class="t">::</span><span class="t">Type</span><span class="t">::</span><span class="t">STREAM</span>, protocol: <span class="t">Socket</span><span class="t">::</span><span class="t">Protocol</span><span class="t">::</span><span class="t">TCP</span>)</code></pre>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="tcp(host,service,family=Family::UNSPEC,timeout=nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5058"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.tcp%28host%2C%20service%2C%20family%20%3D%20Family%3A%3AUNSPEC%2C%20timeout%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="resolve(domain,service,family:Family?=nil,type:Type=nil,protocol:Protocol=Protocol::IP,timeout=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-5091"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.resolve%28domain%2C%20service%2C%20family%20%3A%20Family%3F%20%3D%20nil%2C%20type%20%3A%20Type%20%3D%20nil%2C%20protocol%20%3A%20Protocol%20%3D%20Protocol%3A%3AIP%2C%20timeout%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>tcp</strong>(host, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>, &amp;block)
+        def self.<strong>resolve</strong>(domain, service, family : <a href="../Socket/Family.html">Family</a>? = <span class="n">nil</span>, type : <a href="../Socket/Type.html">Type</a> = <span class="n">nil</span>, protocol : <a href="../Socket/Protocol.html">Protocol</a> = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, timeout = <span class="n">nil</span>, &amp;block)
 
         
       </div>
       
+        <div class="doc">
+<p>Resolves a domain that best matches the given options.</p>
+
+<p>Yields each possible <code><a href="../Socket/Addrinfo.html">Addrinfo</a></code> resolution since a domain may resolve to
+many IP. Implementations are supposed to try all the addresses until the
+socket is connected (or bound) or there are no addresses to try anymore.</p>
+
+<p>Raising is an expensive operation, so instead of raising on a connect or
+bind error, just to rescue it immediately after, the block is expected to
+return the error instead, which will be raised once there are no more
+addresses to try.</p>
+
+<p>The iteration will be stopped once the block returns something that isn&#39;t
+an <code><a href="../Exception.html">Exception</a></code> (e.g. a <code><a href="../Socket.html">Socket</a></code> or <code>nil</code>).</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="udp(host,service,family=Family::UNSPEC,timeout=nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5059"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.udp%28host%2C%20service%2C%20family%20%3D%20Family%3A%3AUNSPEC%2C%20timeout%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="tcp(domain,service,family=Family::UNSPEC,timeout=nil):Array(Addrinfo)-class-method">
+      <a class="dashingAutolink" name="autolink-5092"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.tcp%28domain%2C%20service%2C%20family%20%3D%20Family%3A%3AUNSPEC%2C%20timeout%20%3D%20nil%29%20%3A%20Array%28Addrinfo%29"></a><div class="signature">
         
-        def self.<strong>udp</strong>(host, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>, &amp;block)
+        def self.<strong>tcp</strong>(domain, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>) : <a href="../Array.html">Array</a>(<a href="../Socket/Addrinfo.html">Addrinfo</a>)
 
         
       </div>
       
+        <div class="doc">
+<p>Resolves <em>domain</em> for the UDP protocol and returns an <code><a href="../Array.html">Array</a></code> of possible
+<code><a href="../Socket/Addrinfo.html">Addrinfo</a></code>. See <code><a href="../Socket/Addrinfo.html#resolve%28domain%2Cservice%2Cfamily%3AFamily%3F%3Dnil%2Ctype%3AType%3Dnil%2Cprotocol%3AProtocol%3DProtocol%3A%3AIP%2Ctimeout%3Dnil%29%3AArray%28Addrinfo%29-class-method">#resolve</a></code> for details.</p>
+
+<p>Example:</p>
+
+<pre><code>addrinfos <span class="o">=</span> <span class="t">Socket</span><span class="t">::</span><span class="t">Addrinfo</span>.tcp(<span class="s">&#34;example.org&#34;</span>, <span class="n">80</span>)</code></pre>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L112" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tcp(domain,service,family=Family::UNSPEC,timeout=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-5093"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.tcp%28domain%2C%20service%2C%20family%20%3D%20Family%3A%3AUNSPEC%2C%20timeout%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>tcp</strong>(domain, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Resolves a domain for the TCP protocol with STREAM type, and yields each
+possible <code><a href="../Socket/Addrinfo.html">Addrinfo</a></code>. See <code><a href="../Socket/Addrinfo.html#resolve%28domain%2Cservice%2Cfamily%3AFamily%3F%3Dnil%2Ctype%3AType%3Dnil%2Cprotocol%3AProtocol%3DProtocol%3A%3AIP%2Ctimeout%3Dnil%29%3AArray%28Addrinfo%29-class-method">#resolve</a></code> for details.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L118" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="udp(domain,service,family=Family::UNSPEC,timeout=nil):Array(Addrinfo)-class-method">
+      <a class="dashingAutolink" name="autolink-5094"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.udp%28domain%2C%20service%2C%20family%20%3D%20Family%3A%3AUNSPEC%2C%20timeout%20%3D%20nil%29%20%3A%20Array%28Addrinfo%29"></a><div class="signature">
+        
+        def self.<strong>udp</strong>(domain, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>) : <a href="../Array.html">Array</a>(<a href="../Socket/Addrinfo.html">Addrinfo</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Resolves <em>domain</em> for the UDP protocol and returns an <code><a href="../Array.html">Array</a></code> of possible
+<code><a href="../Socket/Addrinfo.html">Addrinfo</a></code>. See <code><a href="../Socket/Addrinfo.html#resolve%28domain%2Cservice%2Cfamily%3AFamily%3F%3Dnil%2Ctype%3AType%3Dnil%2Cprotocol%3AProtocol%3DProtocol%3A%3AIP%2Ctimeout%3Dnil%29%3AArray%28Addrinfo%29-class-method">#resolve</a></code> for details.</p>
+
+<p>Example:</p>
+
+<pre><code>addrinfos <span class="o">=</span> <span class="t">Socket</span><span class="t">::</span><span class="t">Addrinfo</span>.tcp(<span class="s">&#34;example.org&#34;</span>, <span class="n">53</span>)</code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L129" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="udp(domain,service,family=Family::UNSPEC,timeout=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-5095"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.udp%28domain%2C%20service%2C%20family%20%3D%20Family%3A%3AUNSPEC%2C%20timeout%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>udp</strong>(domain, service, family = <span class="t">Family</span><span class="t">::</span><span class="t">UNSPEC</span>, timeout = <span class="n">nil</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Resolves a domain for the UDP protocol with DGRAM type, and yields each
+possible <code><a href="../Socket/Addrinfo.html">Addrinfo</a></code>. See <code><a href="../Socket/Addrinfo.html#resolve%28domain%2Cservice%2Cfamily%3AFamily%3F%3Dnil%2Ctype%3AType%3Dnil%2Cprotocol%3AProtocol%3DProtocol%3A%3AIP%2Ctimeout%3Dnil%29%3AArray%28Addrinfo%29-class-method">#resolve</a></code> for details.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L135" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -432,7 +579,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="family:Family-instance-method">
-      <a class="dashingAutolink" name="autolink-5060"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20family%20%3A%20Family"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5096"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20family%20%3A%20Family"></a><div class="signature">
         
         def <strong>family</strong> : <a href="../Socket/Family.html">Family</a>
 
@@ -442,29 +589,31 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ip_address-instance-method">
-      <a class="dashingAutolink" name="autolink-5061"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ip_address"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5097"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ip_address"></a><div class="signature">
         
         def <strong>ip_address</strong>
 
         
       </div>
       
+        <div class="doc"><p>Returns an <code><a href="../Socket/IPAddress.html">IPAddress</a></code> matching this addrinfo.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L159" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="protocol:Protocol-instance-method">
-      <a class="dashingAutolink" name="autolink-5062"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20protocol%20%3A%20Protocol"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5098"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20protocol%20%3A%20Protocol"></a><div class="signature">
         
         def <strong>protocol</strong> : <a href="../Socket/Protocol.html">Protocol</a>
 
@@ -474,13 +623,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-5063"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5099"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int32"></a><div class="signature">
         
         def <strong>size</strong> : <a href="../Int32.html">Int32</a>
 
@@ -490,13 +639,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_unsafe-instance-method">
-      <a class="dashingAutolink" name="autolink-5064"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5100"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe"></a><div class="signature">
         
         def <strong>to_unsafe</strong>
 
@@ -506,13 +655,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L163" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="type:Type-instance-method">
-      <a class="dashingAutolink" name="autolink-5065"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20type%20%3A%20Type"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5101"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20type%20%3A%20Type"></a><div class="signature">
         
         def <strong>type</strong> : <a href="../Socket/Type.html">Type</a>
 
@@ -522,7 +671,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/socket/addrinfo.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/socket/addrinfo.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>

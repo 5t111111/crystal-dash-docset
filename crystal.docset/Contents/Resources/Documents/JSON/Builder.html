@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3381"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/JSON%3A%3ABuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>JSON::Builder - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3403"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/JSON%3A%3ABuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>JSON::Builder - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,35 +13,28 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> JSON::Builder
+  <span class="kind">class</span> JSON::Builder
 
 </h1>
 
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../JSON/Builder.html">JSON::Builder</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
 
 
 
 
   <h2>Overview</h2>
 
-  <p>The <code><a href="../JSON/Builder.html">JSON::Builder</a></code> module adds two methods, <code><a href="../JSON/Builder.html#json_object%28%26block%29-instance-method">#json_object</a></code> and <code><a href="../JSON/Builder.html#json_array%28%26block%29-instance-method">#json_array</a></code>
-to all <code><a href="../IO.html">IO</a></code>s so generating JSON by streaming to an IO is easy and convenient.</p>
+  <p>A JSON builder generates valid JSON.</p>
 
-<h3>Example</h3>
-
-<pre><code><span class="k">require</span> <span class="s">&#34;json&#34;</span>
-
-result <span class="o">=</span> <span class="t">String</span>.build <span class="k">do</span> <span class="o">|</span>io<span class="o">|</span>
-  io.json_object <span class="k">do</span> <span class="o">|</span>object<span class="o">|</span>
-    object.field <span class="s">&#34;address&#34;</span>, <span class="s">&#34;Crystal Road 1234&#34;</span>
-    object.field <span class="s">&#34;location&#34;</span> <span class="k">do</span>
-      io.json_array <span class="k">do</span> <span class="o">|</span>array<span class="o">|</span>
-        array <span class="o">&lt;&lt;</span> <span class="n">12.3</span>
-        array <span class="o">&lt;&lt;</span> <span class="n">34.5</span>
-      <span class="k">end</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-result <span class="c"># =&gt; %({&#34;address&#34;:&#34;Crystal Road 1234&#34;,&#34;location&#34;:[12.3,34.5]})</span></code></pre>
+<p>A <code><a href="../JSON/Error.html">JSON::Error</a></code> is raised if attempting to generate
+an invalid JSON (for example, if invoking <code><a href="../JSON/Builder.html#end_array-instance-method">#end_array</a></code>
+without a matching <code><a href="../JSON/Builder.html#start_array-instance-method">#start_array</a></code>, or trying to use
+a non-string value as an object&#39;s field name)</p>
 
 
 
@@ -52,13 +45,6 @@ result <span class="c"># =&gt; %({&#34;address&#34;:&#34;Crystal Road 1234&#34;,
 
 
 
-
-  <h2>Direct including types</h2>
-  <ul class="other-types-list">
-  
-    <li class="other-type"><a href="../IO.html">IO</a></li>
-  
-  </ul>
 
 
 
@@ -66,7 +52,7 @@ result <span class="c"># =&gt; %({&#34;address&#34;:&#34;Crystal Road 1234&#34;,
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L101" target="_blank">json/to_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L7" target="_blank">json/builder.cr</a>
     
     <br/>
   
@@ -75,22 +61,186 @@ result <span class="c"># =&gt; %({&#34;address&#34;:&#34;Crystal Road 1234&#34;,
 
 
 
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28io%3AIO%29-class-method" class="signature"><strong>.new</strong>(io : IO)</a>
+        
+          <div class="summary"><p>Creates a JSON::Builder that will write to the given IO.</p></div>
+        
+      </li>
+    
+  </ul>
+
 
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#json_array%28%26block%29-instance-method" class="signature"><strong>#json_array</strong>(&amp;block)</a>
+        <a href="#array%28%26block%29-instance-method" class="signature"><strong>#array</strong>(&amp;block)</a>
         
-          <div class="summary"><p>Writes a JSON array to the given IO.</p></div>
+          <div class="summary"><p>Writes the start of an array, invokes the block, and the writes the end of it.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#json_object%28%26block%29-instance-method" class="signature"><strong>#json_object</strong>(&amp;block)</a>
+        <a href="#bool%28value%3ABool%29-instance-method" class="signature"><strong>#bool</strong>(value : Bool)</a>
         
-          <div class="summary"><p>Writes a JSON object to the given IO.</p></div>
+          <div class="summary"><p>Writes a boolean value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#document%28%26block%29-instance-method" class="signature"><strong>#document</strong>(&amp;block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_array-instance-method" class="signature"><strong>#end_array</strong></a>
+        
+          <div class="summary"><p>Writes the end of an array.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_document%3ANil-instance-method" class="signature"><strong>#end_document</strong> : Nil</a>
+        
+          <div class="summary"><p>Signals the end of a JSON document.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_object-instance-method" class="signature"><strong>#end_object</strong></a>
+        
+          <div class="summary"><p>Writes the end of an object.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#field%28name%2Cvalue%29-instance-method" class="signature"><strong>#field</strong>(name, value)</a>
+        
+          <div class="summary"><p>Writes an object&#39;s field and value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#field%28name%2C%26block%29-instance-method" class="signature"><strong>#field</strong>(name, &amp;block)</a>
+        
+          <div class="summary"><p>Writes an object&#39;s field and then invokes the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#flush-instance-method" class="signature"><strong>#flush</strong></a>
+        
+          <div class="summary"><p>Flushes the underlying IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#indent%3D%28string%3AString%29-instance-method" class="signature"><strong>#indent=</strong>(string : String)</a>
+        
+          <div class="summary"><p>Sets the indent string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#indent%3D%28level%3AInt%29-instance-method" class="signature"><strong>#indent=</strong>(level : Int)</a>
+        
+          <div class="summary"><p>Sets the indent level (number of spaces)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#null-instance-method" class="signature"><strong>#null</strong></a>
+        
+          <div class="summary"><p>Writes a <code><a href="../JSON/Builder.html#null-instance-method">#null</a></code> value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#number%28number%3AFloat%29-instance-method" class="signature"><strong>#number</strong>(number : Float)</a>
+        
+          <div class="summary"><p>Writes a float.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#number%28number%3AInt%29-instance-method" class="signature"><strong>#number</strong>(number : Int)</a>
+        
+          <div class="summary"><p>Writes an integer.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#object%28%26block%29-instance-method" class="signature"><strong>#object</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Writes the start of an object, invokes the block, and the writes the end of it.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raw%28string%3AString%29-instance-method" class="signature"><strong>#raw</strong>(string : String)</a>
+        
+          <div class="summary"><p>Writes a raw value, considered a scalar, directly into the IO without processing.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scalar%28value%3ANil%29-instance-method" class="signature"><strong>#scalar</strong>(value : Nil)</a>
+        
+          <div class="summary"><p>Writes a scalar value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scalar%28value%3ABool%29-instance-method" class="signature"><strong>#scalar</strong>(value : Bool)</a>
+        
+          <div class="summary"><p>Writes a scalar value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scalar%28value%3AInt%7CFloat%29-instance-method" class="signature"><strong>#scalar</strong>(value : Int | Float)</a>
+        
+          <div class="summary"><p>Writes a scalar value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scalar%28value%3AString%29-instance-method" class="signature"><strong>#scalar</strong>(value : String)</a>
+        
+          <div class="summary"><p>Writes a scalar value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start_array-instance-method" class="signature"><strong>#start_array</strong></a>
+        
+          <div class="summary"><p>Writes the start of an array.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start_document-instance-method" class="signature"><strong>#start_document</strong></a>
+        
+          <div class="summary"><p>Starts a document.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start_object-instance-method" class="signature"><strong>#start_object</strong></a>
+        
+          <div class="summary"><p>Writes the start of an object.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#string%28value%29-instance-method" class="signature"><strong>#string</strong>(value)</a>
+        
+          <div class="summary"><p>Writes a string.</p></div>
         
       </li>
     
@@ -102,45 +252,713 @@ result <span class="c"># =&gt; %({&#34;address&#34;:&#34;Crystal Road 1234&#34;,
 
 <div class="methods-inherited">
   
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../Reference.html#pretty_print%28pp%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../Object.html#pretty_inspect%28width%3D79%2Cnewline%3D%26quot%3B%5Cn%26quot%3B%2Cindent%3D0%29%3AString-instance-method" class="tooltip">
+      <span>pretty_inspect(width = <span class="n">79</span>, newline = <span class="s">&#34;\n&#34;</span>, indent = <span class="n">0</span>) : String</span>
+    pretty_inspect</a>, 
+    
+  
+    <a href="../Object.html#pretty_print%28pp%3APrettyPrint%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp : PrettyPrint) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#%3D%3D%28other%3AClass%29-class-method" class="tooltip">
+      <span>==(other : Class)</span>
+    ==</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%3D%28other%29-class-method" class="tooltip">
+      <span>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../Object.html#cast%28other%29%3Aself-class-method" class="tooltip">
+      <span>cast(other) : self</span>
+    cast</a>, 
+    
+  
+    <a href="../Object.html#clone-class-method" class="tooltip">
+      <span>clone</span>
+    clone</a>, 
+    
+  
+    <a href="../Object.html#dup-class-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
+    from_yaml</a>, 
+    
+  
+    <a href="../Object.html#hash-class-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Object.html#inspect%28io%29-class-method" class="tooltip">
+      <span>inspect(io)</span>
+    inspect</a>, 
+    
+  
+    <a href="../Object.html#name%3AString-class-method" class="tooltip">
+      <span>name : String</span>
+    name</a>, 
+    
+  
+    <a href="../Object.html#nilable%3F-class-method" class="tooltip">
+      <span>nilable?</span>
+    nilable?</a>, 
+    
+  
+    <a href="../Object.html#to_s%28io%29-class-method" class="tooltip">
+      <span>to_s(io)</span>
+    to_s</a>, 
+    
+  
+    <a href="../Object.html#%7C%28other%3AU.class%29forallU-class-method" class="tooltip">
+      <span>|(other : U.class) forall U</span>
+    |</a>
+    
+  
+
+
+  
 </div>
 
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(io:IO)-class-method">
+      <a class="dashingAutolink" name="autolink-3404"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a JSON::Builder that will write to the given IO.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="json_array(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3382"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20json_array%28%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="array(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-3405"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20array%28%26block%29"></a><div class="signature">
         
-        def <strong>json_array</strong>(&amp;block)
+        def <strong>array</strong>(&amp;block)
 
         
       </div>
       
-        <div class="doc"><p>Writes a JSON array to the given IO. Yields a <code><a href="../JSON/ArrayBuilder.html">JSON::ArrayBuilder</a></code>.</p></div>
+        <div class="doc"><p>Writes the start of an array, invokes the block,
+and the writes the end of it.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L164" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="json_object(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3383"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20json_object%28%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="bool(value:Bool)-instance-method">
+      <a class="dashingAutolink" name="autolink-3406"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bool%28value%20%3A%20Bool%29"></a><div class="signature">
         
-        def <strong>json_object</strong>(&amp;block)
+        def <strong>bool</strong>(value : <a href="../Bool.html">Bool</a>)
 
         
       </div>
       
-        <div class="doc"><p>Writes a JSON object to the given IO. Yields a <code><a href="../JSON/ObjectBuilder.html">JSON::ObjectBuilder</a></code>.</p></div>
+        <div class="doc"><p>Writes a boolean value.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L103" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="document(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-3407"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20document%28%26block%29"></a><div class="signature">
+        
+        def <strong>document</strong>(&amp;block)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_array-instance-method">
+      <a class="dashingAutolink" name="autolink-3408"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_array"></a><div class="signature">
+        
+        def <strong>end_array</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes the end of an array.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L149" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_document:Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-3409"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_document%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>end_document</strong> : <a href="../Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Signals the end of a JSON document.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_object-instance-method">
+      <a class="dashingAutolink" name="autolink-3410"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_object"></a><div class="signature">
+        
+        def <strong>end_object</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes the end of an object.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="field(name,value)-instance-method">
+      <a class="dashingAutolink" name="autolink-3411"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20field%28name%2C%20value%29"></a><div class="signature">
+        
+        def <strong>field</strong>(name, value)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes an object&#39;s field and value.
+The field&#39;s name is first converted to a <code><a href="../String.html">String</a></code> by invoking
+<code>to_s</code> on it. The field&#39;s value can only be a <code><a href="../JSON/Builder.html#scalar%28value%3ANil%29-instance-method">#scalar</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L224" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="field(name,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-3412"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20field%28name%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>field</strong>(name, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes an object&#39;s field and then invokes the block.
+This is equivalent of invoking <code><a href="../JSON/Builder.html#string%28value%29-instance-method">#string(value)</a></code> and then
+invoking the block.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L232" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="flush-instance-method">
+      <a class="dashingAutolink" name="autolink-3413"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
+        
+        def <strong>flush</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Flushes the underlying IO.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L238" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="indent=(string:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-3414"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20indent%3D%28string%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>indent=</strong>(string : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the indent string.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L243" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="indent=(level:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-3415"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20indent%3D%28level%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>indent=</strong>(level : <a href="../Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the indent level (number of spaces)</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L252" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="null-instance-method">
+      <a class="dashingAutolink" name="autolink-3416"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20null"></a><div class="signature">
+        
+        def <strong>null</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes a <code><a href="../JSON/Builder.html#null-instance-method">#null</a></code> value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L57" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="number(number:Float)-instance-method">
+      <a class="dashingAutolink" name="autolink-3417"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20number%28number%20%3A%20Float%29"></a><div class="signature">
+        
+        def <strong>number</strong>(number : <a href="../Float.html">Float</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes a float.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="number(number:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-3418"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20number%28number%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>number</strong>(number : <a href="../Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes an integer.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L71" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="object(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-3419"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20object%28%26block%29"></a><div class="signature">
+        
+        def <strong>object</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes the start of an object, invokes the block,
+and the writes the end of it.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L196" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raw(string:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-3420"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raw%28string%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>raw</strong>(string : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes a raw value, considered a scalar, directly into
+the IO without processing. This is the only method that
+might lead to invalid JSON being generated, so you must
+be sure that <em>string</em> contains a valid JSON string.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L134" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scalar(value:Nil)-instance-method">
+      <a class="dashingAutolink" name="autolink-3421"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scalar%28value%20%3A%20Nil%29"></a><div class="signature">
+        
+        def <strong>scalar</strong>(value : <a href="../Nil.html">Nil</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes a scalar value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L202" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scalar(value:Bool)-instance-method">
+      <a class="dashingAutolink" name="autolink-3422"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scalar%28value%20%3A%20Bool%29"></a><div class="signature">
+        
+        def <strong>scalar</strong>(value : <a href="../Bool.html">Bool</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes a scalar value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L207" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scalar(value:Int|Float)-instance-method">
+      <a class="dashingAutolink" name="autolink-3423"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scalar%28value%20%3A%20Int%20%7C%20Float%29"></a><div class="signature">
+        
+        def <strong>scalar</strong>(value : <a href="../Int.html">Int</a> | <a href="../Float.html">Float</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes a scalar value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L212" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scalar(value:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-3424"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scalar%28value%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>scalar</strong>(value : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes a scalar value.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L217" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start_array-instance-method">
+      <a class="dashingAutolink" name="autolink-3425"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_array"></a><div class="signature">
+        
+        def <strong>start_array</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes the start of an array.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L141" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start_document-instance-method">
+      <a class="dashingAutolink" name="autolink-3426"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_document"></a><div class="signature">
+        
+        def <strong>start_document</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Starts a document.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start_object-instance-method">
+      <a class="dashingAutolink" name="autolink-3427"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_object"></a><div class="signature">
+        
+        def <strong>start_object</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes the start of an object.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L170" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="string(value)-instance-method">
+      <a class="dashingAutolink" name="autolink-3428"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20string%28value%29"></a><div class="signature">
+        
+        def <strong>string</strong>(value)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Writes a string. The given <em>value</em> is first converted to a <code><a href="../String.html">String</a></code>
+by invoking <code>to_s</code> on it.</p>
+
+<p>This method can also be used to write the name of an object field.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>

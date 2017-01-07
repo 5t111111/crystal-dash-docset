@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5663"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Time%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Time - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5700"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Time%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Time - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -34,9 +34,9 @@
 
 <h3>Basic Usage</h3>
 
-<pre><code>time <span class="o">=</span> <span class="t">Time</span>.now <span class="c"># =&gt; 2016-02-15 10:20:30 UTC</span>
+<pre><code>time <span class="o">=</span> <span class="t">Time</span>.<span class="k">new</span>(<span class="n">2016</span>, <span class="n">2</span>, <span class="n">15</span>, <span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>)
 
-time.year    <span class="c"># =&gt; 2015</span>
+time.year    <span class="c"># =&gt; 2016</span>
 time.month   <span class="c"># =&gt; 2</span>
 time.day     <span class="c"># =&gt; 15</span>
 time.hour    <span class="c"># =&gt; 10</span>
@@ -54,7 +54,8 @@ time.monday? <span class="c"># =&gt; true</span>
 
 <p>The <code><a href="Time.html#to_s%28format%3AString%2Cio%3AIO%29-instance-method">#to_s</a></code> method returns a <code><a href="String.html">String</a></code> value in the assigned format.</p>
 
-<pre><code><span class="t">Time</span>.now.to_s(<span class="s">&#34;%Y-%m-%d&#34;</span>) <span class="c"># =&gt; &#34;2015-10-12&#34;</span></code></pre>
+<pre><code>time <span class="o">=</span> <span class="t">Time</span>.<span class="k">new</span>(<span class="n">2015</span>, <span class="n">10</span>, <span class="n">12</span>)
+time.to_s(<span class="s">&#34;%Y-%m-%d&#34;</span>) <span class="c"># =&gt; &#34;2015-10-12&#34;</span></code></pre>
 
 <p>See <code><a href="Time/Format.html">Time::Format</a></code> for all the directives.</p>
 
@@ -100,17 +101,17 @@ span.hours <span class="c"># =&gt; 1</span></code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L55" target="_blank">time.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L56" target="_blank">time.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L300" target="_blank">json/to_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/to_json.cr#L125" target="_blank">json/to_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/to_yaml.cr#L101" target="_blank">yaml/to_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/yaml/to_yaml.cr#L97" target="_blank">yaml/to_yaml.cr</a>
     
     <br/>
   
@@ -535,7 +536,7 @@ span.hours <span class="c"># =&gt; 1</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_json%28io%29-instance-method" class="signature"><strong>#to_json</strong>(io)</a>
+        <a href="#to_json%28json%3AJSON%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_json</strong>(json : JSON::Builder)</a>
         
       </li>
     
@@ -564,7 +565,7 @@ span.hours <span class="c"># =&gt; 1</span></code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_yaml%28emitter%3AYAML%3A%3AEmitter%29-instance-method" class="signature"><strong>#to_yaml</strong>(emitter : YAML::Emitter)</a>
+        <a href="#to_yaml%28yaml%3AYAML%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_yaml</strong>(yaml : YAML::Builder)</a>
         
       </li>
     
@@ -785,8 +786,8 @@ span.hours <span class="c"># =&gt; 1</span></code></pre>
     tap</a>, 
     
   
-    <a href="Object.html#to_json-instance-method" class="tooltip">
-      <span>to_json</span>
+    <a href="Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
     to_json</a>, 
     
   
@@ -892,7 +893,7 @@ span.hours <span class="c"># =&gt; 1</span></code></pre>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="days_in_month(year,month):Int32-class-method">
-      <a class="dashingAutolink" name="autolink-5664"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.days_in_month%28year%2C%20month%29%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5701"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.days_in_month%28year%2C%20month%29%20%3A%20Int32"></a><div class="signature">
         
         def self.<strong>days_in_month</strong>(year, month) : <a href="Int32.html">Int32</a>
 
@@ -902,13 +903,13 @@ span.hours <span class="c"># =&gt; 1</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L311" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L312" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="epoch(seconds:Int):self-class-method">
-      <a class="dashingAutolink" name="autolink-5665"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.epoch%28seconds%20%3A%20Int%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5702"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.epoch%28seconds%20%3A%20Int%29%20%3A%20self"></a><div class="signature">
         
         def self.<strong>epoch</strong>(seconds : <a href="Int.html">Int</a>) : self
 
@@ -925,13 +926,13 @@ seconds elapsed since the unix epoch (00:00:00 UTC on 1 January 1970)</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L149" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L150" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="epoch_ms(milliseconds:Int):self-class-method">
-      <a class="dashingAutolink" name="autolink-5666"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.epoch_ms%28milliseconds%20%3A%20Int%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5703"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.epoch_ms%28milliseconds%20%3A%20Int%29%20%3A%20self"></a><div class="signature">
         
         def self.<strong>epoch_ms</strong>(milliseconds : <a href="Int.html">Int</a>) : self
 
@@ -942,20 +943,20 @@ seconds elapsed since the unix epoch (00:00:00 UTC on 1 January 1970)</p>
 <p>Returns a new <code><a href="Time.html">Time</a></code> instance that corresponds to the number
 milliseconds elapsed since the unix epoch (00:00:00 UTC on 1 January 1970)</p>
 
-<pre><code>time <span class="o">=</span> <span class="t">Time</span>.epoch_ms(<span class="n">981173106789</span>) <span class="c"># =&gt; 2001-02-03 04:05:06 UTC</span>
+<pre><code>time <span class="o">=</span> <span class="t">Time</span>.epoch_ms(<span class="n">981173106789</span>) <span class="c"># =&gt; 2001-02-03 04:05:06.789 UTC</span>
 time.millisecond                   <span class="c"># =&gt; 789</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L160" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L161" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="leap_year?(year):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-5667"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.leap_year%3F%28year%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5704"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.leap_year%3F%28year%29%20%3A%20Bool"></a><div class="signature">
         
         def self.<strong>leap_year?</strong>(year) : <a href="Bool.html">Bool</a>
 
@@ -965,13 +966,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L324" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L325" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="local_offset_in_minutes-class-method">
-      <a class="dashingAutolink" name="autolink-5668"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.local_offset_in_minutes"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5705"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.local_offset_in_minutes"></a><div class="signature">
         
         def self.<strong>local_offset_in_minutes</strong>
 
@@ -988,13 +989,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L557" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L562" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="local_ticks-class-method">
-      <a class="dashingAutolink" name="autolink-5669"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.local_ticks"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5706"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.local_ticks"></a><div class="signature">
         
         def self.<strong>local_ticks</strong>
 
@@ -1004,13 +1005,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L542" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L547" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(year,month,day,hour=0,minute=0,second=0,millisecond=0,kind=Kind::Unspecified)-class-method">
-      <a class="dashingAutolink" name="autolink-5670"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28year%2C%20month%2C%20day%2C%20hour%20%3D%200%2C%20minute%20%3D%200%2C%20second%20%3D%200%2C%20millisecond%20%3D%200%2C%20kind%20%3D%20Kind%3A%3AUnspecified%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5707"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28year%2C%20month%2C%20day%2C%20hour%20%3D%200%2C%20minute%20%3D%200%2C%20second%20%3D%200%2C%20millisecond%20%3D%200%2C%20kind%20%3D%20Kind%3A%3AUnspecified%29"></a><div class="signature">
         
         def self.<strong>new</strong>(year, month, day, hour = <span class="n">0</span>, minute = <span class="n">0</span>, second = <span class="n">0</span>, millisecond = <span class="n">0</span>, kind = <span class="t">Kind</span><span class="t">::</span><span class="t">Unspecified</span>)
 
@@ -1020,13 +1021,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L124" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(ticks:Int,kind=Kind::Unspecified)-class-method">
-      <a class="dashingAutolink" name="autolink-5671"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28ticks%20%3A%20Int%2C%20kind%20%3D%20Kind%3A%3AUnspecified%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5708"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28ticks%20%3A%20Int%2C%20kind%20%3D%20Kind%3A%3AUnspecified%29"></a><div class="signature">
         
         def self.<strong>new</strong>(ticks : <a href="Int.html">Int</a>, kind = <span class="t">Kind</span><span class="t">::</span><span class="t">Unspecified</span>)
 
@@ -1036,13 +1037,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(time:LibC::Timespec,kind=Kind::Unspecified)-class-method">
-      <a class="dashingAutolink" name="autolink-5672"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28time%20%3A%20LibC%3A%3ATimespec%2C%20kind%20%3D%20Kind%3A%3AUnspecified%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5709"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28time%20%3A%20LibC%3A%3ATimespec%2C%20kind%20%3D%20Kind%3A%3AUnspecified%29"></a><div class="signature">
         
         def self.<strong>new</strong>(time : LibC::Timespec, kind = <span class="t">Kind</span><span class="t">::</span><span class="t">Unspecified</span>)
 
@@ -1052,13 +1053,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L139" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L140" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-5673"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5710"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pull : <a href="JSON/PullParser.html">JSON::PullParser</a>)
 
@@ -1068,13 +1069,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/from_json.cr#L229" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/from_json.cr#L229" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(pull:YAML::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-5674"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5711"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pull : <a href="YAML/PullParser.html">YAML::PullParser</a>)
 
@@ -1084,13 +1085,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/from_yaml.cr#L158" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/yaml/from_yaml.cr#L158" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new-class-method">
-      <a class="dashingAutolink" name="autolink-5675"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5712"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
         
         def self.<strong>new</strong>
 
@@ -1100,13 +1101,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="now:self-class-method">
-      <a class="dashingAutolink" name="autolink-5676"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.now%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5713"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.now%20%3A%20self"></a><div class="signature">
         
         def self.<strong>now</strong> : self
 
@@ -1116,13 +1117,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L225" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L226" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse(time:String,pattern:String,kind=Time::Kind::Unspecified):self-class-method">
-      <a class="dashingAutolink" name="autolink-5677"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28time%20%3A%20String%2C%20pattern%20%3A%20String%2C%20kind%20%3D%20Time%3A%3AKind%3A%3AUnspecified%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5714"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28time%20%3A%20String%2C%20pattern%20%3A%20String%2C%20kind%20%3D%20Time%3A%3AKind%3A%3AUnspecified%29%20%3A%20self"></a><div class="signature">
         
         def self.<strong>parse</strong>(time : <a href="String.html">String</a>, pattern : <a href="String.html">String</a>, kind = <span class="t">Time</span><span class="t">::</span><span class="t">Kind</span><span class="t">::</span><span class="t">Unspecified</span>) : self
 
@@ -1139,13 +1140,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L360" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L362" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="utc_now:self-class-method">
-      <a class="dashingAutolink" name="autolink-5678"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.utc_now%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5715"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.utc_now%20%3A%20self"></a><div class="signature">
         
         def self.<strong>utc_now</strong> : self
 
@@ -1155,13 +1156,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L229" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L230" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="utc_ticks-class-method">
-      <a class="dashingAutolink" name="autolink-5679"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.utc_ticks"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5716"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.utc_ticks"></a><div class="signature">
         
         def self.<strong>utc_ticks</strong>
 
@@ -1171,7 +1172,7 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L547" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L552" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1182,7 +1183,7 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="+(other:Span)-instance-method">
-      <a class="dashingAutolink" name="autolink-5680"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Span%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5717"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Span%29"></a><div class="signature">
         
         def <strong>+</strong>(other : <a href="Time/Span.html">Span</a>)
 
@@ -1192,13 +1193,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L164" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L165" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="+(other:MonthSpan)-instance-method">
-      <a class="dashingAutolink" name="autolink-5681"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20MonthSpan%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5718"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20MonthSpan%29"></a><div class="signature">
         
         def <strong>+</strong>(other : <a href="Time/MonthSpan.html">MonthSpan</a>)
 
@@ -1208,13 +1209,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L172" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L173" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="-(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-5682"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5719"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>-</strong>(other : <a href="Int.html">Int</a>)
 
@@ -1224,13 +1225,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L211" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L212" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="-(other:Time)-instance-method">
-      <a class="dashingAutolink" name="autolink-5683"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Time%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5720"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Time%29"></a><div class="signature">
         
         def <strong>-</strong>(other : <a href="Time.html">Time</a>)
 
@@ -1240,13 +1241,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L215" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L216" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="-(other:Span)-instance-method">
-      <a class="dashingAutolink" name="autolink-5684"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Span%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5721"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Span%29"></a><div class="signature">
         
         def <strong>-</strong>(other : <a href="Time/Span.html">Span</a>)
 
@@ -1256,13 +1257,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L168" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L169" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="-(other:MonthSpan)-instance-method">
-      <a class="dashingAutolink" name="autolink-5685"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20MonthSpan%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5722"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20MonthSpan%29"></a><div class="signature">
         
         def <strong>-</strong>(other : <a href="Time/MonthSpan.html">MonthSpan</a>)
 
@@ -1272,13 +1273,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L176" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L177" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-5686"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5723"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>&lt;=&gt;</strong>(other : self)
 
@@ -1288,13 +1289,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L297" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L298" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="add_ticks(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-5687"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_ticks%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5724"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_ticks%28value%29"></a><div class="signature">
         
         def <strong>add_ticks</strong>(value)
 
@@ -1304,13 +1305,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L202" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L203" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_beginning_of_day-instance-method">
-      <a class="dashingAutolink" name="autolink-5688"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_day"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5725"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_day"></a><div class="signature">
         
         def <strong>at_beginning_of_day</strong>
 
@@ -1320,13 +1321,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L419" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L424" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_beginning_of_hour-instance-method">
-      <a class="dashingAutolink" name="autolink-5689"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_hour"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5726"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_hour"></a><div class="signature">
         
         def <strong>at_beginning_of_hour</strong>
 
@@ -1336,13 +1337,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L420" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L425" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_beginning_of_minute-instance-method">
-      <a class="dashingAutolink" name="autolink-5690"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_minute"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5727"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_minute"></a><div class="signature">
         
         def <strong>at_beginning_of_minute</strong>
 
@@ -1352,13 +1353,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L421" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L426" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_beginning_of_month-instance-method">
-      <a class="dashingAutolink" name="autolink-5691"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_month"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5728"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_month"></a><div class="signature">
         
         def <strong>at_beginning_of_month</strong>
 
@@ -1368,13 +1369,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L418" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L423" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_beginning_of_quarter-instance-method">
-      <a class="dashingAutolink" name="autolink-5692"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_quarter"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5729"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_quarter"></a><div class="signature">
         
         def <strong>at_beginning_of_quarter</strong>
 
@@ -1384,13 +1385,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L417" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L422" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_beginning_of_semester-instance-method">
-      <a class="dashingAutolink" name="autolink-5693"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_semester"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5730"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_semester"></a><div class="signature">
         
         def <strong>at_beginning_of_semester</strong>
 
@@ -1400,13 +1401,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L416" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L421" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_beginning_of_week-instance-method">
-      <a class="dashingAutolink" name="autolink-5694"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_week"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5731"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_week"></a><div class="signature">
         
         def <strong>at_beginning_of_week</strong>
 
@@ -1416,13 +1417,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L423" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L428" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_beginning_of_year-instance-method">
-      <a class="dashingAutolink" name="autolink-5695"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_year"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5732"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_beginning_of_year"></a><div class="signature">
         
         def <strong>at_beginning_of_year</strong>
 
@@ -1432,13 +1433,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L415" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L420" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_end_of_day-instance-method">
-      <a class="dashingAutolink" name="autolink-5696"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_day"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5733"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_day"></a><div class="signature">
         
         def <strong>at_end_of_day</strong>
 
@@ -1448,13 +1449,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L469" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L474" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_end_of_hour-instance-method">
-      <a class="dashingAutolink" name="autolink-5697"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_hour"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5734"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_hour"></a><div class="signature">
         
         def <strong>at_end_of_hour</strong>
 
@@ -1464,13 +1465,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L470" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L475" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_end_of_minute-instance-method">
-      <a class="dashingAutolink" name="autolink-5698"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_minute"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5735"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_minute"></a><div class="signature">
         
         def <strong>at_end_of_minute</strong>
 
@@ -1480,13 +1481,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L471" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L476" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_end_of_month-instance-method">
-      <a class="dashingAutolink" name="autolink-5699"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_month"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5736"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_month"></a><div class="signature">
         
         def <strong>at_end_of_month</strong>
 
@@ -1496,13 +1497,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L458" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L463" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_end_of_quarter-instance-method">
-      <a class="dashingAutolink" name="autolink-5700"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_quarter"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5737"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_quarter"></a><div class="signature">
         
         def <strong>at_end_of_quarter</strong>
 
@@ -1512,13 +1513,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L444" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L449" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_end_of_semester-instance-method">
-      <a class="dashingAutolink" name="autolink-5701"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_semester"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5738"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_semester"></a><div class="signature">
         
         def <strong>at_end_of_semester</strong>
 
@@ -1528,13 +1529,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L434" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L439" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_end_of_week-instance-method">
-      <a class="dashingAutolink" name="autolink-5702"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_week"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5739"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_week"></a><div class="signature">
         
         def <strong>at_end_of_week</strong>
 
@@ -1544,13 +1545,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L460" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L465" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_end_of_year-instance-method">
-      <a class="dashingAutolink" name="autolink-5703"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_year"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5740"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_end_of_year"></a><div class="signature">
         
         def <strong>at_end_of_year</strong>
 
@@ -1560,13 +1561,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L432" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L437" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_midday-instance-method">
-      <a class="dashingAutolink" name="autolink-5704"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_midday"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5741"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_midday"></a><div class="signature">
         
         def <strong>at_midday</strong>
 
@@ -1576,13 +1577,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L472" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L477" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="date-instance-method">
-      <a class="dashingAutolink" name="autolink-5705"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20date"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5742"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20date"></a><div class="signature">
         
         def <strong>date</strong>
 
@@ -1592,13 +1593,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L237" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L238" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="day-instance-method">
-      <a class="dashingAutolink" name="autolink-5706"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20day"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5743"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20day"></a><div class="signature">
         
         def <strong>day</strong>
 
@@ -1608,13 +1609,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L249" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L250" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="day_of_week-instance-method">
-      <a class="dashingAutolink" name="autolink-5707"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20day_of_week"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5744"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20day_of_week"></a><div class="signature">
         
         def <strong>day_of_week</strong>
 
@@ -1624,13 +1625,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L273" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L274" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="day_of_year-instance-method">
-      <a class="dashingAutolink" name="autolink-5708"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20day_of_year"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5745"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20day_of_year"></a><div class="signature">
         
         def <strong>day_of_year</strong>
 
@@ -1640,13 +1641,13 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L278" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L279" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="epoch:Int64-instance-method">
-      <a class="dashingAutolink" name="autolink-5709"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epoch%20%3A%20Int64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5746"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epoch%20%3A%20Int64"></a><div class="signature">
         
         def <strong>epoch</strong> : <a href="Int64.html">Int64</a>
 
@@ -1656,19 +1657,20 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
         <div class="doc">
 <p>Returns the number of seconds since the Epoch for this time.</p>
 
-<pre><code><span class="t">Time</span>.<span class="k">new</span>(<span class="n">2016</span>, <span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>).epoch <span class="c"># =&gt; 1451714645</span></code></pre>
+<pre><code>time <span class="o">=</span> <span class="t">Time</span>.parse(<span class="s">&#34;2016-01-12 03:04:05 UTC&#34;</span>, <span class="s">&#34;%F %T %z&#34;</span>)
+time.epoch <span class="c"># =&gt; 1452567845</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L369" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L372" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="epoch_f:Float64-instance-method">
-      <a class="dashingAutolink" name="autolink-5710"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epoch_f%20%3A%20Float64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5747"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epoch_f%20%3A%20Float64"></a><div class="signature">
         
         def <strong>epoch_f</strong> : <a href="Float64.html">Float64</a>
 
@@ -1679,19 +1681,20 @@ time.millisecond                   <span class="c"># =&gt; 789</span></code></pr
 <p>Returns the number of seconds since the Epoch for this time,
 as a <code><a href="Float64.html">Float64</a></code>.</p>
 
-<pre><code><span class="t">Time</span>.<span class="k">new</span>(<span class="n">2016</span>, <span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">678</span>).epoch_f <span class="c"># =&gt; 1.45171e+09</span></code></pre>
+<pre><code>time <span class="o">=</span> <span class="t">Time</span>.parse(<span class="s">&#34;2016-01-12 03:04:05.678 UTC&#34;</span>, <span class="s">&#34;%F %T.%L %z&#34;</span>)
+time.epoch_f <span class="c"># =&gt; 1452567845.678</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L388" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L393" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="epoch_ms:Int64-instance-method">
-      <a class="dashingAutolink" name="autolink-5711"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epoch_ms%20%3A%20Int64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5748"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epoch_ms%20%3A%20Int64"></a><div class="signature">
         
         def <strong>epoch_ms</strong> : <a href="Int64.html">Int64</a>
 
@@ -1701,19 +1704,20 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
         <div class="doc">
 <p>Returns the number of milliseconds since the Epoch for this time.</p>
 
-<pre><code><span class="t">Time</span>.<span class="k">new</span>(<span class="n">2016</span>, <span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">678</span>).epoch_ms <span class="c"># =&gt; 1451714645678</span></code></pre>
+<pre><code>time <span class="o">=</span> <span class="t">Time</span>.parse(<span class="s">&#34;2016-01-12 03:04:05.678 UTC&#34;</span>, <span class="s">&#34;%F %T.%L %z&#34;</span>)
+time.epoch_ms <span class="c"># =&gt; 1452567845678</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L378" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L382" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="friday?-instance-method">
-      <a class="dashingAutolink" name="autolink-5712"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20friday%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5749"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20friday%3F"></a><div class="signature">
         
         def <strong>friday?</strong>
 
@@ -1723,13 +1727,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L479" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash:Int64-instance-method">
-      <a class="dashingAutolink" name="autolink-5713"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%20%3A%20Int64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5750"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%20%3A%20Int64"></a><div class="signature">
         
         def <strong>hash</strong> : <a href="Int64.html">Int64</a>
 
@@ -1739,13 +1743,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L307" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L308" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hour-instance-method">
-      <a class="dashingAutolink" name="autolink-5714"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hour"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5751"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hour"></a><div class="signature">
         
         def <strong>hour</strong>
 
@@ -1755,13 +1759,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L253" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L254" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-5715"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5752"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io : <a href="IO.html">IO</a>)
 
@@ -1771,13 +1775,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L332" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L333" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="kind-instance-method">
-      <a class="dashingAutolink" name="autolink-5716"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20kind"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5753"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20kind"></a><div class="signature">
         
         def <strong>kind</strong>
 
@@ -1789,13 +1793,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L283" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L284" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="local?-instance-method">
-      <a class="dashingAutolink" name="autolink-5717"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20local%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5754"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20local%3F"></a><div class="signature">
         
         def <strong>local?</strong>
 
@@ -1807,13 +1811,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L293" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L294" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="millisecond-instance-method">
-      <a class="dashingAutolink" name="autolink-5718"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20millisecond"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5755"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20millisecond"></a><div class="signature">
         
         def <strong>millisecond</strong>
 
@@ -1823,13 +1827,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L265" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L266" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="minute-instance-method">
-      <a class="dashingAutolink" name="autolink-5719"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minute"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5756"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20minute"></a><div class="signature">
         
         def <strong>minute</strong>
 
@@ -1839,13 +1843,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L257" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L258" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="monday?-instance-method">
-      <a class="dashingAutolink" name="autolink-5720"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20monday%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5757"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20monday%3F"></a><div class="signature">
         
         def <strong>monday?</strong>
 
@@ -1855,13 +1859,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L479" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="month-instance-method">
-      <a class="dashingAutolink" name="autolink-5721"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20month"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5758"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20month"></a><div class="signature">
         
         def <strong>month</strong>
 
@@ -1871,13 +1875,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L245" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L246" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="saturday?-instance-method">
-      <a class="dashingAutolink" name="autolink-5722"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20saturday%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5759"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20saturday%3F"></a><div class="signature">
         
         def <strong>saturday?</strong>
 
@@ -1887,13 +1891,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L479" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="second-instance-method">
-      <a class="dashingAutolink" name="autolink-5723"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20second"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5760"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20second"></a><div class="signature">
         
         def <strong>second</strong>
 
@@ -1903,13 +1907,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L261" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L262" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sunday?-instance-method">
-      <a class="dashingAutolink" name="autolink-5724"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sunday%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5761"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sunday%3F"></a><div class="signature">
         
         def <strong>sunday?</strong>
 
@@ -1919,13 +1923,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L479" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="thursday?-instance-method">
-      <a class="dashingAutolink" name="autolink-5725"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20thursday%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5762"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20thursday%3F"></a><div class="signature">
         
         def <strong>thursday?</strong>
 
@@ -1935,13 +1939,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L479" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ticks-instance-method">
-      <a class="dashingAutolink" name="autolink-5726"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ticks"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5763"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ticks"></a><div class="signature">
         
         def <strong>ticks</strong>
 
@@ -1951,13 +1955,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L233" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L234" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="time_of_day-instance-method">
-      <a class="dashingAutolink" name="autolink-5727"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20time_of_day"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5764"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20time_of_day"></a><div class="signature">
         
         def <strong>time_of_day</strong>
 
@@ -1967,15 +1971,15 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L269" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L270" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="to_json(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-5728"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28io%29"></a><div class="signature">
+    <div class="entry-detail" id="to_json(json:JSON::Builder)-instance-method">
+      <a class="dashingAutolink" name="autolink-5765"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28json%20%3A%20JSON%3A%3ABuilder%29"></a><div class="signature">
         
-        def <strong>to_json</strong>(io)
+        def <strong>to_json</strong>(json : <a href="JSON/Builder.html">JSON::Builder</a>)
 
         
       </div>
@@ -1983,13 +1987,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/to_json.cr#L301" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/to_json.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_local-instance-method">
-      <a class="dashingAutolink" name="autolink-5729"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_local"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5766"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_local"></a><div class="signature">
         
         def <strong>to_local</strong>
 
@@ -1999,13 +2003,13 @@ as a <code><a href="Float64.html">Float64</a></code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L400" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L405" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(format:String,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-5730"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28format%20%3A%20String%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5767"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28format%20%3A%20String%2C%20io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(format : <a href="String.html">String</a>, io : <a href="IO.html">IO</a>)
 
@@ -2018,13 +2022,13 @@ into the given <em>io</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L350" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L352" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(format:String):String-instance-method">
-      <a class="dashingAutolink" name="autolink-5731"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28format%20%3A%20String%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5768"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28format%20%3A%20String%29%20%3A%20String"></a><div class="signature">
         
         def <strong>to_s</strong>(format : <a href="String.html">String</a>) : <a href="String.html">String</a>
 
@@ -2034,19 +2038,20 @@ into the given <em>io</em>.</p></div>
         <div class="doc">
 <p>Formats this time using the given format (see <code><a href="Time/Format.html">Time::Format</a></code>).</p>
 
-<pre><code><span class="t">Time</span>.now.to_s(<span class="s">&#34;%F&#34;</span>) <span class="c"># =&gt; &#34;2016-04-05&#34;</span></code></pre>
+<pre><code>time <span class="o">=</span> <span class="t">Time</span>.<span class="k">new</span>(<span class="n">2016</span>, <span class="n">4</span>, <span class="n">5</span>)
+time.to_s(<span class="s">&#34;%F&#34;</span>) <span class="c"># =&gt; &#34;2016-04-05&#34;</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L344" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L346" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_utc-instance-method">
-      <a class="dashingAutolink" name="autolink-5732"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_utc"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5769"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_utc"></a><div class="signature">
         
         def <strong>to_utc</strong>
 
@@ -2056,15 +2061,15 @@ into the given <em>io</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L392" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L397" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="to_yaml(emitter:YAML::Emitter)-instance-method">
-      <a class="dashingAutolink" name="autolink-5733"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28emitter%20%3A%20YAML%3A%3AEmitter%29"></a><div class="signature">
+    <div class="entry-detail" id="to_yaml(yaml:YAML::Builder)-instance-method">
+      <a class="dashingAutolink" name="autolink-5770"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28yaml%20%3A%20YAML%3A%3ABuilder%29"></a><div class="signature">
         
-        def <strong>to_yaml</strong>(emitter : <a href="YAML/Emitter.html">YAML::Emitter</a>)
+        def <strong>to_yaml</strong>(yaml : <a href="YAML/Builder.html">YAML::Builder</a>)
 
         
       </div>
@@ -2072,13 +2077,13 @@ into the given <em>io</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/yaml/to_yaml.cr#L102" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/yaml/to_yaml.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tuesday?-instance-method">
-      <a class="dashingAutolink" name="autolink-5734"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tuesday%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5771"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tuesday%3F"></a><div class="signature">
         
         def <strong>tuesday?</strong>
 
@@ -2088,13 +2093,13 @@ into the given <em>io</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L479" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="utc?-instance-method">
-      <a class="dashingAutolink" name="autolink-5735"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20utc%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5772"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20utc%3F"></a><div class="signature">
         
         def <strong>utc?</strong>
 
@@ -2106,13 +2111,13 @@ into the given <em>io</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L288" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L289" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="wednesday?-instance-method">
-      <a class="dashingAutolink" name="autolink-5736"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20wednesday%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5773"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20wednesday%3F"></a><div class="signature">
         
         def <strong>wednesday?</strong>
 
@@ -2122,13 +2127,13 @@ into the given <em>io</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L474" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L479" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="year-instance-method">
-      <a class="dashingAutolink" name="autolink-5737"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20year"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5774"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20year"></a><div class="signature">
         
         def <strong>year</strong>
 
@@ -2138,7 +2143,7 @@ into the given <em>io</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L241" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L242" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -2149,7 +2154,7 @@ into the given <em>io</em>.</p></div>
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="def_at(name)-macro">
-      <a class="dashingAutolink" name="autolink-5738"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_at%28name%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5775"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20def_at%28name%29"></a><div class="signature">
         
         macro <strong>def_at</strong>(name)
 
@@ -2159,7 +2164,7 @@ into the given <em>io</em>.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/time.cr#L408" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/time.cr#L413" target="_blank">View source</a>]
         
       </div>
     </div>

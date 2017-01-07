@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4764"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Proc%28%2AT%2C%20R%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Proc(*T, R) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4794"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Proc%28%2AT%2C%20R%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Proc(*T, R) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -29,7 +29,7 @@
 
   <h2>Overview</h2>
 
-  <p>A Proc represents a function pointer with an optional context (the closure data). It is typically created with a proc literal:</p>
+  <p>A <code><a href="Proc.html">Proc</a></code> represents a function pointer with an optional context (the closure data). It is typically created with a proc literal:</p>
 
 <pre><code><span class="c"># A proc without arguments</span>
 -&gt;{ <span class="n">1</span> } <span class="c"># Proc(Int32)</span>
@@ -50,7 +50,7 @@
 
 <p>This form allows you to specify the return type and to check it against the proc&#39;s body.</p>
 
-<p>Another way to create a Proc is by capturing a block:</p>
+<p>Another way to create a <code><a href="Proc.html">Proc</a></code> is by capturing a block:</p>
 
 <pre><code><span class="k">def</span> <span class="m">capture</span>(<span class="o">&amp;</span>block : <span class="t">Int32</span> -&gt; <span class="t">Int32</span>)
   <span class="c"># block argument is used, so block is turned into a Proc</span>
@@ -65,9 +65,9 @@ method block signature.</p>
 
 <h3>Passing a Proc to a C function</h3>
 
-<p>Passing a Proc to a C function, for example as a callback, is possible as long as the Proc isn&#39;t a closure. If it is, either
+<p>Passing a <code><a href="Proc.html">Proc</a></code> to a C function, for example as a callback, is possible as long as the <code><a href="Proc.html">Proc</a></code> isn&#39;t a closure. If it is, either
 a compile-time or runtime error will happen depending on whether the compiler can check this. The reason
-is that a Proc is internally represented as two void pointers, one having the function
+is that a <code><a href="Proc.html">Proc</a></code> is internally represented as two void pointers, one having the function
 pointer and another the closure data. If just the function pointer is passed, the closure data will be missing
 at invocation time.</p>
 
@@ -79,12 +79,12 @@ passing that tick:</p>
   <span class="k">fun</span> on_tick(callback : (<span class="t">Int32</span>, <span class="t">Void</span><span class="o">*</span> -&gt;), data : <span class="t">Void</span><span class="o">*</span>)
 <span class="k">end</span></code></pre>
 
-<p>To properly define a wrapper for this function we must send the Proc as the callback data, and then
-convert that callback data to the Proc and finally invoke it.</p>
+<p>To properly define a wrapper for this function we must send the <code><a href="Proc.html">Proc</a></code> as the callback data, and then
+convert that callback data to the <code><a href="Proc.html">Proc</a></code> and finally invoke it.</p>
 
 <pre><code><span class="k">module</span> <span class="t">Ticker</span>
   <span class="c"># The callback for the user doesn&#39;t have a Void*</span>
-  @@box : <span class="t">Box</span>(<span class="t">Int32</span> -&gt;)
+  @@box : <span class="t">Pointer</span>(<span class="t">Void</span>)?
 
   <span class="k">def</span> <span class="m">self</span>.on_tick(<span class="o">&amp;</span>callback : <span class="t">Int32</span> -&gt;)
     <span class="c"># Since Proc is a {Void*, Void*}, we can&#39;t turn that into a Void*, so we</span>
@@ -129,12 +129,12 @@ but Crystal&#39;s GC has no way of knowing that.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/primitives.cr#L246" target="_blank">primitives.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/primitives.cr#L245" target="_blank">primitives.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L94" target="_blank">proc.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L94" target="_blank">proc.cr</a>
     
     <br/>
   
@@ -183,7 +183,7 @@ but Crystal&#39;s GC has no way of knowing that.</p>
       <li class="entry-summary">
         <a href="#call%28%2Aargs%3A%2AT%29%3AR-instance-method" class="signature"><strong>#call</strong>(*args : *T) : R</a>
         
-          <div class="summary"><p>Invokes this Proc and returns the result.</p></div>
+          <div class="summary"><p>Invokes this <code><a href="Proc.html">Proc</a></code> and returns the result.</p></div>
         
       </li>
     
@@ -210,7 +210,7 @@ but Crystal&#39;s GC has no way of knowing that.</p>
       <li class="entry-summary">
         <a href="#partial%28%2Aargs%3A%2AU%29forallU-instance-method" class="signature"><strong>#partial</strong>(*args : *U) forall U</a>
         
-          <div class="summary"><p>Returns a new Proc that has its first arguments fixed to the values given by <em>args</em>.</p></div>
+          <div class="summary"><p>Returns a new <code><a href="Proc.html">Proc</a></code> that has its first arguments fixed to the values given by <em>args</em>.</p></div>
         
       </li>
     
@@ -330,8 +330,8 @@ but Crystal&#39;s GC has no way of knowing that.</p>
     tap</a>, 
     
   
-    <a href="Object.html#to_json-instance-method" class="tooltip">
-      <span>to_json</span>
+    <a href="Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
     to_json</a>, 
     
   
@@ -437,7 +437,7 @@ but Crystal&#39;s GC has no way of knowing that.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(pointer:Pointer(Void),closure_data:Pointer(Void))-class-method">
-      <a class="dashingAutolink" name="autolink-4765"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pointer%20%3A%20Pointer%28Void%29%2C%20closure_data%20%3A%20Pointer%28Void%29%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4795"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pointer%20%3A%20Pointer%28Void%29%2C%20closure_data%20%3A%20Pointer%28Void%29%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pointer : <a href="Pointer.html">Pointer</a>(Void), closure_data : <a href="Pointer.html">Pointer</a>(Void))
 
@@ -447,7 +447,7 @@ but Crystal&#39;s GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -458,7 +458,7 @@ but Crystal&#39;s GC has no way of knowing that.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-4766"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4796"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>==</strong>(other : self)
 
@@ -468,13 +468,13 @@ but Crystal&#39;s GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L165" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L165" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-4767"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4797"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>===</strong>(other : self)
 
@@ -484,13 +484,13 @@ but Crystal&#39;s GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L169" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L169" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-4768"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4798"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%29"></a><div class="signature">
         
         def <strong>===</strong>(other)
 
@@ -500,13 +500,13 @@ but Crystal&#39;s GC has no way of knowing that.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L173" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L173" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="arity-instance-method">
-      <a class="dashingAutolink" name="autolink-4769"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20arity"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4799"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20arity"></a><div class="signature">
         
         def <strong>arity</strong>
 
@@ -526,13 +526,13 @@ neg.arity <span class="c"># =&gt; 1</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L143" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L143" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="call(*args:*T):R-instance-method">
-      <a class="dashingAutolink" name="autolink-4770"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call%28%2Aargs%20%3A%20%2AT%29%20%3A%20R"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4800"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20call%28%2Aargs%20%3A%20%2AT%29%20%3A%20R"></a><div class="signature">
         
         def <strong>call</strong>(*args : *T) : R
 
@@ -540,7 +540,7 @@ neg.arity <span class="c"># =&gt; 1</span></code></pre>
       </div>
       
         <div class="doc">
-<p>Invokes this Proc and returns the result.</p>
+<p>Invokes this <code><a href="Proc.html">Proc</a></code> and returns the result.</p>
 
 <pre><code>add <span class="o">=</span> -&gt;(x : <span class="t">Int32</span>, y : <span class="t">Int32</span>) { x <span class="o">+</span> y }
 add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =&gt; 3</span></code></pre>
@@ -549,13 +549,13 @@ add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/primitives.cr#L255" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/primitives.cr#L254" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-4771"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4801"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -565,13 +565,13 @@ add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L181" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L181" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closure?-instance-method">
-      <a class="dashingAutolink" name="autolink-4772"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4802"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure%3F"></a><div class="signature">
         
         def <strong>closure?</strong>
 
@@ -581,13 +581,13 @@ add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L155" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closure_data-instance-method">
-      <a class="dashingAutolink" name="autolink-4773"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure_data"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4803"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closure_data"></a><div class="signature">
         
         def <strong>closure_data</strong>
 
@@ -597,13 +597,13 @@ add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L151" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L151" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-4774"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4804"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
         
         def <strong>hash</strong>
 
@@ -613,13 +613,13 @@ add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L177" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L177" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="partial(*args:*U)forallU-instance-method">
-      <a class="dashingAutolink" name="autolink-4775"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20partial%28%2Aargs%20%3A%20%2AU%29%20forall%20U"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4805"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20partial%28%2Aargs%20%3A%20%2AU%29%20forall%20U"></a><div class="signature">
         
         def <strong>partial</strong>(*args : *U) forall U
 
@@ -627,7 +627,7 @@ add.call(<span class="n">1</span>, <span class="n">2</span>) <span class="c"># =
       </div>
       
         <div class="doc">
-<p>Returns a new Proc that has its first arguments fixed to the values given by <em>args</em>.</p>
+<p>Returns a new <code><a href="Proc.html">Proc</a></code> that has its first arguments fixed to the values given by <em>args</em>.</p>
 
 <p>See <a href="https://en.wikipedia.org/wiki/Partial_application" target="_blank">Wikipedia, Partial application</a></p>
 
@@ -645,13 +645,13 @@ add_one_and_two.call <span class="c"># =&gt; 3</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L116" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pointer-instance-method">
-      <a class="dashingAutolink" name="autolink-4776"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pointer"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4806"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pointer"></a><div class="signature">
         
         def <strong>pointer</strong>
 
@@ -661,13 +661,13 @@ add_one_and_two.call <span class="c"># =&gt; 3</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L147" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L147" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-4777"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4807"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -677,7 +677,7 @@ add_one_and_two.call <span class="c"># =&gt; 3</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/proc.cr#L185" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/proc.cr#L185" target="_blank">View source</a>]
         
       </div>
     </div>

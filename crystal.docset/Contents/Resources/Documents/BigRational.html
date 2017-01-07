@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-341"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/BigRational%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>BigRational - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-311"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/BigRational%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>BigRational - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -35,9 +35,12 @@ numerators and denominators. Rationals are canonicalized such that the
 denominator and the numerator have no common factors, and that the
 denominator is positive. Zero has the unique representation 0/1.</p>
 
-<pre><code>r <span class="o">=</span> <span class="t">BigRational</span>.<span class="k">new</span>(<span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">7</span>),<span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">3</span>))
+<pre><code><span class="k">require</span> <span class="s">&#34;big_rational&#34;</span>
+
+r <span class="o">=</span> <span class="t">BigRational</span>.<span class="k">new</span>(<span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">7</span>), <span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">3</span>))
 r.to_s <span class="c"># =&gt; &#34;7/3&#34;</span>
-r <span class="o">=</span> <span class="t">BigRational</span>.<span class="k">new</span>(<span class="n">3</span>,<span class="n">-9</span>)
+
+r <span class="o">=</span> <span class="t">BigRational</span>.<span class="k">new</span>(<span class="n">3</span>, <span class="n">-9</span>)
 r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
 
 <p>It is implemented under the hood with <a href="https://gmplib.org/" target="_blank">GMP</a>.</p>
@@ -72,7 +75,7 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L14" target="_blank">big/big_rational.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L19" target="_blank">big/big_rational.cr</a>
     
     <br/>
   
@@ -94,7 +97,7 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <li class="entry-summary">
         <a href="#new%28num%3AInt%29-class-method" class="signature"><strong>.new</strong>(num : Int)</a>
         
-          <div class="summary"><p>Creates a new BigRational with <em>num</em> as the numerator and 1 for denominator.</p></div>
+          <div class="summary"><p>Creates a new <code><a href="BigRational.html">BigRational</a></code> with <em>num</em> as the numerator and 1 for denominator.</p></div>
         
       </li>
     
@@ -212,7 +215,7 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <li class="entry-summary">
         <a href="#inv-instance-method" class="signature"><strong>#inv</strong></a>
         
-          <div class="summary"><p>Returns a new BigRational as 1/r.</p></div>
+          <div class="summary"><p>Returns a new <code><a href="BigRational.html">BigRational</a></code> as 1/r.</p></div>
         
       </li>
     
@@ -470,8 +473,8 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
     significant</a>, 
     
   
-    <a href="Number.html#step%28limit%3Dnil%2Cby%3D1%2C%26block%29-instance-method" class="tooltip">
-      <span>step(limit = <span class="n">nil</span>, by = <span class="n">1</span>, &amp;block)<br/>step(limit = <span class="n">nil</span>, by = <span class="n">1</span>)</span>
+    <a href="Number.html#step%28%2A%2Cto%3Dnil%2Cby%3D1%2C%26block%29-instance-method" class="tooltip">
+      <span>step(*, to = <span class="n">nil</span>, by = <span class="n">1</span>, &amp;block)<br/>step(*, to = <span class="n">nil</span>, by = <span class="n">1</span>)</span>
     step</a>, 
     
   
@@ -485,8 +488,8 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
     to_c</a>, 
     
   
-    <a href="Number.html#to_yaml%28emitter%3AYAML%3A%3AEmitter%29-instance-method" class="tooltip">
-      <span>to_yaml(emitter : YAML::Emitter)</span>
+    <a href="Number.html#to_yaml%28yaml%3AYAML%3A%3ABuilder%29-instance-method" class="tooltip">
+      <span>to_yaml(yaml : YAML::Builder)</span>
     to_yaml</a>
     
   
@@ -688,8 +691,8 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
     tap</a>, 
     
   
-    <a href="Object.html#to_json-instance-method" class="tooltip">
-      <span>to_json</span>
+    <a href="Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
     to_json</a>, 
     
   
@@ -795,7 +798,7 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(numerator:Int,denominator:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-311"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28numerator%20%3A%20Int%2C%20denominator%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-312"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28numerator%20%3A%20Int%2C%20denominator%20%3A%20Int%29"></a><div class="signature">
         
         def self.<strong>new</strong>(numerator : <a href="Int.html">Int</a>, denominator : <a href="Int.html">Int</a>)
 
@@ -811,25 +814,25 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(num:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-312"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-313"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Int%29"></a><div class="signature">
         
         def self.<strong>new</strong>(num : <a href="Int.html">Int</a>)
 
         
       </div>
       
-        <div class="doc"><p>Creates a new BigRational with <em>num</em> as the numerator and 1 for denominator.</p></div>
+        <div class="doc"><p>Creates a new <code><a href="BigRational.html">BigRational</a></code> with <em>num</em> as the numerator and 1 for denominator.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -840,7 +843,7 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="*(other:BigRational)-instance-method">
-      <a class="dashingAutolink" name="autolink-313"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%28other%20%3A%20BigRational%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-314"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%28other%20%3A%20BigRational%29"></a><div class="signature">
         
         def <strong>*</strong>(other : <a href="BigRational.html">BigRational</a>)
 
@@ -850,13 +853,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L86" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="*(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-314"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-315"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>*</strong>(other : <a href="Int.html">Int</a>)
 
@@ -866,13 +869,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="+(other:BigRational)-instance-method">
-      <a class="dashingAutolink" name="autolink-315"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20BigRational%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20BigRational%29"></a><div class="signature">
         
         def <strong>+</strong>(other : <a href="BigRational.html">BigRational</a>)
 
@@ -882,13 +885,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L75" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="+(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>+</strong>(other : <a href="Int.html">Int</a>)
 
@@ -898,13 +901,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="-(other:BigRational)-instance-method">
-      <a class="dashingAutolink" name="autolink-317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20BigRational%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-318"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20BigRational%29"></a><div class="signature">
         
         def <strong>-</strong>(other : <a href="BigRational.html">BigRational</a>)
 
@@ -914,13 +917,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="-(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-318"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>-</strong>(other : <a href="Int.html">Int</a>)
 
@@ -930,13 +933,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L82" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L87" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="--instance-method">
-      <a class="dashingAutolink" name="autolink-319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-"></a><div class="signature">
         
         def <strong>-</strong>
 
@@ -946,13 +949,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L117" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="/(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2F%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-321"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2F%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>/</strong>(other : <a href="Int.html">Int</a>)
 
@@ -962,13 +965,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="/(other:BigRational)-instance-method">
-      <a class="dashingAutolink" name="autolink-321"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2F%28other%20%3A%20BigRational%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-322"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2F%28other%20%3A%20BigRational%29"></a><div class="signature">
         
         def <strong>/</strong>(other : <a href="BigRational.html">BigRational</a>)
 
@@ -978,13 +981,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L94" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="&lt;&lt;(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-322"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3C%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-323"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3C%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>&lt;&lt;</strong>(other : <a href="Int.html">Int</a>)
 
@@ -994,19 +997,19 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
         <div class="doc">
 <p>Multiplies the rational by (2 ** <em>other</em>)</p>
 
-<pre><code><span class="t">BigRational</span>.<span class="k">new</span>(<span class="n">2</span>,<span class="n">3</span>) <span class="o">&lt;&lt;</span> <span class="n">2</span> <span class="c"># =&gt; 8/3</span></code></pre>
+<pre><code><span class="t">BigRational</span>.<span class="k">new</span>(<span class="n">2</span>, <span class="n">3</span>) <span class="o">&lt;&lt;</span> <span class="n">2</span> <span class="c"># =&gt; 8/3</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L122" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="(other:BigRational)-instance-method">
-      <a class="dashingAutolink" name="autolink-323"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20BigRational%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-324"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20BigRational%29"></a><div class="signature">
         
         def <strong>&lt;=&gt;</strong>(other : <a href="BigRational.html">BigRational</a>)
 
@@ -1016,13 +1019,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="(other:Float)-instance-method">
-      <a class="dashingAutolink" name="autolink-324"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Float%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-325"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Float%29"></a><div class="signature">
         
         def <strong>&lt;=&gt;</strong>(other : <a href="Float.html">Float</a>)
 
@@ -1032,13 +1035,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-325"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-326"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>&lt;=&gt;</strong>(other : <a href="Int.html">Int</a>)
 
@@ -1048,13 +1051,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="&gt;&gt;(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-326"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3E%3E%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-327"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3E%3E%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>&gt;&gt;</strong>(other : <a href="Int.html">Int</a>)
 
@@ -1064,19 +1067,19 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
         <div class="doc">
 <p>Divides the rational by (2 ** <em>other</em>)</p>
 
-<pre><code><span class="t">BigRational</span>.<span class="k">new</span>(<span class="n">2</span>,<span class="n">3</span>) <span class="o">&gt;&gt;</span> <span class="n">2</span> <span class="c"># =&gt; 1/6</span></code></pre>
+<pre><code><span class="t">BigRational</span>.<span class="k">new</span>(<span class="n">2</span>, <span class="n">3</span>) <span class="o">&gt;&gt;</span> <span class="n">2</span> <span class="c"># =&gt; 1/6</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L106" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="abs-instance-method">
-      <a class="dashingAutolink" name="autolink-327"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abs"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-328"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abs"></a><div class="signature">
         
         def <strong>abs</strong>
 
@@ -1086,13 +1089,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L129" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L138" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-328"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-329"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -1102,13 +1105,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L175" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L186" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="denominator-instance-method">
-      <a class="dashingAutolink" name="autolink-329"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20denominator"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-330"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20denominator"></a><div class="signature">
         
         def <strong>denominator</strong>
 
@@ -1118,13 +1121,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-330"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-331"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
         
         def <strong>hash</strong>
 
@@ -1134,13 +1137,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L133" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L142" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect-instance-method">
-      <a class="dashingAutolink" name="autolink-331"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-332"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect"></a><div class="signature">
         
         def <strong>inspect</strong>
 
@@ -1150,13 +1153,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L167" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L178" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-332"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-333"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io)
 
@@ -1166,13 +1169,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L171" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L182" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inv-instance-method">
-      <a class="dashingAutolink" name="autolink-333"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inv"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-334"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inv"></a><div class="signature">
         
         def <strong>inv</strong>
 
@@ -1180,7 +1183,7 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       </div>
       
         <div class="doc">
-<p>Returns a new BigRational as 1/r.</p>
+<p>Returns a new <code><a href="BigRational.html">BigRational</a></code> as 1/r.</p>
 
 <p>This will raise an exception if rational is 0.</p>
 </div>
@@ -1188,13 +1191,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L124" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L133" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="numerator-instance-method">
-      <a class="dashingAutolink" name="autolink-334"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20numerator"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-335"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20numerator"></a><div class="signature">
         
         def <strong>numerator</strong>
 
@@ -1204,13 +1207,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L50" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_f-instance-method">
-      <a class="dashingAutolink" name="autolink-335"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-336"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f"></a><div class="signature">
         
         def <strong>to_f</strong>
 
@@ -1222,13 +1225,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L138" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L147" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_f32-instance-method">
-      <a class="dashingAutolink" name="autolink-336"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-337"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f32"></a><div class="signature">
         
         def <strong>to_f32</strong>
 
@@ -1238,13 +1241,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L142" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L151" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_f64-instance-method">
-      <a class="dashingAutolink" name="autolink-337"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-338"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f64"></a><div class="signature">
         
         def <strong>to_f64</strong>
 
@@ -1254,13 +1257,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L146" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L155" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO,base=10)-instance-method">
-      <a class="dashingAutolink" name="autolink-338"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%2C%20base%20%3D%2010%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-339"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%2C%20base%20%3D%2010%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>, base = <span class="n">10</span>)
 
@@ -1270,13 +1273,13 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L162" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L173" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(base=10)-instance-method">
-      <a class="dashingAutolink" name="autolink-339"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28base%20%3D%2010%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-340"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28base%20%3D%2010%29"></a><div class="signature">
         
         def <strong>to_s</strong>(base = <span class="n">10</span>)
 
@@ -1288,7 +1291,7 @@ r.to_s <span class="c"># =&gt; &#34;-1/3&#34;</span></code></pre>
 
 <p>Optionally takes a radix base (2 through 36).</p>
 
-<pre><code>r <span class="o">=</span> <span class="t">BigRational</span>.<span class="k">new</span>(<span class="n">8243243</span>,<span class="n">562828882</span>)
+<pre><code>r <span class="o">=</span> <span class="t">BigRational</span>.<span class="k">new</span>(<span class="n">8243243</span>, <span class="n">562828882</span>)
 r.to_s     <span class="c"># =&gt; &#34;8243243/562828882&#34;</span>
 r.to_s(<span class="n">16</span>) <span class="c"># =&gt; &#34;7dc82b/218c1652&#34;</span>
 r.to_s(<span class="n">36</span>) <span class="c"># =&gt; &#34;4woiz/9b3djm&#34;</span></code></pre>
@@ -1297,13 +1300,13 @@ r.to_s(<span class="n">36</span>) <span class="c"># =&gt; &#34;4woiz/9b3djm&#34;
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L158" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L169" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_unsafe-instance-method">
-      <a class="dashingAutolink" name="autolink-340"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-341"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe"></a><div class="signature">
         
         def <strong>to_unsafe</strong>
 
@@ -1313,7 +1316,7 @@ r.to_s(<span class="n">36</span>) <span class="c"># =&gt; &#34;4woiz/9b3djm&#34;
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/big/big_rational.cr#L183" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/big/big_rational.cr#L194" target="_blank">View source</a>]
         
       </div>
     </div>

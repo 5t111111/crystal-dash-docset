@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-2473"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/IO%3A%3ADelimited%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>IO::Delimited - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-2478"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/IO%3A%3ADelimited%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>IO::Delimited - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -38,7 +38,7 @@ specified delimiter.</p>
 delimited <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Delimited</span>.<span class="k">new</span>(io, read_delimiter: <span class="s">&#34;||&#34;</span>)
 
 delimited.gets_to_end <span class="c"># =&gt; &#34;abc&#34;</span>
-delimited.gets_to_end <span class="c"># =&gt; nil</span>
+delimited.gets_to_end <span class="c"># =&gt; &#34;&#34;</span>
 io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
 
 
@@ -64,7 +64,7 @@ io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L15" target="_blank">io/delimited.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L15" target="_blank">io/delimited.cr</a>
     
     <br/>
   
@@ -166,17 +166,17 @@ io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
     
   
     <a href="../IO.html#each_byte-instance-method" class="tooltip">
-      <span>each_byte<br/>each_byte(&amp;block)</span>
+      <span>each_byte<br/>each_byte(&amp;block) : Nil</span>
     each_byte</a>, 
     
   
-    <a href="../IO.html#each_char%28%26block%29-instance-method" class="tooltip">
-      <span>each_char(&amp;block)<br/>each_char</span>
+    <a href="../IO.html#each_char%28%26block%29%3ANil-instance-method" class="tooltip">
+      <span>each_char(&amp;block) : Nil<br/>each_char</span>
     each_char</a>, 
     
   
-    <a href="../IO.html#each_line%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="tooltip">
-      <span>each_line(*args, **options, &amp;block)<br/>each_line(*args, **options)</span>
+    <a href="../IO.html#each_line%28%2Aargs%2C%2A%2Aoptions%2C%26block%29%3ANil-instance-method" class="tooltip">
+      <span>each_line(*args, **options, &amp;block) : Nil<br/>each_line(*args, **options)</span>
     each_line</a>, 
     
   
@@ -250,6 +250,11 @@ io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
     read_line</a>, 
     
   
+    <a href="../IO.html#read_string%28bytesize%3AInt%29%3AString-instance-method" class="tooltip">
+      <span>read_string(bytesize : Int) : String</span>
+    read_string</a>, 
+    
+  
     <a href="../IO.html#read_utf8%28slice%3ABytes%29-instance-method" class="tooltip">
       <span>read_utf8(slice : Bytes)</span>
     read_utf8</a>, 
@@ -273,6 +278,11 @@ io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
     <a href="../IO.html#skip%28bytes_count%3AInt%29%3ANil-instance-method" class="tooltip">
       <span>skip(bytes_count : Int) : Nil</span>
     skip</a>, 
+    
+  
+    <a href="../IO.html#skip_to_end%3ANil-instance-method" class="tooltip">
+      <span>skip_to_end : Nil</span>
+    skip_to_end</a>, 
     
   
     <a href="../IO.html#tty%3F%3ABool-instance-method" class="tooltip">
@@ -323,28 +333,6 @@ io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
     select</a>
     
   
-
-
-  
-    
-
-  <h3>Instance methods inherited from module <code><a href="../JSON/Builder.html">JSON::Builder</a></code>
-</h3>
-  
-  
-    <a href="../JSON/Builder.html#json_array%28%26block%29-instance-method" class="tooltip">
-      <span>json_array(&amp;block)</span>
-    json_array</a>, 
-    
-  
-    <a href="../JSON/Builder.html#json_object%28%26block%29-instance-method" class="tooltip">
-      <span>json_object(&amp;block)</span>
-    json_object</a>
-    
-  
-
-
-    
 
 
   
@@ -486,8 +474,8 @@ io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
     tap</a>, 
     
   
-    <a href="../Object.html#to_json-instance-method" class="tooltip">
-      <span>to_json</span>
+    <a href="../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
     to_json</a>, 
     
   
@@ -593,7 +581,7 @@ io.gets_to_end        <span class="c"># =&gt; &#34;123&#34;</span></code></pre>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="new(io:IO,read_delimiter:String,sync_close:Bool=false)-class-method">
-      <a class="dashingAutolink" name="autolink-2474"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20read_delimiter%20%3A%20String%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2479"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20read_delimiter%20%3A%20String%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
         
         def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>, read_delimiter : <a href="../String.html">String</a>, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>)
 
@@ -608,13 +596,13 @@ IO.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(io:IO,read_delimiter:Bytes,sync_close:Bool=false)-class-method">
-      <a class="dashingAutolink" name="autolink-2475"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20read_delimiter%20%3A%20Bytes%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2480"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20read_delimiter%20%3A%20Bytes%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
         
         def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>, read_delimiter : <a href="../Bytes.html">Bytes</a>, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>)
 
@@ -628,7 +616,7 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -639,7 +627,7 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-2476"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2481"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -649,13 +637,13 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L117" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L117" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closed?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-2477"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2482"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>closed?</strong> : <a href="../Bool.html">Bool</a>
 
@@ -665,13 +653,13 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read(slice:Bytes)-instance-method">
-      <a class="dashingAutolink" name="autolink-2478"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Bytes%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2483"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Bytes%29"></a><div class="signature">
         
         def <strong>read</strong>(slice : <a href="../Bytes.html">Bytes</a>)
 
@@ -681,13 +669,13 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_delimiter:Slice(UInt8)-instance-method">
-      <a class="dashingAutolink" name="autolink-2479"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_delimiter%20%3A%20Slice%28UInt8%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2484"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_delimiter%20%3A%20Slice%28UInt8%29"></a><div class="signature">
         
         def <strong>read_delimiter</strong> : <a href="../Slice.html">Slice</a>(<a href="../UInt8.html">UInt8</a>)
 
@@ -697,13 +685,13 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sync_close=(sync_close)-instance-method">
-      <a class="dashingAutolink" name="autolink-2480"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2485"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%29"></a><div class="signature">
         
         def <strong>sync_close=</strong>(sync_close)
 
@@ -715,13 +703,13 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sync_close?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-2481"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2486"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>sync_close?</strong> : <a href="../Bool.html">Bool</a>
 
@@ -733,13 +721,13 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write(slice:Bytes)-instance-method">
-      <a class="dashingAutolink" name="autolink-2482"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Bytes%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2487"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Bytes%29"></a><div class="signature">
         
         def <strong>write</strong>(slice : <a href="../Bytes.html">Bytes</a>)
 
@@ -749,7 +737,7 @@ byte sequence <em>read_delimiter</em> is found. If <em>sync_close</em> is set, c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/io/delimited.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/io/delimited.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-6604"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/XML%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>XML - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-6684"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/XML%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>XML - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -24,6 +24,8 @@
   <h2>Overview</h2>
 
   <p>The XML module allows parsing and generating <a href="https://www.w3.org/XML/" target="_blank">XML</a> documents.</p>
+
+<h3>Parsing</h3>
 
 <p><code><a href="XML.html#parse%28string%3AString%2Coptions%3AParserOptions%3DParserOptions.default%29%3ANode-class-method">XML#parse</a></code> will parse xml from <code><a href="String.html">String</a></code> or <code><a href="IO.html">IO</a></code> and return xml document as an <code><a href="XML.html">XML</a>:<a href="XML/Node.html">Node</a></code> which represents all kinds of xml nodes.</p>
 
@@ -51,6 +53,21 @@ person <span class="o">=</span> document.first_element_child <span class="c"># :
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
 
+<h2>Generating</h2>
+
+<p>Use <code><a href="XML.html#build%28version%3AString%3F%3Dnil%2Cencoding%3AString%3F%3Dnil%2Cindent%3Dnil%2Cquote_char%3Dnil%2C%26block%29-class-method">XML.build</a></code>, which uses an <code><a href="XML/Builder.html">XML::Builder</a></code>:</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;xml&#34;</span>
+
+string <span class="o">=</span> <span class="t">XML</span>.build(indent: <span class="s">&#34;  &#34;</span>) <span class="k">do</span> <span class="o">|</span>xml<span class="o">|</span>
+  xml.element(<span class="s">&#34;person&#34;</span>, id: <span class="n">1</span>) <span class="k">do</span>
+    xml.element(<span class="s">&#34;firstname&#34;</span>) { xml.text <span class="s">&#34;Jane&#34;</span> }
+    xml.element(<span class="s">&#34;lastname&#34;</span>) { xml.text <span class="s">&#34;Doe&#34;</span> }
+  <span class="k">end</span>
+<span class="k">end</span>
+
+string <span class="c"># =&gt; &#34;&lt;?xml version=\&#34;1.0\&#34;?&gt;\n&lt;person id=\&#34;1\&#34;&gt;\n  &lt;firstname&gt;Jane&lt;/firstname&gt;\n  &lt;lastname&gt;Doe&lt;/lastname&gt;\n&lt;/person&gt;\n&#34;</span></code></pre>
+
 
 
 
@@ -67,7 +84,12 @@ person <span class="o">=</span> document.first_element_child <span class="c"># :
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/xml.cr#L29" target="_blank">xml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml.cr#L49" target="_blank">xml.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml/builder.cr#L284" target="_blank">xml/builder.cr</a>
     
     <br/>
   
@@ -90,6 +112,20 @@ person <span class="o">=</span> document.first_element_child <span class="c"># :
 
   <h2>Class Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#build%28version%3AString%3F%3Dnil%2Cencoding%3AString%3F%3Dnil%2Cindent%3Dnil%2Cquote_char%3Dnil%2C%26block%29-class-method" class="signature"><strong>.build</strong>(version : String? = <span class="n">nil</span>, encoding : String? = <span class="n">nil</span>, indent = <span class="n">nil</span>, quote_char = <span class="n">nil</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Returns the resulting String of writing XML to the yielded <code><a href="XML/Builder.html">XML::Builder</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#build%28io%3AIO%2Cversion%3AString%3F%3Dnil%2Cencoding%3AString%3F%3Dnil%2Cindent%3Dnil%2Cquote_char%3Dnil%2C%26block%29-class-method" class="signature"><strong>.build</strong>(io : IO, version : String? = <span class="n">nil</span>, encoding : String? = <span class="n">nil</span>, indent = <span class="n">nil</span>, quote_char = <span class="n">nil</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Writes XML into the given IO.</p></div>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#escape%28string%3AString%29-class-method" class="signature"><strong>.escape</strong>(string : String)</a>
@@ -139,8 +175,57 @@ person <span class="o">=</span> document.first_element_child <span class="c"># :
 
   <h2>Class Method Detail</h2>
   
+    <div class="entry-detail" id="build(version:String?=nil,encoding:String?=nil,indent=nil,quote_char=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-6685"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28version%20%3A%20String%3F%20%3D%20nil%2C%20encoding%20%3A%20String%3F%20%3D%20nil%2C%20indent%20%3D%20nil%2C%20quote_char%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>build</strong>(version : <a href="String.html">String</a>? = <span class="n">nil</span>, encoding : <a href="String.html">String</a>? = <span class="n">nil</span>, indent = <span class="n">nil</span>, quote_char = <span class="n">nil</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the resulting String of writing XML to the yielded <code><a href="XML/Builder.html">XML::Builder</a></code>.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;xml&#34;</span>
+
+string <span class="o">=</span> <span class="t">XML</span>.build(indent: <span class="s">&#34;  &#34;</span>) <span class="k">do</span> <span class="o">|</span>xml<span class="o">|</span>
+  xml.element(<span class="s">&#34;person&#34;</span>, id: <span class="n">1</span>) <span class="k">do</span>
+    xml.element(<span class="s">&#34;firstname&#34;</span>) { xml.text <span class="s">&#34;Jane&#34;</span> }
+    xml.element(<span class="s">&#34;lastname&#34;</span>) { xml.text <span class="s">&#34;Doe&#34;</span> }
+  <span class="k">end</span>
+<span class="k">end</span>
+
+string <span class="c"># =&gt; &#34;&lt;?xml version=\&#34;1.0\&#34;?&gt;\n&lt;person id=\&#34;1\&#34;&gt;\n  &lt;firstname&gt;Jane&lt;/firstname&gt;\n  &lt;lastname&gt;Doe&lt;/lastname&gt;\n&lt;/person&gt;\n&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml/builder.cr#L299" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="build(io:IO,version:String?=nil,encoding:String?=nil,indent=nil,quote_char=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-6686"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28io%20%3A%20IO%2C%20version%20%3A%20String%3F%20%3D%20nil%2C%20encoding%20%3A%20String%3F%20%3D%20nil%2C%20indent%20%3D%20nil%2C%20quote_char%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>build</strong>(io : <a href="IO.html">IO</a>, version : <a href="String.html">String</a>? = <span class="n">nil</span>, encoding : <a href="String.html">String</a>? = <span class="n">nil</span>, indent = <span class="n">nil</span>, quote_char = <span class="n">nil</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes XML into the given IO. An <code><a href="XML/Builder.html">XML::Builder</a></code> is yielded to the block.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml/builder.cr#L308" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="escape(string:String)-class-method">
-      <a class="dashingAutolink" name="autolink-6605"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.escape%28string%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6687"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.escape%28string%20%3A%20String%29"></a><div class="signature">
         
         def self.<strong>escape</strong>(string : <a href="String.html">String</a>)
 
@@ -150,13 +235,13 @@ person <span class="o">=</span> document.first_element_child <span class="c"># :
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/xml.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse(string:String,options:ParserOptions=ParserOptions.default):Node-class-method">
-      <a class="dashingAutolink" name="autolink-6606"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28string%20%3A%20String%2C%20options%20%3A%20ParserOptions%20%3D%20ParserOptions.default%29%20%3A%20Node"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6688"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28string%20%3A%20String%2C%20options%20%3A%20ParserOptions%20%3D%20ParserOptions.default%29%20%3A%20Node"></a><div class="signature">
         
         def self.<strong>parse</strong>(string : <a href="String.html">String</a>, options : <a href="XML/ParserOptions.html">ParserOptions</a> = <span class="t">ParserOptions</span>.default) : <a href="XML/Node.html">Node</a>
 
@@ -169,13 +254,13 @@ See <code><a href="XML/ParserOptions.html#default%3Aself-class-method">ParserOpt
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/xml.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse(io:IO,options:ParserOptions=ParserOptions.default):Node-class-method">
-      <a class="dashingAutolink" name="autolink-6607"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28io%20%3A%20IO%2C%20options%20%3A%20ParserOptions%20%3D%20ParserOptions.default%29%20%3A%20Node"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6689"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28io%20%3A%20IO%2C%20options%20%3A%20ParserOptions%20%3D%20ParserOptions.default%29%20%3A%20Node"></a><div class="signature">
         
         def self.<strong>parse</strong>(io : <a href="IO.html">IO</a>, options : <a href="XML/ParserOptions.html">ParserOptions</a> = <span class="t">ParserOptions</span>.default) : <a href="XML/Node.html">Node</a>
 
@@ -188,13 +273,13 @@ See <code><a href="XML/ParserOptions.html#default%3Aself-class-method">ParserOpt
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/xml.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse_html(string:String,options:HTMLParserOptions=HTMLParserOptions.default):Node-class-method">
-      <a class="dashingAutolink" name="autolink-6608"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_html%28string%20%3A%20String%2C%20options%20%3A%20HTMLParserOptions%20%3D%20HTMLParserOptions.default%29%20%3A%20Node"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6690"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_html%28string%20%3A%20String%2C%20options%20%3A%20HTMLParserOptions%20%3D%20HTMLParserOptions.default%29%20%3A%20Node"></a><div class="signature">
         
         def self.<strong>parse_html</strong>(string : <a href="String.html">String</a>, options : <a href="XML/HTMLParserOptions.html">HTMLParserOptions</a> = <span class="t">HTMLParserOptions</span>.default) : <a href="XML/Node.html">Node</a>
 
@@ -207,13 +292,13 @@ See <code><a href="XML/HTMLParserOptions.html#default%3Aself-class-method">HTMLP
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/xml.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml.cr#L86" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse_html(io:IO,options:HTMLParserOptions=HTMLParserOptions.default):Node-class-method">
-      <a class="dashingAutolink" name="autolink-6609"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_html%28io%20%3A%20IO%2C%20options%20%3A%20HTMLParserOptions%20%3D%20HTMLParserOptions.default%29%20%3A%20Node"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6691"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_html%28io%20%3A%20IO%2C%20options%20%3A%20HTMLParserOptions%20%3D%20HTMLParserOptions.default%29%20%3A%20Node"></a><div class="signature">
         
         def self.<strong>parse_html</strong>(io : <a href="IO.html">IO</a>, options : <a href="XML/HTMLParserOptions.html">HTMLParserOptions</a> = <span class="t">HTMLParserOptions</span>.default) : <a href="XML/Node.html">Node</a>
 
@@ -226,7 +311,7 @@ See <code><a href="XML/HTMLParserOptions.html#default%3Aself-class-method">HTMLP
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/xml.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/xml.cr#L93" target="_blank">View source</a>]
         
       </div>
     </div>

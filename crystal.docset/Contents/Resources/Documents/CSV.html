@@ -102,12 +102,12 @@ csv.<span class="k">next</span> <span class="c"># =&gt; false</span></code></pre
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L58" target="_blank">csv.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L58" target="_blank">csv.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv/error.cr#L3" target="_blank">csv/error.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv/error.cr#L3" target="_blank">csv/error.cr</a>
     
     <br/>
   
@@ -181,7 +181,7 @@ csv.<span class="k">next</span> <span class="c"># =&gt; false</span></code></pre
       <li class="entry-summary">
         <a href="#parse%28string_or_io%3AString%7CIO%2Cseparator%3AChar%3DDEFAULT_SEPARATOR%2Cquote_char%3AChar%3DDEFAULT_QUOTE_CHAR%29%3AArray%28Array%28String%29%29-class-method" class="signature"><strong>.parse</strong>(string_or_io : String | IO, separator : Char = <span class="t">DEFAULT_SEPARATOR</span>, quote_char : Char = <span class="t">DEFAULT_QUOTE_CHAR</span>) : Array(Array(String))</a>
         
-          <div class="summary"><p>Parses a CSV or IO into an array.</p></div>
+          <div class="summary"><p>Parses a CSV or <code><a href="IO.html">IO</a></code> into an array.</p></div>
         
       </li>
     
@@ -235,7 +235,7 @@ csv.<span class="k">next</span> <span class="c"># =&gt; false</span></code></pre
       </li>
     
       <li class="entry-summary">
-        <a href="#each%28%26block%29-instance-method" class="signature"><strong>#each</strong>(&amp;block)</a>
+        <a href="#each%28%26block%29%3ANil-instance-method" class="signature"><strong>#each</strong>(&amp;block) : Nil</a>
         
           <div class="summary"><p>Invokes the block once for each row in this CSV, yielding <code>self</code>.</p></div>
         
@@ -408,8 +408,8 @@ csv.<span class="k">next</span> <span class="c"># =&gt; false</span></code></pre
     tap</a>, 
     
   
-    <a href="Object.html#to_json-instance-method" class="tooltip">
-      <span>to_json</span>
+    <a href="Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
     to_json</a>, 
     
   
@@ -532,13 +532,13 @@ io.puts <span class="s">&#34;HEADER&#34;</span>
   csv.row <span class="s">&#34;one&#34;</span>, <span class="s">&#34;two&#34;</span>
   csv.row <span class="s">&#34;three&#34;</span>
 <span class="k">end</span>
-io.to_s <span class="c"># =&gt; &#34;HEADER\none,two\nthree&#34;</span></code></pre>
+io.to_s <span class="c"># =&gt; &#34;HEADER\none,two\nthree\n&#34;</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L136" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L136" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -558,13 +558,13 @@ io.to_s <span class="c"># =&gt; &#34;HEADER\none,two\nthree&#34;</span></code></
   csv.row <span class="s">&#34;one&#34;</span>, <span class="s">&#34;two&#34;</span>
   csv.row <span class="s">&#34;three&#34;</span>
 <span class="k">end</span>
-result <span class="c"># =&gt; &#34;one,two\nthree&#34;</span></code></pre>
+result <span class="c"># =&gt; &#34;one,two\nthree\n&#34;</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L118" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L118" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -594,7 +594,7 @@ see <code><a href="CSV.html#parse%28string_or_io%3AString%7CIO%2Cseparator%3ACha
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L91" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -619,7 +619,7 @@ rows.<span class="k">next</span> <span class="c"># =&gt; [&#34;three&#34;]</span
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L105" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -647,7 +647,7 @@ Headers are always stripped.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L153" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L153" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -676,7 +676,7 @@ Headers are always stripped.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L176" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L176" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -690,7 +690,7 @@ Headers are always stripped.</p>
       </div>
       
         <div class="doc">
-<p>Parses a CSV or IO into an array.
+<p>Parses a CSV or <code><a href="IO.html">IO</a></code> into an array.
 takes optional <em>separator</em> and <em>quote_char</em> arguments for defining
 non-standard csv cell separators and quote characters</p>
 
@@ -703,7 +703,7 @@ non-standard csv cell separators and quote characters</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L72" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -728,7 +728,7 @@ Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L217" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L217" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -748,7 +748,7 @@ Raises <code><a href="IndexError.html">IndexError</a></code> if no such column e
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L231" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L231" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -768,7 +768,7 @@ Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L245" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L245" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -788,7 +788,7 @@ Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L224" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L224" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -808,7 +808,7 @@ Returns nil if no such column exists.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L238" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L238" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -828,15 +828,15 @@ Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L252" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L252" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="each(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-438"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="each(&amp;block):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-438"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29%20%3A%20Nil"></a><div class="signature">
         
-        def <strong>each</strong>(&amp;block)
+        def <strong>each</strong>(&amp;block) : <a href="Nil.html">Nil</a>
 
         
       </div>
@@ -846,7 +846,7 @@ Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L191" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L191" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -865,7 +865,7 @@ Raises <code><a href="CSV/Error.html">CSV::Error</a></code> if headers were not 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L186" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L186" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -885,7 +885,7 @@ the cursor in the first row. Returns <code>true</code> if a next row was found,
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L200" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L200" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -903,7 +903,7 @@ the cursor in the first row. Returns <code>true</code> if a next row was found,
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/csv.cr#L257" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/csv.cr#L257" target="_blank">View source</a>]
         
       </div>
     </div>

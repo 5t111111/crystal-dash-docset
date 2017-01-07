@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3481"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/JSON%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>JSON - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-3513"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/JSON%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>JSON - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -53,18 +53,34 @@ value[<span class="n">0</span>].as_i <span class="o">+</span> <span class="n">10
 
 <p>The above is useful for dealing with a dynamic JSON structure but is slower than using <code><a href="JSON.html#mapping-macro">JSON#mapping</a></code>.</p>
 
-<h3>Generating with <code><a href="JSON/Builder.html">JSON::Builder</a></code>
+<h3>Generating with <code><a href="JSON.html#build%28io%3AIO%2Cindent%3Dnil%2C%26block%29-class-method">JSON.build</a></code>
 </h3>
 
-<p>Use <code><a href="JSON/Builder.html">JSON::Builder</a></code> to generate JSON on the fly by directly emitting data
-to an <code><a href="IO.html">IO</a></code>.</p>
+<p>Use <code><a href="JSON.html#build%28io%3AIO%2Cindent%3Dnil%2C%26block%29-class-method">JSON.build</a></code>, which uses <code><a href="JSON/Builder.html">JSON::Builder</a></code>, to generate JSON
+by emitting scalars, arrays and objects:</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;json&#34;</span>
+
+string <span class="o">=</span> <span class="t">JSON</span>.build <span class="k">do</span> <span class="o">|</span>json<span class="o">|</span>
+  json.object <span class="k">do</span>
+    json.field <span class="s">&#34;name&#34;</span>, <span class="s">&#34;foo&#34;</span>
+    json.field <span class="s">&#34;values&#34;</span> <span class="k">do</span>
+      json.array <span class="k">do</span>
+        json.number <span class="n">1</span>
+        json.number <span class="n">2</span>
+        json.number <span class="n">3</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+string <span class="c"># =&gt; %&lt;{&#34;name&#34;:&#34;foo&#34;,&#34;values&#34;:[1,2,3]}&gt;</span></code></pre>
 
 <h3>Generating with <code>to_json</code>
 </h3>
 
-<p><code>to_json</code> and <code>to_json(<a href="IO.html">IO</a>)</code> methods are provided for primitive types, but you
-need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects, either manually or using
-<code><a href="JSON.html#mapping-macro">JSON#mapping</a></code>.</p>
+<p><code>to_json</code>, <code>to_json(<a href="IO.html">IO</a>)</code> and <code>to_json(<a href="JSON/Builder.html">JSON::Builder</a>)</code> methods are provided
+for primitive types, but you need to define <code>to_json(<a href="JSON/Builder.html">JSON::Builder</a>)</code>
+for custom objects, either manually or using <code><a href="JSON.html#mapping-macro">JSON#mapping</a></code>.</p>
 
 
 
@@ -82,12 +98,17 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json.cr#L41" target="_blank">json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json.cr#L59" target="_blank">json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/mapping.cr#L1" target="_blank">json/mapping.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L335" target="_blank">json/builder.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/mapping.cr#L1" target="_blank">json/mapping.cr</a>
     
     <br/>
   
@@ -98,6 +119,20 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
 
   <h2>Class Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#build%28io%3AIO%2Cindent%3Dnil%2C%26block%29-class-method" class="signature"><strong>.build</strong>(io : IO, indent = <span class="n">nil</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Writes JSON into the given IO.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#build%28indent%3Dnil%2C%26block%29-class-method" class="signature"><strong>.build</strong>(indent = <span class="n">nil</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Returns the resulting String of writing JSON to the yielded <code><a href="JSON/Builder.html">JSON::Builder</a></code>.</p></div>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#parse%28input%3AString%7CIO%29%3AAny-class-method" class="signature"><strong>.parse</strong>(input : String | IO) : Any</a>
@@ -147,8 +182,62 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
 
   <h2>Class Method Detail</h2>
   
+    <div class="entry-detail" id="build(io:IO,indent=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-3514"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28io%20%3A%20IO%2C%20indent%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>build</strong>(io : <a href="IO.html">IO</a>, indent = <span class="n">nil</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Writes JSON into the given IO. A <code><a href="JSON/Builder.html">JSON::Builder</a></code> is yielded to the block.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L364" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="build(indent=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-3515"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28indent%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>build</strong>(indent = <span class="n">nil</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the resulting String of writing JSON to the yielded <code><a href="JSON/Builder.html">JSON::Builder</a></code>.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;json&#34;</span>
+
+string <span class="o">=</span> <span class="t">JSON</span>.build <span class="k">do</span> <span class="o">|</span>json<span class="o">|</span>
+  json.object <span class="k">do</span>
+    json.field <span class="s">&#34;name&#34;</span>, <span class="s">&#34;foo&#34;</span>
+    json.field <span class="s">&#34;values&#34;</span> <span class="k">do</span>
+      json.array <span class="k">do</span>
+        json.number <span class="n">1</span>
+        json.number <span class="n">2</span>
+        json.number <span class="n">3</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+string <span class="c"># =&gt; %&lt;{&#34;name&#34;:&#34;foo&#34;,&#34;values&#34;:[1,2,3]}&gt;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/builder.cr#L355" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="parse(input:String|IO):Any-class-method">
-      <a class="dashingAutolink" name="autolink-3482"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28input%20%3A%20String%20%7C%20IO%29%20%3A%20Any"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3516"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28input%20%3A%20String%20%7C%20IO%29%20%3A%20Any"></a><div class="signature">
         
         def self.<strong>parse</strong>(input : <a href="String.html">String</a> | <a href="IO.html">IO</a>) : <a href="JSON/Any.html">Any</a>
 
@@ -160,13 +249,13 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse_raw(input:String|IO):Type-class-method">
-      <a class="dashingAutolink" name="autolink-3483"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_raw%28input%20%3A%20String%20%7C%20IO%29%20%3A%20Type"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3517"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_raw%28input%20%3A%20String%20%7C%20IO%29%20%3A%20Type"></a><div class="signature">
         
         def self.<strong>parse_raw</strong>(input : <a href="String.html">String</a> | <a href="IO.html">IO</a>) : <a href="JSON/Type.html">Type</a>
 
@@ -178,7 +267,7 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json.cr#L65" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -191,7 +280,7 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="mapping(properties,strict=false)-macro">
-      <a class="dashingAutolink" name="autolink-3484"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping%28properties%2C%20strict%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3518"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping%28properties%2C%20strict%20%3D%20false%29"></a><div class="signature">
         
         macro <strong>mapping</strong>(properties, strict = false)
 
@@ -221,7 +310,7 @@ need to define <code>to_json(<a href="IO.html">IO</a>)</code> for custom objects
 
 house <span class="o">=</span> <span class="t">House</span>.from_json(<span class="s">%({&#34;address&#34;: &#34;Crystal Road 1234&#34;, &#34;location&#34;: {&#34;lat&#34;: 12.3, &#34;lng&#34;: 34.5}})</span>)
 house.address  <span class="c"># =&gt; &#34;Crystal Road 1234&#34;</span>
-house.location <span class="c"># =&gt; #&amp;lt;Location:0x10cd93d80 @lat=12.3, @lng=34.5&gt;</span>
+house.location <span class="c"># =&gt; #&lt;Location:0x10cd93d80 @lat=12.3, @lng=34.5&gt;</span>
 house.to_json  <span class="c"># =&gt; %({&#34;address&#34;:&#34;Crystal Road 1234&#34;,&#34;location&#34;:{&#34;lat&#34;:12.3,&#34;lng&#34;:34.5}})</span></code></pre>
 
 <h3>Usage</h3>
@@ -247,7 +336,7 @@ that accepts a <code><a href="JSON/PullParser.html">JSON::PullParser</a></code> 
 <li>
 <strong>emit_null</strong>: if true, emits a <code>null</code> value for nilable properties (by default nulls are not emitted)</li>
 <li>
-<strong>converter</strong>: specify an alternate type for parsing and generation. The converter must define <code>from_json(<a href="JSON/PullParser.html">JSON::PullParser</a>)</code> and <code>to_json(value, <a href="IO.html">IO</a>)</code> as class methods. Examples of converters are <code><a href="Time/Format.html">Time::Format</a></code> and <code><a href="Time/EpochConverter.html">Time::EpochConverter</a></code> for <code><a href="Time.html">Time</a></code>.</li>
+<strong>converter</strong>: specify an alternate type for parsing and generation. The converter must define <code>from_json(<a href="JSON/PullParser.html">JSON::PullParser</a>)</code> and <code>to_json(value, <a href="JSON/Builder.html">JSON::Builder</a>)</code> as class methods. Examples of converters are <code><a href="Time/Format.html">Time::Format</a></code> and <code><a href="Time/EpochConverter.html">Time::EpochConverter</a></code> for <code><a href="Time.html">Time</a></code>.</li>
 <li>
 <strong>root</strong>: assume the value is inside a JSON object with a given key (see <code><a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method">Object.from_json(string_or_io, root)</a></code>)</li>
 <li>
@@ -260,9 +349,9 @@ that accepts a <code><a href="JSON/PullParser.html">JSON::PullParser</a></code> 
 The mapping doesn&#39;t define a constructor accepting these variables as arguments, but you can provide an overload.</p>
 
 <p>The macro basically defines a constructor accepting a <code><a href="JSON/PullParser.html">JSON::PullParser</a></code> that reads from
-it and initializes this type&#39;s instance variables. It also defines a <code>to_json(<a href="IO.html">IO</a>)</code> method
-by invoking <code>to_json(<a href="IO.html">IO</a>)</code> on each of the properties (unless a converter is specified, in
-which case <code>to_json(value, <a href="IO.html">IO</a>)</code> is invoked).</p>
+it and initializes this type&#39;s instance variables. It also defines a <code>to_json(<a href="JSON/Builder.html">JSON::Builder</a>)</code> method
+by invoking <code>to_json(<a href="JSON/Builder.html">JSON::Builder</a>)</code> on each of the properties (unless a converter is specified, in
+which case <code>to_json(value, <a href="JSON/Builder.html">JSON::Builder</a>)</code> is invoked).</p>
 
 <p>This macro also declares instance variables of the types given in the mapping.</p>
 
@@ -274,13 +363,13 @@ are silently ignored.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/mapping.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/mapping.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="mapping-macro">
-      <a class="dashingAutolink" name="autolink-3485"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-3519"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping"></a><div class="signature">
         
         macro <strong>mapping</strong>
 
@@ -293,7 +382,7 @@ with named arguments instead of with a hash/named-tuple literal.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/b1416e2b4e53e08bcc6769b6908f2eacff8b5e0a/src/json/mapping.cr#L199" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/json/mapping.cr#L199" target="_blank">View source</a>]
         
       </div>
     </div>
