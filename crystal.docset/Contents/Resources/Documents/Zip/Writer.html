@@ -1,0 +1,694 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-6812"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Zip%3A%3AWriter%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Zip::Writer - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Zip::Writer
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../Zip/Writer.html">Zip::Writer</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Writes (streams) zip entries to an <code><a href="../IO.html">IO</a></code>.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="t">File</span>.open(<span class="s">&#34;./file.zip&#34;</span>, <span class="s">&#34;w&#34;</span>) <span class="k">do</span> <span class="o">|</span>file<span class="o">|</span>
+  <span class="t">Zip</span><span class="t">::</span><span class="t">Writer</span>.open(file) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+    <span class="c"># Add a file with a String content</span>
+    zip.add <span class="s">&#34;foo.txt&#34;</span>, <span class="s">&#34;contents of foo&#34;</span>
+
+    <span class="c"># Add a file and write data to it through an IO</span>
+    zip.add(<span class="s">&#34;bar.txt&#34;</span>) <span class="k">do</span> <span class="o">|</span>io<span class="o">|</span>
+      io <span class="o">&lt;&lt;</span> <span class="s">&#34;contents of bar&#34;</span>
+    <span class="k">end</span>
+
+    <span class="c"># Add a file by referencing a file in the filesystem</span>
+    <span class="c"># (the file is automatically closed after this call)</span>
+    zip.add(<span class="s">&#34;baz.txt&#34;</span>, <span class="t">File</span>.open(<span class="s">&#34;./some_file.txt&#34;</span>))
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L24" target="_blank">zip/writer.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28io%3AIO%2Csync_close%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(io : IO, sync_close = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Creates a new writer to the given <em>io</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28filename%3AString%29-class-method" class="signature"><strong>.new</strong>(filename : String)</a>
+        
+          <div class="summary"><p>Creates a new writer to the given <em>filename</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28io%3AIO%2Csync_close%3Dfalse%2C%26block%29-class-method" class="signature"><strong>.open</strong>(io : IO, sync_close = <span class="n">false</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Creates a new writer to the given <em>io</em>, yields it to the given block, and closes it at the end.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28filename%3AString%2C%26block%29-class-method" class="signature"><strong>.open</strong>(filename : String, &amp;block)</a>
+        
+          <div class="summary"><p>Creates a new writer to the given <em>filename</em>, yields it to the given block, and closes it at the end.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#add%28filename%3AString%2C%26block%29-instance-method" class="signature"><strong>#add</strong>(filename : String, &amp;block)</a>
+        
+          <div class="summary"><p>Adds an entry that will have the given <em>filename</em> and current time (<code><a href="../Time.html#now%3Aself-class-method">Time.now</a></code>) and yields an <code><a href="../IO.html">IO</a></code> to write that entry&#39;s contents.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add%28entry%3AEntry%2C%26block%29-instance-method" class="signature"><strong>#add</strong>(entry : Entry, &amp;block)</a>
+        
+          <div class="summary"><p>Adds an entry and yields <code><a href="../IO.html">IO</a></code> to write that entry&#39;s contents.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add%28filename_or_entry%3AString%7CEntry%2Cstring%3AString%29-instance-method" class="signature"><strong>#add</strong>(filename_or_entry : String | Entry, string : String)</a>
+        
+          <div class="summary"><p>Adds an entry that will have <em>string</em> as its contents.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add%28filename_or_entry%3AString%7CEntry%2Cbytes%3ABytes%29-instance-method" class="signature"><strong>#add</strong>(filename_or_entry : String | Entry, bytes : Bytes)</a>
+        
+          <div class="summary"><p>Adds an entry that will have <em>bytes</em> as its contents.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add%28filename_or_entry%3AString%7CEntry%2Cdata%3AIO%29-instance-method" class="signature"><strong>#add</strong>(filename_or_entry : String | Entry, data : IO)</a>
+        
+          <div class="summary"><p>Adds an entry that will have its data copied from the given <em>data</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add_dir%28name%29-instance-method" class="signature"><strong>#add_dir</strong>(name)</a>
+        
+          <div class="summary"><p>Adds a directory entry that will have the given <em>name</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
+        
+          <div class="summary"><p>Closes this zip writer.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#closed%3F%3ABool-instance-method" class="signature"><strong>#closed?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if this writer is closed.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#comment%3D%28comment%29-instance-method" class="signature"><strong>#comment=</strong>(comment)</a>
+        
+          <div class="summary"><p>Sets the zip file comment</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sync_close%3D%28sync_close%29-instance-method" class="signature"><strong>#sync_close=</strong>(sync_close)</a>
+        
+          <div class="summary"><p>Whether to close the enclosed <code><a href="../IO.html">IO</a></code> when closing this writer.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sync_close%3F%3ABool-instance-method" class="signature"><strong>#sync_close?</strong> : Bool</a>
+        
+          <div class="summary"><p>Whether to close the enclosed <code><a href="../IO.html">IO</a></code> when closing this writer.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../Reference.html#pretty_print%28pp%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../Object.html#pretty_inspect%28width%3D79%2Cnewline%3D%26quot%3B%5Cn%26quot%3B%2Cindent%3D0%29%3AString-instance-method" class="tooltip">
+      <span>pretty_inspect(width = <span class="n">79</span>, newline = <span class="s">&#34;\n&#34;</span>, indent = <span class="n">0</span>) : String</span>
+    pretty_inspect</a>, 
+    
+  
+    <a href="../Object.html#pretty_print%28pp%3APrettyPrint%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp : PrettyPrint) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
+    from_yaml</a>
+    
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(io:IO,sync_close=false)-class-method">
+      <a class="dashingAutolink" name="autolink-6813"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20sync_close%20%3D%20false%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>, sync_close = <span class="n">false</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new writer to the given <em>io</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(filename:String)-class-method">
+      <a class="dashingAutolink" name="autolink-6814"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28filename%20%3A%20String%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(filename : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new writer to the given <em>filename</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L46" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(io:IO,sync_close=false,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-6815"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28io%20%3A%20IO%2C%20sync_close%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>open</strong>(io : <a href="../IO.html">IO</a>, sync_close = <span class="n">false</span>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new writer to the given <em>io</em>, yields it to the given block,
+and closes it at the end.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(filename:String,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-6816"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28filename%20%3A%20String%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>open</strong>(filename : <a href="../String.html">String</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new writer to the given <em>filename</em>, yields it to the given block,
+and closes it at the end.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="add(filename:String,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-6817"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28filename%20%3A%20String%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>add</strong>(filename : <a href="../String.html">String</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds an entry that will have the given <em>filename</em> and current
+time (<code><a href="../Time.html#now%3Aself-class-method">Time.now</a></code>) and yields an <code><a href="../IO.html">IO</a></code> to write that entry&#39;s
+contents.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L67" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(entry:Entry,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-6818"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28entry%20%3A%20Entry%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>add</strong>(entry : <a href="../Zip/Writer/Entry.html">Entry</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Adds an entry and yields <code><a href="../IO.html">IO</a></code> to write that entry&#39;s contents.</p>
+
+<p>You can choose the Entry&#39;s compression method before adding it.</p>
+
+<ul>
+<li>If the STORED compression method is used, its crc32, compressed
+size and uncompressed size <strong>must</strong> be set and be correct with
+respect to the data that will be written to the yielded <code><a href="../IO.html">IO</a></code>.</li>
+<li>If the DEFLATED compression method is used, crc32, compresed
+size and uncompressed size will be computed from the data
+written to the yielded IO.</li>
+</ul>
+
+<p>You can also set the Entry&#39;s time (which is <code><a href="../Time.html#now%3Aself-class-method">Time.now</a></code> by default)
+ and extra data before adding it to the zip stream.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(filename_or_entry:String|Entry,string:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-6819"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28filename_or_entry%20%3A%20String%20%7C%20Entry%2C%20string%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>add</strong>(filename_or_entry : <a href="../String.html">String</a> | <a href="../Zip/Writer/Entry.html">Entry</a>, string : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds an entry that will have <em>string</em> as its contents.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L148" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(filename_or_entry:String|Entry,bytes:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-6820"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28filename_or_entry%20%3A%20String%20%7C%20Entry%2C%20bytes%20%3A%20Bytes%29"></a><div class="signature">
+        
+        def <strong>add</strong>(filename_or_entry : <a href="../String.html">String</a> | <a href="../Zip/Writer/Entry.html">Entry</a>, bytes : <a href="../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds an entry that will have <em>bytes</em> as its contents.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(filename_or_entry:String|Entry,data:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-6821"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add%28filename_or_entry%20%3A%20String%20%7C%20Entry%2C%20data%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>add</strong>(filename_or_entry : <a href="../String.html">String</a> | <a href="../Zip/Writer/Entry.html">Entry</a>, data : <a href="../IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds an entry that will have its data copied from the given <em>data</em>.
+If the given <em>data</em> is a <code><a href="../File.html">::File</a></code>, it is automatically closed
+after data is copied from it.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L164" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add_dir(name)-instance-method">
+      <a class="dashingAutolink" name="autolink-6822"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_dir%28name%29"></a><div class="signature">
+        
+        def <strong>add_dir</strong>(name)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds a directory entry that will have the given <em>name</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L172" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="close-instance-method">
+      <a class="dashingAutolink" name="autolink-6823"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+        
+        def <strong>close</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Closes this zip writer.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="closed?:Bool-instance-method">
+      <a class="dashingAutolink" name="autolink-6824"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F%20%3A%20Bool"></a><div class="signature">
+        
+        def <strong>closed?</strong> : <a href="../Bool.html">Bool</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns <code>true</code> if this writer is closed.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="comment=(comment)-instance-method">
+      <a class="dashingAutolink" name="autolink-6825"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20comment%3D%28comment%29"></a><div class="signature">
+        
+        def <strong>comment=</strong>(comment)
+
+        
+      </div>
+      
+        <div class="doc"><p>Sets the zip file comment</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sync_close=(sync_close)-instance-method">
+      <a class="dashingAutolink" name="autolink-6826"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%29"></a><div class="signature">
+        
+        def <strong>sync_close=</strong>(sync_close)
+
+        
+      </div>
+      
+        <div class="doc"><p>Whether to close the enclosed <code><a href="../IO.html">IO</a></code> when closing this writer.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sync_close?:Bool-instance-method">
+      <a class="dashingAutolink" name="autolink-6827"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F%20%3A%20Bool"></a><div class="signature">
+        
+        def <strong>sync_close?</strong> : <a href="../Bool.html">Bool</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Whether to close the enclosed <code><a href="../IO.html">IO</a></code> when closing this writer.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/writer.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

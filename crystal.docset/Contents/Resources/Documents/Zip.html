@@ -1,0 +1,139 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-6828"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Zip%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Zip - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Zip
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>The Zip module contains readers and writers of the zip
+file format, described at <a href="https://pkware.cachefly.net/webdocs/APPNOTE/APPNOTE-6.3.3.TXT" target="_blank">PKWARE&#39;s site</a>.</p>
+
+<h3>Reading zip files</h3>
+
+<p>Two types are provided to read from zip files:</p>
+
+<ul>
+<li>
+<code><a href="Zip/File.html">Zip::File</a></code>: can read zip entries from a <code><a href="Zip/File.html">File</a></code> or from an <code><a href="IO/Memory.html">IO::Memory</a></code>
+and provides random read access to its entries.</li>
+<li>
+<code><a href="Zip/Reader.html">Zip::Reader</a></code>: can only read zip entries sequentially from any `IO.</li>
+</ul>
+
+<p><code><a href="Zip/File.html">Zip::File</a></code> is the preferred method to read zip files if you
+can provide a <code><a href="Zip/File.html">File</a></code>, because it&#39;s a bit more flexible and provides
+more complete information for zip entries (such as comments).</p>
+
+<p>When reading zip files, CRC32 checksum values are automatically
+verified when finishing reading an entry, and <code><a href="Zip/Error.html">Zip::Error</a></code> will
+be raised if the computed CRC32 checksum does not match.</p>
+
+<h3>Writer zip files</h3>
+
+<p>Use <code><a href="Zip/Writer.html">Zip::Writer</a></code>, which writes zip entries sequentially to
+any <code><a href="IO.html">IO</a></code>.</p>
+
+<p><span class="flag purple">NOTE</span>  only compression methods 0 (STORED) and 8 (DEFLATED) are
+supported. Additionally, ZIP64 is not yet supported.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/compression_method.cr#L2" target="_blank">zlib/compression_method.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/checksum_reader.cr#L1" target="_blank">zip/checksum_reader.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/checksum_writer.cr#L1" target="_blank">zip/checksum_writer.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zip/zip.cr#L29" target="_blank">zip/zip.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="CENTRAL_DIRECTORY_HEADER_SIGNATURE">
+        <strong>CENTRAL_DIRECTORY_HEADER_SIGNATURE</strong> = <code><span class="n">33639248</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="END_OF_CENTRAL_DIRECTORY_HEADER_SIGNATURE">
+        <strong>END_OF_CENTRAL_DIRECTORY_HEADER_SIGNATURE</strong> = <code><span class="n">101010256</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="n">20_u16</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+</body></html>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4711"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4673"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -20,6 +20,77 @@
 
 
 
+
+  <h2>Overview</h2>
+
+  <h1>OpenSSL Integration</h1>
+
+<ul>
+<li>TLS sockets need a context, potentially with keys (required for servers) and configuration.</li>
+<li>TLS sockets will wrap the underlying TCP socket, and any further communication must happen through the <code><a href="OpenSSL/SSL.html">OpenSSL::SSL</a><a href="Socket.html">::Socket</a></code> only.</li>
+</ul>
+
+<h2>Usage Example</h2>
+
+<p>Recommended ciphers can be taken from:</p>
+
+<ul>
+<li><a href="https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet#Rule_-_Only_Support_Strong_Cryptographic_Ciphers" target="_blank">OWASP Wiki</a></li>
+<li><a href="https://cipherli.st/" target="_blank">Cipherli.st</a></li>
+<li>Full list is available at <a href="https://wiki.openssl.org/index.php/Manual:Ciphers%281%29#CIPHER_STRINGS" target="_blank">OpenSSL Wiki</a>
+</li>
+</ul>
+
+<p>Do note that:</p>
+
+<ul>
+<li>Crystal does its best to provide sane configuration defaults (see <a href="https://wiki.mozilla.org/Security/Server_Side_TLS#Intermediate_compatibility_.28default.29" target="_blank">Mozilla-Intermediate</a>).</li>
+<li>Linked version of OpenSSL need to be checked for supporting specific protocols and ciphers.</li>
+<li>If any configurations or choices in Crystal regarding SSL settings and security are found to be lacking or need
+  improvement please <a href="https://github.com/crystal-lang/crystal/issues/new" target="_blank">open an issue</a> and let us know.</li>
+</ul>
+
+<h3>Server side</h3>
+
+<p><span class="flag purple">NOTE</span>  For the below example to work, a key pair should be attained.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
+<span class="k">require</span> <span class="s">&#34;openssl&#34;</span>
+
+<span class="k">def</span> <span class="m">server</span>
+  <span class="c"># Bind new TCPSocket to port 5555</span>
+  socket <span class="o">=</span> <span class="t">TCPServer</span>.<span class="k">new</span>(<span class="n">5555</span>)
+
+  context <span class="o">=</span> <span class="t">OpenSSL</span><span class="t">::</span><span class="t">SSL</span><span class="t">::</span><span class="t">Context</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>
+  context.private_key <span class="o">=</span> <span class="s">&#34;/path/to/private.key&#34;</span>
+  context.certificate_chain <span class="o">=</span> <span class="s">&#34;/path/to/public.cert&#34;</span>
+
+  puts <span class="s">&#34;Server is up&#34;</span>
+
+  socket.accept <span class="k">do</span> <span class="o">|</span>client<span class="o">|</span>
+    puts <span class="s">&#34;Got client&#34;</span>
+
+    bytes <span class="o">=</span> <span class="t">Bytes</span>.<span class="k">new</span>(<span class="n">20</span>)
+
+    ssl_socket <span class="o">=</span> <span class="t">OpenSSL</span><span class="t">::</span><span class="t">SSL</span><span class="t">::</span><span class="t">Socket</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(client, context)
+    ssl_socket.read(bytes)
+
+    puts <span class="t">String</span>.<span class="k">new</span>(bytes)
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<h3>Client side</h3>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
+<span class="k">require</span> <span class="s">&#34;openssl&#34;</span>
+
+<span class="k">def</span> <span class="m">client</span>
+  socket <span class="o">=</span> <span class="t">TCPSocket</span>.<span class="k">new</span>(<span class="s">&#34;127.0.0.1&#34;</span>, <span class="n">5555</span>)
+  context <span class="o">=</span> <span class="t">OpenSSL</span><span class="t">::</span><span class="t">SSL</span><span class="t">::</span><span class="t">Context</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>
+
+  ssl_socket <span class="o">=</span> <span class="t">OpenSSL</span><span class="t">::</span><span class="t">SSL</span><span class="t">::</span><span class="t">Socket</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(socket, context)
+  ssl_socket.write(<span class="s">&#34;Testing&#34;</span>.to_slice)
+<span class="k">end</span></code></pre>
 
 
 
@@ -37,17 +108,17 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/openssl.cr#L3" target="_blank">openssl.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/openssl.cr#L66" target="_blank">openssl.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/openssl/digest/digest_base.cr#L3" target="_blank">openssl/digest/digest_base.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/openssl/digest/digest_base.cr#L3" target="_blank">openssl/digest/digest_base.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/d1f8c42f82d3e6491cb7b3b536984c19a51b94ba/src/openssl/digest/digest.cr#L4" target="_blank">openssl/digest/digest.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/openssl/digest/digest.cr#L4" target="_blank">openssl/digest/digest.cr</a>
     
     <br/>
   
