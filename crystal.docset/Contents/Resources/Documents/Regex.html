@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-4909"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Regex%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Regex - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5134"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Regex%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Regex - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -68,7 +68,7 @@ a match and <code>nil</code> if there was no match. After performing a match, th
 special variable <code>$~</code> will be an instance of <code><a href="Regex/MatchData.html">Regex::MatchData</a></code> if it matched, <code>nil</code>
 otherwise.</p>
 
-<p>When matching a regular expression using <code><a href="Regex.html#%3D~%28other%3AString%29-instance-method">#=~</a></code> (either <code><a href="String.html#%3D~%28regex%3ARegex%29-instance-method">String#=~</a></code> or
+<p>When matching a regular expression using <code><a href="Regex.html#%3D~%28other%3AString%29-instance-method">#=~</a></code> (either <code><a href="String.html#%3D~%28other%29-instance-method">String#=~</a></code> or
 <code><a href="Regex.html#%3D~%28other%3AString%29-instance-method">Regex#=~</a></code>), the returned value will be the index of the first match in the
 string if the expression matched, <code>nil</code> otherwise.</p>
 
@@ -126,6 +126,18 @@ each capture group can be extracted on a successful match:</p>
 group index will usually also accept 0 to refer to the full match. Capture
 groups can also be given names, using the <code>(?&lt;name&gt;...)</code> syntax, as in the
 previous example.</p>
+
+<p>Following a match, the special variables $N (e.g., $1, $2, $3, ...) can be used
+to access a capture group. Trying to access an invalid capture group will raise an
+exception. Note that it is possible to have a successful match with a nil capture:</p>
+
+<pre><code><span class="s">/(spice)(s)?/</span>.match(<span class="s">&#34;spice&#34;</span>) <span class="c"># =&gt; #&lt;Regex::MatchData &#34;spice&#34; 1:&#34;spice&#34; 2:nil&gt;</span>
+1                           <span class="c"># =&gt; &#34;spice&#34;</span>
+2                           <span class="c"># =&gt; raises Exception</span></code></pre>
+
+<p>This can be mitigated by using the nilable version of the above: $N?,
+(e.g., $1? $2?, $3?, ...). Changing the above to use <code>$2?</code> instead of <code>$2</code>
+would return <code>nil</code>. <code>$2?.nil?</code> would return <code>true</code>.</p>
 
 <p>A character or group can be
 <a href="http://www.pcre.org/original/doc/html/pcrepattern.html#SEC17" target="_blank">repeated</a>
@@ -190,7 +202,7 @@ regular expressions are also UTF-8 only (by default).</p>
 <p>PCRE optionally permits named capture groups (named subpatterns) to not be
 unique. Crystal exposes the name table of a <code><a href="Regex.html">Regex</a></code> as a
 <code><a href="Hash.html">Hash</a></code> of <code><a href="String.html">String</a></code> =&gt; <code><a href="Int32.html">Int32</a></code>, and therefore requires named capture groups to have
-unique names within a single Regex.</p>
+unique names within a single <code><a href="Regex.html">Regex</a></code>.</p>
 
 
 
@@ -208,22 +220,22 @@ unique names within a single Regex.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex/match_data.cr#L1" target="_blank">regex/match_data.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex/match_data.cr#L1" target="_blank">regex/match_data.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L180" target="_blank">regex.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L194" target="_blank">regex.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/json/any.cr#L265" target="_blank">json/any.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/json/any.cr#L281" target="_blank">json/any.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/yaml/any.cr#L205" target="_blank">yaml/any.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/yaml/any.cr#L214" target="_blank">yaml/any.cr</a>
     
     <br/>
   
@@ -363,7 +375,7 @@ unique names within a single Regex.</p>
       <li class="entry-summary">
         <a href="#options%3AOptions-instance-method" class="signature"><strong>#options</strong> : Options</a>
         
-          <div class="summary"><p>Return a <code><a href="Regex/Options.html">Regex::Options</a></code> representing the optional flags applied to this Regex.</p></div>
+          <div class="summary"><p>Return a <code><a href="Regex/Options.html">Regex::Options</a></code> representing the optional flags applied to this <code><a href="Regex.html">Regex</a></code>.</p></div>
         
       </li>
     
@@ -579,7 +591,7 @@ unique names within a single Regex.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="error?(source)-class-method">
-      <a class="dashingAutolink" name="autolink-4910"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.error%3F%28source%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5135"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.error%3F%28source%29"></a><div class="signature">
         
         def self.<strong>error?</strong>(source)
 
@@ -597,13 +609,13 @@ If it&#39;s not, a <code><a href="String.html">String</a></code> containing the 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L242" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L257" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="escape(str):String-class-method">
-      <a class="dashingAutolink" name="autolink-4911"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.escape%28str%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5136"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.escape%28str%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>escape</strong>(str) : <a href="String.html">String</a>
 
@@ -620,13 +632,13 @@ If it&#39;s not, a <code><a href="String.html">String</a></code> containing the 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L257" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L272" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(source:String,options:Options=Options::None)-class-method">
-      <a class="dashingAutolink" name="autolink-4912"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28source%20%3A%20String%2C%20options%20%3A%20Options%20%3D%20Options%3A%3ANone%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5137"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28source%20%3A%20String%2C%20options%20%3A%20Options%20%3D%20Options%3A%3ANone%29"></a><div class="signature">
         
         def self.<strong>new</strong>(source : <a href="String.html">String</a>, options : <a href="Regex/Options.html">Options</a> = <span class="t">Options</span><span class="t">::</span><span class="t">None</span>)
 
@@ -645,13 +657,13 @@ options <span class="o">=</span> <span class="t">Regex</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L223" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L238" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="union(patterns:Enumerable(Regex|String)):self-class-method">
-      <a class="dashingAutolink" name="autolink-4913"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.union%28patterns%20%3A%20Enumerable%28Regex%20%7C%20String%29%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5138"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.union%28patterns%20%3A%20Enumerable%28Regex%20%7C%20String%29%29%20%3A%20self"></a><div class="signature">
         
         def self.<strong>union</strong>(patterns : <a href="Enumerable.html">Enumerable</a>(<a href="Regex.html">Regex</a> | <a href="String.html">String</a>)) : self
 
@@ -676,13 +688,13 @@ re.match(<span class="s">&#34;sledding&#34;</span>) <span class="c"># =&gt; #&lt
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L287" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L302" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="union(*patterns:Regex|String):self-class-method">
-      <a class="dashingAutolink" name="autolink-4914"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.union%28%2Apatterns%20%3A%20Regex%20%7C%20String%29%20%3A%20self"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5139"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.union%28%2Apatterns%20%3A%20Regex%20%7C%20String%29%20%3A%20self"></a><div class="signature">
         
         def self.<strong>union</strong>(*patterns : <a href="Regex.html">Regex</a> | <a href="String.html">String</a>) : self
 
@@ -704,7 +716,7 @@ re.match(<span class="s">&#34;sledding&#34;</span>) <span class="c"># =&gt; #&lt
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L302" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L317" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -715,7 +727,7 @@ re.match(<span class="s">&#34;sledding&#34;</span>) <span class="c"># =&gt; #&lt
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="+(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-4915"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5140"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%29"></a><div class="signature">
         
         def <strong>+</strong>(other)
 
@@ -737,13 +749,13 @@ re.match(<span class="s">&#34;sledding&#34;</span>) <span class="c"># =&gt; #&lt
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L325" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L340" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other:Regex)-instance-method">
-      <a class="dashingAutolink" name="autolink-4916"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Regex%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5141"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Regex%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="Regex.html">Regex</a>)
 
@@ -761,13 +773,13 @@ re.match(<span class="s">&#34;sledding&#34;</span>) <span class="c"># =&gt; #&lt
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L336" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L351" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-4917"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5142"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20String%29"></a><div class="signature">
         
         def <strong>===</strong>(other : <a href="String.html">String</a>)
 
@@ -794,13 +806,13 @@ b <span class="c"># =&gt; &#34;Upper case&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L356" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L371" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other:JSON::Any)-instance-method">
-      <a class="dashingAutolink" name="autolink-4918"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20JSON%3A%3AAny%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5143"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20JSON%3A%3AAny%29"></a><div class="signature">
         
         def <strong>===</strong>(other : <a href="JSON/Any.html">JSON::Any</a>)
 
@@ -810,13 +822,13 @@ b <span class="c"># =&gt; &#34;Upper case&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/json/any.cr#L266" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/json/any.cr#L282" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="===(other:YAML::Any)-instance-method">
-      <a class="dashingAutolink" name="autolink-4919"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20YAML%3A%3AAny%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5144"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%3D%28other%20%3A%20YAML%3A%3AAny%29"></a><div class="signature">
         
         def <strong>===</strong>(other : <a href="YAML/Any.html">YAML::Any</a>)
 
@@ -826,13 +838,13 @@ b <span class="c"># =&gt; &#34;Upper case&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/yaml/any.cr#L206" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/yaml/any.cr#L215" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="=~(other:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-4920"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D~%28other%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5145"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D~%28other%20%3A%20String%29"></a><div class="signature">
         
         def <strong>=~</strong>(other : <a href="String.html">String</a>)
 
@@ -841,8 +853,8 @@ b <span class="c"># =&gt; &#34;Upper case&#34;</span></code></pre>
       
         <div class="doc">
 <p>Match. Matches a regular expression against <em>other</em> and returns
-the starting position of the match if <em>other</em> is a matching String,
-otherwise <code>nil</code>. <code>$~</code> will contain a Regex::MatchData if there was a match,
+the starting position of the match if <em>other</em> is a matching <code><a href="String.html">String</a></code>,
+otherwise <code>nil</code>. <code>$~</code> will contain a <code><a href="Regex/MatchData.html">Regex::MatchData</a></code> if there was a match,
 <code>nil</code> otherwise.</p>
 
 <pre><code><span class="s">/at/</span> <span class="o">=~</span> <span class="s">&#34;input data&#34;</span> <span class="c"># =&gt; 7</span>
@@ -852,13 +864,13 @@ otherwise <code>nil</code>. <code>$~</code> will contain a Regex::MatchData if t
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L371" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L386" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="=~(other)-instance-method">
-      <a class="dashingAutolink" name="autolink-4921"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D~%28other%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5146"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D~%28other%29"></a><div class="signature">
         
         def <strong>=~</strong>(other)
 
@@ -866,7 +878,7 @@ otherwise <code>nil</code>. <code>$~</code> will contain a Regex::MatchData if t
       </div>
       
         <div class="doc">
-<p>Match. When the argument is not a String, always returns <code>nil</code>.</p>
+<p>Match. When the argument is not a <code><a href="String.html">String</a></code>, always returns <code>nil</code>.</p>
 
 <pre><code><span class="s">/at/</span> <span class="o">=~</span> <span class="s">&#34;input data&#34;</span> <span class="c"># =&gt; 7</span>
 <span class="s">/ax/</span> <span class="o">=~</span> <span class="s">&#34;input data&#34;</span> <span class="c"># =&gt; nil</span></code></pre>
@@ -875,13 +887,13 @@ otherwise <code>nil</code>. <code>$~</code> will contain a Regex::MatchData if t
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L383" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L398" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-4922"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5147"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -891,13 +903,13 @@ otherwise <code>nil</code>. <code>$~</code> will contain a Regex::MatchData if t
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L521" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L536" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dup-instance-method">
-      <a class="dashingAutolink" name="autolink-4923"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5148"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
         
         def <strong>dup</strong>
 
@@ -907,13 +919,13 @@ otherwise <code>nil</code>. <code>$~</code> will contain a Regex::MatchData if t
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L517" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L532" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-4924"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5149"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io : <a href="IO.html">IO</a>)
 
@@ -931,13 +943,13 @@ optional flags included.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L394" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L409" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="match(str,pos=0,options=Regex::Options::None):MatchData?-instance-method">
-      <a class="dashingAutolink" name="autolink-4925"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20match%28str%2C%20pos%20%3D%200%2C%20options%20%3D%20Regex%3A%3AOptions%3A%3ANone%29%20%3A%20MatchData%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5150"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20match%28str%2C%20pos%20%3D%200%2C%20options%20%3D%20Regex%3A%3AOptions%3A%3ANone%29%20%3A%20MatchData%3F"></a><div class="signature">
         
         def <strong>match</strong>(str, pos = <span class="n">0</span>, options = <span class="t">Regex</span><span class="t">::</span><span class="t">Options</span><span class="t">::</span><span class="t">None</span>) : <a href="Regex/MatchData.html">MatchData</a>?
 
@@ -945,7 +957,7 @@ optional flags included.</p>
       </div>
       
         <div class="doc">
-<p>Match at character index. Matches a regular expression against String
+<p>Match at character index. Matches a regular expression against <code><a href="String.html">String</a></code>
 <em>str</em>. Starts at the character index given by <em>pos</em> if given, otherwise at
 the start of <em>str</em>. Returns a <code><a href="Regex/MatchData.html">Regex::MatchData</a></code> if <em>str</em> matched, otherwise
 <code>nil</code>. <code>$~</code> will contain the same value that was returned.</p>
@@ -958,13 +970,13 @@ the start of <em>str</em>. Returns a <code><a href="Regex/MatchData.html">Regex:
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L413" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L428" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="match_at_byte_index(str,byte_index=0,options=Regex::Options::None):MatchData?-instance-method">
-      <a class="dashingAutolink" name="autolink-4926"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20match_at_byte_index%28str%2C%20byte_index%20%3D%200%2C%20options%20%3D%20Regex%3A%3AOptions%3A%3ANone%29%20%3A%20MatchData%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5151"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20match_at_byte_index%28str%2C%20byte_index%20%3D%200%2C%20options%20%3D%20Regex%3A%3AOptions%3A%3ANone%29%20%3A%20MatchData%3F"></a><div class="signature">
         
         def <strong>match_at_byte_index</strong>(str, byte_index = <span class="n">0</span>, options = <span class="t">Regex</span><span class="t">::</span><span class="t">Options</span><span class="t">::</span><span class="t">None</span>) : <a href="Regex/MatchData.html">MatchData</a>?
 
@@ -972,9 +984,9 @@ the start of <em>str</em>. Returns a <code><a href="Regex/MatchData.html">Regex:
       </div>
       
         <div class="doc">
-<p>Match at byte index. Matches a regular expression against String
+<p>Match at byte index. Matches a regular expression against <code><a href="String.html">String</a></code>
 <em>str</em>. Starts at the byte index given by <em>pos</em> if given, otherwise at
-the start of <em>str</em>. Returns a Regex::MatchData if <em>str</em> matched, otherwise
+the start of <em>str</em>. Returns a <code><a href="Regex/MatchData.html">Regex::MatchData</a></code> if <em>str</em> matched, otherwise
 <code>nil</code>. <code>$~</code> will contain the same value that was returned.</p>
 
 <pre><code><span class="s">/(.)(.)(.)/</span>.match_at_byte_index(<span class="s">&#34;abc&#34;</span>).try <span class="o">&amp;</span>.[<span class="n">2</span>]   <span class="c"># =&gt; &#34;b&#34;</span>
@@ -985,13 +997,13 @@ the start of <em>str</em>. Returns a Regex::MatchData if <em>str</em> matched, o
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L433" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L448" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="name_table:Hash(UInt16,String)-instance-method">
-      <a class="dashingAutolink" name="autolink-4927"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name_table%20%3A%20Hash%28UInt16%2C%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5152"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name_table%20%3A%20Hash%28UInt16%2C%20String%29"></a><div class="signature">
         
         def <strong>name_table</strong> : <a href="Hash.html">Hash</a>(<a href="UInt16.html">UInt16</a>, <a href="String.html">String</a>)
 
@@ -1001,7 +1013,7 @@ the start of <em>str</em>. Returns a Regex::MatchData if <em>str</em> matched, o
         <div class="doc">
 <p>Returns a <code><a href="Hash.html">Hash</a></code> where the values are the names of capture groups and the
 keys are their indexes. Non-named capture groups will not have entries in
-the Hash. Capture groups are indexed starting from 1.</p>
+the <code><a href="Hash.html">Hash</a></code>. Capture groups are indexed starting from <code>1</code>.</p>
 
 <pre><code><span class="s">/(.)/</span>.name_table                         <span class="c"># =&gt; {}</span>
 <span class="s">/(?&lt;foo&gt;.)/</span>.name_table                   <span class="c"># =&gt; {1 =&gt; &#34;foo&#34;}</span>
@@ -1012,13 +1024,13 @@ the Hash. Capture groups are indexed starting from 1.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L458" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L473" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="options:Options-instance-method">
-      <a class="dashingAutolink" name="autolink-4928"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20options%20%3A%20Options"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5153"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20options%20%3A%20Options"></a><div class="signature">
         
         def <strong>options</strong> : <a href="Regex/Options.html">Options</a>
 
@@ -1026,7 +1038,7 @@ the Hash. Capture groups are indexed starting from 1.</p>
       </div>
       
         <div class="doc">
-<p>Return a <code><a href="Regex/Options.html">Regex::Options</a></code> representing the optional flags applied to this Regex.</p>
+<p>Return a <code><a href="Regex/Options.html">Regex::Options</a></code> representing the optional flags applied to this <code><a href="Regex.html">Regex</a></code>.</p>
 
 <pre><code><span class="s">/ab+c/</span>ix.options      <span class="c"># =&gt; Regex::Options::IGNORE_CASE | Regex::Options::EXTENDED</span>
 <span class="s">/ab+c/</span>ix.options.to_s <span class="c"># =&gt; &#34;IGNORE_CASE, EXTENDED&#34;</span></code></pre>
@@ -1035,13 +1047,13 @@ the Hash. Capture groups are indexed starting from 1.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L206" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L221" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="source:String-instance-method">
-      <a class="dashingAutolink" name="autolink-4929"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20source%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5154"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20source%20%3A%20String"></a><div class="signature">
         
         def <strong>source</strong> : <a href="String.html">String</a>
 
@@ -1057,13 +1069,13 @@ the Hash. Capture groups are indexed starting from 1.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L213" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L228" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-4930"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5155"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
 
@@ -1085,7 +1097,7 @@ re <span class="o">=</span> <span class="s">/A*/</span>                  <span c
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/regex.cr#L491" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/regex.cr#L506" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -1,0 +1,770 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-2279"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AMultipart%3A%3ABuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTTP::Multipart::Builder - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> HTTP::Multipart::Builder
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../../HTTP/Multipart/Builder.html">HTTP::Multipart::Builder</a></li>
+<li class="superclass"><a href="../../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Builds a multipart MIME message.</p>
+
+<h3>Example</h3>
+
+<pre><code>io <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span>
+multipart <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Multipart</span><span class="t">::</span><span class="t">Builder</span>.<span class="k">new</span>(io)
+multipart.body_part <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>{<span class="s">&#34;Content-Type&#34;</span> =&gt; <span class="s">&#34;text/plain&#34;</span>}, <span class="s">&#34;hello!&#34;</span>
+multipart.finish
+io.to_s <span class="c"># =&gt; &#34;----------------------------DTf61dRTHYzprx7rwVQhTWr7\r\nContent-Type: text/plain\r\n\r\nhello!\r\n----------------------------DTf61dRTHYzprx7rwVQhTWr7--&#34;</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L15" target="_blank">http/multipart/builder.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28io%3AIO%2Cboundary%3DMultipart.generate_boundary%29-class-method" class="signature"><strong>.new</strong>(io : IO, boundary = <span class="t">Multipart</span>.generate_boundary)</a>
+        
+          <div class="summary"><p>Creates a new <code><a href="../../HTTP/Multipart/Builder.html">Multipart::Builder</a></code> which writes the generated multipart message to <em>io</em>, using the multipart boundary <em>boundary</em>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#body_part%28headers%3AHTTP%3A%3AHeaders%2Cstring%3AString%29-instance-method" class="signature"><strong>#body_part</strong>(headers : HTTP::Headers, string : String)</a>
+        
+          <div class="summary"><p>Appends a body part to the multipart message with the given <em>headers</em> and <em>string</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#body_part%28headers%3AHTTP%3A%3AHeaders%2Cdata%3ABytes%29-instance-method" class="signature"><strong>#body_part</strong>(headers : HTTP::Headers, data : Bytes)</a>
+        
+          <div class="summary"><p>Appends a body part to the multipart message with the given <em>headers</em> and <em>data</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#body_part%28headers%3AHTTP%3A%3AHeaders%2Cbody_io%3AIO%29-instance-method" class="signature"><strong>#body_part</strong>(headers : HTTP::Headers, body_io : IO)</a>
+        
+          <div class="summary"><p>Appends a body part to the multipart message with the given <em>headers</em> and data from <em>body_io</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#body_part%28headers%3AHTTP%3A%3AHeaders%2C%26block%29-instance-method" class="signature"><strong>#body_part</strong>(headers : HTTP::Headers, &amp;block)</a>
+        
+          <div class="summary"><p>Yields an IO that can be used to write to a body part which is appended to the multipart message with the given <em>headers</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#body_part%28headers%3AHTTP%3A%3AHeaders%29-instance-method" class="signature"><strong>#body_part</strong>(headers : HTTP::Headers)</a>
+        
+          <div class="summary"><p>Appends a body part to the multipart message with the given <em>headers</em> and no body data.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#boundary%3AString-instance-method" class="signature"><strong>#boundary</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#content_type%28subtype%3D%26quot%3Bmixed%26quot%3B%29-instance-method" class="signature"><strong>#content_type</strong>(subtype = <span class="s">&#34;mixed&#34;</span>)</a>
+        
+          <div class="summary"><p>Returns a content type header with multipart subtype <em>subtype</em>, and boundary parameter added.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#epilogue%28string%3AString%29-instance-method" class="signature"><strong>#epilogue</strong>(string : String)</a>
+        
+          <div class="summary"><p>Appends <em>string</em> to the epilogue segment of the multipart message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#epilogue%28data%3ABytes%29-instance-method" class="signature"><strong>#epilogue</strong>(data : Bytes)</a>
+        
+          <div class="summary"><p>Appends <em>data</em> to the epilogue segment of the multipart message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#epilogue%28epilogue_io%3AIO%29-instance-method" class="signature"><strong>#epilogue</strong>(epilogue_io : IO)</a>
+        
+          <div class="summary"><p>Appends <em>preamble_io</em> to the epilogue segment of the multipart message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#epilogue%28%26block%29-instance-method" class="signature"><strong>#epilogue</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Yields an IO that can be used to append to the epilogue of the multipart message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#finish-instance-method" class="signature"><strong>#finish</strong></a>
+        
+          <div class="summary"><p>Finalizes the multipart message, this method must be called to properly end the multipart message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#preamble%28string%3AString%29-instance-method" class="signature"><strong>#preamble</strong>(string : String)</a>
+        
+          <div class="summary"><p>Appends <em>string</em> to the preamble segment of the multipart message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#preamble%28data%3ABytes%29-instance-method" class="signature"><strong>#preamble</strong>(data : Bytes)</a>
+        
+          <div class="summary"><p>Appends <em>data</em> to the preamble segment of the multipart message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#preamble%28preamble_io%3AIO%29-instance-method" class="signature"><strong>#preamble</strong>(preamble_io : IO)</a>
+        
+          <div class="summary"><p>Appends <em>preamble_io</em> to the preamble segment of the multipart message.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#preamble%28%26block%29-instance-method" class="signature"><strong>#preamble</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Yields an IO that can be used to append to the preamble of the multipart message.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../../Reference.html#pretty_print%28pp%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../../Object.html#pretty_inspect%28width%3D79%2Cnewline%3D%26quot%3B%5Cn%26quot%3B%2Cindent%3D0%29%3AString-instance-method" class="tooltip">
+      <span>pretty_inspect(width = <span class="n">79</span>, newline = <span class="s">&#34;\n&#34;</span>, indent = <span class="n">0</span>) : String</span>
+    pretty_inspect</a>, 
+    
+  
+    <a href="../../Object.html#pretty_print%28pp%3APrettyPrint%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp : PrettyPrint) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
+    from_yaml</a>
+    
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(io:IO,boundary=Multipart.generate_boundary)-class-method">
+      <a class="dashingAutolink" name="autolink-2262"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20boundary%20%3D%20Multipart.generate_boundary%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(io : <a href="../../IO.html">IO</a>, boundary = <span class="t">Multipart</span>.generate_boundary)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new <code><a href="../../HTTP/Multipart/Builder.html">Multipart::Builder</a></code> which writes the generated multipart
+message to <em>io</em>, using the multipart boundary <em>boundary</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="body_part(headers:HTTP::Headers,string:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-2263"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20body_part%28headers%20%3A%20HTTP%3A%3AHeaders%2C%20string%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>body_part</strong>(headers : <a href="../../HTTP/Headers.html">HTTP::Headers</a>, string : <a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Appends a body part to the multipart message with the given <em>headers</em>
+and <em>string</em>. Throws if <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> or <code><a href="../../HTTP/Multipart/Builder.html#epilogue%28%26block%29-instance-method">#epilogue</a></code> is called before this
+method.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="body_part(headers:HTTP::Headers,data:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2264"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20body_part%28headers%20%3A%20HTTP%3A%3AHeaders%2C%20data%20%3A%20Bytes%29"></a><div class="signature">
+        
+        def <strong>body_part</strong>(headers : <a href="../../HTTP/Headers.html">HTTP::Headers</a>, data : <a href="../../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Appends a body part to the multipart message with the given <em>headers</em>
+and <em>data</em>. Throws if <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> or <code><a href="../../HTTP/Multipart/Builder.html#epilogue%28%26block%29-instance-method">#epilogue</a></code> is called before this
+method.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L87" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="body_part(headers:HTTP::Headers,body_io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2265"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20body_part%28headers%20%3A%20HTTP%3A%3AHeaders%2C%20body_io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>body_part</strong>(headers : <a href="../../HTTP/Headers.html">HTTP::Headers</a>, body_io : <a href="../../IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Appends a body part to the multipart message with the given <em>headers</em>
+and data from <em>body_io</em>. Throws if <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> or <code><a href="../../HTTP/Multipart/Builder.html#epilogue%28%26block%29-instance-method">#epilogue</a></code> is called
+before this method.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L94" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="body_part(headers:HTTP::Headers,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2266"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20body_part%28headers%20%3A%20HTTP%3A%3AHeaders%2C%20%26block%29"></a><div class="signature">
+        
+        def <strong>body_part</strong>(headers : <a href="../../HTTP/Headers.html">HTTP::Headers</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Yields an IO that can be used to write to a body part which is appended
+to the multipart message with the given <em>headers</em>. Throws if <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> or
+<code><a href="../../HTTP/Multipart/Builder.html#epilogue%28%26block%29-instance-method">#epilogue</a></code> is called before this method.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L101" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="body_part(headers:HTTP::Headers)-instance-method">
+      <a class="dashingAutolink" name="autolink-2267"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20body_part%28headers%20%3A%20HTTP%3A%3AHeaders%29"></a><div class="signature">
+        
+        def <strong>body_part</strong>(headers : <a href="../../HTTP/Headers.html">HTTP::Headers</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Appends a body part to the multipart message with the given <em>headers</em>
+and no body data. Throws is <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> or <code><a href="../../HTTP/Multipart/Builder.html#epilogue%28%26block%29-instance-method">#epilogue</a></code> is called before
+this method.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L108" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="boundary:String-instance-method">
+      <a class="dashingAutolink" name="autolink-2268"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20boundary%20%3A%20String"></a><div class="signature">
+        
+        def <strong>boundary</strong> : <a href="../../String.html">String</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="content_type(subtype=&amp;quot;mixed&amp;quot;)-instance-method">
+      <a class="dashingAutolink" name="autolink-2269"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20content_type%28subtype%20%3D%20%22mixed%22%29"></a><div class="signature">
+        
+        def <strong>content_type</strong>(subtype = <span class="s">&#34;mixed&#34;</span>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a content type header with multipart subtype <em>subtype</em>, and
+boundary parameter added.</p>
+
+<pre><code>builder <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Multipart</span><span class="t">::</span><span class="t">Builder</span>.<span class="k">new</span>(io, <span class="s">&#34;a4VF&#34;</span>)
+builder.content_type(<span class="s">&#34;mixed&#34;</span>) <span class="c"># =&gt; &#34;multipart/mixed; boundary=\&#34;a4VF\&#34;&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="epilogue(string:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-2270"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epilogue%28string%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>epilogue</strong>(string : <a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Appends <em>string</em> to the epilogue segment of the multipart message. Throws
+if <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> is called before this method, or no body parts have been
+appended.</p>
+
+<p>Can be called multiple times to append to the epilogue multiple times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L137" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="epilogue(data:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2271"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epilogue%28data%20%3A%20Bytes%29"></a><div class="signature">
+        
+        def <strong>epilogue</strong>(data : <a href="../../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Appends <em>data</em> to the epilogue segment of the multipart message. Throws
+if <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> is called before this method, or no body parts have been
+appended.</p>
+
+<p>Can be called multiple times to append to the epilogue multiple times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L146" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="epilogue(epilogue_io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2272"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epilogue%28epilogue_io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>epilogue</strong>(epilogue_io : <a href="../../IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Appends <em>preamble_io</em> to the epilogue segment of the multipart message.
+Throws if <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> is called before this method, or no body parts have
+been appended.</p>
+
+<p>Can be called multiple times to append to the epilogue multiple times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="epilogue(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2273"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20epilogue%28%26block%29"></a><div class="signature">
+        
+        def <strong>epilogue</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Yields an IO that can be used to append to the epilogue of the multipart
+message. Throws if <code><a href="../../HTTP/Multipart/Builder.html#finish-instance-method">#finish</a></code> is called before this method, or no body
+parts have been appended.</p>
+
+<p>Can be called multiple times to append to the preamble multiple times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L164" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="finish-instance-method">
+      <a class="dashingAutolink" name="autolink-2274"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finish"></a><div class="signature">
+        
+        def <strong>finish</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Finalizes the multipart message, this method must be called to properly
+end the multipart message.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="preamble(string:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-2275"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20preamble%28string%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>preamble</strong>(string : <a href="../../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Appends <em>string</em> to the preamble segment of the multipart message. Throws
+if <code><a href="../../HTTP/Multipart/Builder.html#body_part%28headers%3AHTTP%3A%3AHeaders%2Cstring%3AString%29-instance-method">#body_part</a></code> is called before this method.</p>
+
+<p>Can be called multiple times to append to the preamble multiple times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="preamble(data:Bytes)-instance-method">
+      <a class="dashingAutolink" name="autolink-2276"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20preamble%28data%20%3A%20Bytes%29"></a><div class="signature">
+        
+        def <strong>preamble</strong>(data : <a href="../../Bytes.html">Bytes</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Appends <em>data</em> to the preamble segment of the multipart message. Throws
+if <code><a href="../../HTTP/Multipart/Builder.html#body_part%28headers%3AHTTP%3A%3AHeaders%2Cstring%3AString%29-instance-method">#body_part</a></code> is called before this method.</p>
+
+<p>Can be called multiple times to append to the preamble multiple times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="preamble(preamble_io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-2277"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20preamble%28preamble_io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>preamble</strong>(preamble_io : <a href="../../IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Appends <em>preamble_io</em> to the preamble segment of the multipart message.
+Throws if <code><a href="../../HTTP/Multipart/Builder.html#body_part%28headers%3AHTTP%3A%3AHeaders%2Cstring%3AString%29-instance-method">#body_part</a></code> is called before this method.</p>
+
+<p>Can be called multiple times to append to the preamble multiple times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="preamble(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2278"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20preamble%28%26block%29"></a><div class="signature">
+        
+        def <strong>preamble</strong>(&amp;block)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Yields an IO that can be used to append to the preamble of the multipart
+message. Throws if <code><a href="../../HTTP/Multipart/Builder.html#body_part%28headers%3AHTTP%3A%3AHeaders%2Cstring%3AString%29-instance-method">#body_part</a></code> is called before this method.</p>
+
+<p>Can be called multiple times to append to the preamble multiple times.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/multipart/builder.cr#L71" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

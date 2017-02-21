@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1359"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Digest%3A%3ASHA1%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Digest::SHA1 - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1387"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Digest%3A%3ASHA1%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Digest::SHA1 - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,13 +13,24 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Digest::SHA1
+  <span class="kind">class</span> Digest::SHA1
 
 </h1>
 
 
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../Digest/SHA1.html">Digest::SHA1</a></li>
+<li class="superclass"><a href="../Digest/Base.html">Digest::Base</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
 
 
+
+
+  <h2>Overview</h2>
+
+  <p>Implements the SHA1 digest algorithm.</p>
 
 
 
@@ -37,7 +48,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/digest/sha1.cr#L3" target="_blank">digest/sha1.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/digest/sha1.cr#L4" target="_blank">digest/sha1.cr</a>
     
     <br/>
   
@@ -50,22 +61,44 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#base64digest%28string_or_slice%3AString%7CBytes%29%3AString-class-method" class="signature"><strong>.base64digest</strong>(string_or_slice : String | Bytes) : String</a>
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#circular_shift%28bits%2Cword%29-instance-method" class="signature"><strong>#circular_shift</strong>(bits, word)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#digest%28string%3AString%29-class-method" class="signature"><strong>.digest</strong>(string : String)</a>
+        <a href="#final-instance-method" class="signature"><strong>#final</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#digest%28slice%3ABytes%29-class-method" class="signature"><strong>.digest</strong>(slice : Bytes)</a>
+        <a href="#pad_message-instance-method" class="signature"><strong>#pad_message</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#hexdigest%28string_or_slice%3AString%7CBytes%29%3AString-class-method" class="signature"><strong>.hexdigest</strong>(string_or_slice : String | Bytes) : String</a>
+        <a href="#process_message_block-instance-method" class="signature"><strong>#process_message_block</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#result-instance-method" class="signature"><strong>#result</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#update%28data%29-instance-method" class="signature"><strong>#update</strong>(data)</a>
         
       </li>
     
@@ -75,19 +108,228 @@
 
 
 
-
-
 <div class="methods-inherited">
+  
+    
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Digest/Base.html">Digest::Base</a></code>
+</h3>
+  
+  
+    <a href="../Digest/Base.html#base64digest%28data%29%3AString-class-method" class="tooltip">
+      <span>base64digest(data) : String<br/>base64digest(&amp;block) : String</span>
+    base64digest</a>, 
+    
+  
+    <a href="../Digest/Base.html#digest%28data%29-class-method" class="tooltip">
+      <span>digest(data)<br/>digest(&amp;block)</span>
+    digest</a>, 
+    
+  
+    <a href="../Digest/Base.html#hexdigest%28data%29%3AString-class-method" class="tooltip">
+      <span>hexdigest(data) : String<br/>hexdigest(&amp;block) : String</span>
+    hexdigest</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../Reference.html#pretty_print%28pp%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../Object.html#pretty_inspect%28width%3D79%2Cnewline%3D%26quot%3B%5Cn%26quot%3B%2Cindent%3D0%29%3AString-instance-method" class="tooltip">
+      <span>pretty_inspect(width = <span class="n">79</span>, newline = <span class="s">&#34;\n&#34;</span>, indent = <span class="n">0</span>) : String</span>
+    pretty_inspect</a>, 
+    
+  
+    <a href="../Object.html#pretty_print%28pp%3APrettyPrint%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp : PrettyPrint) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
+    from_yaml</a>
+    
+  
+
+
   
 </div>
 
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="base64digest(string_or_slice:String|Bytes):String-class-method">
-      <a class="dashingAutolink" name="autolink-1360"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.base64digest%28string_or_slice%20%3A%20String%20%7C%20Bytes%29%20%3A%20String"></a><div class="signature">
+    <div class="entry-detail" id="new-class-method">
+      <a class="dashingAutolink" name="autolink-1388"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
         
-        def self.<strong>base64digest</strong>(string_or_slice : <a href="../String.html">String</a> | <a href="../Bytes.html">Bytes</a>) : <a href="../String.html">String</a>
+        def self.<strong>new</strong>
 
         
       </div>
@@ -95,15 +337,20 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/digest/sha1.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/digest/sha1.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="digest(string:String)-class-method">
-      <a class="dashingAutolink" name="autolink-1361"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.digest%28string%20%3A%20String%29"></a><div class="signature">
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="circular_shift(bits,word)-instance-method">
+      <a class="dashingAutolink" name="autolink-1389"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20circular_shift%28bits%2C%20word%29"></a><div class="signature">
         
-        def self.<strong>digest</strong>(string : <a href="../String.html">String</a>)
+        def <strong>circular_shift</strong>(bits, word)
 
         
       </div>
@@ -111,15 +358,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/digest/sha1.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/digest/sha1.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="digest(slice:Bytes)-class-method">
-      <a class="dashingAutolink" name="autolink-1362"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.digest%28slice%20%3A%20Bytes%29"></a><div class="signature">
+    <div class="entry-detail" id="final-instance-method">
+      <a class="dashingAutolink" name="autolink-1390"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20final"></a><div class="signature">
         
-        def self.<strong>digest</strong>(slice : <a href="../Bytes.html">Bytes</a>)
+        def <strong>final</strong>
 
         
       </div>
@@ -127,15 +374,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/digest/sha1.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/digest/sha1.cr#L103" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="hexdigest(string_or_slice:String|Bytes):String-class-method">
-      <a class="dashingAutolink" name="autolink-1363"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.hexdigest%28string_or_slice%20%3A%20String%20%7C%20Bytes%29%20%3A%20String"></a><div class="signature">
+    <div class="entry-detail" id="pad_message-instance-method">
+      <a class="dashingAutolink" name="autolink-1391"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pad_message"></a><div class="signature">
         
-        def self.<strong>hexdigest</strong>(string_or_slice : <a href="../String.html">String</a> | <a href="../Bytes.html">Bytes</a>) : <a href="../String.html">String</a>
+        def <strong>pad_message</strong>
 
         
       </div>
@@ -143,13 +390,59 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/digest/sha1.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/digest/sha1.cr#L119" target="_blank">View source</a>]
         
       </div>
     </div>
   
+    <div class="entry-detail" id="process_message_block-instance-method">
+      <a class="dashingAutolink" name="autolink-1392"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20process_message_block"></a><div class="signature">
+        
+        def <strong>process_message_block</strong>
 
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/digest/sha1.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="result-instance-method">
+      <a class="dashingAutolink" name="autolink-1393"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20result"></a><div class="signature">
+        
+        def <strong>result</strong>
 
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/digest/sha1.cr#L106" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="update(data)-instance-method">
+      <a class="dashingAutolink" name="autolink-1394"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20update%28data%29"></a><div class="signature">
+        
+        def <strong>update</strong>(data)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/digest/sha1.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 

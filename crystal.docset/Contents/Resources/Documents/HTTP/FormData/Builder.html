@@ -1,0 +1,446 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-2189"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AFormData%3A%3ABuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTTP::FormData::Builder - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> HTTP::FormData::Builder
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../../HTTP/FormData/Builder.html">HTTP::FormData::Builder</a></li>
+<li class="superclass"><a href="../../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Builds a multipart/form-data message.</p>
+
+<h3>Example</h3>
+
+<pre><code>io <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span>
+builder <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">FormData</span><span class="t">::</span><span class="t">Builder</span>.<span class="k">new</span>(io, <span class="s">&#34;aA47&#34;</span>)
+builder.field(<span class="s">&#34;name&#34;</span>, <span class="s">&#34;joe&#34;</span>)
+file <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span> <span class="s">&#34;file contents&#34;</span>
+builder.file(<span class="s">&#34;upload&#34;</span>, io, <span class="t">FileMetadata</span>.<span class="k">new</span>(filename: <span class="s">&#34;test.txt&#34;</span>))
+builder.finish
+io.to_s <span class="c"># =&gt; &#34;--aA47\r\nContent-Disposition: form-data; name=\&#34;name\&#34;\r\n\r\njoe\r\n--aA47\r\nContent-Disposition: form-data; name=\&#34;upload\&#34;; filename=\&#34;test.txt\&#34;\r\n\r\nfile contents\r\n--aA47--&#34;</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/builder.cr#L15" target="_blank">http/formdata/builder.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28io%3AIO%2Cboundary%3DMultipart.generate_boundary%29-class-method" class="signature"><strong>.new</strong>(io : IO, boundary = <span class="t">Multipart</span>.generate_boundary)</a>
+        
+          <div class="summary"><p>Creates a new <code><a href="../../HTTP/FormData/Builder.html">FormData::Builder</a></code> which writes to <em>io</em>, using the multipart boundary <em>boundary</em>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#boundary%3AString-instance-method" class="signature"><strong>#boundary</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#content_type-instance-method" class="signature"><strong>#content_type</strong></a>
+        
+          <div class="summary"><p>Returns a content type header with correct boundary parameter.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#field%28name%2Cvalue%2Cheaders%3AHTTP%3A%3AHeaders%3DHTTP%3A%3AHeaders.new%29-instance-method" class="signature"><strong>#field</strong>(name, value, headers : HTTP::Headers = <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>.<span class="k">new</span>)</a>
+        
+          <div class="summary"><p>Adds a form part with the given <em>name</em> and <em>value</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#file%28name%2Cio%2Cmetadata%3AFileMetadata%3DFileMetadata.new%2Cheaders%3AHTTP%3A%3AHeaders%3DHTTP%3A%3AHeaders.new%29-instance-method" class="signature"><strong>#file</strong>(name, io, metadata : FileMetadata = <span class="t">FileMetadata</span>.<span class="k">new</span>, headers : HTTP::Headers = <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>.<span class="k">new</span>)</a>
+        
+          <div class="summary"><p>Adds a form part called <em>name</em>, with data from <em>io</em> as the value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#finish-instance-method" class="signature"><strong>#finish</strong></a>
+        
+          <div class="summary"><p>Finalizes the multipart message, this method must be called before the generated multipart message written to the IO is considered valid.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Reference.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../../Reference.html#pretty_print%28pp%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../../Object.html#hash-instance-method" class="tooltip">
+      <span>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../../Object.html#pretty_inspect%28width%3D79%2Cnewline%3D%26quot%3B%5Cn%26quot%3B%2Cindent%3D0%29%3AString-instance-method" class="tooltip">
+      <span>pretty_inspect(width = <span class="n">79</span>, newline = <span class="s">&#34;\n&#34;</span>, indent = <span class="n">0</span>) : String</span>
+    pretty_inspect</a>, 
+    
+  
+    <a href="../../Object.html#pretty_print%28pp%3APrettyPrint%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp : PrettyPrint) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io) : self</span>
+    from_yaml</a>
+    
+  
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(io:IO,boundary=Multipart.generate_boundary)-class-method">
+      <a class="dashingAutolink" name="autolink-2190"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20boundary%20%3D%20Multipart.generate_boundary%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(io : <a href="../../IO.html">IO</a>, boundary = <span class="t">Multipart</span>.generate_boundary)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new <code><a href="../../HTTP/FormData/Builder.html">FormData::Builder</a></code> which writes to <em>io</em>, using the
+multipart boundary <em>boundary</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/builder.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="boundary:String-instance-method">
+      <a class="dashingAutolink" name="autolink-2191"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20boundary%20%3A%20String"></a><div class="signature">
+        
+        def <strong>boundary</strong> : <a href="../../String.html">String</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/builder.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="content_type-instance-method">
+      <a class="dashingAutolink" name="autolink-2192"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20content_type"></a><div class="signature">
+        
+        def <strong>content_type</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a content type header with correct boundary parameter.</p>
+
+<pre><code>builder <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">FormData</span><span class="t">::</span><span class="t">Builder</span>.<span class="k">new</span>(io, <span class="s">&#34;a4VF&#34;</span>)
+builder.content_type <span class="c"># =&gt; &#34;multipart/form-data; boundary=\&#34;a4VF\&#34;&#34;</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/builder.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="field(name,value,headers:HTTP::Headers=HTTP::Headers.new)-instance-method">
+      <a class="dashingAutolink" name="autolink-2193"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20field%28name%2C%20value%2C%20headers%20%3A%20HTTP%3A%3AHeaders%20%3D%20HTTP%3A%3AHeaders.new%29"></a><div class="signature">
+        
+        def <strong>field</strong>(name, value, headers : <a href="../../HTTP/Headers.html">HTTP::Headers</a> = <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>.<span class="k">new</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds a form part with the given <em>name</em> and <em>value</em>. <em>Headers</em> can
+optionally be provided for the form part.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/builder.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="file(name,io,metadata:FileMetadata=FileMetadata.new,headers:HTTP::Headers=HTTP::Headers.new)-instance-method">
+      <a class="dashingAutolink" name="autolink-2194"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20file%28name%2C%20io%2C%20metadata%20%3A%20FileMetadata%20%3D%20FileMetadata.new%2C%20headers%20%3A%20HTTP%3A%3AHeaders%20%3D%20HTTP%3A%3AHeaders.new%29"></a><div class="signature">
+        
+        def <strong>file</strong>(name, io, metadata : <a href="../../HTTP/FormData/FileMetadata.html">FileMetadata</a> = <span class="t">FileMetadata</span>.<span class="k">new</span>, headers : <a href="../../HTTP/Headers.html">HTTP::Headers</a> = <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>.<span class="k">new</span>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Adds a form part called <em>name</em>, with data from <em>io</em> as the value.
+<em>Metadata</em> can be provided to add extra metadata about the file to the
+Content-Disposition header for the form part. Other headers can be added
+using <em>headers</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/builder.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="finish-instance-method">
+      <a class="dashingAutolink" name="autolink-2195"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finish"></a><div class="signature">
+        
+        def <strong>finish</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Finalizes the multipart message, this method must be called before the
+generated multipart message written to the IO is considered valid.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/builder.cr#L69" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-6854"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Zlib%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Zlib - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-7090"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Zlib%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Zlib - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -23,15 +23,8 @@
 
   <h2>Overview</h2>
 
-  <p>The Zlib module provides access to the <a href="http://zlib.net/" target="_blank">zlib library</a> for
-lossless data compression and decompression in zlib and gzip format:</p>
-
-<ul>
-<li>
-<code><a href="Zlib/Deflate.html">Zlib::Deflate</a></code> for compression</li>
-<li>
-<code><a href="Zlib/Inflate.html">Zlib::Inflate</a></code> for decompression</li>
-</ul>
+  <p>The Zlib module contains readers and writers of zlib format compressed
+data, as specified in <a href="https://www.ietf.org/rfc/rfc1950.txt" target="_blank">RFC 1950</a>.</p>
 
 
 
@@ -49,12 +42,12 @@ lossless data compression and decompression in zlib and gzip format:</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L26" target="_blank">zlib/deflate.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/reader.cr#L6" target="_blank">zlib/reader.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib.cr#L8" target="_blank">zlib.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/zlib.cr#L7" target="_blank">zlib/zlib.cr</a>
     
     <br/>
   
@@ -66,61 +59,29 @@ lossless data compression and decompression in zlib and gzip format:</p>
   
   <dl>
     
-      <dt class="entry-const" id="GZIP">
-        <strong>GZIP</strong> = <code><span class="t">LibZ</span><span class="t">::</span><span class="t">MAX_BITS</span> <span class="o">+</span> <span class="n">16</span></code>
+      <dt class="entry-const" id="BEST_COMPRESSION">
+        <strong>BEST_COMPRESSION</strong> = <code><span class="t">Flate</span><span class="t">::</span><span class="t">BEST_COMPRESSION</span></code>
       </dt>
       
     
-      <dt class="entry-const" id="ZIP">
-        <strong>ZIP</strong> = <code><span class="o">-</span><span class="t">LibZ</span><span class="t">::</span><span class="t">MAX_BITS</span></code>
+      <dt class="entry-const" id="BEST_SPEED">
+        <strong>BEST_SPEED</strong> = <code><span class="t">Flate</span><span class="t">::</span><span class="t">BEST_SPEED</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="DEFAULT_COMPRESSION">
+        <strong>DEFAULT_COMPRESSION</strong> = <code><span class="t">Flate</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="NO_COMPRESSION">
+        <strong>NO_COMPRESSION</strong> = <code><span class="t">Flate</span><span class="t">::</span><span class="t">NO_COMPRESSION</span></code>
       </dt>
       
     
   </dl>
 
 
-
-  <h2>Class Method Summary</h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#adler32%28data%2Cadler%29-class-method" class="signature"><strong>.adler32</strong>(data, adler)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#adler32%28data%29-class-method" class="signature"><strong>.adler32</strong>(data)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#adler32_combine%28adler1%2Cadler2%2Clen%29-class-method" class="signature"><strong>.adler32_combine</strong>(adler1, adler2, len)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#crc32%28data%2Ccrc%29-class-method" class="signature"><strong>.crc32</strong>(data, crc)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#crc32%28data%29-class-method" class="signature"><strong>.crc32</strong>(data)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#crc32_combine%28crc1%2Ccrc2%2Clen%29-class-method" class="signature"><strong>.crc32_combine</strong>(crc1, crc2, len)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#version%3AString-class-method" class="signature"><strong>.version</strong> : String</a>
-        
-          <div class="summary"><p>Returns the linked zlib version.</p></div>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -132,123 +93,6 @@ lossless data compression and decompression in zlib and gzip format:</p>
   
 </div>
 
-
-  <h2>Class Method Detail</h2>
-  
-    <div class="entry-detail" id="adler32(data,adler)-class-method">
-      <a class="dashingAutolink" name="autolink-6855"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.adler32%28data%2C%20adler%29"></a><div class="signature">
-        
-        def self.<strong>adler32</strong>(data, adler)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib.cr#L17" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="adler32(data)-class-method">
-      <a class="dashingAutolink" name="autolink-6856"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.adler32%28data%29"></a><div class="signature">
-        
-        def self.<strong>adler32</strong>(data)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib.cr#L22" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="adler32_combine(adler1,adler2,len)-class-method">
-      <a class="dashingAutolink" name="autolink-6857"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.adler32_combine%28adler1%2C%20adler2%2C%20len%29"></a><div class="signature">
-        
-        def self.<strong>adler32_combine</strong>(adler1, adler2, len)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib.cr#L27" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="crc32(data,crc)-class-method">
-      <a class="dashingAutolink" name="autolink-6858"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.crc32%28data%2C%20crc%29"></a><div class="signature">
-        
-        def self.<strong>crc32</strong>(data, crc)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib.cr#L31" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="crc32(data)-class-method">
-      <a class="dashingAutolink" name="autolink-6859"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.crc32%28data%29"></a><div class="signature">
-        
-        def self.<strong>crc32</strong>(data)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib.cr#L36" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="crc32_combine(crc1,crc2,len)-class-method">
-      <a class="dashingAutolink" name="autolink-6860"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.crc32_combine%28crc1%2C%20crc2%2C%20len%29"></a><div class="signature">
-        
-        def self.<strong>crc32_combine</strong>(crc1, crc2, len)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib.cr#L41" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="version:String-class-method">
-      <a class="dashingAutolink" name="autolink-6861"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.version%20%3A%20String"></a><div class="signature">
-        
-        def self.<strong>version</strong> : <a href="String.html">String</a>
-
-        
-      </div>
-      
-        <div class="doc"><p>Returns the linked zlib version.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib.cr#L13" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 

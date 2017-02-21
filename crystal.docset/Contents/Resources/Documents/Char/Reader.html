@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-491"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Char%3A%3AReader%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Char::Reader - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-501"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Char%3A%3AReader%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Char::Reader - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -30,18 +30,18 @@
 
   <h2>Overview</h2>
 
-  <p>A Char::Reader allows iterating a String by Chars.</p>
+  <p>A <code><a href="../Char/Reader.html">Char::Reader</a></code> allows iterating a <code><a href="../String.html">String</a></code> by Chars.</p>
 
-<p>As soon as you instantiate a Char::Reader it will decode the first
-char in the String, which can be accessed by invoking <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#current_char</a></code>.
+<p>As soon as you instantiate a <code><a href="../Char/Reader.html">Char::Reader</a></code> it will decode the first
+char in the <code><a href="../String.html">String</a></code>, which can be accessed by invoking <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#current_char</a></code>.
 At this point <code><a href="../Char/Reader.html#pos%3AInt32-instance-method">#pos</a></code>, the current position in the string, will equal zero.
 Successive calls to <code><a href="../Char/Reader.html#next_char-instance-method">#next_char</a></code> return the next chars in the string,
 advancing <code><a href="../Char/Reader.html#pos%3AInt32-instance-method">#pos</a></code>.</p>
 
-<p>Note that the null character &#39;\0&#39; will be returned in <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#current_char</a></code> when
+<p>Note that the null character <code>&#39;\0&#39;</code> will be returned in <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#current_char</a></code> when
 the end is reached (as well as when the string is empty). Thus, <code><a href="../Char/Reader.html#has_next%3F-instance-method">#has_next?</a></code>
 will return <code>false</code> only when <code><a href="../Char/Reader.html#pos%3AInt32-instance-method">#pos</a></code> is equal to the string&#39;s bytesize, in which
-case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#current_char</a></code> will always be &#39;\0&#39;.</p>
+case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#current_char</a></code> will always be <code>&#39;\0&#39;</code>.</p>
 
 
 
@@ -67,7 +67,7 @@ case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#cu
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L14" target="_blank">char/reader.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L14" target="_blank">char/reader.cr</a>
     
     <br/>
   
@@ -80,9 +80,16 @@ case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#cu
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28string%3AString%29-class-method" class="signature"><strong>.new</strong>(string : String)</a>
+        <a href="#new%28string%3AString%2Cpos%3D0%29-class-method" class="signature"><strong>.new</strong>(string : String, pos = <span class="n">0</span>)</a>
         
-          <div class="summary"><p>Creates a reader with the specified <em>string</em></p></div>
+          <div class="summary"><p>Creates a reader with the specified <em>string</em> positioned at byte index <em>pos</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28%2A%2Cat_endstring%3AString%29-class-method" class="signature"><strong>.new</strong>(*, at_end string : String)</a>
+        
+          <div class="summary"><p>Creates a reader that will be positioned at the last char of the given string.</p></div>
         
       </li>
     
@@ -103,7 +110,7 @@ case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#cu
       <li class="entry-summary">
         <a href="#current_char_width%3AInt32-instance-method" class="signature"><strong>#current_char_width</strong> : Int32</a>
         
-          <div class="summary"><p>Returns the size of the current_char (in bytes) as if it were encoded in UTF-8.</p></div>
+          <div class="summary"><p>Returns the size of the <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#current_char</a></code> (in bytes) as if it were encoded in UTF-8.</p></div>
         
       </li>
     
@@ -115,9 +122,23 @@ case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#cu
       </li>
     
       <li class="entry-summary">
+        <a href="#error%3AUInt8%3F-instance-method" class="signature"><strong>#error</strong> : UInt8?</a>
+        
+          <div class="summary"><p>If there was an error decoding the current char because of an invalid UTF-8 byte sequence, returns the byte that produced the invalid encoding.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#has_next%3F-instance-method" class="signature"><strong>#has_next?</strong></a>
         
           <div class="summary"><p>Returns <code>true</code> if there is a character left to read.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_previous%3F-instance-method" class="signature"><strong>#has_previous?</strong></a>
+        
+          <div class="summary"><p>Returns <code>true</code> if there are characters before the current one.</p></div>
         
       </li>
     
@@ -146,6 +167,13 @@ case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#cu
         <a href="#pos%3D%28pos%29-instance-method" class="signature"><strong>#pos=</strong>(pos)</a>
         
           <div class="summary"><p>Sets <code><a href="../Char/Reader.html#pos%3AInt32-instance-method">#pos</a></code> to <em>pos</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#previous_char-instance-method" class="signature"><strong>#previous_char</strong></a>
+        
+          <div class="summary"><p>Returns the previous character, <code><a href="../Char/Reader.html#pos%3AInt32-instance-method">#pos</a></code> is decremented.</p></div>
         
       </li>
     
@@ -647,20 +675,40 @@ case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#cu
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(string:String)-class-method">
-      <a class="dashingAutolink" name="autolink-492"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28string%20%3A%20String%29"></a><div class="signature">
+    <div class="entry-detail" id="new(string:String,pos=0)-class-method">
+      <a class="dashingAutolink" name="autolink-502"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28string%20%3A%20String%2C%20pos%20%3D%200%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(string : <a href="../String.html">String</a>)
+        def self.<strong>new</strong>(string : <a href="../String.html">String</a>, pos = <span class="n">0</span>)
 
         
       </div>
       
-        <div class="doc"><p>Creates a reader with the specified <em>string</em></p></div>
+        <div class="doc"><p>Creates a reader with the specified <em>string</em> positioned at
+byte index <em>pos</em>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L57" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(*,at_endstring:String)-class-method">
+      <a class="dashingAutolink" name="autolink-503"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28%2A%2C%20at_end%20string%20%3A%20String%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(*, at_end string : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a reader that will be positioned at the last char
+of the given string.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -671,7 +719,7 @@ case <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#cu
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="current_char:Char-instance-method">
-      <a class="dashingAutolink" name="autolink-493"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20current_char%20%3A%20Char"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-504"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20current_char%20%3A%20Char"></a><div class="signature">
         
         def <strong>current_char</strong> : <a href="../Char.html">Char</a>
 
@@ -690,13 +738,13 @@ reader.current_char <span class="c"># =&gt; &#39;b&#39;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="current_char_width:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-494"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20current_char_width%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-505"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20current_char_width%20%3A%20Int32"></a><div class="signature">
         
         def <strong>current_char_width</strong> : <a href="../Int32.html">Int32</a>
 
@@ -704,7 +752,7 @@ reader.current_char <span class="c"># =&gt; &#39;b&#39;</span></code></pre>
       </div>
       
         <div class="doc">
-<p>Returns the size of the current_char (in bytes) as if it were encoded in UTF-8.</p>
+<p>Returns the size of the <code><a href="../Char/Reader.html#current_char%3AChar-instance-method">#current_char</a></code> (in bytes) as if it were encoded in UTF-8.</p>
 
 <pre><code>reader <span class="o">=</span> <span class="t">Char</span><span class="t">::</span><span class="t">Reader</span>.<span class="k">new</span>(<span class="s">&#34;a&eacute;&#34;</span>)
 reader.current_char_width <span class="c"># =&gt; 1</span>
@@ -715,13 +763,13 @@ reader.current_char_width <span class="c"># =&gt; 2</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="each(&amp;block):Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-495"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-506"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20each%28%26block%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>each</strong>(&amp;block) : <a href="../Nil.html">Nil</a>
 
@@ -744,13 +792,33 @@ C</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L144" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L178" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error:UInt8?-instance-method">
+      <a class="dashingAutolink" name="autolink-507"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20error%20%3A%20UInt8%3F"></a><div class="signature">
+        
+        def <strong>error</strong> : <a href="../UInt8.html">UInt8</a>?
+
+        
+      </div>
+      
+        <div class="doc"><p>If there was an error decoding the current char because
+of an invalid UTF-8 byte sequence, returns the byte
+that produced the invalid encoding. Otherwise returns <code>nil</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="has_next?-instance-method">
-      <a class="dashingAutolink" name="autolink-496"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_next%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-508"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_next%3F"></a><div class="signature">
         
         def <strong>has_next?</strong>
 
@@ -759,7 +827,7 @@ C</code></pre>
       
         <div class="doc">
 <p>Returns <code>true</code> if there is a character left to read.
-The terminating byte &#39;\0&#39; is considered a valid character
+The terminating byte <code>&#39;\0&#39;</code> is considered a valid character
 by this method.</p>
 
 <pre><code>reader <span class="o">=</span> <span class="t">Char</span><span class="t">::</span><span class="t">Reader</span>.<span class="k">new</span>(<span class="s">&#34;a&#34;</span>)
@@ -770,13 +838,32 @@ reader.peek_next_char <span class="c"># =&gt; &#39;\0&#39;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L68" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_previous?-instance-method">
+      <a class="dashingAutolink" name="autolink-509"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_previous%3F"></a><div class="signature">
+        
+        def <strong>has_previous?</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns <code>true</code> if there are characters before
+the current one.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L129" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="next_char-instance-method">
-      <a class="dashingAutolink" name="autolink-497"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next_char"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-510"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next_char"></a><div class="signature">
         
         def <strong>next_char</strong>
 
@@ -786,7 +873,7 @@ reader.peek_next_char <span class="c"># =&gt; &#39;\0&#39;</span></code></pre>
         <div class="doc">
 <p>Reads the next character in the string,
 <code><a href="../Char/Reader.html#pos%3AInt32-instance-method">#pos</a></code> is incremented. Raises <code><a href="../IndexError.html">IndexError</a></code> if the reader is
-at the end of the <code><a href="../Char/Reader.html#string%3AString-instance-method">#string</a></code></p>
+at the end of the <code><a href="../Char/Reader.html#string%3AString-instance-method">#string</a></code>.</p>
 
 <pre><code>reader <span class="o">=</span> <span class="t">Char</span><span class="t">::</span><span class="t">Reader</span>.<span class="k">new</span>(<span class="s">&#34;ab&#34;</span>)
 reader.next_char <span class="c"># =&gt; &#39;b&#39;</span></code></pre>
@@ -795,13 +882,13 @@ reader.next_char <span class="c"># =&gt; &#39;b&#39;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="peek_next_char-instance-method">
-      <a class="dashingAutolink" name="autolink-498"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20peek_next_char"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-511"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20peek_next_char"></a><div class="signature">
         
         def <strong>peek_next_char</strong>
 
@@ -812,7 +899,7 @@ reader.next_char <span class="c"># =&gt; &#39;b&#39;</span></code></pre>
 <p>Returns the next character in the <code><a href="../Char/Reader.html#string%3AString-instance-method">#string</a></code>
 without incrementing <code><a href="../Char/Reader.html#pos%3AInt32-instance-method">#pos</a></code>.
 Raises <code><a href="../IndexError.html">IndexError</a></code> if the reader is at
-the end of the <code><a href="../Char/Reader.html#string%3AString-instance-method">#string</a></code></p>
+the end of the <code><a href="../Char/Reader.html#string%3AString-instance-method">#string</a></code>.</p>
 
 <pre><code>reader <span class="o">=</span> <span class="t">Char</span><span class="t">::</span><span class="t">Reader</span>.<span class="k">new</span>(<span class="s">&#34;ab&#34;</span>)
 reader.peek_next_char <span class="c"># =&gt; &#39;b&#39;</span>
@@ -822,13 +909,13 @@ reader.current_char   <span class="c"># =&gt; &#39;a&#39;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L115" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pos:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-499"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pos%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-512"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pos%20%3A%20Int32"></a><div class="signature">
         
         def <strong>pos</strong> : <a href="../Int32.html">Int32</a>
 
@@ -847,13 +934,13 @@ reader.pos <span class="c"># =&gt; 1</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pos=(pos)-instance-method">
-      <a class="dashingAutolink" name="autolink-500"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pos%3D%28pos%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-513"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pos%3D%28pos%29"></a><div class="signature">
         
         def <strong>pos=</strong>(pos)
 
@@ -873,13 +960,34 @@ reader.current_char <span class="c"># =&gt; &#39;a&#39;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L120" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L154" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="previous_char-instance-method">
+      <a class="dashingAutolink" name="autolink-514"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20previous_char"></a><div class="signature">
+        
+        def <strong>previous_char</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the previous character, <code><a href="../Char/Reader.html#pos%3AInt32-instance-method">#pos</a></code>
+is decremented.
+Raises <code><a href="../IndexError.html">IndexError</a></code> if the reader is at the begining of
+the <code><a href="../Char/Reader.html#string%3AString-instance-method">#string</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L137" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="string:String-instance-method">
-      <a class="dashingAutolink" name="autolink-501"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20string%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-515"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20string%20%3A%20String"></a><div class="signature">
         
         def <strong>string</strong> : <a href="../String.html">String</a>
 
@@ -891,7 +999,7 @@ reader.current_char <span class="c"># =&gt; &#39;a&#39;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/char/reader.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/char/reader.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>

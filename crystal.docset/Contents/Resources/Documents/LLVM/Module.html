@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-3890"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/LLVM%3A%3AModule%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>LLVM::Module - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-4086"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/LLVM%3A%3AModule%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>LLVM::Module - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -43,7 +43,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L1" target="_blank">llvm/module.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L1" target="_blank">llvm/module.cr</a>
     
     <br/>
   
@@ -56,7 +56,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28name%3AString%29-class-method" class="signature"><strong>.new</strong>(name : String)</a>
+        <a href="#new%28unwrap%3ALibLLVM%3A%3AModuleRef%2Cname%3AString%2Ccontext%3AContext%29-class-method" class="signature"><strong>.new</strong>(unwrap : LibLLVM::ModuleRef, name : String, context : Context)</a>
         
       </li>
     
@@ -68,17 +68,27 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#%3D%3D%28other%3Aself%29-instance-method" class="signature"><strong>#==</strong>(other : self)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add_named_metadata_operand%28name%3AString%2Cvalue%3AValue%29%3ANil-instance-method" class="signature"><strong>#add_named_metadata_operand</strong>(name : String, value : Value) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#context%3AContext-instance-method" class="signature"><strong>#context</strong> : Context</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#data_layout%3D%28data%3ATargetData%29-instance-method" class="signature"><strong>#data_layout=</strong>(data : TargetData)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#dump-instance-method" class="signature"><strong>#dump</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
         
       </li>
     
@@ -344,10 +354,10 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(name:String)-class-method">
-      <a class="dashingAutolink" name="autolink-3891"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28name%20%3A%20String%29"></a><div class="signature">
+    <div class="entry-detail" id="new(unwrap:LibLLVM::ModuleRef,name:String,context:Context)-class-method">
+      <a class="dashingAutolink" name="autolink-4087"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28unwrap%20%3A%20LibLLVM%3A%3AModuleRef%2C%20name%20%3A%20String%2C%20context%20%3A%20Context%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(name : <a href="../String.html">String</a>)
+        def self.<strong>new</strong>(unwrap : LibLLVM::ModuleRef, name : <a href="../String.html">String</a>, context : <a href="../LLVM/Context.html">Context</a>)
 
         
       </div>
@@ -355,7 +365,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -365,8 +375,56 @@
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="==(other:self)-instance-method">
+      <a class="dashingAutolink" name="autolink-4088"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+        
+        def <strong>==</strong>(other : self)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L96" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add_named_metadata_operand(name:String,value:Value):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-4089"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20add_named_metadata_operand%28name%20%3A%20String%2C%20value%20%3A%20Value%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>add_named_metadata_operand</strong>(name : <a href="../String.html">String</a>, value : <a href="../LLVM/Value.html">Value</a>) : <a href="../Nil.html">Nil</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L92" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="context:Context-instance-method">
+      <a class="dashingAutolink" name="autolink-4090"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20context%20%3A%20Context"></a><div class="signature">
+        
+        def <strong>context</strong> : <a href="../LLVM/Context.html">Context</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="data_layout=(data:TargetData)-instance-method">
-      <a class="dashingAutolink" name="autolink-3892"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20data_layout%3D%28data%20%3A%20TargetData%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4091"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20data_layout%3D%28data%20%3A%20TargetData%29"></a><div class="signature">
         
         def <strong>data_layout=</strong>(data : <a href="../LLVM/TargetData.html">TargetData</a>)
 
@@ -376,13 +434,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dump-instance-method">
-      <a class="dashingAutolink" name="autolink-3893"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dump"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4092"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dump"></a><div class="signature">
         
         def <strong>dump</strong>
 
@@ -392,29 +450,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L21" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="finalize-instance-method">
-      <a class="dashingAutolink" name="autolink-3894"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
-        
-        def <strong>finalize</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L86" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="functions-instance-method">
-      <a class="dashingAutolink" name="autolink-3895"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20functions"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4093"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20functions"></a><div class="signature">
         
         def <strong>functions</strong>
 
@@ -424,13 +466,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="globals-instance-method">
-      <a class="dashingAutolink" name="autolink-3896"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20globals"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4094"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20globals"></a><div class="signature">
         
         def <strong>globals</strong>
 
@@ -440,13 +482,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="name:String-instance-method">
-      <a class="dashingAutolink" name="autolink-3897"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4095"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20name%20%3A%20String"></a><div class="signature">
         
         def <strong>name</strong> : <a href="../String.html">String</a>
 
@@ -456,13 +498,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new_function_pass_manager-instance-method">
-      <a class="dashingAutolink" name="autolink-3898"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20new_function_pass_manager"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4096"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20new_function_pass_manager"></a><div class="signature">
         
         def <strong>new_function_pass_manager</strong>
 
@@ -472,13 +514,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L65" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="print_to_file(filename)-instance-method">
-      <a class="dashingAutolink" name="autolink-3899"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20print_to_file%28filename%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4097"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20print_to_file%28filename%29"></a><div class="signature">
         
         def <strong>print_to_file</strong>(filename)
 
@@ -488,13 +530,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="take_ownership(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-3900"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20take_ownership%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4098"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20take_ownership%28%26block%29"></a><div class="signature">
         
         def <strong>take_ownership</strong>(&amp;block)
 
@@ -504,13 +546,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="target=(target)-instance-method">
-      <a class="dashingAutolink" name="autolink-3901"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20target%3D%28target%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4099"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20target%3D%28target%29"></a><div class="signature">
         
         def <strong>target=</strong>(target)
 
@@ -520,13 +562,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-3902"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4100"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -536,13 +578,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L100" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_unsafe:LibLLVM::ModuleRef-instance-method">
-      <a class="dashingAutolink" name="autolink-3903"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20LibLLVM%3A%3AModuleRef"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4101"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20LibLLVM%3A%3AModuleRef"></a><div class="signature">
         
         def <strong>to_unsafe</strong> : LibLLVM::ModuleRef
 
@@ -552,13 +594,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="verify-instance-method">
-      <a class="dashingAutolink" name="autolink-3904"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20verify"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4102"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20verify"></a><div class="signature">
         
         def <strong>verify</strong>
 
@@ -568,13 +610,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write_bitcode_to_fd(fd:Int,should_close=false,buffered=false)-instance-method">
-      <a class="dashingAutolink" name="autolink-3905"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_bitcode_to_fd%28fd%20%3A%20Int%2C%20should_close%20%3D%20false%2C%20buffered%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4103"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_bitcode_to_fd%28fd%20%3A%20Int%2C%20should_close%20%3D%20false%2C%20buffered%20%3D%20false%29"></a><div class="signature">
         
         def <strong>write_bitcode_to_fd</strong>(fd : <a href="../Int.html">Int</a>, should_close = <span class="n">false</span>, buffered = <span class="n">false</span>)
 
@@ -584,13 +626,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write_bitcode_to_file(filename:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-3906"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_bitcode_to_file%28filename%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4104"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_bitcode_to_file%28filename%20%3A%20String%29"></a><div class="signature">
         
         def <strong>write_bitcode_to_file</strong>(filename : <a href="../String.html">String</a>)
 
@@ -600,13 +642,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="write_bitcode_to_memory_buffer-instance-method">
-      <a class="dashingAutolink" name="autolink-3907"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_bitcode_to_memory_buffer"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-4105"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write_bitcode_to_memory_buffer"></a><div class="signature">
         
         def <strong>write_bitcode_to_memory_buffer</strong>
 
@@ -616,7 +658,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/llvm/module.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/llvm/module.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>

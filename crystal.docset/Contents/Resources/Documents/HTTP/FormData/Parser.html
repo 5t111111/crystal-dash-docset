@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-722"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Crypto%3A%3AMD5%3A%3AContext%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Crypto::MD5::Context - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-2205"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTTP%3A%3AFormData%3A%3AParser%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTTP::FormData::Parser - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,13 +13,13 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Crypto::MD5::Context
+  <span class="kind">class</span> HTTP::FormData::Parser
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
-<li class="superclass"><a href="../../Crypto/MD5/Context.html">Crypto::MD5::Context</a></li>
+<li class="superclass"><a href="../../HTTP/FormData/Parser.html">HTTP::FormData::Parser</a></li>
 <li class="superclass"><a href="../../Reference.html">Reference</a></li>
 <li class="superclass"><a href="../../Object.html">Object</a></li>
 </ul>
@@ -43,7 +43,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L32" target="_blank">crypto/md5.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/parser.cr#L2" target="_blank">http/formdata/parser.cr</a>
     
     <br/>
   
@@ -56,7 +56,9 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        <a href="#new%28io%2Cboundary%29-class-method" class="signature"><strong>.new</strong>(io, boundary)</a>
+        
+          <div class="summary"><p>Create a new parser which parses <em>io</em> with multipart boundary <em>boundary</em>.</p></div>
         
       </li>
     
@@ -68,37 +70,16 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#context%3AContextImpl-instance-method" class="signature"><strong>#context</strong> : ContextImpl</a>
+        <a href="#has_next%3F-instance-method" class="signature"><strong>#has_next?</strong></a>
+        
+          <div class="summary"><p>True if <code><a href="../../HTTP/FormData/Parser.html#next%28%26block%29-instance-method">#next</a></code> can be called legally.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#final%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#final</strong>(*args, **options)</a>
+        <a href="#next%28%26block%29-instance-method" class="signature"><strong>#next</strong>(&amp;block)</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#final%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#final</strong>(*args, **options, &amp;block)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#hex%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#hex</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#hex%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#hex</strong>(*args, **options, &amp;block)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#update%28%2Aargs%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#update</strong>(*args, **options)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#update%28%2Aargs%2C%2A%2Aoptions%2C%26block%29-instance-method" class="signature"><strong>#update</strong>(*args, **options, &amp;block)</a>
+          <div class="summary"><p>Parses the next form-data part and yields field name, io, <code><a href="../../HTTP/FormData/FileMetadata.html">FileMetadata</a></code>, and raw headers.</p></div>
         
       </li>
     
@@ -299,18 +280,20 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new-class-method">
-      <a class="dashingAutolink" name="autolink-723"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+    <div class="entry-detail" id="new(io,boundary)-class-method">
+      <a class="dashingAutolink" name="autolink-2206"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%2C%20boundary%29"></a><div class="signature">
         
-        def self.<strong>new</strong>
+        def self.<strong>new</strong>(io, boundary)
 
         
       </div>
       
+        <div class="doc"><p>Create a new parser which parses <em>io</em> with multipart boundary <em>boundary</em>.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/parser.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -320,114 +303,57 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="context:ContextImpl-instance-method">
-      <a class="dashingAutolink" name="autolink-724"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20context%20%3A%20ContextImpl"></a><div class="signature">
+    <div class="entry-detail" id="has_next?-instance-method">
+      <a class="dashingAutolink" name="autolink-2207"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20has_next%3F"></a><div class="signature">
         
-        def <strong>context</strong> : ContextImpl
+        def <strong>has_next?</strong>
 
         
       </div>
       
+        <div class="doc"><p>True if <code><a href="../../HTTP/FormData/Parser.html#next%28%26block%29-instance-method">#next</a></code> can be called legally.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/parser.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="final(*args,**options)-instance-method">
-      <a class="dashingAutolink" name="autolink-725"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20final%28%2Aargs%2C%20%2A%2Aoptions%29"></a><div class="signature">
+    <div class="entry-detail" id="next(&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-2208"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20next%28%26block%29"></a><div class="signature">
         
-        def <strong>final</strong>(*args, **options)
+        def <strong>next</strong>(&amp;block)
 
         
       </div>
       
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L34" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="final(*args,**options,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-726"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20final%28%2Aargs%2C%20%2A%2Aoptions%2C%20%26block%29"></a><div class="signature">
-        
-        def <strong>final</strong>(*args, **options, &amp;block)
+        <div class="doc">
+<p>Parses the next form-data part and yields field name, io, <code><a href="../../HTTP/FormData/FileMetadata.html">FileMetadata</a></code>,
+and raw headers.</p>
 
-        
-      </div>
+<p>This method yields once instead of returning the values, because the IO
+object yielded to the block is only valid while the block is executing.
+The IO object will be closed as soon as the block returns. To store the
+content of the body part for longer than the block, the IO must be read
+into memory.</p>
+
+<pre><code>form_data <span class="o">=</span> <span class="s">&#34;--aA40\r\nContent-Disposition: form-data; name=\&#34;field1\&#34;; filename=\&#34;foo.txt\&#34;; size=13\r\nContent-Type: text/plain\r\n\r\nfield data\r\n--aA40--&#34;</span>
+parser <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">FormData</span><span class="t">::</span><span class="t">Parser</span>.<span class="k">new</span>(<span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span>(form_data), <span class="s">&#34;aA40&#34;</span>)
+parser.<span class="k">next</span> <span class="k">do</span> <span class="o">|</span>part<span class="o">|</span>
+  part.name                    <span class="c"># =&gt; &#34;field1&#34;</span>
+  part.io.gets_to_end          <span class="c"># =&gt; &#34;field data&#34;</span>
+  part.filename                <span class="c"># =&gt; &#34;foo.txt&#34;</span>
+  part.size                    <span class="c"># =&gt; 13</span>
+  part.headers[<span class="s">&#34;Content-Type&#34;</span>] <span class="c"># =&gt; &#34;text/plain&#34;</span>
+<span class="k">end</span></code></pre>
+</div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L34" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="hex(*args,**options)-instance-method">
-      <a class="dashingAutolink" name="autolink-727"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hex%28%2Aargs%2C%20%2A%2Aoptions%29"></a><div class="signature">
-        
-        def <strong>hex</strong>(*args, **options)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L34" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="hex(*args,**options,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-728"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hex%28%2Aargs%2C%20%2A%2Aoptions%2C%20%26block%29"></a><div class="signature">
-        
-        def <strong>hex</strong>(*args, **options, &amp;block)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L34" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="update(*args,**options)-instance-method">
-      <a class="dashingAutolink" name="autolink-729"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20update%28%2Aargs%2C%20%2A%2Aoptions%29"></a><div class="signature">
-        
-        def <strong>update</strong>(*args, **options)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L34" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="update(*args,**options,&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-730"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20update%28%2Aargs%2C%20%2A%2Aoptions%2C%20%26block%29"></a><div class="signature">
-        
-        def <strong>update</strong>(*args, **options, &amp;block)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/crypto/md5.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/http/formdata/parser.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>

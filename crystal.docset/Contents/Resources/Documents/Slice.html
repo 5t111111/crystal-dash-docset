@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5010"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Slice%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Slice(T) - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5270"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Slice%28T%29%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Slice(T) - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -34,7 +34,11 @@
 
 <p>While a pointer is unsafe because no bound checks are performed when reading from and writing to it,
 reading from and writing to a slice involve bound checks.
-In this way, a slice is a safe alternative to Pointer.</p>
+In this way, a slice is a safe alternative to <code><a href="Pointer.html">Pointer</a></code>.</p>
+
+<p>A Slice can be created as read-only: trying to write to it
+will raise. For example the slice of bytes returned by
+<code><a href="String.html#to_slice%3ABytes-instance-method">String#to_slice</a></code> is read-only.</p>
 
 
 
@@ -59,7 +63,7 @@ In this way, a slice is a safe alternative to Pointer.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L8" target="_blank">slice.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L12" target="_blank">slice.cr</a>
     
     <br/>
   
@@ -79,28 +83,28 @@ In this way, a slice is a safe alternative to Pointer.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28pointer%3APointer%28T%29%2Csize%3AInt%29-class-method" class="signature"><strong>.new</strong>(pointer : Pointer(T), size : Int)</a>
+        <a href="#new%28pointer%3APointer%28T%29%2Csize%3AInt%2C%2A%2Cread_only%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(pointer : Pointer(T), size : Int, *, read_only = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Creates a slice to the given <em>pointer</em>, bounded by the given <em>size</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28size%3AInt%2Cvalue%3AT%29-class-method" class="signature"><strong>.new</strong>(size : Int, value : T)</a>
+        <a href="#new%28size%3AInt%2Cvalue%3AT%2C%2A%2Cread_only%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(size : Int, value : T, *, read_only = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Allocates <code>size * sizeof(T)</code> bytes of heap memory initialized to <em>value</em> and returns a slice pointing to that memory.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28size%3AInt%29-class-method" class="signature"><strong>.new</strong>(size : Int)</a>
+        <a href="#new%28size%3AInt%2C%2A%2Cread_only%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(size : Int, *, read_only = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Allocates <code>size * sizeof(T)</code> bytes of heap memory initialized to zero and returns a slice pointing to that memory.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28size%3AInt%2C%26block%29-class-method" class="signature"><strong>.new</strong>(size : Int, &amp;block)</a>
+        <a href="#new%28size%3AInt%2C%2A%2Cread_only%3Dfalse%2C%26block%29-class-method" class="signature"><strong>.new</strong>(size : Int, *, read_only = <span class="n">false</span>, &amp;block)</a>
         
           <div class="summary"><p>Allocates <code>size * sizeof(T)</code> bytes of heap memory initialized to the value returned by the block (which is invoked once with each index in the range <code>0..<a href="Slice.html#size%3AInt32-instance-method">.size</a></code>) and returns a slice pointing to that memory.</p></div>
         
@@ -116,7 +120,7 @@ In this way, a slice is a safe alternative to Pointer.</p>
       <li class="entry-summary">
         <a href="#%2B%28offset%3AInt%29-instance-method" class="signature"><strong>#+</strong>(offset : Int)</a>
         
-          <div class="summary"><p>Returns a new slice that i <em>offset</em> elements apart from this slice.</p></div>
+          <div class="summary"><p>Returns a new slice that is <em>offset</em> elements apart from this slice.</p></div>
         
       </li>
     
@@ -135,12 +139,19 @@ In this way, a slice is a safe alternative to Pointer.</p>
       <li class="entry-summary">
         <a href="#%5B%5D%3D%28index%3AInt%2Cvalue%3AT%29-instance-method" class="signature"><strong>#[]=</strong>(index : Int, value : T)</a>
         
-          <div class="summary"><p>Sets the given value at the given index.</p></div>
+          <div class="summary"><p>Sets the given value at the given <em>index</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#bytesize-instance-method" class="signature"><strong>#bytesize</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        
+          <div class="summary"><p>Returns a copy of this slice.</p></div>
         
       </li>
     
@@ -157,14 +168,14 @@ In this way, a slice is a safe alternative to Pointer.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_to%28target%3Aself%29-instance-method" class="signature"><strong>#copy_to</strong>(target : self)</a>
-        
-          <div class="summary"><p>Copies the contents of this slice into <em>target</em>.</p></div>
+        <a href="#copy_to%28target%3APointer%28T%29%2Ccount%29-instance-method" class="signature"><strong>#copy_to</strong>(target : Pointer(T), count)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_to%28target%3APointer%28T%29%2Ccount%29-instance-method" class="signature"><strong>#copy_to</strong>(target : Pointer(T), count)</a>
+        <a href="#copy_to%28target%3Aself%29-instance-method" class="signature"><strong>#copy_to</strong>(target : self)</a>
+        
+          <div class="summary"><p>Copies the contents of this slice into <em>target</em>.</p></div>
         
       </li>
     
@@ -188,14 +199,14 @@ In this way, a slice is a safe alternative to Pointer.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#move_from%28source%3APointer%28T%29%2Ccount%29-instance-method" class="signature"><strong>#move_from</strong>(source : Pointer(T), count)</a>
+        <a href="#move_from%28source%3Aself%29-instance-method" class="signature"><strong>#move_from</strong>(source : self)</a>
+        
+          <div class="summary"><p>Moves the contents of <em>source</em> into this slice.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#move_from%28source%3Aself%29-instance-method" class="signature"><strong>#move_from</strong>(source : self)</a>
-        
-          <div class="summary"><p>Moves the contents of <em>source</em> into this slice.</p></div>
+        <a href="#move_from%28source%3APointer%28T%29%2Ccount%29-instance-method" class="signature"><strong>#move_from</strong>(source : Pointer(T), count)</a>
         
       </li>
     
@@ -218,6 +229,13 @@ In this way, a slice is a safe alternative to Pointer.</p>
     
       <li class="entry-summary">
         <a href="#pretty_print%28pp%29%3ANil-instance-method" class="signature"><strong>#pretty_print</strong>(pp) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_only%3F%3ABool-instance-method" class="signature"><strong>#read_only?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns <code>true</code> if this slice cannot be written to.</p></div>
         
       </li>
     
@@ -275,7 +293,7 @@ In this way, a slice is a safe alternative to Pointer.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28%2Aargs%29-macro" class="signature"><strong>[]</strong>(*args)</a>
+        <a href="#%5B%5D%28%2Aargs%2Cread_only%3Dfalse%29-macro" class="signature"><strong>[]</strong>(*args, read_only = false)</a>
         
           <div class="summary"><p>Create a new <code><a href="Slice.html">Slice</a></code> with the given <em>args</em>.</p></div>
         
@@ -333,8 +351,8 @@ In this way, a slice is a safe alternative to Pointer.</p>
     empty?</a>, 
     
   
-    <a href="Indexable.html#equals%3F%28other%2C%26block%29-instance-method" class="tooltip">
-      <span>equals?(other, &amp;block)</span>
+    <a href="Indexable.html#equals%3F%28other%3AIndexable%2C%26block%29-instance-method" class="tooltip">
+      <span>equals?(other : Indexable, &amp;block)<br/>equals?(other, &amp;block)</span>
     equals?</a>, 
     
   
@@ -945,7 +963,7 @@ In this way, a slice is a safe alternative to Pointer.</p>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="empty-class-method">
-      <a class="dashingAutolink" name="autolink-5011"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.empty"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5236"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.empty"></a><div class="signature">
         
         def self.<strong>empty</strong>
 
@@ -962,15 +980,15 @@ slice.size <span class="c"># =&gt; 0</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L121" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L136" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(pointer:Pointer(T),size:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-5012"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pointer%20%3A%20Pointer%28T%29%2C%20size%20%3A%20Int%29"></a><div class="signature">
+    <div class="entry-detail" id="new(pointer:Pointer(T),size:Int,*,read_only=false)-class-method">
+      <a class="dashingAutolink" name="autolink-5237"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pointer%20%3A%20Pointer%28T%29%2C%20size%20%3A%20Int%2C%20%2A%2C%20read_only%20%3D%20false%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(pointer : <a href="Pointer.html">Pointer</a>(T), size : <a href="Int.html">Int</a>)
+        def self.<strong>new</strong>(pointer : <a href="Pointer.html">Pointer</a>(T), size : <a href="Int.html">Int</a>, *, read_only = <span class="n">false</span>)
 
         
       </div>
@@ -991,15 +1009,15 @@ slice      <span class="c"># =&gt; Bytes[97, 98, 99]</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(size:Int,value:T)-class-method">
-      <a class="dashingAutolink" name="autolink-5013"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
+    <div class="entry-detail" id="new(size:Int,value:T,*,read_only=false)-class-method">
+      <a class="dashingAutolink" name="autolink-5238"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20value%20%3A%20T%2C%20%2A%2C%20read_only%20%3D%20false%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(size : <a href="Int.html">Int</a>, value : T)
+        def self.<strong>new</strong>(size : <a href="Int.html">Int</a>, value : T, *, read_only = <span class="n">false</span>)
 
         
       </div>
@@ -1018,15 +1036,15 @@ slice <span class="c"># =&gt; Slice[10, 10, 10]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L118" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(size:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-5014"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%29"></a><div class="signature">
+    <div class="entry-detail" id="new(size:Int,*,read_only=false)-class-method">
+      <a class="dashingAutolink" name="autolink-5239"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20%2A%2C%20read_only%20%3D%20false%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(size : <a href="Int.html">Int</a>)
+        def self.<strong>new</strong>(size : <a href="Int.html">Int</a>, *, read_only = <span class="n">false</span>)
 
         
       </div>
@@ -1038,7 +1056,7 @@ and returns a slice pointing to that memory.</p>
 <p>The memory is allocated by the <code><a href="GC.html">GC</a></code>, so when there are
 no pointers to this memory, it will be automatically freed.</p>
 
-<p>Only works for primitive integers and floats (UInt8, Int32, Float64, etc.)</p>
+<p>Only works for primitive integers and floats (<code><a href="UInt8.html">UInt8</a></code>, <code><a href="Int32.html">Int32</a></code>, <code><a href="Float64.html">Float64</a></code>, etc.)</p>
 
 <pre><code>slice <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">3</span>)
 slice <span class="c"># =&gt; Bytes[0, 0, 0]</span></code></pre>
@@ -1047,15 +1065,15 @@ slice <span class="c"># =&gt; Bytes[0, 0, 0]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(size:Int,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5015"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="new(size:Int,*,read_only=false,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-5240"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28size%20%3A%20Int%2C%20%2A%2C%20read_only%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(size : <a href="Int.html">Int</a>, &amp;block)
+        def self.<strong>new</strong>(size : <a href="Int.html">Int</a>, *, read_only = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -1075,7 +1093,7 @@ slice <span class="c"># =&gt; Slice[10, 11, 12]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L96" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L103" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1086,7 +1104,7 @@ slice <span class="c"># =&gt; Slice[10, 11, 12]</span></code></pre>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="+(offset:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-5016"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28offset%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5241"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28offset%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>+</strong>(offset : <a href="Int.html">Int</a>)
 
@@ -1094,7 +1112,7 @@ slice <span class="c"># =&gt; Slice[10, 11, 12]</span></code></pre>
       </div>
       
         <div class="doc">
-<p>Returns a new slice that i <em>offset</em> elements apart from this slice.</p>
+<p>Returns a new slice that is <em>offset</em> elements apart from this slice.</p>
 
 <pre><code>slice <span class="o">=</span> <span class="t">Slice</span>.<span class="k">new</span>(<span class="n">5</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">+</span> <span class="n">10</span> }
 slice <span class="c"># =&gt; Slice[10, 11, 12, 13, 14]</span>
@@ -1106,13 +1124,13 @@ slice2 <span class="c"># =&gt; Slice[12, 13, 14]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L134" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-5017"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5242"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20self%29"></a><div class="signature">
         
         def <strong>==</strong>(other : self)
 
@@ -1122,13 +1140,13 @@ slice2 <span class="c"># =&gt; Slice[12, 13, 14]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L399" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L428" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[](start,count)-instance-method">
-      <a class="dashingAutolink" name="autolink-5018"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28start%2C%20count%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5243"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28start%2C%20count%29"></a><div class="signature">
         
         def <strong>[]</strong>(start, count)
 
@@ -1151,13 +1169,13 @@ slice2 <span class="c"># =&gt; Slice[11, 12, 13]</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L177" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L194" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]=(index:Int,value:T)-instance-method">
-      <a class="dashingAutolink" name="autolink-5019"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28index%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5244"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3D%28index%20%3A%20Int%2C%20value%20%3A%20T%29"></a><div class="signature">
         
         def <strong>[]=</strong>(index : <a href="Int.html">Int</a>, value : T)
 
@@ -1165,7 +1183,7 @@ slice2 <span class="c"># =&gt; Slice[11, 12, 13]</span></code></pre>
       </div>
       
         <div class="doc">
-<p>Sets the given value at the given index.</p>
+<p>Sets the given value at the given <em>index</em>.</p>
 
 <p>Negative indices can be used to start counting from the end of the slice.
 Raises <code><a href="IndexError.html">IndexError</a></code> if trying to set an element outside the slice&#39;s range.</p>
@@ -1181,13 +1199,13 @@ slice[<span class="n">10</span>] <span class="o">=</span> <span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L156" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L171" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="bytesize-instance-method">
-      <a class="dashingAutolink" name="autolink-5020"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bytesize"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5245"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bytesize"></a><div class="signature">
         
         def <strong>bytesize</strong>
 
@@ -1197,13 +1215,32 @@ slice[<span class="n">10</span>] <span class="o">=</span> <span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L395" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L424" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone-instance-method">
+      <a class="dashingAutolink" name="autolink-5246"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+        
+        def <strong>clone</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns a copy of this slice.
+This method allocates memory for the slice copy.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="copy_from(source:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-5021"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_from%28source%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5247"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_from%28source%20%3A%20self%29"></a><div class="signature">
         
         def <strong>copy_from</strong>(source : self)
 
@@ -1219,13 +1256,13 @@ slice[<span class="n">10</span>] <span class="o">=</span> <span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L246" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L271" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="copy_from(source:Pointer(T),count)-instance-method">
-      <a class="dashingAutolink" name="autolink-5022"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_from%28source%20%3A%20Pointer%28T%29%2C%20count%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5248"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_from%28source%20%3A%20Pointer%28T%29%2C%20count%29"></a><div class="signature">
         
         def <strong>copy_from</strong>(source : <a href="Pointer.html">Pointer</a>(T), count)
 
@@ -1235,13 +1272,29 @@ slice[<span class="n">10</span>] <span class="o">=</span> <span class="n">1</spa
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L218" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L239" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="copy_to(target:Pointer(T),count)-instance-method">
+      <a class="dashingAutolink" name="autolink-5249"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_to%28target%20%3A%20Pointer%28T%29%2C%20count%29"></a><div class="signature">
+        
+        def <strong>copy_to</strong>(target : <a href="Pointer.html">Pointer</a>(T), count)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L245" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="copy_to(target:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-5023"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_to%28target%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5250"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_to%28target%20%3A%20self%29"></a><div class="signature">
         
         def <strong>copy_to</strong>(target : self)
 
@@ -1264,29 +1317,13 @@ dst.copy_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L238" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="copy_to(target:Pointer(T),count)-instance-method">
-      <a class="dashingAutolink" name="autolink-5024"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20copy_to%28target%20%3A%20Pointer%28T%29%2C%20count%29"></a><div class="signature">
-        
-        def <strong>copy_to</strong>(target : <a href="Pointer.html">Pointer</a>(T), count)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L222" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L261" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hexdump-instance-method">
-      <a class="dashingAutolink" name="autolink-5025"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hexdump"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5251"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hexdump"></a><div class="signature">
         
         def <strong>hexdump</strong>
 
@@ -1305,13 +1342,13 @@ slice.hexdump <span class="c"># =&gt; &#34;00000000  61 3e 3f 08 ff             
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L329" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L358" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hexstring-instance-method">
-      <a class="dashingAutolink" name="autolink-5026"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hexstring"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5252"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hexstring"></a><div class="signature">
         
         def <strong>hexstring</strong>
 
@@ -1329,13 +1366,13 @@ slice.hexstring <span class="c"># =&gt; &#34;613e3f08ff&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L297" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L326" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-5027"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5253"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io)
 
@@ -1345,29 +1382,13 @@ slice.hexstring <span class="c"># =&gt; &#34;613e3f08ff&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L286" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="move_from(source:Pointer(T),count)-instance-method">
-      <a class="dashingAutolink" name="autolink-5028"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_from%28source%20%3A%20Pointer%28T%29%2C%20count%29"></a><div class="signature">
-        
-        def <strong>move_from</strong>(source : <a href="Pointer.html">Pointer</a>(T), count)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L250" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L315" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="move_from(source:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-5029"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_from%28source%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5254"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_from%28source%20%3A%20self%29"></a><div class="signature">
         
         def <strong>move_from</strong>(source : self)
 
@@ -1384,13 +1405,29 @@ overlap; the copy is always done in a non-destructive manner.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L282" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L311" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="move_from(source:Pointer(T),count)-instance-method">
+      <a class="dashingAutolink" name="autolink-5255"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_from%28source%20%3A%20Pointer%28T%29%2C%20count%29"></a><div class="signature">
+        
+        def <strong>move_from</strong>(source : <a href="Pointer.html">Pointer</a>(T), count)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L275" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="move_to(target:Pointer(T),count)-instance-method">
-      <a class="dashingAutolink" name="autolink-5030"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_to%28target%20%3A%20Pointer%28T%29%2C%20count%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5256"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_to%28target%20%3A%20Pointer%28T%29%2C%20count%29"></a><div class="signature">
         
         def <strong>move_to</strong>(target : <a href="Pointer.html">Pointer</a>(T), count)
 
@@ -1400,13 +1437,13 @@ overlap; the copy is always done in a non-destructive manner.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L254" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L281" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="move_to(target:self)-instance-method">
-      <a class="dashingAutolink" name="autolink-5031"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_to%28target%20%3A%20self%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5257"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20move_to%28target%20%3A%20self%29"></a><div class="signature">
         
         def <strong>move_to</strong>(target : self)
 
@@ -1418,7 +1455,7 @@ overlap; the copy is always done in a non-destructive manner.</p>
 overlap; the copy is always done in a non-destructive manner.</p>
 
 <p>Raises if the desination slice cannot fit the data being transferred
-e.g. dest.size &lt; self.size.</p>
+e.g. <code>dest<a href="Slice.html#size%3AInt32-instance-method">.size</a> &lt; self<a href="Slice.html#size%3AInt32-instance-method">.size</a></code>.</p>
 
 <pre><code>src <span class="o">=</span> <span class="t">Slice</span>[<span class="s">&#39;a&#39;</span>, <span class="s">&#39;a&#39;</span>, <span class="s">&#39;a&#39;</span>]
 dst <span class="o">=</span> <span class="t">Slice</span>[<span class="s">&#39;b&#39;</span>, <span class="s">&#39;b&#39;</span>, <span class="s">&#39;b&#39;</span>, <span class="s">&#39;b&#39;</span>, <span class="s">&#39;b&#39;</span>]
@@ -1432,13 +1469,13 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L273" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L300" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pointer(size)-instance-method">
-      <a class="dashingAutolink" name="autolink-5032"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pointer%28size%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5258"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pointer%28size%29"></a><div class="signature">
         
         def <strong>pointer</strong>(size)
 
@@ -1448,13 +1485,13 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L206" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L225" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pretty_print(pp):Nil-instance-method">
-      <a class="dashingAutolink" name="autolink-5033"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pretty_print%28pp%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5259"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pretty_print%28pp%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>pretty_print</strong>(pp) : <a href="Nil.html">Nil</a>
 
@@ -1464,13 +1501,31 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L419" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L448" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_only?:Bool-instance-method">
+      <a class="dashingAutolink" name="autolink-5260"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_only%3F%20%3A%20Bool"></a><div class="signature">
+        
+        def <strong>read_only?</strong> : <a href="Bool.html">Bool</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns <code>true</code> if this slice cannot be written to.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reverse!-instance-method">
-      <a class="dashingAutolink" name="autolink-5034"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse%21"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5261"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reverse%21"></a><div class="signature">
         
         def <strong>reverse!</strong>
 
@@ -1482,13 +1537,13 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L195" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L212" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="shuffle!(random=Random::DEFAULT)-instance-method">
-      <a class="dashingAutolink" name="autolink-5035"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shuffle%21%28random%20%3D%20Random%3A%3ADEFAULT%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5262"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20shuffle%21%28random%20%3D%20Random%3A%3ADEFAULT%29"></a><div class="signature">
         
         def <strong>shuffle!</strong>(random = <span class="t">Random</span><span class="t">::</span><span class="t">DEFAULT</span>)
 
@@ -1498,13 +1553,13 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L214" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L233" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="size:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-5036"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5263"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int32"></a><div class="signature">
         
         def <strong>size</strong> : <a href="Int32.html">Int32</a>
 
@@ -1520,13 +1575,13 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L50" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_a-instance-method">
-      <a class="dashingAutolink" name="autolink-5037"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5264"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
         
         def <strong>to_a</strong>
 
@@ -1536,13 +1591,13 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L424" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L453" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-5038"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5265"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -1552,13 +1607,13 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L408" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L437" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_slice-instance-method">
-      <a class="dashingAutolink" name="autolink-5039"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_slice"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5266"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_slice"></a><div class="signature">
         
         def <strong>to_slice</strong>
 
@@ -1568,13 +1623,13 @@ dst.move_to src <span class="c"># raises IndexError</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L404" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L433" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_unsafe:Pointer(T)-instance-method">
-      <a class="dashingAutolink" name="autolink-5040"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20Pointer%28T%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5267"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe%20%3A%20Pointer%28T%29"></a><div class="signature">
         
         def <strong>to_unsafe</strong> : <a href="Pointer.html">Pointer</a>(T)
 
@@ -1591,13 +1646,13 @@ slice.to_unsafe[<span class="n">0</span>] <span class="c"># =&gt; 10</span></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L437" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L466" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unsafe_at(index:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-5041"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unsafe_at%28index%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5268"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unsafe_at%28index%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>unsafe_at</strong>(index : <a href="Int.html">Int</a>)
 
@@ -1607,7 +1662,7 @@ slice.to_unsafe[<span class="n">0</span>] <span class="c"># =&gt; 10</span></cod
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L190" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L207" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1617,10 +1672,10 @@ slice.to_unsafe[<span class="n">0</span>] <span class="c"># =&gt; 10</span></cod
 
   <h2>Macro Detail</h2>
   
-    <div class="entry-detail" id="[](*args)-macro">
-      <a class="dashingAutolink" name="autolink-5042"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20%5B%5D%28%2Aargs%29"></a><div class="signature">
+    <div class="entry-detail" id="[](*args,read_only=false)-macro">
+      <a class="dashingAutolink" name="autolink-5269"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20%5B%5D%28%2Aargs%2C%20read_only%20%3D%20false%29"></a><div class="signature">
         
-        macro <strong>[]</strong>(*args)
+        macro <strong>[]</strong>(*args, read_only = false)
 
         
       </div>
@@ -1636,16 +1691,16 @@ slice[<span class="n">0</span>]    <span class="c"># =&gt; 1</span>
 slice[<span class="n">1</span>]    <span class="c"># =&gt; &#39;a&#39;</span>
 slice.<span class="k">class</span> <span class="c"># =&gt; Slice(Char | Int32)</span></code></pre>
 
-<p>If T is a <code><a href="Number.html">Number</a></code> then this is equivalent to
-<code><a href="Number.html#slice%28%2Anums%29-macro">Number.slice</a></code> (numbers will be coerced to the type T)</p>
+<p>If <code>T</code> is a <code><a href="Number.html">Number</a></code> then this is equivalent to
+<code><a href="Number.html#slice%28%2Anums%2Cread_only%3Dfalse%29-macro">Number.slice</a></code> (numbers will be coerced to the type <code>T</code>)</p>
 
-<p>See also: <code><a href="Number.html#slice%28%2Anums%29-macro">Number.slice</a></code>.</p>
+<p>See also: <code><a href="Number.html#slice%28%2Anums%2Cread_only%3Dfalse%29-macro">Number.slice</a></code>.</p>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/slice.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/slice.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5460"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/TCPServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>TCPServer - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5702"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/TCPServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>TCPServer - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -47,6 +47,15 @@ loop <span class="k">do</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
 
+<p>Options:</p>
+
+<ul>
+<li>
+<em>backlog</em> to specify how many pending connections are allowed;</li>
+<li>
+<em>reuse_port</em> to enable multiple processes to bind to the same port (<code>SO_REUSEPORT</code>).</li>
+</ul>
+
 
 
 
@@ -70,7 +79,7 @@ loop <span class="k">do</span>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/socket/tcp_server.cr#L17" target="_blank">socket/tcp_server.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/socket/tcp_server.cr#L21" target="_blank">socket/tcp_server.cr</a>
     
     <br/>
   
@@ -83,7 +92,9 @@ loop <span class="k">do</span>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28host%3AString%2Cport%3AInt%2Cbacklog%3DSOMAXCONN%2Cdns_timeout%3Dnil%29-class-method" class="signature"><strong>.new</strong>(host : String, port : Int, backlog = <span class="t">SOMAXCONN</span>, dns_timeout = <span class="n">nil</span>)</a>
+        <a href="#new%28host%3AString%2Cport%3AInt%2Cbacklog%3DSOMAXCONN%2Cdns_timeout%3Dnil%2Creuse_port%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(host : String, port : Int, backlog = <span class="t">SOMAXCONN</span>, dns_timeout = <span class="n">nil</span>, reuse_port = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Binds a socket to the <em>host</em> and <em>port</em> combination.</p></div>
         
       </li>
     
@@ -95,21 +106,21 @@ loop <span class="k">do</span>
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28port%3AInt%2Cbacklog%3DSOMAXCONN%29-class-method" class="signature"><strong>.new</strong>(port : Int, backlog = <span class="t">SOMAXCONN</span>)</a>
+        <a href="#new%28port%3AInt%2Cbacklog%3DSOMAXCONN%2Creuse_port%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(port : Int, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Creates a new TCP server, listening on all local interfaces (<code>::</code>).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28port%3AInt%2Cbacklog%3DSOMAXCONN%2C%26block%29-class-method" class="signature"><strong>.open</strong>(port : Int, backlog = <span class="t">SOMAXCONN</span>, &amp;block)</a>
+        <a href="#open%28port%3AInt%2Cbacklog%3DSOMAXCONN%2Creuse_port%3Dfalse%2C%26block%29-class-method" class="signature"><strong>.open</strong>(port : Int, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>, &amp;block)</a>
         
           <div class="summary"><p>Creates a new TCP server, listening on all interfaces, and yields it to the block.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28host%2Cport%2Cbacklog%3DSOMAXCONN%2C%26block%29-class-method" class="signature"><strong>.open</strong>(host, port, backlog = <span class="t">SOMAXCONN</span>, &amp;block)</a>
+        <a href="#open%28host%2Cport%2Cbacklog%3DSOMAXCONN%2Creuse_port%3Dfalse%2C%26block%29-class-method" class="signature"><strong>.open</strong>(host, port, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>, &amp;block)</a>
         
           <div class="summary"><p>Creates a new TCP server and yields it to the block.</p></div>
         
@@ -374,8 +385,8 @@ loop <span class="k">do</span>
     reuse_port?</a>, 
     
   
-    <a href="Socket.html#send%28message%29-instance-method" class="tooltip">
-      <span>send(message)<br/>send(message : Bytes)<br/>send(message, to addr : Address)<br/>send(message : Bytes, to addr : Address)</span>
+    <a href="Socket.html#send%28message%2Ctoaddr%3AAddress%29-instance-method" class="tooltip">
+      <span>send(message, to addr : Address)<br/>send(message)</span>
     send</a>, 
     
   
@@ -603,8 +614,8 @@ loop <span class="k">do</span>
 </h3>
   
   
-    <a href="IO/Buffered.html#close-instance-method" class="tooltip">
-      <span>close</span>
+    <a href="IO/Buffered.html#close%3ANil-instance-method" class="tooltip">
+      <span>close : Nil</span>
     close</a>, 
     
   
@@ -621,6 +632,11 @@ loop <span class="k">do</span>
     <a href="IO/Buffered.html#flush_on_newline%3F-instance-method" class="tooltip">
       <span>flush_on_newline?</span>
     flush_on_newline?</a>, 
+    
+  
+    <a href="IO/Buffered.html#peek%3ABytes%3F-instance-method" class="tooltip">
+      <span>peek : Bytes?</span>
+    peek</a>, 
     
   
     <a href="IO/Buffered.html#read%28slice%3ABytes%29-instance-method" class="tooltip">
@@ -725,8 +741,8 @@ loop <span class="k">do</span>
     flush</a>, 
     
   
-    <a href="IO.html#gets%28chomp%3Dtrue%29%3AString%3F-instance-method" class="tooltip">
-      <span>gets(chomp = <span class="n">true</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(limit : Int, chomp = <span class="n">false</span>) : String?</span>
+    <a href="IO.html#gets%28limit%3AInt%2Cchomp%3Dfalse%29%3AString%3F-instance-method" class="tooltip">
+      <span>gets(limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?<br/>gets(chomp = <span class="n">true</span>) : String?<br/>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?</span>
     gets</a>, 
     
   
@@ -735,18 +751,23 @@ loop <span class="k">do</span>
     gets_to_end</a>, 
     
   
-    <a href="IO.html#print%28obj%29%3ANil-instance-method" class="tooltip">
-      <span>print(obj) : Nil<br/>print(*objects : _) : Nil</span>
+    <a href="IO.html#peek%3ABytes%3F-instance-method" class="tooltip">
+      <span>peek : Bytes?</span>
+    peek</a>, 
+    
+  
+    <a href="IO.html#print%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
+      <span>print(*objects : _) : Nil<br/>print(obj) : Nil</span>
     print</a>, 
     
   
-    <a href="IO.html#printf%28format_string%2C%2Aargs%29%3ANil-instance-method" class="tooltip">
-      <span>printf(format_string, *args) : Nil<br/>printf(format_string, args : Array | Tuple) : Nil</span>
+    <a href="IO.html#printf%28format_string%2Cargs%3AArray%7CTuple%29%3ANil-instance-method" class="tooltip">
+      <span>printf(format_string, args : Array | Tuple) : Nil<br/>printf(format_string, *args) : Nil</span>
     printf</a>, 
     
   
     <a href="IO.html#puts%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
-      <span>puts(*objects : _) : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil<br/>puts : Nil</span>
+      <span>puts(*objects : _) : Nil<br/>puts : Nil<br/>puts(obj) : Nil<br/>puts(string : String) : Nil</span>
     puts</a>, 
     
   
@@ -1060,24 +1081,26 @@ loop <span class="k">do</span>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(host:String,port:Int,backlog=SOMAXCONN,dns_timeout=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-5461"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20dns_timeout%20%3D%20nil%29"></a><div class="signature">
+    <div class="entry-detail" id="new(host:String,port:Int,backlog=SOMAXCONN,dns_timeout=nil,reuse_port=false)-class-method">
+      <a class="dashingAutolink" name="autolink-5703"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20dns_timeout%20%3D%20nil%2C%20reuse_port%20%3D%20false%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(host : <a href="String.html">String</a>, port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>, dns_timeout = <span class="n">nil</span>)
+        def self.<strong>new</strong>(host : <a href="String.html">String</a>, port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>, dns_timeout = <span class="n">nil</span>, reuse_port = <span class="n">false</span>)
 
         
       </div>
       
+        <div class="doc"><p>Binds a socket to the <em>host</em> and <em>port</em> combination.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/socket/tcp_server.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/socket/tcp_server.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(family:Family=Family::INET)-class-method">
-      <a class="dashingAutolink" name="autolink-5462"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Family%20%3D%20Family%3A%3AINET%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5704"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Family%20%3D%20Family%3A%3AINET%29"></a><div class="signature">
         
         def self.<strong>new</strong>(family : <a href="Socket/Family.html">Family</a> = <span class="t">Family</span><span class="t">::</span><span class="t">INET</span>)
 
@@ -1089,15 +1112,15 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/socket/tcp_server.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/socket/tcp_server.cr#L25" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(port:Int,backlog=SOMAXCONN)-class-method">
-      <a class="dashingAutolink" name="autolink-5463"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%29"></a><div class="signature">
+    <div class="entry-detail" id="new(port:Int,backlog=SOMAXCONN,reuse_port=false)-class-method">
+      <a class="dashingAutolink" name="autolink-5705"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>)
+        def self.<strong>new</strong>(port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>)
 
         
       </div>
@@ -1107,15 +1130,15 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/socket/tcp_server.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/socket/tcp_server.cr#L50" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="open(port:Int,backlog=SOMAXCONN,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5464"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="open(port:Int,backlog=SOMAXCONN,reuse_port=false,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-5706"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>open</strong>(port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>, &amp;block)
+        def self.<strong>open</strong>(port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -1130,15 +1153,15 @@ block. Eventually closes the server socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/socket/tcp_server.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/socket/tcp_server.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="open(host,port,backlog=SOMAXCONN,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5465"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28host%2C%20port%2C%20backlog%20%3D%20SOMAXCONN%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="open(host,port,backlog=SOMAXCONN,reuse_port=false,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-5707"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28host%2C%20port%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>open</strong>(host, port, backlog = <span class="t">SOMAXCONN</span>, &amp;block)
+        def self.<strong>open</strong>(host, port, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>, &amp;block)
 
         
       </div>
@@ -1153,7 +1176,7 @@ server socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/socket/tcp_server.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/socket/tcp_server.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1164,7 +1187,7 @@ server socket when the block returns.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="accept?-instance-method">
-      <a class="dashingAutolink" name="autolink-5466"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5708"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F"></a><div class="signature">
         
         def <strong>accept?</strong>
 
@@ -1194,7 +1217,7 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/socket/tcp_server.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/socket/tcp_server.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>

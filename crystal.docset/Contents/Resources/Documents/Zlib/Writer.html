@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-6840"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Zlib%3A%3ADeflate%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Zlib::Deflate - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-7078"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Zlib%3A%3AWriter%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Zlib::Writer - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,13 +13,13 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Zlib::Deflate
+  <span class="kind">class</span> Zlib::Writer
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
-<li class="superclass"><a href="../Zlib/Deflate.html">Zlib::Deflate</a></li>
+<li class="superclass"><a href="../Zlib/Writer.html">Zlib::Writer</a></li>
 <li class="superclass"><a href="../Reference.html">Reference</a></li>
 <li class="superclass"><a href="../Object.html">Object</a></li>
 </ul>
@@ -29,29 +29,13 @@
 
   <h2>Overview</h2>
 
-  <p>A write-only <code><a href="../IO.html">IO</a></code> object to compress data in zlib or gzip format.</p>
+  <p>A write-only <code><a href="../IO.html">IO</a></code> object to compress data in the zlib format.</p>
 
 <p>Instances of this class wrap another IO object. When you write to this
 instance, it compresses the data and writes it to the underlying IO.</p>
 
-<p><strong>Note</strong>: unless created with a block, <code><a href="../Zlib/Deflate.html#close-instance-method">#close</a></code> must be invoked after all
-data has been written to a Zlib::Deflate instance.</p>
-
-<h3>Example: compress a file</h3>
-
-<pre><code><span class="k">require</span> <span class="s">&#34;zlib&#34;</span>
-
-<span class="t">File</span>.write(<span class="s">&#34;file.txt&#34;</span>, <span class="s">&#34;abc&#34;</span>)
-
-<span class="t">File</span>.open(<span class="s">&#34;./file.txt&#34;</span>, <span class="s">&#34;r&#34;</span>) <span class="k">do</span> <span class="o">|</span>input_file<span class="o">|</span>
-  <span class="t">File</span>.open(<span class="s">&#34;./file.gzip&#34;</span>, <span class="s">&#34;w&#34;</span>) <span class="k">do</span> <span class="o">|</span>output_file<span class="o">|</span>
-    <span class="t">Zlib</span><span class="t">::</span><span class="t">Deflate</span>.gzip(output_file) <span class="k">do</span> <span class="o">|</span>deflate<span class="o">|</span>
-      <span class="t">IO</span>.copy(input_file, deflate)
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre>
-
-<p>See also: <code><a href="../Zlib/Inflate.html">Zlib::Inflate</a></code> for decompressing data.</p>
+<p><strong>Note</strong>: unless created with a block, <code><a href="../Zlib/Writer.html#close-instance-method">#close</a></code> must be invoked after all
+data has been written to a Zlib::Writer instance.</p>
 
 
 
@@ -76,7 +60,7 @@ data has been written to a Zlib::Deflate instance.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L26" target="_blank">zlib/deflate.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L8" target="_blank">zlib/writer.cr</a>
     
     <br/>
   
@@ -89,30 +73,30 @@ data has been written to a Zlib::Deflate instance.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#gzip%28output%2Csync_close%3ABool%3Dfalse%29%3Aself-class-method" class="signature"><strong>.gzip</strong>(output, sync_close : Bool = <span class="n">false</span>) : self</a>
+        <a href="#new%28io%3AIO%2Clevel%3DZlib%3A%3ADEFAULT_COMPRESSION%2Csync_close%3Dfalse%2Cdict%3ABytes%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(io : IO, level = <span class="t">Zlib</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, sync_close = <span class="n">false</span>, dict : Bytes? = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Creates an instance of Zlib::Deflate for the gzip format.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#gzip%28output%2Csync_close%3ABool%3Dfalse%2C%26block%29-class-method" class="signature"><strong>.gzip</strong>(output, sync_close : Bool = <span class="n">false</span>, &amp;block)</a>
-        
-          <div class="summary"><p>Creates an instance of Zlib::Deflate for the gzip format, yields it to the given block, and closes it at its end.</p></div>
+          <div class="summary"><p>Creates a new writer to the given <em>io</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28output%3AIO%2Clevel%3DLibZ%3A%3ADEFAULT_COMPRESSION%2Cwbits%3DLibZ%3A%3AMAX_BITS%2Cmem_level%3DLibZ%3A%3ADEF_MEM_LEVEL%2Cstrategy%3DLibZ%3A%3AStrategy%3A%3ADEFAULT_STRATEGY%2Csync_close%3ABool%3Dfalse%29-class-method" class="signature"><strong>.new</strong>(output : IO, level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, wbits = <span class="t">LibZ</span><span class="t">::</span><span class="t">MAX_BITS</span>, mem_level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEF_MEM_LEVEL</span>, strategy = <span class="t">LibZ</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">DEFAULT_STRATEGY</span>, sync_close : Bool = <span class="n">false</span>)</a>
+        <a href="#new%28filename%3AString%2Clevel%3DZlib%3A%3ADEFAULT_COMPRESSION%2Cdict%3ABytes%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(filename : String, level = <span class="t">Zlib</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, dict : Bytes? = <span class="n">nil</span>)</a>
         
-          <div class="summary"><p>Creates an instance of Zlib::Deflate.</p></div>
+          <div class="summary"><p>Creates a new writer to the given <em>filename</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28output%3AIO%2Clevel%3DLibZ%3A%3ADEFAULT_COMPRESSION%2Cwbits%3DLibZ%3A%3AMAX_BITS%2Cmem_level%3DLibZ%3A%3ADEF_MEM_LEVEL%2Cstrategy%3DLibZ%3A%3AStrategy%3A%3ADEFAULT_STRATEGY%2Csync_close%3ABool%3Dfalse%2C%26block%29-class-method" class="signature"><strong>.new</strong>(output : IO, level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, wbits = <span class="t">LibZ</span><span class="t">::</span><span class="t">MAX_BITS</span>, mem_level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEF_MEM_LEVEL</span>, strategy = <span class="t">LibZ</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">DEFAULT_STRATEGY</span>, sync_close : Bool = <span class="n">false</span>, &amp;block)</a>
+        <a href="#open%28io%3AIO%2Clevel%3DZlib%3A%3ADEFAULT_COMPRESSION%2Csync_close%3Dfalse%2Cdict%3ABytes%3F%3Dnil%2C%26block%29-class-method" class="signature"><strong>.open</strong>(io : IO, level = <span class="t">Zlib</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, sync_close = <span class="n">false</span>, dict : Bytes? = <span class="n">nil</span>, &amp;block)</a>
         
-          <div class="summary"><p>Creates an instance of Zlib::Deflate, yields it to the given block, and closes it at its end.</p></div>
+          <div class="summary"><p>Creates a new writer to the given <em>io</em>, yields it to the given block, and closes it at the end.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28filename%3AString%2Clevel%3DZlib%3A%3ADEFAULT_COMPRESSION%2Cdict%3ABytes%3F%3Dnil%2C%26block%29-class-method" class="signature"><strong>.open</strong>(filename : String, level = <span class="t">Zlib</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, dict : Bytes? = <span class="n">nil</span>, &amp;block)</a>
+        
+          <div class="summary"><p>Creates a new writer to the given <em>filename</em>, yields it to the given block, and closes it at the end.</p></div>
         
       </li>
     
@@ -126,47 +110,47 @@ data has been written to a Zlib::Deflate instance.</p>
       <li class="entry-summary">
         <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
         
-          <div class="summary"><p>Closes this IO.</p></div>
+          <div class="summary"><p>Closes this writer.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#closed%3F%3ABool-instance-method" class="signature"><strong>#closed?</strong> : Bool</a>
         
-          <div class="summary"><p>Returns <code>true</code> if this IO is closed.</p></div>
+          <div class="summary"><p>Returns <code>true</code> if this writer is closed.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#flush-instance-method" class="signature"><strong>#flush</strong></a>
         
-          <div class="summary"><p>See <code><a href="../IO.html#flush-instance-method">IO#flush</a></code>.</p></div>
+          <div class="summary"><p>Flushes data, forcing writing the zlib header if no data has been written yet.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read%28slice%3ABytes%29-instance-method" class="signature"><strong>#read</strong>(slice : Bytes)</a>
         
-          <div class="summary"><p>Always raises: this is a write-only IO.</p></div>
+          <div class="summary"><p>Always raises <code><a href="../IO/Error.html">IO::Error</a></code> because this is a write-only <code><a href="../IO.html">IO</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sync_close%3D%28sync_close%3ABool%29-instance-method" class="signature"><strong>#sync_close=</strong>(sync_close : Bool)</a>
+        <a href="#sync_close%3D%28sync_close%29-instance-method" class="signature"><strong>#sync_close=</strong>(sync_close)</a>
         
-          <div class="summary"><p>If <code><a href="../Zlib/Deflate.html#sync_close%3F%3ABool-instance-method">#sync_close?</a></code> is <code>true</code>, closing this IO will close the underlying IO.</p></div>
+          <div class="summary"><p>Whether to close the enclosed <code><a href="../IO.html">IO</a></code> when closing this writer.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#sync_close%3F%3ABool-instance-method" class="signature"><strong>#sync_close?</strong> : Bool</a>
         
-          <div class="summary"><p>If <code><a href="../Zlib/Deflate.html#sync_close%3F%3ABool-instance-method">#sync_close?</a></code> is <code>true</code>, closing this IO will close the underlying IO.</p></div>
+          <div class="summary"><p>Whether to close the enclosed <code><a href="../IO.html">IO</a></code> when closing this writer.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#write%28slice%3ABytes%29-instance-method" class="signature"><strong>#write</strong>(slice : Bytes)</a>
+        <a href="#write%28slice%3ABytes%29%3ANil-instance-method" class="signature"><strong>#write</strong>(slice : Bytes) : Nil</a>
         
           <div class="summary"><p>See <code><a href="../IO.html#write%28slice%3ABytes%29%3ANil-instance-method">IO#write</a></code>.</p></div>
         
@@ -226,8 +210,8 @@ data has been written to a Zlib::Deflate instance.</p>
     flush</a>, 
     
   
-    <a href="../IO.html#gets%28chomp%3Dtrue%29%3AString%3F-instance-method" class="tooltip">
-      <span>gets(chomp = <span class="n">true</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(limit : Int, chomp = <span class="n">false</span>) : String?</span>
+    <a href="../IO.html#gets%28limit%3AInt%2Cchomp%3Dfalse%29%3AString%3F-instance-method" class="tooltip">
+      <span>gets(limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?<br/>gets(chomp = <span class="n">true</span>) : String?<br/>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?</span>
     gets</a>, 
     
   
@@ -236,18 +220,23 @@ data has been written to a Zlib::Deflate instance.</p>
     gets_to_end</a>, 
     
   
-    <a href="../IO.html#print%28obj%29%3ANil-instance-method" class="tooltip">
-      <span>print(obj) : Nil<br/>print(*objects : _) : Nil</span>
+    <a href="../IO.html#peek%3ABytes%3F-instance-method" class="tooltip">
+      <span>peek : Bytes?</span>
+    peek</a>, 
+    
+  
+    <a href="../IO.html#print%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
+      <span>print(*objects : _) : Nil<br/>print(obj) : Nil</span>
     print</a>, 
     
   
-    <a href="../IO.html#printf%28format_string%2C%2Aargs%29%3ANil-instance-method" class="tooltip">
-      <span>printf(format_string, *args) : Nil<br/>printf(format_string, args : Array | Tuple) : Nil</span>
+    <a href="../IO.html#printf%28format_string%2Cargs%3AArray%7CTuple%29%3ANil-instance-method" class="tooltip">
+      <span>printf(format_string, args : Array | Tuple) : Nil<br/>printf(format_string, *args) : Nil</span>
     printf</a>, 
     
   
     <a href="../IO.html#puts%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
-      <span>puts(*objects : _) : Nil<br/>puts(string : String) : Nil<br/>puts(obj) : Nil<br/>puts : Nil</span>
+      <span>puts(*objects : _) : Nil<br/>puts : Nil<br/>puts(obj) : Nil<br/>puts(string : String) : Nil</span>
     puts</a>, 
     
   
@@ -561,78 +550,76 @@ data has been written to a Zlib::Deflate instance.</p>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="gzip(output,sync_close:Bool=false):self-class-method">
-      <a class="dashingAutolink" name="autolink-6829"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.gzip%28output%2C%20sync_close%20%3A%20Bool%20%3D%20false%29%20%3A%20self"></a><div class="signature">
+    <div class="entry-detail" id="new(io:IO,level=Zlib::DEFAULT_COMPRESSION,sync_close=false,dict:Bytes?=nil)-class-method">
+      <a class="dashingAutolink" name="autolink-7079"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20level%20%3D%20Zlib%3A%3ADEFAULT_COMPRESSION%2C%20sync_close%20%3D%20false%2C%20dict%20%3A%20Bytes%3F%20%3D%20nil%29"></a><div class="signature">
         
-        def self.<strong>gzip</strong>(output, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>) : self
+        def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>, level = <span class="t">Zlib</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, sync_close = <span class="n">false</span>, dict : <a href="../Bytes.html">Bytes</a>? = <span class="n">nil</span>)
 
         
       </div>
       
-        <div class="doc"><p>Creates an instance of Zlib::Deflate for the gzip format. <code><a href="../Zlib/Deflate.html#close-instance-method">#close</a></code> must be invoked after all data
-has written.</p></div>
+        <div class="doc"><p>Creates a new writer to the given <em>io</em>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="gzip(output,sync_close:Bool=false,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-6830"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.gzip%28output%2C%20sync_close%20%3A%20Bool%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="new(filename:String,level=Zlib::DEFAULT_COMPRESSION,dict:Bytes?=nil)-class-method">
+      <a class="dashingAutolink" name="autolink-7080"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28filename%20%3A%20String%2C%20level%20%3D%20Zlib%3A%3ADEFAULT_COMPRESSION%2C%20dict%20%3A%20Bytes%3F%20%3D%20nil%29"></a><div class="signature">
         
-        def self.<strong>gzip</strong>(output, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>, &amp;block)
+        def self.<strong>new</strong>(filename : <a href="../String.html">String</a>, level = <span class="t">Zlib</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, dict : <a href="../Bytes.html">Bytes</a>? = <span class="n">nil</span>)
 
         
       </div>
       
-        <div class="doc"><p>Creates an instance of Zlib::Deflate for the gzip format, yields it to the given block, and closes
-it at its end.</p></div>
+        <div class="doc"><p>Creates a new writer to the given <em>filename</em>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L25" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(output:IO,level=LibZ::DEFAULT_COMPRESSION,wbits=LibZ::MAX_BITS,mem_level=LibZ::DEF_MEM_LEVEL,strategy=LibZ::Strategy::DEFAULT_STRATEGY,sync_close:Bool=false)-class-method">
-      <a class="dashingAutolink" name="autolink-6831"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28output%20%3A%20IO%2C%20level%20%3D%20LibZ%3A%3ADEFAULT_COMPRESSION%2C%20wbits%20%3D%20LibZ%3A%3AMAX_BITS%2C%20mem_level%20%3D%20LibZ%3A%3ADEF_MEM_LEVEL%2C%20strategy%20%3D%20LibZ%3A%3AStrategy%3A%3ADEFAULT_STRATEGY%2C%20sync_close%20%3A%20Bool%20%3D%20false%29"></a><div class="signature">
+    <div class="entry-detail" id="open(io:IO,level=Zlib::DEFAULT_COMPRESSION,sync_close=false,dict:Bytes?=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-7081"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28io%20%3A%20IO%2C%20level%20%3D%20Zlib%3A%3ADEFAULT_COMPRESSION%2C%20sync_close%20%3D%20false%2C%20dict%20%3A%20Bytes%3F%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(output : <a href="../IO.html">IO</a>, level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, wbits = <span class="t">LibZ</span><span class="t">::</span><span class="t">MAX_BITS</span>, mem_level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEF_MEM_LEVEL</span>, strategy = <span class="t">LibZ</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">DEFAULT_STRATEGY</span>, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>)
+        def self.<strong>open</strong>(io : <a href="../IO.html">IO</a>, level = <span class="t">Zlib</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, sync_close = <span class="n">false</span>, dict : <a href="../Bytes.html">Bytes</a>? = <span class="n">nil</span>, &amp;block)
 
         
       </div>
       
-        <div class="doc"><p>Creates an instance of Zlib::Deflate. <code><a href="../Zlib/Deflate.html#close-instance-method">#close</a></code> must be invoked after all data
-has written.</p></div>
+        <div class="doc"><p>Creates a new writer to the given <em>io</em>, yields it to the given block,
+and closes it at the end.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(output:IO,level=LibZ::DEFAULT_COMPRESSION,wbits=LibZ::MAX_BITS,mem_level=LibZ::DEF_MEM_LEVEL,strategy=LibZ::Strategy::DEFAULT_STRATEGY,sync_close:Bool=false,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-6832"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28output%20%3A%20IO%2C%20level%20%3D%20LibZ%3A%3ADEFAULT_COMPRESSION%2C%20wbits%20%3D%20LibZ%3A%3AMAX_BITS%2C%20mem_level%20%3D%20LibZ%3A%3ADEF_MEM_LEVEL%2C%20strategy%20%3D%20LibZ%3A%3AStrategy%3A%3ADEFAULT_STRATEGY%2C%20sync_close%20%3A%20Bool%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="open(filename:String,level=Zlib::DEFAULT_COMPRESSION,dict:Bytes?=nil,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-7082"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28filename%20%3A%20String%2C%20level%20%3D%20Zlib%3A%3ADEFAULT_COMPRESSION%2C%20dict%20%3A%20Bytes%3F%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
-        def self.<strong>new</strong>(output : <a href="../IO.html">IO</a>, level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, wbits = <span class="t">LibZ</span><span class="t">::</span><span class="t">MAX_BITS</span>, mem_level = <span class="t">LibZ</span><span class="t">::</span><span class="t">DEF_MEM_LEVEL</span>, strategy = <span class="t">LibZ</span><span class="t">::</span><span class="t">Strategy</span><span class="t">::</span><span class="t">DEFAULT_STRATEGY</span>, sync_close : <a href="../Bool.html">Bool</a> = <span class="n">false</span>, &amp;block)
+        def self.<strong>open</strong>(filename : <a href="../String.html">String</a>, level = <span class="t">Zlib</span><span class="t">::</span><span class="t">DEFAULT_COMPRESSION</span>, dict : <a href="../Bytes.html">Bytes</a>? = <span class="n">nil</span>, &amp;block)
 
         
       </div>
       
-        <div class="doc"><p>Creates an instance of Zlib::Deflate, yields it to the given block, and closes
-it at its end.</p></div>
+        <div class="doc"><p>Creates a new writer to the given <em>filename</em>, yields it to the given block,
+and closes it at the end.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -643,117 +630,122 @@ it at its end.</p></div>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-6833"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-7083"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
         
       </div>
       
-        <div class="doc"><p>Closes this IO. Must be invoked after all data has been written.</p></div>
+        <div class="doc"><p>Closes this writer. Must be invoked after all data has been written.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="closed?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-6834"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-7084"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20closed%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>closed?</strong> : <a href="../Bool.html">Bool</a>
 
         
       </div>
       
-        <div class="doc"><p>Returns <code>true</code> if this IO is closed.</p></div>
+        <div class="doc"><p>Returns <code>true</code> if this writer is closed.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L114" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="flush-instance-method">
-      <a class="dashingAutolink" name="autolink-6835"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-7085"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
         
         def <strong>flush</strong>
 
         
       </div>
       
-        <div class="doc"><p>See <code><a href="../IO.html#flush-instance-method">IO#flush</a></code>.</p></div>
+        <div class="doc">
+<p>Flushes data, forcing writing the zlib header if no
+data has been written yet.</p>
+
+<p>See <code><a href="../IO.html#flush-instance-method">IO#flush</a></code>.</p>
+</div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L94" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read(slice:Bytes)-instance-method">
-      <a class="dashingAutolink" name="autolink-6836"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Bytes%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-7086"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28slice%20%3A%20Bytes%29"></a><div class="signature">
         
         def <strong>read</strong>(slice : <a href="../Bytes.html">Bytes</a>)
 
         
       </div>
       
-        <div class="doc"><p>Always raises: this is a write-only IO.</p></div>
+        <div class="doc"><p>Always raises <code><a href="../IO/Error.html">IO::Error</a></code> because this is a write-only <code><a href="../IO.html">IO</a></code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="sync_close=(sync_close:Bool)-instance-method">
-      <a class="dashingAutolink" name="autolink-6837"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%20%3A%20Bool%29"></a><div class="signature">
+    <div class="entry-detail" id="sync_close=(sync_close)-instance-method">
+      <a class="dashingAutolink" name="autolink-7087"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3D%28sync_close%29"></a><div class="signature">
         
-        def <strong>sync_close=</strong>(sync_close : <a href="../Bool.html">Bool</a>)
+        def <strong>sync_close=</strong>(sync_close)
 
         
       </div>
       
-        <div class="doc"><p>If <code><a href="../Zlib/Deflate.html#sync_close%3F%3ABool-instance-method">#sync_close?</a></code> is <code>true</code>, closing this IO will close the underlying IO.</p></div>
+        <div class="doc"><p>Whether to close the enclosed <code><a href="../IO.html">IO</a></code> when closing this writer.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sync_close?:Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-6838"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-7088"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sync_close%3F%20%3A%20Bool"></a><div class="signature">
         
         def <strong>sync_close?</strong> : <a href="../Bool.html">Bool</a>
 
         
       </div>
       
-        <div class="doc"><p>If <code><a href="../Zlib/Deflate.html#sync_close%3F%3ABool-instance-method">#sync_close?</a></code> is <code>true</code>, closing this IO will close the underlying IO.</p></div>
+        <div class="doc"><p>Whether to close the enclosed <code><a href="../IO.html">IO</a></code> when closing this writer.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="write(slice:Bytes)-instance-method">
-      <a class="dashingAutolink" name="autolink-6839"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Bytes%29"></a><div class="signature">
+    <div class="entry-detail" id="write(slice:Bytes):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-7089"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20write%28slice%20%3A%20Bytes%29%20%3A%20Nil"></a><div class="signature">
         
-        def <strong>write</strong>(slice : <a href="../Bytes.html">Bytes</a>)
+        def <strong>write</strong>(slice : <a href="../Bytes.html">Bytes</a>) : <a href="../Nil.html">Nil</a>
 
         
       </div>
@@ -763,7 +755,7 @@ it at its end.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/ccf46c095a7e10cb120d4d04c96333858be4aaa2/src/zlib/deflate.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/c2c2276ec667171af5c2347490f49acdbdc4a3ca/src/zlib/writer.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
