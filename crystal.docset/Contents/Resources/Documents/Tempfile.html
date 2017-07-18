@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5956"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Tempfile%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Tempfile - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-6069"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Tempfile%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Tempfile - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -36,9 +36,9 @@ initializing, reading and writing.</p>
 
 <pre><code>tempfile <span class="o">=</span> <span class="t">Tempfile</span>.<span class="k">new</span>(<span class="s">&#34;foo&#34;</span>)
 <span class="c"># or</span>
-tempfile <span class="o">=</span> <span class="t">Tempfile</span>.open(<span class="s">&#34;foo&#34;</span>) { <span class="o">|</span>file<span class="o">|</span>
+tempfile <span class="o">=</span> <span class="t">Tempfile</span>.open(<span class="s">&#34;foo&#34;</span>) <span class="k">do</span> <span class="o">|</span>file<span class="o">|</span>
   file.print(<span class="s">&#34;foobar&#34;</span>)
-}
+<span class="k">end</span>
 
 <span class="t">File</span>.size(tempfile.path)       <span class="c"># =&gt; 6</span>
 <span class="t">File</span>.stat(tempfile.path).mtime <span class="c"># =&gt; 2015-10-20 13:11:12 UTC</span>
@@ -72,12 +72,26 @@ tempfile.unlink</code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/tempfile.cr#L34" target="_blank">tempfile.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/tempfile.cr#L34" target="_blank">tempfile.cr</a>
     
     <br/>
   
 
 
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28name%29-class-method" class="signature"><strong>.new</strong>(name)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="Tempfile.html">Tempfile</a></code> with the given filename.</p></div>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -88,13 +102,6 @@ tempfile.unlink</code></pre>
         <a href="#dirname%3AString-class-method" class="signature"><strong>.dirname</strong> : String</a>
         
           <div class="summary"><p>Returns the tmp dir used for tempfile.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28name%29-class-method" class="signature"><strong>.new</strong>(name)</a>
-        
-          <div class="summary"><p>Creates a <code><a href="Tempfile.html">Tempfile</a></code> with the given filename.</p></div>
         
       </li>
     
@@ -286,18 +293,26 @@ tempfile.unlink</code></pre>
 
     
 
+  <h3>Constructor methods inherited from class <code><a href="IO/FileDescriptor.html">IO::FileDescriptor</a></code>
+</h3>
+  
+  
+    <a href="IO/FileDescriptor.html#new%28fd%3AInt32%2Cblocking%3Dfalse%2Cedge_triggerable%3Dfalse%29-class-method" class="tooltip">
+      <span>new(fd : Int32, blocking = <span class="n">false</span>, edge_triggerable = <span class="n">false</span>)</span>
+    new</a>
+    
+  
+
+
+    
+
   <h3>Class methods inherited from class <code><a href="IO/FileDescriptor.html">IO::FileDescriptor</a></code>
 </h3>
   
   
     <a href="IO/FileDescriptor.html#fcntl%28fd%2Ccmd%2Carg%3D0%29-class-method" class="tooltip">
       <span>fcntl(fd, cmd, arg = <span class="n">0</span>)</span>
-    fcntl</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#new%28fd%3AInt32%2Cblocking%3Dfalse%2Cedge_triggerable%3Dfalse%29-class-method" class="tooltip">
-      <span>new(fd : Int32, blocking = <span class="n">false</span>, edge_triggerable = <span class="n">false</span>)</span>
-    new</a>
+    fcntl</a>
     
   
 
@@ -384,6 +399,9 @@ tempfile.unlink</code></pre>
     write</a>
     
   
+
+
+    
 
 
     
@@ -565,6 +583,9 @@ tempfile.unlink</code></pre>
 
     
 
+
+    
+
   <h3>Class methods inherited from module <code><a href="IO.html">IO</a></code>
 </h3>
   
@@ -576,12 +597,7 @@ tempfile.unlink</code></pre>
   
     <a href="IO.html#pipe%28read_blocking%3Dfalse%2Cwrite_blocking%3Dfalse%29-class-method" class="tooltip">
       <span>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>)<br/>pipe(read_blocking = <span class="n">false</span>, write_blocking = <span class="n">false</span>, &amp;block)</span>
-    pipe</a>, 
-    
-  
-    <a href="IO.html#select%28read_ios%2Cwrite_ios%2Cerror_ios%2Ctimeout_sec%3ALibC%3A%3ATimeT%7CInt%7CFloat%3F%29-class-method" class="tooltip">
-      <span>select(read_ios, write_ios, error_ios, timeout_sec : LibC::TimeT | Int | Float?)<br/>select(read_ios, write_ios = <span class="n">nil</span>, error_ios = <span class="n">nil</span>)</span>
-    select</a>
+    pipe</a>
     
   
 
@@ -637,7 +653,7 @@ tempfile.unlink</code></pre>
 
     
 
-  <h3>Class methods inherited from class <code><a href="Reference.html">Reference</a></code>
+  <h3>Constructor methods inherited from class <code><a href="Reference.html">Reference</a></code>
 </h3>
   
   
@@ -646,6 +662,9 @@ tempfile.unlink</code></pre>
     new</a>
     
   
+
+
+    
 
 
   
@@ -747,14 +766,19 @@ tempfile.unlink</code></pre>
   
     <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
       <span>try(&amp;block)</span>
-    try</a>
+    try</a>, 
+    
+  
+    <a href="Object.html#unsafe_as%28type%3AT.class%29forallT-instance-method" class="tooltip">
+      <span>unsafe_as(type : T.class) forall T</span>
+    unsafe_as</a>
     
   
 
 
     
 
-  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+  <h3>Constructor methods inherited from class <code><a href="Object.html">Object</a></code>
 </h3>
   
   
@@ -770,14 +794,40 @@ tempfile.unlink</code></pre>
   
 
 
+    
+
+
   
 </div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(name)-class-method">
+      <a class="dashingAutolink" name="autolink-6070"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28name%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(name)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="Tempfile.html">Tempfile</a></code> with the given filename.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/tempfile.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
 
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="dirname:String-class-method">
-      <a class="dashingAutolink" name="autolink-5957"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dirname%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6071"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dirname%20%3A%20String"></a><div class="signature">
         
         def self.<strong>dirname</strong> : <a href="String.html">String</a>
 
@@ -793,31 +843,13 @@ tempfile.unlink</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/tempfile.cr#L77" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(name)-class-method">
-      <a class="dashingAutolink" name="autolink-5958"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28name%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(name)
-
-        
-      </div>
-      
-        <div class="doc"><p>Creates a <code><a href="Tempfile.html">Tempfile</a></code> with the given filename.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/tempfile.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/tempfile.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="open(filename,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-5959"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28filename%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6072"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28filename%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>open</strong>(filename, &amp;block)
 
@@ -828,16 +860,16 @@ tempfile.unlink</code></pre>
 <p>Creates a file with <em>filename</em>, and yields it to the given block.
 It is closed and returned at the end of this method call.</p>
 
-<pre><code>tempfile <span class="o">=</span> <span class="t">Tempfile</span>.open(<span class="s">&#34;foo&#34;</span>) { <span class="o">|</span>file<span class="o">|</span>
+<pre><code>tempfile <span class="o">=</span> <span class="t">Tempfile</span>.open(<span class="s">&#34;foo&#34;</span>) <span class="k">do</span> <span class="o">|</span>file<span class="o">|</span>
   file.print(<span class="s">&#34;bar&#34;</span>)
-}
+<span class="k">end</span>
 <span class="t">File</span>.read(tempfile.path) <span class="c"># =&gt; &#34;bar&#34;</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/tempfile.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/tempfile.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -848,7 +880,7 @@ It is closed and returned at the end of this method call.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="delete-instance-method">
-      <a class="dashingAutolink" name="autolink-5960"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6073"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delete"></a><div class="signature">
         
         def <strong>delete</strong>
 
@@ -860,13 +892,13 @@ It is closed and returned at the end of this method call.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/tempfile.cr#L86" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/tempfile.cr#L86" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="path:String-instance-method">
-      <a class="dashingAutolink" name="autolink-5961"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20path%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6074"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20path%20%3A%20String"></a><div class="signature">
         
         def <strong>path</strong> : <a href="String.html">String</a>
 
@@ -882,13 +914,13 @@ It is closed and returned at the end of this method call.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/tempfile.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/tempfile.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unlink-instance-method">
-      <a class="dashingAutolink" name="autolink-5962"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unlink"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6075"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unlink"></a><div class="signature">
         
         def <strong>unlink</strong>
 
@@ -900,7 +932,7 @@ It is closed and returned at the end of this method call.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/tempfile.cr#L91" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/tempfile.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>

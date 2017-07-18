@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-1792"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Exception%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Exception - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-1803"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Exception%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Exception - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -26,6 +26,17 @@
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>Represents errors that occur during application execution.</p>
+
+<p>Exception and it&#39;s descendants are used to communicate between raise and
+rescue statements in <code>begin ... end</code> blocks.
+Exception objects carry information about the exception &ndash; its type (the
+exception&rsquo;s class name), an optional descriptive string, and
+optional traceback information.
+Exception subclasses may add additional information.</p>
 
 
 
@@ -112,7 +123,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L5" target="_blank">exception.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L13" target="_blank">exception.cr</a>
     
     <br/>
   
@@ -121,7 +132,7 @@
 
 
 
-  <h2>Class Method Summary</h2>
+  <h2>Constructors</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
@@ -133,16 +144,22 @@
 
 
 
+
+
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
         <a href="#backtrace-instance-method" class="signature"><strong>#backtrace</strong></a>
         
+          <div class="summary"><p>Returns any backtrace associated with the exception.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#backtrace%3F-instance-method" class="signature"><strong>#backtrace?</strong></a>
+        
+          <div class="summary"><p>Returns any backtrace associated with the exception if the call stack exists.</p></div>
         
       </li>
     
@@ -158,6 +175,8 @@
     
       <li class="entry-summary">
         <a href="#cause%3AException%3F-instance-method" class="signature"><strong>#cause</strong> : Exception?</a>
+        
+          <div class="summary"><p>Returns the previous exception at the time this exception was raised.</p></div>
         
       </li>
     
@@ -239,7 +258,7 @@
 
     
 
-  <h3>Class methods inherited from class <code><a href="Reference.html">Reference</a></code>
+  <h3>Constructor methods inherited from class <code><a href="Reference.html">Reference</a></code>
 </h3>
   
   
@@ -248,6 +267,9 @@
     new</a>
     
   
+
+
+    
 
 
   
@@ -349,14 +371,19 @@
   
     <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
       <span>try(&amp;block)</span>
-    try</a>
+    try</a>, 
+    
+  
+    <a href="Object.html#unsafe_as%28type%3AT.class%29forallT-instance-method" class="tooltip">
+      <span>unsafe_as(type : T.class) forall T</span>
+    unsafe_as</a>
     
   
 
 
     
 
-  <h3>Class methods inherited from class <code><a href="Object.html">Object</a></code>
+  <h3>Constructor methods inherited from class <code><a href="Object.html">Object</a></code>
 </h3>
   
   
@@ -372,14 +399,17 @@
   
 
 
+    
+
+
   
 </div>
 
 
-  <h2>Class Method Detail</h2>
+  <h2>Constructor Detail</h2>
   
     <div class="entry-detail" id="new(message:String?=nil,cause:Exception?=nil)-class-method">
-      <a class="dashingAutolink" name="autolink-1793"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28message%20%3A%20String%3F%20%3D%20nil%2C%20cause%20%3A%20Exception%3F%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1804"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28message%20%3A%20String%3F%20%3D%20nil%2C%20cause%20%3A%20Exception%3F%20%3D%20nil%29"></a><div class="signature">
         
         def self.<strong>new</strong>(message : <a href="String.html">String</a>? = <span class="n">nil</span>, cause : <a href="Exception.html">Exception</a>? = <span class="n">nil</span>)
 
@@ -389,50 +419,60 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
   
+
+
 
 
 
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="backtrace-instance-method">
-      <a class="dashingAutolink" name="autolink-1794"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20backtrace"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1805"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20backtrace"></a><div class="signature">
         
         def <strong>backtrace</strong>
 
         
       </div>
       
+        <div class="doc"><p>Returns any backtrace associated with the exception.
+The backtrace is an array of strings, each containing
+&ldquo;0xAddress: Function at File Line Column&rdquo;.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="backtrace?-instance-method">
-      <a class="dashingAutolink" name="autolink-1795"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20backtrace%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1806"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20backtrace%3F"></a><div class="signature">
         
         def <strong>backtrace?</strong>
 
         
       </div>
       
+        <div class="doc"><p>Returns any backtrace associated with the exception if the call stack exists.
+The backtrace is an array of strings, each containing
+&ldquo;0xAddress: Function at File Line Column&rdquo;.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="callstack:CallStack?-instance-method">
-      <a class="dashingAutolink" name="autolink-1796"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20callstack%20%3A%20CallStack%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1807"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20callstack%20%3A%20CallStack%3F"></a><div class="signature">
         
         def <strong>callstack</strong> : CallStack?
 
@@ -442,13 +482,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="callstack=(callstack:CallStack?)-instance-method">
-      <a class="dashingAutolink" name="autolink-1797"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20callstack%3D%28callstack%20%3A%20CallStack%3F%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1808"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20callstack%3D%28callstack%20%3A%20CallStack%3F%29"></a><div class="signature">
         
         def <strong>callstack=</strong>(callstack : CallStack?)
 
@@ -458,29 +498,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cause:Exception?-instance-method">
-      <a class="dashingAutolink" name="autolink-1798"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cause%20%3A%20Exception%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1809"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cause%20%3A%20Exception%3F"></a><div class="signature">
         
         def <strong>cause</strong> : <a href="Exception.html">Exception</a>?
 
         
       </div>
       
+        <div class="doc"><p>Returns the previous exception at the time this exception was raised.
+This is useful for wrapping exceptions and retaining the original
+exception information.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect_with_backtrace(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-1799"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect_with_backtrace%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1810"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect_with_backtrace%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>inspect_with_backtrace</strong>(io : <a href="IO.html">IO</a>)
 
@@ -490,13 +534,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect_with_backtrace-instance-method">
-      <a class="dashingAutolink" name="autolink-1800"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect_with_backtrace"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1811"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect_with_backtrace"></a><div class="signature">
         
         def <strong>inspect_with_backtrace</strong>
 
@@ -506,13 +550,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="message:String?-instance-method">
-      <a class="dashingAutolink" name="autolink-1801"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20message%20%3A%20String%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1812"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20message%20%3A%20String%3F"></a><div class="signature">
         
         def <strong>message</strong> : <a href="String.html">String</a>?
 
@@ -522,13 +566,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-1802"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-1813"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
 
@@ -538,7 +582,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/exception.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/exception.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-202"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Benchmark%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Benchmark - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-207"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Benchmark%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Benchmark - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -36,10 +36,10 @@ detailed reports on the time taken for each task.</p>
 <span class="k">end</span></code></pre>
 
 <p>This generates the following output showing the mean iterations per second,
-the standard deviation relative to the mean, and a comparison:</p>
+the mean times per iteration, the standard deviation relative to the mean, and a comparison:</p>
 
-<pre><code class="language-text">  short sleep    91.82 (&plusmn; 2.51%)  8.72&times; slower
-shorter sleep   800.98 (&plusmn; 1.10%)       fastest</code></pre>
+<pre><code class="language-text">  short sleep   88.7  ( 11.27ms) (&plusmn; 3.33%)  8.90&times; slower
+shorter sleep  789.7  (  1.27ms) (&plusmn; 3.02%)       fastest</code></pre>
 
 <p><code><a href="Benchmark/IPS.html">Benchmark::IPS</a></code> defaults to 2 seconds of warmup time and 5 seconds of
 calculation time. This can be configured:</p>
@@ -71,12 +71,16 @@ of time is seconds.</p>
 
 n <span class="o">=</span> <span class="n">5000000</span>
 <span class="t">Benchmark</span>.bm <span class="k">do</span> <span class="o">|</span>x<span class="o">|</span>
-  x.report(<span class="s">&#34;times:&#34;</span>) { n.times <span class="k">do</span>
-    a <span class="o">=</span> <span class="s">&#34;1&#34;</span>
-  <span class="k">end</span> }
-  x.report(<span class="s">&#34;upto:&#34;</span>) { <span class="n">1</span>.upto(n) <span class="k">do</span>
-    a <span class="o">=</span> <span class="s">&#34;1&#34;</span>
-  <span class="k">end</span> }
+  x.report(<span class="s">&#34;times:&#34;</span>) <span class="k">do</span>
+    n.times <span class="k">do</span>
+      a <span class="o">=</span> <span class="s">&#34;1&#34;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+  x.report(<span class="s">&#34;upto:&#34;</span>) <span class="k">do</span>
+    <span class="n">1</span>.upto(n) <span class="k">do</span>
+      a <span class="o">=</span> <span class="s">&#34;1&#34;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 <span class="k">end</span></code></pre>
 
 <p>The result:</p>
@@ -110,20 +114,22 @@ upto:    0.010000   0.000000   0.010000 (  0.010466)</code></pre>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/benchmark/bm.cr#L1" target="_blank">benchmark/bm.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/benchmark/bm.cr#L1" target="_blank">benchmark/bm.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/benchmark/ips.cr#L1" target="_blank">benchmark/ips.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/benchmark/ips.cr#L1" target="_blank">benchmark/ips.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/benchmark.cr#L79" target="_blank">benchmark.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/benchmark.cr#L83" target="_blank">benchmark.cr</a>
     
     <br/>
   
+
+
 
 
 
@@ -175,6 +181,8 @@ upto:    0.010000   0.000000   0.010000 (  0.010466)</code></pre>
 
 
 
+
+
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="bm(&amp;block)-instance-method">
@@ -191,7 +199,7 @@ one can report the benchmarks. See the module&#39;s description.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/benchmark.cr#L84" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/benchmark.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -217,7 +225,7 @@ displayed and updated as they are calculated, otherwise all at once.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/benchmark.cr#L102" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/benchmark.cr#L106" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -235,7 +243,7 @@ displayed and updated as they are calculated, otherwise all at once.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/benchmark.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/benchmark.cr#L119" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -257,7 +265,7 @@ displayed and updated as they are calculated, otherwise all at once.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/benchmark.cr#L132" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/benchmark.cr#L136" target="_blank">View source</a>]
         
       </div>
     </div>

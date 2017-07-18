@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-1987"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Float%3A%3APrinter%3A%3AIEEE%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Float::Printer::IEEE - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Float::Printer::IEEE
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../../Float/Printer/IEEE.html">Float::Printer::IEEE</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L30" target="_blank">float/printer/ieee.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="DENORMAL_EXPONENT_32">
+        <strong>DENORMAL_EXPONENT_32</strong> = <code>(<span class="o">-</span><span class="t">EXPONENT_BIAS_32</span>) <span class="o">+</span> <span class="n">1</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="DENORMAL_EXPONENT_64">
+        <strong>DENORMAL_EXPONENT_64</strong> = <code>(<span class="o">-</span><span class="t">EXPONENT_BIAS_64</span>) <span class="o">+</span> <span class="n">1</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="EXPONENT_BIAS_32">
+        <strong>EXPONENT_BIAS_32</strong> = <code><span class="n">127</span> <span class="o">+</span> <span class="t">PHYSICAL_SIGNIFICAND_SIZE_32</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="EXPONENT_BIAS_64">
+        <strong>EXPONENT_BIAS_64</strong> = <code><span class="n">1023</span> <span class="o">+</span> <span class="t">PHYSICAL_SIGNIFICAND_SIZE_64</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="EXPONENT_MASK_32">
+        <strong>EXPONENT_MASK_32</strong> = <code><span class="n">2139095040_u32</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="EXPONENT_MASK_64">
+        <strong>EXPONENT_MASK_64</strong> = <code><span class="n">9218868437227405312_u64</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="HIDDEN_BIT_32">
+        <strong>HIDDEN_BIT_32</strong> = <code><span class="n">8388608_u32</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="HIDDEN_BIT_64">
+        <strong>HIDDEN_BIT_64</strong> = <code><span class="n">4503599627370496_u64</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="PHYSICAL_SIGNIFICAND_SIZE_32">
+        <strong>PHYSICAL_SIGNIFICAND_SIZE_32</strong> = <code><span class="n">23</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="PHYSICAL_SIGNIFICAND_SIZE_64">
+        <strong>PHYSICAL_SIGNIFICAND_SIZE_64</strong> = <code><span class="n">52</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SIGN_MASK_32">
+        <strong>SIGN_MASK_32</strong> = <code><span class="n">2147483648_u32</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SIGN_MASK_64">
+        <strong>SIGN_MASK_64</strong> = <code><span class="n">9223372036854775808_u64</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SIGNIFICAND_MASK_32">
+        <strong>SIGNIFICAND_MASK_32</strong> = <code><span class="n">8388607_u32</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SIGNIFICAND_MASK_64">
+        <strong>SIGNIFICAND_MASK_64</strong> = <code><span class="n">4503599627370495_u64</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SIGNIFICAND_SIZE_32">
+        <strong>SIGNIFICAND_SIZE_32</strong> = <code><span class="n">24</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Excludes the hidden bit</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="SIGNIFICAND_SIZE_64">
+        <strong>SIGNIFICAND_SIZE_64</strong> = <code><span class="n">53</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Excludes the hidden bit</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#frac_and_exp%28v%3AFloat64%29-instance-method" class="signature"><strong>#frac_and_exp</strong>(v : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#frac_and_exp%28v%3AFloat32%29-instance-method" class="signature"><strong>#frac_and_exp</strong>(v : Float32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inf%3F%28d64%3AUInt64%29-instance-method" class="signature"><strong>#inf?</strong>(d64 : UInt64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inf%3F%28d32%3AUInt32%29-instance-method" class="signature"><strong>#inf?</strong>(d32 : UInt32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nan%3F%28d64%3AUInt64%29-instance-method" class="signature"><strong>#nan?</strong>(d64 : UInt64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nan%3F%28d32%3AUInt32%29-instance-method" class="signature"><strong>#nan?</strong>(d32 : UInt32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#normalized_boundaries%28v%3AFloat64%29-instance-method" class="signature"><strong>#normalized_boundaries</strong>(v : Float64)</a>
+        
+          <div class="summary"><p>Computes the two boundaries of <em>v</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#normalized_boundaries%28v%3AFloat32%29-instance-method" class="signature"><strong>#normalized_boundaries</strong>(v : Float32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sign%28d64%3AUInt64%29-instance-method" class="signature"><strong>#sign</strong>(d64 : UInt64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sign%28d32%3AUInt32%29-instance-method" class="signature"><strong>#sign</strong>(d32 : UInt32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#special%3F%28d64%3AUInt64%29-instance-method" class="signature"><strong>#special?</strong>(d64 : UInt64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#special%3F%28d32%3AUInt32%29-instance-method" class="signature"><strong>#special?</strong>(d32 : UInt32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_uint%28v%3AFloat64%29-instance-method" class="signature"><strong>#to_uint</strong>(v : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_uint%28v%3AFloat32%29-instance-method" class="signature"><strong>#to_uint</strong>(v : Float32)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="frac_and_exp(v:Float64)-instance-method">
+      <a class="dashingAutolink" name="autolink-1988"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20frac_and_exp%28v%20%3A%20Float64%29"></a><div class="signature">
+        
+        def <strong>frac_and_exp</strong>(v : <a href="../../Float64.html">Float64</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L145" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="frac_and_exp(v:Float32)-instance-method">
+      <a class="dashingAutolink" name="autolink-1989"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20frac_and_exp%28v%20%3A%20Float32%29"></a><div class="signature">
+        
+        def <strong>frac_and_exp</strong>(v : <a href="../../Float32.html">Float32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L160" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inf?(d64:UInt64)-instance-method">
+      <a class="dashingAutolink" name="autolink-1990"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inf%3F%28d64%20%3A%20UInt64%29"></a><div class="signature">
+        
+        def <strong>inf?</strong>(d64 : <a href="../../UInt64.html">UInt64</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L75" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inf?(d32:UInt32)-instance-method">
+      <a class="dashingAutolink" name="autolink-1991"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inf%3F%28d32%20%3A%20UInt32%29"></a><div class="signature">
+        
+        def <strong>inf?</strong>(d32 : <a href="../../UInt32.html">UInt32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L79" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nan?(d64:UInt64)-instance-method">
+      <a class="dashingAutolink" name="autolink-1992"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20nan%3F%28d64%20%3A%20UInt64%29"></a><div class="signature">
+        
+        def <strong>nan?</strong>(d64 : <a href="../../UInt64.html">UInt64</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L83" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nan?(d32:UInt32)-instance-method">
+      <a class="dashingAutolink" name="autolink-1993"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20nan%3F%28d32%20%3A%20UInt32%29"></a><div class="signature">
+        
+        def <strong>nan?</strong>(d32 : <a href="../../UInt32.html">UInt32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L87" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="normalized_boundaries(v:Float64)-instance-method">
+      <a class="dashingAutolink" name="autolink-1994"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20normalized_boundaries%28v%20%3A%20Float64%29"></a><div class="signature">
+        
+        def <strong>normalized_boundaries</strong>(v : <a href="../../Float64.html">Float64</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Computes the two boundaries of <em>v</em>.
+The bigger boundary (m_plus) is normalized. The lower boundary has the same
+exponent as m_plus.
+Precondition: the value encoded by this Flaot must be greater than 0.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L95" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="normalized_boundaries(v:Float32)-instance-method">
+      <a class="dashingAutolink" name="autolink-1995"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20normalized_boundaries%28v%20%3A%20Float32%29"></a><div class="signature">
+        
+        def <strong>normalized_boundaries</strong>(v : <a href="../../Float32.html">Float32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L124" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sign(d64:UInt64)-instance-method">
+      <a class="dashingAutolink" name="autolink-1996"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sign%28d64%20%3A%20UInt64%29"></a><div class="signature">
+        
+        def <strong>sign</strong>(d64 : <a href="../../UInt64.html">UInt64</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sign(d32:UInt32)-instance-method">
+      <a class="dashingAutolink" name="autolink-1997"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sign%28d32%20%3A%20UInt32%29"></a><div class="signature">
+        
+        def <strong>sign</strong>(d32 : <a href="../../UInt32.html">UInt32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="special?(d64:UInt64)-instance-method">
+      <a class="dashingAutolink" name="autolink-1998"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20special%3F%28d64%20%3A%20UInt64%29"></a><div class="signature">
+        
+        def <strong>special?</strong>(d64 : <a href="../../UInt64.html">UInt64</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L67" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="special?(d32:UInt32)-instance-method">
+      <a class="dashingAutolink" name="autolink-1999"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20special%3F%28d32%20%3A%20UInt32%29"></a><div class="signature">
+        
+        def <strong>special?</strong>(d32 : <a href="../../UInt32.html">UInt32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L71" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_uint(v:Float64)-instance-method">
+      <a class="dashingAutolink" name="autolink-2000"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_uint%28v%20%3A%20Float64%29"></a><div class="signature">
+        
+        def <strong>to_uint</strong>(v : <a href="../../Float64.html">Float64</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_uint(v:Float32)-instance-method">
+      <a class="dashingAutolink" name="autolink-2001"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_uint%28v%20%3A%20Float32%29"></a><div class="signature">
+        
+        def <strong>to_uint</strong>(v : <a href="../../Float32.html">Float32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/float/printer/ieee.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

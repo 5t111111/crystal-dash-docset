@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5339"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Regex%3A%3AMatchData%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Regex::MatchData - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5444"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Regex%3A%3AMatchData%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Regex::MatchData - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,14 +13,15 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Regex::MatchData
+  <span class="kind">struct</span> Regex::MatchData
 
 </h1>
 
 
   <ul class="superclass-hierarchy">
 <li class="superclass"><a href="../Regex/MatchData.html">Regex::MatchData</a></li>
-<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Struct.html">Struct</a></li>
+<li class="superclass"><a href="../Value.html">Value</a></li>
 <li class="superclass"><a href="../Object.html">Object</a></li>
 </ul>
 
@@ -60,10 +61,12 @@ expression without needing to capture it explicitly.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L18" target="_blank">regex/match_data.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L18" target="_blank">regex/match_data.cr</a>
     
     <br/>
   
+
+
 
 
 
@@ -80,16 +83,16 @@ expression without needing to capture it explicitly.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28n%29-instance-method" class="signature"><strong>#[]</strong>(n)</a>
+        <a href="#%5B%5D%28group_name%3AString%29-instance-method" class="signature"><strong>#[]</strong>(group_name : String)</a>
         
-          <div class="summary"><p>Returns the match of the <em>n</em>th capture group, or raises an <code><a href="../IndexError.html">IndexError</a></code> if there is no <em>n</em>th capture group.</p></div>
+          <div class="summary"><p>Returns the match of the capture group named by <em>group_name</em>, or raises an <code><a href="../KeyError.html">KeyError</a></code> if there is no such named capture group.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%28group_name%3AString%29-instance-method" class="signature"><strong>#[]</strong>(group_name : String)</a>
+        <a href="#%5B%5D%28n%29-instance-method" class="signature"><strong>#[]</strong>(n)</a>
         
-          <div class="summary"><p>Returns the match of the capture group named by <em>group_name</em>, or raises an <code><a href="../ArgumentError.html">ArgumentError</a></code> if there is no such named capture group.</p></div>
+          <div class="summary"><p>Returns the match of the <em>n</em>th capture group, or raises an <code><a href="../IndexError.html">IndexError</a></code> if there is no <em>n</em>th capture group.</p></div>
         
       </li>
     
@@ -129,6 +132,13 @@ expression without needing to capture it explicitly.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#captures-instance-method" class="signature"><strong>#captures</strong></a>
+        
+          <div class="summary"><p>Returns an array of unnamed capture groups.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
         
       </li>
@@ -146,7 +156,21 @@ expression without needing to capture it explicitly.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#group_size%3AInt32-instance-method" class="signature"><strong>#group_size</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the number of capture groups, including named capture groups.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#inspect%28io%3AIO%29-instance-method" class="signature"><strong>#inspect</strong>(io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#named_captures-instance-method" class="signature"><strong>#named_captures</strong></a>
+        
+          <div class="summary"><p>Returns a hash of named capture groups.</p></div>
         
       </li>
     
@@ -165,6 +189,11 @@ expression without needing to capture it explicitly.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#pretty_print%28pp%29%3ANil-instance-method" class="signature"><strong>#pretty_print</strong>(pp) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#regex%3ARegex-instance-method" class="signature"><strong>#regex</strong> : Regex</a>
         
           <div class="summary"><p>Returns the original regular expression.</p></div>
@@ -172,9 +201,9 @@ expression without needing to capture it explicitly.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#size%3AInt32-instance-method" class="signature"><strong>#size</strong> : Int32</a>
+        <a href="#size-instance-method" class="signature"><strong>#size</strong></a>
         
-          <div class="summary"><p>Returns the number of capture groups, including named capture groups.</p></div>
+          <div class="summary"><p>Returns the number of elements in this match object.</p></div>
         
       </li>
     
@@ -182,6 +211,20 @@ expression without needing to capture it explicitly.</p>
         <a href="#string%3AString-instance-method" class="signature"><strong>#string</strong> : String</a>
         
           <div class="summary"><p>Returns the original string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_a-instance-method" class="signature"><strong>#to_a</strong></a>
+        
+          <div class="summary"><p>Convert this match data into an array.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_h-instance-method" class="signature"><strong>#to_h</strong></a>
+        
+          <div class="summary"><p>Convert this match data into a hash.</p></div>
         
       </li>
     
@@ -200,47 +243,32 @@ expression without needing to capture it explicitly.</p>
   
     
 
-  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+  <h3>Instance methods inherited from struct <code><a href="../Struct.html">Struct</a></code>
 </h3>
   
   
-    <a href="../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
-      <span>==(other : self)<br/>==(other)</span>
+    <a href="../Struct.html#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="tooltip">
+      <span>==(other : self) : Bool</span>
     ==</a>, 
     
   
-    <a href="../Reference.html#dup-instance-method" class="tooltip">
-      <span>dup</span>
-    dup</a>, 
-    
-  
-    <a href="../Reference.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="../Struct.html#hash%3AInt32-instance-method" class="tooltip">
+      <span>hash : Int32</span>
     hash</a>, 
     
   
-    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+    <a href="../Struct.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
       <span>inspect(io : IO) : Nil</span>
     inspect</a>, 
     
   
-    <a href="../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
-      <span>object_id : UInt64</span>
-    object_id</a>, 
-    
-  
-    <a href="../Reference.html#pretty_print%28pp%29%3ANil-instance-method" class="tooltip">
+    <a href="../Struct.html#pretty_print%28pp%29%3ANil-instance-method" class="tooltip">
       <span>pretty_print(pp) : Nil</span>
     pretty_print</a>, 
     
   
-    <a href="../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
-      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
-    same?</a>, 
-    
-  
-    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
-      <span>to_s(io : IO) : Nil</span>
+    <a href="../Struct.html#to_s%28io%29-instance-method" class="tooltip">
+      <span>to_s(io)</span>
     to_s</a>
     
   
@@ -248,15 +276,33 @@ expression without needing to capture it explicitly.</p>
 
     
 
-  <h3>Class methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Value.html">Value</a></code>
 </h3>
   
   
-    <a href="../Reference.html#new-class-method" class="tooltip">
-      <span>new</span>
-    new</a>
+    <a href="../Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
     
   
+    <a href="../Value.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>
+    
+  
+
+
+    
+
+
+    
 
 
   
@@ -358,14 +404,19 @@ expression without needing to capture it explicitly.</p>
   
     <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
       <span>try(&amp;block)</span>
-    try</a>
+    try</a>, 
+    
+  
+    <a href="../Object.html#unsafe_as%28type%3AT.class%29forallT-instance-method" class="tooltip">
+      <span>unsafe_as(type : T.class) forall T</span>
+    unsafe_as</a>
     
   
 
 
     
 
-  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+  <h3>Constructor methods inherited from class <code><a href="../Object.html">Object</a></code>
 </h3>
   
   
@@ -381,8 +432,13 @@ expression without needing to capture it explicitly.</p>
   
 
 
+    
+
+
   
 </div>
+
+
 
 
 
@@ -390,7 +446,7 @@ expression without needing to capture it explicitly.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="==(other:Regex::MatchData)-instance-method">
-      <a class="dashingAutolink" name="autolink-5340"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Regex%3A%3AMatchData%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5445"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Regex%3A%3AMatchData%29"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="../Regex/MatchData.html">Regex::MatchData</a>)
 
@@ -400,13 +456,37 @@ expression without needing to capture it explicitly.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L214" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L340" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](group_name:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-5446"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28group_name%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>[]</strong>(group_name : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the match of the capture group named by <em>group_name</em>, or
+raises an <code><a href="../KeyError.html">KeyError</a></code> if there is no such named capture group.</p>
+
+<pre><code><span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(?&lt;ok&gt;ys)/</span>).not_nil![<span class="s">&#34;ok&#34;</span>] <span class="c"># =&gt; &#34;ys&#34;</span>
+<span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(?&lt;ok&gt;ys)/</span>).not_nil![<span class="s">&#34;ng&#34;</span>] <span class="c"># raises KeyError</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L173" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[](n)-instance-method">
-      <a class="dashingAutolink" name="autolink-5341"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28n%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5447"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28n%29"></a><div class="signature">
         
         def <strong>[]</strong>(n)
 
@@ -424,37 +504,13 @@ if there is no <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L130" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="[](group_name:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-5342"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%28group_name%20%3A%20String%29"></a><div class="signature">
-        
-        def <strong>[]</strong>(group_name : <a href="../String.html">String</a>)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Returns the match of the capture group named by <em>group_name</em>, or
-raises an <code><a href="../ArgumentError.html">ArgumentError</a></code> if there is no such named capture group.</p>
-
-<pre><code><span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(?&lt;ok&gt;ys)/</span>).not_nil![<span class="s">&#34;ok&#34;</span>] <span class="c"># =&gt; &#34;ys&#34;</span>
-<span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(?&lt;ok&gt;ys)/</span>).not_nil![<span class="s">&#34;ng&#34;</span>] <span class="c"># raises ArgumentError</span></code></pre>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L157" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L144" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]?(group_name:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-5343"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28group_name%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5448"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28group_name%20%3A%20String%29"></a><div class="signature">
         
         def <strong>[]?</strong>(group_name : <a href="../String.html">String</a>)
 
@@ -472,13 +528,13 @@ raises an <code><a href="../ArgumentError.html">ArgumentError</a></code> if ther
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L144" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L160" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="[]?(n)-instance-method">
-      <a class="dashingAutolink" name="autolink-5344"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28n%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5449"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5B%5D%3F%28n%29"></a><div class="signature">
         
         def <strong>[]?</strong>(n)
 
@@ -499,13 +555,13 @@ an <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L114" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L127" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="begin(n=0)-instance-method">
-      <a class="dashingAutolink" name="autolink-5345"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20begin%28n%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5450"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20begin%28n%20%3D%200%29"></a><div class="signature">
         
         def <strong>begin</strong>(n = <span class="n">0</span>)
 
@@ -526,13 +582,13 @@ Otherwise, uses the match of the <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="byte_begin(n=0)-instance-method">
-      <a class="dashingAutolink" name="autolink-5346"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20byte_begin%28n%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5451"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20byte_begin%28n%20%3D%200%29"></a><div class="signature">
         
         def <strong>byte_begin</strong>(n = <span class="n">0</span>)
 
@@ -553,13 +609,13 @@ Otherwise, uses the match of the <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L84" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="byte_end(n=0)-instance-method">
-      <a class="dashingAutolink" name="autolink-5347"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20byte_end%28n%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5452"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20byte_end%28n%20%3D%200%29"></a><div class="signature">
         
         def <strong>byte_end</strong>(n = <span class="n">0</span>)
 
@@ -580,13 +636,43 @@ Otherwise, uses the match of the <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="captures-instance-method">
+      <a class="dashingAutolink" name="autolink-5453"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20captures"></a><div class="signature">
+        
+        def <strong>captures</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns an array of unnamed capture groups.</p>
+
+<p>It is a difference from <code><a href="../Regex/MatchData.html#to_a-instance-method">#to_a</a></code> that the result array does not contain the match for the entire <code><a href="../Regex.html">Regex</a></code> (<code>self[0]</code>).</p>
+
+<pre><code>match <span class="o">=</span> <span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/(Cr)(?&lt;name1&gt;y)(st)(?&lt;name2&gt;al)/</span>).not_nil!
+match.captures <span class="c"># =&gt; [&#34;Cr&#34;, &#34;st&#34;]</span>
+
+<span class="c"># When this regex has an optional group, result array may contain</span>
+<span class="c"># a `nil` if this group is not matched.</span>
+match <span class="o">=</span> <span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/(Cr)(stal)?/</span>).not_nil!
+match.captures <span class="c"># =&gt; [&#34;Cr&#34;, nil]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L219" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-5348"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5454"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -596,13 +682,13 @@ Otherwise, uses the match of the <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L210" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L336" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dup-instance-method">
-      <a class="dashingAutolink" name="autolink-5349"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5455"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20dup"></a><div class="signature">
         
         def <strong>dup</strong>
 
@@ -612,13 +698,13 @@ Otherwise, uses the match of the <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L206" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L332" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="end(n=0)-instance-method">
-      <a class="dashingAutolink" name="autolink-5350"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end%28n%20%3D%200%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5456"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end%28n%20%3D%200%29"></a><div class="signature">
         
         def <strong>end</strong>(n = <span class="n">0</span>)
 
@@ -639,13 +725,37 @@ Otherwise, uses the match of the <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L81" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="group_size:Int32-instance-method">
+      <a class="dashingAutolink" name="autolink-5457"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20group_size%20%3A%20Int32"></a><div class="signature">
+        
+        def <strong>group_size</strong> : <a href="../Int32.html">Int32</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns the number of capture groups, including named capture groups.</p>
+
+<pre><code><span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/[p-s]/</span>).not_nil!.group_size          <span class="c"># =&gt; 0</span>
+<span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(ys)/</span>).not_nil!.group_size          <span class="c"># =&gt; 1</span>
+<span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(ys)(?&lt;ok&gt;ta)/</span>).not_nil!.group_size <span class="c"># =&gt; 2</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-5351"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5458"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io : <a href="../IO.html">IO</a>)
 
@@ -655,13 +765,41 @@ Otherwise, uses the match of the <em>n</em>th capture group.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L185" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L291" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="named_captures-instance-method">
+      <a class="dashingAutolink" name="autolink-5459"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20named_captures"></a><div class="signature">
+        
+        def <strong>named_captures</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns a hash of named capture groups.</p>
+
+<pre><code>match <span class="o">=</span> <span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/(Cr)(?&lt;name1&gt;y)(st)(?&lt;name2&gt;al)/</span>).not_nil!
+match.named_captures <span class="c"># =&gt; {&#34;name1&#34; =&gt; &#34;y&#34;, &#34;name2&#34; =&gt; &#34;al&#34;}</span>
+
+<span class="c"># When this regex has an optional group, result hash may contain</span>
+<span class="c"># a `nil` if this group is not matched.</span>
+match <span class="o">=</span> <span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/(?&lt;name1&gt;Cr)(?&lt;name2&gt;stal)?/</span>).not_nil!
+match.named_captures <span class="c"># =&gt; {&#34;name1&#34; =&gt; &#34;Cr&#34;, &#34;name2&#34; =&gt; nil}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L241" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="post_match-instance-method">
-      <a class="dashingAutolink" name="autolink-5352"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post_match"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5460"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20post_match"></a><div class="signature">
         
         def <strong>post_match</strong>
 
@@ -678,13 +816,13 @@ at the end of the string, returns the empty string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L181" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L202" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pre_match-instance-method">
-      <a class="dashingAutolink" name="autolink-5353"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pre_match"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5461"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pre_match"></a><div class="signature">
         
         def <strong>pre_match</strong>
 
@@ -701,13 +839,29 @@ starts at the start of the string, returns the empty string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L171" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L192" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pretty_print(pp):Nil-instance-method">
+      <a class="dashingAutolink" name="autolink-5462"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pretty_print%28pp%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>pretty_print</strong>(pp) : <a href="../Nil.html">Nil</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L311" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="regex:Regex-instance-method">
-      <a class="dashingAutolink" name="autolink-5354"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20regex%20%3A%20Regex"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5463"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20regex%20%3A%20Regex"></a><div class="signature">
         
         def <strong>regex</strong> : <a href="../Regex.html">Regex</a>
 
@@ -723,37 +877,37 @@ starts at the start of the string, returns the empty string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="size:Int32-instance-method">
-      <a class="dashingAutolink" name="autolink-5355"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size%20%3A%20Int32"></a><div class="signature">
+    <div class="entry-detail" id="size-instance-method">
+      <a class="dashingAutolink" name="autolink-5464"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20size"></a><div class="signature">
         
-        def <strong>size</strong> : <a href="../Int32.html">Int32</a>
+        def <strong>size</strong>
 
         
       </div>
       
         <div class="doc">
-<p>Returns the number of capture groups, including named capture groups.</p>
+<p>Returns the number of elements in this match object.</p>
 
-<pre><code><span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/[p-s]/</span>).not_nil!.size          <span class="c"># =&gt; 0</span>
-<span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(ys)/</span>).not_nil!.size          <span class="c"># =&gt; 1</span>
-<span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(ys)(?&lt;ok&gt;ta)/</span>).not_nil!.size <span class="c"># =&gt; 2</span></code></pre>
+<pre><code><span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/[p-s]/</span>).not_nil!.size          <span class="c"># =&gt; 1</span>
+<span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(ys)/</span>).not_nil!.size          <span class="c"># =&gt; 2</span>
+<span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/r(ys)(?&lt;ok&gt;ta)/</span>).not_nil!.size <span class="c"># =&gt; 3</span></code></pre>
 </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="string:String-instance-method">
-      <a class="dashingAutolink" name="autolink-5356"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20string%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5465"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20string%20%3A%20String"></a><div class="signature">
         
         def <strong>string</strong> : <a href="../String.html">String</a>
 
@@ -769,13 +923,69 @@ starts at the start of the string, returns the empty string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_a-instance-method">
+      <a class="dashingAutolink" name="autolink-5466"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_a"></a><div class="signature">
+        
+        def <strong>to_a</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Convert this match data into an array.</p>
+
+<pre><code>match <span class="o">=</span> <span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/(Cr)(?&lt;name1&gt;y)(st)(?&lt;name2&gt;al)/</span>).not_nil!
+match.to_a <span class="c"># =&gt; [&#34;Crystal&#34;, &#34;Cr&#34;, &#34;y&#34;, &#34;st&#34;, &#34;al&#34;]</span>
+
+<span class="c"># When this regex has an optional group, result array may contain</span>
+<span class="c"># a `nil` if this group is not matched.</span>
+match <span class="o">=</span> <span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/(Cr)(?&lt;name1&gt;stal)?/</span>).not_nil!
+match.to_a <span class="c"># =&gt; [&#34;Cr&#34;, &#34;Cr&#34;, nil]</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L265" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_h-instance-method">
+      <a class="dashingAutolink" name="autolink-5467"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_h"></a><div class="signature">
+        
+        def <strong>to_h</strong>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Convert this match data into a hash.</p>
+
+<pre><code>match <span class="o">=</span> <span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/(Cr)(?&lt;name1&gt;y)(st)(?&lt;name2&gt;al)/</span>).not_nil!
+match.to_h <span class="c"># =&gt; {0 =&gt; &#34;Crystal&#34;, 1 =&gt; &#34;Cr&#34;, &#34;name1&#34; =&gt; &#34;y&#34;, 3 =&gt; &#34;st&#34;, &#34;name2&#34; =&gt; &#34;al&#34;}</span>
+
+<span class="c"># When this regex has an optional group, result array may contain</span>
+<span class="c"># a `nil` if this group is not matched.</span>
+match <span class="o">=</span> <span class="s">&#34;Crystal&#34;</span>.match(<span class="s">/(Cr)(?&lt;name1&gt;stal)?/</span>).not_nil!
+match.to_h <span class="c"># =&gt; {0 =&gt; &#34;Cr&#34;, 1 =&gt; &#34;Cr&#34;, &#34;name1&#34; =&gt; nil}</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L280" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-5357"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5468"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="../IO.html">IO</a>)
 
@@ -785,7 +995,7 @@ starts at the start of the string, returns the empty string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/regex/match_data.cr#L189" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/regex/match_data.cr#L295" target="_blank">View source</a>]
         
       </div>
     </div>

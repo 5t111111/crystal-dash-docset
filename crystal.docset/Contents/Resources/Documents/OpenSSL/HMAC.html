@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5069"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%3A%3AHMAC%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL::HMAC - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-5165"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/OpenSSL%3A%3AHMAC%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>OpenSSL::HMAC - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -27,6 +27,17 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>Allows computing Hash-based Message Authentication Code (HMAC).</p>
+
+<p>It is a type of message authentication code (MAC)
+involving a hash function in combination with a key.</p>
+
+<p>HMAC can be used to verify the integrity of a message as well as the authenticity.</p>
+
+<p>See also <a href="https://tools.ietf.org/html/rfc2104.html" target="_blank">RFC2104</a>.</p>
+
 
 
 
@@ -43,10 +54,12 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/openssl/hmac.cr#L3" target="_blank">openssl/hmac.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/openssl/hmac.cr#L11" target="_blank">openssl/hmac.cr</a>
     
     <br/>
   
+
+
 
 
 
@@ -58,10 +71,14 @@
       <li class="entry-summary">
         <a href="#digest%28algorithm%3ASymbol%2Ckey%2Cdata%29%3ABytes-class-method" class="signature"><strong>.digest</strong>(algorithm : Symbol, key, data) : Bytes</a>
         
+          <div class="summary"><p>Returns the HMAC digest of <em>data</em> using the secret <em>key</em>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#hexdigest%28algorithm%3ASymbol%2Ckey%2Cdata%29%3AString-class-method" class="signature"><strong>.hexdigest</strong>(algorithm : Symbol, key, data) : String</a>
+        
+          <div class="summary"><p>Returns the HMAC digest of <em>data</em> using the secret <em>key</em>, formatted as a hexadecimal string.</p></div>
         
       </li>
     
@@ -125,7 +142,7 @@
 
     
 
-  <h3>Class methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+  <h3>Constructor methods inherited from class <code><a href="../Reference.html">Reference</a></code>
 </h3>
   
   
@@ -134,6 +151,9 @@
     new</a>
     
   
+
+
+    
 
 
   
@@ -235,14 +255,19 @@
   
     <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
       <span>try(&amp;block)</span>
-    try</a>
+    try</a>, 
+    
+  
+    <a href="../Object.html#unsafe_as%28type%3AT.class%29forallT-instance-method" class="tooltip">
+      <span>unsafe_as(type : T.class) forall T</span>
+    unsafe_as</a>
     
   
 
 
     
 
-  <h3>Class methods inherited from class <code><a href="../Object.html">Object</a></code>
+  <h3>Constructor methods inherited from class <code><a href="../Object.html">Object</a></code>
 </h3>
   
   
@@ -258,40 +283,80 @@
   
 
 
+    
+
+
   
 </div>
+
+
 
 
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="digest(algorithm:Symbol,key,data):Bytes-class-method">
-      <a class="dashingAutolink" name="autolink-5067"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.digest%28algorithm%20%3A%20Symbol%2C%20key%2C%20data%29%20%3A%20Bytes"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5166"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.digest%28algorithm%20%3A%20Symbol%2C%20key%2C%20data%29%20%3A%20Bytes"></a><div class="signature">
         
         def self.<strong>digest</strong>(algorithm : <a href="../Symbol.html">Symbol</a>, key, data) : <a href="../Bytes.html">Bytes</a>
 
         
       </div>
       
+        <div class="doc">
+<p>Returns the HMAC digest of <em>data</em> using the secret <em>key</em>.</p>
+
+<p>It may contain non-ASCII bytes, including NUL bytes.</p>
+
+<p><em>algorithm</em> is a <code><a href="../Symbol.html">Symbol</a></code> of a supported digest algorithm:</p>
+
+<ul>
+<li>
+<code>:md4</code>.</li>
+<li>
+<code>:md5</code>.</li>
+<li>
+<code>:ripemd160</code>.</li>
+<li>
+<code>:sha1</code>.</li>
+<li>
+<code>:sha224</code>.</li>
+<li>
+<code>:sha256</code>.</li>
+<li>
+<code>:sha384</code>.</li>
+<li>
+<code>:sha512</code>.</li>
+</ul>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/openssl/hmac.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/openssl/hmac.cr#L25" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hexdigest(algorithm:Symbol,key,data):String-class-method">
-      <a class="dashingAutolink" name="autolink-5068"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.hexdigest%28algorithm%20%3A%20Symbol%2C%20key%2C%20data%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-5167"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.hexdigest%28algorithm%20%3A%20Symbol%2C%20key%2C%20data%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>hexdigest</strong>(algorithm : <a href="../Symbol.html">Symbol</a>, key, data) : <a href="../String.html">String</a>
 
         
       </div>
       
+        <div class="doc">
+<p>Returns the HMAC digest of <em>data</em> using the secret <em>key</em>,
+formatted as a hexadecimal string. This is neccesary to safely transfer
+the digest where binary messages are not allowed.</p>
+
+<p>See also <code><a href="../OpenSSL/HMAC.html#digest%28algorithm%3ASymbol%2Ckey%2Cdata%29%3ABytes-class-method">#digest</a></code>.</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/3c712288ba8f8138cb734e673cc622658300c229/src/openssl/hmac.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/3c3d3e2b830e81de0aa39b7af0cd6f82f759c410/src/openssl/hmac.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
