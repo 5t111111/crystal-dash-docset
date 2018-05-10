@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-208"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/BigFloat%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>BigFloat - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-284"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/BigFloat%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>BigFloat - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -65,7 +65,12 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L7" target="_blank">big/big_float.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big.cr#L5" target="_blank">big.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L6" target="_blank">big/big_float.cr</a>
     
     <br/>
   
@@ -84,6 +89,41 @@
     
       <li class="entry-summary">
         <a href="#new%28str%3AString%29-class-method" class="signature"><strong>.new</strong>(str : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3ABigInt%29-class-method" class="signature"><strong>.new</strong>(num : BigInt)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3ABigRational%29-class-method" class="signature"><strong>.new</strong>(num : BigRational)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3ABigFloat%29-class-method" class="signature"><strong>.new</strong>(num : BigFloat)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3AInt8%7CInt16%7CInt32%29-class-method" class="signature"><strong>.new</strong>(num : Int8 | Int16 | Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3AUInt8%7CUInt16%7CUInt32%29-class-method" class="signature"><strong>.new</strong>(num : UInt8 | UInt16 | UInt32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3AInt64%29-class-method" class="signature"><strong>.new</strong>(num : Int64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3AUInt64%29-class-method" class="signature"><strong>.new</strong>(num : UInt64)</a>
         
       </li>
     
@@ -167,17 +207,17 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#%28other%3AFloat%29-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : Float)</a>
+        <a href="#%28other%3ABigInt%29-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : BigInt)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%28other%3AInt%3A%3ASigned%29-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : Int::Signed)</a>
+        <a href="#%28other%3AFloat32%7CFloat64%29-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : Float32 | Float64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%28other%3AInt%3A%3AUnsigned%29-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : Int::Unsigned)</a>
+        <a href="#%28other%3ANumber%29-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : Number)</a>
         
       </li>
     
@@ -202,7 +242,9 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#hash-instance-method" class="signature"><strong>#hash</strong></a>
+        <a href="#hash%28hasher%29-instance-method" class="signature"><strong>#hash</strong>(hasher)</a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span>  improve this</p></div>
         
       </li>
     
@@ -288,6 +330,11 @@
     
       <li class="entry-summary">
         <a href="#to_unsafe-instance-method" class="signature"><strong>#to_unsafe</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#trunc-instance-method" class="signature"><strong>#trunc</strong></a>
         
       </li>
     
@@ -455,8 +502,8 @@
     &lt;=&gt;</a>, 
     
   
-    <a href="Float.html#days-instance-method" class="tooltip">
-      <span>days</span>
+    <a href="Float.html#days%3ATime%3A%3ASpan-instance-method" class="tooltip">
+      <span>days : Time::Span</span>
     days</a>, 
     
   
@@ -470,8 +517,13 @@
     finite?</a>, 
     
   
-    <a href="Float.html#hours-instance-method" class="tooltip">
-      <span>hours</span>
+    <a href="Float.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)</span>
+    hash</a>, 
+    
+  
+    <a href="Float.html#hours%3ATime%3A%3ASpan-instance-method" class="tooltip">
+      <span>hours : Time::Span</span>
     hours</a>, 
     
   
@@ -480,13 +532,13 @@
     infinite?</a>, 
     
   
-    <a href="Float.html#milliseconds-instance-method" class="tooltip">
-      <span>milliseconds</span>
+    <a href="Float.html#milliseconds%3ATime%3A%3ASpan-instance-method" class="tooltip">
+      <span>milliseconds : Time::Span</span>
     milliseconds</a>, 
     
   
-    <a href="Float.html#minutes-instance-method" class="tooltip">
-      <span>minutes</span>
+    <a href="Float.html#minutes%3ATime%3A%3ASpan-instance-method" class="tooltip">
+      <span>minutes : Time::Span</span>
     minutes</a>, 
     
   
@@ -500,19 +552,34 @@
     nan?</a>, 
     
   
+    <a href="Float.html#nanoseconds%3ATime%3A%3ASpan-instance-method" class="tooltip">
+      <span>nanoseconds : Time::Span</span>
+    nanoseconds</a>, 
+    
+  
     <a href="Float.html#remainder%28other%29-instance-method" class="tooltip">
       <span>remainder(other)</span>
     remainder</a>, 
     
   
-    <a href="Float.html#seconds-instance-method" class="tooltip">
-      <span>seconds</span>
+    <a href="Float.html#seconds%3ATime%3A%3ASpan-instance-method" class="tooltip">
+      <span>seconds : Time::Span</span>
     seconds</a>, 
+    
+  
+    <a href="Float.html#to_big_d-instance-method" class="tooltip">
+      <span>to_big_d</span>
+    to_big_d</a>, 
     
   
     <a href="Float.html#to_big_i%3ABigInt-instance-method" class="tooltip">
       <span>to_big_i : BigInt</span>
     to_big_i</a>, 
+    
+  
+    <a href="Float.html#to_big_r-instance-method" class="tooltip">
+      <span>to_big_r</span>
+    to_big_r</a>, 
     
   
     <a href="Float.html#to_io%28io%3AIO%2Cformat%3AIO%3A%3AByteFormat%29-instance-method" class="tooltip">
@@ -730,8 +797,8 @@
     to_c</a>, 
     
   
-    <a href="Number.html#to_yaml%28yaml%3AYAML%3A%3ABuilder%29-instance-method" class="tooltip">
-      <span>to_yaml(yaml : YAML::Builder)</span>
+    <a href="Number.html#to_yaml%28yaml%3AYAML%3A%3ANodes%3A%3ABuilder%29-instance-method" class="tooltip">
+      <span>to_yaml(yaml : YAML::Nodes::Builder)</span>
     to_yaml</a>, 
     
   
@@ -915,8 +982,8 @@
     dup</a>, 
     
   
-    <a href="Object.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
     hash</a>, 
     
   
@@ -993,8 +1060,8 @@
     from_json</a>, 
     
   
-    <a href="Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string_or_io) : self</span>
+    <a href="Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
     from_yaml</a>
     
   
@@ -1010,7 +1077,7 @@
   <h2>Constructor Detail</h2>
   
     <div class="entry-detail" id="new(num:Float,precision:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-209"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Float%2C%20precision%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-236"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Float%2C%20precision%20%3A%20Int%29"></a><div class="signature">
         
         def self.<strong>new</strong>(num : <a href="Float.html">Float</a>, precision : <a href="Int.html">Int</a>)
 
@@ -1020,13 +1087,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(str:String)-class-method">
-      <a class="dashingAutolink" name="autolink-210"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28str%20%3A%20String%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-237"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28str%20%3A%20String%29"></a><div class="signature">
         
         def self.<strong>new</strong>(str : <a href="String.html">String</a>)
 
@@ -1036,13 +1103,125 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:BigInt)-class-method">
+      <a class="dashingAutolink" name="autolink-238"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20BigInt%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="BigInt.html">BigInt</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:BigRational)-class-method">
+      <a class="dashingAutolink" name="autolink-239"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20BigRational%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="BigRational.html">BigRational</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:BigFloat)-class-method">
+      <a class="dashingAutolink" name="autolink-240"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20BigFloat%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="BigFloat.html">BigFloat</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:Int8|Int16|Int32)-class-method">
+      <a class="dashingAutolink" name="autolink-241"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Int8%20%7C%20Int16%20%7C%20Int32%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="Int8.html">Int8</a> | <a href="Int16.html">Int16</a> | <a href="Int32.html">Int32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:UInt8|UInt16|UInt32)-class-method">
+      <a class="dashingAutolink" name="autolink-242"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20UInt8%20%7C%20UInt16%20%7C%20UInt32%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="UInt8.html">UInt8</a> | <a href="UInt16.html">UInt16</a> | <a href="UInt32.html">UInt32</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:Int64)-class-method">
+      <a class="dashingAutolink" name="autolink-243"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Int64%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="Int64.html">Int64</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:UInt64)-class-method">
+      <a class="dashingAutolink" name="autolink-244"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20UInt64%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="UInt64.html">UInt64</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(num:Number)-class-method">
-      <a class="dashingAutolink" name="autolink-211"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-245"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Number%29"></a><div class="signature">
         
         def self.<strong>new</strong>(num : <a href="Number.html">Number</a>)
 
@@ -1052,13 +1231,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(mpf:LibGMP::MPF)-class-method">
-      <a class="dashingAutolink" name="autolink-212"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28mpf%20%3A%20LibGMP%3A%3AMPF%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-246"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28mpf%20%3A%20LibGMP%3A%3AMPF%29"></a><div class="signature">
         
         def self.<strong>new</strong>(mpf : LibGMP::MPF)
 
@@ -1068,13 +1247,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L69" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new-class-method">
-      <a class="dashingAutolink" name="autolink-213"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-247"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
         
         def self.<strong>new</strong>
 
@@ -1084,13 +1263,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-214"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-248"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28%26block%29"></a><div class="signature">
         
         def self.<strong>new</strong>(&amp;block)
 
@@ -1100,7 +1279,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1111,7 +1290,7 @@
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="default_precision-class-method">
-      <a class="dashingAutolink" name="autolink-215"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.default_precision"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-249"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.default_precision"></a><div class="signature">
         
         def self.<strong>default_precision</strong>
 
@@ -1121,13 +1300,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="default_precision=(prec:Int)-class-method">
-      <a class="dashingAutolink" name="autolink-216"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.default_precision%3D%28prec%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-250"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.default_precision%3D%28prec%20%3A%20Int%29"></a><div class="signature">
         
         def self.<strong>default_precision=</strong>(prec : <a href="Int.html">Int</a>)
 
@@ -1137,7 +1316,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1148,7 +1327,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="*(other:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-217"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%28other%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-251"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%28other%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>*</strong>(other : <a href="Number.html">Number</a>)
 
@@ -1158,13 +1337,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L123" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="**(other:Int)-instance-method">
-      <a class="dashingAutolink" name="autolink-218"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%2A%28other%20%3A%20Int%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-252"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%2A%28other%20%3A%20Int%29"></a><div class="signature">
         
         def <strong>**</strong>(other : <a href="Int.html">Int</a>)
 
@@ -1174,13 +1353,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L87" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L136" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="+(other:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-219"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-253"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>+</strong>(other : <a href="Number.html">Number</a>)
 
@@ -1190,13 +1369,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L115" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="-(other:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-220"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-254"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>-</strong>(other : <a href="Number.html">Number</a>)
 
@@ -1206,13 +1385,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L119" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="--instance-method">
-      <a class="dashingAutolink" name="autolink-221"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-255"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-"></a><div class="signature">
         
         def <strong>-</strong>
 
@@ -1222,13 +1401,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L111" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="/(other:Number)-instance-method">
-      <a class="dashingAutolink" name="autolink-222"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2F%28other%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-256"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2F%28other%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>/</strong>(other : <a href="Number.html">Number</a>)
 
@@ -1238,13 +1417,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L82" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L127" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="(other:BigFloat)-instance-method">
-      <a class="dashingAutolink" name="autolink-223"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20BigFloat%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-257"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20BigFloat%29"></a><div class="signature">
         
         def <strong>&lt;=&gt;</strong>(other : <a href="BigFloat.html">BigFloat</a>)
 
@@ -1254,15 +1433,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L50" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="(other:Float)-instance-method">
-      <a class="dashingAutolink" name="autolink-224"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Float%29"></a><div class="signature">
+    <div class="entry-detail" id="(other:BigInt)-instance-method">
+      <a class="dashingAutolink" name="autolink-258"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20BigInt%29"></a><div class="signature">
         
-        def <strong>&lt;=&gt;</strong>(other : <a href="Float.html">Float</a>)
+        def <strong>&lt;=&gt;</strong>(other : <a href="BigInt.html">BigInt</a>)
 
         
       </div>
@@ -1270,15 +1449,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L93" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="(other:Int::Signed)-instance-method">
-      <a class="dashingAutolink" name="autolink-225"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Int%3A%3ASigned%29"></a><div class="signature">
+    <div class="entry-detail" id="(other:Float32|Float64)-instance-method">
+      <a class="dashingAutolink" name="autolink-259"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Float32%20%7C%20Float64%29"></a><div class="signature">
         
-        def <strong>&lt;=&gt;</strong>(other : <a href="Int/Signed.html">Int::Signed</a>)
+        def <strong>&lt;=&gt;</strong>(other : <a href="Float32.html">Float32</a> | <a href="Float64.html">Float64</a>)
 
         
       </div>
@@ -1286,15 +1465,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L97" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="(other:Int::Unsigned)-instance-method">
-      <a class="dashingAutolink" name="autolink-226"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Int%3A%3AUnsigned%29"></a><div class="signature">
+    <div class="entry-detail" id="(other:Number)-instance-method">
+      <a class="dashingAutolink" name="autolink-260"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Number%29"></a><div class="signature">
         
-        def <strong>&lt;=&gt;</strong>(other : <a href="Int/Unsigned.html">Int::Unsigned</a>)
+        def <strong>&lt;=&gt;</strong>(other : <a href="Number.html">Number</a>)
 
         
       </div>
@@ -1302,13 +1481,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="abs-instance-method">
-      <a class="dashingAutolink" name="autolink-227"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abs"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-261"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abs"></a><div class="signature">
         
         def <strong>abs</strong>
 
@@ -1318,13 +1497,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L91" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L140" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ceil-instance-method">
-      <a class="dashingAutolink" name="autolink-228"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ceil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-262"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ceil"></a><div class="signature">
         
         def <strong>ceil</strong>
 
@@ -1334,13 +1513,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L144" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-229"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-263"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -1350,13 +1529,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L186" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L240" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="floor-instance-method">
-      <a class="dashingAutolink" name="autolink-230"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20floor"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-264"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20floor"></a><div class="signature">
         
         def <strong>floor</strong>
 
@@ -1366,29 +1545,31 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L148" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-231"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+    <div class="entry-detail" id="hash(hasher)-instance-method">
+      <a class="dashingAutolink" name="autolink-265"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%28hasher%29"></a><div class="signature">
         
-        def <strong>hash</strong>
+        def <strong>hash</strong>(hasher)
 
         
       </div>
       
+        <div class="doc"><p><span class="flag orange">TODO</span>  improve this</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="inspect(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-232"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-266"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20inspect%28io%29"></a><div class="signature">
         
         def <strong>inspect</strong>(io)
 
@@ -1398,13 +1579,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L163" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L216" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_big_f-instance-method">
-      <a class="dashingAutolink" name="autolink-233"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_big_f"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-267"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_big_f"></a><div class="signature">
         
         def <strong>to_big_f</strong>
 
@@ -1414,13 +1595,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L168" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_f-instance-method">
-      <a class="dashingAutolink" name="autolink-234"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-268"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f"></a><div class="signature">
         
         def <strong>to_f</strong>
 
@@ -1430,13 +1611,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L164" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_f32-instance-method">
-      <a class="dashingAutolink" name="autolink-235"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-269"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f32"></a><div class="signature">
         
         def <strong>to_f32</strong>
 
@@ -1446,13 +1627,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L107" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L160" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_f64-instance-method">
-      <a class="dashingAutolink" name="autolink-236"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-270"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f64"></a><div class="signature">
         
         def <strong>to_f64</strong>
 
@@ -1462,13 +1643,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L103" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L156" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_i-instance-method">
-      <a class="dashingAutolink" name="autolink-237"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-271"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i"></a><div class="signature">
         
         def <strong>to_i</strong>
 
@@ -1478,13 +1659,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L135" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L188" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_i16-instance-method">
-      <a class="dashingAutolink" name="autolink-238"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i16"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-272"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i16"></a><div class="signature">
         
         def <strong>to_i16</strong>
 
@@ -1494,13 +1675,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L127" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L180" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_i32-instance-method">
-      <a class="dashingAutolink" name="autolink-239"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-273"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i32"></a><div class="signature">
         
         def <strong>to_i32</strong>
 
@@ -1510,13 +1691,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L123" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L176" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_i64-instance-method">
-      <a class="dashingAutolink" name="autolink-240"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-274"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i64"></a><div class="signature">
         
         def <strong>to_i64</strong>
 
@@ -1526,13 +1707,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L119" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L172" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_i8-instance-method">
-      <a class="dashingAutolink" name="autolink-241"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i8"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-275"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i8"></a><div class="signature">
         
         def <strong>to_i8</strong>
 
@@ -1542,13 +1723,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L131" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L184" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-242"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-276"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
 
@@ -1558,13 +1739,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L167" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L221" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_u-instance-method">
-      <a class="dashingAutolink" name="autolink-243"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-277"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u"></a><div class="signature">
         
         def <strong>to_u</strong>
 
@@ -1574,13 +1755,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L208" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_u16-instance-method">
-      <a class="dashingAutolink" name="autolink-244"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u16"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-278"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u16"></a><div class="signature">
         
         def <strong>to_u16</strong>
 
@@ -1590,13 +1771,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L147" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L200" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_u32-instance-method">
-      <a class="dashingAutolink" name="autolink-245"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u32"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-279"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u32"></a><div class="signature">
         
         def <strong>to_u32</strong>
 
@@ -1606,13 +1787,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L143" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L196" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_u64-instance-method">
-      <a class="dashingAutolink" name="autolink-246"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u64"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-280"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u64"></a><div class="signature">
         
         def <strong>to_u64</strong>
 
@@ -1622,13 +1803,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L139" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L192" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_u8-instance-method">
-      <a class="dashingAutolink" name="autolink-247"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u8"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-281"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u8"></a><div class="signature">
         
         def <strong>to_u8</strong>
 
@@ -1638,13 +1819,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L151" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L204" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_unsafe-instance-method">
-      <a class="dashingAutolink" name="autolink-248"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-282"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_unsafe"></a><div class="signature">
         
         def <strong>to_unsafe</strong>
 
@@ -1654,7 +1835,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/big/big_float.cr#L159" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L212" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="trunc-instance-method">
+      <a class="dashingAutolink" name="autolink-283"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20trunc"></a><div class="signature">
+        
+        def <strong>trunc</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_float.cr#L152" target="_blank">View source</a>]
         
       </div>
     </div>

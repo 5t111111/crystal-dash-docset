@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-6978"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Unicode%3A%3ACaseOptions%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Unicode::CaseOptions - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-7760"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/UUID%3A%3AVersion%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>UUID::Version - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -13,18 +13,13 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">enum</span> Unicode::CaseOptions
+  <span class="kind">enum</span> UUID::Version
 
 </h1>
 
 
 
 
-
-  <h2>Overview</h2>
-
-  <p>Options to pass to <code>upcase</code>, <code>downcase</code>, <code>uppercase?</code>
-and <code>lowercase?</code> to control their behaviour.</p>
 
 
 
@@ -42,7 +37,7 @@ and <code>lowercase?</code> to control their behaviour.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/unicode/unicode.cr#L12" target="_blank">unicode/unicode.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/uuid.cr#L11" target="_blank">uuid.cr</a>
     
     <br/>
   
@@ -54,35 +49,57 @@ and <code>lowercase?</code> to control their behaviour.</p>
   
   <dl>
     
-      <dt class="entry-const" id="ASCII">
-        <strong>ASCII</strong> = <code><span class="n">1</span></code>
+      <dt class="entry-const" id="Unknown">
+        <strong>Unknown</strong> = <code><span class="n">0</span></code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>Only transform ASCII characters.</p>
+        <p>RFC4122 UUID versions.</p>
       </dd>
       
     
-      <dt class="entry-const" id="Turkic">
-        <strong>Turkic</strong> = <code><span class="n">2</span></code>
+      <dt class="entry-const" id="V1">
+        <strong>V1</strong> = <code><span class="n">1</span></code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>Use Turkic case rules:</p>
-
-<pre><code><span class="s">&#39;İ&#39;</span>.downcase(<span class="t">Unicode</span><span class="t">::</span><span class="t">CaseOptions</span><span class="t">::</span><span class="t">Turkic</span>) <span class="c"># =&gt; &#39;i&#39;</span>
-<span class="s">&#39;I&#39;</span>.downcase(<span class="t">Unicode</span><span class="t">::</span><span class="t">CaseOptions</span><span class="t">::</span><span class="t">Turkic</span>) <span class="c"># =&gt; &#39;ı&#39;</span>
-<span class="s">&#39;i&#39;</span>.upcase(<span class="t">Unicode</span><span class="t">::</span><span class="t">CaseOptions</span><span class="t">::</span><span class="t">Turkic</span>)   <span class="c"># =&gt; &#39;İ&#39;</span>
-<span class="s">&#39;ı&#39;</span>.upcase(<span class="t">Unicode</span><span class="t">::</span><span class="t">CaseOptions</span><span class="t">::</span><span class="t">Turkic</span>)   <span class="c"># =&gt; &#39;I&#39;</span></code></pre>
+        <p>Unknown version.</p>
       </dd>
       
     
-      <dt class="entry-const" id="Fold">
-        <strong>Fold</strong> = <code><span class="n">4</span></code>
+      <dt class="entry-const" id="V2">
+        <strong>V2</strong> = <code><span class="n">2</span></code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>Unicode case folding, which is more far-reaching than Unicode case mapping.</p>
+        <p>date-time and MAC address.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="V3">
+        <strong>V3</strong> = <code><span class="n">3</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>DCE security.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="V4">
+        <strong>V4</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>MD5 hash and namespace.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="V5">
+        <strong>V5</strong> = <code><span class="n">5</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>random.</p>
       </dd>
       
     
@@ -98,22 +115,32 @@ and <code>lowercase?</code> to control their behaviour.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#ascii%3F-instance-method" class="signature"><strong>#ascii?</strong></a>
+        <a href="#unknown%3F-instance-method" class="signature"><strong>#unknown?</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#fold%3F-instance-method" class="signature"><strong>#fold?</strong></a>
+        <a href="#v1%3F-instance-method" class="signature"><strong>#v1?</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#none%3F-instance-method" class="signature"><strong>#none?</strong></a>
+        <a href="#v2%3F-instance-method" class="signature"><strong>#v2?</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#turkic%3F-instance-method" class="signature"><strong>#turkic?</strong></a>
+        <a href="#v3%3F-instance-method" class="signature"><strong>#v3?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#v4%3F-instance-method" class="signature"><strong>#v4?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#v5%3F-instance-method" class="signature"><strong>#v5?</strong></a>
         
       </li>
     
@@ -171,8 +198,8 @@ and <code>lowercase?</code> to control their behaviour.</p>
     each</a>, 
     
   
-    <a href="../Enum.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="../Enum.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)</span>
     hash</a>, 
     
   
@@ -246,8 +273,8 @@ and <code>lowercase?</code> to control their behaviour.</p>
     to_u8</a>, 
     
   
-    <a href="../Enum.html#to_yaml%28yaml%3AYAML%3A%3ABuilder%29-instance-method" class="tooltip">
-      <span>to_yaml(yaml : YAML::Builder)</span>
+    <a href="../Enum.html#to_yaml%28yaml%3AYAML%3A%3ANodes%3A%3ABuilder%29-instance-method" class="tooltip">
+      <span>to_yaml(yaml : YAML::Nodes::Builder)</span>
     to_yaml</a>, 
     
   
@@ -279,8 +306,8 @@ and <code>lowercase?</code> to control their behaviour.</p>
     from_value?</a>, 
     
   
-    <a href="../Enum.html#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="tooltip">
-      <span>new(pull : JSON::PullParser)<br/>new(pull : YAML::PullParser)</span>
+    <a href="../Enum.html#new%28ctx%3AYAML%3A%3AParseContext%2Cnode%3AYAML%3A%3ANodes%3A%3ANode%29-class-method" class="tooltip">
+      <span>new(ctx : YAML::ParseContext, node : YAML::Nodes::Node)<br/>new(pull : JSON::PullParser)</span>
     new</a>, 
     
   
@@ -431,8 +458,8 @@ and <code>lowercase?</code> to control their behaviour.</p>
     dup</a>, 
     
   
-    <a href="../Object.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="../Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
     hash</a>, 
     
   
@@ -509,8 +536,8 @@ and <code>lowercase?</code> to control their behaviour.</p>
     from_json</a>, 
     
   
-    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string_or_io) : self</span>
+    <a href="../Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
     from_yaml</a>
     
   
@@ -529,10 +556,10 @@ and <code>lowercase?</code> to control their behaviour.</p>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="ascii?-instance-method">
-      <a class="dashingAutolink" name="autolink-6979"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ascii%3F"></a><div class="signature">
+    <div class="entry-detail" id="unknown?-instance-method">
+      <a class="dashingAutolink" name="autolink-7754"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unknown%3F"></a><div class="signature">
         
-        def <strong>ascii?</strong>
+        def <strong>unknown?</strong>
 
         
       </div>
@@ -540,15 +567,15 @@ and <code>lowercase?</code> to control their behaviour.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/unicode/unicode.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/uuid.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="fold?-instance-method">
-      <a class="dashingAutolink" name="autolink-6980"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fold%3F"></a><div class="signature">
+    <div class="entry-detail" id="v1?-instance-method">
+      <a class="dashingAutolink" name="autolink-7755"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20v1%3F"></a><div class="signature">
         
-        def <strong>fold?</strong>
+        def <strong>v1?</strong>
 
         
       </div>
@@ -556,15 +583,15 @@ and <code>lowercase?</code> to control their behaviour.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/unicode/unicode.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/uuid.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="none?-instance-method">
-      <a class="dashingAutolink" name="autolink-6981"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20none%3F"></a><div class="signature">
+    <div class="entry-detail" id="v2?-instance-method">
+      <a class="dashingAutolink" name="autolink-7756"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20v2%3F"></a><div class="signature">
         
-        def <strong>none?</strong>
+        def <strong>v2?</strong>
 
         
       </div>
@@ -572,15 +599,15 @@ and <code>lowercase?</code> to control their behaviour.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/unicode/unicode.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/uuid.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="turkic?-instance-method">
-      <a class="dashingAutolink" name="autolink-6982"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20turkic%3F"></a><div class="signature">
+    <div class="entry-detail" id="v3?-instance-method">
+      <a class="dashingAutolink" name="autolink-7757"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20v3%3F"></a><div class="signature">
         
-        def <strong>turkic?</strong>
+        def <strong>v3?</strong>
 
         
       </div>
@@ -588,7 +615,39 @@ and <code>lowercase?</code> to control their behaviour.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/unicode/unicode.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/uuid.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="v4?-instance-method">
+      <a class="dashingAutolink" name="autolink-7758"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20v4%3F"></a><div class="signature">
+        
+        def <strong>v4?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/uuid.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="v5?-instance-method">
+      <a class="dashingAutolink" name="autolink-7759"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20v5%3F"></a><div class="signature">
+        
+        def <strong>v5?</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/uuid.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>

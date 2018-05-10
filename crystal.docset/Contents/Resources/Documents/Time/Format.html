@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-6211"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Time%3A%3AFormat%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Time::Format - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-6714"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Time%3A%3AFormat%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Time::Format - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -82,7 +82,13 @@ will be passed/parsed through the output/input string.</p>
 <li>
 <strong>%l</strong>: hour of the day, 12-hour clock, blank padded (&#34; 0&#34;, &#34; 1&#34;, ..., &#34;12&#34;)</li>
 <li>
-<strong>%L</strong>: milliseconds, zero padded (000, 001, ..., 999)</li>
+<strong>%3N</strong>, <strong>%L</strong>: milliseconds, zero padded (000, 001, ..., 999)</li>
+<li>
+<strong>%6N</strong>: microseconds, zero padded (000000, 000001, ..., 999999)</li>
+<li>
+<strong>%9N</strong>: nanoseconds, zero padded (000000000, 000000001, ..., 999999999)</li>
+<li>
+<strong>%N</strong>: second fraction, zero padded. (Same as <code>%9N</code> but may consume more than 9 digits while parsing)</li>
 <li>
 <strong>%m</strong>: month number, zero padded (01, 02, ..., 12)</li>
 <li>
@@ -141,42 +147,42 @@ will be passed/parsed through the output/input string.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format.cr#L51" target="_blank">time/format.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format.cr#L54" target="_blank">time/format.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format/pattern.cr#L1" target="_blank">time/format/pattern.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format/pattern.cr#L1" target="_blank">time/format/pattern.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format/formatter.cr#L3" target="_blank">time/format/formatter.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format/formatter.cr#L3" target="_blank">time/format/formatter.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format/parser.cr#L1" target="_blank">time/format/parser.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format/parser.cr#L1" target="_blank">time/format/parser.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/json/from_json.cr#L233" target="_blank">json/from_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/json/from_json.cr#L237" target="_blank">json/from_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/json/to_json.cr#L113" target="_blank">json/to_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/json/to_json.cr#L113" target="_blank">json/to_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/from_yaml.cr#L162" target="_blank">yaml/from_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/from_yaml.cr#L210" target="_blank">yaml/from_yaml.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/to_yaml.cr#L103" target="_blank">yaml/to_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/to_yaml.cr#L127" target="_blank">yaml/to_yaml.cr</a>
     
     <br/>
   
@@ -249,7 +255,7 @@ will be passed/parsed through the output/input string.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#from_yaml%28pull%3AYAML%3A%3APullParser%29-instance-method" class="signature"><strong>#from_yaml</strong>(pull : YAML::PullParser)</a>
+        <a href="#from_yaml%28ctx%3AYAML%3A%3AParseContext%2Cnode%3AYAML%3A%3ANodes%3A%3ANode%29%3ATime-instance-method" class="signature"><strong>#from_yaml</strong>(ctx : YAML::ParseContext, node : YAML::Nodes::Node) : Time</a>
         
       </li>
     
@@ -273,7 +279,7 @@ will be passed/parsed through the output/input string.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_yaml%28value%3ATime%2Cyaml%3AYAML%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_yaml</strong>(value : Time, yaml : YAML::Builder)</a>
+        <a href="#to_yaml%28value%3ATime%2Cyaml%3AYAML%3A%3ANodes%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_yaml</strong>(value : Time, yaml : YAML::Nodes::Builder)</a>
         
       </li>
     
@@ -291,13 +297,13 @@ will be passed/parsed through the output/input string.</p>
 </h3>
   
   
-    <a href="../Struct.html#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="tooltip">
-      <span>==(other : self) : Bool</span>
+    <a href="../Struct.html#%3D%3D%28other%29%3ABool-instance-method" class="tooltip">
+      <span>==(other) : Bool</span>
     ==</a>, 
     
   
-    <a href="../Struct.html#hash%3AInt32-instance-method" class="tooltip">
-      <span>hash : Int32</span>
+    <a href="../Struct.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)</span>
     hash</a>, 
     
   
@@ -391,8 +397,8 @@ will be passed/parsed through the output/input string.</p>
     dup</a>, 
     
   
-    <a href="../Object.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="../Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
     hash</a>, 
     
   
@@ -469,8 +475,8 @@ will be passed/parsed through the output/input string.</p>
     from_json</a>, 
     
   
-    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string_or_io) : self</span>
+    <a href="../Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
     from_yaml</a>
     
   
@@ -486,7 +492,7 @@ will be passed/parsed through the output/input string.</p>
   <h2>Constructor Detail</h2>
   
     <div class="entry-detail" id="new(pattern:String,kind=Time::Kind::Unspecified)-class-method">
-      <a class="dashingAutolink" name="autolink-6202"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pattern%20%3A%20String%2C%20kind%20%3D%20Time%3A%3AKind%3A%3AUnspecified%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6705"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pattern%20%3A%20String%2C%20kind%20%3D%20Time%3A%3AKind%3A%3AUnspecified%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pattern : <a href="../String.html">String</a>, kind = <span class="t">Time</span><span class="t">::</span><span class="t">Kind</span><span class="t">::</span><span class="t">Unspecified</span>)
 
@@ -499,7 +505,7 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -512,7 +518,7 @@ will be passed/parsed through the output/input string.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="format(time:Time,io:IO)-instance-method">
-      <a class="dashingAutolink" name="autolink-6203"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20format%28time%20%3A%20Time%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6706"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20format%28time%20%3A%20Time%2C%20io%20%3A%20IO%29"></a><div class="signature">
         
         def <strong>format</strong>(time : <a href="../Time.html">Time</a>, io : <a href="../IO.html">IO</a>)
 
@@ -524,13 +530,13 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="format(time:Time):String-instance-method">
-      <a class="dashingAutolink" name="autolink-6204"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20format%28time%20%3A%20Time%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6707"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20format%28time%20%3A%20Time%29%20%3A%20String"></a><div class="signature">
         
         def <strong>format</strong>(time : <a href="../Time.html">Time</a>) : <a href="../String.html">String</a>
 
@@ -542,13 +548,13 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="from_json(pull:JSON::PullParser)-instance-method">
-      <a class="dashingAutolink" name="autolink-6205"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_json%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6708"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_json%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
         
         def <strong>from_json</strong>(pull : <a href="../JSON/PullParser.html">JSON::PullParser</a>)
 
@@ -558,15 +564,15 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/json/from_json.cr#L234" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/json/from_json.cr#L238" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="from_yaml(pull:YAML::PullParser)-instance-method">
-      <a class="dashingAutolink" name="autolink-6206"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_yaml%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
+    <div class="entry-detail" id="from_yaml(ctx:YAML::ParseContext,node:YAML::Nodes::Node):Time-instance-method">
+      <a class="dashingAutolink" name="autolink-6709"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20from_yaml%28ctx%20%3A%20YAML%3A%3AParseContext%2C%20node%20%3A%20YAML%3A%3ANodes%3A%3ANode%29%20%3A%20Time"></a><div class="signature">
         
-        def <strong>from_yaml</strong>(pull : <a href="../YAML/PullParser.html">YAML::PullParser</a>)
+        def <strong>from_yaml</strong>(ctx : <a href="../YAML/ParseContext.html">YAML::ParseContext</a>, node : <a href="../YAML/Nodes/Node.html">YAML::Nodes::Node</a>) : <a href="../Time.html">Time</a>
 
         
       </div>
@@ -574,13 +580,13 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/from_yaml.cr#L163" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/from_yaml.cr#L211" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse(string,kind=@kind):Time-instance-method">
-      <a class="dashingAutolink" name="autolink-6207"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20parse%28string%2C%20kind%20%3D%20%40kind%29%20%3A%20Time"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6710"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20parse%28string%2C%20kind%20%3D%20%40kind%29%20%3A%20Time"></a><div class="signature">
         
         def <strong>parse</strong>(string, kind = @kind) : <a href="../Time.html">Time</a>
 
@@ -592,13 +598,13 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pattern:String-instance-method">
-      <a class="dashingAutolink" name="autolink-6208"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pattern%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6711"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pattern%20%3A%20String"></a><div class="signature">
         
         def <strong>pattern</strong> : <a href="../String.html">String</a>
 
@@ -610,13 +616,13 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/time/format.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/time/format.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_json(value:Time,json:JSON::Builder)-instance-method">
-      <a class="dashingAutolink" name="autolink-6209"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28value%20%3A%20Time%2C%20json%20%3A%20JSON%3A%3ABuilder%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6712"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28value%20%3A%20Time%2C%20json%20%3A%20JSON%3A%3ABuilder%29"></a><div class="signature">
         
         def <strong>to_json</strong>(value : <a href="../Time.html">Time</a>, json : <a href="../JSON/Builder.html">JSON::Builder</a>)
 
@@ -626,15 +632,15 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/json/to_json.cr#L114" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/json/to_json.cr#L114" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="to_yaml(value:Time,yaml:YAML::Builder)-instance-method">
-      <a class="dashingAutolink" name="autolink-6210"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28value%20%3A%20Time%2C%20yaml%20%3A%20YAML%3A%3ABuilder%29"></a><div class="signature">
+    <div class="entry-detail" id="to_yaml(value:Time,yaml:YAML::Nodes::Builder)-instance-method">
+      <a class="dashingAutolink" name="autolink-6713"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28value%20%3A%20Time%2C%20yaml%20%3A%20YAML%3A%3ANodes%3A%3ABuilder%29"></a><div class="signature">
         
-        def <strong>to_yaml</strong>(value : <a href="../Time.html">Time</a>, yaml : <a href="../YAML/Builder.html">YAML::Builder</a>)
+        def <strong>to_yaml</strong>(value : <a href="../Time.html">Time</a>, yaml : <a href="../YAML/Nodes/Builder.html">YAML::Nodes::Builder</a>)
 
         
       </div>
@@ -642,7 +648,7 @@ will be passed/parsed through the output/input string.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/to_yaml.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/to_yaml.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>

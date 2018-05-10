@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5723"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Spec%3A%3AExpectations%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Spec::Expectations - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-6237"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Spec%3A%3AExpectations%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Spec::Expectations - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -20,6 +20,13 @@
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>This module defines a number of methods to create expectations, which are
+automatically included into the top level namespace.</p>
+
+<p>Expectations are used by <code><a href="../Spec/ObjectExtensions.html#should%28expectation%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-instance-method">Spec::ObjectExtensions#should</a></code> and <code><a href="../Spec/ObjectExtensions.html#should_not%28expectation%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-instance-method">Spec::ObjectExtensions#should_not</a></code>.</p>
 
 
 
@@ -37,7 +44,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L188" target="_blank">spec/expectations.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L207" target="_blank">spec/expectations.cr</a>
     
     <br/>
   
@@ -56,57 +63,77 @@
       <li class="entry-summary">
         <a href="#be%28value%29-instance-method" class="signature"><strong>#be</strong>(value)</a>
         
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual and <em>value</em> are identical (<code>.same?</code>).</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#be-instance-method" class="signature"><strong>#be</strong></a>
+        
+          <div class="summary"><p>Returns a factory to create a comparison <code>Expectation</code> that:</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#be_close%28expected%2Cdelta%29-instance-method" class="signature"><strong>#be_close</strong>(expected, delta)</a>
         
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual is within <em>delta</em> of <em>expected</em>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#be_false-instance-method" class="signature"><strong>#be_false</strong></a>
+        
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual is false (<code>== false</code>).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#be_falsey-instance-method" class="signature"><strong>#be_falsey</strong></a>
         
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual is falsy (<code>nil</code> or <code>false</code>).</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#be_nil-instance-method" class="signature"><strong>#be_nil</strong></a>
+        
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual is nil (<code>== nil</code>).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#be_true-instance-method" class="signature"><strong>#be_true</strong></a>
         
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual is true (<code>== true</code>).</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#be_truthy-instance-method" class="signature"><strong>#be_truthy</strong></a>
+        
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual is truthy (neither <code>nil</code> nor <code>false</code>).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#contain%28expected%29-instance-method" class="signature"><strong>#contain</strong>(expected)</a>
         
-          <div class="summary"><p>Passes if actual includes <em>expected</em>.</p></div>
+          <div class="summary"><p>Creates an <code>Expectation</code> that  passes if actual includes <em>expected</em> (<code>.includes?</code>).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#eq%28value%29-instance-method" class="signature"><strong>#eq</strong>(value)</a>
         
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual equals <em>value</em> (<code>==</code>).</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#match%28value%29-instance-method" class="signature"><strong>#match</strong>(value)</a>
+        
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual matches <em>value</em> (<code>=~</code>).</p></div>
         
       </li>
     
@@ -120,20 +147,21 @@
       <li class="entry-summary">
         <a href="#be_a%28type%29-macro" class="signature"><strong>be_a</strong>(type)</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#expect_raises-macro" class="signature"><strong>expect_raises</strong></a>
+          <div class="summary"><p>Creates an <code>Expectation</code> that passes if actual is of type <em>type</em> (<code>is_a?</code>).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#expect_raises%28klass%29-macro" class="signature"><strong>expect_raises</strong>(klass)</a>
         
+          <div class="summary"><p>Runs the block and passes if it raises an exception of type <em>klass</em>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#expect_raises%28klass%2Cmessage%2Cfile%3D__FILE__%2Cline%3D__LINE__%29-macro" class="signature"><strong>expect_raises</strong>(klass, message, file = __FILE__, line = __LINE__)</a>
+        
+          <div class="summary"><p>Runs the block and passes if it raises an exception of type <em>klass</em> and the error message matches.</p></div>
         
       </li>
     
@@ -153,179 +181,213 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="be(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-5724"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6223"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be%28value%29"></a><div class="signature">
         
         def <strong>be</strong>(value)
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual and <em>value</em> are identical (<code>.same?</code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L193" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L214" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="be-instance-method">
-      <a class="dashingAutolink" name="autolink-5725"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6224"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be"></a><div class="signature">
         
         def <strong>be</strong>
 
         
       </div>
       
+        <div class="doc">
+<p>Returns a factory to create a comparison <code>Expectation</code> that:</p>
+
+<ul>
+<li>passes if actual is lesser than <em>value</em>: <code>be &lt; value</code>
+</li>
+<li>passes if actual is lesser than or equal <em>value</em>: <code>be &lt;= value</code>
+</li>
+<li>passes if actual is greater than <em>value</em>: <code>be &gt; value</code>
+</li>
+<li>passes if actual is greater than or equal <em>value</em>: <code>be &gt;= value</code>
+</li>
+</ul>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L221" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L254" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="be_close(expected,delta)-instance-method">
-      <a class="dashingAutolink" name="autolink-5726"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_close%28expected%2C%20delta%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6225"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_close%28expected%2C%20delta%29"></a><div class="signature">
         
         def <strong>be_close</strong>(expected, delta)
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual is within <em>delta</em> of <em>expected</em>.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L217" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L244" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="be_false-instance-method">
-      <a class="dashingAutolink" name="autolink-5727"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_false"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6226"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_false"></a><div class="signature">
         
         def <strong>be_false</strong>
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual is false (<code>== false</code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L201" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L224" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="be_falsey-instance-method">
-      <a class="dashingAutolink" name="autolink-5728"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_falsey"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6227"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_falsey"></a><div class="signature">
         
         def <strong>be_falsey</strong>
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual is falsy (<code>nil</code> or <code>false</code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L209" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L234" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="be_nil-instance-method">
-      <a class="dashingAutolink" name="autolink-5729"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6228"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_nil"></a><div class="signature">
         
         def <strong>be_nil</strong>
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual is nil (<code>== nil</code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L213" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L239" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="be_true-instance-method">
-      <a class="dashingAutolink" name="autolink-5730"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_true"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6229"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_true"></a><div class="signature">
         
         def <strong>be_true</strong>
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual is true (<code>== true</code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L197" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L219" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="be_truthy-instance-method">
-      <a class="dashingAutolink" name="autolink-5731"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_truthy"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6230"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20be_truthy"></a><div class="signature">
         
         def <strong>be_truthy</strong>
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual is truthy (neither <code>nil</code> nor <code>false</code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L205" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L229" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="contain(expected)-instance-method">
-      <a class="dashingAutolink" name="autolink-5732"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20contain%28expected%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6231"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20contain%28expected%29"></a><div class="signature">
         
         def <strong>contain</strong>(expected)
 
         
       </div>
       
-        <div class="doc"><p>Passes if actual includes <em>expected</em>. Works on collections and <code><a href="../String.html">String</a></code>.</p></div>
+        <div class="doc"><p>Creates an <code>Expectation</code> that  passes if actual includes <em>expected</em> (<code>.includes?</code>).
+Works on collections and <code><a href="../String.html">String</a></code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L230" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L265" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="eq(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-5733"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20eq%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6232"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20eq%28value%29"></a><div class="signature">
         
         def <strong>eq</strong>(value)
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual equals <em>value</em> (<code>==</code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L189" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L209" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="match(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-5734"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20match%28value%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6233"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20match%28value%29"></a><div class="signature">
         
         def <strong>match</strong>(value)
 
         
       </div>
       
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual matches <em>value</em> (<code>=~</code>).</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L225" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L259" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -336,65 +398,66 @@
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="be_a(type)-macro">
-      <a class="dashingAutolink" name="autolink-5735"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20be_a%28type%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6234"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20be_a%28type%29"></a><div class="signature">
         
         macro <strong>be_a</strong>(type)
 
         
       </div>
       
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L234" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="expect_raises-macro">
-      <a class="dashingAutolink" name="autolink-5736"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20expect_raises"></a><div class="signature">
-        
-        macro <strong>expect_raises</strong>
-
-        
-      </div>
+        <div class="doc"><p>Creates an <code>Expectation</code> that passes if actual is of type <em>type</em> (<code>is_a?</code>).</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L238" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L270" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="expect_raises(klass)-macro">
-      <a class="dashingAutolink" name="autolink-5737"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20expect_raises%28klass%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6235"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20expect_raises%28klass%29"></a><div class="signature">
         
         macro <strong>expect_raises</strong>(klass)
 
         
       </div>
       
+        <div class="doc">
+<p>Runs the block and passes if it raises an exception of type <em>klass</em>.</p>
+
+<p>It returns the rescued exception.</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L244" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L277" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="expect_raises(klass,message,file=__FILE__,line=__LINE__)-macro">
-      <a class="dashingAutolink" name="autolink-5738"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20expect_raises%28klass%2C%20message%2C%20file%20%3D%20__FILE__%2C%20line%20%3D%20__LINE__%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6236"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20expect_raises%28klass%2C%20message%2C%20file%20%3D%20__FILE__%2C%20line%20%3D%20__LINE__%29"></a><div class="signature">
         
         macro <strong>expect_raises</strong>(klass, message, file = __FILE__, line = __LINE__)
 
         
       </div>
       
+        <div class="doc">
+<p>Runs the block and passes if it raises an exception of type <em>klass</em> and the error message matches.</p>
+
+<p>If <em>message</em> is a string, it matches if the exception&#39;s error message contains that string.
+If <em>message</em> is a regular expression, it is used to match the error message.</p>
+
+<p>It returns the rescued exception.</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/spec/expectations.cr#L250" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/spec/expectations.cr#L289" target="_blank">View source</a>]
         
       </div>
     </div>

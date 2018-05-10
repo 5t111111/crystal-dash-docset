@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-5584"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Signal%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Signal - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-6067"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Signal%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Signal - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -23,9 +23,28 @@
 
   <h2>Overview</h2>
 
-  <p>Signals are processed through the event loop and run in their own Fiber.
-Signals may be lost if the event loop doesn&#39;t run before exit.
-An uncaught exceptions in a signal handler is a fatal error.</p>
+  <p>This module provides a way to handle OS signals passed to the process.</p>
+
+<pre><code>puts <span class="s">&#34;Ctrl+C still has the OS default action (stops the program)&#34;</span>
+sleep <span class="n">3</span>
+
+<span class="t">Signal</span><span class="t">::</span><span class="t">INT</span>.trap <span class="k">do</span>
+  puts <span class="s">&#34;Gotcha!&#34;</span>
+<span class="k">end</span>
+puts <span class="s">&#34;Ctrl+C will be caught from now on&#34;</span>
+sleep <span class="n">3</span>
+
+<span class="t">Signal</span><span class="t">::</span><span class="t">INT</span>.reset
+puts <span class="s">&#34;Ctrl+C is back to the OS default action&#34;</span>
+sleep <span class="n">3</span></code></pre>
+
+<p>Note:</p>
+
+<ul>
+<li>Signals are processed through the event loop and run in their own Fiber.</li>
+<li>Signals may be lost if the event loop doesn&#39;t run before exit.</li>
+<li>An uncaught exception in a signal handler is a fatal error.</li>
+</ul>
 
 
 
@@ -43,12 +62,12 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">signal.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">signal.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L78" target="_blank">signal.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L96" target="_blank">signal.cr</a>
     
     <br/>
   
@@ -269,6 +288,8 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <li class="entry-summary">
         <a href="#ignore-instance-method" class="signature"><strong>#ignore</strong></a>
         
+          <div class="summary"><p>Clears the handler for this signal and prevents the OS default action.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -314,6 +335,8 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <li class="entry-summary">
         <a href="#reset-instance-method" class="signature"><strong>#reset</strong></a>
         
+          <div class="summary"><p>Resets the handler for this signal to the OS default.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -344,10 +367,14 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <li class="entry-summary">
         <a href="#trap%28%26block%3ASignal-%3E%29-instance-method" class="signature"><strong>#trap</strong>(&amp;block : Signal -&gt; )</a>
         
+          <div class="summary"><p>Sets the handler for this signal to the passed function.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#trap%28block%3ASignal-%3E%29-instance-method" class="signature"><strong>#trap</strong>(block : Signal -&gt; )</a>
+        
+          <div class="summary"><p>Sets the handler for this signal to the passed function.</p></div>
         
       </li>
     
@@ -465,8 +492,8 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
     each</a>, 
     
   
-    <a href="Enum.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="Enum.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)</span>
     hash</a>, 
     
   
@@ -540,8 +567,8 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
     to_u8</a>, 
     
   
-    <a href="Enum.html#to_yaml%28yaml%3AYAML%3A%3ABuilder%29-instance-method" class="tooltip">
-      <span>to_yaml(yaml : YAML::Builder)</span>
+    <a href="Enum.html#to_yaml%28yaml%3AYAML%3A%3ANodes%3A%3ABuilder%29-instance-method" class="tooltip">
+      <span>to_yaml(yaml : YAML::Nodes::Builder)</span>
     to_yaml</a>, 
     
   
@@ -573,8 +600,8 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
     from_value?</a>, 
     
   
-    <a href="Enum.html#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="tooltip">
-      <span>new(pull : JSON::PullParser)<br/>new(pull : YAML::PullParser)</span>
+    <a href="Enum.html#new%28ctx%3AYAML%3A%3AParseContext%2Cnode%3AYAML%3A%3ANodes%3A%3ANode%29-class-method" class="tooltip">
+      <span>new(ctx : YAML::ParseContext, node : YAML::Nodes::Node)<br/>new(pull : JSON::PullParser)</span>
     new</a>, 
     
   
@@ -725,8 +752,8 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
     dup</a>, 
     
   
-    <a href="Object.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
     hash</a>, 
     
   
@@ -803,8 +830,8 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
     from_json</a>, 
     
   
-    <a href="Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string_or_io) : self</span>
+    <a href="Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
     from_yaml</a>
     
   
@@ -824,7 +851,7 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="abrt?-instance-method">
-      <a class="dashingAutolink" name="autolink-5548"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abrt%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6031"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abrt%3F"></a><div class="signature">
         
         def <strong>abrt?</strong>
 
@@ -834,13 +861,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="alrm?-instance-method">
-      <a class="dashingAutolink" name="autolink-5549"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20alrm%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6032"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20alrm%3F"></a><div class="signature">
         
         def <strong>alrm?</strong>
 
@@ -850,13 +877,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="bus?-instance-method">
-      <a class="dashingAutolink" name="autolink-5550"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bus%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6033"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20bus%3F"></a><div class="signature">
         
         def <strong>bus?</strong>
 
@@ -866,13 +893,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="chld?-instance-method">
-      <a class="dashingAutolink" name="autolink-5551"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chld%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6034"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20chld%3F"></a><div class="signature">
         
         def <strong>chld?</strong>
 
@@ -882,13 +909,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="cont?-instance-method">
-      <a class="dashingAutolink" name="autolink-5552"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cont%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6035"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20cont%3F"></a><div class="signature">
         
         def <strong>cont?</strong>
 
@@ -898,13 +925,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fpe?-instance-method">
-      <a class="dashingAutolink" name="autolink-5553"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fpe%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6036"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fpe%3F"></a><div class="signature">
         
         def <strong>fpe?</strong>
 
@@ -914,13 +941,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="hup?-instance-method">
-      <a class="dashingAutolink" name="autolink-5554"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hup%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6037"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hup%3F"></a><div class="signature">
         
         def <strong>hup?</strong>
 
@@ -930,29 +957,31 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ignore-instance-method">
-      <a class="dashingAutolink" name="autolink-5555"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ignore"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6038"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ignore"></a><div class="signature">
         
         def <strong>ignore</strong>
 
         
       </div>
       
+        <div class="doc"><p>Clears the handler for this signal and prevents the OS default action.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L100" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ill?-instance-method">
-      <a class="dashingAutolink" name="autolink-5556"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ill%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6039"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ill%3F"></a><div class="signature">
         
         def <strong>ill?</strong>
 
@@ -962,13 +991,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="int?-instance-method">
-      <a class="dashingAutolink" name="autolink-5557"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20int%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6040"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20int%3F"></a><div class="signature">
         
         def <strong>int?</strong>
 
@@ -978,13 +1007,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="io?-instance-method">
-      <a class="dashingAutolink" name="autolink-5558"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20io%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6041"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20io%3F"></a><div class="signature">
         
         def <strong>io?</strong>
 
@@ -994,13 +1023,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="iot?-instance-method">
-      <a class="dashingAutolink" name="autolink-5559"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20iot%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6042"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20iot%3F"></a><div class="signature">
         
         def <strong>iot?</strong>
 
@@ -1010,13 +1039,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="kill?-instance-method">
-      <a class="dashingAutolink" name="autolink-5560"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20kill%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6043"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20kill%3F"></a><div class="signature">
         
         def <strong>kill?</strong>
 
@@ -1026,13 +1055,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pipe?-instance-method">
-      <a class="dashingAutolink" name="autolink-5561"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pipe%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6044"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pipe%3F"></a><div class="signature">
         
         def <strong>pipe?</strong>
 
@@ -1042,13 +1071,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pwr?-instance-method">
-      <a class="dashingAutolink" name="autolink-5562"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pwr%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6045"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20pwr%3F"></a><div class="signature">
         
         def <strong>pwr?</strong>
 
@@ -1058,13 +1087,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="quit?-instance-method">
-      <a class="dashingAutolink" name="autolink-5563"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20quit%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6046"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20quit%3F"></a><div class="signature">
         
         def <strong>quit?</strong>
 
@@ -1074,29 +1103,31 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="reset-instance-method">
-      <a class="dashingAutolink" name="autolink-5564"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reset"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6047"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20reset"></a><div class="signature">
         
         def <strong>reset</strong>
 
         
       </div>
       
+        <div class="doc"><p>Resets the handler for this signal to the OS default.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L87" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="segv?-instance-method">
-      <a class="dashingAutolink" name="autolink-5565"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20segv%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6048"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20segv%3F"></a><div class="signature">
         
         def <strong>segv?</strong>
 
@@ -1106,13 +1137,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="stkflt?-instance-method">
-      <a class="dashingAutolink" name="autolink-5566"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stkflt%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6049"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stkflt%3F"></a><div class="signature">
         
         def <strong>stkflt?</strong>
 
@@ -1122,13 +1153,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="stop?-instance-method">
-      <a class="dashingAutolink" name="autolink-5567"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stop%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6050"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stop%3F"></a><div class="signature">
         
         def <strong>stop?</strong>
 
@@ -1138,13 +1169,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sys?-instance-method">
-      <a class="dashingAutolink" name="autolink-5568"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sys%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6051"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sys%3F"></a><div class="signature">
         
         def <strong>sys?</strong>
 
@@ -1154,13 +1185,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="term?-instance-method">
-      <a class="dashingAutolink" name="autolink-5569"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20term%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6052"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20term%3F"></a><div class="signature">
         
         def <strong>term?</strong>
 
@@ -1170,45 +1201,61 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="trap(&amp;block:Signal-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-5570"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20trap%28%26block%20%3A%20Signal%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6053"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20trap%28%26block%20%3A%20Signal%20-%3E%20%29"></a><div class="signature">
         
         def <strong>trap</strong>(&amp;block : <a href="Signal.html">Signal</a> -&gt; )
 
         
       </div>
       
+        <div class="doc">
+<p>Sets the handler for this signal to the passed function.</p>
+
+<p>After executing this, whenever the current process receives the
+corresponding signal, the passed function will be run (instead of the OS
+default).</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L107" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="trap(block:Signal-&gt;)-instance-method">
-      <a class="dashingAutolink" name="autolink-5571"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20trap%28block%20%3A%20Signal%20-%3E%20%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6054"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20trap%28block%20%3A%20Signal%20-%3E%20%29"></a><div class="signature">
         
         def <strong>trap</strong>(block : <a href="Signal.html">Signal</a> -&gt; )
 
         
       </div>
       
+        <div class="doc">
+<p>Sets the handler for this signal to the passed function.</p>
+
+<p>After executing this, whenever the current process receives the
+corresponding signal, the passed function will be run (instead of the OS
+default).</p>
+</div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L102" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="trap?-instance-method">
-      <a class="dashingAutolink" name="autolink-5572"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20trap%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6055"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20trap%3F"></a><div class="signature">
         
         def <strong>trap?</strong>
 
@@ -1218,13 +1265,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="tstp?-instance-method">
-      <a class="dashingAutolink" name="autolink-5573"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tstp%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6056"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tstp%3F"></a><div class="signature">
         
         def <strong>tstp?</strong>
 
@@ -1234,13 +1281,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ttin?-instance-method">
-      <a class="dashingAutolink" name="autolink-5574"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ttin%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6057"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ttin%3F"></a><div class="signature">
         
         def <strong>ttin?</strong>
 
@@ -1250,13 +1297,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="ttou?-instance-method">
-      <a class="dashingAutolink" name="autolink-5575"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ttou%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6058"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20ttou%3F"></a><div class="signature">
         
         def <strong>ttou?</strong>
 
@@ -1266,13 +1313,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="unused?-instance-method">
-      <a class="dashingAutolink" name="autolink-5576"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unused%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6059"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20unused%3F"></a><div class="signature">
         
         def <strong>unused?</strong>
 
@@ -1282,13 +1329,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="urg?-instance-method">
-      <a class="dashingAutolink" name="autolink-5577"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20urg%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6060"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20urg%3F"></a><div class="signature">
         
         def <strong>urg?</strong>
 
@@ -1298,13 +1345,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="usr1?-instance-method">
-      <a class="dashingAutolink" name="autolink-5578"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20usr1%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6061"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20usr1%3F"></a><div class="signature">
         
         def <strong>usr1?</strong>
 
@@ -1314,13 +1361,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="usr2?-instance-method">
-      <a class="dashingAutolink" name="autolink-5579"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20usr2%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6062"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20usr2%3F"></a><div class="signature">
         
         def <strong>usr2?</strong>
 
@@ -1330,13 +1377,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="vtalrm?-instance-method">
-      <a class="dashingAutolink" name="autolink-5580"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20vtalrm%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6063"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20vtalrm%3F"></a><div class="signature">
         
         def <strong>vtalrm?</strong>
 
@@ -1346,13 +1393,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="winch?-instance-method">
-      <a class="dashingAutolink" name="autolink-5581"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20winch%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6064"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20winch%3F"></a><div class="signature">
         
         def <strong>winch?</strong>
 
@@ -1362,13 +1409,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="xcpu?-instance-method">
-      <a class="dashingAutolink" name="autolink-5582"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20xcpu%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6065"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20xcpu%3F"></a><div class="signature">
         
         def <strong>xcpu?</strong>
 
@@ -1378,13 +1425,13 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="xfsz?-instance-method">
-      <a class="dashingAutolink" name="autolink-5583"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20xfsz%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6066"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20xfsz%3F"></a><div class="signature">
         
         def <strong>xfsz?</strong>
 
@@ -1394,7 +1441,7 @@ An uncaught exceptions in a signal handler is a fatal error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/signal.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/signal.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>

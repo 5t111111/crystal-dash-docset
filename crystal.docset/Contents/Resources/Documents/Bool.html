@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-361"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Bool%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Bool - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-423"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Bool%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Bool - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -50,22 +50,22 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/bool.cr#L7" target="_blank">bool.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/bool.cr#L7" target="_blank">bool.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/primitives.cr#L61" target="_blank">primitives.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/primitives.cr#L61" target="_blank">primitives.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/json/to_json.cr#L33" target="_blank">json/to_json.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/json/to_json.cr#L33" target="_blank">json/to_json.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/to_yaml.cr#L71" target="_blank">yaml/to_yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/to_yaml.cr#L83" target="_blank">yaml/to_yaml.cr</a>
     
     <br/>
   
@@ -78,12 +78,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        <a href="#new%28ctx%3AYAML%3A%3AParseContext%2Cnode%3AYAML%3A%3ANodes%3A%3ANode%29-class-method" class="signature"><strong>.new</strong>(ctx : YAML::ParseContext, node : YAML::Nodes::Node)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28pull%3AYAML%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : YAML::PullParser)</a>
+        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
         
       </li>
     
@@ -130,9 +130,9 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#hash-instance-method" class="signature"><strong>#hash</strong></a>
+        <a href="#hash%28hasher%29-instance-method" class="signature"><strong>#hash</strong>(hasher)</a>
         
-          <div class="summary"><p>Returns a hash value for this boolean: 0 for <code>false</code>, 1 for <code>true</code>.</p></div>
+          <div class="summary"><p>See <code><a href="Object.html#hash%28hasher%29-instance-method">Object#hash(hasher)</a></code></p></div>
         
       </li>
     
@@ -156,7 +156,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#to_yaml%28yaml%3AYAML%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_yaml</strong>(yaml : YAML::Builder)</a>
+        <a href="#to_yaml%28yaml%3AYAML%3A%3ANodes%3A%3ABuilder%29-instance-method" class="signature"><strong>#to_yaml</strong>(yaml : YAML::Nodes::Builder)</a>
         
       </li>
     
@@ -241,8 +241,8 @@
     dup</a>, 
     
   
-    <a href="Object.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
     hash</a>, 
     
   
@@ -319,8 +319,8 @@
     from_json</a>, 
     
   
-    <a href="Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string_or_io) : self</span>
+    <a href="Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
     from_yaml</a>
     
   
@@ -335,8 +335,24 @@
 
   <h2>Constructor Detail</h2>
   
+    <div class="entry-detail" id="new(ctx:YAML::ParseContext,node:YAML::Nodes::Node)-class-method">
+      <a class="dashingAutolink" name="autolink-410"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28ctx%20%3A%20YAML%3A%3AParseContext%2C%20node%20%3A%20YAML%3A%3ANodes%3A%3ANode%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(ctx : <a href="YAML/ParseContext.html">YAML::ParseContext</a>, node : <a href="YAML/Nodes/Node.html">YAML::Nodes::Node</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/from_yaml.cr#L45" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-362"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-411"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20JSON%3A%3APullParser%29"></a><div class="signature">
         
         def self.<strong>new</strong>(pull : <a href="JSON/PullParser.html">JSON::PullParser</a>)
 
@@ -346,23 +362,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/json/from_json.cr#L65" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(pull:YAML::PullParser)-class-method">
-      <a class="dashingAutolink" name="autolink-363"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28pull%20%3A%20YAML%3A%3APullParser%29"></a><div class="signature">
-        
-        def self.<strong>new</strong>(pull : <a href="YAML/PullParser.html">YAML::PullParser</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/from_yaml.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/json/from_json.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -375,7 +375,7 @@
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="!=(other:Bool):Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-364"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%21%3D%28other%20%3A%20Bool%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-412"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%21%3D%28other%20%3A%20Bool%29%20%3A%20Bool"></a><div class="signature">
         
         def <strong>!=</strong>(other : <a href="Bool.html">Bool</a>) : <a href="Bool.html">Bool</a>
 
@@ -387,13 +387,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/primitives.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/primitives.cr#L69" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="&amp;(other:Bool)-instance-method">
-      <a class="dashingAutolink" name="autolink-365"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%26%28other%20%3A%20Bool%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-413"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%26%28other%20%3A%20Bool%29"></a><div class="signature">
         
         def <strong>&amp;</strong>(other : <a href="Bool.html">Bool</a>)
 
@@ -412,13 +412,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/bool.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/bool.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="==(other:Bool):Bool-instance-method">
-      <a class="dashingAutolink" name="autolink-366"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Bool%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-414"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20Bool%29%20%3A%20Bool"></a><div class="signature">
         
         def <strong>==</strong>(other : <a href="Bool.html">Bool</a>) : <a href="Bool.html">Bool</a>
 
@@ -430,13 +430,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/primitives.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/primitives.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="^(other:Bool)-instance-method">
-      <a class="dashingAutolink" name="autolink-367"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5E%28other%20%3A%20Bool%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-415"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%5E%28other%20%3A%20Bool%29"></a><div class="signature">
         
         def <strong>^</strong>(other : <a href="Bool.html">Bool</a>)
 
@@ -455,13 +455,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/bool.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/bool.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="clone-instance-method">
-      <a class="dashingAutolink" name="autolink-368"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-416"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
         
         def <strong>clone</strong>
 
@@ -471,31 +471,31 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/bool.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/bool.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="hash-instance-method">
-      <a class="dashingAutolink" name="autolink-369"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash"></a><div class="signature">
+    <div class="entry-detail" id="hash(hasher)-instance-method">
+      <a class="dashingAutolink" name="autolink-417"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%28hasher%29"></a><div class="signature">
         
-        def <strong>hash</strong>
+        def <strong>hash</strong>(hasher)
 
         
       </div>
       
-        <div class="doc"><p>Returns a hash value for this boolean: 0 for <code>false</code>, 1 for <code>true</code>.</p></div>
+        <div class="doc"><p>See <code><a href="Object.html#hash%28hasher%29-instance-method">Object#hash(hasher)</a></code></p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/bool.cr#L45" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/bool.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_json(json:JSON::Builder)-instance-method">
-      <a class="dashingAutolink" name="autolink-370"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28json%20%3A%20JSON%3A%3ABuilder%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-418"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_json%28json%20%3A%20JSON%3A%3ABuilder%29"></a><div class="signature">
         
         def <strong>to_json</strong>(json : <a href="JSON/Builder.html">JSON::Builder</a>)
 
@@ -505,13 +505,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/json/to_json.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/json/to_json.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-371"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-419"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%29"></a><div class="signature">
         
         def <strong>to_s</strong>(io)
 
@@ -523,13 +523,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/bool.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/bool.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="to_s-instance-method">
-      <a class="dashingAutolink" name="autolink-372"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-420"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s"></a><div class="signature">
         
         def <strong>to_s</strong>
 
@@ -541,15 +541,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/bool.cr#L50" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/bool.cr#L50" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="to_yaml(yaml:YAML::Builder)-instance-method">
-      <a class="dashingAutolink" name="autolink-373"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28yaml%20%3A%20YAML%3A%3ABuilder%29"></a><div class="signature">
+    <div class="entry-detail" id="to_yaml(yaml:YAML::Nodes::Builder)-instance-method">
+      <a class="dashingAutolink" name="autolink-421"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_yaml%28yaml%20%3A%20YAML%3A%3ANodes%3A%3ABuilder%29"></a><div class="signature">
         
-        def <strong>to_yaml</strong>(yaml : <a href="YAML/Builder.html">YAML::Builder</a>)
+        def <strong>to_yaml</strong>(yaml : <a href="YAML/Nodes/Builder.html">YAML::Nodes::Builder</a>)
 
         
       </div>
@@ -557,13 +557,13 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/to_yaml.cr#L72" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/to_yaml.cr#L84" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="|(other:Bool)-instance-method">
-      <a class="dashingAutolink" name="autolink-374"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%7C%28other%20%3A%20Bool%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-422"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%7C%28other%20%3A%20Bool%29"></a><div class="signature">
         
         def <strong>|</strong>(other : <a href="Bool.html">Bool</a>)
 
@@ -582,7 +582,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/bool.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/bool.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>

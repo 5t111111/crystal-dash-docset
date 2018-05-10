@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-8167"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%3A%3AParseContext%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML::ParseContext - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> YAML::ParseContext
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="../YAML/ParseContext.html">YAML::ParseContext</a></li>
+<li class="superclass"><a href="../Reference.html">Reference</a></li>
+<li class="superclass"><a href="../Object.html">Object</a></li>
+</ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Parsing context that holds anchors and what they refer to.</p>
+
+<p>When implementing <code>new(ctx : <a href="../YAML/ParseContext.html">YAML::ParseContext</a>, node : <a href="../YAML/Nodes.html">YAML::Nodes</a>::Node)</code>
+to deserialize an object from a node, <code><a href="../Reference.html">Reference</a></code> types must invoke
+both <code><a href="../YAML/ParseContext.html#read_alias%28node%2Ctype%3AT.class%2C%26block%29forallT-instance-method">#read_alias</a></code> and <code><a href="../YAML/ParseContext.html#record_anchor%28node%2Cobject%3AT%29%3ANilforallT-instance-method">#record_anchor</a></code> in order to support parsing
+recursive data structures.</p>
+
+<ul>
+<li>
+<code><a href="../YAML/ParseContext.html#read_alias%28node%2Ctype%3AT.class%2C%26block%29forallT-instance-method">#read_alias</a></code> must be invoked before an instance is created</li>
+<li>
+<code><a href="../YAML/ParseContext.html#record_anchor%28node%2Cobject%3AT%29%3ANilforallT-instance-method">#record_anchor</a></code> must be invoked after an instance is created and
+  before its members are deserialized.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/parse_context.cr#L11" target="_blank">yaml/parse_context.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#read_alias%28node%2Ctype%3AT.class%2C%26block%29forallT-instance-method" class="signature"><strong>#read_alias</strong>(node, type : T.class, &amp;block) forall T</a>
+        
+          <div class="summary"><p>Tries to read an alias from <code>node</code> of type <code>T</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_alias%3F%28node%2Ctype%3AT.class%2C%26block%29forallT-instance-method" class="signature"><strong>#read_alias?</strong>(node, type : T.class, &amp;block) forall T</a>
+        
+          <div class="summary"><p>Similar to <code><a href="../YAML/ParseContext.html#read_alias%28node%2Ctype%3AT.class%2C%26block%29forallT-instance-method">#read_alias</a></code> but doesn&#39;t raise if an alias exists but an instance of type T isn&#39;t associated with the current anchor.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#record_anchor%28node%2Cobject%3AT%29%3ANilforallT-instance-method" class="signature"><strong>#record_anchor</strong>(node, object : T) : Nil forall T</a>
+        
+          <div class="summary"><p>Associates an object with an anchor.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#%3D%3D%28other%3Aself%29-instance-method" class="tooltip">
+      <span>==(other : self)<br/>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Reference.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Reference.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)</span>
+    hash</a>, 
+    
+  
+    <a href="../Reference.html#inspect%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>inspect(io : IO) : Nil</span>
+    inspect</a>, 
+    
+  
+    <a href="../Reference.html#object_id%3AUInt64-instance-method" class="tooltip">
+      <span>object_id : UInt64</span>
+    object_id</a>, 
+    
+  
+    <a href="../Reference.html#pretty_print%28pp%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../Reference.html#same%3F%28other%3AReference%29-instance-method" class="tooltip">
+      <span>same?(other : Reference)<br/>same?(other : Nil)</span>
+    same?</a>, 
+    
+  
+    <a href="../Reference.html#to_s%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>to_s(io : IO) : Nil</span>
+    to_s</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from class <code><a href="../Reference.html">Reference</a></code>
+</h3>
+  
+  
+    <a href="../Reference.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="../Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="../Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="../Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="../Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="../Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="../Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
+    hash</a>, 
+    
+  
+    <a href="../Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="../Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="../Object.html#pretty_inspect%28width%3D79%2Cnewline%3D%26quot%3B%5Cn%26quot%3B%2Cindent%3D0%29%3AString-instance-method" class="tooltip">
+      <span>pretty_inspect(width = <span class="n">79</span>, newline = <span class="s">&#34;\n&#34;</span>, indent = <span class="n">0</span>) : String</span>
+    pretty_inspect</a>, 
+    
+  
+    <a href="../Object.html#pretty_print%28pp%3APrettyPrint%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp : PrettyPrint) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="../Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="../Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="../Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="../Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="../Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>, 
+    
+  
+    <a href="../Object.html#unsafe_as%28type%3AT.class%29forallT-instance-method" class="tooltip">
+      <span>unsafe_as(type : T.class) forall T</span>
+    unsafe_as</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from class <code><a href="../Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="../Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="../Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
+    from_yaml</a>
+    
+  
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new-class-method">
+      <a class="dashingAutolink" name="autolink-8163"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+        
+        def self.<strong>new</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/parse_context.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="read_alias(node,type:T.class,&amp;block)forallT-instance-method">
+      <a class="dashingAutolink" name="autolink-8164"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_alias%28node%2C%20type%20%3A%20T.class%2C%20%26block%29%20forall%20T"></a><div class="signature">
+        
+        def <strong>read_alias</strong>(node, type : T.class, &amp;block) forall T
+
+        
+      </div>
+      
+        <div class="doc"><p>Tries to read an alias from <code>node</code> of type <code>T</code>. Invokes
+the block if successful, and invokers must return this object
+instead of deserializing their members.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/parse_context.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_alias?(node,type:T.class,&amp;block)forallT-instance-method">
+      <a class="dashingAutolink" name="autolink-8165"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_alias%3F%28node%2C%20type%20%3A%20T.class%2C%20%26block%29%20forall%20T"></a><div class="signature">
+        
+        def <strong>read_alias?</strong>(node, type : T.class, &amp;block) forall T
+
+        
+      </div>
+      
+        <div class="doc"><p>Similar to <code><a href="../YAML/ParseContext.html#read_alias%28node%2Ctype%3AT.class%2C%26block%29forallT-instance-method">#read_alias</a></code> but doesn&#39;t raise if an alias exists
+but an instance of type T isn&#39;t associated with the current anchor.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/parse_context.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="record_anchor(node,object:T):NilforallT-instance-method">
+      <a class="dashingAutolink" name="autolink-8166"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20record_anchor%28node%2C%20object%20%3A%20T%29%20%3A%20Nil%20forall%20T"></a><div class="signature">
+        
+        def <strong>record_anchor</strong>(node, object : T) : <a href="../Nil.html">Nil</a> forall T
+
+        
+      </div>
+      
+        <div class="doc"><p>Associates an object with an anchor.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/parse_context.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

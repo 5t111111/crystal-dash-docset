@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-7271"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%3A%3ABuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML::Builder - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-8072"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%3A%3ABuilder%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML::Builder - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -33,7 +33,20 @@
 
 <p>A <code><a href="../YAML/Error.html">YAML::Error</a></code> is raised if attempting to generate
 an invalid YAML (for example, if invoking <code><a href="../YAML/Builder.html#end_sequence-instance-method">#end_sequence</a></code>
-without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-method">#start_sequence</a></code>)</p>
+without a matching <code><a href="../YAML/Builder.html#start_sequence%28anchor%3AString%3F%3Dnil%2Ctag%3AString%3F%3Dnil%2Cstyle%3AYAML%3A%3ASequenceStyle%3DYAML%3A%3ASequenceStyle%3A%3AANY%29-instance-method">#start_sequence</a></code>)</p>
+
+<pre><code><span class="k">require</span> <span class="s">&#34;yaml&#34;</span>
+
+string <span class="o">=</span> <span class="t">YAML</span>.build <span class="k">do</span> <span class="o">|</span>yaml<span class="o">|</span>
+  yaml.mapping <span class="k">do</span>
+    yaml.scalar <span class="s">&#34;foo&#34;</span>
+    yaml.sequence <span class="k">do</span>
+      yaml.scalar <span class="n">1</span>
+      yaml.scalar <span class="n">2</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+string <span class="c"># =&gt; &#34;---\nfoo:\n- 1\n- 2\n&#34;</span></code></pre>
 
 
 
@@ -51,7 +64,7 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L6" target="_blank">yaml/builder.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L21" target="_blank">yaml/builder.cr</a>
     
     <br/>
   
@@ -85,6 +98,11 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#alias%28anchor%3AString%29-instance-method" class="signature"><strong>#alias</strong>(anchor : String)</a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
@@ -141,21 +159,21 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
       </li>
     
       <li class="entry-summary">
-        <a href="#mapping%28%26block%29-instance-method" class="signature"><strong>#mapping</strong>(&amp;block)</a>
+        <a href="#mapping%28anchor%3AString%3F%3Dnil%2Ctag%3AString%3F%3Dnil%2Cstyle%3AYAML%3A%3AMappingStyle%3DYAML%3A%3AMappingStyle%3A%3AANY%2C%26block%29-instance-method" class="signature"><strong>#mapping</strong>(anchor : String? = <span class="n">nil</span>, tag : String? = <span class="n">nil</span>, style : YAML::MappingStyle = <span class="t">YAML</span><span class="t">::</span><span class="t">MappingStyle</span><span class="t">::</span><span class="t">ANY</span>, &amp;block)</a>
         
           <div class="summary"><p>Starts a mapping, invokes the block, and then ends it.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#scalar%28value%29-instance-method" class="signature"><strong>#scalar</strong>(value)</a>
+        <a href="#scalar%28value%2Canchor%3AString%3F%3Dnil%2Ctag%3AString%3F%3Dnil%2Cstyle%3AYAML%3A%3AScalarStyle%3DYAML%3A%3AScalarStyle%3A%3AANY%29-instance-method" class="signature"><strong>#scalar</strong>(value, anchor : String? = <span class="n">nil</span>, tag : String? = <span class="n">nil</span>, style : YAML::ScalarStyle = <span class="t">YAML</span><span class="t">::</span><span class="t">ScalarStyle</span><span class="t">::</span><span class="t">ANY</span>)</a>
         
           <div class="summary"><p>Emits a scalar value.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sequence%28%26block%29-instance-method" class="signature"><strong>#sequence</strong>(&amp;block)</a>
+        <a href="#sequence%28anchor%3AString%3F%3Dnil%2Ctag%3AString%3F%3Dnil%2Cstyle%3AYAML%3A%3ASequenceStyle%3DYAML%3A%3ASequenceStyle%3A%3AANY%2C%26block%29-instance-method" class="signature"><strong>#sequence</strong>(anchor : String? = <span class="n">nil</span>, tag : String? = <span class="n">nil</span>, style : YAML::SequenceStyle = <span class="t">YAML</span><span class="t">::</span><span class="t">SequenceStyle</span><span class="t">::</span><span class="t">ANY</span>, &amp;block)</a>
         
           <div class="summary"><p>Starts a sequence, invokes the block, and the ends it.</p></div>
         
@@ -169,14 +187,14 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
       </li>
     
       <li class="entry-summary">
-        <a href="#start_mapping-instance-method" class="signature"><strong>#start_mapping</strong></a>
+        <a href="#start_mapping%28anchor%3AString%3F%3Dnil%2Ctag%3AString%3F%3Dnil%2Cstyle%3AYAML%3A%3AMappingStyle%3DYAML%3A%3AMappingStyle%3A%3AANY%29-instance-method" class="signature"><strong>#start_mapping</strong>(anchor : String? = <span class="n">nil</span>, tag : String? = <span class="n">nil</span>, style : YAML::MappingStyle = <span class="t">YAML</span><span class="t">::</span><span class="t">MappingStyle</span><span class="t">::</span><span class="t">ANY</span>)</a>
         
           <div class="summary"><p>Starts a mapping.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#start_sequence-instance-method" class="signature"><strong>#start_sequence</strong></a>
+        <a href="#start_sequence%28anchor%3AString%3F%3Dnil%2Ctag%3AString%3F%3Dnil%2Cstyle%3AYAML%3A%3ASequenceStyle%3DYAML%3A%3ASequenceStyle%3A%3AANY%29-instance-method" class="signature"><strong>#start_sequence</strong>(anchor : String? = <span class="n">nil</span>, tag : String? = <span class="n">nil</span>, style : YAML::SequenceStyle = <span class="t">YAML</span><span class="t">::</span><span class="t">SequenceStyle</span><span class="t">::</span><span class="t">ANY</span>)</a>
         
           <div class="summary"><p>Starts a sequence.</p></div>
         
@@ -220,8 +238,8 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
     dup</a>, 
     
   
-    <a href="../Reference.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="../Reference.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)</span>
     hash</a>, 
     
   
@@ -310,8 +328,8 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
     dup</a>, 
     
   
-    <a href="../Object.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="../Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
     hash</a>, 
     
   
@@ -388,8 +406,8 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
     from_json</a>, 
     
   
-    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string_or_io) : self</span>
+    <a href="../Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
     from_yaml</a>
     
   
@@ -405,7 +423,7 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
   <h2>Constructor Detail</h2>
   
     <div class="entry-detail" id="new(io:IO)-class-method">
-      <a class="dashingAutolink" name="autolink-7272"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8073"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%29"></a><div class="signature">
         
         def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>)
 
@@ -417,13 +435,13 @@ without a matching <code><a href="../YAML/Builder.html#start_sequence-instance-m
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L25" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(io:IO,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-7273"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8074"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28io%20%3A%20IO%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>new</strong>(io : <a href="../IO.html">IO</a>, &amp;block)
 
@@ -436,7 +454,7 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -448,8 +466,24 @@ invokes the block and closes the builder.</p></div>
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="alias(anchor:String)-instance-method">
+      <a class="dashingAutolink" name="autolink-8075"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20alias%28anchor%20%3A%20String%29"></a><div class="signature">
+        
+        def <strong>alias</strong>(anchor : <a href="../String.html">String</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L118" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-7274"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8076"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -461,13 +495,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L134" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="document(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7275"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20document%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8077"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20document%28%26block%29"></a><div class="signature">
         
         def <strong>document</strong>(&amp;block)
 
@@ -479,13 +513,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L57" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="end_document-instance-method">
-      <a class="dashingAutolink" name="autolink-7276"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_document"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8078"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_document"></a><div class="signature">
         
         def <strong>end_document</strong>
 
@@ -497,13 +531,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="end_mapping-instance-method">
-      <a class="dashingAutolink" name="autolink-7277"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_mapping"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8079"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_mapping"></a><div class="signature">
         
         def <strong>end_mapping</strong>
 
@@ -515,13 +549,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L108" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="end_sequence-instance-method">
-      <a class="dashingAutolink" name="autolink-7278"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_sequence"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8080"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_sequence"></a><div class="signature">
         
         def <strong>end_sequence</strong>
 
@@ -533,13 +567,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="end_stream-instance-method">
-      <a class="dashingAutolink" name="autolink-7279"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_stream"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8081"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_stream"></a><div class="signature">
         
         def <strong>end_stream</strong>
 
@@ -551,13 +585,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="finalize-instance-method">
-      <a class="dashingAutolink" name="autolink-7280"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8082"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
         
         def <strong>finalize</strong>
 
@@ -567,13 +601,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L105" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="flush-instance-method">
-      <a class="dashingAutolink" name="autolink-7281"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8083"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20flush"></a><div class="signature">
         
         def <strong>flush</strong>
 
@@ -585,15 +619,15 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="mapping(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7282"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mapping%28%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="mapping(anchor:String?=nil,tag:String?=nil,style:YAML::MappingStyle=YAML::MappingStyle::ANY,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-8084"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mapping%28anchor%20%3A%20String%3F%20%3D%20nil%2C%20tag%20%3A%20String%3F%20%3D%20nil%2C%20style%20%3A%20YAML%3A%3AMappingStyle%20%3D%20YAML%3A%3AMappingStyle%3A%3AANY%2C%20%26block%29"></a><div class="signature">
         
-        def <strong>mapping</strong>(&amp;block)
+        def <strong>mapping</strong>(anchor : <a href="../String.html">String</a>? = <span class="n">nil</span>, tag : <a href="../String.html">String</a>? = <span class="n">nil</span>, style : <a href="../YAML/MappingStyle.html">YAML::MappingStyle</a> = <span class="t">YAML</span><span class="t">::</span><span class="t">MappingStyle</span><span class="t">::</span><span class="t">ANY</span>, &amp;block)
 
         
       </div>
@@ -603,15 +637,15 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L113" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="scalar(value)-instance-method">
-      <a class="dashingAutolink" name="autolink-7283"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scalar%28value%29"></a><div class="signature">
+    <div class="entry-detail" id="scalar(value,anchor:String?=nil,tag:String?=nil,style:YAML::ScalarStyle=YAML::ScalarStyle::ANY)-instance-method">
+      <a class="dashingAutolink" name="autolink-8085"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scalar%28value%2C%20anchor%20%3A%20String%3F%20%3D%20nil%2C%20tag%20%3A%20String%3F%20%3D%20nil%2C%20style%20%3A%20YAML%3A%3AScalarStyle%20%3D%20YAML%3A%3AScalarStyle%3A%3AANY%29"></a><div class="signature">
         
-        def <strong>scalar</strong>(value)
+        def <strong>scalar</strong>(value, anchor : <a href="../String.html">String</a>? = <span class="n">nil</span>, tag : <a href="../String.html">String</a>? = <span class="n">nil</span>, style : <a href="../YAML/ScalarStyle.html">YAML::ScalarStyle</a> = <span class="t">YAML</span><span class="t">::</span><span class="t">ScalarStyle</span><span class="t">::</span><span class="t">ANY</span>)
 
         
       </div>
@@ -621,15 +655,15 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="sequence(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7284"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sequence%28%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="sequence(anchor:String?=nil,tag:String?=nil,style:YAML::SequenceStyle=YAML::SequenceStyle::ANY,&amp;block)-instance-method">
+      <a class="dashingAutolink" name="autolink-8086"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sequence%28anchor%20%3A%20String%3F%20%3D%20nil%2C%20tag%20%3A%20String%3F%20%3D%20nil%2C%20style%20%3A%20YAML%3A%3ASequenceStyle%20%3D%20YAML%3A%3ASequenceStyle%3A%3AANY%2C%20%26block%29"></a><div class="signature">
         
-        def <strong>sequence</strong>(&amp;block)
+        def <strong>sequence</strong>(anchor : <a href="../String.html">String</a>? = <span class="n">nil</span>, tag : <a href="../String.html">String</a>? = <span class="n">nil</span>, style : <a href="../YAML/SequenceStyle.html">YAML::SequenceStyle</a> = <span class="t">YAML</span><span class="t">::</span><span class="t">SequenceStyle</span><span class="t">::</span><span class="t">ANY</span>, &amp;block)
 
         
       </div>
@@ -639,13 +673,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="start_document-instance-method">
-      <a class="dashingAutolink" name="autolink-7285"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_document"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8087"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_document"></a><div class="signature">
         
         def <strong>start_document</strong>
 
@@ -657,15 +691,15 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="start_mapping-instance-method">
-      <a class="dashingAutolink" name="autolink-7286"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_mapping"></a><div class="signature">
+    <div class="entry-detail" id="start_mapping(anchor:String?=nil,tag:String?=nil,style:YAML::MappingStyle=YAML::MappingStyle::ANY)-instance-method">
+      <a class="dashingAutolink" name="autolink-8088"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_mapping%28anchor%20%3A%20String%3F%20%3D%20nil%2C%20tag%20%3A%20String%3F%20%3D%20nil%2C%20style%20%3A%20YAML%3A%3AMappingStyle%20%3D%20YAML%3A%3AMappingStyle%3A%3AANY%29"></a><div class="signature">
         
-        def <strong>start_mapping</strong>
+        def <strong>start_mapping</strong>(anchor : <a href="../String.html">String</a>? = <span class="n">nil</span>, tag : <a href="../String.html">String</a>? = <span class="n">nil</span>, style : <a href="../YAML/MappingStyle.html">YAML::MappingStyle</a> = <span class="t">YAML</span><span class="t">::</span><span class="t">MappingStyle</span><span class="t">::</span><span class="t">ANY</span>)
 
         
       </div>
@@ -675,15 +709,15 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L102" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="start_sequence-instance-method">
-      <a class="dashingAutolink" name="autolink-7287"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_sequence"></a><div class="signature">
+    <div class="entry-detail" id="start_sequence(anchor:String?=nil,tag:String?=nil,style:YAML::SequenceStyle=YAML::SequenceStyle::ANY)-instance-method">
+      <a class="dashingAutolink" name="autolink-8089"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_sequence%28anchor%20%3A%20String%3F%20%3D%20nil%2C%20tag%20%3A%20String%3F%20%3D%20nil%2C%20style%20%3A%20YAML%3A%3ASequenceStyle%20%3D%20YAML%3A%3ASequenceStyle%3A%3AANY%29"></a><div class="signature">
         
-        def <strong>start_sequence</strong>
+        def <strong>start_sequence</strong>(anchor : <a href="../String.html">String</a>? = <span class="n">nil</span>, tag : <a href="../String.html">String</a>? = <span class="n">nil</span>, style : <a href="../YAML/SequenceStyle.html">YAML::SequenceStyle</a> = <span class="t">YAML</span><span class="t">::</span><span class="t">SequenceStyle</span><span class="t">::</span><span class="t">ANY</span>)
 
         
       </div>
@@ -693,13 +727,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="start_stream-instance-method">
-      <a class="dashingAutolink" name="autolink-7288"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_stream"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8090"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_stream"></a><div class="signature">
         
         def <strong>start_stream</strong>
 
@@ -711,13 +745,13 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="stream(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7289"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stream%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8091"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20stream%28%26block%29"></a><div class="signature">
         
         def <strong>stream</strong>(&amp;block)
 
@@ -729,7 +763,7 @@ invokes the block and closes the builder.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>

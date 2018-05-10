@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-7453"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Top%20Level%20Namespace%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Top Level Namespace - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-8382"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/Top%20Level%20Namespace%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>Top Level Namespace - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -68,8 +68,8 @@
       
     
       <dt class="entry-const" id="ARGV">
-        <strong>ARGV</strong> = <code>((<span class="t">ARGV_UNSAFE</span> <span class="o">+</span> <span class="n">1</span>).to_slice(<span class="t">ARGC_UNSAFE</span> <span class="o">-</span> <span class="n">1</span>)).map <span class="k">do</span> <span class="o">|</span>c_str<span class="o">|</span>
-  <span class="t">String</span>.<span class="k">new</span>(c_str)
+        <strong>ARGV</strong> = <code><span class="t">Array</span>.<span class="k">new</span>(<span class="t">ARGC_UNSAFE</span> <span class="o">-</span> <span class="n">1</span>) <span class="k">do</span> <span class="o">|</span>i<span class="o">|</span>
+  <span class="t">String</span>.<span class="k">new</span>(<span class="t">ARGV_UNSAFE</span>[<span class="n">1</span> <span class="o">+</span> i])
 <span class="k">end</span></code>
       </dt>
       
@@ -190,6 +190,20 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#main%28argc%3AInt32%2Cargv%3APointer%28Pointer%28UInt8%29%29%29-class-method" class="signature"><strong>main</strong>(argc : Int32, argv : Pointer(Pointer(UInt8)))</a>
+        
+          <div class="summary"><p>Main function that acts as C&#39;s main function.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#p%28object%29-class-method" class="signature"><strong>p</strong>(object)</a>
+        
+          <div class="summary"><p>Pretty prints <em>object</em> to <code><a href="toplevel.html#STDOUT">STDOUT</a></code> followed by a newline.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#p%28%2Aobjects%29-class-method" class="signature"><strong>p</strong>(*objects)</a>
         
           <div class="summary"><p>Pretty prints each object in <em>objects</em> to <code><a href="toplevel.html#STDOUT">STDOUT</a></code>, followed by a newline.</p></div>
@@ -204,13 +218,6 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#p%28object%29-class-method" class="signature"><strong>p</strong>(object)</a>
-        
-          <div class="summary"><p>Pretty prints <em>object</em> to <code><a href="toplevel.html#STDOUT">STDOUT</a></code> followed by a newline.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#print%28%2Aobjects%3A_%29%3ANil-class-method" class="signature"><strong>print</strong>(*objects : _) : Nil</a>
         
           <div class="summary"><p>Prints objects to STDOUT and then invokes <code>STDOUT.flush</code>.</p></div>
@@ -218,14 +225,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#printf%28format_string%2Cargs%3AArray%7CTuple%29%3ANil-class-method" class="signature"><strong>printf</strong>(format_string, args : Array | Tuple) : Nil</a>
+        <a href="#printf%28format_string%2C%2Aargs%29%3ANil-class-method" class="signature"><strong>printf</strong>(format_string, *args) : Nil</a>
         
           <div class="summary"><p>Prints a formatted string to <code><a href="toplevel.html#STDOUT">STDOUT</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#printf%28format_string%2C%2Aargs%29%3ANil-class-method" class="signature"><strong>printf</strong>(format_string, *args) : Nil</a>
+        <a href="#printf%28format_string%2Cargs%3AArray%7CTuple%29%3ANil-class-method" class="signature"><strong>printf</strong>(format_string, args : Array | Tuple) : Nil</a>
         
           <div class="summary"><p>Prints a formatted string to <code><a href="toplevel.html#STDOUT">STDOUT</a></code>.</p></div>
         
@@ -371,11 +378,6 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#redefine_main%28name%3Dmain%29-macro" class="signature"><strong>redefine_main</strong>(name = main)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#spawn%28call%2C%2A%2Cname%3Dnil%29-macro" class="signature"><strong>spawn</strong>(call, *, name = nil)</a>
         
           <div class="summary"><p>Spawns a fiber by first creating a <code><a href="Proc.html">Proc</a></code>, passing the <em>call</em>&#39;s expressions to it, and letting the <code><a href="Proc.html">Proc</a></code> finally invoke the <em>call</em>.</p></div>
@@ -506,7 +508,7 @@
   <h2>Method Detail</h2>
   
     <div class="entry-detail" id="`(command):String-class-method">
-      <a class="dashingAutolink" name="autolink-7454"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%60%28command%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8342"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%60%28command%29%20%3A%20String"></a><div class="signature">
         
         def <strong>`</strong>(command) : <a href="String.html">String</a>
 
@@ -526,13 +528,13 @@ The special <code>$?</code> variable is set to a <code><a href="Process/Status.h
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/process.cr#L448" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/process.cr#L459" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="abort(message,status=1):NoReturn-class-method">
-      <a class="dashingAutolink" name="autolink-7455"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abort%28message%2C%20status%20%3D%201%29%20%3A%20NoReturn"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8343"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20abort%28message%2C%20status%20%3D%201%29%20%3A%20NoReturn"></a><div class="signature">
         
         def <strong>abort</strong>(message, status = <span class="n">1</span>) : NoReturn
 
@@ -545,13 +547,13 @@ then calling <code><a href="toplevel.html#exit%28status%3D0%29%3ANoReturn-class-
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L176" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L176" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="at_exit(&amp;handler:Int32-&gt;):Nil-class-method">
-      <a class="dashingAutolink" name="autolink-7456"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_exit%28%26handler%20%3A%20Int32%20-%3E%20%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8344"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20at_exit%28%26handler%20%3A%20Int32%20-%3E%20%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>at_exit</strong>(&amp;handler : <a href="Int32.html">Int32</a> -&gt; ) : <a href="Nil.html">Nil</a>
 
@@ -578,13 +580,13 @@ exit</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L159" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L159" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="caller-class-method">
-      <a class="dashingAutolink" name="autolink-7457"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20caller"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8345"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20caller"></a><div class="signature">
         
         def <strong>caller</strong>
 
@@ -594,13 +596,13 @@ exit</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/callstack.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/callstack.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="delay(delay,&amp;block:-&gt;_)-class-method">
-      <a class="dashingAutolink" name="autolink-7458"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delay%28delay%2C%20%26block%20%3A%20%20-%3E%20_%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8346"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20delay%28delay%2C%20%26block%20%3A%20%20-%3E%20_%29"></a><div class="signature">
         
         def <strong>delay</strong>(delay, &amp;block :  -&gt; _)
 
@@ -620,13 +622,13 @@ d.cancel</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent/future.cr#L127" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent/future.cr#L127" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="exit(status=0):NoReturn-class-method">
-      <a class="dashingAutolink" name="autolink-7459"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exit%28status%20%3D%200%29%20%3A%20NoReturn"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8347"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20exit%28status%20%3D%200%29%20%3A%20NoReturn"></a><div class="signature">
         
         def <strong>exit</strong>(status = <span class="n">0</span>) : NoReturn
 
@@ -643,13 +645,13 @@ to the invoking environment.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L167" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L167" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fork-class-method">
-      <a class="dashingAutolink" name="autolink-7460"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fork"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8348"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fork"></a><div class="signature">
         
         def <strong>fork</strong>
 
@@ -661,13 +663,13 @@ to the invoking environment.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/process.cr#L462" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/process.cr#L473" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="fork(&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-7461"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fork%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8349"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20fork%28%26block%29"></a><div class="signature">
         
         def <strong>fork</strong>(&amp;block)
 
@@ -679,13 +681,13 @@ to the invoking environment.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/process.cr#L457" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/process.cr#L468" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="future(&amp;exp:-&gt;_)-class-method">
-      <a class="dashingAutolink" name="autolink-7462"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20future%28%26exp%20%3A%20%20-%3E%20_%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8350"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20future%28%26exp%20%3A%20%20-%3E%20_%29"></a><div class="signature">
         
         def <strong>future</strong>(&amp;exp :  -&gt; _)
 
@@ -704,13 +706,13 @@ f.get <span class="c"># =&gt; &#34;hello\n&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent/future.cr#L138" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent/future.cr#L138" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="gets(*args,**options)-class-method">
-      <a class="dashingAutolink" name="autolink-7463"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20gets%28%2Aargs%2C%20%2A%2Aoptions%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8351"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20gets%28%2Aargs%2C%20%2A%2Aoptions%29"></a><div class="signature">
         
         def <strong>gets</strong>(*args, **options)
 
@@ -726,13 +728,13 @@ f.get <span class="c"># =&gt; &#34;hello\n&#34;</span></code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="lazy(&amp;block:-&gt;_)-class-method">
-      <a class="dashingAutolink" name="autolink-7464"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20lazy%28%26block%20%3A%20%20-%3E%20_%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8352"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20lazy%28%26block%20%3A%20%20-%3E%20_%29"></a><div class="signature">
         
         def <strong>lazy</strong>(&amp;block :  -&gt; _)
 
@@ -752,13 +754,13 @@ spawn { maybe_use_computation(l) }</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent/future.cr#L150" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent/future.cr#L150" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="loop(&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-7465"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20loop%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8353"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20loop%28%26block%29"></a><div class="signature">
         
         def <strong>loop</strong>(&amp;block)
 
@@ -780,13 +782,59 @@ that starts with <code>0</code>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="main(argc:Int32,argv:Pointer(Pointer(UInt8)))-class-method">
+      <a class="dashingAutolink" name="autolink-8354"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20main%28argc%20%3A%20Int32%2C%20argv%20%3A%20Pointer%28Pointer%28UInt8%29%29%29"></a><div class="signature">
+        
+        def <strong>main</strong>(argc : <a href="Int32.html">Int32</a>, argv : <a href="Pointer.html">Pointer</a>(<a href="Pointer.html">Pointer</a>(<a href="UInt8.html">UInt8</a>)))
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Main function that acts as C&#39;s main function.
+Invokes <code>Crystal.main</code>.</p>
+
+<p>Can be redefined. See <code>Crystal.main</code> for examples.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/crystal/main.cr#L134" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="p(object)-class-method">
+      <a class="dashingAutolink" name="autolink-8355"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20p%28object%29"></a><div class="signature">
+        
+        def <strong>p</strong>(object)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Pretty prints <em>object</em> to <code><a href="toplevel.html#STDOUT">STDOUT</a></code> followed
+by a newline. Returns <em>object</em>.</p>
+
+<p>See also: <code>Object#pretty_print(pp)</code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="p(*objects)-class-method">
-      <a class="dashingAutolink" name="autolink-7466"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20p%28%2Aobjects%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8356"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20p%28%2Aobjects%29"></a><div class="signature">
         
         def <strong>p</strong>(*objects)
 
@@ -803,13 +851,13 @@ by a newline. Returns <em>objects</em>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="p-class-method">
-      <a class="dashingAutolink" name="autolink-7467"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20p"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8357"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20p"></a><div class="signature">
         
         def <strong>p</strong>
 
@@ -828,36 +876,13 @@ by a newline. Returns <em>objects</em>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L114" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="p(object)-class-method">
-      <a class="dashingAutolink" name="autolink-7468"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20p%28object%29"></a><div class="signature">
-        
-        def <strong>p</strong>(object)
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Pretty prints <em>object</em> to <code><a href="toplevel.html#STDOUT">STDOUT</a></code> followed
-by a newline. Returns <em>object</em>.</p>
-
-<p>See also: <code>Object#pretty_print(pp)</code>.</p>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L89" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L114" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="print(*objects:_):Nil-class-method">
-      <a class="dashingAutolink" name="autolink-7469"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20print%28%2Aobjects%20%3A%20_%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8358"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20print%28%2Aobjects%20%3A%20_%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>print</strong>(*objects : _) : <a href="Nil.html">Nil</a>
 
@@ -873,35 +898,13 @@ by a newline. Returns <em>object</em>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L47" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="printf(format_string,args:Array|Tuple):Nil-class-method">
-      <a class="dashingAutolink" name="autolink-7470"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20printf%28format_string%2C%20args%20%3A%20Array%20%7C%20Tuple%29%20%3A%20Nil"></a><div class="signature">
-        
-        def <strong>printf</strong>(format_string, args : <a href="Array.html">Array</a> | <a href="Tuple.html">Tuple</a>) : <a href="Nil.html">Nil</a>
-
-        
-      </div>
-      
-        <div class="doc">
-<p>Prints a formatted string to <code><a href="toplevel.html#STDOUT">STDOUT</a></code>.</p>
-
-<p>See also: <code>IO#printf</code>.</p>
-</div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L47" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="printf(format_string,*args):Nil-class-method">
-      <a class="dashingAutolink" name="autolink-7471"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20printf%28format_string%2C%20%2Aargs%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8359"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20printf%28format_string%2C%20%2Aargs%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>printf</strong>(format_string, *args) : <a href="Nil.html">Nil</a>
 
@@ -917,13 +920,35 @@ by a newline. Returns <em>object</em>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="printf(format_string,args:Array|Tuple):Nil-class-method">
+      <a class="dashingAutolink" name="autolink-8360"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20printf%28format_string%2C%20args%20%3A%20Array%20%7C%20Tuple%29%20%3A%20Nil"></a><div class="signature">
+        
+        def <strong>printf</strong>(format_string, args : <a href="Array.html">Array</a> | <a href="Tuple.html">Tuple</a>) : <a href="Nil.html">Nil</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Prints a formatted string to <code><a href="toplevel.html#STDOUT">STDOUT</a></code>.</p>
+
+<p>See also: <code>IO#printf</code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="puts(*objects):Nil-class-method">
-      <a class="dashingAutolink" name="autolink-7472"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20puts%28%2Aobjects%29%20%3A%20Nil"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8361"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20puts%28%2Aobjects%29%20%3A%20Nil"></a><div class="signature">
         
         def <strong>puts</strong>(*objects) : <a href="Nil.html">Nil</a>
 
@@ -939,13 +964,13 @@ by a newline. Returns <em>object</em>.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="raise(exception:Exception):NoReturn-class-method">
-      <a class="dashingAutolink" name="autolink-7473"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raise%28exception%20%3A%20Exception%29%20%3A%20NoReturn"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8362"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raise%28exception%20%3A%20Exception%29%20%3A%20NoReturn"></a><div class="signature">
         
         def <strong>raise</strong>(exception : <a href="Exception.html">Exception</a>) : NoReturn
 
@@ -962,13 +987,13 @@ Re-raising a previously catched exception won&#39;t replace the callstack.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/raise.cr#L182" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/raise.cr#L182" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="raise(message:String):NoReturn-class-method">
-      <a class="dashingAutolink" name="autolink-7474"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raise%28message%20%3A%20String%29%20%3A%20NoReturn"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8363"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raise%28message%20%3A%20String%29%20%3A%20NoReturn"></a><div class="signature">
         
         def <strong>raise</strong>(message : <a href="String.html">String</a>) : NoReturn
 
@@ -980,13 +1005,13 @@ Re-raising a previously catched exception won&#39;t replace the callstack.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/raise.cr#L193" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/raise.cr#L193" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="rand(x)-class-method">
-      <a class="dashingAutolink" name="autolink-7475"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rand%28x%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8364"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rand%28x%29"></a><div class="signature">
         
         def <strong>rand</strong>(x)
 
@@ -998,13 +1023,13 @@ Re-raising a previously catched exception won&#39;t replace the callstack.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/random.cr#L302" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/random.cr#L393" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="rand-class-method">
-      <a class="dashingAutolink" name="autolink-7476"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rand"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8365"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20rand"></a><div class="signature">
         
         def <strong>rand</strong>
 
@@ -1016,13 +1041,13 @@ Re-raising a previously catched exception won&#39;t replace the callstack.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/random.cr#L297" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/random.cr#L388" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_line(*args,**options)-class-method">
-      <a class="dashingAutolink" name="autolink-7477"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_line%28%2Aargs%2C%20%2A%2Aoptions%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8366"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_line%28%2Aargs%2C%20%2A%2Aoptions%29"></a><div class="signature">
         
         def <strong>read_line</strong>(*args, **options)
 
@@ -1038,13 +1063,13 @@ Re-raising a previously catched exception won&#39;t replace the callstack.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sleep-class-method">
-      <a class="dashingAutolink" name="autolink-7478"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sleep"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8367"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sleep"></a><div class="signature">
         
         def <strong>sleep</strong>
 
@@ -1060,13 +1085,13 @@ Re-raising a previously catched exception won&#39;t replace the callstack.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sleep(time:Time::Span)-class-method">
-      <a class="dashingAutolink" name="autolink-7479"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sleep%28time%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8368"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sleep%28time%20%3A%20Time%3A%3ASpan%29"></a><div class="signature">
         
         def <strong>sleep</strong>(time : <a href="Time/Span.html">Time::Span</a>)
 
@@ -1083,13 +1108,13 @@ fibers might start their execution.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sleep(seconds:Number)-class-method">
-      <a class="dashingAutolink" name="autolink-7480"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sleep%28seconds%20%3A%20Number%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8369"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sleep%28seconds%20%3A%20Number%29"></a><div class="signature">
         
         def <strong>sleep</strong>(seconds : <a href="Number.html">Number</a>)
 
@@ -1106,13 +1131,13 @@ fibers might start their execution.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="spawn(*,name:String?=nil,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-7481"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20spawn%28%2A%2C%20name%20%3A%20String%3F%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8370"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20spawn%28%2A%2C%20name%20%3A%20String%3F%20%3D%20nil%2C%20%26block%29"></a><div class="signature">
         
         def <strong>spawn</strong>(*, name : <a href="String.html">String</a>? = <span class="n">nil</span>, &amp;block)
 
@@ -1152,13 +1177,13 @@ spawn <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sprintf(format_string,*args):String-class-method">
-      <a class="dashingAutolink" name="autolink-7482"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sprintf%28format_string%2C%20%2Aargs%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8371"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sprintf%28format_string%2C%20%2Aargs%29%20%3A%20String"></a><div class="signature">
         
         def <strong>sprintf</strong>(format_string, *args) : <a href="String.html">String</a>
 
@@ -1174,13 +1199,13 @@ spawn <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="sprintf(format_string,args:Array|Tuple):String-class-method">
-      <a class="dashingAutolink" name="autolink-7483"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sprintf%28format_string%2C%20args%20%3A%20Array%20%7C%20Tuple%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8372"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sprintf%28format_string%2C%20args%20%3A%20Array%20%7C%20Tuple%29%20%3A%20String"></a><div class="signature">
         
         def <strong>sprintf</strong>(format_string, args : <a href="Array.html">Array</a> | <a href="Tuple.html">Tuple</a>) : <a href="String.html">String</a>
 
@@ -1196,13 +1221,13 @@ spawn <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/kernel.cr#L72" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/kernel.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="system(command:String,args=nil):Bool-class-method">
-      <a class="dashingAutolink" name="autolink-7484"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20system%28command%20%3A%20String%2C%20args%20%3D%20nil%29%20%3A%20Bool"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8373"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20system%28command%20%3A%20String%2C%20args%20%3D%20nil%29%20%3A%20Bool"></a><div class="signature">
         
         def <strong>system</strong>(command : <a href="String.html">String</a>, args = <span class="n">nil</span>) : <a href="Bool.html">Bool</a>
 
@@ -1235,13 +1260,13 @@ its argument list.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/process.cr#L433" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/process.cr#L444" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="with_color(color:Symbol)-class-method">
-      <a class="dashingAutolink" name="autolink-7485"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_color%28color%20%3A%20Symbol%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8374"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_color%28color%20%3A%20Symbol%29"></a><div class="signature">
         
         def <strong>with_color</strong>(color : <a href="Symbol.html">Symbol</a>)
 
@@ -1251,13 +1276,13 @@ its argument list.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/colorize.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/colorize.cr#L108" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="with_color-class-method">
-      <a class="dashingAutolink" name="autolink-7486"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_color"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8375"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20with_color"></a><div class="signature">
         
         def <strong>with_color</strong>
 
@@ -1267,7 +1292,7 @@ its argument list.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/colorize.cr#L100" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/colorize.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1280,7 +1305,7 @@ its argument list.</p>
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="assert_responds_to(var,method)-macro">
-      <a class="dashingAutolink" name="autolink-7487"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20assert_responds_to%28var%2C%20method%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8376"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20assert_responds_to%28var%2C%20method%29"></a><div class="signature">
         
         macro <strong>assert_responds_to</strong>(var, method)
 
@@ -1290,13 +1315,13 @@ its argument list.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/macros.cr#L124" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/macros.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="debugger-macro">
-      <a class="dashingAutolink" name="autolink-7488"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20debugger"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8377"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20debugger"></a><div class="signature">
         
         macro <strong>debugger</strong>
 
@@ -1306,13 +1331,13 @@ its argument list.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/intrinsics.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/intrinsics.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parallel(*jobs)-macro">
-      <a class="dashingAutolink" name="autolink-7489"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20parallel%28%2Ajobs%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8378"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20parallel%28%2Ajobs%29"></a><div class="signature">
         
         macro <strong>parallel</strong>(*jobs)
 
@@ -1322,13 +1347,13 @@ its argument list.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent.cr#L131" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent.cr#L131" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="pp(*exps)-macro">
-      <a class="dashingAutolink" name="autolink-7490"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20pp%28%2Aexps%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8379"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20pp%28%2Aexps%29"></a><div class="signature">
         
         macro <strong>pp</strong>(*exps)
 
@@ -1348,13 +1373,13 @@ pp [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/macros.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/macros.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="record(name,*properties)-macro">
-      <a class="dashingAutolink" name="autolink-7491"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20record%28name%2C%20%2Aproperties%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8380"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20record%28name%2C%20%2Aproperties%29"></a><div class="signature">
         
         macro <strong>record</strong>(name, *properties)
 
@@ -1407,29 +1432,13 @@ infer the types from the default values):</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/macros.cr#L49" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="redefine_main(name=main)-macro">
-      <a class="dashingAutolink" name="autolink-7492"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20redefine_main%28name%20%3D%20main%29"></a><div class="signature">
-        
-        macro <strong>redefine_main</strong>(name = main)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/main.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/macros.cr#L49" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="spawn(call,*,name=nil)-macro">
-      <a class="dashingAutolink" name="autolink-7493"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20spawn%28call%2C%20%2A%2C%20name%20%3D%20nil%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8381"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20spawn%28call%2C%20%2A%2C%20name%20%3D%20nil%29"></a><div class="signature">
         
         macro <strong>spawn</strong>(call, *, name = nil)
 
@@ -1468,7 +1477,7 @@ the same local variable, while in the second example copies of
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/concurrent.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/concurrent.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>

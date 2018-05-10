@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-2341"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTML%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTML - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-2454"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/HTML%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>HTML - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 
   <h2>Overview</h2>
 
-  <p>Handles encoding and decoding of HTML entities.</p>
+  <p>Provides HTML escaping and unescaping methods.</p>
 
 
 
@@ -41,24 +41,17 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/html.cr#L2" target="_blank">html.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/html/entities.cr#L1" target="_blank">html/entities.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/html.cr#L4" target="_blank">html.cr</a>
     
     <br/>
   
 
 
-
-  
-    <h2>Constant Summary</h2>
-  
-  <dl>
-    
-      <dt class="entry-const" id="SUBSTITUTIONS">
-        <strong>SUBSTITUTIONS</strong> = <code>{<span class="s">&#39;!&#39;</span> =&gt; <span class="s">&#34;&amp;#33;&#34;</span>, <span class="s">&#39;&#34;&#39;</span> =&gt; <span class="s">&#34;&amp;quot;&#34;</span>, <span class="s">&#39;$&#39;</span> =&gt; <span class="s">&#34;&amp;#36;&#34;</span>, <span class="s">&#39;%&#39;</span> =&gt; <span class="s">&#34;&amp;#37;&#34;</span>, <span class="s">&#39;&amp;&#39;</span> =&gt; <span class="s">&#34;&amp;amp;&#34;</span>, <span class="s">&#39;\&#39;&#39;</span> =&gt; <span class="s">&#34;&amp;#39;&#34;</span>, <span class="s">&#39;(&#39;</span> =&gt; <span class="s">&#34;&amp;#40;&#34;</span>, <span class="s">&#39;)&#39;</span> =&gt; <span class="s">&#34;&amp;#41;&#34;</span>, <span class="s">&#39;=&#39;</span> =&gt; <span class="s">&#34;&amp;#61;&#34;</span>, <span class="s">&#39;&gt;&#39;</span> =&gt; <span class="s">&#34;&amp;gt;&#34;</span>, <span class="s">&#39; =&gt; <span class="s">&#34;&amp;lt;&#34;</span>, <span class="s">&#39;+&#39;</span> =&gt; <span class="s">&#34;&amp;#43;&#34;</span>, <span class="s">&#39;@&#39;</span> =&gt; <span class="s">&#34;&amp;#64;&#34;</span>, <span class="s">&#39;[&#39;</span> =&gt; <span class="s">&#34;&amp;#91;&#34;</span>, <span class="s">&#39;]&#39;</span> =&gt; <span class="s">&#34;&amp;#93;&#34;</span>, <span class="s">&#39;`&#39;</span> =&gt; <span class="s">&#34;&amp;#96;&#34;</span>, <span class="s">&#39;{&#39;</span> =&gt; <span class="s">&#34;&amp;#123;&#34;</span>, <span class="s">&#39;}&#39;</span> =&gt; <span class="s">&#34;&amp;#125;&#34;</span>, <span class="s">&#39;&nbsp;&#39;</span> =&gt; <span class="s">&#34;&amp;nbsp;&#34;</span>}</span></code>
-      </dt>
-      
-    
-  </dl>
 
 
 
@@ -68,23 +61,23 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#escape%28string%3AString%2Cio%3AIO%29-class-method" class="signature"><strong>.escape</strong>(string : String, io : IO)</a>
+        <a href="#escape%28string%3AString%2Cio%3AIO%29%3ANil-class-method" class="signature"><strong>.escape</strong>(string : String, io : IO) : Nil</a>
         
-          <div class="summary"><p>Encodes a string to HTML, but writes to the <code><a href="IO.html">IO</a></code> instance provided.</p></div>
+          <div class="summary"><p>Same as <code><a href="HTML.html#escape%28string%3AString%29%3AString-class-method">.escape(string)</a></code> but ouputs the result to the given <em>io</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#escape%28string%3AString%29%3AString-class-method" class="signature"><strong>.escape</strong>(string : String) : String</a>
         
-          <div class="summary"><p>Encodes a string with HTML entity substitutions.</p></div>
+          <div class="summary"><p>Escapes special characters in HTML, namely <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&#34;</code> and <code>&#39;</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#unescape%28string%3AString%29-class-method" class="signature"><strong>.unescape</strong>(string : String)</a>
+        <a href="#unescape%28string%3AString%29%3AString-class-method" class="signature"><strong>.unescape</strong>(string : String) : String</a>
         
-          <div class="summary"><p>Decodes a string that contains HTML entities.</p></div>
+          <div class="summary"><p>Returns a string where named and numeric character references (e.g.</p></div>
         
       </li>
     
@@ -105,16 +98,17 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="escape(string:String,io:IO)-class-method">
-      <a class="dashingAutolink" name="autolink-2342"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.escape%28string%20%3A%20String%2C%20io%20%3A%20IO%29"></a><div class="signature">
+    <div class="entry-detail" id="escape(string:String,io:IO):Nil-class-method">
+      <a class="dashingAutolink" name="autolink-2451"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.escape%28string%20%3A%20String%2C%20io%20%3A%20IO%29%20%3A%20Nil"></a><div class="signature">
         
-        def self.<strong>escape</strong>(string : <a href="String.html">String</a>, io : <a href="IO.html">IO</a>)
+        def self.<strong>escape</strong>(string : <a href="String.html">String</a>, io : <a href="IO.html">IO</a>) : <a href="Nil.html">Nil</a>
 
         
       </div>
       
         <div class="doc">
-<p>Encodes a string to HTML, but writes to the <code><a href="IO.html">IO</a></code> instance provided.</p>
+<p>Same as <code><a href="HTML.html#escape%28string%3AString%29%3AString-class-method">.escape(string)</a></code> but ouputs the result to
+the given <em>io</em>.</p>
 
 <pre><code>io <span class="o">=</span> <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span>
 <span class="t">HTML</span>.escape(<span class="s">&#34;Crystal &amp; You&#34;</span>, io) <span class="c"># =&gt; nil</span>
@@ -124,13 +118,13 @@ io.to_s                          <span class="c"># =&gt; &#34;Crystal &amp;amp; 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/html.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/html.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="escape(string:String):String-class-method">
-      <a class="dashingAutolink" name="autolink-2343"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.escape%28string%20%3A%20String%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-2452"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.escape%28string%20%3A%20String%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>escape</strong>(string : <a href="String.html">String</a>) : <a href="String.html">String</a>
 
@@ -138,7 +132,8 @@ io.to_s                          <span class="c"># =&gt; &#34;Crystal &amp;amp; 
       </div>
       
         <div class="doc">
-<p>Encodes a string with HTML entity substitutions.</p>
+<p>Escapes special characters in HTML, namely
+<code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&#34;</code> and <code>&#39;</code>.</p>
 
 <pre><code><span class="k">require</span> <span class="s">&#34;html&#34;</span>
 
@@ -148,21 +143,24 @@ io.to_s                          <span class="c"># =&gt; &#34;Crystal &amp;amp; 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/html.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/html.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="unescape(string:String)-class-method">
-      <a class="dashingAutolink" name="autolink-2344"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.unescape%28string%20%3A%20String%29"></a><div class="signature">
+    <div class="entry-detail" id="unescape(string:String):String-class-method">
+      <a class="dashingAutolink" name="autolink-2453"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.unescape%28string%20%3A%20String%29%20%3A%20String"></a><div class="signature">
         
-        def self.<strong>unescape</strong>(string : <a href="String.html">String</a>)
+        def self.<strong>unescape</strong>(string : <a href="String.html">String</a>) : <a href="String.html">String</a>
 
         
       </div>
       
         <div class="doc">
-<p>Decodes a string that contains HTML entities.</p>
+<p>Returns a string where named and numeric character references
+(e.g. &gt;, &gt;, &amp;x3e;) in <em>string</em> are replaced with the corresponding
+unicode characters. This method decodes all HTML5 entities including those
+without a trailing semicolon (such as <code>&amp;copy</code>).</p>
 
 <pre><code><span class="t">HTML</span>.unescape(<span class="s">&#34;Crystal &amp;amp; You&#34;</span>) <span class="c"># =&gt; &#34;Crystal &amp; You&#34;</span></code></pre>
 </div>
@@ -170,7 +168,7 @@ io.to_s                          <span class="c"># =&gt; &#34;Crystal &amp;amp; 
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/html.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/html.cr#L87" target="_blank">View source</a>]
         
       </div>
     </div>

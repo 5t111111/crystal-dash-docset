@@ -1,0 +1,1219 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-235"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/BigDecimal%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>BigDecimal - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> BigDecimal
+
+</h1>
+
+
+  <ul class="superclass-hierarchy">
+<li class="superclass"><a href="BigDecimal.html">BigDecimal</a></li>
+<li class="superclass"><a href="Number.html">Number</a></li>
+<li class="superclass"><a href="Value.html">Value</a></li>
+<li class="superclass"><a href="Object.html">Object</a></li>
+</ul>
+
+
+
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">
+<a href="Comparable.html">Comparable</a>(<a href="BigDecimal.html">BigDecimal</a>)</li>
+  
+    <li class="other-type">
+<a href="Comparable.html">Comparable</a>(<a href="Number.html">Number</a>)</li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big.cr#L11" target="_blank">big.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L16" target="_blank">big/big_decimal.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="DEFAULT_MAX_DIV_ITERATIONS">
+        <strong>DEFAULT_MAX_DIV_ITERATIONS</strong> = <code><span class="n">100_u64</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="TEN">
+        <strong>TEN</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">10</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="ZERO">
+        <strong>ZERO</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">0</span>)</code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28value%3ABigInt%2Cscale%3AUInt64%29-class-method" class="signature"><strong>.new</strong>(value : BigInt, scale : UInt64)</a>
+        
+          <div class="summary"><p>Creates a new <code><a href="BigDecimal.html">BigDecimal</a></code> from <code><a href="BigInt.html">BigInt</a></code>/<code><a href="UInt64.html">UInt64</a></code>, which matches the internal representation.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28value%3AInt%2Cscale%3AInt%29-class-method" class="signature"><strong>.new</strong>(value : Int, scale : Int)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28str%3AString%29-class-method" class="signature"><strong>.new</strong>(str : String)</a>
+        
+          <div class="summary"><p>Creates a new <code><a href="BigDecimal.html">BigDecimal</a></code> from a <code><a href="String.html">String</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28value%3ABigInt%29-class-method" class="signature"><strong>.new</strong>(value : BigInt)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3AInt%29-class-method" class="signature"><strong>.new</strong>(num : Int)</a>
+        
+          <div class="summary"><p>Creates an new <code><a href="BigDecimal.html">BigDecimal</a></code> from <code><a href="Int.html">Int</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3AFloat%29-class-method" class="signature"><strong>.new</strong>(num : Float)</a>
+        
+          <div class="summary"><p>Creating a <code><a href="BigDecimal.html">BigDecimal</a></code> from <code><a href="Float.html">Float</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28num%3ABigDecimal%29-class-method" class="signature"><strong>.new</strong>(num : BigDecimal)</a>
+        
+          <div class="summary"><p>Returns <em>num</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%2A%28other%3ABigDecimal%29%3ABigDecimal-instance-method" class="signature"><strong>#*</strong>(other : BigDecimal) : BigDecimal</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2B%28other%3ABigDecimal%29%3ABigDecimal-instance-method" class="signature"><strong>#+</strong>(other : BigDecimal) : BigDecimal</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28other%3ABigDecimal%29%3ABigDecimal-instance-method" class="signature"><strong>#-</strong>(other : BigDecimal) : BigDecimal</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2F%28other%3ABigDecimal%29%3ABigDecimal-instance-method" class="signature"><strong>#/</strong>(other : BigDecimal) : BigDecimal</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%28other%3ABigDecimal%29%3AInt32-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : BigDecimal) : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%28other%3AInt%29-instance-method" class="signature"><strong>#&lt;=&gt;</strong>(other : Int)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28other%3ABigDecimal%29%3ABool-instance-method" class="signature"><strong>#==</strong>(other : BigDecimal) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#div%28other%3ABigDecimal%2Cmax_div_iterations%3DDEFAULT_MAX_DIV_ITERATIONS%29%3ABigDecimal-instance-method" class="signature"><strong>#div</strong>(other : BigDecimal, max_div_iterations = <span class="t">DEFAULT_MAX_DIV_ITERATIONS</span>) : BigDecimal</a>
+        
+          <div class="summary"><p>Divides self with another <code><a href="BigDecimal.html">BigDecimal</a></code>, with a optionally configurable <em>max_div_iterations</em>, which defines a maximum number of iterations in case the division is not exact.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hash%28hasher%29-instance-method" class="signature"><strong>#hash</strong>(hasher)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#normalize_quotient%28other%3ABigDecimal%2Cquotient%3ABigInt%29%3ABigInt-instance-method" class="signature"><strong>#normalize_quotient</strong>(other : BigDecimal, quotient : BigInt) : BigInt</a>
+        
+          <div class="summary"><p>Returns the <em>quotient</em> as absolutely negative if self and other have different signs, otherwise returns the <em>quotient</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scale%3AUInt64-instance-method" class="signature"><strong>#scale</strong> : UInt64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scale_to%28new_scale%3ABigDecimal%29%3ABigDecimal-instance-method" class="signature"><strong>#scale_to</strong>(new_scale : BigDecimal) : BigDecimal</a>
+        
+          <div class="summary"><p>Scales a <code><a href="BigDecimal.html">BigDecimal</a></code> to another <code><a href="BigDecimal.html">BigDecimal</a></code>, so they can be computed easier.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_big_d-instance-method" class="signature"><strong>#to_big_d</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_f-instance-method" class="signature"><strong>#to_f</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_i-instance-method" class="signature"><strong>#to_i</strong></a>
+        
+          <div class="summary"><p>Converts to integer.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%3AIO%29-instance-method" class="signature"><strong>#to_s</strong>(io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_u-instance-method" class="signature"><strong>#to_u</strong></a>
+        
+          <div class="summary"><p>Converts to unsigned integer.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%3ABigInt-instance-method" class="signature"><strong>#value</strong> : BigInt</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Comparable.html">Comparable</a>(<a href="BigDecimal.html">BigDecimal</a>)</code>
+</h3>
+  
+  
+    <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
+      <span>
+    &lt;</span></a>, 
+    
+  
+    <a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=(other : T)</span>
+    &lt;=</a>, 
+    
+  
+    <a href="Comparable.html#%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=&gt;(other : T)</span>
+    &lt;=&gt;</a>, 
+    
+  
+    <a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>==(other : T)</span>
+    ==</a>, 
+    
+  
+    <a href="Comparable.html#%3E%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;(other : T)</span>
+    &gt;</a>, 
+    
+  
+    <a href="Comparable.html#%3E%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;=(other : T)</span>
+    &gt;=</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Comparable.html">Comparable</a>(<a href="Number.html">Number</a>)</code>
+</h3>
+  
+  
+    <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
+      <span>
+    &lt;</span></a>, 
+    
+  
+    <a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=(other : T)</span>
+    &lt;=</a>, 
+    
+  
+    <a href="Comparable.html#%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=&gt;(other : T)</span>
+    &lt;=&gt;</a>, 
+    
+  
+    <a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>==(other : T)</span>
+    ==</a>, 
+    
+  
+    <a href="Comparable.html#%3E%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;(other : T)</span>
+    &gt;</a>, 
+    
+  
+    <a href="Comparable.html#%3E%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;=(other : T)</span>
+    &gt;=</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="Number.html">Number</a></code>
+</h3>
+  
+  
+    <a href="Number.html#%2A%28other%3AComplex%29-instance-method" class="tooltip">
+      <span>*(other : Complex)<br/>*(other : BigFloat)</span>
+    *</a>, 
+    
+  
+    <a href="Number.html#%2B%28other%3ABigFloat%29-instance-method" class="tooltip">
+      <span>+(other : BigFloat)<br/>+(other : Complex)<br/>+</span>
+    +</a>, 
+    
+  
+    <a href="Number.html#-%28other%3AComplex%29-instance-method" class="tooltip">
+      <span>-(other : Complex)<br/>-(other : BigFloat)</span>
+    -</a>, 
+    
+  
+    <a href="Number.html#%2F%28other%3AComplex%29-instance-method" class="tooltip">
+      <span>/(other : Complex)</span>
+    /</a>, 
+    
+  
+    <a href="Number.html#%28other%3ABigFloat%29-instance-method" class="tooltip">
+      <span>&lt;=&gt;(other : BigFloat)<br/>&lt;=&gt;(other)</span>
+    &lt;=&gt;</a>, 
+    
+  
+    <a href="Number.html#%3D%3D%28other%3AComplex%29-instance-method" class="tooltip">
+      <span>==(other : Complex)</span>
+    ==</a>, 
+    
+  
+    <a href="Number.html#abs-instance-method" class="tooltip">
+      <span>abs</span>
+    abs</a>, 
+    
+  
+    <a href="Number.html#abs2-instance-method" class="tooltip">
+      <span>abs2</span>
+    abs2</a>, 
+    
+  
+    <a href="Number.html#cis-instance-method" class="tooltip">
+      <span>cis</span>
+    cis</a>, 
+    
+  
+    <a href="Number.html#clamp%28min%2Cmax%29-instance-method" class="tooltip">
+      <span>clamp(min, max)<br/>clamp(range : Range)</span>
+    clamp</a>, 
+    
+  
+    <a href="Number.html#divmod%28number%29-instance-method" class="tooltip">
+      <span>divmod(number)</span>
+    divmod</a>, 
+    
+  
+    <a href="Number.html#i-instance-method" class="tooltip">
+      <span>i</span>
+    i</a>, 
+    
+  
+    <a href="Number.html#round%28digits%2Cbase%3D10%29-instance-method" class="tooltip">
+      <span>round(digits, base = <span class="n">10</span>)</span>
+    round</a>, 
+    
+  
+    <a href="Number.html#sign-instance-method" class="tooltip">
+      <span>sign</span>
+    sign</a>, 
+    
+  
+    <a href="Number.html#significant%28digits%2Cbase%3D10%29-instance-method" class="tooltip">
+      <span>significant(digits, base = <span class="n">10</span>)</span>
+    significant</a>, 
+    
+  
+    <a href="Number.html#step%28%2A%2Cto%3Dnil%2Cby%3D1%29-instance-method" class="tooltip">
+      <span>step(*, to = <span class="n">nil</span>, by = <span class="n">1</span>)<br/>step(*, to = <span class="n">nil</span>, by = <span class="n">1</span>, &amp;block)</span>
+    step</a>, 
+    
+  
+    <a href="Number.html#to_big_f-instance-method" class="tooltip">
+      <span>to_big_f</span>
+    to_big_f</a>, 
+    
+  
+    <a href="Number.html#to_c-instance-method" class="tooltip">
+      <span>to_c</span>
+    to_c</a>, 
+    
+  
+    <a href="Number.html#to_yaml%28yaml%3AYAML%3A%3ANodes%3A%3ABuilder%29-instance-method" class="tooltip">
+      <span>to_yaml(yaml : YAML::Nodes::Builder)</span>
+    to_yaml</a>, 
+    
+  
+    <a href="Number.html#zero%3F%3ABool-instance-method" class="tooltip">
+      <span>zero? : Bool</span>
+    zero?</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from struct <code><a href="Number.html">Number</a></code>
+</h3>
+  
+  
+    <a href="Number.html#zero%3Aself-class-method" class="tooltip">
+      <span>zero : self</span>
+    zero</a>
+    
+  
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Comparable.html">Comparable</a>(<a href="BigFloat.html">BigFloat</a>)</code>
+</h3>
+  
+  
+    <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
+      <span>
+    &lt;</span></a>, 
+    
+  
+    <a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=(other : T)</span>
+    &lt;=</a>, 
+    
+  
+    <a href="Comparable.html#%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=&gt;(other : T)</span>
+    &lt;=&gt;</a>, 
+    
+  
+    <a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>==(other : T)</span>
+    ==</a>, 
+    
+  
+    <a href="Comparable.html#%3E%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;(other : T)</span>
+    &gt;</a>, 
+    
+  
+    <a href="Comparable.html#%3E%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;=(other : T)</span>
+    &gt;=</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Comparable.html">Comparable</a>(<a href="Number.html">Number</a>)</code>
+</h3>
+  
+  
+    <a href="Comparable.html#%3C%28other%3AT%29-instance-method" class="tooltip">
+      <span>
+    &lt;</span></a>, 
+    
+  
+    <a href="Comparable.html#%3C%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=(other : T)</span>
+    &lt;=</a>, 
+    
+  
+    <a href="Comparable.html#%28other%3AT%29-instance-method" class="tooltip">
+      <span>&lt;=&gt;(other : T)</span>
+    &lt;=&gt;</a>, 
+    
+  
+    <a href="Comparable.html#%3D%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>==(other : T)</span>
+    ==</a>, 
+    
+  
+    <a href="Comparable.html#%3E%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;(other : T)</span>
+    &gt;</a>, 
+    
+  
+    <a href="Comparable.html#%3E%3D%28other%3AT%29-instance-method" class="tooltip">
+      <span>&gt;=(other : T)</span>
+    &gt;=</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="Value.html">Value</a></code>
+</h3>
+  
+  
+    <a href="Value.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="Value.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="Object.html#%21%3D%28other%29-instance-method" class="tooltip">
+      <span>!=(other)</span>
+    !=</a>, 
+    
+  
+    <a href="Object.html#%21~%28other%29-instance-method" class="tooltip">
+      <span>!~(other)</span>
+    !~</a>, 
+    
+  
+    <a href="Object.html#%3D%3D%28other%29-instance-method" class="tooltip">
+      <span>==(other)</span>
+    ==</a>, 
+    
+  
+    <a href="Object.html#%3D%3D%3D%28other%3AJSON%3A%3AAny%29-instance-method" class="tooltip">
+      <span>===(other : JSON::Any)<br/>===(other : YAML::Any)<br/>===(other)</span>
+    ===</a>, 
+    
+  
+    <a href="Object.html#%3D~%28other%29-instance-method" class="tooltip">
+      <span>=~(other)</span>
+    =~</a>, 
+    
+  
+    <a href="Object.html#class-instance-method" class="tooltip">
+      <span>class</span>
+    class</a>, 
+    
+  
+    <a href="Object.html#dup-instance-method" class="tooltip">
+      <span>dup</span>
+    dup</a>, 
+    
+  
+    <a href="Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
+    hash</a>, 
+    
+  
+    <a href="Object.html#inspect%28io%3AIO%29-instance-method" class="tooltip">
+      <span>inspect(io : IO)<br/>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="Object.html#itself-instance-method" class="tooltip">
+      <span>itself</span>
+    itself</a>, 
+    
+  
+    <a href="Object.html#not_nil%21-instance-method" class="tooltip">
+      <span>not_nil!</span>
+    not_nil!</a>, 
+    
+  
+    <a href="Object.html#pretty_inspect%28width%3D79%2Cnewline%3D%26quot%3B%5Cn%26quot%3B%2Cindent%3D0%29%3AString-instance-method" class="tooltip">
+      <span>pretty_inspect(width = <span class="n">79</span>, newline = <span class="s">&#34;\n&#34;</span>, indent = <span class="n">0</span>) : String</span>
+    pretty_inspect</a>, 
+    
+  
+    <a href="Object.html#pretty_print%28pp%3APrettyPrint%29%3ANil-instance-method" class="tooltip">
+      <span>pretty_print(pp : PrettyPrint) : Nil</span>
+    pretty_print</a>, 
+    
+  
+    <a href="Object.html#tap%28%26block%29-instance-method" class="tooltip">
+      <span>tap(&amp;block)</span>
+    tap</a>, 
+    
+  
+    <a href="Object.html#to_json%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_json(io : IO)<br/>to_json</span>
+    to_json</a>, 
+    
+  
+    <a href="Object.html#to_pretty_json%28indent%3AString%3D%26quot%3B%26quot%3B%29-instance-method" class="tooltip">
+      <span>to_pretty_json(indent : String = <span class="s">&#34;  &#34;</span>)<br/>to_pretty_json(io : IO, indent : String = <span class="s">&#34;  &#34;</span>)</span>
+    to_pretty_json</a>, 
+    
+  
+    <a href="Object.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="Object.html#to_yaml%28io%3AIO%29-instance-method" class="tooltip">
+      <span>to_yaml(io : IO)<br/>to_yaml</span>
+    to_yaml</a>, 
+    
+  
+    <a href="Object.html#try%28%26block%29-instance-method" class="tooltip">
+      <span>try(&amp;block)</span>
+    try</a>, 
+    
+  
+    <a href="Object.html#unsafe_as%28type%3AT.class%29forallT-instance-method" class="tooltip">
+      <span>unsafe_as(type : T.class) forall T</span>
+    unsafe_as</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from class <code><a href="Object.html">Object</a></code>
+</h3>
+  
+  
+    <a href="Object.html#from_json%28string_or_io%2Croot%3AString%29%3Aself-class-method" class="tooltip">
+      <span>from_json(string_or_io, root : String) : self<br/>from_json(string_or_io) : self</span>
+    from_json</a>, 
+    
+  
+    <a href="Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
+    from_yaml</a>
+    
+  
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(value:BigInt,scale:UInt64)-class-method">
+      <a class="dashingAutolink" name="autolink-208"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28value%20%3A%20BigInt%2C%20scale%20%3A%20UInt64%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(value : <a href="BigInt.html">BigInt</a>, scale : <a href="UInt64.html">UInt64</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates a new <code><a href="BigDecimal.html">BigDecimal</a></code> from <code><a href="BigInt.html">BigInt</a></code>/<code><a href="UInt64.html">UInt64</a></code>, which matches the internal representation.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L82" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(value:Int,scale:Int)-class-method">
+      <a class="dashingAutolink" name="autolink-209"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28value%20%3A%20Int%2C%20scale%20%3A%20Int%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(value : <a href="Int.html">Int</a>, scale : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(str:String)-class-method">
+      <a class="dashingAutolink" name="autolink-210"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28str%20%3A%20String%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(str : <a href="String.html">String</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creates a new <code><a href="BigDecimal.html">BigDecimal</a></code> from a <code><a href="String.html">String</a></code>.</p>
+
+<p>Allows only valid number strings with an optional negative sign.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(value:BigInt)-class-method">
+      <a class="dashingAutolink" name="autolink-211"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28value%20%3A%20BigInt%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(value : <a href="BigInt.html">BigInt</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L89" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:Int)-class-method">
+      <a class="dashingAutolink" name="autolink-212"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Int%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Creates an new <code><a href="BigDecimal.html">BigDecimal</a></code> from <code><a href="Int.html">Int</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:Float)-class-method">
+      <a class="dashingAutolink" name="autolink-213"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20Float%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="Float.html">Float</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Creating a <code><a href="BigDecimal.html">BigDecimal</a></code> from <code><a href="Float.html">Float</a></code>.</p>
+
+<p><span class="flag purple">NOTE</span>  Floats are fundamentally less precise than BigDecimals, which makes initialization from them risky.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L77" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(num:BigDecimal)-class-method">
+      <a class="dashingAutolink" name="autolink-214"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28num%20%3A%20BigDecimal%29"></a><div class="signature">
+        
+        def self.<strong>new</strong>(num : <a href="BigDecimal.html">BigDecimal</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns <em>num</em>. Useful for generic code that does <code>T.new(...)</code> with <code>T</code>
+being a <code><a href="Number.html">Number</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L99" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new-class-method">
+      <a class="dashingAutolink" name="autolink-215"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new"></a><div class="signature">
+        
+        def self.<strong>new</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L93" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="*(other:BigDecimal):BigDecimal-instance-method">
+      <a class="dashingAutolink" name="autolink-216"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2A%28other%20%3A%20BigDecimal%29%20%3A%20BigDecimal"></a><div class="signature">
+        
+        def <strong>*</strong>(other : <a href="BigDecimal.html">BigDecimal</a>) : <a href="BigDecimal.html">BigDecimal</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L127" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(other:BigDecimal):BigDecimal-instance-method">
+      <a class="dashingAutolink" name="autolink-217"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2B%28other%20%3A%20BigDecimal%29%20%3A%20BigDecimal"></a><div class="signature">
+        
+        def <strong>+</strong>(other : <a href="BigDecimal.html">BigDecimal</a>) : <a href="BigDecimal.html">BigDecimal</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L103" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(other:BigDecimal):BigDecimal-instance-method">
+      <a class="dashingAutolink" name="autolink-218"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20-%28other%20%3A%20BigDecimal%29%20%3A%20BigDecimal"></a><div class="signature">
+        
+        def <strong>-</strong>(other : <a href="BigDecimal.html">BigDecimal</a>) : <a href="BigDecimal.html">BigDecimal</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L115" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="/(other:BigDecimal):BigDecimal-instance-method">
+      <a class="dashingAutolink" name="autolink-219"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%2F%28other%20%3A%20BigDecimal%29%20%3A%20BigDecimal"></a><div class="signature">
+        
+        def <strong>/</strong>(other : <a href="BigDecimal.html">BigDecimal</a>) : <a href="BigDecimal.html">BigDecimal</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L131" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="(other:BigDecimal):Int32-instance-method">
+      <a class="dashingAutolink" name="autolink-220"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20BigDecimal%29%20%3A%20Int32"></a><div class="signature">
+        
+        def <strong>&lt;=&gt;</strong>(other : <a href="BigDecimal.html">BigDecimal</a>) : <a href="Int32.html">Int32</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L166" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="(other:Int)-instance-method">
+      <a class="dashingAutolink" name="autolink-221"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3C%3D%3E%28other%20%3A%20Int%29"></a><div class="signature">
+        
+        def <strong>&lt;=&gt;</strong>(other : <a href="Int.html">Int</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L176" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="==(other:BigDecimal):Bool-instance-method">
+      <a class="dashingAutolink" name="autolink-222"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20%3D%3D%28other%20%3A%20BigDecimal%29%20%3A%20Bool"></a><div class="signature">
+        
+        def <strong>==</strong>(other : <a href="BigDecimal.html">BigDecimal</a>) : <a href="Bool.html">Bool</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L180" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone-instance-method">
+      <a class="dashingAutolink" name="autolink-223"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20clone"></a><div class="signature">
+        
+        def <strong>clone</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L260" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="div(other:BigDecimal,max_div_iterations=DEFAULT_MAX_DIV_ITERATIONS):BigDecimal-instance-method">
+      <a class="dashingAutolink" name="autolink-224"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20div%28other%20%3A%20BigDecimal%2C%20max_div_iterations%20%3D%20DEFAULT_MAX_DIV_ITERATIONS%29%20%3A%20BigDecimal"></a><div class="signature">
+        
+        def <strong>div</strong>(other : <a href="BigDecimal.html">BigDecimal</a>, max_div_iterations = <span class="t">DEFAULT_MAX_DIV_ITERATIONS</span>) : <a href="BigDecimal.html">BigDecimal</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Divides self with another <code><a href="BigDecimal.html">BigDecimal</a></code>, with a optionally configurable <em>max_div_iterations</em>, which
+defines a maximum number of iterations in case the division is not exact.</p>
+
+<pre><code><span class="t">BigDecimal</span>(<span class="n">1</span>).div(<span class="t">BigDecimal</span>(<span class="n">2</span>))    <span class="c"># =&gt; BigDecimal(@value=5, @scale=2)</span>
+<span class="t">BigDecimal</span>(<span class="n">1</span>).div(<span class="t">BigDecimal</span>(<span class="n">3</span>), <span class="n">5</span>) <span class="c"># =&gt; BigDecimal(@value=33333, @scale=5)</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L142" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hash(hasher)-instance-method">
+      <a class="dashingAutolink" name="autolink-225"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20hash%28hasher%29"></a><div class="signature">
+        
+        def <strong>hash</strong>(hasher)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L264" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="normalize_quotient(other:BigDecimal,quotient:BigInt):BigInt-instance-method">
+      <a class="dashingAutolink" name="autolink-226"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20normalize_quotient%28other%20%3A%20BigDecimal%2C%20quotient%20%3A%20BigInt%29%20%3A%20BigInt"></a><div class="signature">
+        
+        def <strong>normalize_quotient</strong>(other : <a href="BigDecimal.html">BigDecimal</a>, quotient : <a href="BigInt.html">BigInt</a>) : <a href="BigInt.html">BigInt</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the <em>quotient</em> as absolutely negative if self and other have different signs,
+otherwise returns the <em>quotient</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L270" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scale:UInt64-instance-method">
+      <a class="dashingAutolink" name="autolink-227"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scale%20%3A%20UInt64"></a><div class="signature">
+        
+        def <strong>scale</strong> : <a href="UInt64.html">UInt64</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scale_to(new_scale:BigDecimal):BigDecimal-instance-method">
+      <a class="dashingAutolink" name="autolink-228"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scale_to%28new_scale%20%3A%20BigDecimal%29%20%3A%20BigDecimal"></a><div class="signature">
+        
+        def <strong>scale_to</strong>(new_scale : <a href="BigDecimal.html">BigDecimal</a>) : <a href="BigDecimal.html">BigDecimal</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Scales a <code><a href="BigDecimal.html">BigDecimal</a></code> to another <code><a href="BigDecimal.html">BigDecimal</a></code>, so they can be
+computed easier.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L194" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_big_d-instance-method">
+      <a class="dashingAutolink" name="autolink-229"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_big_d"></a><div class="signature">
+        
+        def <strong>to_big_d</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L237" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_f-instance-method">
+      <a class="dashingAutolink" name="autolink-230"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_f"></a><div class="signature">
+        
+        def <strong>to_f</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L256" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_i-instance-method">
+      <a class="dashingAutolink" name="autolink-231"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_i"></a><div class="signature">
+        
+        def <strong>to_i</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Converts to integer. Truncates anything on the right side of the decimal point.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L242" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io:IO)-instance-method">
+      <a class="dashingAutolink" name="autolink-232"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_s%28io%20%3A%20IO%29"></a><div class="signature">
+        
+        def <strong>to_s</strong>(io : <a href="IO.html">IO</a>)
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L210" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_u-instance-method">
+      <a class="dashingAutolink" name="autolink-233"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20to_u"></a><div class="signature">
+        
+        def <strong>to_u</strong>
+
+        
+      </div>
+      
+        <div class="doc"><p>Converts to unsigned integer. Truncates anything on the right side of the decimal point,
+converting negative to positive.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L252" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value:BigInt-instance-method">
+      <a class="dashingAutolink" name="autolink-234"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20value%20%3A%20BigInt"></a><div class="signature">
+        
+        def <strong>value</strong> : <a href="BigInt.html">BigInt</a>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/big/big_decimal.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+</body></html>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-6053"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/TCPServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>TCPServer - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-6562"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/TCPServer%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>TCPServer - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 <li class="superclass"><a href="TCPSocket.html">TCPSocket</a></li>
 <li class="superclass"><a href="IPSocket.html">IPSocket</a></li>
 <li class="superclass"><a href="Socket.html">Socket</a></li>
-<li class="superclass"><a href="IO/FileDescriptor.html">IO::FileDescriptor</a></li>
+<li class="superclass"><a href="IO.html">IO</a></li>
 <li class="superclass"><a href="Reference.html">Reference</a></li>
 <li class="superclass"><a href="Object.html">Object</a></li>
 </ul>
@@ -39,12 +39,14 @@
 
 <pre><code><span class="k">require</span> <span class="s">&#34;socket&#34;</span>
 
+<span class="k">def</span> <span class="m">handle_client</span>(client)
+  message <span class="o">=</span> client.gets
+  client.puts message
+<span class="k">end</span>
+
 server <span class="o">=</span> <span class="t">TCPServer</span>.<span class="k">new</span>(<span class="s">&#34;localhost&#34;</span>, <span class="n">1234</span>)
-loop <span class="k">do</span>
-  server.accept <span class="k">do</span> <span class="o">|</span>client<span class="o">|</span>
-    message <span class="o">=</span> client.gets
-    client <span class="o">&lt;&lt;</span> message <span class="c"># echo the message back</span>
-  <span class="k">end</span>
+<span class="k">while</span> client <span class="o">=</span> server.accept?
+  spawn handle_client(client)
 <span class="k">end</span></code></pre>
 
 <p>Options:</p>
@@ -79,7 +81,7 @@ loop <span class="k">do</span>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/socket/tcp_server.cr#L21" target="_blank">socket/tcp_server.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/socket/tcp_server.cr#L23" target="_blank">socket/tcp_server.cr</a>
     
     <br/>
   
@@ -296,9 +298,19 @@ loop <span class="k">do</span>
     accept?</a>, 
     
   
-    <a href="Socket.html#bind%28host%3AString%2Cport%3AInt%29-instance-method" class="tooltip">
-      <span>bind(host : String, port : Int)<br/>bind(port : Int)<br/>bind(addr)<br/>bind(addr, &amp;block)</span>
+    <a href="Socket.html#bind%28addr%2C%26block%29-instance-method" class="tooltip">
+      <span>bind(addr, &amp;block)<br/>bind(host : String, port : Int)<br/>bind(port : Int)<br/>bind(addr)</span>
     bind</a>, 
+    
+  
+    <a href="Socket.html#blocking-instance-method" class="tooltip">
+      <span>blocking</span>
+    blocking</a>, 
+    
+  
+    <a href="Socket.html#blocking%3D%28value%29-instance-method" class="tooltip">
+      <span>blocking=(value)</span>
+    blocking=</a>, 
     
   
     <a href="Socket.html#broadcast%3D%28val%3ABool%29-instance-method" class="tooltip">
@@ -311,6 +323,16 @@ loop <span class="k">do</span>
     broadcast?</a>, 
     
   
+    <a href="Socket.html#close_on_exec%3D%28arg%3ABool%29-instance-method" class="tooltip">
+      <span>close_on_exec=(arg : Bool)</span>
+    close_on_exec=</a>, 
+    
+  
+    <a href="Socket.html#close_on_exec%3F-instance-method" class="tooltip">
+      <span>close_on_exec?</span>
+    close_on_exec?</a>, 
+    
+  
     <a href="Socket.html#close_read-instance-method" class="tooltip">
       <span>close_read</span>
     close_read</a>, 
@@ -321,14 +343,34 @@ loop <span class="k">do</span>
     close_write</a>, 
     
   
-    <a href="Socket.html#connect%28host%3AString%2Cport%3AInt%2Cconnect_timeout%3Dnil%29-instance-method" class="tooltip">
-      <span>connect(host : String, port : Int, connect_timeout = <span class="n">nil</span>)<br/>connect(addr, timeout = <span class="n">nil</span>) : Nil<br/>connect(addr, timeout = <span class="n">nil</span>, &amp;block)</span>
+    <a href="Socket.html#closed%3F%3ABool-instance-method" class="tooltip">
+      <span>closed? : Bool</span>
+    closed?</a>, 
+    
+  
+    <a href="Socket.html#connect%28addr%2Ctimeout%3Dnil%2C%26block%29-instance-method" class="tooltip">
+      <span>connect(addr, timeout = <span class="n">nil</span>, &amp;block)<br/>connect(addr, timeout = <span class="n">nil</span>) : Nil<br/>connect(host : String, port : Int, connect_timeout = <span class="n">nil</span>)</span>
     connect</a>, 
     
   
     <a href="Socket.html#family%3AFamily-instance-method" class="tooltip">
       <span>family : Family</span>
     family</a>, 
+    
+  
+    <a href="Socket.html#fcntl%28cmd%2Carg%3D0%29-instance-method" class="tooltip">
+      <span>fcntl(cmd, arg = <span class="n">0</span>)</span>
+    fcntl</a>, 
+    
+  
+    <a href="Socket.html#fd%3AInt32-instance-method" class="tooltip">
+      <span>fd : Int32</span>
+    fd</a>, 
+    
+  
+    <a href="Socket.html#finalize-instance-method" class="tooltip">
+      <span>finalize</span>
+    finalize</a>, 
     
   
     <a href="Socket.html#getsockopt%28optname%2Coptval%2Clevel%3DLibC%3A%3ASOL_SOCKET%29-instance-method" class="tooltip">
@@ -426,6 +468,11 @@ loop <span class="k">do</span>
     setsockopt</a>, 
     
   
+    <a href="Socket.html#tty%3F-instance-method" class="tooltip">
+      <span>tty?</span>
+    tty?</a>, 
+    
+  
     <a href="Socket.html#type%3AType-instance-method" class="tooltip">
       <span>type : Type</span>
     type</a>
@@ -439,8 +486,8 @@ loop <span class="k">do</span>
 </h3>
   
   
-    <a href="Socket.html#new%28fd%3AInt32%2Cfamily%2Ctype%2Cprotocol%3DProtocol%3A%3AIP%29-class-method" class="tooltip">
-      <span>new(fd : Int32, family, type, protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>)<br/>new(family, type, protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, blocking = <span class="n">false</span>)</span>
+    <a href="Socket.html#new%28fd%3AInt32%2Cfamily%2Ctype%2Cprotocol%3DProtocol%3A%3AIP%2Cblocking%3Dfalse%29-class-method" class="tooltip">
+      <span>new(fd : Int32, family, type, protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, blocking = <span class="n">false</span>)<br/>new(family, type, protocol = <span class="t">Protocol</span><span class="t">::</span><span class="t">IP</span>, blocking = <span class="n">false</span>)</span>
     new</a>
     
   
@@ -451,6 +498,11 @@ loop <span class="k">do</span>
   <h3>Class methods inherited from class <code><a href="Socket.html">Socket</a></code>
 </h3>
   
+  
+    <a href="Socket.html#fcntl%28fd%2Ccmd%2Carg%3D0%29-class-method" class="tooltip">
+      <span>fcntl(fd, cmd, arg = <span class="n">0</span>)</span>
+    fcntl</a>, 
+    
   
     <a href="Socket.html#ip%3F%28string%3AString%29-class-method" class="tooltip">
       <span>ip?(string : String)</span>
@@ -477,142 +529,37 @@ loop <span class="k">do</span>
   
     
 
-  <h3>Instance methods inherited from class <code><a href="IO/FileDescriptor.html">IO::FileDescriptor</a></code>
+  <h3>Instance methods inherited from module <code><a href="IO/Syscall.html">IO::Syscall</a></code>
 </h3>
   
   
-    <a href="IO/FileDescriptor.html#blocking-instance-method" class="tooltip">
-      <span>blocking</span>
-    blocking</a>, 
+    <a href="IO/Syscall.html#read_syscall_helper%28slice%3ABytes%2Cerrno_msg%3AString%2C%26block%29%3AInt32-instance-method" class="tooltip">
+      <span>read_syscall_helper(slice : Bytes, errno_msg : String, &amp;block) : Int32</span>
+    read_syscall_helper</a>, 
     
   
-    <a href="IO/FileDescriptor.html#blocking%3D%28value%29-instance-method" class="tooltip">
-      <span>blocking=(value)</span>
-    blocking=</a>, 
+    <a href="IO/Syscall.html#read_timeout%3ATime%3A%3ASpan%3F-instance-method" class="tooltip">
+      <span>read_timeout : Time::Span?</span>
+    read_timeout</a>, 
     
   
-    <a href="IO/FileDescriptor.html#close_on_exec%3D%28arg%3ABool%29-instance-method" class="tooltip">
-      <span>close_on_exec=(arg : Bool)</span>
-    close_on_exec=</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#close_on_exec%3F-instance-method" class="tooltip">
-      <span>close_on_exec?</span>
-    close_on_exec?</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#closed%3F%3ABool-instance-method" class="tooltip">
-      <span>closed? : Bool</span>
-    closed?</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#cooked%28%26block%29-instance-method" class="tooltip">
-      <span>cooked(&amp;block)</span>
-    cooked</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#cooked%21-instance-method" class="tooltip">
-      <span>cooked!</span>
-    cooked!</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#fcntl%28cmd%2Carg%3D0%29-instance-method" class="tooltip">
-      <span>fcntl(cmd, arg = <span class="n">0</span>)</span>
-    fcntl</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#fd%3AInt32-instance-method" class="tooltip">
-      <span>fd : Int32</span>
-    fd</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#finalize-instance-method" class="tooltip">
-      <span>finalize</span>
-    finalize</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#inspect%28io%29-instance-method" class="tooltip">
-      <span>inspect(io)</span>
-    inspect</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#noecho%28%26block%29-instance-method" class="tooltip">
-      <span>noecho(&amp;block)</span>
-    noecho</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#noecho%21-instance-method" class="tooltip">
-      <span>noecho!</span>
-    noecho!</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#pos-instance-method" class="tooltip">
-      <span>pos</span>
-    pos</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#pos%3D%28value%29-instance-method" class="tooltip">
-      <span>pos=(value)</span>
-    pos=</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#pretty_print%28pp%29-instance-method" class="tooltip">
-      <span>pretty_print(pp)</span>
-    pretty_print</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#raw%28%26block%29-instance-method" class="tooltip">
-      <span>raw(&amp;block)</span>
-    raw</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#raw%21-instance-method" class="tooltip">
-      <span>raw!</span>
-    raw!</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#read_timeout%3D%28read_timeout%3ATime%3A%3ASpan%29-instance-method" class="tooltip">
-      <span>read_timeout=(read_timeout : Time::Span)<br/>read_timeout=(read_timeout : Nil)<br/>read_timeout=(read_timeout : Number)</span>
+    <a href="IO/Syscall.html#read_timeout%3D%28read_timeout%3ANumber%29%3ANumber-instance-method" class="tooltip">
+      <span>read_timeout=(read_timeout : Number) : Number<br/>read_timeout=(timeout : Time::Span?) : Time::Span?</span>
     read_timeout=</a>, 
     
   
-    <a href="IO/FileDescriptor.html#reopen%28other%3AIO%3A%3AFileDescriptor%29-instance-method" class="tooltip">
-      <span>reopen(other : IO::FileDescriptor)</span>
-    reopen</a>, 
+    <a href="IO/Syscall.html#write_syscall_helper%28slice%3ABytes%2Cerrno_msg%3AString%2C%26block%29%3ANil-instance-method" class="tooltip">
+      <span>write_syscall_helper(slice : Bytes, errno_msg : String, &amp;block) : Nil</span>
+    write_syscall_helper</a>, 
     
   
-    <a href="IO/FileDescriptor.html#seek%28offset%2Cwhence%3ASeek%3DSeek%3A%3ASet%29-instance-method" class="tooltip">
-      <span>seek(offset, whence : Seek = <span class="t">Seek</span><span class="t">::</span><span class="t">Set</span>)<br/>seek(offset, whence : Seek = <span class="t">Seek</span><span class="t">::</span><span class="t">Set</span>, &amp;block)</span>
-    seek</a>, 
+    <a href="IO/Syscall.html#write_timeout%3ATime%3A%3ASpan%3F-instance-method" class="tooltip">
+      <span>write_timeout : Time::Span?</span>
+    write_timeout</a>, 
     
   
-    <a href="IO/FileDescriptor.html#stat-instance-method" class="tooltip">
-      <span>stat</span>
-    stat</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#tell-instance-method" class="tooltip">
-      <span>tell</span>
-    tell</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#tty%3F-instance-method" class="tooltip">
-      <span>tty?</span>
-    tty?</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#write_timed_out%3ABool-instance-method" class="tooltip">
-      <span>write_timed_out : Bool</span>
-    write_timed_out</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#write_timed_out%3D%28write_timed_out%3ABool%29-instance-method" class="tooltip">
-      <span>write_timed_out=(write_timed_out : Bool)</span>
-    write_timed_out=</a>, 
-    
-  
-    <a href="IO/FileDescriptor.html#write_timeout%3D%28write_timeout%3ANumber%29-instance-method" class="tooltip">
-      <span>write_timeout=(write_timeout : Number)<br/>write_timeout=(write_timeout : Time::Span)<br/>write_timeout=(write_timeout : Nil)</span>
+    <a href="IO/Syscall.html#write_timeout%3D%28write_timeout%3ANumber%29%3ANumber-instance-method" class="tooltip">
+      <span>write_timeout=(write_timeout : Number) : Number<br/>write_timeout=(timeout : Time::Span?) : Time::Span?</span>
     write_timeout=</a>
     
   
@@ -620,28 +567,8 @@ loop <span class="k">do</span>
 
     
 
-  <h3>Constructor methods inherited from class <code><a href="IO/FileDescriptor.html">IO::FileDescriptor</a></code>
-</h3>
-  
-  
-    <a href="IO/FileDescriptor.html#new%28fd%3AInt32%2Cblocking%3Dfalse%2Cedge_triggerable%3Dfalse%29-class-method" class="tooltip">
-      <span>new(fd : Int32, blocking = <span class="n">false</span>, edge_triggerable = <span class="n">false</span>)</span>
-    new</a>
-    
-  
-
 
     
-
-  <h3>Class methods inherited from class <code><a href="IO/FileDescriptor.html">IO::FileDescriptor</a></code>
-</h3>
-  
-  
-    <a href="IO/FileDescriptor.html#fcntl%28fd%2Ccmd%2Carg%3D0%29-class-method" class="tooltip">
-      <span>fcntl(fd, cmd, arg = <span class="n">0</span>)</span>
-    fcntl</a>
-    
-  
 
 
   
@@ -737,7 +664,7 @@ loop <span class="k">do</span>
   
     
 
-  <h3>Instance methods inherited from module <code><a href="IO.html">IO</a></code>
+  <h3>Instance methods inherited from class <code><a href="IO.html">IO</a></code>
 </h3>
   
   
@@ -756,8 +683,8 @@ loop <span class="k">do</span>
     closed?</a>, 
     
   
-    <a href="IO.html#each_byte-instance-method" class="tooltip">
-      <span>each_byte<br/>each_byte(&amp;block) : Nil</span>
+    <a href="IO.html#each_byte%28%26block%29%3ANil-instance-method" class="tooltip">
+      <span>each_byte(&amp;block) : Nil<br/>each_byte</span>
     each_byte</a>, 
     
   
@@ -781,8 +708,8 @@ loop <span class="k">do</span>
     flush</a>, 
     
   
-    <a href="IO.html#gets%28limit%3AInt%2Cchomp%3Dfalse%29%3AString%3F-instance-method" class="tooltip">
-      <span>gets(limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?<br/>gets(chomp = <span class="n">true</span>) : String?<br/>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?</span>
+    <a href="IO.html#gets%28delimiter%3AChar%2Climit%3AInt%2Cchomp%3Dfalse%29%3AString%3F-instance-method" class="tooltip">
+      <span>gets(delimiter : Char, limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : Char, chomp = <span class="n">false</span>) : String?<br/>gets(chomp = <span class="n">true</span>) : String?<br/>gets(limit : Int, chomp = <span class="n">false</span>) : String?<br/>gets(delimiter : String, chomp = <span class="n">false</span>) : String?</span>
     gets</a>, 
     
   
@@ -796,13 +723,23 @@ loop <span class="k">do</span>
     peek</a>, 
     
   
+    <a href="IO.html#pos-instance-method" class="tooltip">
+      <span>pos</span>
+    pos</a>, 
+    
+  
+    <a href="IO.html#pos%3D%28value%29-instance-method" class="tooltip">
+      <span>pos=(value)</span>
+    pos=</a>, 
+    
+  
     <a href="IO.html#print%28%2Aobjects%3A_%29%3ANil-instance-method" class="tooltip">
       <span>print(*objects : _) : Nil<br/>print(obj) : Nil</span>
     print</a>, 
     
   
-    <a href="IO.html#printf%28format_string%2Cargs%3AArray%7CTuple%29%3ANil-instance-method" class="tooltip">
-      <span>printf(format_string, args : Array | Tuple) : Nil<br/>printf(format_string, *args) : Nil</span>
+    <a href="IO.html#printf%28format_string%2C%2Aargs%29%3ANil-instance-method" class="tooltip">
+      <span>printf(format_string, *args) : Nil<br/>printf(format_string, args : Array | Tuple) : Nil</span>
     printf</a>, 
     
   
@@ -814,6 +751,11 @@ loop <span class="k">do</span>
     <a href="IO.html#read%28slice%3ABytes%29-instance-method" class="tooltip">
       <span>read(slice : Bytes)</span>
     read</a>, 
+    
+  
+    <a href="IO.html#read_at%28offset%2Cbytesize%2C%26block%29-instance-method" class="tooltip">
+      <span>read_at(offset, bytesize, &amp;block)</span>
+    read_at</a>, 
     
   
     <a href="IO.html#read_byte%3AUInt8%3F-instance-method" class="tooltip">
@@ -841,8 +783,8 @@ loop <span class="k">do</span>
     read_fully?</a>, 
     
   
-    <a href="IO.html#read_line%28%2Aargs%2C%2A%2Aoptions%29%3AString%3F-instance-method" class="tooltip">
-      <span>read_line(*args, **options) : String?</span>
+    <a href="IO.html#read_line%28%2Aargs%2C%2A%2Aoptions%29%3AString-instance-method" class="tooltip">
+      <span>read_line(*args, **options) : String</span>
     read_line</a>, 
     
   
@@ -866,6 +808,11 @@ loop <span class="k">do</span>
     rewind</a>, 
     
   
+    <a href="IO.html#seek%28offset%2Cwhence%3ASeek%3DSeek%3A%3ASet%29-instance-method" class="tooltip">
+      <span>seek(offset, whence : Seek = <span class="t">Seek</span><span class="t">::</span><span class="t">Set</span>)</span>
+    seek</a>, 
+    
+  
     <a href="IO.html#set_encoding%28encoding%3AString%2Cinvalid%3ASymbol%3F%3Dnil%29-instance-method" class="tooltip">
       <span>set_encoding(encoding : String, invalid : Symbol? = <span class="n">nil</span>)</span>
     set_encoding</a>, 
@@ -879,6 +826,11 @@ loop <span class="k">do</span>
     <a href="IO.html#skip_to_end%3ANil-instance-method" class="tooltip">
       <span>skip_to_end : Nil</span>
     skip_to_end</a>, 
+    
+  
+    <a href="IO.html#tell-instance-method" class="tooltip">
+      <span>tell</span>
+    tell</a>, 
     
   
     <a href="IO.html#tty%3F%3ABool-instance-method" class="tooltip">
@@ -913,7 +865,7 @@ loop <span class="k">do</span>
 
     
 
-  <h3>Class methods inherited from module <code><a href="IO.html">IO</a></code>
+  <h3>Class methods inherited from class <code><a href="IO.html">IO</a></code>
 </h3>
   
   
@@ -946,8 +898,8 @@ loop <span class="k">do</span>
     dup</a>, 
     
   
-    <a href="Reference.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="Reference.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)</span>
     hash</a>, 
     
   
@@ -1036,8 +988,8 @@ loop <span class="k">do</span>
     dup</a>, 
     
   
-    <a href="Object.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
     hash</a>, 
     
   
@@ -1114,8 +1066,8 @@ loop <span class="k">do</span>
     from_json</a>, 
     
   
-    <a href="Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string_or_io) : self</span>
+    <a href="Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
     from_yaml</a>
     
   
@@ -1131,7 +1083,7 @@ loop <span class="k">do</span>
   <h2>Constructor Detail</h2>
   
     <div class="entry-detail" id="new(host:String,port:Int,backlog=SOMAXCONN,dns_timeout=nil,reuse_port=false)-class-method">
-      <a class="dashingAutolink" name="autolink-6054"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20dns_timeout%20%3D%20nil%2C%20reuse_port%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6556"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28host%20%3A%20String%2C%20port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20dns_timeout%20%3D%20nil%2C%20reuse_port%20%3D%20false%29"></a><div class="signature">
         
         def self.<strong>new</strong>(host : <a href="String.html">String</a>, port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>, dns_timeout = <span class="n">nil</span>, reuse_port = <span class="n">false</span>)
 
@@ -1143,13 +1095,13 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/socket/tcp_server.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/socket/tcp_server.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(family:Family=Family::INET)-class-method">
-      <a class="dashingAutolink" name="autolink-6055"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Family%20%3D%20Family%3A%3AINET%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6557"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28family%20%3A%20Family%20%3D%20Family%3A%3AINET%29"></a><div class="signature">
         
         def self.<strong>new</strong>(family : <a href="Socket/Family.html">Family</a> = <span class="t">Family</span><span class="t">::</span><span class="t">INET</span>)
 
@@ -1161,13 +1113,13 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/socket/tcp_server.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/socket/tcp_server.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(port:Int,backlog=SOMAXCONN,reuse_port=false)-class-method">
-      <a class="dashingAutolink" name="autolink-6056"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6558"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%29"></a><div class="signature">
         
         def self.<strong>new</strong>(port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>)
 
@@ -1179,7 +1131,7 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/socket/tcp_server.cr#L50" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/socket/tcp_server.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1190,7 +1142,7 @@ loop <span class="k">do</span>
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="open(port:Int,backlog=SOMAXCONN,reuse_port=false,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-6057"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6559"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28port%20%3A%20Int%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>open</strong>(port : <a href="Int.html">Int</a>, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>, &amp;block)
 
@@ -1207,13 +1159,13 @@ block. Eventually closes the server socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/socket/tcp_server.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/socket/tcp_server.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="open(host,port,backlog=SOMAXCONN,reuse_port=false,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-6058"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28host%2C%20port%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6560"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.open%28host%2C%20port%2C%20backlog%20%3D%20SOMAXCONN%2C%20reuse_port%20%3D%20false%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>open</strong>(host, port, backlog = <span class="t">SOMAXCONN</span>, reuse_port = <span class="n">false</span>, &amp;block)
 
@@ -1230,7 +1182,7 @@ server socket when the block returns.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/socket/tcp_server.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/socket/tcp_server.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1241,7 +1193,7 @@ server socket when the block returns.</p>
   <h2>Instance Method Detail</h2>
   
     <div class="entry-detail" id="accept?-instance-method">
-      <a class="dashingAutolink" name="autolink-6059"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-6561"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20accept%3F"></a><div class="signature">
         
         def <strong>accept?</strong>
 
@@ -1271,7 +1223,7 @@ loop <span class="k">do</span>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/socket/tcp_server.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/socket/tcp_server.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>

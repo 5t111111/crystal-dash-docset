@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8"/>
+  <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  
+  <a class="dashingAutolink" name="autolink-8224"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%3A%3ASchema%3A%3ACore%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML::Schema::Core - github.com/crystal-lang/crystal</title>
+</head>
+<body>
+
+
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> YAML::Schema::Core
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Provides utility methods for the YAML 1.1 core schema
+with the additional independent types specified in http://yaml.org/type/</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L3" target="_blank">yaml/schema/core.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#each%28node%3AYAML%3A%3ANodes%3A%3AMapping%2C%26block%29-class-method" class="signature"><strong>.each</strong>(node : YAML::Nodes::Mapping, &amp;block)</a>
+        
+          <div class="summary"><p>Invokes the block for each of the given <em>node</em>s keys and values, resolving merge keys (&lt;&lt;) when found (keys and values of the resolved merge mappings are yielded, recursively).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse%28data%3AString%7CIO%29-class-method" class="signature"><strong>.parse</strong>(data : String | IO)</a>
+        
+          <div class="summary"><p>Deserializes a YAML document.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_all%28data%3AString%7CIO%29-class-method" class="signature"><strong>.parse_all</strong>(data : String | IO)</a>
+        
+          <div class="summary"><p>Deserializes multiple YAML documents.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_null_or%28node%3AYAML%3A%3ANodes%3A%3ANode%2C%26block%29-class-method" class="signature"><strong>.parse_null_or</strong>(node : YAML::Nodes::Node, &amp;block)</a>
+        
+          <div class="summary"><p>If <code>node</code> parses to a null value, returns <code>nil</code>, otherwise invokes the given block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_scalar%28pull_parser%3AYAML%3A%3APullParser%29%3AType-class-method" class="signature"><strong>.parse_scalar</strong>(pull_parser : YAML::PullParser) : Type</a>
+        
+          <div class="summary"><p>Assuming the <em>pull_parser</em> is positioned in a scalar, parses it according to the core schema, taking the scalar&#39;s style and tag into account, then advances the pull parser.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_scalar%28node%3AYAML%3A%3ANodes%3A%3AScalar%29%3AType-class-method" class="signature"><strong>.parse_scalar</strong>(node : YAML::Nodes::Scalar) : Type</a>
+        
+          <div class="summary"><p>Parses a scalar value from the given <em>node</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_scalar%28string%3AString%29%3AType-class-method" class="signature"><strong>.parse_scalar</strong>(string : String) : Type</a>
+        
+          <div class="summary"><p>Parses a string according to the core schema, assuming the string had a plain style.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reserved_string%3F%28string%29%3ABool-class-method" class="signature"><strong>.reserved_string?</strong>(string) : Bool</a>
+        
+          <div class="summary"><p>Returns whether a string is reserved and must non be output with a plain style, according to the core schema.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="each(node:YAML::Nodes::Mapping,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-8216"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.each%28node%20%3A%20YAML%3A%3ANodes%3A%3AMapping%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>each</strong>(node : <a href="../../YAML/Nodes/Mapping.html">YAML::Nodes::Mapping</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>Invokes the block for each of the given <em>node</em>s keys and
+values, resolving merge keys (&lt;&lt;) when found (keys and
+values of the resolved merge mappings are yielded,
+recursively).</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L134" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse(data:String|IO)-class-method">
+      <a class="dashingAutolink" name="autolink-8217"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28data%20%3A%20String%20%7C%20IO%29"></a><div class="signature">
+        
+        def self.<strong>parse</strong>(data : <a href="../../String.html">String</a> | <a href="../../IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deserializes a YAML document.</p>
+
+<p>Same as <code><a href="../../YAML.html#parse%28data%3AString%7CIO%29%3AAny-class-method">YAML.parse</a></code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_all(data:String|IO)-class-method">
+      <a class="dashingAutolink" name="autolink-8218"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_all%28data%20%3A%20String%20%7C%20IO%29"></a><div class="signature">
+        
+        def self.<strong>parse_all</strong>(data : <a href="../../String.html">String</a> | <a href="../../IO.html">IO</a>)
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Deserializes multiple YAML documents.</p>
+
+<p>Same as <code><a href="../../YAML.html#parse_all%28data%3AString%29%3AArray%28Any%29-class-method">YAML.parse_all</a></code>.</p>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_null_or(node:YAML::Nodes::Node,&amp;block)-class-method">
+      <a class="dashingAutolink" name="autolink-8219"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_null_or%28node%20%3A%20YAML%3A%3ANodes%3A%3ANode%2C%20%26block%29"></a><div class="signature">
+        
+        def self.<strong>parse_null_or</strong>(node : <a href="../../YAML/Nodes/Node.html">YAML::Nodes::Node</a>, &amp;block)
+
+        
+      </div>
+      
+        <div class="doc"><p>If <code>node</code> parses to a null value, returns <code>nil</code>, otherwise
+invokes the given block.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L122" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_scalar(pull_parser:YAML::PullParser):Type-class-method">
+      <a class="dashingAutolink" name="autolink-8220"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_scalar%28pull_parser%20%3A%20YAML%3A%3APullParser%29%20%3A%20Type"></a><div class="signature">
+        
+        def self.<strong>parse_scalar</strong>(pull_parser : <a href="../../YAML/PullParser.html">YAML::PullParser</a>) : <a href="../../YAML/Type.html">Type</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Assuming the <em>pull_parser</em> is positioned in a scalar,
+parses it according to the core schema, taking the
+scalar&#39;s style and tag into account, then advances
+the pull parser.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_scalar(node:YAML::Nodes::Scalar):Type-class-method">
+      <a class="dashingAutolink" name="autolink-8221"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_scalar%28node%20%3A%20YAML%3A%3ANodes%3A%3AScalar%29%20%3A%20Type"></a><div class="signature">
+        
+        def self.<strong>parse_scalar</strong>(node : <a href="../../YAML/Nodes/Scalar.html">YAML::Nodes::Scalar</a>) : <a href="../../YAML/Type.html">Type</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Parses a scalar value from the given <em>node</em>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_scalar(string:String):Type-class-method">
+      <a class="dashingAutolink" name="autolink-8222"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_scalar%28string%20%3A%20String%29%20%3A%20Type"></a><div class="signature">
+        
+        def self.<strong>parse_scalar</strong>(string : <a href="../../String.html">String</a>) : <a href="../../YAML/Type.html">Type</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Parses a string according to the core schema, assuming
+the string had a plain style.</p>
+
+<pre><code><span class="t">YAML</span><span class="t">::</span><span class="t">Schema</span><span class="t">::</span><span class="t">Core</span>.parse_scalar(<span class="s">&#34;hello&#34;</span>) <span class="c"># =&gt; &#34;hello&#34;</span>
+<span class="t">YAML</span><span class="t">::</span><span class="t">Schema</span><span class="t">::</span><span class="t">Core</span>.parse_scalar(<span class="s">&#34;1.2&#34;</span>)   <span class="c"># =&gt; 1.2</span>
+<span class="t">YAML</span><span class="t">::</span><span class="t">Schema</span><span class="t">::</span><span class="t">Core</span>.parse_scalar(<span class="s">&#34;false&#34;</span>) <span class="c"># =&gt; false</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reserved_string?(string):Bool-class-method">
+      <a class="dashingAutolink" name="autolink-8223"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.reserved_string%3F%28string%29%20%3A%20Bool"></a><div class="signature">
+        
+        def self.<strong>reserved_string?</strong>(string) : <a href="../../Bool.html">Bool</a>
+
+        
+      </div>
+      
+        <div class="doc">
+<p>Returns whether a string is reserved and must non be output
+with a plain style, according to the core schema.</p>
+
+<pre><code><span class="t">YAML</span><span class="t">::</span><span class="t">Schema</span><span class="t">::</span><span class="t">Core</span>.reserved_string?(<span class="s">&#34;hello&#34;</span>) <span class="c"># =&gt; false</span>
+<span class="t">YAML</span><span class="t">::</span><span class="t">Schema</span><span class="t">::</span><span class="t">Core</span>.reserved_string?(<span class="s">&#34;1.2&#34;</span>)   <span class="c"># =&gt; true</span>
+<span class="t">YAML</span><span class="t">::</span><span class="t">Schema</span><span class="t">::</span><span class="t">Core</span>.reserved_string?(<span class="s">&#34;false&#34;</span>) <span class="c"># =&gt; true</span></code></pre>
+</div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/schema/core.cr#L110" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+
+
+</body></html>

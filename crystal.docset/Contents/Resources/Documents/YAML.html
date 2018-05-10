@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-7346"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-8243"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -23,14 +23,16 @@
 
   <h2>Overview</h2>
 
-  <p>The YAML module provides serialization and deserialization of YAML to/from native Crystal data structures.</p>
+  <p>The YAML module provides serialization and deserialization of YAML
+version 1.1 to/from native Crystal data structures, with the additional
+independent types specified in http://yaml.org/type/</p>
 
 <h3>Parsing with <code><a href="YAML.html#parse%28data%3AString%7CIO%29%3AAny-class-method">#parse</a></code> and <code><a href="YAML.html#parse_all%28data%3AString%29%3AArray%28Any%29-class-method">#parse_all</a></code>
 </h3>
 
-<p><code><a href="YAML.html#parse%28data%3AString%7CIO%29%3AAny-class-method">YAML#parse</a></code> will return an <code><a href="YAML/Any.html">Any</a></code>, which is a convenient wrapper around all possible YAML types,
-making it easy to traverse a complex YAML structure but requires some casts from time to time,
-mostly via some method invocations.</p>
+<p><code><a href="YAML.html#parse%28data%3AString%7CIO%29%3AAny-class-method">YAML#parse</a></code> will return an <code><a href="YAML/Any.html">Any</a></code>, which is a convenient wrapper around all possible
+YAML core types, making it easy to traverse a complex YAML structure but requires
+some casts from time to time, mostly via some method invocations.</p>
 
 <pre><code><span class="k">require</span> <span class="s">&#34;yaml&#34;</span>
 
@@ -44,36 +46,33 @@ data <span class="o">=</span> <span class="t">YAML</span>.parse <span class="s">
          END</span>
 data[<span class="s">&#34;foo&#34;</span>][<span class="s">&#34;bar&#34;</span>][<span class="s">&#34;baz&#34;</span>][<span class="n">1</span>].as_s <span class="c"># =&gt; &#34;fox&#34;</span></code></pre>
 
-<h3>Parsing with <code><a href="YAML.html#mapping-macro">YAML#mapping</a></code>
+<h3>Parsing with <code>from_yaml</code>
 </h3>
 
-<p><code><a href="YAML.html#mapping-macro">YAML#mapping</a></code> defines how an object is mapped to YAML. Mapped data is accessible
-through generated properties like <em>Foo#bar</em>. It is more type-safe and efficient.</p>
+<p>A type <code>T</code> can be deserialized from YAML by invoking <code>T.from_yaml(string_or_io)</code>.
+For this to work, <code>T</code> must implement
+<code>new(ctx : <a href="YAML/PullParser.html">YAML::PullParser</a>, node : <a href="YAML/Nodes.html">YAML::Nodes</a>::Node)</code> and decode
+a value from the given <em>node</em>, using <em>ctx</em> to store and retrieve
+anchored values (see <code><a href="YAML/PullParser.html">YAML::PullParser</a></code> for an explanation of this).</p>
 
-<h3>Generating with <code><a href="YAML.html#build%28%26block%29-class-method">YAML.build</a></code>
-</h3>
-
-<p>Use <code><a href="YAML.html#build%28%26block%29-class-method">YAML.build</a></code>, which uses <code><a href="YAML/Builder.html">YAML::Builder</a></code>, to generate YAML
-by emitting scalars, sequences and mappings:</p>
-
-<pre><code><span class="k">require</span> <span class="s">&#34;yaml&#34;</span>
-
-string <span class="o">=</span> <span class="t">YAML</span>.build <span class="k">do</span> <span class="o">|</span>yaml<span class="o">|</span>
-  yaml.mapping <span class="k">do</span>
-    yaml.scalar <span class="s">&#34;foo&#34;</span>
-    yaml.sequence <span class="k">do</span>
-      yaml.scalar <span class="n">1</span>
-      yaml.scalar <span class="n">2</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-string <span class="c"># =&gt; &#34;---\nfoo:\n- 1\n- 2\n&#34;</span></code></pre>
+<p>Crystal primitive types, <code><a href="Time.html">Time</a></code>, <code><a href="Bytes.html">Bytes</a></code> and <code><a href="Union.html">Union</a></code> implement
+this method. <code><a href="YAML.html#mapping-macro">YAML.mapping</a></code> can be used to implement this method
+for user types.</p>
 
 <h3>Dumping with <code><a href="YAML.html#dump%28object%2Cio%3AIO%29-class-method">YAML.dump</a></code> or <code>#to_yaml</code>
 </h3>
 
-<p><code><a href="YAML.html#dump%28object%2Cio%3AIO%29-class-method">YAML.dump</a></code> generates the YAML representation for an object. An <code><a href="IO.html">IO</a></code> can be passed and it will be written there,
-otherwise it will be returned as a string. Similarly, <code>#to_yaml</code> (with or without an <code><a href="IO.html">IO</a></code>) on any object does the same.</p>
+<p><code><a href="YAML.html#dump%28object%2Cio%3AIO%29-class-method">YAML.dump</a></code> generates the YAML representation for an object.
+An <code><a href="IO.html">IO</a></code> can be passed and it will be written there,
+otherwise it will be returned as a string. Similarly, <code>#to_yaml</code>
+(with or without an <code><a href="IO.html">IO</a></code>) on any object does the same.</p>
+
+<p>For this to work, the type given to <code><a href="YAML.html#dump%28object%2Cio%3AIO%29-class-method">YAML.dump</a></code> must implement
+<code>to_yaml(builder : <a href="YAML/Nodes.html">YAML::Nodes</a>::Builder</code>).</p>
+
+<p>Crystal primitive types, <code><a href="Time.html">Time</a></code> and <code><a href="Bytes.html">Bytes</a></code> implement
+this method. <code><a href="YAML.html#mapping-macro">YAML.mapping</a></code> can be used to implement this method
+for user types.</p>
 
 <pre><code>yaml <span class="o">=</span> <span class="t">YAML</span>.dump({hello: <span class="s">&#34;world&#34;</span>})                               <span class="c"># =&gt; &#34;---\nhello: world\n&#34;</span>
 <span class="t">File</span>.open(<span class="s">&#34;foo.yml&#34;</span>, <span class="s">&#34;w&#34;</span>) { <span class="o">|</span>f<span class="o">|</span> <span class="t">YAML</span>.dump({hello: <span class="s">&#34;world&#34;</span>}, f) } <span class="c"># writes it to the file</span>
@@ -97,22 +96,27 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/any.cr#L25" target="_blank">yaml/any.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/any.cr#L26" target="_blank">yaml/any.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L129" target="_blank">yaml/builder.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L160" target="_blank">yaml/builder.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/mapping.cr#L1" target="_blank">yaml/mapping.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/enums.cr#L1" target="_blank">yaml/enums.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml.cr#L62" target="_blank">yaml.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/mapping.cr#L1" target="_blank">yaml/mapping.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml.cr#L61" target="_blank">yaml.cr</a>
     
     <br/>
   
@@ -157,14 +161,14 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
       <li class="entry-summary">
         <a href="#parse%28data%3AString%7CIO%29%3AAny-class-method" class="signature"><strong>.parse</strong>(data : String | IO) : Any</a>
         
-          <div class="summary"><p>Deserializes a YAML document.</p></div>
+          <div class="summary"><p>Deserializes a YAML document according to the core schema.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#parse_all%28data%3AString%29%3AArray%28Any%29-class-method" class="signature"><strong>.parse_all</strong>(data : String) : Array(Any)</a>
         
-          <div class="summary"><p>Deserializes multiple YAML documents.</p></div>
+          <div class="summary"><p>Deserializes multiple YAML documents according to the core schema.</p></div>
         
       </li>
     
@@ -205,7 +209,7 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
   <h2>Class Method Detail</h2>
   
     <div class="entry-detail" id="build(io:IO,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-7347"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28io%20%3A%20IO%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8235"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28io%20%3A%20IO%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>build</strong>(io : <a href="IO.html">IO</a>, &amp;block)
 
@@ -217,13 +221,13 @@ yaml <span class="o">=</span> {hello: <span class="s">&#34;world&#34;</span>}.to
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L155" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L186" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="build(&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-7348"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8236"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.build%28%26block%29"></a><div class="signature">
         
         def self.<strong>build</strong>(&amp;block)
 
@@ -250,13 +254,13 @@ string <span class="c"># =&gt; &#34;---\nfoo:\n- 1\n- 2\n&#34;</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/builder.cr#L146" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/builder.cr#L177" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dump(object,io:IO)-class-method">
-      <a class="dashingAutolink" name="autolink-7349"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dump%28object%2C%20io%20%3A%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8237"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dump%28object%2C%20io%20%3A%20IO%29"></a><div class="signature">
         
         def self.<strong>dump</strong>(object, io : <a href="IO.html">IO</a>)
 
@@ -268,13 +272,13 @@ string <span class="c"># =&gt; &#34;---\nfoo:\n- 1\n- 2\n&#34;</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml.cr#L138" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml.cr#L145" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="dump(object):String-class-method">
-      <a class="dashingAutolink" name="autolink-7350"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dump%28object%29%20%3A%20String"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8238"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.dump%28object%29%20%3A%20String"></a><div class="signature">
         
         def self.<strong>dump</strong>(object) : <a href="String.html">String</a>
 
@@ -286,13 +290,13 @@ string <span class="c"># =&gt; &#34;---\nfoo:\n- 1\n- 2\n&#34;</span></code></pr
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml.cr#L133" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml.cr#L140" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse(data:String|IO):Any-class-method">
-      <a class="dashingAutolink" name="autolink-7351"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28data%20%3A%20String%20%7C%20IO%29%20%3A%20Any"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8239"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse%28data%20%3A%20String%20%7C%20IO%29%20%3A%20Any"></a><div class="signature">
         
         def self.<strong>parse</strong>(data : <a href="String.html">String</a> | <a href="IO.html">IO</a>) : <a href="YAML/Any.html">Any</a>
 
@@ -300,7 +304,7 @@ string <span class="c"># =&gt; &#34;---\nfoo:\n- 1\n- 2\n&#34;</span></code></pr
       </div>
       
         <div class="doc">
-<p>Deserializes a YAML document.</p>
+<p>Deserializes a YAML document according to the core schema.</p>
 
 <pre><code class="language-yaml"># ./foo.yml
 data:
@@ -328,13 +332,13 @@ data:
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml.cr#L109" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="parse_all(data:String):Array(Any)-class-method">
-      <a class="dashingAutolink" name="autolink-7352"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_all%28data%20%3A%20String%29%20%3A%20Array%28Any%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8240"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.parse_all%28data%20%3A%20String%29%20%3A%20Array%28Any%29"></a><div class="signature">
         
         def self.<strong>parse_all</strong>(data : <a href="String.html">String</a>) : <a href="Array.html">Array</a>(<a href="YAML/Any.html">Any</a>)
 
@@ -342,7 +346,7 @@ data:
       </div>
       
         <div class="doc">
-<p>Deserializes multiple YAML documents.</p>
+<p>Deserializes multiple YAML documents according to the core schema.</p>
 
 <pre><code class="language-yaml"># ./foo.yml
 foo: bar
@@ -358,7 +362,7 @@ hello: world</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml.cr#L135" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -371,7 +375,7 @@ hello: world</code></pre>
   <h2>Macro Detail</h2>
   
     <div class="entry-detail" id="mapping(properties,strict=false)-macro">
-      <a class="dashingAutolink" name="autolink-7353"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping%28properties%2C%20strict%20%3D%20false%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8241"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping%28properties%2C%20strict%20%3D%20false%29"></a><div class="signature">
         
         macro <strong>mapping</strong>(properties, strict = false)
 
@@ -440,6 +444,8 @@ employee.age <span class="c"># undefined method &#39;age&#39;. (compile error)</
 <strong>setter</strong>: if <code>true</code>, will generate a setter for the variable, <code>true</code> by default</li>
 <li>
 <strong>getter</strong>: if <code>true</code>, will generate a getter for the variable, <code>true</code> by default</li>
+<li>
+<strong>presence</strong>: if <code>true</code>, a <code>{{key}}_present?</code> method will be generated when the key was present (even if it has a <code>null</code> value), <code>false</code> by default</li>
 </ul>
 
 <p>This macro by default defines getters and setters for each variable (this can be overrided with <em>setter</em> and <em>getter</em>).
@@ -454,13 +460,13 @@ it and initializes this type&#39;s instance variables.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/mapping.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/mapping.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="mapping-macro">
-      <a class="dashingAutolink" name="autolink-7354"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8242"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/macro%20mapping"></a><div class="signature">
         
         macro <strong>mapping</strong>
 
@@ -473,7 +479,7 @@ with named arguments instead of with a hash/named-tuple literal.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/mapping.cr#L172" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/mapping.cr#L219" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta id="repository-name" content="github.com/crystal-lang/crystal"/>
   <link href="../css/style.css" rel="stylesheet" type="text/css"/>
   
-  <a class="dashingAutolink" name="autolink-7307"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%3A%3APullParser%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML::PullParser - github.com/crystal-lang/crystal</title>
+  <a class="dashingAutolink" name="autolink-8208"></a><a class="dashAnchor" name="//apple_ref/cpp/Class/YAML%3A%3APullParser%20-%20github.com%2Fcrystal-lang%2Fcrystal"></a><title>YAML::PullParser - github.com/crystal-lang/crystal</title>
 </head>
 <body>
 
@@ -27,6 +27,18 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>A pull parser allows parsing a YAML document by events.</p>
+
+<p>When creating an instance, the parser is positioned in
+the first event. To get the event kind invoke <code><a href="../YAML/PullParser.html#kind%3AEventKind-instance-method">#kind</a></code>.
+If the event is a scalar you can invoke <code><a href="../YAML/PullParser.html#value%3AString-instance-method">#value</a></code> to get
+its <strong>string</strong> value. Other methods like <code><a href="../YAML/PullParser.html#tag%3AString%3F-instance-method">#tag</a></code>, <code><a href="../YAML/PullParser.html#anchor-instance-method">#anchor</a></code>
+and <code><a href="../YAML/PullParser.html#scalar_style%3AScalarStyle-instance-method">#scalar_style</a></code> let you inspect other information from events.</p>
+
+<p>Invoking <code><a href="../YAML/PullParser.html#read_next%3AEventKind-instance-method">#read_next</a></code> reads the next event.</p>
+
 
 
 
@@ -43,7 +55,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L1" target="_blank">yaml/pull_parser.cr</a>
+      <a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L10" target="_blank">yaml/pull_parser.cr</a>
     
     <br/>
   
@@ -63,6 +75,8 @@
       <li class="entry-summary">
         <a href="#new%28content%2C%26block%29-class-method" class="signature"><strong>.new</strong>(content, &amp;block)</a>
         
+          <div class="summary"><p>Creates a parser, yields it to the block, and closes the parser at the end of it.</p></div>
+        
       </li>
     
   </ul>
@@ -75,12 +89,9 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#alias_anchor-instance-method" class="signature"><strong>#alias_anchor</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#anchor-instance-method" class="signature"><strong>#anchor</strong></a>
+        
+          <div class="summary"><p>Returns the anchor associated to the current event, or <code>nil</code> if there&#39;s no anchor.</p></div>
         
       </li>
     
@@ -90,7 +101,19 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#column_number-instance-method" class="signature"><strong>#column_number</strong></a>
+        <a href="#end_column-instance-method" class="signature"><strong>#end_column</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_line-instance-method" class="signature"><strong>#end_line</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#expect_kind%28kind%3AEventKind%29-instance-method" class="signature"><strong>#expect_kind</strong>(kind : EventKind)</a>
+        
+          <div class="summary"><p>Raises if the current kind is not the expected one.</p></div>
         
       </li>
     
@@ -100,137 +123,152 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#kind-instance-method" class="signature"><strong>#kind</strong></a>
+        <a href="#kind%3AEventKind-instance-method" class="signature"><strong>#kind</strong> : EventKind</a>
+        
+          <div class="summary"><p>The current event kind.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#line_number-instance-method" class="signature"><strong>#line_number</strong></a>
+        <a href="#location-instance-method" class="signature"><strong>#location</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#mapping_anchor-instance-method" class="signature"><strong>#mapping_anchor</strong></a>
+        <a href="#mapping_style%3AMappingStyle-instance-method" class="signature"><strong>#mapping_style</strong> : MappingStyle</a>
+        
+          <div class="summary"><p>Returns the mapping style, assuming the pull parser is located at a mapping begin event.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#problem_column_number-instance-method" class="signature"><strong>#problem_column_number</strong></a>
+        <a href="#raise%28msg%3AString%2Cline_number%3Dself.start_line%2Ccolumn_number%3Dself.start_column%2Ccontext_info%3Dnil%29-instance-method" class="signature"><strong>#raise</strong>(msg : String, line_number = <span class="k">self</span>.start_line, column_number = <span class="k">self</span>.start_column, context_info = <span class="n">nil</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#problem_line_number-instance-method" class="signature"><strong>#problem_line_number</strong></a>
+        <a href="#read%28expected_kind%3AEventKind%29%3AEventKind-instance-method" class="signature"><strong>#read</strong>(expected_kind : EventKind) : EventKind</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#raise%28msg%3AString%29-instance-method" class="signature"><strong>#raise</strong>(msg : String)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#read%28expected_kind%29-instance-method" class="signature"><strong>#read</strong>(expected_kind)</a>
+          <div class="summary"><p>Reads an expected event kind.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read_alias-instance-method" class="signature"><strong>#read_alias</strong></a>
         
+          <div class="summary"><p>Reads an alias event, returning its anchor.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#read_document%28%26block%29-instance-method" class="signature"><strong>#read_document</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Reads a &#34;document start&#34; event, yields to the block, and then reads a &#34;document end&#34; event.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read_document_end-instance-method" class="signature"><strong>#read_document_end</strong></a>
         
+          <div class="summary"><p>Reads a &#34;document end&#34; event.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#read_document_start-instance-method" class="signature"><strong>#read_document_start</strong></a>
+        
+          <div class="summary"><p>Reads a &#34;document start&#34; event.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read_mapping%28%26block%29-instance-method" class="signature"><strong>#read_mapping</strong>(&amp;block)</a>
         
+          <div class="summary"><p>Reads a &#34;mapping start&#34; event, yields to the block, and then reads a &#34;mapping end&#34; event.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#read_mapping_end-instance-method" class="signature"><strong>#read_mapping_end</strong></a>
+        
+          <div class="summary"><p>Reads a &#34;mapping end&#34; event.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read_mapping_start-instance-method" class="signature"><strong>#read_mapping_start</strong></a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#read_next-instance-method" class="signature"><strong>#read_next</strong></a>
+          <div class="summary"><p>Reads a &#34;mapping start&#34; event.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#read_null_or%28%26block%29-instance-method" class="signature"><strong>#read_null_or</strong>(&amp;block)</a>
+        <a href="#read_next%3AEventKind-instance-method" class="signature"><strong>#read_next</strong> : EventKind</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#read_raw%28io%29-instance-method" class="signature"><strong>#read_raw</strong>(io)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#read_raw-instance-method" class="signature"><strong>#read_raw</strong></a>
+          <div class="summary"><p>Reads the next event.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read_scalar-instance-method" class="signature"><strong>#read_scalar</strong></a>
         
+          <div class="summary"><p>Reads a scalar, returning its value.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#read_sequence%28%26block%29-instance-method" class="signature"><strong>#read_sequence</strong>(&amp;block)</a>
+        
+          <div class="summary"><p>Reads a &#34;sequence start&#34; event, yields to the block, and then reads a &#34;sequence end&#34; event.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read_sequence_end-instance-method" class="signature"><strong>#read_sequence_end</strong></a>
         
+          <div class="summary"><p>Reads a &#34;sequence end&#34; event.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#read_sequence_start-instance-method" class="signature"><strong>#read_sequence_start</strong></a>
+        
+          <div class="summary"><p>Reads a &#34;sequence start&#34; event.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read_stream%28%26block%29-instance-method" class="signature"><strong>#read_stream</strong>(&amp;block)</a>
         
+          <div class="summary"><p>Reads a &#34;stream start&#34; event, yields to the block, and then reads a &#34;stream end&#34; event.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#read_stream_end-instance-method" class="signature"><strong>#read_stream_end</strong></a>
+        
+          <div class="summary"><p>Reads a &#34;stream end&#34; event.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#read_stream_start-instance-method" class="signature"><strong>#read_stream_start</strong></a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#scalar_anchor-instance-method" class="signature"><strong>#scalar_anchor</strong></a>
+          <div class="summary"><p>Reads a &#34;stream start&#34; event.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sequence_anchor-instance-method" class="signature"><strong>#sequence_anchor</strong></a>
+        <a href="#scalar_style%3AScalarStyle-instance-method" class="signature"><strong>#scalar_style</strong> : ScalarStyle</a>
+        
+          <div class="summary"><p>Returns the scalar style, assuming the pull parser is located at a scalar event.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sequence_style%3ASequenceStyle-instance-method" class="signature"><strong>#sequence_style</strong> : SequenceStyle</a>
+        
+          <div class="summary"><p>Returns the sequence style, assuming the pull parser is located at a sequence begin event.</p></div>
         
       </li>
     
@@ -240,12 +278,26 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#tag-instance-method" class="signature"><strong>#tag</strong></a>
+        <a href="#start_column-instance-method" class="signature"><strong>#start_column</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#value-instance-method" class="signature"><strong>#value</strong></a>
+        <a href="#start_line-instance-method" class="signature"><strong>#start_line</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tag%3AString%3F-instance-method" class="signature"><strong>#tag</strong> : String?</a>
+        
+          <div class="summary"><p>Returns the tag associated to the current event, or <code>nil</code> if there&#39;s no tag.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%3AString-instance-method" class="signature"><strong>#value</strong> : String</a>
+        
+          <div class="summary"><p>Returns the scalar value, assuming the pull parser is located at a scalar.</p></div>
         
       </li>
     
@@ -273,8 +325,8 @@
     dup</a>, 
     
   
-    <a href="../Reference.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="../Reference.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)</span>
     hash</a>, 
     
   
@@ -363,8 +415,8 @@
     dup</a>, 
     
   
-    <a href="../Object.html#hash-instance-method" class="tooltip">
-      <span>hash</span>
+    <a href="../Object.html#hash%28hasher%29-instance-method" class="tooltip">
+      <span>hash(hasher)<br/>hash</span>
     hash</a>, 
     
   
@@ -441,8 +493,8 @@
     from_json</a>, 
     
   
-    <a href="../Object.html#from_yaml%28string_or_io%29%3Aself-class-method" class="tooltip">
-      <span>from_yaml(string_or_io) : self</span>
+    <a href="../Object.html#from_yaml%28string_or_io%3AString%7CIO%29%3Aself-class-method" class="tooltip">
+      <span>from_yaml(string_or_io : String | IO) : self</span>
     from_yaml</a>
     
   
@@ -458,7 +510,7 @@
   <h2>Constructor Detail</h2>
   
     <div class="entry-detail" id="new(content:String|IO)-class-method">
-      <a class="dashingAutolink" name="autolink-7308"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28content%20%3A%20String%20%7C%20IO%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8173"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28content%20%3A%20String%20%7C%20IO%29"></a><div class="signature">
         
         def self.<strong>new</strong>(content : <a href="../String.html">String</a> | <a href="../IO.html">IO</a>)
 
@@ -468,23 +520,26 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L4" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="new(content,&amp;block)-class-method">
-      <a class="dashingAutolink" name="autolink-7309"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28content%2C%20%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8174"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20self.new%28content%2C%20%26block%29"></a><div class="signature">
         
         def self.<strong>new</strong>(content, &amp;block)
 
         
       </div>
       
+        <div class="doc"><p>Creates a parser, yields it to the block, and closes
+the parser at the end of it.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -496,40 +551,27 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="alias_anchor-instance-method">
-      <a class="dashingAutolink" name="autolink-7310"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20alias_anchor"></a><div class="signature">
-        
-        def <strong>alias_anchor</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L72" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="anchor-instance-method">
-      <a class="dashingAutolink" name="autolink-7311"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20anchor"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8175"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20anchor"></a><div class="signature">
         
         def <strong>anchor</strong>
 
         
       </div>
       
+        <div class="doc"><p>Returns the anchor associated to the current event, or <code>nil</code>
+if there&#39;s no anchor.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="close-instance-method">
-      <a class="dashingAutolink" name="autolink-7312"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8176"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20close"></a><div class="signature">
         
         def <strong>close</strong>
 
@@ -539,15 +581,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L296" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L308" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="column_number-instance-method">
-      <a class="dashingAutolink" name="autolink-7313"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20column_number"></a><div class="signature">
+    <div class="entry-detail" id="end_column-instance-method">
+      <a class="dashingAutolink" name="autolink-8177"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_column"></a><div class="signature">
         
-        def <strong>column_number</strong>
+        def <strong>end_column</strong>
 
         
       </div>
@@ -555,13 +597,47 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L249" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L263" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_line-instance-method">
+      <a class="dashingAutolink" name="autolink-8178"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20end_line"></a><div class="signature">
+        
+        def <strong>end_line</strong>
+
+        
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L259" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="expect_kind(kind:EventKind)-instance-method">
+      <a class="dashingAutolink" name="autolink-8179"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20expect_kind%28kind%20%3A%20EventKind%29"></a><div class="signature">
+        
+        def <strong>expect_kind</strong>(kind : <a href="../YAML/EventKind.html">EventKind</a>)
+
+        
+      </div>
+      
+        <div class="doc"><p>Raises if the current kind is not the expected one.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L314" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="finalize-instance-method">
-      <a class="dashingAutolink" name="autolink-7314"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8180"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20finalize"></a><div class="signature">
         
         def <strong>finalize</strong>
 
@@ -571,15 +647,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L289" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L301" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="kind-instance-method">
-      <a class="dashingAutolink" name="autolink-7315"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20kind"></a><div class="signature">
+    <div class="entry-detail" id="kind:EventKind-instance-method">
+      <a class="dashingAutolink" name="autolink-8181"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20kind%20%3A%20EventKind"></a><div class="signature">
         
-        def <strong>kind</strong>
+        def <strong>kind</strong> : <a href="../YAML/EventKind.html">EventKind</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>The current event kind.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L45" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="location-instance-method">
+      <a class="dashingAutolink" name="autolink-8182"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20location"></a><div class="signature">
+        
+        def <strong>location</strong>
 
         
       </div>
@@ -587,15 +681,34 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L247" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="line_number-instance-method">
-      <a class="dashingAutolink" name="autolink-7316"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20line_number"></a><div class="signature">
+    <div class="entry-detail" id="mapping_style:MappingStyle-instance-method">
+      <a class="dashingAutolink" name="autolink-8183"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mapping_style%20%3A%20MappingStyle"></a><div class="signature">
         
-        def <strong>line_number</strong>
+        def <strong>mapping_style</strong> : <a href="../YAML/MappingStyle.html">MappingStyle</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the mapping style, assuming the pull parser is located
+at a mapping begin event. Raises otherwise.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L98" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raise(msg:String,line_number=self.start_line,column_number=self.start_column,context_info=nil)-instance-method">
+      <a class="dashingAutolink" name="autolink-8184"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raise%28msg%20%3A%20String%2C%20line_number%20%3D%20self.start_line%2C%20column_number%20%3D%20self.start_column%2C%20context_info%20%3D%20nil%29"></a><div class="signature">
+        
+        def <strong>raise</strong>(msg : <a href="../String.html">String</a>, line_number = <span class="k">self</span>.start_line, column_number = <span class="k">self</span>.start_column, context_info = <span class="n">nil</span>)
 
         
       </div>
@@ -603,413 +716,343 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L245" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L322" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="mapping_anchor-instance-method">
-      <a class="dashingAutolink" name="autolink-7317"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20mapping_anchor"></a><div class="signature">
+    <div class="entry-detail" id="read(expected_kind:EventKind):EventKind-instance-method">
+      <a class="dashingAutolink" name="autolink-8185"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28expected_kind%20%3A%20EventKind%29%20%3A%20EventKind"></a><div class="signature">
         
-        def <strong>mapping_anchor</strong>
+        def <strong>read</strong>(expected_kind : <a href="../YAML/EventKind.html">EventKind</a>) : <a href="../YAML/EventKind.html">EventKind</a>
 
         
       </div>
       
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L68" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="problem_column_number-instance-method">
-      <a class="dashingAutolink" name="autolink-7318"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20problem_column_number"></a><div class="signature">
-        
-        def <strong>problem_column_number</strong>
-
-        
-      </div>
+        <div class="doc"><p>Reads an expected event kind.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L258" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="problem_line_number-instance-method">
-      <a class="dashingAutolink" name="autolink-7319"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20problem_line_number"></a><div class="signature">
-        
-        def <strong>problem_line_number</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L253" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="raise(msg:String)-instance-method">
-      <a class="dashingAutolink" name="autolink-7320"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20raise%28msg%20%3A%20String%29"></a><div class="signature">
-        
-        def <strong>raise</strong>(msg : <a href="../String.html">String</a>)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L309" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="read(expected_kind)-instance-method">
-      <a class="dashingAutolink" name="autolink-7321"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read%28expected_kind%29"></a><div class="signature">
-        
-        def <strong>read</strong>(expected_kind)
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L173" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L218" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_alias-instance-method">
-      <a class="dashingAutolink" name="autolink-7322"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_alias"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8186"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_alias"></a><div class="signature">
         
         def <strong>read_alias</strong>
 
         
       </div>
       
+        <div class="doc"><p>Reads an alias event, returning its anchor.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L118" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L162" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_document(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7323"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_document%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8187"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_document%28%26block%29"></a><div class="signature">
         
         def <strong>read_document</strong>(&amp;block)
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;document start&#34; event, yields to the block,
+and then reads a &#34;document end&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L136" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_document_end-instance-method">
-      <a class="dashingAutolink" name="autolink-7324"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_document_end"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8188"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_document_end"></a><div class="signature">
         
         def <strong>read_document_end</strong>
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;document end&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L144" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L193" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_document_start-instance-method">
-      <a class="dashingAutolink" name="autolink-7325"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_document_start"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8189"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_document_start"></a><div class="signature">
         
         def <strong>read_document_start</strong>
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;document start&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L140" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L188" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_mapping(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7326"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_mapping%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8190"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_mapping%28%26block%29"></a><div class="signature">
         
         def <strong>read_mapping</strong>(&amp;block)
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;mapping start&#34; event, yields to the block,
+and then reads a &#34;mapping end&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L154" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_mapping_end-instance-method">
-      <a class="dashingAutolink" name="autolink-7327"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_mapping_end"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8191"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_mapping_end"></a><div class="signature">
         
         def <strong>read_mapping_end</strong>
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;mapping end&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L160" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L213" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_mapping_start-instance-method">
-      <a class="dashingAutolink" name="autolink-7328"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_mapping_start"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8192"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_mapping_start"></a><div class="signature">
         
         def <strong>read_mapping_start</strong>
 
         
       </div>
       
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L156" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="read_next-instance-method">
-      <a class="dashingAutolink" name="autolink-7329"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_next"></a><div class="signature">
-        
-        def <strong>read_next</strong>
-
-        
-      </div>
+        <div class="doc"><p>Reads a &#34;mapping start&#34; event.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L208" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="read_null_or(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7330"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_null_or%28%26block%29"></a><div class="signature">
+    <div class="entry-detail" id="read_next:EventKind-instance-method">
+      <a class="dashingAutolink" name="autolink-8193"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_next%20%3A%20EventKind"></a><div class="signature">
         
-        def <strong>read_null_or</strong>(&amp;block)
+        def <strong>read_next</strong> : <a href="../YAML/EventKind.html">EventKind</a>
 
         
       </div>
       
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L164" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="read_raw(io)-instance-method">
-      <a class="dashingAutolink" name="autolink-7331"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_raw%28io%29"></a><div class="signature">
-        
-        def <strong>read_raw</strong>(io)
-
-        
-      </div>
+        <div class="doc"><p>Reads the next event.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L189" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="read_raw-instance-method">
-      <a class="dashingAutolink" name="autolink-7332"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_raw"></a><div class="signature">
-        
-        def <strong>read_raw</strong>
-
-        
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L178" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L111" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_scalar-instance-method">
-      <a class="dashingAutolink" name="autolink-7333"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_scalar"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8194"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_scalar"></a><div class="signature">
         
         def <strong>read_scalar</strong>
 
         
       </div>
       
+        <div class="doc"><p>Reads a scalar, returning its value.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L125" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L170" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_sequence(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7334"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_sequence%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8195"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_sequence%28%26block%29"></a><div class="signature">
         
         def <strong>read_sequence</strong>(&amp;block)
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;sequence start&#34; event, yields to the block,
+and then reads a &#34;sequence end&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L104" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L145" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_sequence_end-instance-method">
-      <a class="dashingAutolink" name="autolink-7335"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_sequence_end"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8196"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_sequence_end"></a><div class="signature">
         
         def <strong>read_sequence_end</strong>
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;sequence end&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L152" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L203" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_sequence_start-instance-method">
-      <a class="dashingAutolink" name="autolink-7336"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_sequence_start"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8197"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_sequence_start"></a><div class="signature">
         
         def <strong>read_sequence_start</strong>
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;sequence start&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L198" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_stream(&amp;block)-instance-method">
-      <a class="dashingAutolink" name="autolink-7337"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_stream%28%26block%29"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8198"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_stream%28%26block%29"></a><div class="signature">
         
         def <strong>read_stream</strong>(&amp;block)
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;stream start&#34; event, yields to the block,
+and then reads a &#34;stream end&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L90" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L127" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_stream_end-instance-method">
-      <a class="dashingAutolink" name="autolink-7338"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_stream_end"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8199"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_stream_end"></a><div class="signature">
         
         def <strong>read_stream_end</strong>
 
         
       </div>
       
+        <div class="doc"><p>Reads a &#34;stream end&#34; event.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L136" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L183" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="read_stream_start-instance-method">
-      <a class="dashingAutolink" name="autolink-7339"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_stream_start"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8200"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20read_stream_start"></a><div class="signature">
         
         def <strong>read_stream_start</strong>
 
         
       </div>
       
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L132" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="scalar_anchor-instance-method">
-      <a class="dashingAutolink" name="autolink-7340"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scalar_anchor"></a><div class="signature">
-        
-        def <strong>scalar_anchor</strong>
-
-        
-      </div>
+        <div class="doc"><p>Reads a &#34;stream start&#34; event.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L178" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="sequence_anchor-instance-method">
-      <a class="dashingAutolink" name="autolink-7341"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sequence_anchor"></a><div class="signature">
+    <div class="entry-detail" id="scalar_style:ScalarStyle-instance-method">
+      <a class="dashingAutolink" name="autolink-8201"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20scalar_style%20%3A%20ScalarStyle"></a><div class="signature">
         
-        def <strong>sequence_anchor</strong>
+        def <strong>scalar_style</strong> : <a href="../YAML/ScalarStyle.html">ScalarStyle</a>
 
         
       </div>
       
+        <div class="doc"><p>Returns the scalar style, assuming the pull parser is located
+at a scalar event. Raises otherwise.</p></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L105" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sequence_style:SequenceStyle-instance-method">
+      <a class="dashingAutolink" name="autolink-8202"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20sequence_style%20%3A%20SequenceStyle"></a><div class="signature">
+        
+        def <strong>sequence_style</strong> : <a href="../YAML/SequenceStyle.html">SequenceStyle</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the sequence style, assuming the pull parser is located
+at a sequence begin event. Raises otherwise.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="skip-instance-method">
-      <a class="dashingAutolink" name="autolink-7342"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip"></a><div class="signature">
+      <a class="dashingAutolink" name="autolink-8203"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20skip"></a><div class="signature">
         
         def <strong>skip</strong>
 
@@ -1019,15 +1062,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L223" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L223" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="tag-instance-method">
-      <a class="dashingAutolink" name="autolink-7343"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tag"></a><div class="signature">
+    <div class="entry-detail" id="start_column-instance-method">
+      <a class="dashingAutolink" name="autolink-8204"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_column"></a><div class="signature">
         
-        def <strong>tag</strong>
+        def <strong>start_column</strong>
 
         
       </div>
@@ -1035,15 +1078,15 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L255" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="value-instance-method">
-      <a class="dashingAutolink" name="autolink-7344"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20value"></a><div class="signature">
+    <div class="entry-detail" id="start_line-instance-method">
+      <a class="dashingAutolink" name="autolink-8205"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20start_line"></a><div class="signature">
         
-        def <strong>value</strong>
+        def <strong>start_line</strong>
 
         
       </div>
@@ -1051,7 +1094,45 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-lang/crystal/blob/e2a1389e8165fb097c785524337d7bb7b550a086/src/yaml/pull_parser.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L251" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tag:String?-instance-method">
+      <a class="dashingAutolink" name="autolink-8206"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20tag%20%3A%20String%3F"></a><div class="signature">
+        
+        def <strong>tag</strong> : <a href="../String.html">String</a>?
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the tag associated to the current event, or <code>nil</code>
+if there&#39;s no tag.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L51" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value:String-instance-method">
+      <a class="dashingAutolink" name="autolink-8207"></a><a class="dashAnchor" name="//apple_ref/cpp/Method/def%20value%20%3A%20String"></a><div class="signature">
+        
+        def <strong>value</strong> : <a href="../String.html">String</a>
+
+        
+      </div>
+      
+        <div class="doc"><p>Returns the scalar value, assuming the pull parser
+is located at a scalar. Raises otherwise.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-lang/crystal/blob/4f9ed8d03208dd0db33993c5a6fa6753bc1cf91e/src/yaml/pull_parser.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
